@@ -1,0 +1,16 @@
+{
+  "compileType": "miniprogram",
+  "setting": {
+    "newFeature": true,
+    "urlCheck": true,
+    "es6": false,
+    "postcss": true,
+    "checkSiteMap": false,
+    "minified": false,
+    "autoAudits": false
+  },
+  "appid": "touristappid",
+  "projectname": "mpx-cube-ui",
+  "description": "A mpx project",
+  "condition": {}
+}

@@ -1,0 +1,79 @@
+<template>
+  <base-container>
+    <view-desc>复选框 - 默认圆形</view-desc>
+    <view class="item cube-example">
+      <cube-round></cube-round>
+    </view>
+
+    <view-desc>复选框 - 使用 slot</view-desc>
+    <view class="item cube-example">
+      <cube-group-slot></cube-group-slot>
+    </view>
+
+    <view-desc>复选框使用行内样式：inline - true</view-desc>
+    <view class="item cube-example">
+      <cube-round-inline></cube-round-inline>
+    </view>
+
+    <view-desc>复选框使用禁用项：disabled - true</view-desc>
+    <view class="item cube-example">
+      <cube-round-disabled></cube-round-disabled>
+    </view>
+
+    <view-desc>复选框 - 使用方形</view-desc>
+    <view class="item cube-example">
+      <cube-square></cube-square>
+    </view>
+
+    <view-desc>复选框 - 使用方形默认选中</view-desc>
+    <view class="item cube-example">
+      <cube-square-selected></cube-square-selected>
+    </view>
+
+    <view-desc>复选框 - 规定一行显示个数</view-desc>
+    <view class="item cube-example">
+      <cube-square-column-num></cube-square-column-num>
+    </view>
+  </base-container>
+</template>
+
+<script>
+import { createPage } from '@mpxjs/core'
+
+createPage({
+  options: {
+    styleIsolation: 'shared'
+  }
+})
+</script>
+
+<style lang="stylus">
+.cube-checkbox-group-example
+  background-color #fff
+  padding 5px 10px
+
+  .desc
+    padding-top 10px
+
+.view-desc
+  margin 10px 0
+.base-container
+  background-color rgba(239, 239, 244, .7)
+</style>
+
+<script type="application/json">
+  {
+    "styleIsolation": "shared",
+    "usingComponents": {
+      "base-container": "../../components/base-container/index",
+      "view-desc": "../../components/desc/index",
+      "cube-round": "./round",
+      "cube-group-slot": "./group-slot.mpx",
+      "cube-round-inline": "./round-inline",
+      "cube-round-disabled": "./round-disabled",
+      "cube-square": "./square",
+      "cube-square-selected": "./square-selected",
+      "cube-square-column-num": "./square-column-num"
+    }
+  }
+</script>

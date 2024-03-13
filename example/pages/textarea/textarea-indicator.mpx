@@ -1,0 +1,25 @@
+<template>
+  <cube-textarea wx:model="{{ textareaValue }}" wx:model-prop="value" indicator="{{ indicator }}" />
+</template>
+
+<script>
+  import { createPage } from '@mpxjs/core'
+
+  createPage({
+    data: {
+      textareaValue: '',
+      indicator: {
+        negative: true,
+        remain: true
+      }
+    }
+  })
+</script>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "cube-textarea": "@mpxjs/mpx-cube-ui/src/components/textarea/index"
+    }
+  }
+</script>

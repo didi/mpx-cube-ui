@@ -1,0 +1,50 @@
+<template>
+  <view>
+    <cube-button bindclick="showPickerWithUpdate">use-update-data</cube-button>
+    <cube-picker-popup
+      wx:ref="picker"
+      title="数据更新"
+      list="{{ dataList }}"
+      cancelTxt="取消"
+      selected-index="{{ selectedIndex }}"
+      confirmTxt="确认"
+    />
+  </view>
+</template>
+
+<script>
+import { createComponent } from '@mpxjs/core'
+
+createComponent({
+  data: {
+    selectedIndex: [0, 1, 0],
+    dataList: [
+      [ { text: '剧毒', value: '剧毒' }, { text: '蚂蚁', value: '蚂蚁' }, { text: '幽鬼', value: '幽鬼' } ],
+      [ { text: '输出', value: '输出' }, { text: '控制', value: '控制' }, { text: '核心', value: '核心' } ],
+      [ { text: '梅肯', value: '梅肯' }, { text: '假腿', value: '假腿' }, { text: '飞鞋', value: '飞鞋' } ]
+    ]
+  },
+  methods: {
+    showPickerWithUpdate() {
+      this.$refs.picker.show()
+
+      setTimeout(() => {
+        this.$refs.picker.updateData([
+          [ { text: '剧毒', value: '剧毒' }, { text: '蚂蚁', value: '蚂蚁' }, { text: '幽鬼', value: '幽鬼' } ],
+          [ { text: '输出', value: '输出' }, { text: '控制', value: '控制' }, { text: '核心', value: '核心' } ],
+          [ { text: '梅肯', value: '梅肯' }, { text: '假腿', value: '假腿' }, { text: '飞鞋', value: '飞鞋' } ]
+        ], [2, 0, 2])
+      }, 1000)
+    }
+  }
+})
+</script>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "cube-button": "@mpxjs/mpx-cube-ui/src/components/button/index",
+      "cube-picker-popup": "@mpxjs/mpx-cube-ui/src/components/picker-popup/index"
+    }
+  }
+</script>

@@ -1,0 +1,125 @@
+vendors = official
+// https://stylus-lang.com/docs/keyframes.html#expansion
+
+@require "../../common/stylus/theme/components/popup.styl"
+popup-transition($name, $time = $popup-default-animation-time, $ease = ease)
+  animation $name $time $ease both
+
+@keyframes popup-root-hide {
+  0% {
+    transform: translateX(0)
+  }
+  99% {
+    transform: translateX(0)
+  }
+  100% {
+    transform: translateX(-100%)
+  }
+}
+
+@keyframes popup-move-up-show {
+  from {
+    transform: translateY(100%)
+  }
+  to {
+    transform: translateY(0)
+  }
+}
+
+@keyframes popup-move-up-hide {
+  from {
+    transform: translateY(0)
+  }
+  to {
+    transform: translateY(100%)
+  }
+}
+
+@keyframes popup-move-right-show {
+  from {
+    transform: translateX(-100%)
+  }
+  to {
+    transform: translateX(0)
+  }
+}
+
+@keyframes popup-move-right-hide {
+  from {
+    transform: translateX(0)
+  }
+  to {
+    transform: translateX(-100%)
+  }
+}
+
+@keyframes popup-move-left-show {
+  from {
+    transform: translateX(100%)
+  }
+  to {
+    transform: translateX(0)
+  }
+}
+
+@keyframes popup-move-left-hide {
+  0% {
+    transform: translateX(0)
+  }
+  99% {
+    transform: translateX(100%)
+  }
+  100% {
+    transform: translateX(0)
+  }
+}
+
+@keyframes popup-move-down-show {
+  from {
+    transform: translateY(-100%)
+  }
+  to {
+    transform: translateY(0)
+  }
+}
+
+@keyframes popup-move-down-hide {
+  from {
+    transform: translateY(0)
+  }
+  to {
+    transform: translateY(-100%)
+  }
+}
+
+@keyframes popup-fade-show {
+  from {
+    opacity 0
+  }
+  to {
+    opacity 1
+  }
+}
+
+@keyframes popup-fade-hide {
+  from {
+    opacity 1
+  }
+  to {
+    opacity 0
+  }
+}
+
+@keyframes popup-fade-out {
+  0% {
+    opacity 1
+    transform translateX(0)
+  }
+  99% {
+    opacity 0
+    transform translateX(0)
+  }
+  100% {
+    transform translateX(-100%)
+  }
+}

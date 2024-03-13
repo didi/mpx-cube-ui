@@ -1,0 +1,42 @@
+<template>
+  <view>
+    <cube-button bindclick="showPicker">Date-Picker</cube-button>
+    <cube-date-picker-popup
+      wx:ref="picker"
+      title="日期选择器"
+      cancelTxt="取消"
+      confirmTxt="确认"
+      min="{{min}}"
+      max="{{max}}"
+      value="{{value}}"
+      bindchange="onChange"
+      bindcolumnChange="onColumnChange"
+      bindcancel="onCancel"
+      bindconfirm="onConfirm"
+      bindvalueChange="onValueChange"
+    />
+  </view>
+</template>
+
+<script>
+import { createComponent } from '@mpxjs/core'
+import generalMixins from '../../../common/mixins/picker-popup'
+
+createComponent({
+  mixins: [generalMixins],
+  data: {
+    min: +new Date(2010, 7, 8),
+    max: +new Date(2022, 9, 20),
+    value: +new Date(2010, 7, 8)
+  }
+})
+</script>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "cube-button": "../../../../src/components/button/index.mpx",
+      "cube-date-picker-popup": "../../../../src/components/date-picker-popup/index.mpx"
+    }
+  }
+</script>

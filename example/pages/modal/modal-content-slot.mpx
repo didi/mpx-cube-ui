@@ -1,0 +1,58 @@
+<template>
+  <view class="modal-content-slot-demo">
+    <cube-modal
+      wx:ref="modal"
+      direction="horizontal"
+      title="我是标题~"
+      content="我是正文~"
+      mask-closable="{{ true }}"
+      no-built-in-btns="{{ true }}"
+      bind:confirm="onConfirm"
+    >
+      <view slot="content" class="modal-content">
+        <view class="modal-content-btn" wx:key="index" wx:for="{{ list }}">
+          <cube-button  bind:click="clickItem(item)">{{ item }}</cube-button>
+        </view>
+      </view>
+    </cube-modal>
+    <cube-button  bind:click="onTap">modal-content-slot</cube-button>
+  </view>
+</template>
+
+<script>
+  import { createComponent } from '@mpxjs/core'
+
+  createComponent({
+    data: {
+      list: ['btn1', 'btn2', 'btn3']
+    },
+    methods: {
+      onTap() {
+        this.$refs.modal.show()
+      },
+      onConfirm() {
+        console.log('click the confirm btn')
+      },
+      clickItem() {
+        this.$refs.modal.hide()
+      }
+    }
+  })
+</script>
+
+<style lang="stylus">
+.modal-content-slot-demo
+  .modal-content-btn
+    margin-bottom 10px
+    .cube-btn
+      font-size 17px
+</style>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "cube-modal": "@mpxjs/mpx-cube-ui/src/components/modal/index",
+      "cube-button": "@mpxjs/mpx-cube-ui/src/components/button/index"
+    }
+  }
+</script>

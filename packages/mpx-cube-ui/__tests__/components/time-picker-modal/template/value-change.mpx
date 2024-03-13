@@ -1,0 +1,39 @@
+<template>
+  <view>
+    <cube-button bindclick="showPicker">Config max</cube-button>
+    <cube-time-picker-modal
+      title="时间选择器"
+      min="{{min}}"
+      wx:ref="picker"
+      bindchange="onChange"
+      bindcolumnChange="onColumnChange"
+      bindcancel="onCancel"
+      bindconfirm="onConfirm"
+      bindvalueChange="onValueChange" />
+  </view>
+</template>
+
+<script>
+import { createComponent } from '@mpxjs/core'
+import generalMixins from '../../../common/mixins/picker-popup'
+
+createComponent({
+  mixins: [generalMixins],
+  data: {
+    min: +new Date(2022, 11, 11, 12, 2)
+  }
+})
+</script>
+
+<style lang="stylus">
+
+</style>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "cube-button": "../../../../src/components/button/index.mpx",
+      "cube-time-picker-modal": "../../../../src/components/time-picker-modal/index.mpx"
+    }
+  }
+</script>

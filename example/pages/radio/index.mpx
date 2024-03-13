@@ -1,0 +1,38 @@
+<template>
+  <view class="radio-page">
+    <base-container>
+      <radio-example></radio-example>
+      <radio-disabled></radio-disabled>
+      <radio-ui-right></radio-ui-right>
+    </base-container>
+  </view>
+</template>
+
+<script>
+  import { createPage } from '@mpxjs/core'
+
+  createPage({})
+</script>
+
+<style lang="stylus">
+.radio-page
+  height 100%
+  background-color rgba(239, 239, 244, .7)
+.cube-radio-demos
+  padding 5px 10px
+  box-sizing border-box
+  background-color #fff
+.desc
+  margin-top 15px
+</style>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "base-container": "../../components/base-container/index.mpx",
+      "radio-example": "./radio.mpx",
+      "radio-disabled": "./radio-disabled.mpx",
+      "radio-ui-right": "./radio-ui-right.mpx"
+    }
+  }
+</script>

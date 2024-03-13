@@ -1,0 +1,44 @@
+<template>
+  <view wx:class="{{ checkboxGroupClass }}">
+    <!-- 自定义使用 checkbox -->
+    <slot wx:if="{{ showSlot }}" />
+    <block wx:else>
+      <cube-checkbox
+        wx:ref="checkboxRef"
+        style="{{ checkboxStyle }}"
+        wx:for="{{ options }}"
+        wx:for-item="option"
+        wx:for-index="index"
+        wx:key="index"
+        option="{{ option }}"
+        shape="{{ shape }}"
+        theme-type="{{ themeType }}"
+        bind:input="inputChange"
+      ></cube-checkbox>
+    </block>
+  </view>
+</template>
+
+<script src="./index.ts" lang="ts"></script>
+
+<style lang="stylus">
+.checkbox-group-inline-block
+  display flex
+  flex-flow row wrap
+  justify-content space-between
+
+.checkbox-group-multiple-columns
+  display flex
+  flex-flow row wrap
+  align-content flex-start
+</style>
+
+<script type="application/json">
+  {
+    "styleIsolation": "shared",
+    "component": true,
+    "usingComponents": {
+      "cube-checkbox": "../checkbox/index.mpx"
+    }
+  }
+</script>

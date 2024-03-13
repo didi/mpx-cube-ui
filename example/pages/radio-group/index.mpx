@@ -1,0 +1,61 @@
+<template>
+  <view class="cube-radio-group-page">
+    <base-container>
+      <view-desc>单选 - 未禁用</view-desc>
+      <view class="radio-group-item">
+        <cube-radio-group></cube-radio-group>
+      </view>
+
+      <view-desc>单选 - 控制一行显示个数</view-desc>
+      <view class="radio-group-item">
+        <cube-radio-group-column-num></cube-radio-group-column-num>
+      </view>
+
+      <view-desc>单选 - 禁用</view-desc>
+      <view class="radio-group-item">
+        <cube-radio-group-disabled></cube-radio-group-disabled>
+      </view>
+
+      <view-desc>单选 - 行内样式</view-desc>
+      <view class="radio-group-item">
+        <cube-radio-group-inline></cube-radio-group-inline>
+      </view>
+
+      <view-desc>单选 - 使用slot</view-desc>
+      <view class="radio-group-item">
+        <cube-radio-group-slot></cube-radio-group-slot>
+      </view>
+    </base-container>
+  </view>
+</template>
+
+<script>
+import { createPage } from '@mpxjs/core'
+
+createPage({
+  options: {
+    styleIsolation: 'shared'
+  }
+})
+</script>
+
+<style lang="stylus">
+.cube-radio-group-page
+  height 100%
+  background-color rgba(239, 239, 244, .7)
+</style>
+
+<script type="application/json">
+  {
+    "styleIsolation": "shared",
+    "usingComponents": {
+      "base-container": "../../components/base-container/index",
+      "view-desc": "../../components/desc/index",
+      "cube-radio-group": "./group",
+      "cube-radio-group-slot": "./group-slot.mpx",
+      "cube-radio-group-disabled": "./group-disabled",
+      "cube-radio-group-inline": "./group-inline",
+      "cube-radio-group-column-num": "./group-column-num"
+    }
+  }
+</script>

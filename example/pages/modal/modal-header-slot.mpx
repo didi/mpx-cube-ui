@@ -1,0 +1,53 @@
+<template>
+  <view class="modal-header-slot-demo">
+    <cube-modal
+      wx:ref="modal"
+      content="我是正文正文"
+      direction="horizontal"
+      confirm-btn="确认继续接单"
+      cancel-btn="取消"
+      mask-closable="{{ true }}"
+      bind:confirm="onConfirm"
+      bind:cancel="onCancel"
+    >
+      <view slot="header">
+        <image class="slot-header" src="https://ut-static.udache.com/webx/mpx-cube-ui/tKQimxwHlkY8nSSqpmGE9_111.jpg"></image>
+      </view>
+    </cube-modal>
+    <cube-button  bind:click="onTap">modal-header-slot</cube-button>
+  </view>
+</template>
+
+<script>
+  import { createComponent } from '@mpxjs/core'
+
+  createComponent({
+    methods: {
+      onTap() {
+        this.$refs.modal.show()
+      },
+      onConfirm() {
+        console.log('click the confirm btn')
+      },
+      onCancel() {
+        console.log('click the cancel btn')
+      }
+    }
+  })
+</script>
+
+<style lang="stylus">
+.slot-header
+  width 100%
+  height 170px
+  margin-bottom 20px
+</style>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "cube-modal": "@mpxjs/mpx-cube-ui/src/components/modal/index",
+      "cube-button": "@mpxjs/mpx-cube-ui/src/components/button/index"
+    }
+  }
+</script>

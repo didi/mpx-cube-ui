@@ -1,0 +1,28 @@
+<template>
+  <cube-button
+    public-id="xxxxxx"
+    open-type="lifestyle"
+    tip="需在支付宝小程序环境预览"
+    bind:followLifestyle="onFollowLifestyle"
+  >关注生活号</cube-button>
+</template>
+
+<script>
+import { createComponent } from '@mpxjs/core'
+
+createComponent({
+  methods: {
+    onFollowLifestyle(e) {
+      console.log('followLifestyle...', e && e.detail, e)
+    }
+  }
+})
+</script>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "cube-button": "@mpxjs/mpx-cube-ui/src/components/button/index"
+    }
+  }
+</script>

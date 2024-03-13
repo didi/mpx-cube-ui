@@ -1,0 +1,59 @@
+<template>
+  <view class="mt-20 toast-with-custom-vertical-icon-demo">
+    <cube-button  bindclick="clickToast">Toast - 使用组件库自带icon</cube-button>
+    <cube-toast
+
+      txt="预约暂不支持多车型，部分车型无法预约"
+      icon="delete"
+      wx:ref="toast"
+    >
+    </cube-toast>
+    <cube-button  bindclick="clickToast('img')" class="mt-20">Toast - use image icon</cube-button>
+    <cube-toast
+
+      txt="请输入乘车人手机号"
+      wx:ref="toastImg"
+    >
+      <image class="custom-img" src="https://dpubstatic.udache.com/static/dpubimg/0d488c7e-6e82-4191-9419-8456c322c228.png" mode="aspectFit"></image>
+    </cube-toast>
+  </view>
+</template>
+
+<script>
+  import { createComponent } from '@mpxjs/core'
+
+  createComponent({
+    options: {
+      styleIsolation: 'shared'
+    },
+    methods: {
+      clickToast(type) {
+        if (type === 'img') {
+          this.$refs.toastImg.show()
+        } else {
+          this.$refs.toast.show()
+        }
+      }
+    }
+  })
+</script>
+
+<style lang="stylus">
+.mt-20
+  .cube-btn
+    margin-top 20px
+.custom-img
+  width 30px
+  height 30px
+</style>
+
+<script type="application/json">
+  {
+    "styleIsolation": "shared",
+    "component": true,
+    "usingComponents": {
+      "cube-button": "@mpxjs/mpx-cube-ui/src/components/button/index",
+      "cube-toast": "@mpxjs/mpx-cube-ui/src/components/toast/index"
+    }
+  }
+</script>

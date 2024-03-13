@@ -1,0 +1,54 @@
+vendors = official
+// https://stylus-lang.com/docs/keyframes.html#expansion
+
+@keyframes fade-in
+  0%
+    opacity 0
+  100%
+    opacity 1
+
+@keyframes fade-out
+  0%
+    opacity 1
+  100%
+    opacity 0
+
+@keyframes slide-left
+  from
+    transform translateX(-100%)
+  to
+    transform translateX(0)
+
+@keyframes slide-right
+  from
+    transform translateX(-100%)
+  to
+    transform translateX(0)
+
+@keyframes slide-up
+  from
+    transform translateY(100%)
+  to
+    transform translateY(0)
+
+@keyframes slide-down
+  from
+    transform translateY(0)
+  to
+    transform translateY(-100%)
+
+@keyframes scale-in
+  0%
+    transform scale(0)
+  50%
+    transform scale(1.1)
+  100%
+    transform scale(1)
+
+@keyframes scale-out
+  0%
+    transform scale(1)
+    opacity 1
+  100%
+    transform scale(0)
+    opacity 0

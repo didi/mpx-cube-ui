@@ -1,0 +1,15 @@
+{
+  "git": {
+    "commitMessage": "chore: release v${version}"
+  },
+  "npm": false,
+  "plugins": {
+    "@release-it-plugins/workspaces": {
+      "skipChecks": true
+    }
+  },
+  "hooks": {
+    "before:init": ["npm run lint"],
+    "after:bump": ["npm run build"]
+  }
+}

@@ -1,0 +1,44 @@
+<template>
+  <view class="dialog-btn-demo">
+    <cube-button  bind:click="onClickDialog">Dialog - confirm-with-inner-icon</cube-button>
+    <cube-dialog
+
+      wx:ref="dialogConfirmWithInnerIcon"
+      icon="alert"
+      type="confirm"
+      cancel-btn="取消"
+      confirm-btn="确认">
+      <view slot="title">测试标题</view>
+      <view slot="content" class="dialog-btn-content">测试content</view>
+    </cube-dialog>
+  </view>
+</template>
+
+<script>
+import { createComponent } from '@mpxjs/core'
+
+createComponent({
+  methods: {
+    onClickDialog () {
+      const dialogRef = this.$refs.dialogConfirmWithInnerIcon
+      dialogRef.show()
+    }
+  }
+})
+</script>
+
+<style lang="stylus">
+.dialog-btn-content
+  text-align center
+</style>
+
+<script type="application/json">
+  {
+    "styleIsolation": "shared",
+    "component": true,
+    "usingComponents": {
+      "cube-button": "@mpxjs/mpx-cube-ui/src/components/button/index",
+      "cube-dialog": "@mpxjs/mpx-cube-ui/src/components/dialog/index"
+    }
+  }
+</script>

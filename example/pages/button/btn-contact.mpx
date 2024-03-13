@@ -1,0 +1,24 @@
+<template>
+  <cube-button
+    open-type="contact"
+    show-message-card="{{ true }}"
+    send-message-img="https://dpubstatic.udache.com/static/dpubimg/e7207fae-28de-4b5f-b082-329ff0b01ce0.png"
+    send-message-title="点击返回mpx-cube-ui组件库"
+    send-message-path="/pages/button/index"
+    tip="需在微信小程序环境预览"
+  >客服会话</cube-button>
+</template>
+
+<script>
+import { createComponent } from '@mpxjs/core'
+
+createComponent({})
+</script>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "cube-button": "@mpxjs/mpx-cube-ui/src/components/button/index"
+    }
+  }
+</script>

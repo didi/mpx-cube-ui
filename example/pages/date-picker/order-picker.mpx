@@ -1,0 +1,47 @@
+<template>
+  <view>
+    <view class="picker-demo-title">order-picker:</view>
+    <cube-date-picker
+      min="{{min}}"
+      max="{{max}}"
+      value="{{value}}"
+      columnOrder="{{ columnOrder }}"
+    />
+  </view>
+</template>
+
+<style lang="stylus">
+.picker-demo-title
+  margin-bottom: 8px
+.event-params,
+.demo-data
+  margin-top: 10px
+  .key
+    margin-bottom: 10px
+  .value
+    margin-bottom: 20px
+    white-space: break-spaces
+</style>
+
+<script>
+import { createComponent } from '@mpxjs/core'
+
+createComponent({
+  data: {
+    title: '日期选择器',
+    min: +new Date(2010, 7, 8),
+    max: +new Date(2022, 9, 20),
+    value: +new Date(2021, 11, 31),
+    columnOrder: ['date', 'month', 'year']
+  }
+})
+</script>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "cube-button": "@mpxjs/mpx-cube-ui/src/components/button/index",
+      "cube-date-picker": "@mpxjs/mpx-cube-ui/src/components/date-picker/index"
+    }
+  }
+</script>

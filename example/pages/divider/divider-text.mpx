@@ -1,0 +1,17 @@
+<template>
+  <cube-divider text="文本内容" />
+</template>
+
+<script>
+  import { createComponent } from '@mpxjs/core'
+
+  createComponent({})
+</script>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "cube-divider": "@mpxjs/mpx-cube-ui/src/components/divider/index"
+    }
+  }
+</script>

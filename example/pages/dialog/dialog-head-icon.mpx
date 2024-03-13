@@ -1,0 +1,42 @@
+<template>
+  <view class="dialog-icon-passenger-demo">
+    <cube-button  bind:click="onClickDialog">Dialog - head-icon</cube-button>
+    <cube-dialog
+
+      wx:ref="dialogWithHeadIcon"
+      type="alert"
+      headIcon="https://dpubstatic.udache.com/static/dpubimg/f6abf7d7-e7a9-4c2b-8fc5-78085691220b.png"
+      title="我是标题"
+      content="我是内容"
+      confirmBtn="我知道了"
+    ></cube-dialog>
+  </view>
+</template>
+
+<script>
+import { createComponent } from '@mpxjs/core'
+
+createComponent({
+  methods: {
+    onClickDialog () {
+      const dialogRef = this.$refs.dialogWithHeadIcon
+      dialogRef.show()
+    }
+  }
+})
+</script>
+
+<style lang="stylus">
+</style>
+
+<script type="application/json">
+  {
+    "styleIsolation": "shared",
+    "component": true,
+    "usingComponents": {
+      "cube-button": "@mpxjs/mpx-cube-ui/src/components/button/index",
+      "cube-dialog": "@mpxjs/mpx-cube-ui/src/components/dialog/index"
+    }
+  }
+</script>
+

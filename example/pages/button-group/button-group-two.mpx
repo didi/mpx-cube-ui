@@ -1,0 +1,30 @@
+<template>
+  <cube-button-group direction="horizontal">
+    <cube-button class="btn-item">取消按钮</cube-button>
+    <cube-button class="btn-item" primary>确认按钮</cube-button>
+  </cube-button-group>
+</template>
+
+<script>
+import { createComponent } from '@mpxjs/core'
+
+createComponent({})
+</script>
+
+<style scoped lang="stylus">
+.btn-item
+  flex: 1
+  margin-bottom 15px
+  &:last-child
+    margin-left: 10px
+</style>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "view-desc": "../../components/desc/index",
+      "cube-button-group": "@mpxjs/mpx-cube-ui/src/components/button-group/index",
+      "cube-button": "@mpxjs/mpx-cube-ui/src/components/button/index"
+    }
+  }
+</script>

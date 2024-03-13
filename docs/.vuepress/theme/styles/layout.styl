@@ -1,0 +1,98 @@
+html,body
+  height 100%
+
+#app
+  --bg-color #f7f8fa
+  display inline-block
+  min-width 100%
+  min-height 100%
+  background-color var(--bg-color)
+
+.navbar
+  position: relative
+  img.logo
+    height 2.3rem
+    min-width 2rem
+
+// slidebar
+.sidebar
+  position absolute
+  top $navbarHeight
+  bottom -$navbarHeight
+  max-width 14rem
+  min-width 14rem
+  border 0
+  box-shadow 0 8px 12px #ebedf0
+  .sidebar-heading
+  .sidebar-group a.sidebar-link
+    padding-left 2.5rem
+    border 0
+
+  .sidebar-group.is-sub-group > .sidebar-heading:not(.clickable)
+    padding-left 2.5rem
+
+  .sidebar-group.is-sub-group > .sidebar-group-items
+    padding-left 0
+
+  .sidebar-links
+    li
+      margin-bottom 0.25rem
+    .active
+      border 0
+  &.fixed
+    position fixed
+    top 0
+    bottom 0
+
+.theme-container
+  &:not(.sidebar-open)
+    .page
+      padding-left: 0
+  &.sidebar-open
+    .nav-links .nav-item
+      padding-left 2.5rem
+
+// page
+.page
+  padding-left 14rem
+  transition padding .3s
+  overflow: auto
+.theme-default-content:not(.custom)
+  min-width 500px
+  max-width unset
+  margin 0 auto
+  .card:last-child
+    margin-bottom 0
+
+.theme-default-content:not(.custom) > *:first-child
+  margin-top 0 !important
+  padding-top 0 !important
+
+.theme-default-content:not(.custom)
+  & > h1,
+  & > h2,
+  & > h3,
+  & > h4,
+  & > h5,
+  & > h6
+    padding-top 0
+    margin-top 3.2rem
+    margin-bottom 1.2rem
+
+.custom-block.tip
+  border-color #ff9143
+
+@media screen and (max-width: $MQMobile)
+  .theme-default-content:not(.custom) > *:first-child
+    margin-top $navbarHeight !important
+  .navbar
+    position fixed
+  .sidebar
+    position fixed
+    bottom 0
+
+@media (min-width: $MQMobile)
+  .theme-container
+    &:not(.sidebar-open)
+      .page
+        padding-left 14rem

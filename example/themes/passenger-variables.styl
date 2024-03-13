@@ -1,0 +1,364 @@
+@require '~@mpxjs/mpx-cube-ui/src/common/stylus/theme/var/size.styl'
+@require '~@mpxjs/mpx-cube-ui/src/common/stylus/theme/var/color.styl'
+// @require './helper.styl'
+
+vendors = official
+// animation
+@keyframes dialog-zoom
+  0%
+    transform scale(.9)
+    opacity 0
+  100%
+    transform scale(1)
+    opacity 1
+
+.theme-passenger {
+  // white
+  --cube-color-white: #fff
+  --cube-color-white-opacity: rgba(255, 255, 255, .6)
+  --cube-color-white-opacity-9: rgba(255, 255, 255, .9)
+
+  // orange ~ red
+  --cube-color-bright-orange: #EA5E1E
+  --cube-color-primary-orange_red: #EA5E1E
+  --cube-color-primary-dark-orange_red: #C25125
+  --cube-color-light-orange_red: rgba(255,127,65,0.08)
+  --cube-color-light-dark-orange_red: #FDE3D7
+  --cube-color-light-dark-orange_red-s: #FFF2EC
+
+  // gray
+  --cube-color-passenger-light-grey: #F1F2F4
+  --cube-color-light-grey-opacity: rgba(0, 0, 0, .04)
+
+  // blue
+  --cube-color-passenger-primary-blue: #092847
+  --cube-color-passenger-primary-light-blue: #39526B
+  --cube-color-passenger-default-blue-opacity-08: rgba(38,95,173,0.08)
+  --cube-color-passenger-default-dark-blue: #D7DFE7
+  --cube-color-midnight-blue-opacity-9: rgba(9, 40, 71, .9)
+
+  // black
+  --cube-color-black: #000
+
+  --cube-modal-body-padding-right: 14px
+
+  // button
+  --cube-btn-color: var(--cube-color-passenger-primary-blue)
+  --cube-btn-bgc: var(--cube-color-passenger-default-blue-opacity-08)
+  --cube-btn-border-color: var(--cube-color-passenger-default-blue-opacity-08)
+  --cube-btn-border-radius: 8px
+  --cube-btn-opacity_active: 1
+  --cube-btn-bgc_active: var(--cube-color-passenger-default-dark-blue)
+  --cube-btn-border-color_active: var(--cube-color-passenger-default-blue-opacity-08)
+
+  // btn-primary
+  --cube-btn-primary-bgc: var(--cube-color-passenger-primary-blue)
+  --cube-btn-primary-bgc_active: var(--cube-color-passenger-primary-light-blue)
+  --cube-btn-primary-color_active: var(--cube-color-white)
+  --cube-btn-primary-font-weight: bold
+
+  // btn-light
+  --cube-btn-light-color: var(--cube-color-primary-orange_red)
+  --cube-btn-light-bgc: var(--cube-color-light-orange_red)
+  --cube-btn-light-border-color: var(--cube-color-light-orange_red)
+  --cube-btn-light-bgc_active: var(--cube-color-light-dark-orange_red)
+  --cube-btn-light-font-weight: bold
+
+  // btn-outline
+  --cube-btn-outline-color: var(--cube-color-passenger-primary-blue)
+  --cube-btn-outline-bgc: var(--cube-color-white)
+  --cube-btn-outline-border-color: var(--cube-color-passenger-primary-blue)
+  --cube-btn-outline-bgc_active: var(--cube-color-passenger-light-grey)
+  --cube-btn-outline-border-color_active: var(--cube-color-passenger-primary-blue)
+  --cube-btn-outline-font-weight: bold
+
+  // btn-outline-primary
+  --cube-btn-outline-primary-color: var(--cube-color-primary-orange_red)
+  --cube-btn-outline-primary-bgc: var(--cube-color-white)
+  --cube-btn-outline-primary-border-color: var(--cube-color-primary-dark-orange_red)
+  --cube-btn-outline-primary-bgc_active: var(--cube-color-light-dark-orange_red-s)
+  --cube-btn-outline-primary-active-bdc: var(--cube-color-primary-dark-orange_red)
+  --cube-btn-outline-primary-active-color: var(--cube-color-primary-orange_red)
+
+  // btn-disabled
+  --cube-btn-disabled-color: var(--cube-color-white)
+  --cube-btn-disabled-font-weight: bold
+
+  // @type body
+  --cube-checkbox-modal-body-padding-right: calc(1 - var(--cube-modal-body-padding-right))
+
+  // @type subtitle
+  --cube-checkbox-modal-subtitle-padding-right: var(--cube-modal-body-padding-right)
+  --cube-checkbox-modal-subtitle-color: #757575
+
+  // @type checkbox
+  --cube-checkbox-modal-item-padding-right: var(--cube-modal-body-padding-right)
+  --cube-checkbox-modal-item-border-color: #EAEAEA
+
+  // checkbox size
+  $roud-width = 18px
+  --cube-checkbox-ui-round-width: $roud-width
+  --cube-checkbox-ui-round-height: $roud-width
+
+  $square-width = 18px
+  --cube-checkbox-ui-square-width: $square-width
+  --cube-checkbox-ui-square-height: $square-width
+  --cube-checkbox-ui-width: $roud-width
+  --cube-checkbox-ui-height: $roud-width
+  --cube-checkbox-inner-ui-width: 7px
+  --cube-checkbox-inner-ui-height: 4px
+
+
+  // checkbox border
+  --cube-checkbox-ui-round-border_checked: none
+  --cube-checkbox-ui-square-border_checked: none
+  --cube-checkbox-ui_checked: 2px solid $color-primary
+  --cube-checkbox-inner-ui-border: 2px solid $color-white
+  --cube-checkbox-ui-round-border: 1px solid rgba(0, 0, 0, .28)
+  --cube-checkbox-ui-square-border: 1px solid rgba(0, 0, 0, .28)
+  --cube-checkbox-ui-round-border_disabled: 1px solid $color-disabled
+  --cube-checkbox-ui-square-border_disabled: 1px solid $color-disabled
+
+  // checkbox margin
+  --cube-checkbox-label-mr_left: 10px
+  --cube-checkbox-label-mr_right: 28px
+  --cube-checkbox-ui-margin: 0 0 0 10px
+  --cube-checkbox-ui-margin-right: 10px
+  --cube-checkbox-ui-round-margin-right: 10px
+  --cube-checkbox-ui-square-margin-right: 10px
+  --cube-checkbox-margin-left: 10px
+
+  // background
+  --cube-checkbox-ui-round-bgc: $color-white
+  --cube-checkbox-ui-square-bgc: $color-white
+  --cube-checkbox-ui-round-bgc_checked: #5B6B92
+  --cube-checkbox-ui-square-bgc_checked: #5B6B92
+
+  $tick-passenger = url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNiAzNiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMzYgMzYiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwYXRoIGQ9Ik0yMS45IDM1LjEgMTUgMjguM2MtLjctLjctLjctMS43IDAtMi40czEuOC0uNyAyLjQgMGw0LjUgNC40Yy40LjQgMS4xLjQgMS42IDBsOS4xLTljLjctLjcgMS44LS43IDIuNCAwIC43LjYuNyAxLjcgMCAyLjRMMjMuNSAzNS4xYy0uNS40LTEuMi40LTEuNiAweiIgc3R5bGU9ImZpbGwtcnVsZTpldmVub2RkO2NsaXAtcnVsZTpldmVub2RkO2ZpbGw6I2ZmZiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTcgLTEwKSIvPjwvc3ZnPg==')
+  --cube-checkbox-ui-round-bgimg: $tick-passenger
+  --cube-checkbox-ui-square-bgimg: $tick-passenger
+  --cube-checkbox-ui-bg_disabled: linear-gradient(
+      to bottom right,
+      transparent 0%,
+      transparent calc(50% - 1px),
+      rgba(0, 0, 0, .28) 50%,
+      transparent calc(50% + 1px),
+      transparent 100%
+    )
+  --cube-checkbox-ui-bg-opacity: unset
+
+  // radius
+  --cube-checkbox-ui-square-radius: 5px
+  --cube-checkbox-ui-round-radius: 50%
+
+  // slash color
+  --cube-checkbox-slash-color: rgba(0, 0, 0, .28)
+
+  // tick
+  --cube-checkbox-ui-square-url-name: $tick-passenger
+  --cube-checkbox-ui-round-url-name: $tick-passenger
+
+  // text & desc
+  --cube-checkbox-text-desc-color_disabled: $color-disabled
+  --cube-checkbox-desc-margin-top: 4px
+  --cube-checkbox-text-font-size: 18px
+  --cube-checkbox-desc-font-size: 12px
+  --cube-checkbox-text-color: $text-color-desc
+  --cube-checkbox-desc-color: #757575
+  --cube-checkbox-text-line-height: 1
+  --cube-checkbox-desc-line-height: 1.2
+
+  // transition
+  --cube-checkbox-inner-ui-transition: none
+
+  --cube-dialog-container-width: 280px
+  --cube-dialog-container-border-radius: 10px
+  --cube-dialog-bgc: $color-white
+
+  // icon
+  --cube-dialog-icon-bgc: $color-background
+  --cube-dialog-icon-container-margin-top: 20px
+  --cube-dialog-icon-container-margin-bottom: 16px
+  --cube-dialog-icon-container-width: 30px
+  --cube-dialog-icon-container-height: 30px
+  --cube-dialog-icon-container-padding: 10px
+  --cube-dialog-icon-container-border-radius: 50%
+  --cube-dialog-icon-line-height: 1
+
+  // title
+  --cube-dialog-icon-next-title-margin-top: 0px
+  --cube-dialog-title-default-margin: 30px 16px 0
+  --cube-dialog-title-color: $color-black
+  --cube-dialog-title-margin-top: 24px
+  --cube-dialog-title-font-size: $font-size-xl
+  --cube-dialog-title-def-color: $color-black
+  --cube-dialog-title-line-height: 1
+
+  // content
+  --cube-dialog-icon-next-content-margin-top: -4px
+  --cube-dialog-title-next-content-margin-top: 12px
+  --cube-dialog-content-container-margin: 16px 0
+  --cube-dialog-content-container-line-height: 22px
+  --cube-dialog-content-def-padding: 0 24px
+  --cube-dialog-content-font-size: $font-size-sm
+  --cube-dialog-content-color: $text-color-desc
+  --cube-dialog-content-margin: 10px 0 20px 0
+  --cube-dialog-content-def-text-align: unset
+
+  // button
+  --cube-dialog-button-padding: 17px 10px
+  --cube-dialog-btn-color: var(--cube-color-bright-orange)
+  --cube-dialog-btn-bgc: $color-white
+  --cube-dialog-btn-active-bgc: unset
+  --cube-dialog-btn-highlight-color: var(--cube-color-bright-orange)
+  --cube-dialog-btn-highlight-active-bgc: unset
+  --cube-dialog-btn-disabled-color: $text-color-hint
+  --cube-dialog-btn-disabled-active-bgc: transparent
+  --cube-dialog-btns-split-color: $border-color-normal
+  --cube-dialog-btn-line-height: 21px
+
+  // close
+  --cube-dialog-close-width: 32px
+  --cube-dialog-close-height: 32px
+  --cube-dialog-close-color: $text-color-hint
+
+  // head-icon
+  --cube-dialog-head-icon-width: 85px
+  --cube-dialog-head-icon-height: 85px
+  --cube-dialog-head-icon-border-radius: 50%
+  --cube-dialog-head-icon-margin-top: -42px
+
+  // animation
+  --cube-dialog-zoom-animation: dialog-zoom .2s ease-in-out
+
+  // @type modal-container
+  --cube-modal-border-radius: 7px 7px 0 0
+
+  // @type modal-cancel
+  --cube-modal-cancel-padding: 0 10px 0 10px
+  --cube-modal-cancel-margin: 30px
+  --cube-modal-cancel-height: 30px
+  --cube-modal-cancel-line-height: 30px
+  --cube-modal-cancel-font-weight: 400
+  --cube-modal-cancel-color: rgba(117, 117, 117, 1)
+  --cube-modal-cancel-border-bottom-color: #EAEAEA
+
+  // @type modal-body
+  --cube-modal-body-padding-top: 0
+  --cube-modal-body-padding-right: 14px
+  --cube-modal-body-padding-bottom: 0
+  --cube-modal-body-padding-left: 14px
+
+  // @type modal-header
+  --cube-modal-header-default-height: 30px
+
+  // @type modal-title
+  --cube-modal-title-margin-bottom: 10px
+  --cube-modal-title-line-height: 1.45
+  --cube-modal-title-font-size: $font-size-2xl
+  --cube-modal-title-color: $color-black
+
+  // @type modal-close-icon
+  --cube-modal-close-icon-top: 5px
+  --cube-modal-close-icon-right: 5px
+  --cube-modal-close-icon-padding: 5px
+  --cube-modal-close-icon-color: $color-black
+
+  // @type modal-content
+  --cube-modal-content-line-height: 1.5
+  --cube-modal-content-font-size: $font-size-sm
+  --cube-modal-content-color: rgba(68, 68, 68, 1)
+
+  // @type modal-button-group
+  --cube-modal-button-group-margin-top: 30px
+  --cube-modal-button-font-size: $font-size-md
+
+  // @type modal-footer
+  --cube-modal-footer-padding: 0 14px 14px 14px
+
+  // @type body
+  --cube-radio-modal-body-padding-right: calc(0 - var(--cube-modal-body-padding-right))
+
+  // @type subtitle
+  --cube-radio-modal-subtitle-padding-right: var(--cube-modal-body-padding-right)
+
+  // @type radio
+  --cube-radio-modal-item-padding-right: var(--cube-modal-body-padding-right)
+  --cube-radio-modal-item-bottom-border-color: #EAEAEA
+
+  // radio background
+  --cube-radio-inner-ui-bgc: $color-primary
+  --cube-radio-ui-bgc: unset
+  --cube-radio-ui-bgc_disabled: unset
+  --cube-radio-ui-bgimg: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNiAzNiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMzYgMzYiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwYXRoIGQ9Im0yOTIzLjYgMTczNS4zLTEwLjYtMTAuOGMtMS4xLTEuMS0xLjEtMi45IDAtNHMyLjgtMS4xIDMuOSAwbDYuNyA2LjhjLjkuOSAyLjUgMSAzLjQgMGwxNC4yLTE0LjRjMS4xLTEuMSAyLjgtMS4xIDMuOSAwczEuMSAyLjkgMCAzLjlsLTE4LjEgMTguM2MtLjkgMS4xLTIuNSAxLjEtMy40LjJ6IiBzdHlsZT0iZmlsbC1ydWxlOmV2ZW5vZGQ7Y2xpcC1ydWxlOmV2ZW5vZGQ7ZmlsbDojNWI2YjkyIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMjkxMSAtMTcwNikiLz48L3N2Zz4=')
+  --cube-radio-ui-bgc-opacity: unset
+
+  // radio size
+  --cube-radio-ui-width: 18px
+  --cube-radio-inner-ui-width: 10px
+  --cube-radio-inner-ui-scale-size: 0
+  --cube-radio-ui-scale-size: 1
+
+  // radio border
+  --cube-radio-ui-border: none
+  --cube-radio-ui-border_disabled: none
+  --cube-radio-ui-border_checked: none
+
+  // radio margin
+  --cube-radio-ui-margin: 0 0 0 10px
+  --cube-radio-ui-margin-right: 10px
+  --cube-radio-label-mr_left: 10px
+  --cube-radio-label-mr_right: 28px
+
+  // radio padding
+  --cube-radio-label-padding: 10px 0
+
+  // tick
+  --cube-radio-inner-ui-tick: tick-radio-passenger
+
+  // transition
+  --cube-radio-ui_checked-transition: none
+  --cube-radio-ui-transform: scale(0)
+
+  // text & desc
+  --cube-radio-desc-margin-top: 4px
+  --cube-radio-text-desc-color_disabled: $color-disabled
+  --cube-radio-text-font-size: 16px
+  --cube-radio-desc-font-size: 12px
+  --cube-radio-text-color: $color-black
+  --cube-radio-desc-color: #757575
+  --cube-radio-text-line-height: 1
+  --cube-radio-desc-line-height: 1.2
+
+  // transition
+  --cube-radio-inner-ui-transition: none
+
+  // toast
+  --cube-toast-z-index: 900
+  --cube-toast-color: $color-white
+  --cube-toast-bgc: var(--cube-color-midnight-blue-opacity-9)
+
+  --cube-toast-content-direction: column
+
+  --cube-toast-content-padding: 30px 25px
+  --cube-toast-content-border-radius: 8px
+
+  $icon-width = 30px
+  --cube-toast-icon-width: $icon-width
+  --cube-toast-icon-height: $icon-width
+  --cube-toast-icon-font-size: 30px
+  --cube-toast-icon-line-height: 1
+
+  --cube-toast-slot-icon-margin: 0 0 20px 0
+  --cube-toast-icon-margin-bottom: 20px
+
+  --cube-toast-tip-font-size: 14px
+  --cube-toast-tip-line-height: 1.57
+  --cube-toast-tip-margin-left: 0px
+  --cube-toast-tip-margin-bottom: 20px
+  --cube-toast-tip-max-width: 10em
+  --cube-toast-tip-max-height: 44px
+
+  --cube-toast-tip-font-weight: bold
+  --cube-toast-tip-text-align: center
+}

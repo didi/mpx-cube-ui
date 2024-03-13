@@ -1,0 +1,72 @@
+<template>
+  <view>
+    <view class="picker-demo-title">Config format:</view>
+    <cube-time-picker format="{{format}}" bindchange="onChange" />
+    <view class="demo-data" wx:if="{{ changeParams.length }}">
+      <view class="key">change 事件参数：</view>
+      <view class="value">
+        <view class="value-item" wx:for="{{changeParams}}" wx:key="index">
+          <view class="item-key">{{item[0]}}</view>
+          <view class="item-value">{{item[1]}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>
+
+<script>
+import { createComponent } from '@mpxjs/core'
+import { beauty } from '../../common/utils'
+
+createComponent({
+  data: {
+    format: 'hh:mm',
+    changeParams: ''
+  },
+  methods: {
+    onChange(e) {
+      this.changeParams = Object.entries(e.detail)
+    }
+  }
+})
+</script>
+
+<style lang="stylus">
+.picker-demo-title
+  margin-bottom: 8px
+.demo-data
+  margin-top: 10px
+  padding: 10px 10px
+  background-color: white
+  border: 1px solid  white
+  border-radius: 10px
+
+  .key
+    margin-bottom: 10px
+    font-size: 16px
+  .key-introduce
+    margin-bottom: 10px
+    line-height: 20px
+  .value
+    margin-bottom: 20px
+    white-space: break-spaces
+    .value-number
+      margin-top: 20px
+    .value-item
+      display flex
+      justify-content: space-between
+      height: 25px
+      line-height: 25px
+      font-size: 15px
+      .item-value
+        margin-left: 10px
+        white-space nowrap
+</style>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "cube-time-picker": "@mpxjs/mpx-cube-ui/src/components/time-picker/index"
+    }
+  }
+</script>

@@ -1,0 +1,386 @@
+// 根据需要选择不同的主题，这里选择的是github主题
+@import '~highlight.js/styles/github.css'
+
+$codeBgColor = #eff2f5
+
+{$contentClass}
+  code
+    color lighten($textColor, 20%)
+    padding 0.1rem 0.4rem
+    margin 0.1rem
+    font-size 0.85em
+    background-color rgba(27,31,35,0.05)
+    border-radius 15px
+    .token
+      &.deleted
+        color #EC5975
+      &.inserted
+        color $accentColor
+
+{$contentClass}
+  pre, pre[class*="language-"]
+    line-height 1.4
+    padding 1rem 1.5rem
+    margin 0.85rem 0 0 0
+    background-color $codeBgColor
+    border-radius 6px
+    overflow auto
+    &.inside-td
+      padding 0.75rem 1rem
+    code
+      color #666
+      padding 0
+      background-color transparent
+      border-radius 0
+
+div[class*="language-"]
+  position relative
+  background-color $codeBgColor
+  border-radius 6px
+  .highlight-lines
+    user-select none
+    padding-top 1rem
+    position absolute
+    top 0
+    left 0
+    width 100%
+    line-height 1.4
+    .highlighted
+      background-color #f9f2f4
+  pre, pre[class*="language-"]
+    background transparent
+    position relative
+    z-index 1
+  &::before
+    position absolute
+    z-index 3
+    top 0.8em
+    right 1em
+    font-size 0.75rem
+    color rgba(255, 255, 255, 0.4)
+  &:not(.line-numbers-mode)
+    .line-numbers-wrapper
+      display none
+  &.line-numbers-mode
+    .highlight-lines .highlighted
+        position relative
+        &:before
+          content ' '
+          position absolute
+          z-index 3
+          left 0
+          top 0
+          display block
+          width $lineNumbersWrapperWidth
+          height 100%
+          background-color #f9f2f4
+    pre
+      padding-left $lineNumbersWrapperWidth + 1 rem
+      vertical-align middle
+    .line-numbers-wrapper
+      position absolute
+      top 0
+      width $lineNumbersWrapperWidth
+      text-align center
+      // color rgba(255, 255, 255, 0.3)
+      padding 1rem 0
+      line-height 1.4
+      br
+        user-select none
+      .line-number
+        position relative
+        z-index 4
+        user-select none
+        font-size 0.85em
+    &::after
+      content ''
+      position absolute
+      z-index 2
+      top 0
+      left 0
+      width $lineNumbersWrapperWidth
+      height 100%
+      border-radius 6px 0 0 6px
+      // border-right 1px solid rgba(0, 0, 0, 66%)
+      background-color $codeBgColor
+
+
+for lang in $codeLang
+  div{'[class~="language-' + lang + '"]'}
+    &:before
+      content ('' + lang)
+
+div[class~="language-javascript"]
+  &:before
+    content "js"
+
+div[class~="language-typescript"]
+  &:before
+    content "ts"
+
+div[class~="language-markup"]
+  &:before
+    content "html"
+
+div[class~="language-markdown"]
+  &:before
+    content "md"
+
+div[class~="language-json"]:before
+  content "json"
+
+div[class~="language-ruby"]:before
+  content "rb"
+
+div[class~="language-python"]:before
+  content "py"
+
+div[class~="language-bash"]:before
+  content "sh"
+
+div[class~="language-php"]:before
+  content "php"
+
+div[class*="language-"]::before
+  color #666
+
+@media (max-width: 419px) {
+  .theme-default-content div[class*="language-"] {
+    margin: 0
+    border-radius: 6px
+  }
+}
+
+// highlight 自定义 vue 代码主题配置
+
+div[class*="language-"],
+pre[class*="language-"] {
+  font-size: 14px
+  line-height: 1.6
+  color: #666
+}
+
+div[class*="language-"] {
+  pre[class*="language-"] {
+    padding-left: 3.5rem !important
+  }
+}
+
+.language-vue p {
+  margin: 1.2em 0
+}
+
+.language-vue p .anchor {
+  display: inline-block
+}
+
+.language-vue h2 {
+  margin-top: 1.2em
+  margin-bottom: .8em
+  font-size: 2em
+  font-weight: 600
+  color: #333
+}
+
+.language-vue h3 {
+  margin: 1em 0
+  font-size: 1.4em
+  font-weight: 600
+}
+
+.language-vue h4 {
+  margin: .8em 0
+  font-size: 1.1em
+  font-weight: 600
+}
+
+.language-vue blockquote {
+  padding: 0 1em
+  color: #666
+  border-left: .25em solid #ccc
+}
+
+.token.punctuation,
+.token.operator {
+  color: #666
+}
+
+.language-vue table {
+  width: 100%;
+  box-sizing: border-box;
+  table-layout: fixed;
+  border-collapse: separate;
+  border: 1px solid #e7e7e7;
+  border-width: 1px 0 0 1px;
+  border-radius: 4px
+}
+
+.language-vue table td,.language-vue table th {
+  padding: 6px 13px;
+  border: 1px solid #e7e7e7;
+  border-width: 0 1px 1px 0;
+  vertical-align: middle;
+  text-align: left;
+  word-wrap: break-word;
+  word-break: break-word
+}
+
+.language-vue table tr th {
+  font-weight: 600;
+  background-color: #f9f8f8
+}
+
+.language-vue table tr th:first-child {
+  border-top-left-radius: 4px
+}
+
+.language-vue table tr th:last-child {
+  border-top-right-radius: 4px
+}
+
+.language-vue table tr:last-child td:first-child {
+  border-bottom-left-radius: 4px
+}
+
+.language-vue table tr:last-child td:last-child {
+  border-bottom-right-radius: 4px
+}
+
+.language-vue li,.language-vue ol,.language-vue ul {
+  line-height: 20px
+}
+
+.language-vue li {
+  list-style: inherit;
+  margin: 1em 0
+}
+
+.language-vue ul {
+  padding-left: 20px
+}
+
+.language-vue h1 .anchor,.language-vue h2 .anchor,.language-vue h3 .anchor,.language-vue h4 .anchor {
+  display: none
+}
+
+.language-vue h1:hover .anchor,.language-vue h2:hover .anchor,.language-vue h3:hover .anchor,.language-vue h4:hover .anchor {
+  display: inline-block;
+  float: left;
+  margin-left: -20px;
+  position: relative;
+  top: 6px;
+  padding-right: 4px;
+  line-height: 1
+}
+
+.language-vue img {
+  max-width: 100%
+}
+
+.language-vue .hljs {
+  border: 1px solid #e7e7e7;
+  color: #666;
+  background-color: #f9f8f8;
+  border-radius: 4px
+}
+
+.language-vue .hljs-attribute,.language-vue .hljs-link,.language-vue .hljs-name,.language-vue .hljs-regexp,.language-vue .hljs-selector-class,.language-vue .hljs-selector-id,.language-vue .hljs-tag,.language-vue .hljs-template-variable,.language-vue .hljs-variable {
+  color: #3ca0e6
+}
+
+.language-vue .hljs-bullet,.language-vue .hljs-string,.language-vue .hljs-symbol {
+  color: #3fb374
+}
+
+.language-vue .hljs-tag {
+  color: #666
+}
+
+.language-vue .hljs-tag .hljs-attr {
+  color: $accentColor
+}
+
+pre {
+  margin: 1em 0
+  font-size: 12px
+}
+
+code[class*="language-"],
+pre[class*="language-"] {
+  text-shadow: none
+}
+
+code {
+  font-family: monaco;
+  line-height: 1.4;
+  color: #c7254e;
+  background: #f9f2f4;
+  padding: 2px 4px;
+  box-sizing: border-box;
+  font-size: .93em
+}
+
+strong {
+  margin: 1em 0;
+  font-weight: 700
+}
+
+sup {
+  position: absolute;
+  margin: -10px 0 0 -4px;
+  padding: 2px;
+  -webkit-transform: scale(.6) translateZ(0);
+  transform: scale(.6) translateZ(0);
+  border: 1px solid #ccc;
+  border-radius: 4px
+}
+
+table i[class^=cubeic-]:before {
+  font-size: 20px
+}
+
+table i[class^=cubeic-]:after {
+  content: attr(class);
+  display: block;
+  margin: -6px 0 8px
+}
+
+.hljs-comment,.hljs-quote {
+  color: #7d7a68
+}
+
+.hljs-attribute,.hljs-link,.hljs-name,.hljs-regexp,.hljs-selector-class,.hljs-selector-id,.hljs-tag,.hljs-template-variable,.hljs-variable {
+  color: #d73737
+}
+
+.hljs-built_in,.hljs-builtin-name,.hljs-literal,.hljs-meta,.hljs-number,.hljs-params,.hljs-type {
+  color: #b65611
+}
+
+.hljs-bullet,.hljs-string,.hljs-symbol {
+  color: #60ac39
+}
+
+.hljs-section,.hljs-title {
+  color: #6684e1
+}
+
+.hljs-keyword,.hljs-selector-tag {
+  color: #b854d4
+}
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  background: #fefbec;
+  color: #6e6b5e;
+  padding: .5em
+}
+
+.hljs-emphasis {
+  font-style: italic
+}
+
+.hljs-strong {
+  font-weight: 700
+}

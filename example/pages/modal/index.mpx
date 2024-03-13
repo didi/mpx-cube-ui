@@ -1,0 +1,90 @@
+<template>
+  <base-container>
+    <view-desc>基本使用：</view-desc>
+    <view class="btn-item">
+      <modal-one-btn></modal-one-btn>
+    </view>
+    <view-desc>按钮布局：</view-desc>
+    <view class="btn-item">
+      <modal-two-horizontal-btn></modal-two-horizontal-btn>
+    </view>
+    <view class="btn-item" wx:if="{{ isPassenger }}">
+      <modal-two-horizontal-btn2></modal-two-horizontal-btn2>
+    </view>
+    <view class="btn-item" wx:if="{{ isDriver }}">
+      <modal-tow-vertical-btn></modal-tow-vertical-btn>
+    </view>
+    <view class="btn-item" wx:if="{{ isDriver }}">
+      <modal-with-cancel></modal-with-cancel>
+    </view>
+     <view class="btn-item" wx:if="{{ isPassenger }}">
+      <modal-with-close></modal-with-close>
+    </view>
+    <view-desc>slot 用法：</view-desc>
+    <view class="btn-item">
+      <modal-title-slot></modal-title-slot>
+    </view>
+    <view class="btn-item">
+      <modal-header-slot></modal-header-slot>
+    </view>
+    <view class="btn-item">
+      <modal-content-slot></modal-content-slot>
+    </view>
+    <view class="btn-item" wx:if="{{ isDriver }}">
+      <modal-footer-slot-with-cancel></modal-footer-slot-with-cancel>
+    </view>
+     <view class="btn-item" wx:if="{{ isPassenger }}">
+      <modal-footer-slot-with-close></modal-footer-slot-with-close>
+    </view>
+    <view class="btn-item" wx:if="{{ isPassenger }}">
+      <modal-with-horizontal-icon></modal-with-horizontal-icon>
+    </view>
+    <view class="btn-item" wx:if="{{ isDriver }}">
+      <modal-with-vertical-icon></modal-with-vertical-icon>
+    </view>
+  </base-container>
+</template>
+
+<script>
+import { createPage } from '@mpxjs/core'
+import { useTheme } from '../../common/theme'
+
+createPage({
+  setup() {
+    const { isDriver, isPassenger } = useTheme()
+    return {
+      isDriver,
+      isPassenger
+    }
+  }
+})
+</script>
+
+<style lang="stylus">
+.btn-item
+  margin-bottom 15px
+</style>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "cube-modal": "@mpxjs/mpx-cube-ui/src/components/modal/index",
+      "cube-button": "@mpxjs/mpx-cube-ui/src/components/button/index",
+      "base-container": "../../components/base-container/index",
+      "view-desc": "../../components/desc/index",
+      "modal-tow-vertical-btn": "./modal-tow-vertical-btn",
+      "modal-one-btn": "./modal-one-btn",
+      "modal-two-horizontal-btn": "./modal-two-horizontal-btn",
+      "modal-two-horizontal-btn2": "./modal-two-horizontal-btn2",
+      "modal-with-cancel": "./modal-with-cancel",
+      "modal-with-close": "./modal-with-close",
+      "modal-title-slot": "./modal-title-slot",
+      "modal-content-slot": "./modal-content-slot",
+      "modal-with-vertical-icon": "./modal-with-vertical-icon",
+      "modal-with-horizontal-icon": "./modal-with-horizontal-icon",
+      "modal-header-slot": "./modal-header-slot.mpx",
+      "modal-footer-slot-with-cancel": "./modal-footer-slot-with-cancel.mpx",
+      "modal-footer-slot-with-close": "./modal-footer-slot-with-close.mpx"
+    }
+  }
+</script>

@@ -1,0 +1,46 @@
+<template>
+  <view
+    class="cube-radio-group"
+    wx:class="{{ radioGroupClass }}"
+  >
+    <!-- 自定义使用 radio -->
+    <slot wx:if="{{ showSlot }}" />
+    <block wx:else>
+      <cube-radio
+        style="{{ inlineColumnStyle }}"
+        theme-type="{{ themeType }}"
+        wx:for="{{ options }}"
+        wx:for-item="option"
+        wx:for-index="index"
+        wx:key="index"
+        option="{{ option }}"
+        wx:model="{{ radioValue }}"
+        wx:model-prop="value"
+      ></cube-radio>
+    </block>
+  </view>
+</template>
+
+<script src="./index.ts" lang="ts"></script>
+
+<style lang="stylus">
+.radio-group-inline-block
+  display flex
+  flex-flow row wrap
+  justify-content space-between
+
+.radio-group-multiple-columns
+  display flex
+  flex-flow row wrap
+  align-content flex-start
+</style>
+
+<script type="application/json">
+  {
+    "styleIsolation": "shared",
+    "component": true,
+    "usingComponents": {
+      "cube-radio": "../radio/index.mpx"
+    }
+  }
+</script>

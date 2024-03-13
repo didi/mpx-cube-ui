@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "allowJs": true,
+    "noImplicitThis": true,
+    "strictNullChecks": true,
+    "moduleResolution": "node",
+    "lib": ["esnext", "dom", "dom.iterable"],
+    "skipLibCheck": true,
+    "rootDir": ".",
+    "outDir": "../lib",
+    "declaration": true,
+    "esModuleInterop": true, // 启用对导入模块的默认导出的支持，使得 import * as fs from 'fs' 简化为 import fs from 'fs'
+  },
+  "include": [
+    "./**/*.ts"
+  ]
+}

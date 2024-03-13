@@ -1,0 +1,62 @@
+<template>
+  <view class="radio-modal-default-demo">
+    <cube-radio-modal
+      wx:ref="radioModal"
+      title="请选择支付方式"
+      subtitle="将按已选择的支付方式优先支付，若不支持该支付方式的⻋型则默认为上次所选支付方式"
+      show-close-icon="{{ true }}"
+      options="{{ options }}"
+      value="{{ checkedValue }}"
+      bind:close="onClose"
+      bind:confirm="onConfirm"
+    />
+    <cube-button bind:click="onTap">radio-modal-default</cube-button>
+  </view>
+</template>
+
+<script>
+  import { createComponent } from '@mpxjs/core'
+
+  createComponent({
+    data: {
+      options: [
+        {
+          value: '1',
+          text: '企业支付',
+        },
+        {
+          value: '2',
+          text: '亲友代付'
+        },
+        {
+          value: '3',
+          text: '个人支付'
+        }
+      ],
+      checkedValue: '2'
+    },
+    methods: {
+      onTap() {
+        this.$refs.radioModal.show()
+      },
+      onConfirm(args) {
+        console.log('当前选择的值是', args.detail)
+      },
+      onClose() {
+        console.log('当前已取消选择')
+      }
+    }
+  })
+</script>
+
+<style lang="stylus">
+</style>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "cube-radio-modal": "@mpxjs/mpx-cube-ui/src/components/radio-modal/index.mpx",
+      "cube-button": "@mpxjs/mpx-cube-ui/src/components/button/index.mpx"
+    }
+  }
+</script>

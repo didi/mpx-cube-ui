@@ -1,0 +1,68 @@
+<template>
+  <view class="dialog-btn-vertical-passenger-demo">
+    <cube-button  bind:click="onClickDialog">Dialog - vertical btns</cube-button>
+    <cube-dialog  wx:ref="dialogWithVerticalBtns">
+      <view slot="title" class="dialog-vertical-btns-title">测试标题</view>
+      <view slot="content" class="dialog-btn-content">测试content</view>
+      <view slot="btns" class="dialog-btn-slot-vertical">
+        <view class="lead-btn" bind:tap="onCloseDialog">引导文案</view>
+        <view class="lead-btn" bind:tap="onCloseDialog">按钮文案</view>
+        <view class="lead-btn" bind:tap="onCloseDialog">按钮文案</view>
+      </view>
+    </cube-dialog>
+  </view>
+</template>
+
+<script>
+import { createComponent } from '@mpxjs/core'
+
+createComponent({
+  methods: {
+    onClickDialog () {
+      const dialogRef = this.$refs.dialogWithVerticalBtns
+      dialogRef.show()
+    },
+    onCloseDialog () {
+      const dialogRef = this.$refs.dialogWithVerticalBtns
+      dialogRef.hide()
+    }
+  }
+})
+</script>
+
+<style lang="stylus">
+@require "@mpxjs/mpx-cube-ui/src/common/stylus/variable.styl"
+@require "@mpxjs/mpx-cube-ui/src/common/stylus/mixin.styl"
+
+.dialog-vertical-btns-title
+  margin-top 24px
+  font-size 20px
+.dialog-btn-content
+  text-align center
+  font-size 14px
+.dialog-btn-slot-vertical
+  .lead-btn
+    border-top-1px($var(border-color-normal))
+    height 23px
+    padding 13.5px 0 14px
+    font-size 16px
+    text-align center
+    line-height 23px
+    color #444
+    &:first-child
+      color #EA5E1E
+    &:last-child
+      height 22px
+      line-height 22px
+</style>
+
+<script type="application/json">
+  {
+    "styleIsolation": "shared",
+    "component": true,
+    "usingComponents": {
+      "cube-button": "@mpxjs/mpx-cube-ui/src/components/button/index",
+      "cube-dialog": "@mpxjs/mpx-cube-ui/src/components/dialog/index"
+    }
+  }
+</script>

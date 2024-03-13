@@ -1,0 +1,73 @@
+vendors = official
+// https://stylus-lang.com/docs/keyframes.html#expansion
+
+$dialog-container-width := 270px // 容器宽度
+$dialog-container-border-radius := 2px // 容器圆角
+$dialog-bgc := $var(color-white) // 背景颜色
+$dialog-btn-secondary-highlight-active-bgc := rgba(252, 145, 83, .04)
+
+// @type icon
+$dialog-icon-color := $var(color-secondary) // icon-颜色
+$dialog-icon-bgc := $var(fill-bgc) // icon-背景颜色
+$dialog-icon-container-margin-top := 20px // icon-上边距
+$dialog-icon-container-margin-bottom := 16px // icon-底部边距
+$dialog-icon-container-width := 30px // icon-宽度
+$dialog-icon-container-height := 30px // icon-高度
+$dialog-icon-container-padding := 10px // icon-内边距
+$dialog-icon-container-border-radius := 50% // icon-圆角
+$dialog-icon-line-height := 1 // icon-行高
+
+// @type title
+$dialog-icon-next-title-margin-top := 0px // icon距离标题的上边距
+$dialog-title-default-margin := 25px 16px 0 // 标题边距
+$dialog-title-color := $var(color-dark-grey-s) // 标题颜色
+$dialog-title-margin-top := 24px // 标题上边距
+$dialog-title-font-size := $var(font-size-3xl) // 标题字号
+$dialog-title-line-height := 1 // 标题行高
+
+// @type content
+$dialog-icon-next-content-margin-top := -4px // 内容距离icon的上边距
+$dialog-title-next-content-margin-top := 12px // 内容距离标题的上边距
+$dialog-content-container-margin := 16px 0 // 内容边框的上下边距
+$dialog-content-container-line-height := 22px // 内容边框的行高
+$dialog-content-def-padding := 0 25px // 内容边框左右内边距
+$dialog-content-font-size := $var(font-size-lg) // 内容文本字号
+$dialog-content-color := $var(text-color) // 内容文本颜色
+$dialog-content-margin := 10px 0 20px 0 // 内容文本边距
+$dialog-content-def-text-align := justify // 内容文本对齐方式
+
+// @type button
+$dialog-button-padding := 17px 10px // 按钮内边距
+$dialog-btn-color := $var(color-primary) // 按钮颜色
+$dialog-btn-bgc := $var(color-white) // 按钮背景色
+$dialog-btn-active-bgc := $var(color-light-grey-opacity) // 按钮激活态背景色
+$dialog-btn-highlight-color := $var(color-primary) // 按钮高亮颜色
+$dialog-btn-highlight-active-bgc := $var(dialog-btn-secondary-highlight-active-bgc) // 按钮高亮激活态背景色
+$dialog-btn-disabled-color := $var(color-disabled) // 按钮禁用态颜色
+$dialog-btn-disabled-active-bgc := transparent // 按钮禁用态背景色
+$dialog-btns-split-color := $var(border-color-normal) // 按钮分割线颜色
+$dialog-btn-line-height := 21px // 按钮行高
+
+
+// @type close
+$dialog-close-width := 32px // 关闭按钮宽度
+$dialog-close-height := 32px // 关闭按钮高度
+$dialog-close-color := $var(text-color) // 关闭按钮颜色
+
+
+// @type head-icon
+$dialog-head-icon-width := 85px // head-icon 宽度
+$dialog-head-icon-height := $dialog-head-icon-width // head-icon 高度
+$dialog-head-icon-border-radius := 50% // head-icon 圆角
+$dialog-head-icon-margin-top := -42px // head-icon 上边距
+
+// animation
+$dialog-zoom-animation := dialog-zoom .3s ease-in-out
+
+@keyframes dialog-zoom
+  0%
+    transform scale(0)
+  50%
+    transform scale(1.1)
+  100%
+    transform scale(1)

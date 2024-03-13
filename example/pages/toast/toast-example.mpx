@@ -1,0 +1,32 @@
+<template>
+  <view class="toast-example-demo">
+    <cube-button  bindclick="clickToast">Toast - 基本使用</cube-button>
+    <cube-toast
+      txt="toast"
+      wx:ref="toast">
+    </cube-toast>
+  </view>
+</template>
+
+<script>
+  import { createComponent } from '@mpxjs/core'
+
+  createComponent({
+    methods: {
+      clickToast() {
+        this.$refs.toast.show()
+      }
+    }
+  })
+</script>
+
+<script type="application/json">
+  {
+    "styleIsolation": "shared",
+    "component": true,
+    "usingComponents": {
+      "cube-button": "@mpxjs/mpx-cube-ui/src/components/button/index",
+      "cube-toast": "@mpxjs/mpx-cube-ui/src/components/toast/index"
+    }
+  }
+</script>

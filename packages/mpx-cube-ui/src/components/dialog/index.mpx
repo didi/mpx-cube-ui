@@ -1,0 +1,196 @@
+<template>
+  <cube-popup
+    wx:ref="popup"
+    wx:class="{{ themeType ? 'cube-dialog cube-dialog-' + themeType : 'cube-dialog' }}"
+    theme-type="{{ themeType }}"
+    mask="{{ true }}"
+    visible="{{ isVisible }}"
+    bind:maskClick="onMaskClick"
+  >
+    <view class="cube-dialog-main" wx:class="{{ mainClass }}">
+      <view
+        class="cube-dialog-close"
+        wx:if="{{ showClose }}"
+        bind:tap="onClose"
+      >
+        <cube-icon type="close" theme-type="{{ themeType }}"></cube-icon>
+      </view>
+      <image
+        class="cube-dialog-head-icon"
+        mode="aspectFit"
+        wx:if="{{ headIcon }}"
+        src="{{ headIcon }}"
+      ></image>
+      <view class="{{ containerClass }}">
+        <view class="cube-dialog-icon" wx:if="{{ icon }}">
+          <cube-icon class="icon" type="{{ icon }}" theme-type="{{ themeType }}"></cube-icon>
+        </view>
+        <view class="cube-dialog-title">
+          <view class="cube-dialog-title-def" wx:if="{{ title }}">{{ title }}</view>
+          <!-- 标题插槽 -->
+          <slot wx:else name="title"></slot>
+        </view>
+        <view class="cube-dialog-content">
+          <view class="cube-dialog-content-def" wx:if="{{ content }}">
+            <rich-text class="content" nodes="{{ content }}"></rich-text>
+          </view>
+          <!-- 内容插槽 -->
+          <slot wx:else name="content"></slot>
+        </view>
+        <view
+          class="cube-dialog-btns"
+          wx:if="{{ !useSlotBtn }}"
+          wx:class="{{ btnsClass }}"
+        >
+          <view
+            class="cube-dialog-btn"
+            wx:class="{{ cancelBtnClass }}"
+            wx:if="{{ isConfirm || isPrompt }}"
+            bind:tap="onCancel"
+          >{{ _cancelBtn.text }}</view>
+          <view
+            class="cube-dialog-btn"
+            wx:class="{{ confirmBtnClass }}"
+            bind:tap="onConfirm"
+          >{{ _confirmBtn.text }}</view>
+        </view>
+        <!-- 按钮插槽 -->
+        <slot name="btns"></slot>
+      </view>
+    </view>
+  </cube-popup>
+</template>
+
+<script lang="ts" src="./index.ts"></script>
+
+<style lang="stylus">
+  @require "../../common/stylus/variable.styl"
+  @require "../../common/stylus/mixin.styl"
+  @require "../../common/stylus/theme/components/dialog.styl"
+
+  .cube-dialog-main
+    width $var(dialog-container-width)
+    overflow hidden
+    padding 0
+    border-radius $var(dialog-container-border-radius)
+    text-align center
+    background-color $var(dialog-bgc)
+    &-is-visible
+      animation $var(dialog-zoom-animation)
+    &-overflow
+      overflow unset
+
+  .cube-dialog-head-icon
+    width $var(dialog-head-icon-width)
+    height $var(dialog-head-icon-height)
+    margin-top $var(dialog-head-icon-margin-top)
+    border-radius $var(dialog-head-icon-border-radius)
+  .cube-dialog-confirm, .cube-dialog-alert
+    position relative
+    overflow hidden
+    border-radius $var(dialog-container-border-radius)
+  .cube-dialog-icon
+    margin-top $var(dialog-icon-container-margin-top)
+    margin-bottom $var(dialog-icon-container-margin-bottom)
+    font-size $var(font-size-3xl)
+    line-height $var(dialog-icon-line-height)
+    color $var(dialog-icon-color)
+    .icon
+      display inline-block
+      width $var(dialog-icon-container-width)
+      height $var(dialog-icon-container-height)
+      padding $var(dialog-icon-container-padding)
+      box-sizing content-box
+      border-radius $var(dialog-icon-container-border-radius)
+      background-color $var(dialog-icon-bgc)
+    +
+      .cube-dialog-title
+        .cube-dialog-title-def
+          margin-top $var(dialog-icon-next-title-margin-top)
+    +
+      .cube-dialog-content
+        margin-top $var(dialog-icon-next-content-margin-top)
+  .cube-dialog-title
+    font-size $var(dialog-title-font-size)
+    line-height $var(dialog-title-line-height)
+    color $var(dialog-title-color)
+    +
+      .cube-dialog-content
+        margin-top $var(dialog-title-next-content-margin-top)
+  .cube-dialog-title-def
+    margin $var(dialog-title-default-margin)
+    overflow hidden
+    white-space nowrap
+  .cube-dialog-content
+    margin $var(dialog-content-margin)
+    font-size $var(dialog-content-font-size)
+    line-height $var(dialog-content-container-line-height)
+    text-align left
+    color $var(dialog-content-color)
+  .cube-dialog-content-def
+    padding $var(dialog-content-def-padding)
+    text-align $var(dialog-content-def-text-align)
+    > .content
+      display table
+      margin auto
+  .cube-dialog-confirm, .cube-dialog-prompt
+    .cube-dialog-btns
+      .cube-dialog-btn
+        line-height $var(dialog-btn-line-height)
+        color $var(dialog-btn-color)
+      &-border-right-1px
+        border-right-1px($var(dialog-btns-split-color))
+        &::after
+          right 50%
+  .cube-dialog-close
+    position absolute
+    top 0
+    right 0
+    z-index 1
+    display flex
+    align-items center
+    justify-content center
+    width $var(dialog-close-width)
+    height $var(dialog-close-height)
+    font-size $var(font-size-lg)
+    color $var(dialog-close-color)
+  .cube-dialog-btns
+    display flex
+    overflow hidden
+    font-size 0
+  .cube-dialog-btn
+    flex 1
+    display inline-block
+    margin 0
+    padding $var(dialog-button-padding)
+    box-sizing border-box
+    border-top-1px($var(dialog-btns-split-color))
+    font-size $var(font-size-md)
+    line-height $var(dialog-btn-line-height)
+    text-align center
+    text-decoration none
+    color $var(dialog-btn-color)
+    background-color $var(dialog-btn-bgc)
+    background-clip padding-box
+    &:active
+      background-color $var(dialog-btn-active-bgc)
+  .cube-dialog-btn-highlight
+    color $var(dialog-btn-highlight-color)
+    &:active
+      background-color $var(dialog-btn-highlight-active-bgc)
+  .cube-dialog-btn_disabled
+    color $var(dialog-btn-disabled-color)
+    &:active
+      background-color $var(dialog-btn-disabled-active-bgc)
+</style>
+
+<script type="application/json">
+  {
+    "styleIsolation": "shared",
+    "component": true,
+    "usingComponents": {
+      "cube-popup": "../popup/index.mpx",
+      "cube-icon": "../icon/index.mpx"
+    }
+  }
+</script>

@@ -1,0 +1,59 @@
+// @type checkbox-checked-color
+$checkbox-checked-color := $var(color-primary) // 复选框主色
+
+// @type checkbox size
+$checkbox-ui-round-width := 18px // 圆形复选框宽度
+$checkbox-ui-round-height := $checkbox-ui-round-width // 圆形复选框高度
+$checkbox-ui-square-width := 18px // 方形复选框宽度
+$checkbox-ui-square-height := $checkbox-ui-square-width // 方形复选框高度
+$checkbox-ui-width := $checkbox-ui-round-width // 复选框宽度
+$checkbox-ui-height := $checkbox-ui-round-height // 复选框高度
+$checkbox-inner-ui-width := 7px // 复选框内部选中宽度
+$checkbox-inner-ui-height := 4px // 复选框内部选中高度
+
+// @type checkbox border
+$checkbox-ui-round-border := 1px solid #C8C9CC // 圆形复选框边框
+$checkbox-ui-square-border := 1px solid #C8C9CC // 方形复选框边框
+$checkbox-ui-round-border_disabled := 2px solid $var(color-disabled) // 圆形复选框禁用边框
+$checkbox-ui-square-border_disabled := 1px solid $var(color-disabled) // 方形复选框禁用边框
+$checkbox-ui-round-border_checked := 2px solid $var(color-primary) // 圆形复选框选中边框
+$cube-checkbox-ui_checked := 2px solid $var(color-primary) // 复选框选中边框
+$checkbox-ui-square-border_checked := none // 方形复选框选中边框
+$checkbox-inner-ui-border := 2px solid $var(color-primary) // 复选框内部选中边框
+
+// @type background
+$checkbox-ui-round-bgc := #FAFAFA // 圆形复选框背景色
+$checkbox-ui-square-bgc := $var(color-primary) // 方形复选框背景色
+$checkbox-ui-round-bgc_checked := #FFF8F4 // 圆形复选框选中背景色
+$checkbox-ui-square-bgc_checked := $var(color-primary) // 方形复选框选中背景色
+$checkbox-ui-round-bgimg := url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNiAzNiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMzYgMzYiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwYXRoIHN0eWxlPSJmaWxsOm5vbmU7c3Ryb2tlOiNmZjdlMzM7c3Ryb2tlLXdpZHRoOjQiIGQ9Im03LjUgMTUuMyA4LjMgOC4xTDI4LjUgMTEiLz48L3N2Zz4=') // 圆形复选框选中图形(对勾)
+$checkbox-ui-square-bgimg := url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzYiIGhlaWdodD0iMzYiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0ibTcgMTcuMTc3IDIuNTA4LTEuMjYgNS43NjkgNC4zMjhMMjYuODggOWgzLjE5MUwxNi4yNDQgMjggNyAxNy4xNzdaIiBmaWxsPSIjRkZGIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiLz48L3N2Zz4=') // 方形复选框选中图形(对勾)
+$checkbox-ui-bg_disabled := $var(fill-bgc) // 复选框禁用背景色
+$checkbox-ui-bg-opacity := .3 // 复选框禁用透明度
+
+// @type radius
+$checkbox-ui-square-radius := 4px // 方形复选框圆角
+$checkbox-ui-round-radius := 50% // 圆形复选框圆角
+
+// @type checkbox margin
+$checkbox-ui-margin := 0 0 0 10px // 复选框外边距
+$checkbox-ui-margin-right := 10px // 复选框右边距
+$checkbox-ui-round-margin-right := 10px // 圆形复选框右边距
+$checkbox-ui-square-margin-right := 10px // 方形复选框右边距
+
+// @type checkbox label padding
+$checkbox-label-padding := 10px 0 // 标签内边距
+
+// @type text & desc
+$checkbox-text-desc-color_disabled := unset // 禁用文本颜色
+$checkbox-desc-margin-top = 4px // 文本上边距
+$checkbox-text-font-size := 18px // 文本字号
+$checkbox-text-font-weight := 700 // 文本字重
+$checkbox-desc-font-size := 12px // 描述文本字号
+$checkbox-text-color := $var(text-color-desc) // 复文颜色
+$checkbox-desc-color := #757575 // 描述文本颜色
+$checkbox-text-line-height := 1 // 文本行高
+$checkbox-desc-line-height := 1.2 // 描述文本行高
+
+// transition
+$checkbox-inner-ui-transition := transform .2s // 内部选中过渡

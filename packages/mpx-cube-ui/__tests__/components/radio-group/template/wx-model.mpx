@@ -1,0 +1,48 @@
+<template>
+  <view class="radio-group-demo">
+    <view class="cube-radio-group-example">
+      <cube-radio-group
+        options="{{ options }}"
+        wx:model="{{ checkedValue }}"
+        wx:model-prop="value"
+      ></cube-radio-group>
+    </view>
+    <view class="view-desc">selected value: {{ checkedValue }}</view>
+  </view>
+</template>
+<script>
+import { createComponent } from '@mpxjs/core'
+
+createComponent({
+  options: {
+    styleIsolation: 'shared'
+  },
+  data: {
+    options: [
+      {
+        value: 'one-V',
+        text: 'one-T'
+      },
+      {
+        value: 'two-V',
+        text: 'two-T'
+      },
+      {
+        value: 'three-V',
+        text: 'three-T'
+      }
+    ],
+    checkedValue: 'one-V'
+  }
+})
+</script>
+
+<script type="application/json">
+  {
+    "styleIsolation": "shared",
+    "component": true,
+    "usingComponents": {
+      "cube-radio-group": "../../../../src/components/radio-group/index.mpx"
+    }
+  }
+</script>

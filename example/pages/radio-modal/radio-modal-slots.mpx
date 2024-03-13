@@ -1,0 +1,61 @@
+<template>
+  <view class="radio-modal-slots-demo">
+    <cube-radio-modal
+      wx:ref="radioModal"
+      show-close-icon="{{ true }}"
+      options="{{ options }}"
+      value="{{ checkedValue }}"
+    >
+      <view class="modal-title" slot="title">标题slot</view>
+      <view class="modal-subtitle" slot="subtitle">副标题slot</view>
+    </cube-radio-modal>
+    <cube-button bind:click="onTap">radio-modal-slots</cube-button>
+  </view>
+</template>
+
+<script>
+  import { createComponent } from '@mpxjs/core'
+
+  createComponent({
+    data: {
+      options: [
+        {
+          value: '1',
+          text: '企业支付',
+        },
+        {
+          value: '2',
+          text: '亲友代付'
+        },
+        {
+          value: '3',
+          text: '个人支付'
+        }
+      ],
+      checkedValue: '2'
+    },
+    methods: {
+      onTap() {
+        this.$refs.radioModal.show()
+      }
+    }
+  })
+</script>
+
+<style lang="stylus">
+.modal-title
+  font-size 20px
+  font-weight bold
+  margin-bottom 10px
+.modal-subtitle
+  margin-bottom 10px
+</style>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "cube-radio-modal": "@mpxjs/mpx-cube-ui/src/components/radio-modal/index.mpx",
+      "cube-button": "@mpxjs/mpx-cube-ui/src/components/button/index.mpx"
+    }
+  }
+</script>

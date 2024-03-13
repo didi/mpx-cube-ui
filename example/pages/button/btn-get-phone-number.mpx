@@ -1,0 +1,31 @@
+<template>
+  <cube-button
+    outline
+    primary
+    open-type@wx="getPhoneNumber"
+    open-type@ali="getAuthorize"
+    scope="phoneNumber"
+    tip="需在小程序环境下预览"
+    bind:getPhoneNumber="onGetPhoneNumber"
+  >获取手机号</cube-button>
+</template>
+
+<script>
+import { createComponent } from '@mpxjs/core'
+
+createComponent({
+  methods: {
+    onGetPhoneNumber(e) {
+      console.log('getPhoneNumber...', e && e.detail, e)
+    }
+  }
+})
+</script>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "cube-button": "@mpxjs/mpx-cube-ui/src/components/button/index"
+    }
+  }
+</script>

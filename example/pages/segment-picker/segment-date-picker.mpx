@@ -1,0 +1,61 @@
+<template>
+  <view>
+    <cube-button bindclick="showPicker">StartDate - 1EndDate</cube-button>
+    <cube-segment-picker
+      wx:ref="picker"
+      title="选择器"
+      list="{{list}}"
+      cancelTxt="{{cancelTxt}}"
+      confirmTxt="{{confirmTxt}}"
+      bindchange="change"
+      bindcancel="cancel"
+      bindselect="select"
+      bindvalueChange="valueChange"
+    >
+    </cube-segment-picker>
+  </view>
+</template>
+
+<script>
+  import { createComponent } from '@mpxjs/core'
+
+  createComponent({
+    data: {
+      list: [
+        {
+          is: 'cube-date-picker-popup',
+          title: '毕业时间',
+          min: +new Date(2000, 0, 1),
+          max: +new Date(2000, 11, 31)
+        }
+      ]
+    },
+    methods: {
+      showPicker() {
+        this.$refs.picker.show()
+      },
+      change(e) {
+        const { column, selectedIndex } = e.detail
+        console.log(`change event —- column: ${column}, selectedIndex: ${selectedIndex}`)
+      },
+      cancel() {
+        console.log('cancel event')
+      },
+      select(e) {
+        console.log('select event', e.detail)
+      },
+      valueChange(e) {
+        console.log('value-change event', e.detail)
+      }
+    }
+  })
+</script>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "cube-button": "@mpxjs/mpx-cube-ui/src/components/button/index",
+      "cube-segment-picker": "@mpxjs/mpx-cube-ui/src/components/segment-picker/index"
+    }
+  }
+</script>

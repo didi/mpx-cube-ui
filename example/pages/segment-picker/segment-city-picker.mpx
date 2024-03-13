@@ -1,0 +1,84 @@
+<template>
+  <view>
+    <cube-button bindclick="showPicker">Express - From - To</cube-button>
+    <cube-segment-picker
+      wx:ref="picker"
+      title="选择器"
+      list="{{list}}"
+      cancelTxt="{{cancelTxt}}"
+      confirmTxt="{{confirmTxt}}"
+      nextTxt="{{nextTxt}}"
+      prevTxt="{{prevTxt}}"
+      bindchange="change"
+      bindcancel="cancel"
+      bindselect="select"
+      bindvalueChange="valueChange"
+    >
+    </cube-segment-picker>
+  </view>
+</template>
+
+<script>
+  import { createComponent } from '@mpxjs/core'
+  import { provinceList, cityList, areaList } from '../../data/area'
+
+  const cityData = provinceList
+  cityData.forEach((province) => {
+    province.children = cityList[province.value]
+    province.children.forEach((city) => {
+      city.children = areaList[city.value]
+    })
+  })
+  createComponent({
+    data: {
+      list: [
+        {
+          is: 'cube-cascade-picker-popup',
+          title: '寄件地址',
+          list: cityData,
+          selectedIndex: [0, 0, 0],
+          cancelTxt: 'back'
+        },
+        {
+          is: 'cube-cascade-picker-popup',
+          title: '收件地址',
+          list: cityData,
+          cancelTxt: 'back',
+          confirmTxt: 'Confirm11',
+          selectedIndex: [0, 0, 0]
+        }
+      ],
+      nextTxt: '下一步',
+      prevTxt: '上一步'
+    },
+    methods: {
+      showPicker() {
+        this.$refs.picker.show()
+      },
+      change(e) {
+        const { column, current, index, text, value } = e.detail
+        console.log(
+          `change event —- column: ${column}, current: ${current} index: ${index}, text: ${text} value: ${value}`
+        )
+      },
+      cancel() {
+        console.log('cancel event')
+      },
+      select(e) {
+        console.log('select event', e.detail)
+      },
+      valueChange(e) {
+        console.log('value-change event', e.detail)
+      }
+    }
+  })
+</script>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "cube-button": "@mpxjs/mpx-cube-ui/src/components/button/index",
+      "cube-segment-picker": "@mpxjs/mpx-cube-ui/src/components/segment-picker/index"
+    }
+  }
+</script>

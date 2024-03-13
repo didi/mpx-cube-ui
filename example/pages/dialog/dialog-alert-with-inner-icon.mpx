@@ -1,0 +1,39 @@
+<template>
+  <view class="dialog-alert-demo">
+    <cube-button  bind:click="onClickDialog">Dialog - alert-with-inner-icon</cube-button>
+    <cube-dialog
+
+      wx:ref="dialogAlertWithInnerIcon"
+      type="alert"
+      icon="alert"
+      title="我是标题"
+      content="我是内容"
+      confirmBtn="我知道了"
+    ></cube-dialog>
+  </view>
+</template>
+
+<script>
+import { createComponent } from '@mpxjs/core'
+
+createComponent({
+  methods: {
+    onClickDialog () {
+      const dialogRef = this.$refs.dialogAlertWithInnerIcon
+      dialogRef.show()
+    }
+  }
+})
+</script>
+
+<script type="application/json">
+  {
+    "styleIsolation": "shared",
+    "component": true,
+    "usingComponents": {
+      "cube-button": "@mpxjs/mpx-cube-ui/src/components/button/index",
+      "cube-dialog": "@mpxjs/mpx-cube-ui/src/components/dialog/index"
+    }
+  }
+</script>
+

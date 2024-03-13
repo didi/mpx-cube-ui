@@ -1,0 +1,31 @@
+<template>
+  <base-container>
+    <cube-segment-city-picker></cube-segment-city-picker>
+    <view class="picker-divider-wrapper">
+      <cube-divider></cube-divider>
+    </view>
+    <cube-segment-date-picker></cube-segment-date-picker>
+  </base-container>
+</template>
+
+<script>
+import { createPage } from '@mpxjs/core'
+
+createPage({})
+</script>
+
+<style lang="stylus">
+.picker-divider-wrapper
+  margin 10px 0
+</style>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "base-container": "../../components/base-container/index",
+      "cube-divider": "@mpxjs/mpx-cube-ui/src/components/divider/index",
+      "cube-segment-date-picker": "./segment-date-picker",
+      "cube-segment-city-picker": "./segment-city-picker"
+    }
+  }
+</script>

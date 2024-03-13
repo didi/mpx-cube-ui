@@ -1,0 +1,37 @@
+<template>
+  <base-container>
+    <view class="btn-item">
+      <cube-basic-picker />
+    </view>
+
+    <view class="btn-item">
+      <cube-slot-picker />
+    </view>
+
+    <view class="btn-item">
+      <cube-set-time-picker />
+    </view>
+  </base-container>
+</template>
+
+<script>
+import { createPage } from '@mpxjs/core'
+
+createPage({})
+</script>
+
+<style lang="stylus">
+.btn-item
+  margin-bottom 15px
+</style>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "base-container": "../../components/base-container/index",
+      "cube-basic-picker": "./basic-picker",
+      "cube-slot-picker": "./slot-picker",
+      "cube-set-time-picker": "./set-time-picker"
+    }
+  }
+</script>

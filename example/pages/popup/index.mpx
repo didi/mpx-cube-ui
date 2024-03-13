@@ -1,0 +1,37 @@
+<template>
+  <base-container>
+    <view class="cube-popup-list-item">
+      <popup-content></popup-content>
+    </view>
+    <view class="cube-popup-list-item">
+      <popup-position></popup-position>
+    </view>
+    <view class="cube-popup-list-item">
+      <popup-transition></popup-transition>
+    </view>
+  </base-container>
+</template>
+
+<script>
+import { createPage } from '@mpxjs/core'
+
+createPage({})
+</script>
+
+<style lang="stylus">
+.cube-popup-list-item
+  margin-bottom 20px
+</style>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "base-container": "../../components/base-container/index",
+      "cube-button": "@mpxjs/mpx-cube-ui/src/components/button/index",
+      "cube-popup": "@mpxjs/mpx-cube-ui/src/components/popup/index",
+      "popup-position": "./popup-position.mpx",
+      "popup-transition": "./popup-transition.mpx",
+      "popup-content": "./popup-content.mpx"
+    }
+  }
+</script>

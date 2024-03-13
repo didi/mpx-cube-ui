@@ -1,0 +1,175 @@
+<template>
+  <base-container>
+    <view class="btn-demo">
+      <view-desc>按钮样式</view-desc>
+      <view class="two-btn-item">
+        <btn-secondary class="btn-in-two" />
+        <btn-primary class="btn-in-two ml10" />
+      </view>
+      <view class="two-btn-item">
+        <btn-bolder class="btn-in-two" />
+        <btn-outline class="btn-in-two ml10" />
+      </view>
+      <view class="two-btn-item">
+        <block wx:if="{{ isPassenger }}">
+          <btn-light class="btn-in-two" />
+        </block>
+      </view>
+      <view-desc>内联按钮</view-desc>
+      <view class="btn-item">
+        <btn-inline-outline class="inline-btn-item" />
+        <btn-inline-primary />
+      </view>
+      <block wx:if="{{ isDriver }}">
+        <view-desc>inline with icon 按钮</view-desc>
+        <view class="btn-item">
+          <btn-inline-icon />
+        </view>
+        <view-desc>With Icon 按钮</view-desc>
+        <view class="btn-item">
+          <btn-icon />
+        </view>
+      </block>
+      <view-desc>激活与置灰态</view-desc>
+      <view class="btn-item">
+        <btn-secondary-active class="btn-in-two" />
+        <btn-disabled class="btn-in-two ml10" />
+      </view>
+      <block wx:if="{{ isPassenger }}">
+        <view-desc>Loading 按钮</view-desc>
+        <view class="btn-item">
+          <btn-loading />
+        </view>
+        <view-desc>With Icon 按钮</view-desc>
+        <view class="btn-item">
+          <btn-icon />
+        </view>
+        <view-desc>With Tip 按钮</view-desc>
+        <view class="btn-item">
+          <btn-with-tip />
+        </view>
+      </block>
+      <view-desc>open-type: share</view-desc>
+      <view class="btn-item">
+        <btn-share />
+      </view>
+      <view-desc>open-type: contact</view-desc>
+      <view class="btn-item">
+        <btn-contact />
+      </view>
+      <view-desc>open-type: getPhoneNumber</view-desc>
+      <view class="btn-item">
+        <btn-get-phone-number />
+      </view>
+      <view-desc>open-type: getUserInfo</view-desc>
+      <view class="btn-item">
+        <btn-get-user-info />
+      </view>
+      <view-desc>open-type: openSetting</view-desc>
+      <view class="btn-item">
+        <btn-open-setting />
+      </view>
+      <view-desc>open-type: chooseAvatar</view-desc>
+      <view class="btn-item">
+        <btn-choose-avatar />
+      </view>
+      <view-desc>open-type: launchApp</view-desc>
+      <view class="btn-item">
+        <btn-launch-app />
+      </view>
+      <view-desc>open-type: lifestyle</view-desc>
+      <view class="btn-item">
+        <btn-follow-lifestyle />
+      </view>
+    </view>
+  </base-container>
+</template>
+
+<script>
+import { createPage } from '@mpxjs/core'
+import { useTheme } from '../../common/theme'
+
+createPage({
+  setup() {
+    const { isDriver, isPassenger } = useTheme()
+
+    return {
+      isDriver,
+      isPassenger
+    }
+  }
+})
+
+// createPage({
+//   // onShareAppMessage() {
+//   //   return {}
+//   // },
+//   methods: {
+//     onGetUserInfo(e) {
+//       console.log('the user info is:', e)
+//     },
+//     getPhoneNumber() {}
+//   }
+// })
+</script>
+
+<style lang="stylus">
+.btn-demo
+  .ml10
+    margin-left 4%
+  .btn-item
+    margin-bottom 15px
+  .two-btn-item
+    margin-bottom 15px
+  .btn-in-two
+    display inline-block
+    width 48%
+  .desc
+    font-size 12px
+    color #4B4B4D
+    line-height 18px
+    margin-bottom 15px
+  .inline-btn-item
+    margin-right 10px
+</style>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "base-container": "../../components/base-container/index",
+      "view-desc": "../../components/desc/index",
+      "cube-button": "@mpxjs/mpx-cube-ui/src/components/button/index",
+      "btn-primary": "./btn-primary",
+      "btn-primary-active": "./btn-primary-active",
+      "btn-primary-disabled": "./btn-primary-disabled",
+      "btn-secondary": "./btn-secondary",
+      "btn-secondary-active": "./btn-secondary-active",
+      "btn-outline-primary": "./btn-outline-primary",
+      "btn-outline-primary-active": "./btn-outline-primary-active",
+      "btn-outline-primary-disabled": "./btn-outline-primary-disabled",
+      "btn-outline": "./btn-outline",
+      "btn-outline-active": "./btn-outline-active",
+      "btn-outline-disabled": "./btn-outline-disabled",
+      "btn-inline-primary": "./btn-inline-primary",
+      "btn-inline-outline": "./btn-inline-outline",
+      "btn-inline-icon": "./btn-inline-icon",
+      "btn-icon": "./btn-icon",
+      "btn-disabled": "./btn-disabled",
+      "btn-share": "./btn-share",
+      "btn-contact": "./btn-contact",
+      "btn-with-tip": "./btn-with-tip",
+      "btn-loading": "./btn-loading",
+      "btn-outline-loading": "./btn-outline-loading",
+      "btn-light": "./btn-light",
+      "btn-light-active": "./btn-light-active",
+      "btn-light-disabled": "./btn-light-disabled",
+      "btn-get-phone-number": "./btn-get-phone-number",
+      "btn-get-user-info": "./btn-get-user-info",
+      "btn-open-setting": "./btn-open-setting",
+      "btn-follow-lifestyle": "./btn-follow-lifestyle",
+      "btn-choose-avatar": "./btn-choose-avatar",
+      "btn-launch-app": "./btn-launch-app",
+      "btn-bolder": "./btn-bolder"
+    }
+  }
+</script>

@@ -1,0 +1,36 @@
+<template>
+  <cube-button
+    outline
+    loading="{{ loading }}"
+    bind:click="clickBtn"
+  >加载按钮</cube-button>
+</template>
+
+<script>
+import { createComponent } from '@mpxjs/core'
+
+createComponent({
+  data: {
+    loading: false
+  },
+  methods: {
+    clickBtn(index) {
+      if (this.loading) {
+        return
+      }
+      this.loading = true
+      setTimeout(() => {
+        this.loading = false
+      }, 5000)
+    }
+  }
+})
+</script>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "cube-button": "@mpxjs/mpx-cube-ui/src/components/button/index"
+    }
+  }
+</script>

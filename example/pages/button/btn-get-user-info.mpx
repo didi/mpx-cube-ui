@@ -1,0 +1,30 @@
+<template>
+  <cube-button
+    outline
+    open-type@wx="getUserInfo"
+    open-type@ali="getAuthorize"
+    scope="userInfo"
+    tip="需在小程序环境下预览"
+    bind:getUserInfo="onGetUserInfo"
+  >获取用户信息</cube-button>
+</template>
+
+<script>
+import { createComponent } from '@mpxjs/core'
+
+createComponent({
+  methods: {
+    onGetUserInfo(e) {
+      console.log('getUserInfo...', e && e.detail, e)
+    }
+  }
+})
+</script>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "cube-button": "@mpxjs/mpx-cube-ui/src/components/button/index"
+    }
+  }
+</script>

@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "allowJs": true,
+    "noImplicitThis": true,
+    "strictNullChecks": true,
+    "moduleResolution": "node",
+    "lib": ["esnext", "dom", "dom.iterable"],
+    "outDir": "dist"
+  },
+  "exclude": [
+    "build",
+    "dist",
+    "config",
+    "vue-cli-plugin-mpx-*",
+    "node_modules",
+    "postcss.config.js",
+    "vue.config.js",
+    "packages/mpx-cube-ui/__tests__",
+    "jest.config.js",
+    "packages/website-build/*"
+  ]
+}

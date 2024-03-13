@@ -1,0 +1,43 @@
+<template>
+  <view>
+    <cube-button bindclick="showPicker">use-subtitle</cube-button>
+    <cube-picker-popup
+      wx:ref="picker"
+      title="主标题"
+      subtitle="子标题"
+      list="{{ dataList }}"
+      cancelTxt="取消"
+      selected-index="{{ selectedIndex }}"
+      confirmTxt="确认"
+    />
+  </view>
+</template>
+
+<script>
+import { createComponent } from '@mpxjs/core'
+
+createComponent({
+  data: {
+    selectedIndex: [1],
+    dataList: [[ 
+      { text: '剧毒', value: '剧毒' }, 
+      { text: '蚂蚁', value: '蚂蚁' }, 
+      { text: '幽鬼', value: '幽鬼' } 
+    ]]
+  },
+  methods: {
+    showPicker() {
+      this.$refs.picker.show()
+    }
+  }
+})
+</script>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "cube-button": "@mpxjs/mpx-cube-ui/src/components/button/index",
+      "cube-picker-popup": "@mpxjs/mpx-cube-ui/src/components/picker-popup/index"
+    }
+  }
+</script>

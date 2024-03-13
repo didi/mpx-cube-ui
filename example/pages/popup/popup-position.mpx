@@ -1,0 +1,58 @@
+<template>
+  <view>
+    <cube-button bindclick="show">top/right/bottom-top-popup</cube-button>
+    <cube-popup
+      wx:ref="popup"
+      position="{{ pos }}"
+      maskClosable="{{ true }}"
+      maskFadeTransition="{{ true }}"
+      class="cube-extend-popup">
+      <view class="popup-slot">This is position popup</view>
+    </cube-popup>
+  </view>
+</template>
+
+<script>
+import { createComponent } from '@mpxjs/core'
+
+let index = 0
+const pos = ['top', 'right', 'bottom', 'left', 'center']
+
+createComponent({
+  options: {
+    styleIsolation: 'shared'
+  },
+  data: {
+    pos: ''
+  },
+  methods: {
+    show() {
+      this.pos = pos[index++]
+      this.$refs.popup.show()
+      if (index === 5) {
+        index = 0
+      }
+    }
+  }
+})
+</script>
+
+<style lang="stylus">
+.cube-extend-popup
+  .cube-popup-content
+    padding: 20px
+    color: #fff
+    background-color: rgba(0, 0, 0, .8)
+</style>
+
+<script type="application/json">
+  {
+    "styleIsolation": "shared",
+    "component": true,
+    "usingComponents": {
+      "base-container": "../../components/base-container/index",
+      "cube-button": "@mpxjs/mpx-cube-ui/src/components/button/index",
+      "cube-popup": "@mpxjs/mpx-cube-ui/src/components/popup/index"
+    }
+  }
+</script>

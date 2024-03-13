@@ -1,0 +1,22 @@
+<template>
+  <cube-textarea wx:model="{{ textareaValue }}" wx:model-prop="value"/>
+  {{ textareaValue }}
+</template>
+
+<script>
+  import { createPage } from '@mpxjs/core'
+
+  createPage({
+    data: {
+      textareaValue: 'mpx-cube-ui'
+    }
+  })
+</script>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "cube-textarea": "@mpxjs/mpx-cube-ui/src/components/textarea/index"
+    }
+  }
+</script>

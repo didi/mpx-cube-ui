@@ -1,0 +1,219 @@
+<template>
+  <base-container>
+    <view>
+      <cube-textarea
+        value="{{ textareaValue }}"
+        placeholder="{{ placeholder }}"
+        maxlength="{{ maxlength }}"
+        disabled="{{ disabled }}"
+        auto-focus="{{ autoFocus }}"
+        focus="{{ focus }}"
+        width="{{ width }}"
+        indicator="{{ indicator }}"
+        bindfocus="handleFocus"
+        bind:blur="handleBlur"
+        bind:linechange="handleLineChange"
+        bind:input="handleInput"
+        bind:confirm="handleConfirm"
+        bind:keyboardheightchange="handleKeyboardHeightChange"
+      />
+      <view class="textarea-options">
+        <view class="title">Options</view>
+        <view class="option-list">
+          <view class="group">
+            <view class="group-item">
+              <view class="item">disabled</view>
+              <switch 
+                color="{{ switchColor }}"
+                checked="{{ disabled }}"
+                bindchange="updateDisabled"
+              />
+            </view>
+            <view class="group-item">
+              <view class="item sub">maxlength</view>
+              <input
+                class="input-maxlength"
+                type="number"
+                value="{{ _maxlength }}"
+                bind:input="updateMaxLength"
+              />
+            </view>
+            <view class="group-item last">
+              <view class="item sub">width</view>
+              <input
+                class="input-width"
+                value="{{ _width }}"
+                bind:input="updateWidth"
+              />
+            </view>
+          </view>
+          <view class="group">
+            <view class="group-item">
+              <view class="item">indicator</view>
+              <switch
+                color="{{ switchColor }}"
+                checked="{{ showIndicator }}"
+                bind:change="updateIndicator"
+              />
+            </view>
+            <view class="group-item" wx:if="{{ showIndicator }}">
+              <view class="item">negative</view>
+              <switch
+                color="{{ switchColor }}"
+                checked="{{ indicatorNegative }}"
+                bind:change="updateNegative"
+              />
+            </view>
+            <view class="group-item last" wx:if="{{ showIndicator }}">
+              <view class="item">remain</view>
+              <switch
+                color="{{ switchColor }}"
+                checked="{{ indicatorRemain }}"
+                bind:change="updateRemain"
+              />
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </base-container>
+</template>
+
+<script>
+  import { createPage } from '@mpxjs/core'
+
+  createPage({
+    data: {
+      textareaValue: '',
+      placeholder: '请输入...',
+      maxlength: 500,
+      disabled: false,
+      autoFocus: false,
+      focus: false,
+      autoHeight: false,
+      width: '100%',
+      backgroundColor: '#F8F8F8',
+      indicator: true,
+      showIndicator: true,
+      indicatorNegative: true,
+      indicatorRemain: true,
+      switchColor: '#fc9153'
+    },
+    computed: {
+      _maxlength() {
+        return String(this.maxlength)
+      },
+      _width() {
+        return String(this.width)
+      }
+    },
+    methods: {
+      handleFocus () {
+        console.log('Focus event')
+      },
+      handleBlur () {
+        console.log('Blur event')
+      },
+      handleInput () {
+        console.log('Input event')
+      },
+      handleLineChange () {
+        console.log('LineChange event')
+      },
+      handleConfirm () {
+        console.log('Confirm event')
+      },
+      handleKeyboardHeightChange () {
+        console.log('KeyboardHeightChange event')
+      },
+      updateDisabled (e) {
+        const { value } = e.detail
+        this.disabled = value
+      },
+      updateIndicator (e) {
+        const { value } = e.detail
+        this.showIndicator = value
+        if (value) {
+          this.indicator = {
+            negative: this.indicatorNegative,
+            remain: this.indicatorRemain
+          }
+        } else {
+          this.indicator = false
+        }
+      },
+      updateNegative (e) {
+        const { value } = e.detail
+        this.indicatorNegative = value
+        this.indicator = {
+          negative: this.indicatorNegative,
+          remain: this.indicatorRemain
+        }
+      },
+      updateRemain (e) {
+        const { value } = e.detail
+        this.indicatorRemain = value
+        this.indicator = {
+          negative: this.indicatorNegative,
+          remain: this.indicatorRemain
+        }
+      },
+      updateMaxLength (e) {
+        const { value } = e.detail
+        this.maxlength = (value && parseInt(value)) || 60
+      },
+      updateWidth (e) {
+        const { value } = e.detail
+        this.width = value
+      }
+    }
+  })
+</script>
+
+<style lang="stylus">
+  .title
+    padding: 15px
+    margin-bottom: 15px
+    font-size: 16px
+    font-weight: 500
+    color: #333
+    border-bottom: 1px solid rgba(0, 0, 0, .1)
+
+  .options
+    margin-bottom: 15px
+  .option-list
+    .group
+      margin-bottom: 15px
+      border: 1px solid rgba(0, 0, 0, .1)
+      border-radius: 5px
+      .group-item
+        display: flex
+        align-items: center
+        justify-content: space-between
+        padding-right: 10px
+        border-bottom: 1px solid rgba(0, 0, 0, .1)
+        .item
+          padding-left: 15px
+          line-height: 52px
+          height: 52px
+          width: 120px
+          text-align: left
+        .sub
+          font-size: 14px
+          background-color: rgba(0, 0, 0, .04)
+        .input-maxlength
+        .input-width
+          flex: 1
+          margin-left: 15px
+      .last
+        border-bottom: none
+</style>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "base-container": "../../components/base-container/index",
+      "cube-textarea": "@mpxjs/mpx-cube-ui/src/components/textarea/index"
+    }
+  }
+</script>

@@ -1,0 +1,164 @@
+<template>
+  <cube-popup
+    class="{{ themeType ? 'cube-modal cube-modal-'+themeType : 'cube-modal' }}"
+    wx:ref="popup"
+    position="bottom"
+    transition="move-up"
+    visible="{{ isVisible }}"
+    mask="{{ true }}"
+    mask-closable="{{ maskClosable }}"
+    mask-fade-transition="{{ true }}"
+    theme-type="{{ themeType }}"
+    bind:maskClick="onMaskClick"
+  >
+    <view class="cube-modal-section">
+      <view
+        class="cube-modal-header"
+        wx:class="{{ classConfig.header }}"
+        wx:style="{{ styleConfig.header }}"
+      >
+        <!-- 分别针对取消和关闭做了不同的行为处理，目的是区分这两种行为含义的不同 -->
+        <view
+          class="cube-modal-cancel"
+          wx:if="{{ cancelText }}"
+          wx:class="{{ cancelBtnClass }}">
+          <view class="cube-modal-cancel-btn" bind:tap="onCancel">{{ cancelText }}</view>
+        </view>
+
+        <view
+          class="cube-modal-close"
+          wx:if="{{ showCloseIcon }}"
+          bind:tap="onClose"
+        >
+          <view class="cube-modal-close-icon">
+            <cube-icon type="close" theme-type="{{ themeType }}"></cube-icon>
+          </view>
+        </view>
+
+        <view wx:else bind:tap="onClose">
+          <slot name="closeIcon"></slot>
+        </view>
+
+        <!-- 顶部位置插槽 -->
+        <slot name="header"></slot>
+      </view>
+      <view
+        class="cube-modal-body"
+        wx:class="{{ [bodyLayoutClass, classConfig.body] }}"
+        wx:style="{{ styleConfig.body }}"
+      >
+        <!-- 图标位置插槽 -->
+        <slot name="icon"></slot>
+        <view class="cube-modal-main">
+          <view class="cube-modal-title" wx:if="{{ title }}">{{ title }}</view>
+          <!-- 标题位置插槽 -->
+          <slot name="title"></slot>
+          <view class="cube-modal-content">
+            <rich-text wx:if="{{ content }}" nodes="{{ content }}"></rich-text>
+            <!-- 内容位置插槽 -->
+            <slot name="content"></slot>
+          </view>
+        </view>
+      </view>
+      <view
+        class="cube-modal-footer"
+        wx:class="{{ classConfig.footer }}"
+        wx:style="{{ styleConfig.footer }}"
+      >
+        <cube-confirm-button-group
+          theme-type="{{ themeType }}"
+          class="cube-modal-confirm-button-group"
+          wx:if="{{ !noBuiltInBtns }}"
+          type="{{ type }}"
+          confirm-btn="{{ confirmBtn }}"
+          cancel-btn="{{ cancelBtn }}"
+          direction="{{ direction }}"
+          bind:confirm="onConfirm"
+          bind:cancel="onCancel"/>
+          <!-- 尾部位置插槽 -->
+        <slot name="footer"></slot>
+      </view>
+    </view>
+  </cube-popup>
+</template>
+
+<script lang="ts" src="./index.ts"></script>
+
+<style lang="stylus">
+@require "../../common/stylus/variable.styl"
+@require "../../common/stylus/mixin.styl"
+@require "../../common/stylus/theme/components/modal.styl"
+
+.cube-modal-section
+  overflow hidden
+  border-radius $var(modal-border-radius)
+  background-color $var(modal-bgc)
+  safe-area-mixin(padding-bottom, bottom, true)
+  .cube-confirm-button-group
+    margin-top $var(modal-button-group-margin-top)
+  .cube-btn
+    height $var(modal-button-height)
+    line-height $var(modal-button-line-height)
+    font-size $var(modal-button-font-size)
+    padding-top $var(modal-button-padding-top)
+    padding-bottom $var(modal-button-padding-bottom)
+
+.cube-modal-header
+  min-height $var(modal-header-default-height)
+.cube-modal-cancel
+  box-sizing border-box
+  display flex
+  align-items center
+  height $var(modal-cancel-height)
+  line-height $var(modal-cancel-line-height)
+  margin-bottom $var(modal-cancel-margin)
+  padding $var(modal-cancel-padding)
+  color $var(modal-cancel-color)
+  border-bottom-1px($var(modal-cancel-border-bottom-color))
+  font-size $var(modal-cancel-font-size)
+  font-weight $var(modal-cancel-font-weight)
+  &.algin-right
+    justify-content flex-end
+.cube-modal-close-icon
+  position absolute
+  top $var(modal-close-icon-top)
+  right $var(modal-close-icon-right)
+  padding $var(modal-close-icon-padding)
+  font-size $var(modal-close-icon-font-size)
+  font-weight $var(modal-close-icon-font-weight)
+  color $var(modal-close-icon-color)
+
+.cube-modal-body
+  // 特例：picker、radio-modal、checkbox-modal 需用到，写法上不做合并
+  padding $var(modal-body-padding-top) $var(modal-body-padding-right) $var(modal-body-padding-bottom) $var(modal-body-padding-left)
+  &.horizontal
+    display flex
+    flex-direction row-reverse
+    .cube-modal-main
+      flex 1
+.cube-modal-title
+  margin-bottom $var(modal-title-margin-bottom)
+  line-height $var(modal-title-line-height)
+  font-size $var(modal-title-font-size)
+  font-weight $var(modal-title-default-font-weight)
+  color $var(modal-title-color)
+.cube-modal-content
+  font-size $var(modal-content-font-size)
+  line-height $var(modal-content-line-height)
+  color $var(modal-content-color)
+
+.cube-modal-footer
+  padding $var(modal-footer-padding)
+</style>
+
+<script type="application/json">
+  {
+    "styleIsolation": "shared",
+    "usingComponents": {
+      "cube-button": "../button/index.mpx",
+      "cube-popup": "../popup/index.mpx",
+      "cube-icon": "../icon/index.mpx",
+      "cube-confirm-button-group": "./confirm-button-group/index.mpx"
+    }
+  }
+</script>

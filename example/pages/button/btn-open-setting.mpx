@@ -1,0 +1,27 @@
+<template>
+  <cube-button
+    open-type="openSetting"
+    tip="需在微信小程序环境预览"
+    bind:openSetting="onOpenSetting"
+  >打开授权设置页面</cube-button>
+</template>
+
+<script>
+import { createComponent } from '@mpxjs/core'
+
+createComponent({
+  methods: {
+    onOpenSetting(e) {
+      console.log('openSetting...', e && e.detail, e)
+    }
+  }
+})
+</script>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "cube-button": "@mpxjs/mpx-cube-ui/src/components/button/index"
+    }
+  }
+</script>

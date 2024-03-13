@@ -1,0 +1,106 @@
+<template>
+  <view class="dialog-right-angle-passenger-demo">
+    <cube-button  bind:click="onClickDialog">Dialog - show-slot-with-right-angle</cube-button>
+    <cube-dialog
+
+      wx:ref="dialogWithRightAngle"
+      class="dialog-right-angle"
+      type="alert"
+    >
+      <view class="dialog-show-slot-title right-angle-slot-title" slot="title">
+        <image class="show-slot-img" mode="aspectFit" src=""></image>
+      </view>
+      <view class="dialog-show-slot-content" slot="content">
+        <view class="right-angle-title">主标题控制在十二字符内</view>
+        <view class="right-angle-content">这里是内容部分，应该控制在十八字符内</view>
+        <view class="right-angle-btn" bind:tap="onCloseDialog">五个字符内</view>
+        <view class="right-angle-footer-logo">
+          <image class="logo-img" src="https://dpubstatic.udache.com/static/dpubimg/9b1211da-56b4-41c1-8182-b45a2b198638.png" mode="aspectFit"></image>
+          <view class="logo-text">滴滴出行</view>
+        </view>
+      </view>
+    </cube-dialog>
+  </view>
+</template>
+
+<script>
+import { createComponent } from '@mpxjs/core'
+
+createComponent({
+  options: {
+    styleIsolation: 'shared'
+  },
+  methods: {
+    onClickDialog () {
+      this.$refs.dialogWithRightAngle.show()
+    },
+    onCloseDialog () {
+      this.$refs.dialogWithRightAngle.hide()
+    }
+  }
+})
+</script>
+
+<style lang="stylus">
+.dialog-right-angle .cube-dialog-main
+  border-radius 0
+
+.right-angle-slot-title
+  margin 4px
+  background-color #eeeeee
+  opacity .48
+.right-angle-title,
+.right-angle-content
+  font-family PingFangSC-Medium
+  font-size 16px
+  color #333
+  letter-spacing 0
+  text-align center
+.right-angle-content
+  font-family PingFangSC-Regular
+  font-size 12px
+  color #666
+.right-angle-btn
+  width 103px
+  height 24px
+  border .5px solid #ea5e1e
+  border-radius 24px 24px
+  margin 13px auto 18px
+  font-family PingFangSC-Regular
+  font-size 12px
+  color #EA5E1E
+  background-color #fff
+  letter-spacing 0
+  text-align center
+  line-height 24px
+
+.dialog-right-angle .cube-dialog-content
+  margin-bottom 0
+.right-angle-footer-logo
+  display flex
+  justify-content center
+  align-items center
+  border-top .5px solid #eaeaea
+  padding 12px 10px
+  box-sizing border-box
+.logo-img
+  width 15px
+  height 12px
+.logo-text
+  height 10px
+  line-height 10px
+  margin-left 2px
+  color #5a5a5a
+  font-size 10px
+</style>
+
+<script type="application/json">
+  {
+    "styleIsolation": "shared",
+    "component": true,
+    "usingComponents": {
+      "cube-button": "@mpxjs/mpx-cube-ui/src/components/button/index",
+      "cube-dialog": "@mpxjs/mpx-cube-ui/src/components/dialog/index"
+    }
+  }
+</script>

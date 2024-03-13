@@ -1,0 +1,35 @@
+<template>
+  <base-container class="button-group-demo">
+    <view-desc>水平排列</view-desc>
+    <button-group-two />
+    <view-desc>垂直排列</view-desc>
+    <button-group-vertical-two />
+    <view-desc>图文结合</view-desc>
+    <button-group-with-context />
+  </base-container>
+</template>
+
+<script>
+import { createPage } from '@mpxjs/core'
+
+createPage({})
+</script>
+
+<style lang="stylus">
+.button-group-demo
+  padding-left 0 !important
+  padding-right 0 !important
+</style>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "base-container": "../../components/base-container/index",
+      "view-desc": "../../components/desc/index",
+      "button-group-one": "./button-group-one",
+      "button-group-two": "./button-group-two",
+      "button-group-vertical-two": "./button-group-vertical-two",
+      "button-group-with-context": "./button-group-with-context"
+    }
+  }
+</script>

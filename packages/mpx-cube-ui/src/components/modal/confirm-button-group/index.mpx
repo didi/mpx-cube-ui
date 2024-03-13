@@ -1,0 +1,92 @@
+<template>
+  <cube-button-group
+    class="cube-confirm-button-group"
+    wx:class="{{ typeClass }}"
+    direction="{{ direction }}"
+    theme-type="{{ themeType }}"
+  >
+    <cube-button
+      class="cube-option-cancel-button"
+      wx:if="{{ isOptional }}"
+      custom-style="{{ _cancelBtn.customStyle }}"
+      disabled="{{ _cancelBtn.disabled }}"
+      lang@wx="{{ _cancelBtn.lang }}"
+      session-from@wx="{{ _cancelBtn.sessionFrom }}"
+      send-message-title@wx="{{ _cancelBtn.sendMessageTitle }}"
+      send-message-path@wx="{{ _cancelBtn.sendMessagePath }}"
+      send-message-img@wx="{{ _cancelBtn.sendMessageImg }}"
+      show-message-card@wx="{{ _cancelBtn.showMessageCard }}"
+      app-parameter@wx|ali="{{ _cancelBtn.appParameter }}"
+      open-type@wx|ali="{{ !_cancelBtn.disabled ? _cancelBtn.openType : '' }}"
+      form-type@wx|ali="{{ _cancelBtn.formType }}"
+      scope@ali="{{ _cancelBtn.scope }}"
+      theme-type="{{ themeType }}"
+      bind:click="onCancel"
+      bind:openSetting@wx="onOpenSetting"
+      bind:contact@wx="onContact"
+      bind:getUserInfo@wx|ali="onGetUserInfo"
+      bind:getPhoneNumber@wx|ali="onGetPhoneNumber"
+      bind:error@wx|ali="onError">{{ _cancelBtn.text }}</cube-button>
+    <cube-button
+      class="cube-option-confirm-button"
+      primary
+      custom-style="{{ _confirmBtn.customStyle }}"
+      disabled="{{ _confirmBtn.disabled }}"
+      lang@wx="{{ _confirmBtn.lang }}"
+      session-from@wx="{{ _confirmBtn.sessionFrom }}"
+      send-message-title@wx="{{ _confirmBtn.sendMessageTitle }}"
+      send-message-path@wx="{{ _confirmBtn.sendMessagePath }}"
+      send-message-img@wx="{{ _confirmBtn.sendMessageImg }}"
+      show-message-card@wx="{{ _confirmBtn.showMessageCard }}"
+      app-parameter@wx|ali="{{ _confirmBtn.appParameter }}"
+      open-type@wx|ali="{{ !_confirmBtn.disabled ? _confirmBtn.openType : '' }}"
+      form-type@wx|ali="{{ _confirmBtn.formType }}"
+      scope@ali="{{ _confirmBtn.scope }}"
+      theme-type="{{ themeType }}"
+      bind:click="onConfirm"
+      bind:openSetting@wx="onOpenSetting"
+      bind:contact@wx="onContact"
+      bind:getUserInfo@wx|ali="onGetUserInfo"
+      bind:getPhoneNumber@wx|ali="onGetPhoneNumber"
+      bind:error@wx|ali="onError">{{ _confirmBtn.text }}</cube-button>
+  </cube-button-group>
+</template>
+
+<script lang="ts" src="./index.ts"></script>
+
+<style lang="stylus">
+@require "../../../common/stylus/variable.styl"
+@require "../../../common/stylus/theme/components/confirm-button-group.styl"
+
+.cube-confirm-button-group
+  display flex
+  justify-content space-between
+
+.cube-option-confirm-button
+  flex 1
+.cube-option-cancel-button
+  margin-right $var(option-cancel-button-margin-right)
+  flex-grow 0
+  width $var(option-cancel-button-width)
+
+.cube-confirm-button-group_vertical
+  flex-direction column-reverse
+  .cube-button-group
+    flex-direction column-reverse
+  .cube-option-cancel-button
+    margin $var(option-cancel-button-margin-top) 0 0
+    flex 1
+    display block
+    width 100%
+</style>
+
+<script type="application/json">
+  {
+    "styleIsolation": "shared",
+    "component": true,
+    "usingComponents": {
+      "cube-button": "../../button/index.mpx",
+      "cube-button-group": "../../button-group/index.mpx"
+    }
+  }
+</script>

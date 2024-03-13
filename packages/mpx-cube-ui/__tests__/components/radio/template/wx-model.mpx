@@ -1,0 +1,39 @@
+<template>
+  <view class="radio-default-checked-demo">
+    <view>默认选项: {{ radioValue }}</view>
+    <view class="cube-radio-demos">
+      <cube-radio class="cube-radio" option="{{ radio1 }}" wx:model="{{ radioValue }}" wx:model-prop="value"></cube-radio>
+      <cube-radio class="cube-radio" option="{{ radio2 }}" wx:model="{{ radioValue }}" wx:model-prop="value"></cube-radio>
+    </view>
+  </view>
+</template>
+
+<script>
+import { createComponent } from '@mpxjs/core'
+createComponent({
+  options: {
+    styleIsolation: 'shared'
+  },
+  data: {
+    radio1: {
+      text: 'Option1',
+      value: 'Option1'
+    },
+    radio2: {
+      text: 'Option2',
+      value: 'Option2'
+    },
+    radioValue: 'Option1'
+  }
+})
+</script>
+
+<script type="application/json">
+  {
+    "styleIsolation": "shared",
+    "component": true,
+    "usingComponents": {
+      "cube-radio": "../../../../src/components/radio/index.mpx"
+    }
+  }
+</script>

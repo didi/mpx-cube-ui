@@ -1,0 +1,94 @@
+<template>
+  <view>
+    <view class="picker-demo-title">time-picker:</view>
+    <cube-date-picker
+      wx:ref="picker"
+      min="{{min}}"
+      max="{{max}}"
+      value="{{value}}"
+      startColumn="{{startColumn}}"
+      bindchange="onChange"
+    />
+    <view class="demo-data" wx:if="{{ changeParams }}">
+      <view class="value">
+        <view class="value-item" wx:for="{{changeParams}}" wx:key="index">
+          <view class="item-key">{{item[0]}}</view>
+          <view class="item-value">{{item[1]}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>
+
+<style lang="stylus">
+.picker-demo-title
+  margin-bottom: 8px
+.demo-data
+  margin-top: 10px
+  padding: 10px 10px
+  background-color: white
+  border: 1px solid  white
+  border-radius: 10px
+
+  .key
+    margin-bottom: 10px
+    font-size: 16px
+  .key-introduce
+    margin-bottom: 10px
+    line-height: 20px
+  .value
+    margin-bottom: 20px
+    white-space: break-spaces
+    .value-number
+      margin-top: 20px
+    .value-item
+      display flex
+      justify-content: space-between
+      height: 25px
+      line-height: 25px
+      font-size: 15px
+      .item-value
+        white-space nowrap
+</style>
+
+<script>
+import { createComponent } from '@mpxjs/core'
+import { beauty } from '../../common/utils'
+
+createComponent({
+  data: {
+    title: '时间选择器',
+    min: [8, 0, 0],
+    max: [20, 59, 59],
+    value: +new Date(),
+    startColumn: 'hour',
+    changeParams: ''
+  },
+  computed: {
+    isShow() {
+      return  !this.changeParams
+    }
+  },
+  methods: {
+    onChange(e) {
+      const detail = e.detail
+      detail.date = '时间戳：' + Date.parse(detail.date)
+      this.changeParams = Object.entries(detail)
+    },
+    getSelected() {
+      const info = this.$refs.picker.getSelectedInfo()
+      info.date = '时间戳：' + Date.parse(info.date)
+      this.selectedInfo = Object.entries(info)
+    }
+  }
+})
+</script>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "cube-button": "@mpxjs/mpx-cube-ui/src/components/button/index",
+      "cube-date-picker": "@mpxjs/mpx-cube-ui/src/components/date-picker/index"
+    }
+  }
+</script>

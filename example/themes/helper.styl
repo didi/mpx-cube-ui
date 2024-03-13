@@ -1,0 +1,17 @@
+
+
+// cubeRule(s, v)
+//   --cube-{s} v
+
+// stylusRule(s, v)
+//   '$%s = %s' % (s, v)
+
+prefix = '$'
+
+$$var(s, v)
+  if runtime
+    --cube-{s} v
+  else
+    define(prefix + s, v) // 为什么没有生效？
+
+  // s('--cube-%s: %s', $s, $v)

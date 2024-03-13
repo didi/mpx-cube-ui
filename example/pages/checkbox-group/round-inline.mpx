@@ -1,0 +1,63 @@
+<template>
+  <view class="checkbox-group-round-inline-demo">
+    <view class="cube-checkbox-group-example">
+      <cube-checkbox-group
+        class="inline-checkbox-group"
+        options="{{ options }}"
+        inline="{{ true }}"
+        colNum="{{ 2 }}"
+        wx:model="{{ checkedValues }}"
+        wx:model-prop="values"
+      ></cube-checkbox-group>
+    </view>
+    <view class="view-desc">checked values：{{ checkedValues }}</view>
+  </view>
+</template>
+
+<script>
+  import { createComponent } from '@mpxjs/core'
+
+  createComponent({
+    options: {
+      styleIsolation: 'shared'
+    },
+    data: {
+      options: [
+        {
+          value: '苹果',
+          text: '苹果'
+        },
+        {
+          value: '橘子',
+          text: '橘子'
+        },
+        {
+          value: '香蕉',
+          text: '香蕉'
+        },
+        {
+          value: '桃子',
+          text: '桃子'
+        }
+      ],
+      checkedValues: []
+    }
+  })
+</script>
+
+<style lang="stylus">
+.cube-checkbox-example
+  padding 5px 10px
+  background-color #fff
+.desc
+  margin-top 15px
+</style>
+
+<script type="application/json">
+{
+  "styleIsolation": "shared",
+  "usingComponents": {
+    "cube-checkbox-group": "@mpxjs/mpx-cube-ui/src/components/checkbox-group/index"
+  }
+}
+</script>

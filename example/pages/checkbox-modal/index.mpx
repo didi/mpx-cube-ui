@@ -1,0 +1,34 @@
+<template>
+  <base-container class="cube-checkbox-modal-page">
+    <checkbox-modal-default class="demo-item" />
+    <checkbox-modal-option-conf class="demo-item" />
+    <checkbox-modal-cancel-btn class="demo-item" />
+    <checkbox-modal-slots class="demo-item" />
+  </base-container>
+</template>
+
+<script>
+import { createPage } from '@mpxjs/core'
+
+createPage({})
+</script>
+
+<style lang="stylus">
+.cube-checkbox-modal-page
+  .demo-item:not(:last-child)
+    display block
+    margin-bottom: 10px
+</style>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "base-container": "../../components/base-container/index",
+      "view-desc": "../../components/desc/index",
+      "checkbox-modal-default": "./checkbox-modal-default.mpx",
+      "checkbox-modal-option-conf": "./checkbox-modal-option-conf.mpx",
+      "checkbox-modal-cancel-btn": "./checkbox-modal-cancel-btn.mpx",
+      "checkbox-modal-slots": "./checkbox-modal-slots.mpx"
+    }
+  }
+</script>

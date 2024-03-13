@@ -1,0 +1,27 @@
+<template>
+  <cube-button
+    open-type="chooseAvatar"
+    tip="需在微信小程序环境预览"
+    bind:chooseAvatar="onChooseAvatar"
+  >获取头像</cube-button>
+</template>
+
+<script>
+import { createComponent } from '@mpxjs/core'
+
+createComponent({
+  methods: {
+    onChooseAvatar(e) {
+      console.log('onChooseAvatar...', e && e.detail, e)
+    }
+  }
+})
+</script>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "cube-button": "@mpxjs/mpx-cube-ui/src/components/button/index"
+    }
+  }
+</script>

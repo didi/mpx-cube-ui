@@ -1,0 +1,57 @@
+<template>
+  <base-container>
+    <view class="cube-toast-list-item">
+      <toast-example></toast-example>
+    </view>
+    <view class="cube-toast-list-item" wx:if="{{ isPassenger }}">
+      <toast-with-custom-vertical-icon></toast-with-custom-vertical-icon>
+    </view>
+    <view class="cube-toast-list-item" wx:if="{{ isDriver }}">
+      <toast-text-only></toast-text-only>
+    </view>
+    <view class="cube-toast-list-item" wx:if="{{ isDriver }}">
+      <toast-with-mask></toast-with-mask>
+    </view>
+    <view class="cube-toast-list-item" wx:if="{{ isDriver }}">
+      <toast-not-auto-close></toast-not-auto-close>
+    </view>
+    <view class="cube-toast-list-item" wx:if="{{ isDriver }}">
+      <toast-with-self-defined-icon></toast-with-self-defined-icon>
+    </view>
+  </base-container>
+</template>
+
+<script>
+  import { createPage } from '@mpxjs/core'
+  import { useTheme } from '../../common/theme'
+
+  createPage({
+    setup() {
+      const { isDriver, isPassenger } = useTheme()
+
+      return {
+        isDriver,
+        isPassenger
+      }
+    }
+  })
+</script>
+
+<style lang="stylus">
+  .cube-toast-list-item
+    margin-bottom 20px
+</style>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "base-container": "../../components/base-container/index",
+      "toast-example": "./toast-example.mpx",
+      "toast-text-only": "./toast-text-only",
+      "toast-with-mask": "./toast-with-mask",
+      "toast-not-auto-close": "./toast-not-auto-close",
+      "toast-with-self-defined-icon": "./toast-with-self-defined-icon",
+      "toast-with-custom-vertical-icon": "./toast-with-custom-vertical-icon.mpx"
+    }
+  }
+</script>

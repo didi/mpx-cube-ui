@@ -1,0 +1,41 @@
+<template>
+  <cube-modal
+    wx:ref="modal"
+    title="我是标题~"
+    content="我是正文我是正文我是正文我是正文我是正文我是正文"
+    direction="horizontal"
+    confirm-btn="确认按钮"
+    cancel-btn="取消按钮"
+    mask-closable="{{ true }}"
+    bind:confirm="onConfirm"
+    bind:cancel="onCancel"
+  />
+  <cube-button  bind:click="onTap">modal-水平两个按钮</cube-button>
+</template>
+
+<script>
+  import { createComponent } from '@mpxjs/core'
+
+  createComponent({
+    methods: {
+      onTap() {
+        this.$refs.modal.show()
+      },
+      onConfirm() {
+        console.log('click the confirm btn')
+      },
+      onCancel() {
+        console.log('click the cancel btn')
+      }
+    }
+  })
+</script>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "cube-modal": "@mpxjs/mpx-cube-ui/src/components/modal/index",
+      "cube-button": "@mpxjs/mpx-cube-ui/src/components/button/index"
+    }
+  }
+</script>

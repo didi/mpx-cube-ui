@@ -1,0 +1,36 @@
+<template>
+  <view class="toast-not-auto-close-demo">
+    <cube-button  bindclick="clickToast">Toast - time 0s, not auto close</cube-button>
+    <cube-toast
+
+      time="{{ 0 }}"
+      txt="点击遮罩关闭"
+      mask="{{ true }}"
+      maskClosable="{{ true }}"
+      wx:ref="toast">
+    </cube-toast>
+  </view>
+</template>
+
+<script>
+  import { createComponent } from '@mpxjs/core'
+
+  createComponent({
+    methods: {
+      clickToast() {
+        this.$refs.toast.show()
+      }
+    }
+  })
+</script>
+
+<script type="application/json">
+  {
+    "styleIsolation": "shared",
+    "component": true,
+    "usingComponents": {
+      "cube-button": "@mpxjs/mpx-cube-ui/src/components/button/index",
+      "cube-toast": "@mpxjs/mpx-cube-ui/src/components/toast/index"
+    }
+  }
+</script>

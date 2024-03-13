@@ -1,0 +1,141 @@
+<template>
+  <view>
+    <view class="picker-demo-title">async-cascade-picker:</view>
+    <cube-cascade-picker
+      wx:ref="asyncPicker"
+      list="{{dataList}}"
+      selectedIndex="{{selectedIndex}}"
+      async="{{true}}"
+      bindcolumnChange="onColumnChange"
+      bindchange="onChange"
+    />
+    <view class="event-params m-t-10"  wx:if="{{ changeParams || introduce }}">
+      <view class="key-introduce">{{introduce}}</view>
+      <view class="desc-text m-t-10 m-b-10">
+        因设置 async 为true，change 事件会在用户更新数据后才相应；例子里第二例滚动时没有更新数据，所以无 change 事件。
+      </view>
+      <block wx:if="{{ changeParams }}">
+        <view class="m-b-10">change 事件参数：</view>
+        <view class="value m-b-10">
+          <view view class="value-item" wx:for="{{changeParams}}" wx:key="index">
+            <view class="item-key">{{item[0]}}</view>
+            <view class="item-value">{{item[1]}}</view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+</template>
+<script>
+  import { createComponent } from '@mpxjs/core'
+  import { beauty } from '../../common/utils'
+  const Fruit = [{
+    value: 'Fruit',
+    text: 'Fruit',
+    children: [{
+      value: 'Apple',
+      text: 'Apple',
+      children: [{ value: 1, text: 'One' }, { value: 2, text: 'Two' }]
+    }, {
+      value: 'Orange',
+      text: 'Orange',
+      children: [{ value: 3, text: 'Three'}, { value: 4, text: 'Four' }]
+    }]
+  }, {
+    value: 'Drink',
+    text: 'Drink'
+  }]
+
+  const Drink = [{
+    value: 'Fruit',
+    text: 'Fruit'
+  }, {
+    value: 'Drink',
+    text: 'Drink',
+    children: [{
+      value: 'Coffee',
+      text: 'Coffee',
+      children: [{ value: 1, text: 'One' }, { value: 2, text: 'Two' }]
+    }, {
+      value: 'Tea',
+      text: 'Tea',
+      children: [{ value: 1, text: 'One' }, { value: 3, text: 'Three'}]
+    }]
+  }]
+  createComponent({
+    data: {
+      dataList: Fruit,
+      selectedIndex: [0, 1, 1],
+      changeParams: '',
+      introduce: '',
+      load: false
+    },
+    computed: {
+    isShow() {
+      return !this.changeParams
+    },
+    isShowLoad() {
+      return this.load
+    }
+  },
+    methods: {
+      onColumnChange(e) {
+        this.changeParams = ''
+        this.introduce = 'change 事件未触发'
+        const { column, index, value } = e.detail
+        if (column === 0) {
+          this.introduce = '数据更新中...'
+          this.load = true
+          // 模拟1.5秒后返回数据
+          setTimeout(() => {
+            this.$refs.asyncPicker.updateData(index === 0 ? Fruit : Drink, [index, 0, 0])
+            this.load = false
+          }, 1500)
+        }
+      },
+      onChange(e) {
+        this.introduce = ''
+        this.changeParams = Object.entries(e.detail)
+      }
+    }
+  })
+</script>
+<style lang="stylus">
+  .picker-demo-title
+    margin-bottom: 8px
+  .event-params
+    padding: 10px 10px
+    background-color: white
+    border: 1px solid  white
+    border-radius: 10px
+  .desc-text
+    font-size: 14px
+    color: #4b4b4b
+    line-height: 1.3
+  .m-t-10
+    margin-top: 10px
+  .m-b-10
+    margin-bottom: 10px
+  .key-introduce
+    line-height: 20px
+  .value
+    margin-bottom: 20px
+    white-space: break-spaces
+    .value-item
+      display flex
+      justify-content: space-between
+      height: 25px
+      line-height: 25px
+      font-size: 15px
+      .item-value
+        white-space nowrap
+</style>
+<script type="application/json">
+  {
+    "usingComponents": {
+      "cube-button": "@mpxjs/mpx-cube-ui/src/components/button/index",
+      "cube-cascade-picker": "@mpxjs/mpx-cube-ui/src/components/cascade-picker/index"
+    }
+  }
+</script>
+

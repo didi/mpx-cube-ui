@@ -1,0 +1,24 @@
+<template>
+  <cube-icon type="{{type}}" />
+</template>
+
+<script>
+  import { createComponent } from '@mpxjs/core'
+
+  createComponent({
+    properties: {
+      type: {
+        type: String,
+        value: ''
+      }
+    }
+  })
+</script>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "cube-icon": "@mpxjs/mpx-cube-ui/src/components/icon/index"
+    }
+  }
+</script>

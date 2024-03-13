@@ -1,0 +1,101 @@
+<template>
+  <view
+    wx:class="{{ themeType ? 'cube-radio cube-radio-'+themeType : 'cube-radio' }}"
+    bindtap="onTap"
+  >
+    <label class="cube-radio-label" wx:class="{{ radioLabelClass }}">
+      <view class="cube-radio-ui">
+        <view class="cube-radio-inner-ui"></view>
+      </view>
+      <view class="cube-radio-text-wrap">
+        <view wx:if="{{ showText }}">
+          <view wx:if="{{ option.text }}" class="cube-radio-text">{{ option.text }}</view>
+          <view wx:if="{{ option.desc }}" class="cube-radio-desc">{{ option.desc }}</view>
+        </view>
+        <!-- 自定义文本插槽内容 -->
+        <slot wx:else />
+      </view>
+    </label>
+  </view>
+</template>
+
+<script src="./index.ts" lang="ts"></script>
+
+<style lang="stylus">
+  @require "../../common/stylus/variable.styl"
+  @require "../../common/stylus/mixin.styl"
+  @require "../../common/stylus/theme/components/radio.styl"
+
+  .cube-radio-label
+    height 100%
+    display flex
+    align-items center
+    padding $var(radio-label-padding)
+    box-sizing border-box
+    word-break break-word
+    word-wrap break-word
+  .cube-radio-label_checked
+    .cube-radio-ui
+      border $var(radio-ui-border_checked)
+      transform scale($var(radio-ui-scale-size))
+      transition $var(radio-ui_checked-transition)
+      .cube-radio-inner-ui
+        transform scale($var(radio-inner-ui-scale-size))
+  .cube-radio-label_disabled
+    .cube-radio-ui
+      border $var(radio-ui-border_disabled)
+      background-color $var(radio-ui-bgc_disabled)
+      opacity $var(radio-ui-bgc-opacity)
+    .cube-radio-text, .cube-radio-desc, .cube-radio-text-wrap
+      color $var(radio-text-desc-color_disabled)
+  .cube-radio-label-right
+    flex-direction row-reverse
+    justify-content space-between
+    .cube-radio-ui
+      margin $var(radio-ui-margin)
+
+  .cube-radio-ui
+    display flex
+    justify-content center
+    align-items center
+    width $var(radio-ui-width)
+    height $var(radio-ui-width)
+    min-width $var(radio-ui-width)
+    margin-right $var(radio-ui-margin-right)
+    border $var(radio-ui-border)
+    box-sizing border-box
+    border-radius 50%
+    background-color $var(radio-ui-bgc)
+    background-image $var(radio-ui-bgimg)
+    background-size 100% 100%
+    background-repeat no-repeat
+    transform $var(radio-ui-transform)
+    .cube-radio-inner-ui
+      display inline-block
+      width $var(radio-inner-ui-width)
+      height $var(radio-inner-ui-width)
+      border-radius 50%
+      background-color $var(radio-inner-ui-bgc)
+      transform scale(0)
+      transition $var(radio-inner-ui-transition)
+
+  .cube-radio-text
+    font-size $var(radio-text-font-size)
+    color $var(radio-text-color)
+    line-height $var(radio-text-line-height)
+  .cube-radio-desc
+    max-width 24em
+    margin-top $var(radio-desc-margin-top)
+    font-size $var(radio-desc-font-size)
+    color $var(radio-desc-color)
+    line-height $var(radio-desc-line-height)
+    word-break break-word
+    word-wrap break-word
+</style>
+
+<script type="application/json">
+  {
+    "styleIsolation": "shared",
+    "component": true
+  }
+</script>

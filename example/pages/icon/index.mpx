@@ -1,0 +1,52 @@
+<template>
+  <base-container>
+    <view class="icon-page">
+      <view class="icon-item" wx:for="{{ iconList }}" wx:key="index">
+        <view class="icon-wrapper">
+          <icon-example type="{{item}}"/>
+        </view>
+        <view class="icon-type">cubeic-{{item}}</view>
+      </view>
+    </view>
+  </base-container>
+</template>
+
+<script>
+import { createPage } from '@mpxjs/core'
+import iconList from './icon-list'
+
+createPage({
+  data: {
+    iconList
+  }
+})
+</script>
+
+<style lang="stylus">
+.icon-page
+  display flex
+  flex-wrap wrap
+  .icon-item
+    width 50%
+    font-size 32px
+    text-align center
+    .icon-wrapper
+      display inline-block
+      width 42px
+      height 42px
+      line-height 1
+    .icon-type
+      font-size 16px
+      padding-bottom 15px
+</style>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "base-container": "../../components/base-container/index",
+      "cube-icon": "@mpxjs/mpx-cube-ui/src/components/icon/index",
+      "view-desc": "../../components/desc/index",
+      "icon-example": "./icon-example.mpx"
+    }
+  }
+</script>

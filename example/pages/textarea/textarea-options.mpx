@@ -1,0 +1,31 @@
+<template>
+  <cube-textarea
+    value="{{ textareaValue }}"
+    placeholder="{{ placeholder }}"
+    maxlength="{{ maxlength }}"
+    disabled="{{ disabled }}"
+    focus="{{ focus }}"
+  />
+</template>
+
+<script>
+  import { createPage } from '@mpxjs/core'
+
+  createPage({
+    data: {
+      textareaValue: '',
+      placeholder: '请输入...',
+      maxlength: 500,
+      disabled: false,
+      focus: false
+    }
+  })
+</script>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "cube-textarea": "@mpxjs/mpx-cube-ui/src/components/textarea/index"
+    }
+  }
+</script>

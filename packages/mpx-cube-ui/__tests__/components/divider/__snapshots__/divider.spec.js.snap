@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`component divider unit test render check render 1`] = `"<wx-view class=\\"main--cube-divider main--center\\"><wx-view class=\\"main--cube-divider-left-line\\"></wx-view><wx-view class=\\"main--cube-divider-right-line\\"></wx-view></wx-view>"`;
+
+exports[`component divider unit test render check render 2`] = `"<wx-view class=\\"main--cube-divider main--center\\"><wx-view class=\\"main--cube-divider-left-line\\"></wx-view><wx-view class=\\"main--cube-divider-right-line\\"></wx-view></wx-view>"`;
+
+exports[`component divider unit test render check render 3`] = `"<wx-view class=\\"main--cube-divider main--center\\"><wx-view class=\\"main--cube-divider-left-line\\"></wx-view><wx-view class=\\"main--cube-divider-right-line\\"></wx-view></wx-view>"`;
+
+exports[`component divider unit test render check render 4`] = `"<wx-view class=\\"main--cube-divider main--center\\"><wx-view class=\\"main--cube-divider-left-line\\"></wx-view><wx-view class=\\"main--cube-divider-right-line\\"></wx-view></wx-view>"`;
+
+exports[`component divider unit test slot check matchSnapshot 1`] = `"<main><wx-view class=\\"main--cube-divider main--center\\"><wx-view class=\\"main--cube-divider-left-line\\"></wx-view><wx-view class=\\"divider-slot\\">this is a message</wx-view><wx-view class=\\"main--cube-divider-right-line\\"></wx-view></wx-view></main>"`;

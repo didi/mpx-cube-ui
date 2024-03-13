@@ -1,0 +1,87 @@
+<template>
+  <view
+    wx:class="{{ [themeType ? 'cube-textarea-wrapper cube-textarea-wrapper-' + themeType : 'cube-textarea-wrapper', _textareaWrapperClass] }}"
+    style="{{ _computedTextareaWrapStyle }}"
+  >
+    <textarea
+      class="cube-textarea"
+      wx:ref="textarea"
+      style="{{ _computedTextareaStyle }}"
+      value="{{ textareaValue }}"
+      placeholder="{{ placeholder }}"
+      maxlength="{{ maxlength }}"
+      disabled="{{ disabled }}"
+      auto-focus@wx="{{ autoFocus }}"
+      focus="{{ isFocus }}"
+      indicator="{{ indicator }}"
+      fixed@wx="{{ fixed }}"
+      cursor-spacing@wx="{{ cursorSpacing }}"
+      cursor@wx="{{ cursor }}"
+      show-confirm-bar@wx="{{ showConfirmBar }}"
+      selection-start@wx="{{ selectionStart }}"
+      selection-end@wx="{{ selectionEnd }}"
+      adjust-position@wx="{{ adjustPosition }}"
+      hold-keyboard@wx="{{ holdKeyboard }}"
+      disable-default-padding@wx="{{ disableDefaultPadding }}"
+      placeholder-style@wx|ali="{{ placeholderStyle }}"
+      placeholder-class@wx|ali="{{ placeholderClass }}"
+      auto-height@wx|ali="{{ autoHeight }}"
+      bindfocus="handleFocus"
+      bind:blur="handleBlur"
+      bind:input="handleInput"
+      bind:confirm@wx|ali="handleConfirm"
+      bind:linechange@wx="handleLineChange"
+      bind:keyboardheightchange@wx="handleKeyboardHeightChange"
+    />
+    <view class="{{ _textareaIndicatorClass }}" wx:if="{{ showRemain }}">{{ indicatorConf.remain ? remain : count }}</view>
+  </view>
+</template>
+
+<script lang="ts" src="./index.ts"></script>
+
+<style lang="stylus">
+@require "../../common/stylus/variable.styl"
+@require "../../common/stylus/mixin.styl"
+@require "../../common/stylus/theme/components/textarea.styl"
+
+.cube-textarea-wrapper
+  position relative
+  padding $var(textarea-padding)
+  box-sizing border-box
+  border-radius $var(textarea-border-radius)
+  border-1px($var(textarea-border-color), $var(textarea-border-radius))
+  overflow hidden
+  text-overflow ellipsis
+  font-size $var(textarea-font-size)
+.cube-textarea-wrapper_disabled
+  background-color $var(textarea-disable-bgc)
+.cube-textarea-wrapper_focused
+  border-1px($var(textarea-focus-border-color), $var(textarea-border-radius))
+.cube-textarea
+  width 100%
+  overflow hidden
+  box-sizing border-box
+  background-color $var(textarea-bgc)
+  border none
+  resize none
+  outline none
+  text-align left
+  line-height inherit
+  color $var(textarea-color)
+.cube-textarea-indicator
+  position absolute
+  right $var(textarea-indicator-right)
+  bottom $var(textarea-indicator-bottom)
+  line-height $var(textarea-indicator-line-height)
+  color $var(textarea-indicator-color)
+  font-size $var(textarea-indicator-font-size)
+.cube-textarea-indicator_warning
+  color $var(textarea-indicator-waring-color)
+</style>
+
+<script type="application/json">
+  {
+    "styleIsolation": "shared",
+    "component": true
+  }
+</script>

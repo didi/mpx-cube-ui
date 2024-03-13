@@ -1,0 +1,28 @@
+<template>
+  <cube-float-ball
+    name="default"
+    initialPosition="{{ defaultPos }}" />
+</template>
+
+<script>
+  import { createComponent } from '@mpxjs/core'
+
+  createComponent({
+    data() {
+      return {
+        defaultPos: {
+          left: 0,
+          top: 200
+        }
+      }
+    }
+  })
+</script>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "cube-float-ball": "@mpxjs/mpx-cube-ui/src/components/float-ball/index"
+    }
+  }
+</script>

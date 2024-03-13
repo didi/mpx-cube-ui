@@ -1,0 +1,246 @@
+@require '~@mpxjs/mpx-cube-ui/src/common/stylus/theme/var/size.styl'
+@require '~@mpxjs/mpx-cube-ui/src/common/stylus/theme/var/color.styl'
+@require './driver/var/color.styl'
+
+.theme-driver {
+  // button
+  --cube-btn-bgc: linear-gradient(-49deg, $color-default-blue-start 0%, $color-default-blue-end 100%)
+
+  // btn-primary
+  --cube-btn-primary-bgc: linear-gradient(-45deg, $color-primary-orange-start 0%, $color-primary-orange-end 100%)
+
+  // btn-disabled
+  --cube-btn-disabled-color: $color-white-opacity
+
+  // btn-light（司机端目前 light 样式，暂时复用 primary 样式）
+  --cube-btn-light-bgc: linear-gradient(-45deg, $color-primary-orange-start 0%, $color-primary-orange-end 100%)
+
+  $modal-body-padding-right = 25px
+
+  // @type body
+  --cube-checkbox-modal-body-padding-right: 0 - $modal-body-padding-right
+
+  // @type subtitle
+  --cube-checkbox-modal-subtitle-padding-right: $modal-body-padding-right
+  --cube-checkbox-modal-subtitle-color: #757575
+
+  // @type checkbox
+  --cube-checkbox-modal-item-padding-right: $modal-body-padding-right
+  --cube-checkbox-modal-item-border-color: #e1e2e6
+
+  // checkbox-checked-color
+  --cube-checkbox-checked-color: $color-primary
+
+  // checkbox size
+  $round-size = 20px
+  --cube-checkbox-ui-round-width: $round-size
+  --cube-checkbox-ui-round-height: $round-size
+
+  $square-size = 18px
+  --cube-checkbox-ui-square-width: $square-size
+  --cube-checkbox-ui-square-height: $square-size
+  --cube-checkbox-ui-width: $round-size
+  --cube-checkbox-ui-height: $round-size
+  --cube-checkbox-inner-ui-width: 7px
+  --cube-checkbox-inner-ui-height: 4px
+
+  // checkbox border
+  --cube-checkbox-ui-round-border: 1px solid #C8C9CC
+  --cube-checkbox-ui-square-border: 1px solid #C8C9CC
+  --cube-checkbox-ui-round-border_disabled: 2px solid $color-disabled
+  --cube-checkbox-ui-square-border_disabled: 1px solid $color-disabled
+  --cube-checkbox-ui-round-border_checked: 2px solid $color-primary
+  --cube-checkbox-ui-square-border_checked: none
+  --cube-checkbox-ui_checked: 2px solid $color-primary
+  --cube-checkbox-inner-ui-border: 2px solid $color-primary
+
+  // background
+  --cube-checkbox-ui-round-bgc: #FAFAFA
+  --cube-checkbox-ui-square-bgc: $color-primary
+  --cube-checkbox-ui-round-bgc_disabled: $fill-bgc
+  --cube-checkbox-ui-square-bgc_disabled: $fill-bgc
+  --cube-checkbox-ui-round-bgc_checked: #FFF8F4
+  --cube-checkbox-ui-square-bgc_checked: $color-primary
+  --cube-checkbox-ui-round-bgimg: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNiAzNiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMzYgMzYiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwYXRoIHN0eWxlPSJmaWxsOm5vbmU7c3Ryb2tlOiNmZjdlMzM7c3Ryb2tlLXdpZHRoOjQiIGQ9Im03LjUgMTUuMyA4LjMgOC4xTDI4LjUgMTEiLz48L3N2Zz4=')
+  --cube-checkbox-ui-square-bgimg: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzYiIGhlaWdodD0iMzYiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0ibTcgMTcuMTc3IDIuNTA4LTEuMjYgNS43NjkgNC4zMjhMMjYuODggOWgzLjE5MUwxNi4yNDQgMjggNyAxNy4xNzdaIiBmaWxsPSIjRkZGIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiLz48L3N2Zz4=')
+
+  // radius
+  --cube-checkbox-ui-square-radius: 4px
+  --cube-checkbox-ui-round-radius: 50%
+
+  // checkbox margin
+  --cube-checkbox-label-mr_left: 10px
+  --cube-checkbox-label-mr_right: 28px
+  --cube-checkbox-ui-margin: 0 0 0 10px
+  --cube-checkbox-ui-margin-right: 10px
+  --cube-checkbox-ui-round-margin-right: 10px
+  --cube-checkbox-ui-square-margin-right: 10px
+  --cube-checkbox-margin-left: 10px
+
+  // checkbox label padding
+  --cube-checkbox-label-padding: 10px 0
+
+  // transition
+  --cube-checkbox-inner-ui-transition: transform .2s
+
+  --cube-dialog-container-width: 270px
+  --cube-dialog-container-border-radius: 2px
+  --cube-dialog-bgc: $color-white
+  --cube-dialog-btn-secondary-highlight-active-bgc: rgba(252, 145, 83, .04)
+
+  // icon
+  --cube-dialog-icon-bgc: $color-background
+  --cube-dialog-icon-container-margin-top: 20px
+  --cube-dialog-icon-container-margin-bottom: 16px
+  --cube-dialog-icon-container-width: 30px
+  --cube-dialog-icon-container-height: 30px
+  --cube-dialog-icon-container-padding: 10px
+  --cube-dialog-icon-container-border-radius: 50%
+
+  // title
+  --cube-dialog-icon-next-title-margin-top: 0px
+  --cube-dialog-title-default-margin-top: 25px
+  --cube-dialog-title-default-margin-left: 16px
+  --cube-dialog-title-default-margin-right: 16px
+  --cube-dialog-title-default-margin-bottom: 0
+  --cube-dialog-title-color: $color-biz-dark-grey
+  --cube-dialog-title-margin-top: 24px
+  --cube-dialog-title-def-color: $color-dark-grey-s
+  --cube-dialog-title-def-font-size: $font-size-3xl
+  --cube-dialog-title-def-line-height: 25px
+
+  // content
+  --cube-dialog-icon-next-content-margin-top: -4px
+  --cube-dialog-title-next-content-margin-top: 12px
+  --cube-dialog-content-container-margin: 16px 0
+  --cube-dialog-content-container-line-height: 22px
+  --cube-dialog-content-def-padding: 0 25px
+  --cube-dialog-content-next-input-margin-top: 12px
+  --cube-dialog-content-color: $color-dark-grey-s
+  --cube-dialog-content-margin-top: 10px
+  --cube-dialog-content-margin-bottom: 20px
+  --cube-dialog-content-def-text-align: justify
+
+  // button
+  --cube-dialog-button-padding: 17px 10px
+  --cube-dialog-btn-color: $color-primary
+  --cube-dialog-btn-bgc: $color-white
+  --cube-dialog-btn-active-bgc: $color-light-grey-opacity
+  --cube-dialog-btn-highlight-color: $color-primary
+  --cube-dialog-btn-highlight-active-bgc: var(--cube-dialog-btn-secondary-highlight-active-bgc)
+  --cube-dialog-btn-disabled-color: $text-color-hint
+  --cube-dialog-btn-disabled-active-bgc: transparent
+  --cube-dialog-btns-split-color: $border-color-normal
+  --cube-dialog-btn-line-height: 21px
+
+
+  // close
+  --cube-dialog-close-width: 32px
+  --cube-dialog-close-height: 32px
+  --cube-dialog-close-color: $color-dark-grey
+
+
+  // head-icon
+  --cube-dialog-head-icon-width: 85px
+  --cube-dialog-head-icon-height: var(--cube-dialog-head-icon-width)
+  --cube-dialog-head-icon-border-radius: 50%
+  --cube-dialog-head-icon-margin-top: -42px
+
+
+  /* 司机侧 dialog 样式重写 */
+  --cube-dialog-btn-half-width: 50%
+  --cube-dialog-btn-width: 100%
+
+  // @type modal-body
+  --cube-modal-body-padding-right: 25px
+
+  // @type modal-cancel
+  --cube-modal-cancel-color: #323232
+  --cube-modal-cancel-border-bottom-color: #e1e2e6
+
+  // @type modal-title
+  --cube-modal-title-color: #323232
+
+  // @type modal-cancel-icon
+  --cube-modal-close-icon-color: #000000
+
+  // @type modal-content
+  --cube-modal-content-color: #4b4b4d
+
+  $modal-body-padding-right = 25px
+
+  // @type body
+  --cube-radio-modal-body-padding-right: 0 - $modal-body-padding-right
+
+  // @type subtitle
+  --cube-radio-modal-subtitle-padding-right: $modal-body-padding-right
+
+  // @type radio
+  --cube-radio-modal-item-padding-right: $modal-body-padding-right
+  --cube-radio-modal-item-bottom-border-color: #e1e2e6
+
+  // radio background
+  --cube-radio-inner-ui-bgc: $color-primary
+  --cube-radio-ui-bgc: #fff
+  --cube-radio-ui-bgc_disabled: $fill-bgc
+  --cube-radio-ui-bgimg: none
+
+  // radio size
+  --cube-radio-ui-width: 18px
+  --cube-radio-inner-ui-width: 10px
+  --cube-radio-inner-ui-scale-size: 1
+  --cube-radio-ui-scale-size: 1
+
+  // radio border
+  --cube-radio-ui-border_disabled: 1px solid $color-disabled
+  --cube-radio-ui-border_checked: 1px solid $color-primary
+
+  // radio margin
+  --cube-radio-ui-margin: 0 0 0 10px
+  --cube-radio-ui-margin-right: 10px
+  --cube-radio-label-mr_left: 10px
+  --cube-radio-label-mr_right: 28px
+
+  // radio padding
+  --cube-radio-label-padding: 10px 0
+
+  // tick
+  --cube-radio-inner-ui-tick: tick-radio-passenger
+
+  // transition
+  --cube-radio-ui_checked-transition: none
+  --cube-radio-ui-transform: none
+
+  --cube-radio-label-opacity_disabled: .3
+  --cube-radio-label-color_disabled: unset
+
+  // transition
+  --cube-radio-inner-ui-transition: transform .2s linear
+
+  $toast-dark-opacity-bgc = rgba(0, 0, 0, 0.8)
+
+  // toast
+  --cube-toast-z-index: 900
+  --cube-toast-color: $color-white
+  --cube-toast-bgc: $toast-dark-opacity-bgc
+
+  --cube-toast-content-flex-direction: unset
+
+  --cube-toast-content-padding-v: 15px
+  --cube-toast-content-padding-h: 13px
+  --cube-toast-content-bdr: 7px
+
+  --cube-toast-icon-width: 24px
+  --cube-toast-icon-height: 24px
+  --cube-toast-icon-font-size: $font-size-3xl
+
+  --cube-toast-tip-line-height: 18px
+  --cube-toast-tip-font-size: 15px
+  --cube-toast-tip-margin-left: 6px
+  --cube-toast-tip-margin-bottom: 0px
+  --cube-toast-tip-max-width: 12em
+  --cube-toast-tip-max-height: 40px
+
+  --cube-toast-tip-font-weight: unset
+}
+

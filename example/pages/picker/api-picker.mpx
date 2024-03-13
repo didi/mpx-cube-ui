@@ -1,0 +1,96 @@
+<template>
+  <view class="update-data-picker-wrapper">
+    <view class="picker-demo-title">update-data-picker:</view>
+    <cube-picker
+      wx:ref="picker"
+      list="{{dataList}}"
+      selected-index="{{selectedIndex}}"
+    />
+    <view class="button-wrapper">
+      <cube-button bindclick="update">更新选项</cube-button>
+    </view>
+    <view class="button-wrapper">
+      <cube-button bindclick="getSelected">获取选中值</cube-button>
+    </view>
+    <view class="demo-data" wx:if="{{ selectedInfo.length }}">
+      <view class="value">
+        <view class="value-item" wx:for="{{selectedInfo}}" wx:key="index">
+          <view class="item-key">{{item[0]}}</view>
+          <view class="item-value">{{item[1]}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>
+
+<script>
+import { createComponent } from '@mpxjs/core'
+import { beauty } from '../../common/utils'
+
+createComponent({
+  data: {
+    dataList: [
+      [ { text: '剧毒', value: '剧毒' }, { text: '蚂蚁', value: '蚂蚁' }, { text: '幽鬼', value: '幽鬼' } ],
+      [ { text: '输出', value: '输出' }, { text: '控制', value: '控制' }, { text: '核心', value: '核心' } ],
+    ],
+    selectedIndex: [1, 2],
+    selectedInfo: ''
+  },
+  computed: {
+    isShow() {
+      return  !this.selectedInfo
+    }
+  },
+  methods: {
+    update() {
+      this.$refs.picker.updateData([
+        [ { text: '输出', value: '输出' }, { text: '控制', value: '控制' }, { text: '核心', value: '核心' } ],
+        [ { text: '梅肯', value: '梅肯' }, { text: '假腿', value: '假腿' }, { text: '飞鞋', value: '飞鞋' } ]
+      ], [2, 0])
+    },
+    getSelected() {
+      this.selectedInfo = Object.entries(this.$refs.picker.getSelectedInfo())
+    }
+  }
+})
+</script>
+
+<style lang="stylus">
+.update-data-picker-wrapper
+  .picker-demo-title
+    margin-bottom: 8px
+  .button-wrapper
+    margin-top: 10px
+  .demo-data
+    margin-top: 10px
+    padding: 10px 10px
+    background-color: white
+    border: 1px solid  white
+    border-radius: 10px
+  .key
+    margin-bottom: 10px
+    font-size: 16px
+  .key-introduce
+    margin-bottom: 10px
+    line-height: 20px
+  .value
+    margin-bottom: 20px
+    white-space: break-spaces
+    .value-item
+      display flex
+      justify-content: space-between
+      height: 25px
+      line-height: 25px
+      font-size: 15px
+      .item-value
+        white-space nowrap
+</style>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "cube-picker": "@mpxjs/mpx-cube-ui/src/components/picker/index",
+      "cube-button": "@mpxjs/mpx-cube-ui/src/components/button/index"
+    }
+  }
+</script>

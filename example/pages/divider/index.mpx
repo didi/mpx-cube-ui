@@ -1,0 +1,48 @@
+<template>
+  <base-container>
+    <view class="divider-wrapper">
+      <view-desc>分割线</view-desc>
+      <divider-normal />
+    </view>
+    <view class="divider-wrapper">
+      <view-desc>分割线 - 带文本内容</view-desc>
+      <divider-text />
+    </view>
+    <view class="divider-wrapper">
+      <view-desc>分割线 - position-left</view-desc>
+      <divider-position position="left" />
+    </view>
+    <view class="divider-wrapper">
+      <view-desc>分割线 - position-right</view-desc>
+      <divider-position position="right" text="文本内容" />
+    </view>
+    <view class="divider-wrapper">
+      <view-desc>分割线 - slot</view-desc>
+      <divider-slot />
+    </view>
+  </base-container>
+</template>
+
+<script>
+import { createPage } from '@mpxjs/core'
+
+createPage({})
+</script>
+
+<style lang="stylus">
+.divider-wrapper
+  padding-top 20px
+</style>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "base-container": "../../components/base-container/index",
+      "view-desc": "../../components/desc/index",
+      "divider-normal": "./divider-normal",
+      "divider-text": "./divider-text",
+      "divider-slot": "./divider-slot",
+      "divider-position": "./divider-position"
+    }
+  }
+</script>

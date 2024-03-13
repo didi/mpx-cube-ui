@@ -1,0 +1,45 @@
+<template>
+  <view>
+    <cube-button bindclick="showPickerWithSetTime">Use setTime</cube-button>
+    <cube-time-picker
+      wx:ref="picker"
+      bindchange="onChange"
+      bindcolumnChange="onColumnChange" />
+    </cube-time-picker>
+  </view>
+</template>
+
+<script>
+import { createComponent } from '@mpxjs/core'
+import funcMixin from '../../common/mixins/picker'
+
+createComponent({
+  mixins: [ funcMixin ],
+  methods: {
+    showPickerWithSetTime() {
+      const time = new Date().valueOf() + 1 * 60 * 60 * 1000 * 24
+      this.$refs.picker.setTime(time)
+    }
+  }
+})
+</script>
+
+<style lang="stylus">
+.event-params,
+.demo-data
+  margin-top: 10px
+  .key
+    margin-bottom: 10px
+  .value
+    margin-bottom: 20px
+    white-space: break-spaces
+</style>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "cube-button": "@mpxjs/mpx-cube-ui/src/components/button/index",
+      "cube-time-picker": "@mpxjs/mpx-cube-ui/src/components/time-picker/index"
+    }
+  }
+</script>

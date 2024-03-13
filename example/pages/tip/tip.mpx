@@ -1,0 +1,89 @@
+<template>
+  <view class="tips-demo">
+    <cube-icon
+      class="cube-tip-icon"
+      type="question"
+      bind:click="onIconClick"
+    />
+    <cube-tip
+      ext-class-tip="{{ direction }}"
+      wx:ref="tip"
+      direction="{{ direction }}"
+      custom-style="{{ customStyle }}"
+      bind:close="onTipClose"
+    >
+      <view>this is tips</view>
+    </cube-tip>
+  </view>
+</template>
+
+<script>
+import { createComponent } from '@mpxjs/core'
+
+createComponent({
+  data: {
+    index: 0,
+    direction: 'top',
+    customStyle: {}
+  },
+  methods: {
+    onIconClick() {
+      const dirs = ['top', 'right', 'bottom', 'left']
+      this.direction = dirs[this.index++]
+      if (this.index === 4) {
+        this.index = 0
+      }
+      switch (this.direction) {
+        case 'bottom':
+          this.customStyle = {
+            left: '96px',
+            top: '-55px'
+          }
+          break
+        case 'top':
+          this.customStyle = {
+            left: '96px',
+            top: '40px'
+          }
+          break
+        case 'right':
+          this.customStyle = {
+            left: '13px',
+            top: '-8px'
+          }
+          break
+        case 'left':
+          this.customStyle = {
+            left: '178px',
+            top: '-9px'
+          }
+          break
+      }
+      this.$refs.tip.show()
+    },
+    onTipClose() {
+      console.log('close the tip')
+    }
+  }
+})
+</script>
+
+<style lang="stylus">
+.tips-demo
+  position relative
+  width 300px
+  margin 70px auto
+  text-align center
+  line-height 1
+  .cube-tip-icon
+    font-size 30px
+</style>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "cube-tip": "@mpxjs/mpx-cube-ui/src/components/tip/index",
+      "cube-icon": "@mpxjs/mpx-cube-ui/src/components/icon/index"
+    }
+  }
+</script>

@@ -1,0 +1,130 @@
+<template>
+  <view>
+    <cube-button bindclick="showPicker">basic-picker</cube-button>
+    <cube-time-picker-popup
+      wx:ref="picker"
+      title="时间选择器"
+      sub-title="请选择具体的时间"
+      cancel-txt="返回"
+      confirm-txt="确定"
+      min="{{min}}"
+      max="{{max}}"
+      show-now="{{ showNow }}"
+      bindchange="onChange"
+      bindcolumnChange="onColumnChange"
+    />
+    <view class="demo-data" wx:if="{{ confirmParams.length || valueChangeParams.length }}">
+      <view class="key">其他事件可打开控制台查看输出</view>
+      <block wx:if="{{ confirmParams.length }}">
+        <view class="key">confirmParams 事件参数：</view>
+        <view class="value">
+          <view class="value-item" wx:for="{{confirmParams}}" wx:key="index">
+            <view class="item-key">{{item[0]}}</view>
+            <view class="item-value">{{item[1]}}</view>
+          </view>
+        </view>
+      </block>
+      <block wx:if="{{ valueChangeParams.length }}">
+        <view class="key">valueChange 事件触发次数：{{ valueChangeCount }}</view>
+        <view class="key">valueChangeParams 事件参数：</view>
+        <view class="value">
+          <view class="value-item" wx:for="{{valueChangeParams}}" wx:key="index">
+            <view class="item-key">{{item[0]}}</view>
+            <view class="item-value">{{item[1]}}</view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+</template>
+
+<script>
+import { createComponent } from '@mpxjs/core'
+import { beauty } from '../../common/utils'
+
+createComponent({
+  data: {
+    min: Date.now(),
+    max: Date.now() + 3 * 24 * 60 * 60 * 1000,
+    showNow: true,
+    confirmParams: '',
+    valueChangeParams: '',
+    valueChangeCount: 0
+  },
+  methods: {
+    showPicker() {
+      this.confirmParams = '',
+      this.valueChangeParams = '',
+      this.$refs.picker.show()
+    },
+    onColumnChange(e) {
+      console.log('columnChange 事件触发：')
+      console.log(beauty(e.detail))
+    },
+    onChange(e) {
+      console.log('change 事件触发：')
+      console.log(beauty(e.detail))
+    },
+    onToggle(e) {
+      console.log('toggle 事件触发，当前状态是否显示：', e.detail.value)
+    },
+    onClose() {
+      console.log('close 事件触发')
+    },
+    onMaskClick() {
+      console.log('maskClick 事件触发')
+    },
+    onConfirm(e) {
+      const detail = e.detail
+      this.confirmParams = Object.entries(detail)
+      console.log('confirm 事件触发：')
+      console.log(beauty(detail))
+      
+    },
+    onValueChange(e) {
+      const detail = e.detail
+      this.valueChangeCount = this.valueChangeCount + 1
+      this.valueChangeParams = Object.entries(detail)
+      console.log('valueChange 事件触发：')
+      console.log(beauty(detail))
+    }
+  }
+})
+</script>
+
+<style lang="stylus" scoped>
+.event-params,
+.demo-data
+  margin-top: 10px
+  padding: 10px 10px
+  background-color: white
+  border: 1px solid  white
+  border-radius: 10px
+
+.key
+  margin-bottom: 10px
+  font-size: 16px
+.key-introduce
+  margin-bottom: 10px
+  line-height: 20px
+.value
+  margin-bottom: 20px
+  white-space: break-spaces
+  .value-item
+    display flex
+    justify-content: space-between
+    height: 25px
+    line-height: 25px
+    font-size: 15px
+    .item-value
+      white-space nowrap
+</style>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "cube-button": "@mpxjs/mpx-cube-ui/src/components/button/index",
+      "cube-time-picker-popup": "@mpxjs/mpx-cube-ui/src/components/time-picker-popup/index"
+    }
+  }
+</script>

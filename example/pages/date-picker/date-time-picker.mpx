@@ -1,0 +1,47 @@
+<template>
+  <view>
+    <view class="picker-demo-title">date-time-picker:</view>
+    <cube-date-picker
+      min="{{min}}"
+      max="{{max}}"
+      value="{{value}}"
+      columnCount="{{columnCount}}"
+    />
+  </view>
+</template>
+
+<style lang="stylus">
+.picker-demo-title
+  margin-bottom: 8px
+.event-params,
+.demo-data
+  margin-top: 10px
+  .key
+    margin-bottom: 10px
+  .value
+    margin-bottom: 20px
+    white-space: break-spaces
+</style>
+
+<script>
+import { createComponent } from '@mpxjs/core'
+
+createComponent({
+  data: {
+    title: 'Date Time Picker',
+    min: +new Date(2010, 7, 8, 8, 0, 0),
+    max: +new Date(2022, 9, 20, 20, 59, 59),
+    value: +new Date(),
+    columnCount: 6
+  }
+})
+</script>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "cube-button": "@mpxjs/mpx-cube-ui/src/components/button/index",
+      "cube-date-picker": "@mpxjs/mpx-cube-ui/src/components/date-picker/index"
+    }
+  }
+</script>

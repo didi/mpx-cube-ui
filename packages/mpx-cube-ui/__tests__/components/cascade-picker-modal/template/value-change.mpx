@@ -1,0 +1,37 @@
+<template>
+  <view>
+    <cube-button bindclick="showPicker">Cascade-Picker</cube-button>
+    <cube-cascade-picker-modal
+      wx:ref="picker"
+      title="标题"
+      list="{{ list }}"
+      selectedIndex="{{ selectedIndex }}"
+      bindchange="onChange"
+      bindcolumnChange="onColumnChange"
+      bindcancel="onCancel"
+      bindconfirm="onConfirm"
+      bindvalueChange="onValueChange" />
+  </view>
+</template>
+<script>
+import { createComponent } from '@mpxjs/core'
+import generalMixins from '../../../common/mixins/picker-popup'
+import { cascadeData } from '../../../common/data/cascade-picker-data.ts'
+createComponent({
+  mixins: [generalMixins],
+  data: {
+    selectedIndex: [0, 1, 0],
+    list: cascadeData
+  }
+})
+</script>
+
+<script type="application/json">
+  {
+    "component": true,
+    "usingComponents": {
+      "cube-button": "../../../../src/components/button/index.mpx",
+      "cube-cascade-picker-modal": "../../../../src/components/cascade-picker-modal/index.mpx"
+    }
+  }
+</script>

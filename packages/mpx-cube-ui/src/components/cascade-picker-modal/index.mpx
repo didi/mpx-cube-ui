@@ -1,0 +1,52 @@
+<template>
+  <cube-picker-modal-base
+    wx:class="{{ themeType ? 'cube-cascade-picker-modal cube-cascade-picker-modal-' + themeType : 'cube-cascade-picker-modal' }}"
+    wx:ref="choosePopup"
+    wx:model="{{isVisible}}"
+    wx:model-prop="visible"
+    wx:model-event="toggle"
+    pending="{{ pending }}"
+    title="{{ title }}"
+    content="{{ content }}"
+    type="confirm"
+    show-close-icon="{{ showCloseIcon }}"
+    mask-closable="{{ maskClosable }}"
+    theme-type="{{ themeType }}"
+    bind:confirm="onConfirm"
+    bind:cancel="onCancel"
+    >
+    <!-- 顶部位置插槽 -->
+    <slot name="header" slot="header" />
+    <cube-cascade-picker
+      slot="picker"
+      wx:ref="picker"
+      list="{{ list }}"
+      selected-index="{{ selectedIndex }}"
+      immediate-change="{{ immediateChange }}"
+      async="{{ async }}"
+      theme-type="{{ themeType }}"
+      bind:change="onChange"
+      bind:columnChange="onColumnChange"
+      bind:pickstart@wx="onPickstart"
+      bind:pickend@wx="onPickend"
+      bind:pendingChange="onPendingChange"
+    />
+    <!-- 尾部位置插槽 -->
+    <slot name="footer" slot="footer" />
+  </cube-picker-modal-base>
+</template>
+
+<script lang="ts" src="./index.ts"></script>
+
+<style lang="stylus"></style>
+
+<script type="application/json">
+  {
+    "styleIsolation": "shared",
+    "component": true,
+    "usingComponents": {
+      "cube-picker-modal-base": "../picker-modal/picker-modal-base.mpx",
+      "cube-cascade-picker": "../cascade-picker/index.mpx"
+    }
+  }
+</script>

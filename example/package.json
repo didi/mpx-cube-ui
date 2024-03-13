@@ -1,0 +1,55 @@
+{
+  "name": "example",
+  "version": "1.0.6",
+  "private": true,
+  "description": "mpx components library",
+  "author": "xiaolei <xiaolei@didichuxing.com>",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build:ali": "mpx-cli-service build --targets=ali",
+    "build:dd": "mpx-cli-service build --targets=dd",
+    "build:mp": "mpx-cli-service build",
+    "build:mp:dev": "mpx-cli-service build --mode=development",
+    "build:web": "mpx-cli-service build --targets=web",
+    "inspect:mp": "mpx-cli-service inspect > output.js",
+    "inspect:web": "mpx-cli-service inspect --targets=web > output.js",
+    "watch:mp": "mpx-cli-service serve",
+    "watch:ali": "mpx-cli-service serve --targets=ali",
+    "watch:web": "mpx-cli-service serve --targets=web"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "browserslist": "ios >= 8, chrome >= 47",
+  "devDependencies": {
+    "@babel/core": "^7.10.4",
+    "@babel/plugin-transform-runtime": "^7.10.4",
+    "@babel/plugin-transform-typescript": "^7.20.0",
+    "@babel/preset-env": "^7.10.4",
+    "@babel/runtime-corejs3": "^7.10.4",
+    "@mpxjs/api-proxy": "^2.9.0",
+    "@mpxjs/core": "^2.9.0",
+    "@mpxjs/store": "^2.9.0",
+    "@mpxjs/webpack-plugin": "^2.9.0",
+    "@mpxjs/babel-plugin-inject-page-events": "^2.9.0",
+    "@mpxjs/mpx-cli-service": "^2.1.5",
+    "@mpxjs/vue-cli-plugin-mpx": "^2.1.5",
+    "@mpxjs/vue-cli-plugin-mpx-theme": "2.0.0-beta.2",
+    "@mpxjs/vue-cli-plugin-mpx-typescript": "^2.1.5",
+    "@vue/cli-service": "~5.0.8",
+    "postcss-css-variables": "^0.19.0",
+    "stylus": "^0.55.0",
+    "stylus-loader": "^6.1.0",
+    "typescript": "^4.9.5",
+    "vue": "^2.6.14",
+    "vue-demi": "^0.13.11",
+    "vue-i18n": "^8.27.2",
+    "vue-i18n-bridge": "^9.2.2",
+    "webpack": "^5.48.0"
+  }
+}

@@ -1,0 +1,40 @@
+<template>
+  <base-container class="picker-page">
+    <cube-basic-picker />
+
+    <view class="picker-divider-wrapper">
+      <cube-divider />
+    </view>
+
+    <cube-multi-picker />
+
+    <view class="picker-divider-wrapper">
+      <cube-divider />
+    </view>
+
+    <cube-api-picker />
+  </base-container>
+</template>
+
+<script>
+import { createPage } from '@mpxjs/core'
+
+createPage({})
+</script>
+
+<style lang="stylus">
+.picker-divider-wrapper
+  margin 10px 0
+</style>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "base-container": "../../components/base-container/index",
+      "cube-divider": "@mpxjs/mpx-cube-ui/src/components/divider/index",
+      "cube-basic-picker": "./basic-picker",
+      "cube-multi-picker": "./multi-picker",
+      "cube-api-picker": "./api-picker"
+    }
+  }
+</script>

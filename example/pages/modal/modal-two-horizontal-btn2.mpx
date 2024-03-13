@@ -1,0 +1,63 @@
+<template>
+  <view class="modal-two-horizontal-btn2-demo">
+    <cube-modal
+      wx:ref="modal"
+      title="我是标题~"
+      content="我是正文我是正文我是正文我是正文我是正文我是正文"
+      direction="horizontal"
+      confirm-btn="确认按钮"
+      cancel-btn="取消按钮"
+      mask-closable="{{ true }}"
+      no-built-in-btns="{{ true }}"
+      bind:confirm="onConfirm"
+      bind:cancel="onCancel"
+    >
+      <view slot="footer">
+        <cube-button-group direction="horizontal">
+          <cube-button  class="cancel-btn" bind:click="onCancel">取消按钮</cube-button>
+          <cube-button  class="confirm-btn" light bind:click="onConfirm">确认按钮</cube-button>
+        </cube-button-group>
+      </view>
+    </cube-modal>
+    <cube-button  bind:click="onTap">modal-水平两个按钮（弱引导）</cube-button>
+  </view>
+</template>
+
+<script>
+  import { createComponent } from '@mpxjs/core'
+
+  createComponent({
+    methods: {
+      onTap() {
+        this.$refs.modal.show()
+      },
+      onConfirm() {
+        this.$refs.modal.hide()
+        console.log('click the confirm btn')
+      },
+      onCancel() {
+        this.$refs.modal.hide()
+        console.log('click the cancel btn')
+      }
+    }
+  })
+</script>
+
+<style lang="stylus">
+.modal-two-horizontal-btn2-demo
+  .cancel-btn
+    margin-right 7px
+  .confirm-btn, .cancel-btn
+    flex 1
+    margin-top 30px
+</style>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "cube-modal": "@mpxjs/mpx-cube-ui/src/components/modal/index",
+      "cube-button": "@mpxjs/mpx-cube-ui/src/components/button/index",
+      "cube-button-group": "@mpxjs/mpx-cube-ui/src/components/button-group/index"
+    }
+  }
+</script>

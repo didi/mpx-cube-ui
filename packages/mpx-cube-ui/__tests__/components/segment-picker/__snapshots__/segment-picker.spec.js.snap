@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`component picker unit test  set props check matchSnapshot 1`] = `"<wx-view class=\\"main--cube-segment-picker\\"></wx-view>"`;
+
+exports[`component picker unit test default props check matchSnapshot 1`] = `"<wx-view class=\\"main--cube-segment-picker\\"></wx-view>"`;

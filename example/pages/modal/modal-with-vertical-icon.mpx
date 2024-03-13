@@ -1,0 +1,59 @@
+<template>
+  <view class="modal-with-vertical-icon-demo">
+    <cube-modal
+      wx:ref="modal"
+      type="confirm"
+      title="我是标题哟我是标题哟我是标题哟~"
+      content="我是正文我是正文我是正文~"
+      close-text="取消"
+      confirm-btn="确认"
+      mask-closable="{{ true }}"
+      bind:confirm="onConfirm"
+      bind:cancel="onCancel"
+    >
+      <view slot="icon">
+        <image class="modal-image-icon" src="https://ut-static.udache.com/webx/mpx-cube-ui/06UBoCw3t0hVzCurBpcKs.png"></image>
+      </view>
+    </cube-modal>
+    <cube-button  bind:click="onTap">modal-with-vertical-icon</cube-button>
+  </view>
+</template>
+
+<script>
+  import { createComponent } from '@mpxjs/core'
+
+  createComponent({
+    methods: {
+      onTap() {
+        this.$refs.modal.show()
+      },
+      onConfirm() {
+        console.log('click the confirm btn')
+      },
+      onCancel() {
+        console.log('click the cancel btn')
+      }
+    }
+  })
+</script>
+
+<style lang="stylus">
+.modal-with-vertical-icon-demo
+  .modal-image-icon
+    display block
+    height 80px
+    width 80px
+    margin-left auto
+    margin-right auto
+    margin-bottom 15px
+    border-radius 50%
+</style>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "cube-modal": "@mpxjs/mpx-cube-ui/src/components/modal/index",
+      "cube-button": "@mpxjs/mpx-cube-ui/src/components/button/index"
+    }
+  }
+</script>

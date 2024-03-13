@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`component float-ball unit test event trigger check matchSnapshot 1`] = `"<wx-view class=\\"main--ref_ball_1 main--cube-float-ball\\" style=\\"left:404px;top:336px;\\"><wx-view class=\\"main--cube-float-ball-content\\">float-ball</wx-view></wx-view>"`;
+
+exports[`component float-ball unit test props check default matchSnapshot 1`] = `"<wx-view class=\\"main--ref_ball_1 main--cube-float-ball\\" style=\\"left:404px;top:336px;\\"><wx-view class=\\"main--cube-float-ball-content\\">float-ball</wx-view></wx-view>"`;
+
+exports[`component float-ball unit test props check initialPosition matchSnapshot 1`] = `"<wx-view class=\\"main--ref_ball_1 main--cube-float-ball\\" style=\\"left:100px;top:100px;\\"><wx-view class=\\"main--cube-float-ball-content\\">float-ball</wx-view></wx-view>"`;
+
+exports[`component float-ball unit test slot render check matchSnapshot 1`] = `"<main><wx-view class=\\"main--ref_ball_1 main--cube-float-ball\\" style=\\"left:414px;top:336px;\\"><wx-view class=\\"slot-node\\">test</wx-view></wx-view></main>"`;

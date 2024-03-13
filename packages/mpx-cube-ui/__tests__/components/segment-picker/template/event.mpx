@@ -1,0 +1,80 @@
+<template>
+  <view>
+    <cube-button bindclick="showPicker">Express - From - To</cube-button>
+    <cube-segment-picker
+      wx:ref="picker"
+      title="选择器"
+      list="{{list}}"
+      cancelTxt="{{cancelTxt}}"
+      confirmTxt="{{confirmTxt}}"
+      nextTxt="{{nextTxt}}"
+      prevTxt="{{prevTxt}}"
+      bindchange="change"
+      bindcancel="cancel"
+      bindselect="select"
+      bindvalueChange="valueChange"
+    >
+    </cube-segment-picker>
+  </view>
+</template>
+
+<script>
+import { createComponent } from '@mpxjs/core'
+import { provinceList, cityList, areaList } from '../../../../../../example/data/area.ts'
+
+const cityData = provinceList
+cityData.forEach((province) => {
+  province.children = cityList[province.value]
+  province.children.forEach((city) => {
+    city.children = areaList[city.value]
+  })
+})
+createComponent({
+  data: {
+    list: [
+      {
+        is: 'cube-cascade-picker-popup',
+        title: '寄件地址',
+        list: cityData,
+        selectedIndex: [0, 0, 0],
+        cancelTxt: 'back'
+      },
+      {
+        is: 'cube-cascade-picker-popup',
+        title: '收件地址',
+        list: cityData,
+        cancelTxt: 'back',
+        confirmTxt: 'Confirm11',
+        selectedIndex: [0, 0, 0]
+      }
+    ],
+    nextTxt: '下一步',
+    prevTxt: '上一步'
+  },
+  methods: {
+    showPicker() {
+      this.$refs.picker.show()
+    },
+    change(e) {
+    },
+    cancel() {
+    },
+    select(e) {
+    },
+    valueChange(e) {
+    }
+  },
+  mounted() {
+    this.showPicker()
+  }
+})
+</script>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "cube-button": "../../../../src/components/button/index.mpx",
+      "cube-segment-picker": "../../../../src/components/segment-picker/index.mpx"
+    }
+  }
+</script>

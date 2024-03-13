@@ -1,0 +1,19 @@
+{
+  "name": "@mpxjs/mpx-cube-ui",
+  "version": "1.0.8",
+  "description": "mpx components library",
+  "author": "xiaolei <xiaolei@didichuxing.com>",
+  "scripts": {
+    "build": "node ./build/genLib.js",
+    "dev": "node ./build/genLib.js -w"
+  },
+  "files": [
+    "src",
+    "lib"
+  ],
+  "license": "Apache-2.0",
+  "dependencies": {},
+  "devDependencies": {
+    "typescript": "^4.9.5"
+  }
+}
