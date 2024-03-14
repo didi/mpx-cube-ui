@@ -46,4 +46,4 @@ jobs:
             ${{ runner.os }}-
 
       - name: exec unit test
-        run: pnpm run build && pnpm run test
+        run: pnpm run build && pnpm test -- -u
