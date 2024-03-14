@@ -99,18 +99,6 @@ createPage({
     }
   }
 })
-
-// createPage({
-//   // onShareAppMessage() {
-//   //   return {}
-//   // },
-//   methods: {
-//     onGetUserInfo(e) {
-//       console.log('the user info is:', e)
-//     },
-//     getPhoneNumber() {}
-//   }
-// })
 </script>
 
 <style lang="stylus">

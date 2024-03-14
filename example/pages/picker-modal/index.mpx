@@ -18,11 +18,6 @@
 import { createPage } from '@mpxjs/core'
 
 createPage({})
-
-// "cube-multi-picker": "./multi-picker",
-//       "cube-alias-picker": "./alias-picker",
-//       "cube-subtitle-picker": "./subtitle-picker",
-//       "cube-update-data-picker": "./update-data-picker"
 </script>
 
 <style lang="stylus">
