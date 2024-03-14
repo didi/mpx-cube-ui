@@ -47,6 +47,6 @@ pnpm run example:dev
 
 ## 链接
 
-* [意见反馈]()
-* [更新日志]()
-* [联系我们]()
+* [意见反馈](/issues)
+* [更新日志](/blob/main/docs/guide/changelog.md)
+* [联系我们](/blob/main/docs/guide/contact.md)

@@ -17,7 +17,7 @@ mpx-cube-ui 提供了灵活配置的主题定制能力。
 
 mpx-cube-ui 在组件设计开发阶段对于表现层的结构和样式进行抽离，利用预编译器和 CSS 变量的能力，提供细粒度（颜色、字体、圆角、阴影等）的样式定制能力，你的项目可以按需使用主题的编译方案还是运行时方案来满足不同样式风格的业务场景开发。
 
-详见[主题与样式](http://localhost:8080/mpx-cube-ui/theme-passenger/guide/theme.html)章节。
+详见[主题与样式](/guide/theme.html)章节。
 
 
 </card>
@@ -62,9 +62,9 @@ mpx-cube-ui 内置了文档示例一体化的能力。
 
 ### 其他链接
 
-* 意见反馈
-* 更新日志
-* 联系我们
+* [意见反馈](https://github.com/didi/mpx-cube-ui/issues)
+* [更新日志](/guide/changelog.html)
+* [联系我们](/guide/contact.html)
 
 </card>
 

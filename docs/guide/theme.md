@@ -4,7 +4,7 @@
 
 ### 主题与样式
 
-mpx-cube-ui 在设计开发过程中对于表现层的结构和样式进行抽离，利用预编译器（[stylus](https://stylus-lang.com/)）和 [Css 变量](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Using_CSS_custom_properties)的能力来提供细粒度的样式定制能力。你可以利用样式定制能力去搭建更加成体系的小程序主题样式来满足特定业务产品的开发。
+mpx-cube-ui 在设计开发过程中对于表现层的结构和样式进行抽离，利用预编译器（[Stylus](https://stylus-lang.com/)）和 [CSS 变量](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Using_CSS_custom_properties)的能力来提供细粒度的样式定制能力。你可以利用样式定制能力去搭建更加成体系的小程序主题样式来满足特定业务产品的开发。
 
 mpx-cube-ui 目前提供了一套默认的主题样式配置，具体见 todo: 主题样式配置位置。而在右方的模拟器当中你所看到的示例是使用了另外一份主题样式文件覆盖了默认样式配置而生成的，具体参见 todo: passenger 主题配置。
 

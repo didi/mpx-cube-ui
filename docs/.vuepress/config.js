@@ -23,7 +23,7 @@ module.exports = {
     nav: [
       {
         text: 'Github',
-        link: ''
+        link: 'https://github.com/didi/mpx-cube-ui'
       }
     ],
     sidebar: sidebarConfig
