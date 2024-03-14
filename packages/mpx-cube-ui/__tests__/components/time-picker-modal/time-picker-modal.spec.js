@@ -214,7 +214,7 @@ describe('component picker unit test', function () {
       expect(valueChangeDetail).toEqual({
         formatedTime: '2022/12/12 12:00',
         selectedText: '12月12日 12点:00分',
-        selectedTime: 1670817600000
+        selectedTime: +new Date('2022/12/12 12:00')
       })
     })
   })

@@ -174,12 +174,12 @@ describe('component picker unit test', function () {
       const columnChangeDetail3 = columnChange.mock.calls[2][0].detail
       const changeDetail = change.mock.calls[0][0].detail
       expect(columnChangeDetail1).toEqual({
-        column: 0, index: 1, text: '12月12日', value: 1670819400000
+        column: 0, index: 1, text: '12月12日', value: +new Date(2022, 11, 12, 12, 30)
       })
       expect(columnChangeDetail2).toEqual({ column: 1, index: 12, text: '12点', value: 12 })
       expect(columnChangeDetail3).toEqual({ column: 2, index: 3, text: '30分', value: 30 })
       expect(changeDetail).toEqual({
-        selectedTime: 1670819400000,
+        selectedTime: +new Date(2022, 11, 12, 12, 30),
         selectedText: '12月12日 12点:30分',
         formatedTime: '2022/12/12 12:30format测试', // 同时也测下format
         selectedIndex: [1, 12, 3]
@@ -203,7 +203,7 @@ describe('component picker unit test', function () {
       // getSelectedInfo
       const info = component.instance.getSelectedInfo()
       const changeProps = {
-        selectedTime: 1670819400000,
+        selectedTime: +new Date(2022, 11, 12, 12, 30),
         selectedText: '12月12日 12点:30分',
         formatedTime: '2022/12/12 12:30',
         selectedIndex: [1, 12, 3]
