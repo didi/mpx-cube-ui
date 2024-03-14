@@ -22,7 +22,8 @@ describe('component toast unit test', function() {
     icon: 'delete' // 图标类型（自动添加cubeic-前缀）
   }
   describe('base props check', () => {
-    const component = newComponent(baseProps)
+    const component = newComponent(Object.assign({ visible: true }, baseProps))
+    component.instance.show()
     it('matchSnapshot', () => {
       expect(component.dom.innerHTML).toMatchSnapshot() // 判断前后生成的dom是否一样
     })
@@ -36,7 +37,7 @@ describe('component toast unit test', function() {
     it('should be visibled through the "show" method', async () => {
       // 不能通过一个 querySelector 来选取，查看 https://github.com/wechat-miniprogram/miniprogram-simulate/issues/53
       component.instance.show()
-      await simulate.sleep(10)
+      await simulate.sleep(5)
       const showDom = component.querySelector('.cube-toast').querySelector('.show') // props.visible 正确
       expect(showDom).toBeTruthy()
 
@@ -44,9 +45,9 @@ describe('component toast unit test', function() {
     })
     it('should be invisibled through the "hide" method', async () => {
       component.instance.hide()
-      await simulate.sleep(10)
-      const showDom = component.querySelector('.cube-toast').querySelector('.hide') // props.visible 正确
-      expect(showDom).toBeTruthy()
+      await simulate.sleep(5)
+      const dom = component.querySelector('.cube-toast')
+      expect(dom).toBe(undefined)
 
       expect(component.instance.data.isVisible).toBe(false)
     })
@@ -65,7 +66,7 @@ describe('component toast unit test', function() {
       expect(component.instance.data.isVisible).toBe(true)
       const mask = component.querySelector('.cube-toast').querySelector('.cube-popup-mask')
       mask.dispatchEvent('touchend')
-      await simulate.sleep(10)
+      await simulate.sleep(5)
 
       expect(component.instance.data.isVisible).toBe(false)
       expect(onToggleFn).toHaveBeenCalled()
@@ -80,6 +81,7 @@ describe('component toast unit test', function() {
       template: `
         <cube-toast
           txt="请输入乘车人手机号"
+          visible="{{ ${true} }}"
           wx:ref="toastImg">
             ${imageSlot}
         </cube-toast>

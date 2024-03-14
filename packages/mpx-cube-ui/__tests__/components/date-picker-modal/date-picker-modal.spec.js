@@ -173,7 +173,7 @@ describe('component picker unit test', function () {
         'cube-date-picker-modal': componentId
       },
       template: `
-        <cube-date-picker-modal value="{{${+new Date('2023-02-10')}}}">
+        <cube-date-picker-modal value="{{${+new Date('2023-02-10')}}}" max="{{${+new Date('2024/12/31 23:59:59')}}}">
           <view class="header-slot" slot="header">${headerMessage}</view>
           <view class="footer-slot" slot="footer">${footerMessage}</view>
         </cube-date-picker-modal>
