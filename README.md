@@ -47,6 +47,6 @@ pnpm run example:dev
 
 ## 链接
 
-* [意见反馈]()
-* [更新日志]()
-* [联系我们]()
+* [意见反馈](https://github.com/didi/mpx-cube-ui/issues)
+* [更新日志](/docs/guide/changelog.md)
+* [联系我们](/docs/guide/contact.md)
