@@ -6,7 +6,7 @@
 
 mpx-cube-ui 在设计开发过程中对于表现层的结构和样式进行抽离，利用预编译器（[Stylus](https://stylus-lang.com/)）和 [CSS 变量](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Using_CSS_custom_properties)的能力来提供细粒度的样式定制能力。你可以利用样式定制能力去搭建更加成体系的小程序主题样式来满足特定业务产品的开发。
 
-mpx-cube-ui 目前提供了一套默认的主题样式配置，具体见[主题样式配置](https://github.com/didi/mpx-cube-ui/tree/docs-improvement/packages/mpx-cube-ui/src/common/stylus/theme)文件。而在右方的模拟器当中你所看到的示例是使用了另外的主题样式文件覆盖了默认样式配置而生成的，你可以选择[乘客样式主题](https://github.com/didi/mpx-cube-ui/blob/docs-improvement/example/themes/passenger-variables.styl)或者[司机样式主题](https://github.com/didi/mpx-cube-ui/blob/docs-improvement/example/themes/driver-variables.styl)分别查看样式效果。
+mpx-cube-ui 目前提供了一套默认的主题样式配置，具体见[主题样式配置](https://github.com/didi/mpx-cube-ui/tree/main/packages/mpx-cube-ui/src/common/stylus/theme)文件。而在右方的模拟器当中你所看到的示例是使用了另外的主题样式文件覆盖了默认样式配置而生成的，你可以选择[乘客样式主题](https://github.com/didi/mpx-cube-ui/blob/main/example/themes/passenger-variables.styl)或者[司机样式主题](https://github.com/didi/mpx-cube-ui/blob/main/example/themes/driver-variables.styl)分别查看样式效果。
 
 此外，考虑到不同小程序平台的样式隔离机制，mpx-cube-ui 也提供了几种样式覆盖策略来满足一些局部样式定制能力。
 
