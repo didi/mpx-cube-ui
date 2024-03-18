@@ -28,7 +28,7 @@ jobs:
       - name: generate docs file
         if: env.GIT_DIFF
         run: |
-          pnpm run docs:build
+          pnpm run docs:prod
 
       # 使用 https://github.com/appleboy/scp-action 进行部署，注意 strip_components 用于控制层级
       - name: Deploy to self-host server
@@ -39,6 +39,6 @@ jobs:
           username: ${{ secrets.DOCS_SERVER_USER }}
           key: ${{ secrets.DOCS_SERVER_KEY }}
           command_timeout: "20m"
-          source: "./docs-vuepress/.vuepress/dist/"
+          source: "./docs/.vuepress/dist/"
           strip_components: 4
           target: "${{ secrets.DOCS_SERVER_DIR }}"
