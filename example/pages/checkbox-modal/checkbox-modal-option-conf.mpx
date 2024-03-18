@@ -6,7 +6,7 @@
       subtitle="这里是描述这里是描述这里是描述这里是描述这里是描述这里是描述这里是描述这里是描述这里是描述"
       show-close-icon="{{ true }}"
       options="{{ options }}"
-      value="{{ checkedValue }}"
+      values="{{ value }}"
       bind:close="onClose"
       bind:confirm="onConfirm"
     />
