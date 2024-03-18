@@ -1,0 +1,102 @@
+<template>
+  <view>
+    <view>通过 wx:model 控制显隐藏，当前值:</view>
+    <cube-radio-group
+      col-num="{{ 2 }}"
+      options="{{ options }}"
+      wx:model="{{ radioVal }}"
+    />
+    <cube-button bindclick="showPicker">wx-model-picker</cube-button>
+    <cube-picker-modal
+      wx:model="{{ isVisible }}"
+      wx:model-prop="visible"
+      wx:model-event="toggle"
+      wx:ref="picker"
+      title="wx:model 控制"
+      content="content 内容"
+      list="{{ dataList }}"
+      selected-index="{{ selectedIndex }}"
+    />
+  </view>
+</template>
+
+<script>
+import { createComponent } from '@mpxjs/core'
+import { beauty } from '../../common/utils'
+
+createComponent({
+  data: {
+    selectedIndex: [0, 1, 0],
+    dataList: [
+      [ { text: '剧毒', value: '剧毒' }, { text: '蚂蚁', value: '蚂蚁' }, { text: '幽鬼', value: '幽鬼' } ],
+      [ { text: '输出', value: '输出' }, { text: '控制', value: '控制' }, { text: '核心', value: '核心' } ],
+      [ { text: '梅肯', value: '梅肯' }, { text: '假腿', value: '假腿' }, { text: '飞鞋', value: '飞鞋' } ]
+    ],
+    options: [{
+      value: 1,
+      text: 'true'
+    }, {
+      value: 0,
+      text: 'false'
+    }],
+    radioVal: 0,
+    isVisible: false
+  },
+  watch: {
+    radioVal(newV) {
+      if (this.isVisible === Boolean(newV)) return
+      this.isVisible = Boolean(newV)
+    },
+    isVisible(newV) {
+      if (this.radioVal === Number(newV)) return
+      this.radioVal = Number(newV)
+    }
+  },
+  methods: {
+    showPicker() {
+      this.$refs.picker.show()
+    }
+  }
+})
+</script>
+
+<style lang="stylus">
+.demo-data
+  margin-top: 10px
+  padding: 10px 10px
+  background-color: white
+  border: 1px solid  white
+  border-radius: 10px
+
+  .key
+    margin-bottom: 10px
+    font-size: 16px
+  .key-introduce
+    margin-bottom: 10px
+    line-height: 20px
+  .value
+    margin-bottom: 20px
+    white-space: break-spaces
+    .value-number
+      margin-top: 20px
+    .value-item
+      display flex
+      justify-content: space-between
+      height: 25px
+      line-height: 25px
+      font-size: 15px
+      .item-value
+        margin-left: 10px
+        white-space nowrap
+</style>
+
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "cube-button": "@mpxjs/mpx-cube-ui/src/components/button/index",
+      "cube-radio-group": "@mpxjs/mpx-cube-ui/src/components/radio-group/index",
+      "cube-picker-modal": "@mpxjs/mpx-cube-ui/src/components/picker-modal/index"
+    }
+  }
+</script>

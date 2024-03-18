@@ -28,6 +28,16 @@ PickerModal 保留了 Picker 和 Modal 原有的事件，比如 columnChange、c
 
 <card>
 
+### 使用 wx:model
+
+可以使用 wx:model 来控制选择器的显示与隐藏
+
+<!-- @example: wx-model-picker -->
+
+</card>
+
+<card>
+
 ### 使用 slot
 
 PickerModal 提供了两个具名插槽，header 和 footer。 header 是顶部位置插槽，在标题上方； footer 是尾部插槽，在按钮下方。

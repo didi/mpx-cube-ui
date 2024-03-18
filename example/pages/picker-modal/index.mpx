@@ -5,6 +5,10 @@
     </view>
 
     <view class="btn-item">
+      <cube-wx-model-picker />
+    </view>
+
+    <view class="btn-item">
       <cube-slot-picker />
     </view>
 
@@ -31,6 +35,7 @@ createPage({})
       "base-container": "../../components/base-container/index",
       "cube-divider": "@mpxjs/mpx-cube-ui/src/components/divider/index",
       "cube-basic-picker": "./basic-picker",
+      "cube-wx-model-picker": "./wx-model-picker",
       "cube-slot-picker": "./slot-picker",
       "cube-update-data-picker": "./update-data-picker"
     }
