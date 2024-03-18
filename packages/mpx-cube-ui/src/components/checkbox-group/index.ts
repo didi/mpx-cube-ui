@@ -90,7 +90,11 @@ createSelectComponent({
     setCheckboxValue () {
       let checkboxs
       if (isWeb) {
-        checkboxs = this.$children[0].$children
+        checkboxs = this.$children
+        if (typeof checkboxs[0].isChecked !== 'boolean') {
+          // mpx 转 web 有版本多了一层空的 component
+          checkboxs = checkboxs[0].$children
+        }
       } else {
         checkboxs = this.usingMpSlot ? this.getRelationNodes(Checkbox) : this.$refs.checkboxRef
       }
