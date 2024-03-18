@@ -64,7 +64,7 @@ const compileWebsite = async (options: Options) => {
     writeThemeFile('theme-var-info.json', themeVarInfo),
     writeThemeFile('default-theme-style.json', defaultThemeStyle)
   ])
-  doDocsBuild(options)
+  await doDocsBuild(options)
   doVuepress(options)
 }
 
