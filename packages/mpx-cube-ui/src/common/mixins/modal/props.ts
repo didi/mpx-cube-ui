@@ -40,6 +40,11 @@ export default getMixin({
     hideOnCancel: {
       type: Boolean,
       value: true
+    },
+    // 触发 close 事件时是否需要主动关闭弹窗
+    hideOnClose: {
+      type: Boolean,
+      value: true
     }
   }
 })

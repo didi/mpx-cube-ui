@@ -68,21 +68,17 @@ createModalComponent({
   },
   methods: {
     onConfirm() {
-      if (this.hideOnConfirm) {
-        this.hide()
-      }
+      if (this.hideOnConfirm) this.hide()
       // 点击底部确定按钮触发事件
       this.triggerEvent(EVENT_CONFIRM)
     },
     onCancel() {
-      if (this.hideOnCancel) {
-        this.hide()
-      }
+      if (this.hideOnCancel) this.hide()
       // 点击顶部/底部取消按钮触发事件
       this.triggerEvent(EVENT_CANCEL)
     },
     onClose() {
-      this.hide()
+      if (this.hideOnClose) this.hide()
       // 点击顶部关闭icon或遮盖层触发事件
       this.triggerEvent(EVENT_CLOSE)
     }

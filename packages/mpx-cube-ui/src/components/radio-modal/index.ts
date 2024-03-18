@@ -52,12 +52,10 @@ createModalComponent({
   },
   methods: {
     onClose() {
-      this.hide()
       // 点击顶部关闭icon或遮盖层触发事件
       this.triggerEvent(EVENT_CLOSE)
     },
     onCancel() {
-      this.hide()
       // 点击顶部取消按钮触发事件
       this.triggerEvent(EVENT_CANCEL)
     }

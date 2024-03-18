@@ -6,7 +6,7 @@
     transition="move-up"
     visible="{{ isVisible }}"
     mask="{{ true }}"
-    mask-closable="{{ maskClosable }}"
+    mask-closable="{{ maskClosable && hideOnClose }}"
     mask-fade-transition="{{ true }}"
     theme-type="{{ themeType }}"
     bind:maskClick="onMaskClick"

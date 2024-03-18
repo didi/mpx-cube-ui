@@ -15,7 +15,6 @@ createPickerModalBaseComponent({
   methods: {
     onConfirm() {
       if (this.pending) return
-      this.hide()
       this.triggerEvent(EVENT_CONFIRM)
     }
   }
