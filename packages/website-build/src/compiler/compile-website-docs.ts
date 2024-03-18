@@ -46,7 +46,7 @@ function doDocsBuild (options: Options = {}) {
       })
     }
   }
-  doBuild()
+  return doBuild()
 }
 
 export default doDocsBuild
