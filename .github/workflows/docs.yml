@@ -12,8 +12,8 @@ jobs:
       - uses: technote-space/get-diff-action@v4
         with:
           PATTERNS: |
-            +(docs|docs-vuepress)/**/*
-            +(docs|docs-vuepress)/.*/**/*
+            +(docs|docs-vuepress|example)/**/*
+            +(docs|docs-vuepress|example)/.*/**/*
       - uses: actions/setup-node@v1
         with:
           node-version: '16'
