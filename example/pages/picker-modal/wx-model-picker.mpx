@@ -1,6 +1,6 @@
 <template>
   <view>
-    <view>通过 wx:model 控制显隐藏，当前值:</view>
+    <view>通过 wx:model 控制显隐藏，当前值：</view>
     <cube-radio-group
       col-num="{{ 2 }}"
       options="{{ options }}"
