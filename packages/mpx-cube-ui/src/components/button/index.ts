@@ -149,10 +149,9 @@ createComponent({
     // 支付宝生活号 id，必须是当前小程序同主体且已关联的生活号，open-type="lifestyle" 时有效
     publicId: String,
     /**
-     * @description （已废弃）按钮类型（v1.0.0）
-     * @optional primary/inline/outline/outline-primary/light
+     * @description 通过 wx:style透传样式
+     * @optional styleConfig.btn 用于透传给组件最外层 / styleConfig.content 用于透传给组件内容区域
      */
-    type: String,
     styleConfig: {
       type: Object,
       value: {}

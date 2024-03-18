@@ -11,10 +11,9 @@
     theme-type="{{ themeType }}"
     bind:maskClick="onMaskClick"
   >
-    <view class="cube-modal-section">
+    <view class="cube-modal-section" wx:style="{{ styleConfig.section }}">
       <view
         class="cube-modal-header"
-        wx:class="{{ classConfig.header }}"
         wx:style="{{ styleConfig.header }}"
       >
         <!-- 分别针对取消和关闭做了不同的行为处理，目的是区分这两种行为含义的不同 -->
@@ -44,7 +43,7 @@
       </view>
       <view
         class="cube-modal-body"
-        wx:class="{{ [bodyLayoutClass, classConfig.body] }}"
+        wx:class="{{ bodyLayoutClass }}"
         wx:style="{{ styleConfig.body }}"
       >
         <!-- 图标位置插槽 -->
@@ -62,7 +61,6 @@
       </view>
       <view
         class="cube-modal-footer"
-        wx:class="{{ classConfig.footer }}"
         wx:style="{{ styleConfig.footer }}"
       >
         <cube-confirm-button-group

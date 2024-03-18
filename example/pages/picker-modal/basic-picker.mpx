@@ -11,6 +11,7 @@
       bindcolumnChange="onColumnChange"
       bindtoggle="onToggle"
       bindclose="onClose"
+      bindcancel="onCancel"
       bindconfirm="onConfirm"
       bindmaskClick="onMaskClick"
       bindvalueChange="onValueChange"
@@ -72,6 +73,9 @@ createComponent({
     },
     onToggle(e) {
       console.log('toggle 事件触发，当前状态是否显示：', e.detail.value)
+    },
+    onCancel() {
+      console.log('cancel 事件触发')
     },
     onClose() {
       console.log('close 事件触发')

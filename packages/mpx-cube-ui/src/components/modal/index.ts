@@ -39,16 +39,9 @@ createModalComponent({
       value: false
     },
     /**
-     * @description （已废弃）是否让确认按钮显示在左边 v1.0.0
+     * @description 通过 wx:style透传样式, 里面的每项分别修改对应位置的样式
+     * @optional styleConfig = { header: '', body: '', footer: '', section: '}
      */
-    leftConfirm: {
-      type: Boolean,
-      value: false
-    },
-    classConfig: {
-      type: Object,
-      value: {}
-    },
     styleConfig: {
       type: Object,
       value: {}
