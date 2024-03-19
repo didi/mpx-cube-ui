@@ -18,6 +18,7 @@ jobs:
         with:
           node-version: '16'
       - uses: pnpm/action-setup@v2
+        if: env.GIT_DIFF
         with:
           version: 8
           run_install: |
