@@ -1,10 +1,11 @@
 ## 介绍
 
-mpx-cube-ui 是基于 [Mpx 小程序框架](https://www.mpxjs.cn/)的移动端基础组件库，一份源码可以跨端输出所有小程序平台及 Web。
+mpx-cube-ui 是基于 [Mpx 小程序框架](https://www.mpxjs.cn/) 的移动端基础组件库，一份源码可以跨端输出所有小程序平台及 Web。
+## 官网
+欢迎访问 [mpx-cube-ui 官网](https://www.mpxjs.cn/mpx-cube-ui/)，跟随我们提供的文档指南使用 mpx-cube-ui 组件库进行跨端小程序开发。
 
 ## 安装
-
-```javascript
+```shell
 npm install @mpxjs/mpx-cube-ui
 ```
 
@@ -35,7 +36,7 @@ createPage({})
 
 ## 组件库预览
 
-```javascript
+```shell
 // 安装依赖
 pnpm install
 
