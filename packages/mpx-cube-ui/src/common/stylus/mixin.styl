@@ -10,7 +10,7 @@ border-top-1px($color)
     border-top 1px solid $color
     transform-origin 0 0
     pointer-events none
-    @media (min-resolution: 2dppx)
+    @media (min-resolution: 1dppx), (min-resolution: 2dppx)
       width 200%
       transform scale(.5) translateZ(0)
     @media (min-resolution: 3dppx)
@@ -29,7 +29,7 @@ border-bottom-1px($color)
     border-bottom 1px solid $color
     transform-origin 0 0
     pointer-events none
-    @media (min-resolution: 2dppx)
+    @media (min-resolution: 1dppx), (min-resolution: 2dppx)
       width 200%
       transform scale(.5) translateZ(0)
     @media (min-resolution: 3dppx)
@@ -48,7 +48,7 @@ border-right-1px($color)
     border-right 1px solid $color
     transform-origin 0 0
     pointer-events none
-    @media (min-resolution: 2dppx)
+    @media (min-resolution: 1dppx), (min-resolution: 2dppx)
       height 200%
       transform scale(.5) translateZ(0)
     @media (min-resolution: 3dppx)
@@ -67,7 +67,7 @@ border-left-1px($color)
     border-left 1px solid $color
     transform-origin 0 0
     pointer-events none
-    @media (min-resolution: 2dppx)
+    @media (min-resolution: 1dppx), (min-resolution: 2dppx)
       height 200%
       transform scale(.5) translateZ(0)
     @media (min-resolution: 3dppx)
@@ -90,7 +90,7 @@ border-1px($color = #ccc, $radius = 2PX, $style = solid)
     transform-origin 0 0
     transform-origin -0.1px 0
     pointer-events none
-    @media (min-resolution: 2dppx)
+    @media (min-resolution: 1dppx), (min-resolution: 2dppx)
       width 200%
       height 200%
       border-radius 'calc(%s * 2)' % $radius
