@@ -3,6 +3,10 @@
   "version": "0.0.1",
   "description": "mpx components library",
   "author": "xiaolei <xiaolei@didichuxing.com>",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
+  },
   "scripts": {
     "build": "node ./build/genLib.js",
     "dev": "node ./build/genLib.js -w"

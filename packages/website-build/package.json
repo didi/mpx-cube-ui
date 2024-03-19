@@ -2,6 +2,10 @@
   "name": "@mpxjs/website-build",
   "version": "0.0.1",
   "description": "mpx-cube-ui website builder",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
+  },
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "type": "module",

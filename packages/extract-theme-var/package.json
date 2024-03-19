@@ -2,6 +2,10 @@
   "name": "@mpxjs/extract-theme-var",
   "version": "0.0.1",
   "description": "mpx-cube-ui theme variable extractor",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
+  },
   "main": "core/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
