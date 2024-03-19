@@ -14,9 +14,9 @@
   "keywords": [],
   "license": "Apache-2.0",
   "devDependencies": {
-    "@mpxjs/extract-theme-var": "^1.0.8",
-    "@mpxjs/vuese-markdown-render": "^1.0.8-alpha.4",
-    "@mpxjs/vuese-parser": "^1.1.8-alpha.4",
+    "@mpxjs/extract-theme-var": "workspace: *",
+    "@mpxjs/vuese-markdown-render": "^1.0.0",
+    "@mpxjs/vuese-parser": "^1.0.0",
     "@types/node": "^20.10.0",
     "prettier": "^2.1.2",
     "rimraf": "^5.0.5"

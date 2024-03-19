@@ -35,7 +35,7 @@
     "@mpxjs/api-proxy": "^2.9.0",
     "@mpxjs/core": "^2.9.0",
     "@mpxjs/store": "^2.9.0",
-    "@mpxjs/webpack-plugin": "^2.9.0",
+    "@mpxjs/webpack-plugin": "2.9.17",
     "@mpxjs/babel-plugin-inject-page-events": "^2.9.0",
     "@mpxjs/mpx-cli-service": "^2.1.5",
     "@mpxjs/vue-cli-plugin-mpx": "^2.1.5",

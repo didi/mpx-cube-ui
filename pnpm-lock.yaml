@@ -34,7 +34,7 @@ importers:
         version: link:packages/mpx-cube-ui
       '@mpxjs/mpx-jest':
         specifier: ^0.0.30
-        version: 0.0.30(@mpxjs/core@2.9.21)(@mpxjs/webpack-plugin@2.9.21)
+        version: 0.0.30(@mpxjs/core@2.9.21)(@mpxjs/webpack-plugin@2.9.17)
       '@mpxjs/website-build':
         specifier: 'workspace: *'
         version: link:packages/website-build
@@ -142,7 +142,7 @@ importers:
         version: 2.9.9(@mpxjs/core@2.9.21)
       '@mpxjs/vue-cli-plugin-mpx':
         specifier: ^2.1.5
-        version: 2.1.7(@babel/core@7.24.0)(@mpxjs/webpack-plugin@2.9.21)(css-loader@6.10.0)(stylus-loader@6.2.0)(webpack@5.90.3)
+        version: 2.1.7(@babel/core@7.24.0)(@mpxjs/webpack-plugin@2.9.17)(css-loader@6.10.0)(stylus-loader@6.2.0)(webpack@5.90.3)
       '@mpxjs/vue-cli-plugin-mpx-theme':
         specifier: 2.0.0-beta.2
         version: 2.0.0-beta.2(postcss@8.4.35)
@@ -150,8 +150,8 @@ importers:
         specifier: ^2.1.5
         version: 2.1.7(typescript@4.9.5)(webpack@5.90.3)
       '@mpxjs/webpack-plugin':
-        specifier: ^2.9.0
-        version: 2.9.21(webpack@5.90.3)
+        specifier: 2.9.17
+        version: 2.9.17(webpack@5.90.3)
       '@vue/cli-service':
         specifier: ~5.0.8
         version: 5.0.8(stylus-loader@6.2.0)(vue@2.7.16)
@@ -213,14 +213,14 @@ importers:
         version: 1.9.10(lodash@4.17.21)(prettier@2.8.8)
     devDependencies:
       '@mpxjs/extract-theme-var':
-        specifier: ^1.0.8
+        specifier: 'workspace: *'
         version: link:../extract-theme-var
       '@mpxjs/vuese-markdown-render':
-        specifier: ^1.0.8-alpha.4
-        version: 1.0.8-alpha.4
+        specifier: ^1.0.0
+        version: 1.0.0
       '@mpxjs/vuese-parser':
-        specifier: ^1.1.8-alpha.4
-        version: 1.1.8-alpha.4(typescript@5.3.3)
+        specifier: ^1.0.0
+        version: 1.0.0(typescript@5.3.3)
       '@types/node':
         specifier: ^20.10.0
         version: 20.11.22
@@ -1414,10 +1414,10 @@ packages:
     resolution: {integrity: sha512-qO6623eBFhuPm0TmmrUFMT1FulCmsSeJuVGhiLodk2raUDFhhTECLd9E9jC4LBIWziqt4wgF6KuXE4d+Jz9yug==}
     dependencies:
       '@babel/code-frame': 7.23.5
-      '@babel/generator': 7.10.3
+      '@babel/generator': 7.23.6
       '@babel/helper-function-name': 7.23.0
       '@babel/helper-split-export-declaration': 7.22.6
-      '@babel/parser': 7.10.3
+      '@babel/parser': 7.24.0
       '@babel/types': 7.24.0
       debug: 4.3.4(supports-color@6.1.0)
       globals: 11.12.0
@@ -2149,7 +2149,7 @@ packages:
       json5: 2.2.3
       less: 3.13.1
       loader-utils: 1.4.2
-      miniprogram-compiler: 0.2.2
+      miniprogram-compiler: 0.2.3
       postcss: 7.0.39
     dev: true
 
@@ -2241,14 +2241,14 @@ packages:
       - whiskers
     dev: true
 
-  /@mpxjs/mpx-jest@0.0.30(@mpxjs/core@2.9.21)(@mpxjs/webpack-plugin@2.9.21):
+  /@mpxjs/mpx-jest@0.0.30(@mpxjs/core@2.9.21)(@mpxjs/webpack-plugin@2.9.17):
     resolution: {integrity: sha512-JH2/uCbJIVYUkm/x+A+I6/m7O05pGQKy/yC1XczdgMeiqvlSfk3Sfvo9nJcjRVcVWxt1UIUxkYsyCaJ612Tiig==}
     peerDependencies:
       '@mpxjs/webpack-plugin': ^2.7.11
     dependencies:
       '@babel/core': 7.24.0
       '@mpxjs/utils': 2.9.1(@mpxjs/core@2.9.21)
-      '@mpxjs/webpack-plugin': 2.9.21(webpack@5.90.3)
+      '@mpxjs/webpack-plugin': 2.9.17(webpack@5.90.3)
       json5: 2.2.3
       magic-string: 0.26.7
     transitivePeerDependencies:
@@ -2290,7 +2290,7 @@ packages:
       - webpack
     dev: true
 
-  /@mpxjs/vue-cli-plugin-mpx@2.1.7(@babel/core@7.24.0)(@mpxjs/webpack-plugin@2.9.21)(css-loader@6.10.0)(stylus-loader@6.2.0)(webpack@5.90.3):
+  /@mpxjs/vue-cli-plugin-mpx@2.1.7(@babel/core@7.24.0)(@mpxjs/webpack-plugin@2.9.17)(css-loader@6.10.0)(stylus-loader@6.2.0)(webpack@5.90.3):
     resolution: {integrity: sha512-dD+xcPawFIbt3EkGxnIdrBPloWYKKd/7X+88RQ2ITWyn8WFQbiRVTButa35ZCWKcFTMax7kJopSYeQNF1SazXA==}
     peerDependencies:
       '@mpxjs/webpack-plugin': ^2.7.0
@@ -2310,7 +2310,7 @@ packages:
         optional: true
     dependencies:
       '@mpxjs/cli-shared-utils': 2.1.7
-      '@mpxjs/webpack-plugin': 2.9.21(webpack@5.90.3)
+      '@mpxjs/webpack-plugin': 2.9.17(webpack@5.90.3)
       '@soda/friendly-errors-webpack-plugin': 1.8.1(webpack@5.90.3)
       '@vue/cli-shared-utils': 5.0.8
       '@vue/vue-loader-v15': /vue-loader@15.11.1(css-loader@6.10.0)(webpack@5.90.3)
@@ -2401,12 +2401,12 @@ packages:
       - whiskers
     dev: true
 
-  /@mpxjs/vuese-markdown-render@1.0.8-alpha.4:
-    resolution: {integrity: sha512-nXrue37bl66CBAL88heMO+W5spDF2kPjFwnvM/elXhgVus2jKWJLGdyF40q/THTvl0OC6QViTWpUzQQFNarPvw==}
+  /@mpxjs/vuese-markdown-render@1.0.0:
+    resolution: {integrity: sha512-wYicByuGDkO9fp3LWm1p7PxkZ16oqpGrPeVsQ+SZIzZz9ExGo5NFuTB+BOu18/3EzNawCNnTkWivF682OOXhBw==}
     dev: true
 
-  /@mpxjs/vuese-parser@1.1.8-alpha.4(typescript@5.3.3):
-    resolution: {integrity: sha512-vMLl6+hgqeU4hViwBbj249ZVv6uOVzJGG/uv6oJ7jdUhOrIvloXs/fIf+9f2Jf9YILrYpxDLc1E6bVBZc5PuVg==}
+  /@mpxjs/vuese-parser@1.0.0(typescript@5.3.3):
+    resolution: {integrity: sha512-X+HsUcUrUiPBXuT73TZR7dIaiolX3+Iy4TU2YVRBeyAgIs/yvwq4SoX8BCN4bfiqX9lrQhz0Mjn8VUYbdbauSA==}
     dependencies:
       '@babel/generator': 7.10.3
       '@babel/parser': 7.10.3
@@ -2420,8 +2420,8 @@ packages:
       - typescript
     dev: true
 
-  /@mpxjs/webpack-plugin@2.9.21(webpack@5.90.3):
-    resolution: {integrity: sha512-rS7morC/mmv21duLIqKpLwDKY7twtBRCDwRxUXM0xdwUpRK9epOYTteqEXlANNSRrqEq17HDtcCJ+qc1qT7rjg==}
+  /@mpxjs/webpack-plugin@2.9.17(webpack@5.90.3):
+    resolution: {integrity: sha512-NkVrAPO8Tpr8laz8yAXGviSFAWNmdknDeE/FdM7fbWk0u2V9ILv9H+W5/EwRgFomDkbMWD5RG1Bec4z11t76ug==}
     engines: {node: '>=14.14.0'}
     peerDependencies:
       webpack: ^5.75.0
@@ -12089,8 +12089,8 @@ packages:
     resolution: {integrity: sha512-OJB2uVAfhycX4teG/zEVpoThushQqLOx946XACDpVc6OQydiJWjn7djVzvNCbv0VOA7sbHGPQp/RkXD9vMCDEw==}
     dev: true
 
-  /miniprogram-compiler@0.2.2:
-    resolution: {integrity: sha512-fiJXv/15jCcRAU8YKcO7S7fkPKLa5ZBgpLN+d6B3r3KMktM5tAkDEQ+zm6aTfNoHurYOHcRyPyGf26gqQXlFXg==}
+  /miniprogram-compiler@0.2.3:
+    resolution: {integrity: sha512-/MfFiXTBUwYxnrTbj1hgwk1+qGkMCTL1zi8IReOq/0SPVkUxpx19E89w+ohYCELFXkMfVbD+6ejrHh3Y1u5sVg==}
     dependencies:
       glob: 7.2.3
       unescape-js: 1.1.4
