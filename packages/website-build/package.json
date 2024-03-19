@@ -1,7 +1,7 @@
 {
   "name": "@mpxjs/website-build",
-  "version": "1.0.8",
-  "description": "",
+  "version": "0.0.1",
+  "description": "mpx-cube-ui website builder",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "type": "module",
