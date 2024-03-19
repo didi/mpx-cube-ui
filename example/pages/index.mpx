@@ -4,7 +4,7 @@
       <view class="title">
         <view class="logo"></view>
       </view>
-      <view class="description">基于"Mpx小程序框架"的移动端组件库</view>
+      <view class="description">基于“Mpx小程序框架”的移动端组件库</view>
       <view class="theme">选择主题样式：<cube-button inline primary bindclick="onChooseTheme">{{ themeText }}</cube-button></view>
       <view class="list-item" wx:for="{{componentList}}" wx:key="index">
         <view class="list-item-name">{{ item.name }}</view>
