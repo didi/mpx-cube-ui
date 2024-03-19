@@ -1,7 +1,7 @@
 {
   "name": "@mpxjs/extract-theme-var",
-  "version": "1.0.8",
-  "description": "",
+  "version": "0.0.1",
+  "description": "mpx-cube-ui theme variable extractor",
   "main": "core/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
