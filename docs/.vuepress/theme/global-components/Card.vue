@@ -15,7 +15,7 @@ export default {
   border-radius 20px
   box-shadow 0 8px 12px #ebedf0
   background-color #fff
-  overflow scroll
+  overflow auto
   *:last-child
     margin-bottom: 0
 </style>

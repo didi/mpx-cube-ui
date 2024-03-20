@@ -44,6 +44,17 @@ html,body
     top 0
     bottom 0
 
+  &::-webkit-scrollbar
+    width: 6px
+    height: 6px
+    background-color: transparent
+
+  &::-webkit-scrollbar-thumb
+    background-color: transparent
+    border-radius: 6px
+  &:hover::-webkit-scrollbar-thumb
+    background-color: rgba(69,90,100,.2)
+
 .theme-container
   &:not(.sidebar-open)
     .page

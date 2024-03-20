@@ -1,10 +1,14 @@
 <template>
-  <div class="theme-container" :class="pageClasses" @touchstart="onTouchStart"
-    @touchend="onTouchEnd">
+  <div
+    class="theme-container"
+    :class="pageClasses"
+    @touchstart="onTouchStart"
+    @touchend="onTouchEnd"
+  >
     <Navbar ref="navbar" v-if="shouldShowNavbar" @toggle-sidebar="toggleSidebar" />
     <div class="sidebar-mask" @click="toggleSidebar(false)" />
     <Sidebar ref="sidebar" :items="sidebarItems" @toggle-sidebar="toggleSidebar" />
-    <div class="main-container">
+    <div class="main-container" :style="style">
       <Home class="main" v-if="$page.frontmatter.home" />
       <Page class="main" v-else :sidebar-items="sidebarItems" />
       <ClientOnly>
@@ -35,6 +39,12 @@ export default {
     }
   },
   computed: {
+    style() {
+      const scrollBarWidth = window.innerWidth - document.body.clientWidth
+      return {
+        width: `calc(100vw - ${scrollBarWidth}px)`
+      }
+    },
     shouldShowNavbar() {
       const { themeConfig } = this.$site
       const { frontmatter } = this.$page
