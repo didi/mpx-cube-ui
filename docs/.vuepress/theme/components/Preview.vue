@@ -17,14 +17,16 @@
         />
         {{ title }}
       </header>
-      <iframe
-        ref="simulator"
-        class="simulator"
-        :src="previewPath"
-        frameborder="0"
-        width="100%"
-        height="100%"
-      />
+      <div class="simulator-wrapper">
+        <iframe
+          ref="simulator"
+          class="simulator"
+          :src="previewPath"
+          frameborder="0"
+          width="100%"
+          height="100%"
+        />
+      </div>
       <div class="footer" />
     </div>
   </div>
@@ -314,12 +316,16 @@ export default {
           height 8px
           background #edf0f4
           transform rotate(45deg)
-    .simulator
-      position relative
+    .simulator-wrapper
+      position absolute
+      left 25px
+      top 90px
+      right 25px
+      bottom 18px
       z-index 10
-      height calc(100% - 32px)
-      border-radius 0 0 53px 53px
-      background-color var(--bg-color)
+      .simulator
+        border-radius 0 0 53px 53px
+        background-color var(--bg-color)
     .footer
       position absolute
       left 7px

@@ -1,6 +1,6 @@
 <template>
   <theme-container>
-    <view class="base-container">
+    <view class="base-container" wx:style="{{ style }}">
       <slot></slot>
     </view>
   </theme-container>
@@ -8,11 +8,19 @@
 
 <script>
 import { createComponent } from '@mpxjs/core'
+import { isIframe } from '../../common/consts'
 
 createComponent({
   options: {
     addGlobalClass: true,
     styleIsolation: 'shared'
+  },
+  data: {
+    style: !isIframe ? {
+      height: 'auto',
+      minHeight: '100%',
+      overflow: 'unset'
+    } : {}
   }
 })
 </script>
@@ -26,7 +34,7 @@ div.base-container
   height 100%
   padding 20px
   box-sizing border-box
-  overflow scroll
+  overflow auto
   -webkit-overflow-scrolling touch
   &::after
     display block
