@@ -210,6 +210,8 @@ export default {
     flex 1
     min-width: 600px
     background-color var(--bg-color)
+    @media screen and (max-width: $MQMobileNarrow)
+      min-width: unset
     ::v-deep .page-edit
       display none
   .preview-container

@@ -18,7 +18,7 @@ html,body
 .sidebar
   position absolute
   top $navbarHeight
-  bottom -$navbarHeight
+  bottom - $navbarHeight
   max-width 14rem
   min-width 14rem
   border 0
@@ -61,6 +61,8 @@ html,body
   min-width 500px
   max-width unset
   margin 0 auto
+  @media screen and (max-width: $MQMobileNarrow)
+    min-width: unset
   .card:last-child
     margin-bottom 0
 

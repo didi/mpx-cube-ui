@@ -146,14 +146,14 @@ module.exports = {
 
   createComponent({
     data: {
-      extends: `
+      style: `
         --cube-btn-color: red;
         --cube-btn-font-size: 25px;
       `
     },
     created () {
       setTimeout(() => {
-        this.extends = `
+        this.style = `
           --cube-btn-color: blue;
           --cube-btn-font-size: 10px;
         `
