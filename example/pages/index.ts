@@ -1,6 +1,7 @@
 import mpx, { createPage, ref, onMounted, onUnmounted } from '@mpxjs/core'
 import demoConfig from '../common/config'
 import { currentTheme, useTheme, themeList } from '../common/theme'
+import { isIframe } from '../common/consts'
 
 const SCROLL_KEY = '___scoll_top___'
 
@@ -35,7 +36,6 @@ createPage({
     }
 
     const show = ref(true)
-    const isIframe = __mpx_mode__ === 'web' && window.parent !== window
     const handleScroll = () => {
       localStorage.setItem(SCROLL_KEY, String(document.documentElement.scrollTop))
     }

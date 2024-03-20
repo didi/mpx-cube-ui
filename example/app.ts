@@ -1,6 +1,7 @@
 import mpx, { createApp } from '@mpxjs/core'
 import apiProxy from '@mpxjs/api-proxy'
 import { configProvider } from '../packages/mpx-cube-ui/src/common/helper/config-provider'
+import { isIframe } from './common/consts'
 
 mpx.use(apiProxy, { usePromise: true })
 
@@ -19,7 +20,7 @@ configProvider({
 // app.js
 createApp({})
 
-if (__mpx_mode__ === 'web' && window.parent !== window) {
+if (isIframe) {
   let prevPath = ''
   const handleMessage = (e) => {
     const { to } = (typeof e.data === 'object' ? e.data : {}) as any
