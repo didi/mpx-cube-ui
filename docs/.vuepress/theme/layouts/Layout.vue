@@ -31,6 +31,7 @@ export default {
   name: 'Layout',
   data() {
     return {
+      style: {},
       isSidebarOpen: false,
       preHash: '',
       preHashEl: null,
@@ -39,12 +40,6 @@ export default {
     }
   },
   computed: {
-    style() {
-      const scrollBarWidth = window.innerWidth - document.body.clientWidth
-      return {
-        width: `calc(100vw - ${scrollBarWidth}px)`
-      }
-    },
     shouldShowNavbar() {
       const { themeConfig } = this.$site
       const { frontmatter } = this.$page
@@ -103,6 +98,8 @@ export default {
     this.$router.afterEach(() => {
       initHash()
     })
+    /* 计算main-container样式 */
+    this.style = this.calcStyle()
     window.addEventListener('scroll', this.resetPosition)
   },
   beforeDestroy() {
@@ -192,7 +189,13 @@ export default {
           ? preview.className
           : `${preview.className} show-absolute`
       }
-    }, 6)
+    }, 6),
+    calcStyle() {
+      const scrollBarWidth = window.innerWidth - document.body.clientWidth + 1 // + 1 兼容edge
+      return {
+        width: `calc(100vw - ${scrollBarWidth}px)`
+      }
+    }
   },
   components: {
     Home,
