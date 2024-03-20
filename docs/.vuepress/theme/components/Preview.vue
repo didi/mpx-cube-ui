@@ -81,11 +81,16 @@ const getComponent = (list) => {
   return null
 }
 
+const getTime = () => {
+  const now = new Date()
+  return `${`${now.getHours()}`.padStart(2, 0)}:${`${now.getMinutes()}`.padStart(2, 0)}`
+}
+
 export default {
   data() {
     return {
       flush: 1,
-      time: new Date().toLocaleTimeString().slice(0, -3),
+      time: getTime(),
       timer: null,
       showSimulator: false,
       componentName: ''
@@ -130,7 +135,7 @@ export default {
     img.onload = show
     img.onerror = show
     this.timer = polling(() => {
-      this.time = new Date().toLocaleTimeString().slice(0, -3)
+      this.time = getTime()
     }, 6000)()
 
     window.addEventListener('message', this.handleMessage)
