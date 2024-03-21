@@ -1,8 +1,8 @@
-## 基本介绍
+## 主题与样式
 
 <card>
 
-### 主题与样式
+### 基本介绍
 
 mpx-cube-ui 在设计开发过程中对于表现层的结构和样式进行抽离，利用预编译器（[Stylus](https://stylus-lang.com/)）和 [CSS 变量](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Using_CSS_custom_properties)的能力来提供细粒度的样式定制能力。你可以利用样式定制能力去搭建更加成体系的小程序主题样式来满足特定业务产品的开发。
 
