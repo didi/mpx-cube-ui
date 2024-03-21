@@ -323,8 +323,9 @@ export default {
       right 25px
       bottom 18px
       z-index 10
+      overflow hidden
+      border-radius 0 0 53px 53px
       .simulator
-        border-radius 0 0 53px 53px
         background-color var(--bg-color)
     .footer
       position absolute
