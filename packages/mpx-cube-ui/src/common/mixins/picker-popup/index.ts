@@ -5,9 +5,41 @@ const EVENT_VALUE_CHANGE = 'valueChange'
 const EVENT_CANCEL = 'cancel'
 const EVENT_CHANGE = 'change'
 const EVENT_COLUMN_CHANGE = 'columnChange'
-
+const EVENT_PICK_START = 'pickstart'
+const EVENT_PICK_END = 'pickend'
 export default getMixin({
+  properties: {
+    // 点击确认时，是否需要滚动选项完全停止
+    fullyStop: {
+      type: Boolean,
+      value: false
+    }
+  },
+  data: {
+    pickStartCount: 0
+  },
   methods: {
+    // 不能通过 pickstart 及 pickend 来判断
+    // web 单独点击时，不触发 pickstart 事件，只派发 change 和 pickend 事件
+    // 小程序点击当前选中值时，派发 pickstart，但不派发 pickend 事件
+    // 这令人头大的差异 ！！
+    onPickstart(e) {
+      if (this.fullyStop) {
+        if (this.pickStartCount < 0) {
+          this.pickStartCount = 0
+        }
+        this.pickStartCount++
+      }
+      // 当滚动选择开始时候触发事件
+      this.triggerEvent(EVENT_PICK_START, e.detail)
+    },
+    onPickend(e) {
+      if (this.fullyStop) {
+        this.pickStartCount--
+      }
+      // 当滚动选择结束时候触发事件
+      this.triggerEvent(EVENT_PICK_END, e.detail)
+    },
     onColumnChange(e) {
       // 列变化事件，某列选中的 value 及 index 任意一个变化后触发事件
       // @arg event.detail = { column, index, text, value }
@@ -29,6 +61,13 @@ export default getMixin({
       this.triggerEvent(EVENT_CHANGE, e.detail)
     },
     onConfirm() {
+      if (this.fullyStop) {
+        if (this.pickStartCount > 0) {
+          return
+        }
+        this.pickStartCount = 0
+      }
+      this.hide()
       const {
         selectedIndex,
         selectedVal,

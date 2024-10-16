@@ -8,8 +8,8 @@
       immediate-change="{{ immediateChange }}"
       value="{{ finalIndex }}"
       bind:change="onPickchange"
-      bind:pickstart@wx="onPickstart"
-      bind:pickend@wx="onPickend">
+      bind:pickstart="onPickstart"
+      bind:pickend="onPickend">
       <picker-view-column
         class="cube-picker-wheel-scroll"
         ref="pickerColumns"

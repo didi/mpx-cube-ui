@@ -13,7 +13,7 @@
     cancel-text="{{ cancelText }}"
     cancel-btn-align="{{ cancelBtnAlign }}"
     no-built-in-btns="{{ noBuiltInBtns }}"
-    hide-on-confirm="{{ hideOnConfirm }}"
+    hide-on-confirm="{{ hideOnConfirm && !fullyStop }}"
     hide-on-cancel="{{ hideOnCancel }}"
     hide-on-close="{{ hideOnClose }}"
     theme-type="{{ themeType }}"
@@ -33,8 +33,8 @@
       theme-type="{{ themeType }}"
       bind:change="onChange"
       bind:columnChange="onColumnChange"
-      bind:pickstart@wx="onPickstart"
-      bind:pickend@wx="onPickend"
+      bind:pickstart="onPickstart"
+      bind:pickend="onPickend"
     />
     <!-- 尾部位置插槽 -->
     <slot name="footer" slot="footer" />

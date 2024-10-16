@@ -7,6 +7,7 @@
       content="content 内容"
       list="{{ dataList }}"
       selected-index="{{ selectedIndex }}"
+      fully-stop="{{ true }}"
       bindchange="onChange"
       bindcolumnChange="onColumnChange"
       bindtoggle="onToggle"
@@ -49,7 +50,7 @@ createComponent({
   data: {
     selectedIndex: [0, 1, 0],
     dataList: [
-      [ { text: '剧毒', value: '剧毒' }, { text: '蚂蚁', value: '蚂蚁' }, { text: '幽鬼', value: '幽鬼' } ],
+      [ { text: '剧毒', value: '剧毒' }, { text: '蚂蚁', value: '蚂蚁' }, { text: '幽鬼', value: '幽鬼' }, { text: '剧毒1', value: '剧毒1' }, { text: '蚂蚁1', value: '蚂蚁1' }, { text: '幽鬼1', value: '幽鬼1' }, { text: '剧毒2', value: '剧毒2' }, { text: '蚂蚁2', value: '蚂蚁2' }, { text: '幽鬼2', value: '幽鬼2' } ],
       [ { text: '输出', value: '输出' }, { text: '控制', value: '控制' }, { text: '核心', value: '核心' } ],
       [ { text: '梅肯', value: '梅肯' }, { text: '假腿', value: '假腿' }, { text: '飞鞋', value: '飞鞋' } ]
     ],

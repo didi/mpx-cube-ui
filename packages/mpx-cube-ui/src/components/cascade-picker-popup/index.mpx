@@ -24,8 +24,8 @@
       theme-type="{{ themeType }}"
       bind:change="onChange"
       bind:columnChange="onColumnChange"
-      bind:pickstart@wx="onPickstart"
-      bind:pickend@wx="onPickend"
+      bind:pickstart="onPickstart"
+      bind:pickend="onPickend"
       bind:pendingChange="onPendingChange"
     />
   </cube-picker-popup-base>
