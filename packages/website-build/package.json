@@ -1,6 +1,6 @@
 {
   "name": "@mpxjs/website-build",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "mpx-cube-ui website builder",
   "publishConfig": {
     "registry": "https://registry.npmjs.org",
@@ -18,7 +18,7 @@
   "keywords": [],
   "license": "Apache-2.0",
   "devDependencies": {
-    "@mpxjs/extract-theme-var": "workspace:1.0.2",
+    "@mpxjs/extract-theme-var": "workspace:1.0.3",
     "@mpxjs/vuese-markdown-render": "^1.0.0",
     "@mpxjs/vuese-parser": "^1.0.0",
     "@types/node": "^20.10.0",
