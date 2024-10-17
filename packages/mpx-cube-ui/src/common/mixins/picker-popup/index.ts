@@ -16,7 +16,9 @@ export default getMixin({
     }
   },
   data: {
-    pickStartCount: 0
+    pickStartCount: 0,
+    timeoutCount: 0,
+    timeoutArr: [] as number[]
   },
   methods: {
     // 不能通过 pickstart 及 pickend 来判断
@@ -29,13 +31,22 @@ export default getMixin({
           this.pickStartCount = 0
         }
         this.pickStartCount++
+        const timer = setTimeout(() => {
+          this.timeoutCount++
+          this.pickStartCount--
+        }, 3000) as unknown as number
+        this.timeoutArr.push(timer)
       }
       // 当滚动选择开始时候触发事件
       this.triggerEvent(EVENT_PICK_START, e.detail)
     },
     onPickend(e) {
       if (this.fullyStop) {
-        this.pickStartCount--
+        if (this.timeoutCount > 0) {
+          this.timeoutCount--
+        } else {
+          this.pickStartCount--
+        }
       }
       // 当滚动选择结束时候触发事件
       this.triggerEvent(EVENT_PICK_END, e.detail)
@@ -66,6 +77,11 @@ export default getMixin({
           return
         }
         this.pickStartCount = 0
+        this.timeoutCount = 0
+        this.timeoutArr.forEach(timer => {
+          clearTimeout(timer)
+        })
+        this.timeoutArr = []
       }
       this.hide()
       const {
