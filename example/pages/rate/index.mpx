@@ -1,0 +1,130 @@
+<template>
+  <view class="rate-page">
+    <base-container>
+      <view class="content">
+        <view class="rate-wrapper">
+          <rate wx:model="{{value}}" wx:model-prop="value" disabled="{{disabled}}" max="{{_max}}" justify="{{justify}}" allowHalf="{{allowHalf}}">
+            <rate-item wx:for="{{_max}}" wx:key="item" index="{{item}}" value="{{value}}">
+              <view class="rate-item" wx:if="{{customStar}}"></view>
+            </rate-item>
+          </rate>
+      </view>
+      <view class="options">
+        <view class="title">Options</view>
+        <view class="option-list">
+          <view class="option-list">
+          <view class="group">
+            <view class="group-item">
+              <view class="item">Disabled</view>
+              <switch 
+                color="{{ switchColor }}"
+                checked="{{ disabled }}"
+                bindchange="updateDisabled"
+              />
+            </view>
+            <view class="group-item">
+              <view class="item sub">Star Numbers</view>
+              <input
+                class="input-maxlength"
+                type="number"
+                value="{{ max }}"
+                bind:input="updateMaxLength"
+              />
+            </view>
+            <view class="group-item">
+              <view class="item">Justify</view>
+              <switch 
+                color="{{ switchColor }}"
+                checked="{{ justify }}"
+                bindchange="updateJustify"
+              />
+            </view>
+            <view class="group-item">
+              <view class="item">CustomStar</view>
+              <switch 
+                color="{{ switchColor }}"
+                checked="{{ customStar }}"
+                bindchange="updateCustomStar"
+              />
+            </view>
+            <view class="group-item">
+              <view class="item">AllowHalf</view>
+              <switch 
+                color="{{ switchColor }}"
+                checked="{{ allowHalf }}"
+                bindchange="updateAllowHalf"
+              />
+            </view>
+          </view>
+        </view>
+        </view>
+      </view>
+      </view>
+    </base-container>
+  </view>
+</template>
+
+<script>
+  import { createPage } from '@mpxjs/core'
+
+  createPage({
+    data: {
+      value: 4,
+      max: '5',
+      customStar: false,
+      justify: false,
+      allowHalf: true,
+      disabled: false,
+      switchColor: '#fc9153'
+    },
+    computed: {
+      _max() {
+        return Number(this.max)
+      }
+    },
+    methods: {
+      updateDisabled (e) {
+        const { value } = e.detail
+        this.disabled = value
+      },
+      updateMaxLength (e) {
+        const { value } = e.detail
+        this.max = value
+      },
+      updateJustify (e) {
+        const { value } = e.detail
+        this.justify = value
+      },
+      updateCustomStar (e) {
+        const { value } = e.detail
+        this.customStar = value
+      },
+      updateAllowHalf (e) {
+        const { value } = e.detail
+        this.allowHalf = value
+      },
+    }
+  })
+</script>
+
+<style lang="stylus">
+.rate-page
+  margin-top: 10px
+  height 100%
+  background-color rgba(239, 239, 244, .7)
+  .options
+    margin-top: 20px
+    
+.desc
+  margin-top 15px
+</style>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "base-container": "../../components/base-container/index.mpx",
+      "rate": "@mpxjs/mpx-cube-ui/src/components/rate/index.mpx",
+      "rate-item": "@mpxjs/mpx-cube-ui/src/components/rate/rate-item.mpx"
+    }
+  }
+</script>

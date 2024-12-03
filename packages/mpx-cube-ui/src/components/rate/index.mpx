@@ -1,0 +1,41 @@
+<template>
+  <view ref="rateContainer"
+    class="cube-rate"
+    wx:class="{{rateClass}}"
+    bindtouchstart.stop="handleStart"
+    bindtouchmove.stop.prevent="handleMove"
+    bindtouchend.stop="handleEnd"
+    bindmousedown.stop="handleStart"
+    bindmousemove.stop="handleMove"
+    bindmouseup.stop="handleEnd">
+    <slot>
+      <rate-item wx:for="{{max}}" wx:key="index" index="{{index}}" value="{{value}}"></rate-item>
+    </slot>
+  </view>
+</template>
+
+<script src="./index.ts" lang="ts"></script>
+
+<style lang="stylus">
+@require "@mpxjs/mpx-cube-ui/src/common/stylus/variable.styl"
+@require "@mpxjs/mpx-cube-ui/src/common/stylus/mixin.styl"
+  .cube-rate
+    list-style: none
+    display: inline-flex
+    vertical-align: top
+    flex-wrap: nowrap
+    max-width: 100%
+  .cube-rate-justify
+    width: 100%
+    justify-content: space-between
+</style>
+
+<script type="application/json">
+  {
+    "styleIsolation": "shared",
+    "component": true,
+    "usingComponents": {
+      "rate-item": "./rate-item.mpx"
+    }
+  }
+</script>
