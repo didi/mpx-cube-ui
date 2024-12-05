@@ -40,7 +40,9 @@ export default {
           'button-group',
           'icon',
           'divider',
-          'float-ball'
+          'float-ball',
+          'rate',
+          'switch'
         ]
       },
       {

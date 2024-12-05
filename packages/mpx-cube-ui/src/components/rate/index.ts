@@ -13,35 +13,35 @@ createComponent({
   },
   properties: {
     /**
-     * @description 拓展 class 属性，`cube-${type}`，可用于样式覆盖和定制
+     * @description 当前评分
      */
     value: {
       type: Number,
       value: 0
     },
     /**
-     * @description 是否显示遮罩
+     * @description 星星数目
      */
     max: {
       type: Number,
       value: 0
     },
     /**
-     * @description 是否显示遮罩
+     * @description 是否禁止
      */
     disabled: {
       type: Boolean,
       value: false
     },
     /**
-     * @description 文本内容，**微信&web** 支持 `html string` 的文本格式，**支付宝**目前不支持，所以需要自己转，具体见：支付宝 [rich-text文档](https://opendocs.alipay.com/mini/component/rich-text#%E5%B1%9E%E6%80%A7%E8%AF%B4%E6%98%8E)
+     * @description 星星是否均匀分布
      */
     justify: {
       type: Boolean,
       value: false
     },
     /**
-     * @description 是否居中显示
+     * @description 是否半星
      */
     allowHalf: {
       type: Boolean,
@@ -62,6 +62,7 @@ createComponent({
       handler(val) {
         if (val !== this.tempValue) {
           this.tempValue = this.handleNum(val)
+          this.triggerEvent(EVENT_INPUT, { value: this.tempValue })
         }
       }
     }
@@ -85,7 +86,6 @@ createComponent({
       }
     },
     handleMove(e) {
-      console.log('handleMove')
       if (this.disabled) return
 
       if (!isMouseEvent(e)) {
@@ -95,7 +95,6 @@ createComponent({
       }
     },
     handleEnd(e) {
-      console.log('handleEnd')
       if (this.disabled) return
       if ((!isMouseEvent(e) || this.mousePressed)) {
         if (isMouseEvent(e)) {
@@ -110,7 +109,11 @@ createComponent({
     handleNum(num) {
       if (this.allowHalf) {
         const baseNum = Math.ceil(num) - 0.5
-        num = num <= baseNum ? baseNum : baseNum + 0.5
+        if (this.disabled) {
+          num = num < baseNum ? baseNum - 0.5 : baseNum
+        } else {
+          num = num <= baseNum ? baseNum : baseNum + 0.5
+        }
       } else {
         num = Math.ceil(num)
       }

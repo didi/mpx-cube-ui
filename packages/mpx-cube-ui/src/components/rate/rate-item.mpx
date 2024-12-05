@@ -8,24 +8,25 @@
 <script src="./rate-item-index.ts" lang="ts"></script>
 
 <style lang="stylus">
-@require "@mpxjs/mpx-cube-ui/src/common/stylus/variable.styl"
+@require "@mpxjs/mpx-cube-ui/src/common/stylus/helper.styl"
 @require "@mpxjs/mpx-cube-ui/src/common/stylus/mixin.styl"
+@require "@mpxjs/mpx-cube-ui/src/common/stylus/theme/components/rate.styl"
   .cube-rate-item
     position: relative
-    width: 32px
-    flex: 0 1 auto
-    margin-right: 6px
+    width: $var(rate-item-width)
+    flex: $var(rate-item-flex)
+    margin-right: $var(rate-item-margin-right)
     &::after
       content: ""
       display: block
-      padding: 50% 0
+      padding: $var(rate-item-after-padding)
     &:last-child
-      margin-right: 0
+      margin-right: $var(rate-item-last-child-margin-right)
     .cube-rate-item-def
       position: absolute
-      width: 100%
-      height: 100%
-      background-size: 100%
+      width: $var(rate-item-def-width)
+      height: $var(rate-item-def-height)
+      background-size: $var(rate-item-def-background-size)
       background-repeat: no-repeat
       background-position: center
       bg-image("evaluation_icon_star_gray")

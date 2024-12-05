@@ -17,16 +17,17 @@
 <script src="./index.ts" lang="ts"></script>
 
 <style lang="stylus">
-@require "@mpxjs/mpx-cube-ui/src/common/stylus/variable.styl"
+@require "@mpxjs/mpx-cube-ui/src/common/stylus/helper.styl"
 @require "@mpxjs/mpx-cube-ui/src/common/stylus/mixin.styl"
+@require "@mpxjs/mpx-cube-ui/src/common/stylus/theme/components/rate.styl"
   .cube-rate
     list-style: none
     display: inline-flex
     vertical-align: top
     flex-wrap: nowrap
-    max-width: 100%
+    max-width: $var(rate-max-width)
   .cube-rate-justify
-    width: 100%
+    width: $var(rate-justify-width)
     justify-content: space-between
 </style>
 

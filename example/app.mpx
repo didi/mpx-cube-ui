@@ -44,7 +44,8 @@
       "./pages/checkbox-modal/index",
       "./pages/textarea/index",
       "./pages/float-ball/index",
-      "./pages/rate/index"
+      "./pages/rate/index",
+      "./pages/switch/index"
     ]
   }
 </script>

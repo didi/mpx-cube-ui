@@ -69,12 +69,12 @@
 
   createPage({
     data: {
-      value: 4,
+      value: 4.5,
       max: '5',
       customStar: false,
       justify: false,
       allowHalf: true,
-      disabled: false,
+      disabled: true,
       switchColor: '#fc9153'
     },
     computed: {
@@ -109,7 +109,7 @@
 
 <style lang="stylus">
 .rate-page
-  margin-top: 10px
+  padding-top: 10px
   height 100%
   background-color rgba(239, 239, 244, .7)
   .options
