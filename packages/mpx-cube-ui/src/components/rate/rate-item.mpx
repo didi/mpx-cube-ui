@@ -1,8 +1,7 @@
 <template>
   <view class="cube-rate-item" wx:class="{{rateItemClass}}">
-    <slot>
-      <view class="cube-rate-item-def"></view>
-    </slot>
+    <slot wx:if="{{isCustom}}"></slot>
+    <view wx:else class="cube-rate-item-def"></view>
   </view>
 </template>
 <script src="./rate-item-index.ts" lang="ts"></script>
@@ -11,31 +10,32 @@
 @require "@mpxjs/mpx-cube-ui/src/common/stylus/helper.styl"
 @require "@mpxjs/mpx-cube-ui/src/common/stylus/mixin.styl"
 @require "@mpxjs/mpx-cube-ui/src/common/stylus/theme/components/rate.styl"
-  .cube-rate-item
-    position: relative
-    width: $var(rate-item-width)
-    flex: $var(rate-item-flex)
-    margin-right: $var(rate-item-margin-right)
-    &::after
-      content: ""
-      display: block
-      padding: $var(rate-item-after-padding)
-    &:last-child
-      margin-right: $var(rate-item-last-child-margin-right)
-    .cube-rate-item-def
-      position: absolute
-      width: $var(rate-item-def-width)
-      height: $var(rate-item-def-height)
-      background-size: $var(rate-item-def-background-size)
-      background-repeat: no-repeat
-      background-position: center
-      bg-image("evaluation_icon_star_gray")
-  .cube-rate-item_active
-    .cube-rate-item-def
-      bg-image("evaluation_icon_star")
-  .cube-rate-item_half_active
-    .cube-rate-item-def
-      bg-image("evaluation_icon_half")
+
+.cube-rate-item
+  position: relative
+  width: $var(rate-item-width)
+  flex: $var(rate-item-flex)
+  margin-right: $var(rate-item-margin-right)
+  &::after
+    content: ""
+    display: block
+    padding: $var(rate-item-after-padding)
+  &:last-child
+    margin-right: $var(rate-item-last-child-margin-right)
+  .cube-rate-item-def
+    position: absolute
+    width: $var(rate-item-def-width)
+    height: $var(rate-item-def-height)
+    background-size: $var(rate-item-def-background-size)
+    background-repeat: no-repeat
+    background-position: center
+    bg-image("evaluation_icon_star_gray")
+.cube-rate-item_active
+  .cube-rate-item-def
+    bg-image("evaluation_icon_star")
+.cube-rate-item_half_active
+  .cube-rate-item-def
+    bg-image("evaluation_icon_half")
 </style>
 
 <script type="application/json">

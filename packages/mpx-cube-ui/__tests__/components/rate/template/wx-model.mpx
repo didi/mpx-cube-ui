@@ -1,0 +1,28 @@
+<template>
+  <view class="rate-demo">
+    <view>当前分数的值: {{value}}</view>
+    <rate wx:model="{{value}}" wx:model-prop="value" disabled="{{disabled}}" max="{{max}}" justify="{{justify}}" allowHalf="{{allowHalf}}"></rate>
+  </view>
+</template>
+
+<script>
+import { createComponent } from '@mpxjs/core'
+
+createComponent({
+  data: {
+    value: 1,
+    max: 3,
+    justify: false,
+    allowHalf: false,
+    disabled: false
+  }
+})
+</script>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "rate": "@mpxjs/mpx-cube-ui/src/components/rate/index.mpx"
+    }
+  }
+</script>

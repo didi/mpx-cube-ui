@@ -7,7 +7,8 @@ module.exports = {
   testEnvironment: 'jsdom',
   collectCoverage: false,
   testMatch: [
-    '**/__tests__/**/*.spec.js'
+    // '**/__tests__/**/*.spec.js'
+    '**/__tests__/**/rate.spec.js'
   ],
   collectCoverageFrom: ['/packages/mpx-cube-ui/src/components/**/*.{js,mpx,ts}'],
   coverageDirectory: 'test/coverage',

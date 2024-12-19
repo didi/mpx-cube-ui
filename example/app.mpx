@@ -45,7 +45,8 @@
       "./pages/textarea/index",
       "./pages/float-ball/index",
       "./pages/rate/index",
-      "./pages/switch/index"
+      "./pages/switch/index",
+      "./pages/loading/index"
     ]
   }
 </script>

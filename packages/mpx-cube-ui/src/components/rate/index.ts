@@ -46,10 +46,18 @@ createComponent({
     allowHalf: {
       type: Boolean,
       value: false
+    },
+    /**
+     * @description 是否自定义
+     */
+    isCustom: {
+      type: Boolean,
+      value: false
     }
   },
   data: {
-    tempValue: 0
+    tempValue: 0,
+    domName: ''
   },
   computed: {
     rateClass() {
@@ -69,6 +77,7 @@ createComponent({
   },
   lifetimes: {
     created() {
+      this.domName = this.isCustom ? '#cube-rate' : '#cube-rate-items'
       this.mousePressed = false
     }
   },
@@ -80,12 +89,16 @@ createComponent({
           document.addEventListener('mouseup', this.handleEnd)
           document.addEventListener('mousemove', this.handleMove)
         }
-        const rect = this.$refs.rateContainer.$el.getBoundingClientRect()
-        this.left = rect.left
-        this.containerWidth = rect.width
+        const that = this // eslint-disable-line
+        this.createSelectorQuery().select(this.domName).boundingClientRect(function (rect) {
+          const { width, left } = rect
+          that.containerWidth = width
+          that.left = left
+        }).exec()
       }
     },
     handleMove(e) {
+      e.preventDefault && e.preventDefault()
       if (this.disabled) return
 
       if (!isMouseEvent(e)) {

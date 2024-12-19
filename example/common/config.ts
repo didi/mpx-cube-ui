@@ -42,7 +42,8 @@ export default {
           'divider',
           'float-ball',
           'rate',
-          'switch'
+          'switch',
+          'loading'
         ]
       },
       {

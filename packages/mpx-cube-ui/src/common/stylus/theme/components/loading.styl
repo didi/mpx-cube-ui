@@ -1,0 +1,18 @@
+vendors = official
+// @type loading
+$loading-font-size := 24px
+$loading-spinners-width := 2px
+$loading-spinners-height := 1rem
+$loading-spinners-animation := spinner-fade 1s steps(12, end) infinite
+
+
+$loading-spinner-width := 2px
+$loading-spinner-height := 25%
+$loading-spinner-normal-opacity := 0.25 // 正常透明度
+$loading-spinner-deep-opacity := 0.85 // 加深透明度
+
+@keyframes spinner-fade
+  0%
+    transform rotate(0deg)
+  100%
+    transform rotate(360deg)

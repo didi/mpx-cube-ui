@@ -1,0 +1,41 @@
+<template>
+  <view class="loading-page">
+    <base-container>
+      <view class="describe">默认大小</view>
+      <cube-loading></cube-loading>
+      <view class="describe">36大小</view>
+      <cube-loading size="{{36}}"></cube-loading>
+      <view class="describe">48大小</view>
+      <cube-loading size="{{48}}"></cube-loading>
+    </base-container>
+  </view>
+</template>
+
+<script>
+  import { createPage } from '@mpxjs/core'
+
+  createPage({
+    data: {
+    },
+    methods: {
+    }
+  })
+</script>
+
+<style lang="stylus">
+.loading-page
+  padding-top: 10px
+  height 100%
+  background-color rgba(239, 239, 244, .7)
+  .describe
+    margin: 10px 0
+</style>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "base-container": "../../components/base-container/index.mpx",
+      "cube-loading": "@mpxjs/mpx-cube-ui/src/components/loading/index"
+    }
+  }
+</script>

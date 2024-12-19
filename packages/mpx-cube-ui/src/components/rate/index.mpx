@@ -1,16 +1,18 @@
 <template>
-  <view ref="rateContainer"
-    class="cube-rate"
+  <view
+    id="cube-rate"
     wx:class="{{rateClass}}"
-    bindtouchstart.stop="handleStart"
-    bindtouchmove.stop.prevent="handleMove"
-    bindtouchend.stop="handleEnd"
-    bindmousedown.stop="handleStart"
-    bindmousemove.stop="handleMove"
-    bindmouseup.stop="handleEnd">
-    <slot>
-      <rate-item wx:for="{{max}}" wx:key="index" index="{{index}}" value="{{value}}"></rate-item>
+    catchtouchstart="handleStart"
+    catchtouchmove="handleMove"
+    catchtouchend="handleEnd"
+    catchmousedown="handleStart"
+    catchmousemove="handleMove"
+    catchmouseup="handleEnd">
+    <slot wx:if="{{isCustom}}">
     </slot>
+    <view class="cube-rate-items" id="cube-rate-items" wx:class="{{rateClass}}" wx:else>
+      <rate-item class="rate-item" wx:for="{{max}}" wx:key="item" index="{{item}}" value="{{value}}" isCustom="{{false}}"/>
+    </view>
   </view>
 </template>
 
@@ -20,12 +22,14 @@
 @require "@mpxjs/mpx-cube-ui/src/common/stylus/helper.styl"
 @require "@mpxjs/mpx-cube-ui/src/common/stylus/mixin.styl"
 @require "@mpxjs/mpx-cube-ui/src/common/stylus/theme/components/rate.styl"
-  .cube-rate
+
+  .cube-rate, .cube-rate-items
     list-style: none
     display: inline-flex
     vertical-align: top
     flex-wrap: nowrap
     max-width: $var(rate-max-width)
+
   .cube-rate-justify
     width: $var(rate-justify-width)
     justify-content: space-between

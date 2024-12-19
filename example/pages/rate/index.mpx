@@ -4,61 +4,60 @@
       <view class="content">
         <view class="rate-wrapper">
           <rate wx:model="{{value}}" wx:model-prop="value" disabled="{{disabled}}" max="{{_max}}" justify="{{justify}}" allowHalf="{{allowHalf}}">
-            <rate-item wx:for="{{_max}}" wx:key="item" index="{{item}}" value="{{value}}">
-              <view class="rate-item" wx:if="{{customStar}}"></view>
-            </rate-item>
           </rate>
-      </view>
-      <view class="options">
-        <view class="title">Options</view>
-        <view class="option-list">
-          <view class="option-list">
-          <view class="group">
-            <view class="group-item">
-              <view class="item">Disabled</view>
-              <switch 
-                color="{{ switchColor }}"
-                checked="{{ disabled }}"
-                bindchange="updateDisabled"
-              />
-            </view>
-            <view class="group-item">
-              <view class="item sub">Star Numbers</view>
-              <input
-                class="input-maxlength"
-                type="number"
-                value="{{ max }}"
-                bind:input="updateMaxLength"
-              />
-            </view>
-            <view class="group-item">
-              <view class="item">Justify</view>
-              <switch 
-                color="{{ switchColor }}"
-                checked="{{ justify }}"
-                bindchange="updateJustify"
-              />
-            </view>
-            <view class="group-item">
-              <view class="item">CustomStar</view>
-              <switch 
-                color="{{ switchColor }}"
-                checked="{{ customStar }}"
-                bindchange="updateCustomStar"
-              />
-            </view>
-            <view class="group-item">
-              <view class="item">AllowHalf</view>
-              <switch 
-                color="{{ switchColor }}"
-                checked="{{ allowHalf }}"
-                bindchange="updateAllowHalf"
-              />
-            </view>
+        </view>
+        <view class="options">
+          <view class="title">Options</view>
+            <view class="rate-option-list">
+             <view class="group">
+                <view class="group-item">
+                  <text class="item">Disabled</text>
+                  <switch 
+                    color="{{ switchColor }}"
+                    checked="{{ disabled }}"
+                    bindchange="updateDisabled"
+                  />
+                </view>
+                <view class="group-item">
+                  <view class="item sub">Star Numbers</view>
+                  <input
+                    class="input-maxlength"
+                    type="number"
+                    value="{{ max }}"
+                    bind:input="updateMaxLength"
+                  />
+                </view>
+                <view class="group-item">
+                  <view class="item">Justify</view>
+                  <switch 
+                    color="{{ switchColor }}"
+                    checked="{{ justify }}"
+                    bindchange="updateJustify"
+                  />
+                </view>
+                <view class="group-item">
+                  <view class="item">CustomStar</view>
+                  <switch 
+                    color="{{ switchColor }}"
+                    checked="{{ customStar }}"
+                    bindchange="updateCustomStar"
+                  />
+                </view>
+                <view class="group-item">
+                  <view class="item">AllowHalf</view>
+                  <switch 
+                    color="{{ switchColor }}"
+                    checked="{{ allowHalf }}"
+                    bindchange="updateAllowHalf"
+                  />
+                </view>
+              </view>
           </view>
         </view>
-        </view>
-      </view>
+        <cube-toast
+          txt="为方便展示，示例中星星数最多为10～"
+          wx:ref="toast">
+        </cube-toast>
       </view>
     </base-container>
   </view>
@@ -90,6 +89,10 @@
       updateMaxLength (e) {
         const { value } = e.detail
         this.max = value
+        if (value >= 10) {
+          this.$refs.toast.show()
+          this.max = '10'
+        }
       },
       updateJustify (e) {
         const { value } = e.detail
@@ -113,8 +116,32 @@
   height 100%
   background-color rgba(239, 239, 244, .7)
   .options
-    margin-top: 20px
-    
+    margin: 20px 0
+    .rate-option-list
+      .group
+        border: 1px solid rgba(0, 0, 0, .1)
+        border-radius: 5px
+        .group-item
+          display: flex
+          align-items: center
+          justify-content: space-between
+          padding-right: 10px
+          border-bottom: 1px solid rgba(0, 0, 0, .1)
+          .item
+            padding-left: 15px
+            line-height: 52px
+            height: 52px
+            width: 120px
+            text-align: left
+          .sub
+            font-size: 14px
+            background-color: rgba(0, 0, 0, .04)
+          .input-maxlength
+          .input-width
+            flex: 1
+            margin-left: 15px
+        .last
+          border-bottom: none
 .desc
   margin-top 15px
 </style>
@@ -124,6 +151,7 @@
     "usingComponents": {
       "base-container": "../../components/base-container/index.mpx",
       "rate": "@mpxjs/mpx-cube-ui/src/components/rate/index.mpx",
+      "cube-toast": "@mpxjs/mpx-cube-ui/src/components/toast/index",
       "rate-item": "@mpxjs/mpx-cube-ui/src/components/rate/rate-item.mpx"
     }
   }
