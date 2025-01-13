@@ -8,10 +8,11 @@
     catchmousedown="handleStart"
     catchmousemove="handleMove"
     catchmouseup="handleEnd">
-    <slot wx:if="{{isCustom}}">
-    </slot>
-    <view class="cube-rate-items" id="cube-rate-items" wx:class="{{rateClass}}" wx:else>
-      <rate-item class="rate-item" wx:for="{{max}}" wx:key="item" index="{{item}}" value="{{value}}" isCustom="{{false}}"/>
+    <view class="cube-rate-items" id="cube-rate-items" wx:class="{{rateClass}}" >
+      <slot wx:if="{{isCustomize}}"></slot>
+      <block wx:else>
+        <rate-item wx:for="{{max}}" wx:key="item" index="{{item}}" value="{{value}}" isCustomize="{{false}}"/>
+      </block>
     </view>
   </view>
 </template>
@@ -29,7 +30,6 @@
     vertical-align: top
     flex-wrap: nowrap
     max-width: $var(rate-max-width)
-
   .cube-rate-justify
     width: $var(rate-justify-width)
     justify-content: space-between

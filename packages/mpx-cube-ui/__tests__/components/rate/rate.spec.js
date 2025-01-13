@@ -42,9 +42,9 @@ describe('component rate unit test', function () {
     // })
 
     it(' wx:model', async () => {
-      // const rates = component.querySelector('rate').querySelector('.cube-rate-items')
-      const rates = component.querySelector('rate').querySelector('.cube-rate-items').querySelectorAll('.cube-rate-item')
-      console.log(44, rates.length)
+      // const rates = component.querySelector('rate').querySelectorAll('rate-item')
+      const rates = component.querySelector('rate').querySelector('.cube-rate-items')
+      console.log(44, rates.dom.innerHTML)
       const rate1 = rates[0].querySelector('.cube-rate-item_active')
       const rate2 = rates[1].querySelector('.cube-rate-item-def')
       const rate3 = rates[2].querySelector('.cube-rate-item-def')

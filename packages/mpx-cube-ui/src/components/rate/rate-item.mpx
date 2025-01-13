@@ -1,7 +1,8 @@
 <template>
   <view class="cube-rate-item" wx:class="{{rateItemClass}}">
-    <slot wx:if="{{isCustom}}"></slot>
-    <view wx:else class="cube-rate-item-def"></view>
+    <view class="cube-rate-item-def">
+      <slot></slot>
+    </view>
   </view>
 </template>
 <script src="./rate-item-index.ts" lang="ts"></script>
@@ -20,8 +21,6 @@
     content: ""
     display: block
     padding: $var(rate-item-after-padding)
-  &:last-child
-    margin-right: $var(rate-item-last-child-margin-right)
   .cube-rate-item-def
     position: absolute
     width: $var(rate-item-def-width)

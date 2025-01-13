@@ -50,7 +50,7 @@ createComponent({
     /**
      * @description 是否自定义
      */
-    isCustom: {
+    isCustomize: {
       type: Boolean,
       value: false
     }
@@ -77,7 +77,7 @@ createComponent({
   },
   lifetimes: {
     created() {
-      this.domName = this.isCustom ? '#cube-rate' : '#cube-rate-items'
+      this.domName = this.isCustomize ? '#cube-rate' : '#cube-rate-items'
       this.mousePressed = false
     }
   },
