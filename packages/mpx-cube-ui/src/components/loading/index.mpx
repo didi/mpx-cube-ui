@@ -1,7 +1,7 @@
 <template>
   <view class="cube-single-loading">
     <text class="cube-loading-spinners" wx:style="{{style}}">
-        <text class="cube-loading-spinner" wx:for="{{balde}}"></text>
+      <text class="cube-loading-spinner" wx:for="{{line}}"></text>
     </text>
   </view>
 </template>

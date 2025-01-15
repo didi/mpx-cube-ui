@@ -58,7 +58,7 @@
           </view>
         </view>
         <cube-toast
-          txt="为方便展示，示例中星星数最多为10～"
+          txt="为方便展示，示例中星星数最多为9～"
           wx:ref="toast">
         </cube-toast>
       </view>
@@ -71,7 +71,7 @@
 
   createPage({
     data: {
-      value: 4.5,
+      value: 3.3,
       max: '5',
       customize: false,
       justify: false,
@@ -92,9 +92,9 @@
       updateMaxLength (e) {
         const { value } = e.detail
         this.max = value
-        if (value >= 10) {
+        if (value > 9) {
           this.$refs.toast.show()
-          this.max = '10'
+          this.max = '9'
         }
       },
       updateJustify (e) {
@@ -156,6 +156,9 @@
 .cube-rate-item_active
   .rate-item-demo
     background-color: orange
+.cube-rate-item_half_active
+  .rate-item-demo
+    background-color: blue
 </style>
 
 <script type="application/json">

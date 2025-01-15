@@ -17,9 +17,7 @@ createComponent({
   computed: {
     switchClass() {
       return {
-        'cube-switch': true,
-        'cube-switch-on': this.isOn,
-        [`cube-switch-${this.themeType}`]: this.themeType
+        'cube-switch-on': this.isOn
       }
     }
   },

@@ -11,7 +11,7 @@
     <view class="cube-rate-items" id="cube-rate-items" wx:class="{{rateClass}}" >
       <slot wx:if="{{isCustomize}}"></slot>
       <block wx:else>
-        <rate-item wx:for="{{max}}" wx:key="item" index="{{item}}" value="{{value}}" isCustomize="{{false}}"/>
+        <rate-item wx:for="{{max}}" wx:key="item" index="{{item}}" value="{{value}}"/>
       </block>
     </view>
   </view>

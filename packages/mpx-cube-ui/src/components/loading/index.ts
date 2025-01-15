@@ -8,7 +8,7 @@ createComponent({
     }
   },
   data: {
-    balde: 12
+    line: 12
   },
   computed: {
     style() {

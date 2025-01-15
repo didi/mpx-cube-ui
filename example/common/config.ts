@@ -41,8 +41,6 @@ export default {
           'icon',
           'divider',
           'float-ball',
-          'rate',
-          'switch',
           'loading'
         ]
       },
@@ -57,7 +55,9 @@ export default {
           'picker',
           'cascade-picker',
           'date-picker',
-          'time-picker'
+          'time-picker',
+          'rate',
+          'switch'
         ]
       },
       {

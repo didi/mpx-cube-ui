@@ -100,33 +100,22 @@ createComponent({
     handleMove(e) {
       e.preventDefault && e.preventDefault()
       if (this.disabled) return
-
-      if (!isMouseEvent(e)) {
-        this.computeTempValue(e.touches[0])
-      } else if (this.mousePressed) {
-        this.computeTempValue(e)
-      }
+      this.computeTempValue(isMouseEvent(e) ? e : e.touches[0])
     },
     handleEnd(e) {
       if (this.disabled) return
-      if ((!isMouseEvent(e) || this.mousePressed)) {
-        if (isMouseEvent(e)) {
-          this.mousePressed = false
-          document.removeEventListener('mouseup', this.handleEnd)
-          document.removeEventListener('mousemove', this.handleMove)
-        }
-        this.computeTempValue(isMouseEvent(e) ? e : e.changedTouches[0])
-        this.triggerEvent(EVENT_INPUT, { value: this.tempValue })
+      if (isMouseEvent(e)) {
+        this.mousePressed = false
+        document.removeEventListener('mouseup', this.handleEnd)
+        document.removeEventListener('mousemove', this.handleMove)
       }
+      this.computeTempValue(isMouseEvent(e) ? e : e.changedTouches[0])
+      this.triggerEvent(EVENT_INPUT, { value: this.tempValue })
     },
     handleNum(num) {
       if (this.allowHalf) {
         const baseNum = Math.ceil(num) - 0.5
-        if (this.disabled) {
-          num = num < baseNum ? baseNum - 0.5 : baseNum
-        } else {
-          num = num <= baseNum ? baseNum : baseNum + 0.5
-        }
+        num = num <= baseNum ? baseNum : baseNum + 0.5
       } else {
         num = Math.ceil(num)
       }

@@ -10,10 +10,6 @@ createComponent({
     value: {
       type: Number,
       value: 0
-    },
-    isCustomize: {
-      type: Boolean,
-      value: true
     }
   },
   computed: {
