@@ -1,0 +1,68 @@
+<template>
+  <view class="cube-collapse">
+    <view wx:if="{{ showTopSwitch }}" class="cube-collapse-top" bindtap="toggleCollapse">
+      <view class="cube-collapse-switch" wx:if="{{text}}">
+        <view class="cube-collapse-text">{{ text }}</view>
+        <cube-icon
+          class="cube-collapse-arrow"
+          wx:class="{{ { 'cube-collapse-arrow-bottom': isCollapsed } }}"
+          type="arrow"
+        />
+      </view>
+      <slot name="top-switch" />
+    </view>
+    <slot name="top" />
+    <view class="cube-collapse-mid" wx:style="{{ contentWrapStyle }}">
+      <view class="cube-collapse-content">
+        <slot />
+      </view>
+    </view>
+    <slot name="bottom" />
+    <view wx:if="{{ showBottomSwitch }}" class="cube-collapse-bottom" bindtap="toggleCollapse">
+      <view class="cube-collapse-switch" wx:if="{{text}}">
+        <view class="cube-collapse-text">{{ text }}</view>
+        <cube-icon
+          class="cube-collapse-arrow"
+          wx:class="{{ { 'cube-collapse-arrow-bottom': isCollapsed } }}"
+          type="arrow"
+        />
+      </view>
+      <slot name="bottom-switch" />
+    </view>
+  </view>
+</template>
+
+<script src="./index.ts" lang="ts"></script>
+
+<style lang="stylus">
+.cube-collapse-mid
+  transition: max-height .3s ease-in-out
+  overflow: hidden
+.cube-collapse-content
+  overflow: hidden
+.cube-collapse-switch
+  display: flex
+  align-items center
+  height: 28px
+  font-size: 14px
+  color: #222
+.cube-collapse-text
+  flex-grow: 1
+.cube-collapse-arrow
+  flex-shrink: 0
+  font-size: 12px
+  transform: rotate(-90deg)
+  transition: transform .3s ease-in-out
+.cube-collapse-arrow-bottom
+  transform: rotate(90deg)
+</style>
+
+<script type="application/json">
+  {
+    "styleIsolation": "shared",
+    "component": true,
+    "usingComponents": {
+      "cube-icon": "../icon/index.mpx"
+    }
+  }
+</script>
