@@ -1,11 +1,6 @@
 import { createComponent } from '@mpxjs/core'
 
 const EVENT_INPUT = 'input'
-const EVENT_TYPE_MOUSE = 'mouse'
-
-function isMouseEvent(e) {
-  return e.type.indexOf(EVENT_TYPE_MOUSE) > -1
-}
 createComponent({
   options: {
     multipleSlots: true,
@@ -23,8 +18,8 @@ createComponent({
      * @description 星星数目
      */
     max: {
-      type: Number,
-      value: 0
+      type: Array,
+      value: []
     },
     /**
      * @description 是否禁止
@@ -57,7 +52,7 @@ createComponent({
   },
   data: {
     tempValue: 0,
-    domName: ''
+    domName: '#cube-rate'
   },
   computed: {
     rateClass() {
@@ -75,61 +70,49 @@ createComponent({
       }
     }
   },
-  lifetimes: {
-    created() {
-      this.domName = this.isCustomize ? '#cube-rate' : '#cube-rate-items'
-      this.mousePressed = false
-    }
-  },
   methods: {
     handleStart(e) {
       if (!this.disabled) {
-        if (isMouseEvent(e)) {
-          this.mousePressed = true
-          document.addEventListener('mouseup', this.handleEnd)
-          document.addEventListener('mousemove', this.handleMove)
-        }
-        const that = this // eslint-disable-line
-        this.createSelectorQuery().select(this.domName).boundingClientRect(function (rect) {
+        this.createSelectorQuery().select(this.domName).boundingClientRect((rect) => {
           const { width, left } = rect
-          that.containerWidth = width
-          that.left = left
+          this.containerWidth = width
+          this.left = left
         }).exec()
       }
     },
     handleMove(e) {
       e.preventDefault && e.preventDefault()
       if (this.disabled) return
-      this.computeTempValue(isMouseEvent(e) ? e : e.touches[0])
+      this.computeTempValue(e.touches[0])
     },
     handleEnd(e) {
       if (this.disabled) return
-      if (isMouseEvent(e)) {
-        this.mousePressed = false
-        document.removeEventListener('mouseup', this.handleEnd)
-        document.removeEventListener('mousemove', this.handleMove)
-      }
-      this.computeTempValue(isMouseEvent(e) ? e : e.changedTouches[0])
+      this.computeTempValue(e.changedTouches[0])
       this.triggerEvent(EVENT_INPUT, { value: this.tempValue })
     },
-    handleNum(num) {
+    handleNum(num, isEvent = false) {
       if (this.allowHalf) {
-        const baseNum = Math.ceil(num) - 0.5
-        num = num <= baseNum ? baseNum : baseNum + 0.5
+        const ceilNum = Math.ceil(num)
+        const baseNum = ceilNum - 0.5
+        if (isEvent) {
+          num = num <= baseNum ? baseNum : ceilNum
+        } else {
+          num = num < baseNum ? ceilNum - 1 : (num === ceilNum) ? ceilNum : baseNum
+        }
       } else {
         num = Math.ceil(num)
       }
       return num
     },
     computeTempValue(touch) {
-      let num = (touch.clientX - this.left) / this.containerWidth * this.max
-      num = this.handleNum(num)
-      if (num > 0 && num <= this.max) {
+      let num = (touch.clientX - this.left) / this.containerWidth * this.max.length
+      num = this.handleNum(num, true)
+      if (num > 0 && num <= this.max.length) {
         this.tempValue = num
       } else if (num <= 0) {
         this.tempValue = 0
       } else {
-        this.tempValue = this.max
+        this.tempValue = this.max.length
       }
     }
   }

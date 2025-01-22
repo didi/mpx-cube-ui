@@ -71,17 +71,18 @@
 
   createPage({
     data: {
-      value: 3.3,
+      value: 3.4,
       max: '5',
       customize: false,
       justify: false,
       allowHalf: true,
-      disabled: true,
+      disabled: false,
       switchColor: '#fc9153'
     },
     computed: {
       _max() {
-        return Number(this.max)
+        console.log(4445, Array.from({length: Number(this.max)}, (_, i) => i + 1))
+        return Array.from({length: Number(this.max)}, (_, i) => i + 1)
       }
     },
     methods: {

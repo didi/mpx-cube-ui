@@ -47,12 +47,8 @@ describe('component switch unit test', function () {
     it('correct render  check', async () => {
       // 正确渲染
       const isCloseSwitch = component.querySelector('.cube-switch-on')
-
-      // eslint-disable-next-line eqeqeq
       expect(component.instance.disabled).toBe(false)
-
-      // eslint-disable-next-line eqeqeq
-      expect(isCloseSwitch === undefined).toBe(true)
+      expect(isCloseSwitch).toBeUndefined()
     })
   })
 
@@ -67,12 +63,12 @@ describe('component switch unit test', function () {
     it('disabled check', async () => {
       // 正确渲染
       const isCloseSwitchOne = component.querySelector('.cube-switch-on')
-      expect(isCloseSwitchOne === undefined).toBe(true)
+      expect(isCloseSwitchOne).toBeUndefined()
       component.querySelector('.cube-switch').dispatchEvent('tap')
       await simulate.sleep(10)
 
       const isCloseSwitchTwo = component.querySelector('.cube-switch-on')
-      expect(isCloseSwitchTwo === undefined).toBe(true)
+      expect(isCloseSwitchTwo).toBeUndefined()
     })
   })
 })

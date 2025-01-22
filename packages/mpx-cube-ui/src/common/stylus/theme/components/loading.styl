@@ -3,7 +3,11 @@ vendors = official
 $loading-font-size := 24px
 $loading-spinners-width := 2px
 $loading-spinners-height := 1rem
-$loading-spinners-animation := spinner-fade 1s steps(12, end) infinite
+
+$loading-spinners-animation-duration = 1s
+$loading-spinners-animation-steps = steps(12, end)
+$loading-spinners-animation-count = infinite
+$loading-spinners-animation := spinner-fade $loading-spinners-animation-duration $loading-spinners-animation-steps $loading-spinners-animation-count
 
 
 $loading-spinner-width := 2px

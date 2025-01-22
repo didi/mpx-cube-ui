@@ -1,14 +1,12 @@
 <template>
   <view
     id="cube-rate"
+    class="cube-rate"
     wx:class="{{rateClass}}"
     catchtouchstart="handleStart"
     catchtouchmove="handleMove"
     catchtouchend="handleEnd"
-    catchmousedown="handleStart"
-    catchmousemove="handleMove"
-    catchmouseup="handleEnd">
-    <view class="cube-rate-items" id="cube-rate-items" wx:class="{{rateClass}}" >
+    >
       <slot wx:if="{{isCustomize}}"></slot>
       <block wx:else>
         <rate-item wx:for="{{max}}" wx:key="item" index="{{item}}" value="{{value}}"/>
@@ -24,7 +22,7 @@
 @require "@mpxjs/mpx-cube-ui/src/common/stylus/mixin.styl"
 @require "@mpxjs/mpx-cube-ui/src/common/stylus/theme/components/rate.styl"
 
-  .cube-rate, .cube-rate-items
+  .cube-rate
     list-style: none
     display: inline-flex
     vertical-align: top

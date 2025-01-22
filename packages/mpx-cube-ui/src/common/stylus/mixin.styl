@@ -117,10 +117,6 @@ hide-scrollbar()
     width 0
     height 0
 
-// bg-image($url, $ext = ".png")
-//   background-image url($url + "@2x" + $ext)
-//   @media (min-resolution: 3dppx)
-//     background-image url($url + "@3x" + $ext)
 bg-image($url, $ext = ".png")
   add-property('background-image', s('url(%s)', $url + '@2x' + $ext))
   @media (min-resolution: 3dppx)

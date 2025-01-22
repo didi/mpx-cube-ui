@@ -1,5 +1,4 @@
 import { createComponent } from '@mpxjs/core'
-import { isWx } from '../../common/helper/utils'
 
 createComponent({
   properties: {
@@ -14,10 +13,9 @@ createComponent({
   },
   computed: {
     rateItemClass() {
-      const indexValue = isWx ? this.index + 1 : this.index
       return {
-        'cube-rate-item_active': indexValue <= this.value,
-        'cube-rate-item_half_active': indexValue === this.value + 0.5
+        'cube-rate-item_active': this.index <= this.value,
+        'cube-rate-item_half_active': this.index === this.value + 0.5
       }
     }
   }

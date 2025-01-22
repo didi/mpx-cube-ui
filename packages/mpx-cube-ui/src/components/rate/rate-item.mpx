@@ -28,13 +28,13 @@
     background-size: $var(rate-item-def-background-size)
     background-repeat: no-repeat
     background-position: center
-    bg-image("evaluation_icon_star_gray")
+    background-image: $var(rate-item-star-default)
 .cube-rate-item_active
   .cube-rate-item-def
-    bg-image("evaluation_icon_star")
+    background-image: $var(rate-item-star-active)
 .cube-rate-item_half_active
   .cube-rate-item-def
-    bg-image("evaluation_icon_half")
+    background-image: $var(rate-item-star-half-active)
 </style>
 
 <script type="application/json">
