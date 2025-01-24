@@ -43,7 +43,7 @@
   </cube-picker-modal-base>
 </template>
 
-<script lang="ts" src="./index.ts"></script>
+<script lang="ts" src="./cascade-picker-modal.ts"></script>
 
 <style lang="stylus"></style>
 
