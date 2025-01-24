@@ -1,6 +1,6 @@
 <template>
   <button
-    hover-class="none"
+    hover-class@wx|ali="none"
     wx:class="{{ btnClass }}"
     wx:style="{{ styleConfig.btn }}"
     lang@wx="{{ lang }}"
@@ -25,7 +25,10 @@
     bind:getAuthorize@ali="onGetAuthorize"
     bind:followLifestyle@ali="onFollowLifestyle"
   >
-    <loading wx:if="{{ loading }}" />
+    <loading
+      wx:if="{{ loading }}"
+      style="position: absolute; top: 0; left: 0; right: 0; bottom: 0;"
+    />
     <cube-icon
       theme-type="{{ themeType }}"
       class="cube-btn-icon"
@@ -36,141 +39,21 @@
     <view class="cube-btn-content" wx:style="{{ styleConfig.content }}">
       <slot />
     </view>
-    <view class="cube-btn-tip" wx:if="{{ tip }}">{{tip}}</view>
+    <view class="cube-btn-tip" wx:if="{{ tip }}">
+      <text class="cube-btn-tip-text">{{tip}}</text>
+    </view>
+    <slot name="tip" />
   </button>
 </template>
 
-<script lang="ts" src="./index.ts"></script>
+<script lang="ts" src="./button.ts"></script>
 
 <style lang="stylus">
-@require "../../common/stylus/variable.styl"
-@require "../../common/stylus/mixin.styl"
-@require "../../common/stylus/theme/components/button.styl"
-
-btn_active($bg, $border-color = null, $color = $var(color-white), $opacity = $btn-opacity_active)
-  &.cube-btn_active, &:active
-    background $bg
-    opacity $opacity
-    if $color != '-'
-      color $color
-    if $border-color != null
-      border-1px($border-color, $var(btn-border-radius))
-
-btn-loading_active($bg, $border-color = transparent, $opacity = 1)
-  &.cube-btn-loading
-    btn_active($bg, $border-color, '-', $opacity)
-
-border-color($border-color)
-  &::after
-    border-color $border-color
-
-.cube-btn
-  margin 0
-  display block
-  width 100%
-  height auto
-  padding $var(btn-block-padding)
-  box-sizing border-box
-  overflow hidden
-  outline none
-  border none
-  border-radius $var(btn-border-radius)
-  line-height $var(btn-block-line-height)
-  text-align center
-  white-space nowrap
-  font-size $var(btn-font-size)
-  color $var(btn-color)
-  -webkit-tap-highlight-color transparent
-  background $var(btn-bgc)
-  box-shadow $var(btn-bxsh)
-  btn_active($var(btn-bgc_active), $var(btn-border-color_active), $var(btn-color))
-  btn-loading_active($var(btn-bgc))
-  border-1px($var(btn-border-color), $var(btn-border-radius))
-.cube-btn-icon
-  margin-right $var(btn-icon-margin-right)
-  display inline-block
-  transform scale(1.13)
-  transform-origin right center
-  font-size $var(btn-icon-font-size)
-.cube-btn-content
-  display inline-block
-  max-width 100%
-.cube-btn-tip
-  margin-top $var(btn-tip-margin-top)
-  overflow hidden
-  line-height $var(btn-tip-line-height)
-  font-size $var(btn-tip-font-size)
-  white-space nowrap
-  text-overflow ellipsis
-
-.cube-btn-inline
-  display inline-block
-  width auto
-  padding $var(btn-inline-padding)
-  vertical-align middle
-  line-height $var(btn-inline-line-height)
-  font-size $var(btn-inline-font-size)
-  .cube-btn-icon
-    margin-right $var(btn-icon-inline-margin-right)
-    transform scale(1.14)
-
-.cube-btn-primary
-  color $var(btn-primary-color)
-  font-weight $var(btn-primary-font-weight)
-  box-shadow $var(btn-primary-bxsh)
-  background $var(btn-primary-bgc)
-  btn_active($var(btn-primary-bgc_active), '', $var(btn-primary-color_active))
-  btn-loading_active($var(btn-primary-bgc), null)
-
-.cube-btn-light
-  font-weight $var(btn-outline-font-weight)
-  box-shadow $var(btn-light-bxsh)
-  color $var(btn-light-color)
-  background $var(btn-light-bgc)
-  border-color($var(btn-light-border-color))
-  btn_active($var(btn-light-bgc_active), $var(btn-light-border-color), $var(btn-light-color))
-  btn-loading_active($var(btn-light-bgc))
-
-.cube-btn-outline
-  font-weight $var(btn-outline-font-weight)
-  color $var(btn-outline-color)
-  box-shadow $var(btn-outline-bxsh)
-  background $var(btn-outline-bgc)
-  border-color($var(btn-outline-border-color))
-  btn_active($var(btn-outline-bgc_active), $var(btn-outline-border-color_active), $var(btn-outline-color))
-  btn-loading_active($var(btn-outline-bgc), $var(btn-outline-border-color))
-  --cube-btn-loading-dot-active-color $var(btn-loading-dot-normal-color)
-
-.cube-btn-outline-primary
-  color $var(btn-outline-primary-color)
-  border-color($var(btn-outline-primary-border-color))
-  box-shadow $var(btn-outline-primary-bxsh)
-  background $var(btn-outline-primary-bgc)
-  btn_active($var(btn-outline-primary-bgc_active), $var(btn-outline-primary-border-color), $var(btn-outline-primary-color))
-  btn-loading_active($var(btn-outline-primary-bgc), $var(btn-outline-primary-border-color))
-
-.cube-btn_disabled
-  font-weight $var(btn-disabled-font-weight)
-  border-none()
-  color $var(btn-disabled-color)
-  background $var(btn-disabled-bgc)
-  btn_active($var(btn-disabled-bgc), $var(btn-disabled-border-color), $var(btn-disabled-color), 1)
-  btn-loading_active($var(btn-disabled-bgc), $var(btn-disabled-color))
-
-.cube-btn-with-tip
-  padding-top $var(btn-with-tip-padding-top)
-  padding-bottom $var(btn-with-tip-padding-bottom)
-  line-height $var(btn-with-tip-line-height)
-  font-size $var(btn-with-tip-font-size)
-
-.cube-btn_bolder
-  font-weight bolder
-
-.cube-btn-loading
-  .cube-btn-icon,
-  .cube-btn-content,
-  .cube-btn-tip
-    visibility hidden
+/* @mpx-if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') */
+@require './css.rn.styl'
+/* @mpx-else */
+@require './css.styl'
+/* @mpx-endif */
 </style>
 
 <script type="application/json">

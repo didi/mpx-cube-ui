@@ -1,6 +1,7 @@
 import { createComponent } from '../../common/helper/create-component'
 
 const EVENT_CLICK = 'click' // 点击
+const EVENT_DISABLED_CLICK = 'disabledClick' // 不可点击状态下的点击
 const EVENT_GET_USER_INFO = 'getUserInfo' // 获取用户信息
 const EVENT_GET_PHONE_NUMBER = 'getPhoneNumber' // 获取用户手机号
 const EVENT_ERROR = 'error' // 错误回调
@@ -74,18 +75,11 @@ createComponent({
       value: false
     },
     /**
-     * @description 图标 Icon，参阅[内置 Icon](https://www.mpxjs.cn/mpx-cube-ui/demo-theme-default/index.html#/pages/icon/index)
+     * @description 图标 Icon，参阅[内置 Icon](http://h5test.intra.xiaojukeji.com/driver-biz/mpx-cube-ui-demo_default/index.html#/pages/icon/index)
      */
     icon: {
       type: String,
       value: ''
-    },
-    /**
-     * @description 图标尺寸大小
-     */
-    iconSize: {
-      type: Number,
-      optionalTypes: [String]
     },
     /**
      * @description 辅助文案
@@ -149,9 +143,10 @@ createComponent({
     // 支付宝生活号 id，必须是当前小程序同主体且已关联的生活号，open-type="lifestyle" 时有效
     publicId: String,
     /**
-     * @description 通过 wx:style透传样式
-     * @optional styleConfig.btn 用于透传给组件最外层 / styleConfig.content 用于透传给组件内容区域
+     * @description （已废弃）按钮类型（v1.0.0）
+     * @optional primary/inline/outline/outline-primary/light
      */
+    type: String,
     styleConfig: {
       type: Object,
       value: {}
@@ -159,7 +154,7 @@ createComponent({
   },
   computed: {
     btnClass() {
-      return {
+      const res = {
         'cube-btn': true,
         ['cube-btn-' + this.themeType]: this.themeType,
         'cube-btn-inline': this.inline,
@@ -173,6 +168,16 @@ createComponent({
         'cube-btn_bolder': this.bolder,
         'cube-btn-loading': this.loading
       }
+      // @ts-ignore
+      if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
+        if (this.active) {
+          res['cube-btn-primary_active'] = this.primary
+          res['cube-btn-outline-primary_active'] = this.outline && this.primary
+          res['cube-btn-light_active'] = this.light
+          res['cube-btn-outline_active'] = this.outline
+        }
+      }
+      return res
     }
   },
   methods: {
@@ -180,65 +185,49 @@ createComponent({
     // 点击
     onClick(e: WechatMiniprogram.TouchEvent) {
       if (!this.disabled) {
-        // 点击按钮，且在按钮状态不为disabled状态时触发
-        // @arg TouchEvent
         this.triggerEvent(EVENT_CLICK, e)
+      } else {
+        this.triggerEvent(EVENT_DISABLED_CLICK, e)
       }
     },
     // @vuese
     // 获取用户信息
     onGetUserInfo(e: WechatMiniprogram.CustomEvent) {
-      // 获取用户信息后触发
-      // @arg CustomEvent
       this.triggerEvent(EVENT_GET_USER_INFO, e)
     },
     // @vuese
     // 获取用户手机号
     onGetPhoneNumber(e: WechatMiniprogram.CustomEvent) {
-      // 获取用户手机号后触发
-      // @arg CustomEvent
       this.triggerEvent(EVENT_GET_PHONE_NUMBER, e)
     },
     // @vuese
     // 失败回调
     onError(e) {
-      // 报错后触发
-      // @arg -
       this.triggerEvent(EVENT_ERROR, e)
     },
     // @vuese
     // 微信小程序打开客服会话
     onContact(e: WechatMiniprogram.CustomEvent) {
-      // 打开客服会话后触发
-      // @arg CustomEvent
       this.triggerEvent(EVENT_CONTACT, e)
     },
     // @vuese
     // 微信小程序中在打开授权设置页后回调，open-type="openSetting" 时有效
     onOpenSetting(e: WechatMiniprogram.CustomEvent) {
-      // 打开授权设置页后触发
-      // @arg CustomEvent
       this.triggerEvent(EVENT_OPEN_SETTING, e)
     },
     // @vuese
     // 微信小程序打开 APP 成功的回调，open-type=launchApp时有效(参见[微信小程序打开 APP](https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/launchApp.html))
     onLaunchApp(e: WechatMiniprogram.CustomEvent) {
-      // 打开 APP 成功后触发
-      // @arg CustomEvent
       this.triggerEvent(EVENT_LAUNCH_APP, e)
     },
     // @vuese
     // 微信小程序获取用户头像回调，open-type=chooseAvatar时有效
     onChooseAvatar(e: WechatMiniprogram.CustomEvent) {
-      // 微信小程序获取用户头像后触发
-      // @arg CustomEvent
       this.triggerEvent(EVENT_CHOOSE_AVATAR, e)
     },
     // @vuese
     // 支付宝小程序中当 open-type 为 lifestyle 时有效。当点击按钮时触发。
     onFollowLifestyle(e: WechatMiniprogram.CustomEvent) {
-      // 支付宝小程序中当 open-type 为 lifestyle 时有效。当点击按钮时触发。
-      // @arg CustomEvent
       this.triggerEvent(EVENT_FOLLOW_LIFE_STYLE, e)
     },
     onGetAuthorize(e) {
