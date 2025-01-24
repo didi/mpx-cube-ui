@@ -1,6 +1,7 @@
 import { createComponent } from '@mpxjs/core'
 
 const EVENT_INPUT = 'input'
+const EVENT_CHANGE = 'change'
 createComponent({
   options: {
     multipleSlots: true,
@@ -81,14 +82,15 @@ createComponent({
       }
     },
     handleMove(e) {
-      e.preventDefault && e.preventDefault()
       if (this.disabled) return
+      e.preventDefault && e.preventDefault()
       this.computeTempValue(e.touches[0])
     },
     handleEnd(e) {
       if (this.disabled) return
       this.computeTempValue(e.changedTouches[0])
       this.triggerEvent(EVENT_INPUT, { value: this.tempValue })
+      this.triggerEvent(EVENT_CHANGE, { value: this.tempValue })
     },
     handleNum(num, isEvent = false) {
       if (this.allowHalf) {

@@ -3,7 +3,7 @@
     <base-container>
       <view class="content">
         <view class="rate-wrapper">
-          <rate wx:model="{{value}}" wx:model-prop="value" disabled="{{disabled}}" isCustomize="{{customize}}" max="{{_max}}" justify="{{justify}}" allowHalf="{{allowHalf}}">
+          <rate wx:model="{{value}}" wx:model-prop="value" bindchange="updateCurrentPoint" disabled="{{disabled}}" isCustomize="{{customize}}" max="{{_max}}" justify="{{justify}}" allowHalf="{{allowHalf}}">
             <rate-item wx:for="{{_max}}" wx:key="item" index="{{item}}" value="{{value}}">
               <view class="rate-item-demo"></view>
             </rate-item>
@@ -28,6 +28,24 @@
                     type="number"
                     value="{{ max }}"
                     bind:input="updateMaxLength"
+                  />
+                </view>
+                <view class="group-item">
+                  <view class="item sub">Input Point</view>
+                  <input
+                    class="input-maxlength"
+                    type="number"
+                    value="{{ currentValue + '' }}"
+                    bind:input="updateValue"
+                  />
+                </view>
+                <view class="group-item">
+                  <view class="item sub">Star Point</view>
+                  <input
+                    class="input-maxlength"
+                    type="number"
+                    disabled="{{true}}"
+                    value="{{ value + '' }}"
                   />
                 </view>
                 <view class="group-item">
@@ -72,6 +90,7 @@
   createPage({
     data: {
       value: 3.4,
+      currentValue: 3.4,
       max: '5',
       customize: false,
       justify: false,
@@ -97,6 +116,15 @@
           this.$refs.toast.show()
           this.max = '9'
         }
+      },
+      updateValue (e) {
+        const { value } = e.detail
+        this.currentValue = value
+        this.value = Number(value)
+      },
+      updateCurrentPoint (e) {
+        const { value } = e.detail
+        this.currentValue = value
       },
       updateJustify (e) {
         const { value } = e.detail
