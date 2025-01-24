@@ -1,4 +1,4 @@
-import { CascadePickerSubTree } from '../cascade-picker/index'
+import { CascadePickerSubTree } from '../cascade-picker/cascade-picker'
 
 import { createPickerModalComponent } from '../../common/helper/create-component'
 
