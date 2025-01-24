@@ -30,8 +30,6 @@ createSelectComponent({
   computed: {
     checkboxGroupClass () {
       return {
-        'cube-checkbox-group': true,
-        ['cube-checkbox-group-' + this.themeType]: this.themeType,
         [`${groupClsPrefix}-inline-block`]: this.inline,
         [`${groupClsPrefix}-multiple-columns`]: this.colNum > 1
       }
@@ -91,10 +89,6 @@ createSelectComponent({
       let checkboxs
       if (isWeb) {
         checkboxs = this.$children
-        if (typeof checkboxs[0].isChecked !== 'boolean') {
-          // mpx 转 web 有版本多了一层空的 component
-          checkboxs = checkboxs[0].$children
-        }
       } else {
         checkboxs = this.usingMpSlot ? this.getRelationNodes(Checkbox) : this.$refs.checkboxRef
       }

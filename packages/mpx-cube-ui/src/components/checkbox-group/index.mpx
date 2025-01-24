@@ -1,5 +1,12 @@
 <template>
-  <view wx:class="{{ checkboxGroupClass }}">
+  <view
+    wx:class="{{ [
+      themeType
+        ? 'cube-checkbox-group cube-checkbox-group-' + themeType
+        : 'cube-checkbox-group'
+      , checkboxGroupClass
+    ] }}"
+  >
     <!-- 自定义使用 checkbox -->
     <slot wx:if="{{ showSlot }}" />
     <block wx:else>
