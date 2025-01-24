@@ -21,7 +21,9 @@ createComponent({
       return {
         'cube-button-group': true,
         ['cube-button-group-' + this.themeType]: this.themeType,
-        'cube-button-group_horizontal': this.direction === 'horizontal'
+        'cube-button-group_horizontal': this.direction === 'horizontal',
+        'cube-button-group_vertical': this.direction ==='vertical',
+        'cube-button-group_vertical_reverse': this.direction ==='vertical-reverse'
       }
     }
   }
