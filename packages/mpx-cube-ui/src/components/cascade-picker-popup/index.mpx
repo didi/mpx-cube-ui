@@ -27,7 +27,10 @@
       bind:pickstart="onPickstart"
       bind:pickend="onPickend"
       bind:pendingChange="onPendingChange"
-    />
+    >
+      <!-- picker选择器头部位置插槽 -->
+      <slot name="pickerHeader" slot="header" />
+    </cube-cascade-picker>
   </cube-picker-popup-base>
 </template>
 

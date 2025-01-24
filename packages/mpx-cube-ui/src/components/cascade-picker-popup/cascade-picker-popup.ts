@@ -1,9 +1,12 @@
 
-import { CascadePickerSubTree } from '../cascade-picker/index'
+import { CascadePickerSubTree } from '../../components/cascade-picker/cascade-picker'
 
 import { createPickerPopupComponent } from '../../common/helper/create-component'
 
 createPickerPopupComponent({
+  options: {
+    multipleSlots: true
+  },
   properties: {
     /**
      * @description 是否异步加载数据
