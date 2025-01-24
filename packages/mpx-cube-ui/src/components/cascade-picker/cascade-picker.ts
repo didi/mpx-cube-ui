@@ -19,6 +19,9 @@ const EVENT_COLUMN_CHANGE = 'columnChange'
 const EVENT_PENDING_CHANGE = 'pendingChange'
 
 createPickerComponent({
+  options: {
+    multipleSlots: true
+  },
   properties: {
     // 级联选择器的树形数据，用于初始化选项
     list: {
@@ -117,7 +120,7 @@ createPickerComponent({
           })
           this.pickerSelectedIndex[i] = fromColumn === 0
             ? (this.pickerSelectedIndex[i] < data.length ? this.pickerSelectedIndex[i] || 0 : 0)
-            // 保证子列选中值不变。若新子列不存在旧的选中值，则为0；若存在则为在新列中的index
+            // 保证子列选中值不变。若新子列不存在旧的选中值，则为0；若存在则为在新列中的index
             : this.findSameIndex(i, columnData)
           this.pickerList[i] = columnData
         }
