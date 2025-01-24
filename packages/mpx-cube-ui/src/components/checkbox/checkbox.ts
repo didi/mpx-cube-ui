@@ -1,6 +1,5 @@
 import { createSelectComponent } from '../../common/helper/create-component'
 import CheckboxGroup from '../checkbox-group/index.mpx?resolve'
-import { isWeb } from '../../common/helper/utils'
 
 const EVENT_INPUT = 'input'
 
@@ -88,8 +87,8 @@ createSelectComponent({
       this.sendData()
     },
     findGroupUpward () {
-      if (isWeb) {
-        const parent = this.$parent.$parent
+      if (__mpx_mode__ === 'web') {
+        const parent = this.$parent
         if (parent.$data.cubeCheckboxGroup) {
           return parent
         }
