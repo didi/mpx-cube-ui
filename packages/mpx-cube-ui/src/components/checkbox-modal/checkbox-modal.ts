@@ -61,17 +61,20 @@ createModalComponent({
   },
   methods: {
     onConfirm() {
+      this.hide()
       this.lastCheckedValues = [...this.checkedValues]
       // 点击确认时触发
       // @arg 确认选项值
       this.triggerEvent(EVENT_CONFIRM, this.checkedValues)
     },
     onClose() {
+      this.hide()
       this.checkedValues = [...this.lastCheckedValues]
       // 点击顶部关闭icon或遮盖层触发事件
       this.triggerEvent(EVENT_CLOSE)
     },
     onCancel() {
+      this.hide()
       this.checkedValues = [...this.lastCheckedValues]
       // 点击顶部取消按钮触发事件
       this.triggerEvent(EVENT_CANCEL)
