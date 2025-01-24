@@ -6,13 +6,16 @@
     selected-index="{{ pickerSelectedIndex }}"
     immediate-change="{{ immediateChange }}"
     theme-type="{{ themeType }}"
+    indicator-style="{{ indicatorStyle }}"
     bind:columnChange="onColumnChange"
     bind:pickstart="onPickstart"
     bind:pickend="onPickend"
-  />
+  >
+    <slot name="header" slot="header" />
+  </cube-picker>
 </template>
 
-<script lang="ts" src="./index.ts"></script>
+<script lang="ts" src="./date-picker.ts"></script>
 
 <style lang="stylus"></style>
 

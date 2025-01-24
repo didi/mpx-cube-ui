@@ -61,6 +61,9 @@ function dateToArray(date: Date) {
 }
 
 createDatePickerComponent({
+  options: {
+    multipleSlots: true
+  },
   data: {
     pickerSelectedIndex: [] as Array<number>,
     valueArray: [] as Array<number>,
