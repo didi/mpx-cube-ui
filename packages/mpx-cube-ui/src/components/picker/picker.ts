@@ -5,14 +5,19 @@ export interface PickerColumnItem {
   text: string | number,
   value: any,
   order?: number
+  richText?: string // 用于富文本
+  id?: string
 }
 
-export type PickerColumn = PickerColumnItem[]
+export type PickerColumn = PickerColumnItem[] & { id?: string }
 
 const EVENT_CHANGE = 'change'
 const EVENT_COLUMN_CHANGE = 'columnChange'
 
 createPickerComponent({
+  options: {
+    multipleSlots: true
+  },
   data: {
     finalList: [] as PickerColumn[],
     finalIndex: [] as number[],
@@ -132,7 +137,14 @@ createPickerComponent({
       this.oldList = this.finalList.length ? this.finalList.slice() : list.slice()
       this.oldIndex = this.finalIndex.length ? this.finalIndex.slice() : index.slice()
 
-      this.finalList = list.slice()
+      this.finalList = list.slice().map((column,k) => {
+        column.id = 'column-' + k
+        column.forEach((item,k) => {
+          item.id = 'item-' + k + '-' + column.id
+        })
+        return column
+      })
+
       const finalIndex = this.normalizeSelectedIndex(index.slice(), this.finalList.length)
 
       if (!isWeb) {
@@ -157,7 +169,6 @@ createPickerComponent({
     // 更新 picker 的选中值
     // @arg index 为每一列的数据选中的索引
     updateIndex(index: number[]) {
-      if (index.join(',') === this.finalIndex.join(',')) return
       this.updateData(this.finalList, index)
     },
     _forceUpdate() {

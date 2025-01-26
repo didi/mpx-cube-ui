@@ -1,0 +1,28 @@
+@require "../../common/stylus/variable.styl"
+@require "../../common/stylus/theme/components/picker.styl"
+
+.cube-picker
+  position: relative
+  text-align: center
+  height: $var(picker-content-height)
+  background-color: $var(picker-bgc)
+  color: $var(picker-color)
+.cube-picker-wheel-wrapper
+  position: relative
+  z-index: 1
+  height: $var(picker-content-height)
+.cube-picker-indicator-calss
+  height: $var(picker-wheel-item-height)
+.cube-picker-wheel-scroll
+  height: $var(picker-content-height)
+  flex: 1
+  flex-basis: 0.000000001px
+  width: 1%
+.cube-picker-wheel-item
+  box-sizing border-box
+  width 100%
+  height: $var(picker-wheel-item-height)
+  line-height $var(picker-wheel-item-height)
+  overflow: hidden
+  white-space: nowrap
+  font-size $var(picker-wheel-item-font-size)
