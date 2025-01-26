@@ -25,15 +25,19 @@
       column-order="{{ columnOrder }}"
       immediate-change="{{ immediateChange }}"
       theme-type="{{ themeType }}"
+      indicator-style="{{ indicatorStyle }}"
       bind:columnChange="onColumnChange"
       bind:change="onChange"
       bind:pickstart="onPickstart"
       bind:pickend="onPickend"
-    />
+    >
+      <!-- picker选择器头部位置插槽 -->
+      <slot name="pickerHeader" slot="header" />
+    </cube-date-picker>
   </cube-picker-popup-base>
 </template>
 
-<script lang="ts" src="./index.ts"></script>
+<script lang="ts" src="./date-picker-popup.ts"></script>
 
 <style lang="stylus"></style>
 

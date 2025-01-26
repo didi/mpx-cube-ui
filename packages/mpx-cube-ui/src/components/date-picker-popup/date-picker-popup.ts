@@ -2,6 +2,9 @@ import { createTimePickerPopupComponent } from '../../common/helper/create-compo
 import { datePickerMixin } from '../../common/mixins'
 
 createTimePickerPopupComponent({
+  options: {
+    multipleSlots: true
+  },
   mixins: [datePickerMixin],
   data: {
     setIndex: [] as number[] // picker 每次打开时，根据该字段选择值。点击确定按钮后，setIndex 更新
