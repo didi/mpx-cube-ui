@@ -1,0 +1,96 @@
+@require "../../common/stylus/variable.styl"
+@require "./transition.styl"
+@require "../../common/stylus/theme/components/popup.styl"
+
+.cube-popup
+  position fixed
+  left 0
+  right 0
+  top 0
+  bottom 0
+  z-index $var(popup-z-index)
+  display flex
+  pointer-events: none
+  &.cube-popup-top
+    align-items start
+    .cube-popup-content
+      width 100%
+  &.cube-popup-center
+    justify-content center
+    align-items center
+  &.cube-popup-right
+    flex-direction row-reverse
+    .cube-popup-content
+      height 100%
+  &.cube-popup-bottom
+    flex-direction column-reverse
+    .cube-popup-content
+      width 100%
+  &.cube-popup-left
+    .cube-popup-content
+      height 100%
+  .cube-popup-content
+    transform translateZ(0)
+    z-index 999
+    box-sizing border-box
+.cube-popup_mask
+  pointer-events: auto
+  &.cube-popup_mask_fade_transition
+    .cube-popup-mask
+      transition $var(popup-mask-transition)
+.cube-popup-mask
+  position: absolute
+  top 0
+  right 0
+  bottom  0
+  left 0
+  overflow hidden
+  background-color $var(mask-bgc_opacity)
+  opacity $var(popup-mask-opacity)
+  pointer-events: auto
+  // fix some android webview opacity render bug
+  &::before
+    content "."
+    display block
+    width 1px
+    height 1px
+    background-color rgba(0, 0, 0, .1)
+    margin-left -10px
+
+.cube-popup
+  transform translateX(-100%)
+  &.show
+    transform translateX(0)
+    .cube-popup-mask
+      opacity $var(popup-mask-opacity)
+    .cube-popup-content
+      &.move-up
+        popup-transition(popup-move-up-show, $var(popup-default-animation-time), $var(popup-default-animation-fn))
+      &.move-right
+        popup-transition(popup-move-right-show)
+      &.move-left
+        popup-transition(popup-move-left-show)
+      &.move-down
+        popup-transition(popup-move-down-show)
+      &.fade
+        popup-transition(popup-fade-show)
+  &.hide
+    transform translateX(-100%)
+    &.cube-popup_transition
+      popup-transition(popup-root-hide)
+    .cube-popup-mask
+      opacity 0
+    &.cube-popup_mask_fade_transition
+      .cube-popup-mask
+        transition: $var(popup-mask-hide-transition)
+    .cube-popup-content
+      &.move-up
+        popup-transition(popup-move-up-hide, $var(popup-default-animation-time), $var(popup-default-hide-animation-fn))
+      &.move-right
+        popup-transition(popup-move-right-hide)
+      &.move-left
+        popup-transition(popup-move-left-hide)
+      &.move-down
+        popup-transition(popup-move-down-hide)
+      &.fade
+        popup-transition(popup-fade-hide)

@@ -2,14 +2,19 @@ vendors = official
 // https://stylus-lang.com/docs/keyframes.html#expansion
 
 @require "../../common/stylus/theme/components/popup.styl"
-popup-transition($name, $time = $popup-default-animation-time, $ease = ease)
-  animation $name $time $ease both
+popup-transition($name, $time = $var(popup-default-animation-time), $fn = $var(popup-default-animation-fn))
+  // animation $name $time $fn both
+  // skyline 不支持缩写 + var 变量形式
+  animation-name: $name
+  animation-duration: $time
+  animation-timing-function: $fn
+  animation-fill-mode: both
 
 @keyframes popup-root-hide {
   0% {
     transform: translateX(0)
   }
-  99% {
+  99.999% {
     transform: translateX(0)
   }
   100% {
@@ -107,19 +112,5 @@ popup-transition($name, $time = $popup-default-animation-time, $ease = ease)
   }
   to {
     opacity 0
-  }
-}
-
-@keyframes popup-fade-out {
-  0% {
-    opacity 1
-    transform translateX(0)
-  }
-  99% {
-    opacity 0
-    transform translateX(0)
-  }
-  100% {
-    transform translateX(-100%)
   }
 }
