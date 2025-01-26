@@ -19,7 +19,7 @@
   </view>
 </template>
 
-<script src="./index.ts" lang="ts"></script>
+<script src="./radio.ts" lang="ts"></script>
 
 <style lang="stylus">
   @require "../../common/stylus/variable.styl"
