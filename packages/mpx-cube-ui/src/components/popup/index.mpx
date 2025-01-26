@@ -65,7 +65,7 @@
   </root-portal>
 </template>
 
-<script lang="ts" src="./index.ts"></script>
+<script lang="ts" src="./popup.ts"></script>
 
 <style lang="stylus">
 /* @mpx-if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') */

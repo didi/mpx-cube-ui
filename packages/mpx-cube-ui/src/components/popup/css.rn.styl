@@ -2,7 +2,6 @@
 @require '../../common/stylus/theme/components/popup.styl'
 
 .cube-popup
-  display none
   flex 1 1 100%
   height 100%
   position absolute
@@ -10,13 +9,12 @@
   right 0
   top 0
   bottom 0
-  pointer-events none
 
 .cube-popup-show
-  display flex
+  transform: translateX(0)
 
 .cube-popup-hide
-  display none
+  transform: translateX(-9999)
 
 .cube-popup-top
   align-items flex-start
@@ -47,9 +45,6 @@
   z-index 999
   box-sizing border-box
 
-.cube-popup_mask
-  pointer-events auto
-
 .cube-popup-mask
   position absolute
   top 0
@@ -59,7 +54,6 @@
   overflow hidden
   background-color $var(mask-bgc_opacity)
   opacity 0
-  pointer-events auto
 
 .move-up
   transform translateY(999)
