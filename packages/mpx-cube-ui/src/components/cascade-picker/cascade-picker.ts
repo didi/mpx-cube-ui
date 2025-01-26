@@ -1,6 +1,6 @@
 import { createPickerComponent } from '../../common/helper/create-component'
 
-import { PickerColumn } from '../picker/index'
+import { PickerColumn } from '../picker/picker'
 import { isUndef } from '../../common/helper/utils'
 
 /**
