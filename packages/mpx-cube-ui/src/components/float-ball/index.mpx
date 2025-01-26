@@ -12,7 +12,7 @@
   </view>
 </template>
 
-<script lang="ts" src="./index.ts"></script>
+<script lang="ts" src="./float-ball.ts"></script>
 
 <style lang="stylus">
 @require "../../common/stylus/variable.styl"

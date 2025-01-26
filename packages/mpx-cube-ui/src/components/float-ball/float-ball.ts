@@ -18,9 +18,6 @@ createComponent({
   properties: {
     /**
      * @description 小球文案。若引用时未提供文案则显示插槽内用户自定义内容
-     * @ali true
-     * @wx true
-     * @web true
      */
     name: {
       type: String,
@@ -28,9 +25,6 @@ createComponent({
     },
     /**
      * @description 屏幕边框停靠距离。默认为零，吸附停靠为左右屏幕边框
-     * @ali true
-     * @wx true
-     * @web true
      */
     dockDistance: {
       type: Number,
@@ -38,9 +32,6 @@ createComponent({
     },
     /**
      * @description 指定小球初始距离屏幕原点的 left/top 位置。该属性未指定的话则默认在屏幕右侧居中位置。
-     * @ali true
-     * @wx true
-     * @web true
      */
     initialPosition: {
       type: Object,
