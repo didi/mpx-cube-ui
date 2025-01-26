@@ -7,18 +7,14 @@
   </view>
 </template>
 
-<script lang="ts" src="./index.ts"></script>
+<script lang="ts" src="./icon.ts"></script>
 
 <style lang="stylus">
-@require "../../common/stylus/variable.styl"
-@require "../../common/icon/cube-icon.styl"
-
-.cubeic
-  display inline
-  font-family "cube-icon" !important
-  font-style normal
-  -webkit-font-smoothing antialiased
-  -moz-osx-font-smoothing grayscale
+/* @mpx-if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') */
+@require './css.rn.styl'
+/* @mpx-else */
+@require './css.styl'
+/* @mpx-endif */
 </style>
 
 <script type="application/json">
