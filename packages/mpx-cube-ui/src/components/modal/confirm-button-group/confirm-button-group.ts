@@ -9,6 +9,14 @@ createOptionButtonsComponent({
     typeClass () {
       return this.isVertical ? 'cube-confirm-button-group_vertical' : ''
     },
+    rnCancelBtnClass() {
+      // @ts-ignore
+      return ((__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') && this.isVertical) ? 'cube-option-cancel-button_vertical' : ''
+    },
+    rnConfirmBtnClass() {
+      // @ts-ignore
+      return ((__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') && this.isVertical) ? 'cube-option-confirm-button_vertical' : ''
+    },
     isConfirm() {
       return this.type === 'confirm'
     },
@@ -23,6 +31,10 @@ createOptionButtonsComponent({
     },
     _cancelBtn() {
       return parseBtn(this.cancelBtn, defCancelBtn)
+    },
+    realDirection() {
+      // @ts-ignore
+      return ((__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') && this.direction === 'vertical') ? 'vertical-reverse' : this.direction
     }
   },
   methods: {

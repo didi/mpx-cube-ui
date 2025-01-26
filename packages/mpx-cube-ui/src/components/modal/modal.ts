@@ -45,6 +45,24 @@ createModalComponent({
     styleConfig: {
       type: Object,
       value: {}
+    },
+    /**
+     * @description 是否自动关闭弹窗
+     */
+    callbackHideModal: {
+      type: Boolean,
+      value: true
+    },
+    /**
+     * @description 点击确定是否自动关闭弹窗
+     */
+    hideOnConfirm: {
+      type: Boolean,
+      value: true
+    },
+    removeCatchTouch: {
+      type: Boolean,
+      value: false
     }
   },
   computed: {
@@ -61,17 +79,23 @@ createModalComponent({
   },
   methods: {
     onConfirm() {
-      if (this.hideOnConfirm) this.hide()
+      if (this.callbackHideModal && this.hideOnConfirm) {
+        this.hide()
+      }
       // 点击底部确定按钮触发事件
       this.triggerEvent(EVENT_CONFIRM)
     },
     onCancel() {
-      if (this.hideOnCancel) this.hide()
+      if (this.callbackHideModal) {
+        this.hide()
+      }
       // 点击顶部/底部取消按钮触发事件
       this.triggerEvent(EVENT_CANCEL)
     },
     onClose() {
-      if (this.hideOnClose) this.hide()
+      if (this.callbackHideModal) {
+        this.hide()
+      }
       // 点击顶部关闭icon或遮盖层触发事件
       this.triggerEvent(EVENT_CLOSE)
     }
