@@ -27,8 +27,8 @@ function formatType(
     const replaceStr = type === 'year'
       ? value.toString().substr(4 - RegExp.$1.length)
       : (RegExp.$1.length === 1)
-          ? value + ''
-          : pad(value)
+        ? value + ''
+        : pad(value)
     format = format.replace(RegExp.$1, replaceStr)
   }
 

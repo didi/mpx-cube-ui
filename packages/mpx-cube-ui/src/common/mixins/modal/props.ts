@@ -46,5 +46,11 @@ export default getMixin({
       type: Boolean,
       value: true
     }
+  },
+  lifetimes: {
+    ready() {
+      // 组件 ready 生命周期事件
+      this.triggerEvent('ready')
+    }
   }
 })
