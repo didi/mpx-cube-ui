@@ -53,6 +53,9 @@ interface DaysColumnItem {
 }
 
 createTimePickerComponent({
+  options: {
+    multipleSlots: true
+  },
   data: {
     now: new Date(),
     selectedIndex: [0, 0, 0] as number[],
