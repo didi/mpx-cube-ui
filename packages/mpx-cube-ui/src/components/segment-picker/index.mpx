@@ -41,7 +41,7 @@
   </view>
 </template>
 
-<script lang="ts" src="./index.ts"></script>
+<script lang="ts" src="./segment-picker.ts"></script>
 
 <style lang="stylus"></style>
 
