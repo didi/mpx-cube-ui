@@ -25,11 +25,15 @@
       max="{{ max }}"
       immediate-change="{{ immediateChange }}"
       theme-type="{{ themeType }}"
+      indicator-style="{{ indicatorStyle }}"
       bind:columnChange="onColumnChange"
       bind:change="onChange"
       bind:pickstart="onPickstart"
       bind:pickend="onPickend"
-    />
+    >
+      <!-- picker选择器头部位置插槽 -->
+      <slot name="pickerHeader" slot="header" />
+    </cube-time-picker>
   </cube-picker-popup-base>
 </template>
 
