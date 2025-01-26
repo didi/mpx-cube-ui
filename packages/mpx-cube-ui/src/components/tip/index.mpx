@@ -3,6 +3,7 @@
     wx:class="{{ [themeType ? 'cube-tip cube-tip-'+themeType : 'cube-tip', directionClass, animationClass] }}"
     wx:show="{{ isVisible }}"
     wx:style="{{ customStyle }}"
+    bind:animationend="onAnimationEnd"
     bind:tap="onClick"
   >
     <view class="cube-tip-angle" wx:style="{{ angStyle }}"></view>
@@ -20,7 +21,7 @@
   </view>
 </template>
 
-<script lang="ts" src="./index.ts"></script>
+<script lang="ts" src="./tip.ts"></script>
 
 <style lang="stylus">
 @require "../../common/stylus/variable.styl"
