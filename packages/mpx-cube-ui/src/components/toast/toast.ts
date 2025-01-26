@@ -38,8 +38,24 @@ createPopupComponent({
      */
     txt: String
   },
+  lifetimes: {
+    ready() {
+      // 组件 ready 生命周期事件
+      this.triggerEvent('ready')
+    }
+  },
   data: {
     timer: null
+  },
+  computed: {
+    tostTipClass() {
+      // @ts-ignore
+      if(__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
+        return {
+          'cube-toast-tip-icon': !!this.icon
+        }
+      }
+    }
   },
   methods: {
     onMaskClick () {
