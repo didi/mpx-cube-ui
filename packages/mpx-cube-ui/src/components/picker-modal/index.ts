@@ -1,4 +1,4 @@
-import { PickerColumn } from '../picker/index'
+import { PickerColumn } from '../../components/picker/picker'
 
 import { createPickerModalComponent } from '../../common/helper/create-component'
 
