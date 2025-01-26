@@ -1,9 +1,10 @@
 import { createPopupComponent } from '../../common/helper/create-component'
-import type { DialogBtn } from './dialogBtn'
+import type { DialogBtn } from './dialog-btn'
 
 const EVENT_CONFIRM = 'confirm'
 const EVENT_CANCEL = 'cancel'
 const EVENT_CLOSE = 'close'
+const EVENT_MASK_CLICK = 'maskClick'
 
 const defConfirmBtn: DialogBtn = {
   text: '',
@@ -32,6 +33,12 @@ const dialogMainClsPrefix = 'cube-dialog-main'
 createPopupComponent({
   options: {
     multipleSlots: true
+  },
+  lifetimes: {
+    ready() {
+      // 组件 ready 生命周期事件
+      this.triggerEvent('ready')
+    }
   },
   properties: {
     // todo dialog type 类型
@@ -101,6 +108,14 @@ createPopupComponent({
         active: false,
         disabled: false
       } as DialogBtn
+    },
+    /**
+     * @description 通过 wx:style透传样式, 里面的每项分别修改对应位置的样式
+     * @optional styleConfig = { headIcon: '' }
+     */
+    styleConfig: {
+      type: Object,
+      value: {}
     }
   },
   computed: {
@@ -142,12 +157,14 @@ createPopupComponent({
     mainClass () {
       return {
         [`${dialogMainClsPrefix}-is-visible`]: this.isVisible,
+        [`${dialogMainClsPrefix}-is-hide`]: !this.isVisible,
         [`${dialogMainClsPrefix}-overflow`]: this.headIcon
       }
     }
   },
   methods: {
     onMaskClick () {
+      this.triggerEvent(EVENT_MASK_CLICK)
       this.maskClosable && this.onCancel()
     },
     onConfirm () {
