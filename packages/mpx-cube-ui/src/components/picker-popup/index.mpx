@@ -20,15 +20,18 @@
       selected-index="{{ selectedIndex }}"
       immediate-change="{{ immediateChange }}"
       theme-type="{{ themeType }}"
+      indicator-style="{{ indicatorStyle }}"
       bind:change="onChange"
       bind:columnChange="onColumnChange"
       bind:pickstart="onPickstart"
       bind:pickend="onPickend"
-    />
+    >
+      <slot name="pickerHeader" slot="header" />
+    </cube-picker>
   </cube-picker-popup-base>
 </template>
 
-<script lang="ts" src="./index.ts"></script>
+<script lang="ts" src="./picker-popup.ts"></script>
 
 <style lang="stylus"></style>
 

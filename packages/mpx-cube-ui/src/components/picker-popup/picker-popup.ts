@@ -1,8 +1,11 @@
-import { PickerColumn } from '../picker/index'
+import { PickerColumn } from '../../components/picker/picker'
 
 import { createPickerPopupComponent } from '../../common/helper/create-component'
 
 createPickerPopupComponent({
+  options: {
+    multipleSlots: true
+  },
   data: {
     setIndex: [] as number[] // picker 每次打开时，根据该字段选择值。点击确定按钮后，setIndex 更新
   },
