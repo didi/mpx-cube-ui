@@ -37,7 +37,7 @@
   </cube-picker-popup-base>
 </template>
 
-<script lang="ts" src="./index.ts"></script>
+<script lang="ts" src="./time-picker-popup.ts"></script>
 
 <style lang="stylus"></style>
 
