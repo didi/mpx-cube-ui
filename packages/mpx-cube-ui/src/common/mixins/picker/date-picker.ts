@@ -1,8 +1,5 @@
 import { getMixin } from '@mpxjs/core'
 
-const EVENT_PICK_START = 'pickstart'
-const EVENT_PICK_END = 'pickend'
-
 export default getMixin({
   properties: {
     // 可选范围的最小值

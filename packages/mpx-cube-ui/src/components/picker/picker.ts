@@ -137,9 +137,9 @@ createPickerComponent({
       this.oldList = this.finalList.length ? this.finalList.slice() : list.slice()
       this.oldIndex = this.finalIndex.length ? this.finalIndex.slice() : index.slice()
 
-      this.finalList = list.slice().map((column,k) => {
+      this.finalList = list.slice().map((column, k) => {
         column.id = 'column-' + k
-        column.forEach((item,k) => {
+        column.forEach((item, k) => {
           item.id = 'item-' + k + '-' + column.id
         })
         return column

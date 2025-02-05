@@ -85,7 +85,7 @@ function modifyMpxScriptRef() {
             return ''
           })
           .replace(/<script[\s\S]*>[\s\S]*<\/script>/, function (...args) {
-            const fileName = item.split('.')[0]
+            const fileName = filePath.slice(filePath.lastIndexOf('/') + 1)
             return `<script src="./${fileName}.js"></script>`
           })
         content += '\n' + jsonBlock

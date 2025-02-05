@@ -163,6 +163,7 @@ createComponent({
         'cube-btn_bolder': this.bolder,
         'cube-btn-loading': this.loading
       }
+      // eslint-disable-next-line
       // @ts-ignore
       if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
         if (this.active) {

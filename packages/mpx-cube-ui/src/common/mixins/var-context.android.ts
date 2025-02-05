@@ -4,12 +4,12 @@ import { VarContext } from '@mpxjs/webpack-plugin/lib/runtime/components/react/d
 
 export default getMixin({
   data: {
-    varContext: {},
+    varContext: {}
   },
   [REACTHOOKSEXEC]() {
-    const varContext = useContext(VarContext);
+    const varContext = useContext(VarContext)
     if (this.varContext !== varContext) {
-      this.varContext = varContext;
+      this.varContext = varContext
     }
-  },
-});
+  }
+})

@@ -1,9 +1,16 @@
+@require "./popup.styl"
+
 vendors = official
 // https://stylus-lang.com/docs/keyframes.html#expansion
 
 $dialog-container-width := 270px // 容器宽度
-$dialog-container-border-radius := 2px // 容器圆角
+$dialog-container-border-top-left-radius := 2px
+$dialog-container-border-top-right-radius := 2px
+$dialog-container-border-bottom-left-radius := 2px
+$dialog-container-border-bottom-right-radius := 2px
+$dialog-container-border-radius := $dialog-container-border-top-left-radius $dialog-container-border-top-right-radius $dialog-container-border-bottom-left-radius $dialog-container-border-bottom-right-radius // 容器圆角
 $dialog-bgc := $var(color-white) // 背景颜色
+$dialog-btn-secondary-active-bgc := rgba(0, 0, 0, .08)
 $dialog-btn-secondary-highlight-active-bgc := rgba(252, 145, 83, .04)
 
 // @type icon
@@ -13,16 +20,25 @@ $dialog-icon-container-margin-top := 20px // icon-上边距
 $dialog-icon-container-margin-bottom := 16px // icon-底部边距
 $dialog-icon-container-width := 30px // icon-宽度
 $dialog-icon-container-height := 30px // icon-高度
-$dialog-icon-container-padding := 10px // icon-内边距
+$dialog-icon-container-padding-top := 10px
+$dialog-icon-container-padding-right := 10px
+$dialog-icon-container-padding-bottom := 10px
+$dialog-icon-container-padding-left := 10px
+$dialog-icon-container-padding := $dialog-icon-container-padding-top $dialog-icon-container-padding-right $dialog-icon-container-padding-bottom $dialog-icon-container-padding-left // icon-内边距
 $dialog-icon-container-border-radius := 50% // icon-圆角
 $dialog-icon-line-height := 1 // icon-行高
 
 // @type title
 $dialog-icon-next-title-margin-top := 0px // icon距离标题的上边距
-$dialog-title-default-margin := 25px 16px 0 // 标题边距
+$dialog-title-default-margin-top := 25px
+$dialog-title-default-margin-right := 16px
+$dialog-title-default-margin-bottom := 0
+$dialog-title-default-margin-left := 16px
+$dialog-title-default-margin := $dialog-title-default-margin-top $dialog-title-default-margin-right $dialog-title-default-margin-bottom $dialog-title-default-margin-left // 标题边距
 $dialog-title-color := $var(color-dark-grey-s) // 标题颜色
 $dialog-title-margin-top := 24px // 标题上边距
 $dialog-title-font-size := $var(font-size-3xl) // 标题字号
+$dialog-title-def-color := $var(text-color) // 标题默认颜色
 $dialog-title-line-height := 1 // 标题行高
 
 // @type content
@@ -30,14 +46,26 @@ $dialog-icon-next-content-margin-top := -4px // 内容距离icon的上边距
 $dialog-title-next-content-margin-top := 12px // 内容距离标题的上边距
 $dialog-content-container-margin := 16px 0 // 内容边框的上下边距
 $dialog-content-container-line-height := 22px // 内容边框的行高
-$dialog-content-def-padding := 0 25px // 内容边框左右内边距
+$dialog-content-def-padding-top := 0
+$dialog-content-def-padding-right := 25px
+$dialog-content-def-padding-bottom := 0
+$dialog-content-def-padding-left := 25px
+$dialog-content-def-padding := $dialog-content-def-padding-top $dialog-content-def-padding-right $dialog-content-def-padding-bottom $dialog-content-def-padding-left // 内容边框内边距
 $dialog-content-font-size := $var(font-size-lg) // 内容文本字号
 $dialog-content-color := $var(text-color) // 内容文本颜色
-$dialog-content-margin := 10px 0 20px 0 // 内容文本边距
+$dialog-content-margin-top := 10px
+$dialog-content-margin-right := 0
+$dialog-content-margin-bottom := 20px
+$dialog-content-margin-left := 0
+$dialog-content-margin := $dialog-content-margin-top $dialog-content-margin-right $dialog-content-margin-bottom $dialog-content-margin-left // 内容文本边距
 $dialog-content-def-text-align := justify // 内容文本对齐方式
 
 // @type button
-$dialog-button-padding := 17px 10px // 按钮内边距
+$dialog-button-padding-top := 17px
+$dialog-button-padding-right := 10px
+$dialog-button-padding-bottom := 17px
+$dialog-button-padding-left := 10px
+$dialog-button-padding := $dialog-button-padding-top $dialog-button-padding-right $dialog-button-padding-bottom $dialog-button-padding-left // 按钮内边距
 $dialog-btn-color := $var(color-primary) // 按钮颜色
 $dialog-btn-bgc := $var(color-white) // 按钮背景色
 $dialog-btn-active-bgc := $var(color-light-grey-opacity) // 按钮激活态背景色
@@ -58,16 +86,26 @@ $dialog-close-color := $var(text-color) // 关闭按钮颜色
 // @type head-icon
 $dialog-head-icon-width := 85px // head-icon 宽度
 $dialog-head-icon-height := $dialog-head-icon-width // head-icon 高度
-$dialog-head-icon-border-radius := 50% // head-icon 圆角
-$dialog-head-icon-margin-top := -42px // head-icon 上边距
+$dialog-head-icon-border-top-left-radius := 50%
+$dialog-head-icon-border-top-right-radius := 50%
+$dialog-head-icon-border-bottom-left-radius := 50%
+$dialog-head-icon-border-bottom-right-radius := 50%
+$dialog-head-icon-border-radius := $dialog-head-icon-border-top-left-radius $dialog-head-icon-border-top-right-radius $dialog-head-icon-border-bottom-left-radius $dialog-head-icon-border-bottom-right-radius // head-icon 圆角
+$dialog-head-icon-margin-top := -42.5px // head-icon 上边距
 
 // animation
 $dialog-zoom-animation := dialog-zoom .3s ease-in-out
 
-@keyframes dialog-zoom
-  0%
-    transform scale(0)
-  50%
-    transform scale(1.1)
-  100%
-    transform scale(1)
+$dialog-zoom-transform-from := scale(0)
+$dialog-zoom-opacity-from := 1
+
+$dialog-zoom-transform-mid := scale(1.1)
+$dialog-zoom-opacity-mid := 1
+
+$dialog-zoom-transform-to := scale(1)
+$dialog-zoom-opacity-to := 1
+
+$dialog-zoom-hide-opacity-from := 1
+$dialog-zoom-hide-opacity-to := 0
+
+$dialog-hide-animation := dialog-hide-animation 0.3s cubic-bezier(0, 0, 0.07, 1.00) forwards

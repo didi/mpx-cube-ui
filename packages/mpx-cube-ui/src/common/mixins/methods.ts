@@ -2,7 +2,7 @@ import { getMixin } from '@mpxjs/core'
 
 export default getMixin({
   methods: {
-    preventTouchMove() {}
+    preventTouchMove() { /* empty */ }
     // TODO: vue 的事件触发
     // $emit(...args) {
     //   this.triggerEvent(...args)

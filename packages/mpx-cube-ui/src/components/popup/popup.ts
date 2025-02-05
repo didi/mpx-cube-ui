@@ -56,7 +56,7 @@ createComponent({
     },
     styleConfig: {
       type: Object,
-      value: undefined
+      value: {}
     },
     removeCatchTouch: {
       type: Boolean,
@@ -74,6 +74,7 @@ createComponent({
   },
   lifetimes: {
     created() {
+      // eslint-disable-next-line
       // @ts-ignore
       if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
         this.ANIMATION_PRESET = {
@@ -87,8 +88,7 @@ createComponent({
             this.maskAnimationData = animation.export()
           },
           'cube-popup_transition': (animationOptions) => {
-            if (this.isVisible) {
-            } else {
+            if (!this.isVisible) {
               setTimeout(() => {
                 this.display = false
               }, animationOptions.duration)
@@ -98,7 +98,7 @@ createComponent({
             const hasTranslate = !!this.animation
             const animation = this.animation || (this.animation = mpx.createAnimation(animationOptions))
             if (this.isVisible) {
-              if(!hasTranslate) {
+              if (!hasTranslate) {
                 animation.translateY(this.contentInfo.height).step({ duration: 0 })
               }
               animation.translateY(0).step()
@@ -107,10 +107,10 @@ createComponent({
             }
             this.animationData = animation.export()
           },
-          'move-right': (animationOptions) => {},
-          'move-left': (animationOptions) => {},
-          'move-down': (animationOptions) => {},
-          'fade': (animationOption) => {
+          'move-right': () => { /* empty fn */ },
+          'move-left': () => { /* empty fn */ },
+          'move-down': () => { /* empty fn */ },
+          fade: (animationOption) => {
             const animation = this.animation || (this.animation = mpx.createAnimation(animationOption))
             if (this.isVisible) {
               animation.opacity(1).step()
@@ -149,6 +149,7 @@ createComponent({
       } else if (this.center) {
         cls['cube-popup-center'] = true
       }
+      // eslint-disable-next-line
       // @ts-ignore
       if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
         cls[`cube-popup-${this.display ? 'show' : 'hide'}`] = true
@@ -179,7 +180,7 @@ createComponent({
     getPopupRect() {
       return Promise.all<WechatMiniprogram.BoundingClientRectCallbackResult>([
         new Promise((resolve) => {
-          this.$refs['popup']
+          this.$refs.popup
             .boundingClientRect(resolve).exec()
         }),
         new Promise((resolve) => {

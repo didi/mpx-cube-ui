@@ -1,0 +1,71 @@
+border-top-1px($color)
+  position relative
+  border-top hairlineWidth solid $color
+
+border-bottom-1px($color)
+  position relative
+  border-bottom hairlineWidth solid $color
+
+border-right-1px($color)
+  position relative
+  border-right hairlineWidth solid $color
+
+border-left-1px($color)
+  position relative
+  border-left hairlineWidth solid $color
+
+border-1px($color = #ccc, $radius = 2px, $style = solid)
+  position relative
+  border hairlineWidth $style $color
+  border-radius $radius
+
+border-1px-reset($color = #ccc, $radius = 2px, $style = solid)
+  border hairlineWidth $style $color
+  border-radius $radius
+
+border-none()
+  border-width 0
+
+flex-fix()
+  flex 1
+  flex-basis 0.000000001px
+  width 1%
+
+hide-scrollbar()
+  //
+
+bg-image($url, $ext = ".png")
+  background-image url($url + "@2x" + $ext)
+  @media (min-resolution: 3dppx)
+    background-image url($url + "@3x" + $ext)
+
+functions = constant env
+safe-area-fn(fn, position)
+  s("%s(safe-area-inset-%s)", fn, position)
+safe-area-mixin(property, position, important = false)
+  for fn in functions
+    {property} safe-area-fn(fn, position) important == true ? !important : unquote("")
+
+safe-area-fn-extra(fn, position, extra)
+  s("calc(%s(safe-area-inset-%s) + %s)", fn, position, extra)
+safe-area-mixin-extra(property, position, extra = 0, important = false)
+  for fn in functions
+    {property} safe-area-fn-extra(fn, position, extra) important == true ? !important : unquote("")
+
+padding-all($top, $right, $bottom, $left)
+  padding-top $top
+  padding-right $right
+  padding-bottom $bottom
+  padding-left $left
+
+margin-all($top, $right, $bottom, $left)
+  margin-top $top
+  margin-right $right
+  margin-bottom $bottom
+  margin-left $left
+
+border-radius-all($tl, $tr, $br, $bl)
+  border-top-left-radius: $tl
+  border-top-right-radius:  $tr
+  border-bottom-right-radius:  $br
+  border-bottom-left-radius:  $bl

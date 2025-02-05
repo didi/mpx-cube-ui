@@ -6,7 +6,7 @@
     mask="{{ true }}"
     visible="{{ isVisible }}"
     bind:maskClick="onMaskClick"
-    transition="{{ ' ' }}"
+    transition="{{ 'empty' }}"
     maskFadeTransition="{{ true }}"
   >
     <view class="cube-dialog-main" wx:class="{{ mainClass }}" wx:style="{{ styleConfig.main }}">

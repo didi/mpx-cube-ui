@@ -1,12 +1,20 @@
 // @type modal-container
-$modal-border-radius := 7px 7px 0 0 // 边框圆角
+$modal-border-top-left-radius := 7px
+$modal-border-top-right-radius := 7px
+$modal-border-bottom-right-radius := 0
+$modal-border-bottom-left-radius := 0
+$modal-border-radius := $modal-border-top-left-radius $modal-border-top-right-radius $modal-border-bottom-right-radius $modal-border-bottom-left-radius // 边框圆角
 $modal-bgc := $var(color-white) // 背景色
 
 // @type modal-cancel
 $modal-cancel-margin := 35px // 取消按钮外边距
 $modal-cancel-height := 55px // 取消按钮高度
 $modal-cancel-line-height := 55px // 取消按钮行高
-$modal-cancel-padding := 0 25px 0 25px // 取消按钮内边距
+$modal-cancel-padding-top := 0
+$modal-cancel-padding-right := 25px
+$modal-cancel-padding-bottom := 0
+$modal-cancel-padding-left := 25px
+$modal-cancel-padding := $modal-cancel-padding-top $modal-cancel-padding-right $modal-cancel-padding-bottom $modal-cancel-padding-left // 取消按钮内边距
 $modal-cancel-font-size := $var(font-size-md) // 取消按钮字号
 $modal-cancel-font-weight := 500 // 取消按钮字重
 $modal-cancel-color := $var(color-black) // 取消按钮颜色
@@ -31,7 +39,11 @@ $modal-title-default-font-weight := 500 // 标题字重
 // @type modal-cancel-icon
 $modal-close-icon-top := 5px // 关闭icon距离顶部距离
 $modal-close-icon-right := 5px // 关闭icon距离右部距离
-$modal-close-icon-padding := 5px // 关闭icon内边距
+$modal-close-icon-padding-top := 5px
+$modal-close-icon-padding-right := 5px
+$modal-close-icon-padding-bottom := 5px
+$modal-close-icon-padding-left := 5px
+$modal-close-icon-padding := $modal-close-icon-padding-top $modal-close-icon-padding-right $modal-close-icon-padding-bottom $modal-close-icon-padding-left // 关闭icon内边距
 $modal-close-icon-font-size := $var(font-size-xl) // 关闭icon字号
 $modal-close-icon-color := $var(color-black) // 关闭icon颜色
 $modal-close-icon-font-weight := 700 // 关闭icon字重
@@ -44,10 +56,16 @@ $modal-content-color := $var(text-color) // 内容区颜色
 // @type modal-button-group
 $modal-button-group-margin-top := 35px // 按钮顶部外边距
 $modal-button-font-size := $var(font-size-lg) // 按钮字号
+$modal-button-group-height := 50px // 按钮组高度
 $modal-button-line-height := 24px // 按钮行高
 $modal-button-padding-top := 13px // 按钮顶部内边距
 $modal-button-padding-bottom := 13px // 按钮底部内边距
-$modal-button-height := $modal-button-line-height + $modal-button-padding-top + $modal-button-padding-bottom // 按钮高度
+$modal-button-height := $modal-button-line-height + $modal-button-padding-top + $modal-button-padding-bottom
 
 // @type modal-footer
-$modal-footer-padding := 0 25px 20px 25px // footer区域内边距
+$modal-footer-padding-top := 0
+$modal-footer-padding-right := 25px
+$modal-footer-padding-bottom := 20px
+$modal-footer-padding-left := 25px
+$modal-footer-padding := $modal-footer-padding-top $modal-footer-padding-right $modal-footer-padding-bottom $modal-footer-padding-left // footer区域内边距
+$modal-footer-safe-padding := 25px // footer区域安全内边距

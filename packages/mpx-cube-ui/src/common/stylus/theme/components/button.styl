@@ -10,12 +10,26 @@ $btn-color := $var(color-white) // 按钮文字颜色
 $btn-bgc := $var(color-secondary) // 按钮背景颜色
 $btn-font-size := $var(font-size-lg) // 按钮字体大小
 $btn-bgc_active := $btn-bgc // 按钮激活时背景颜色
-$btn-border-color := transparent // 按钮边框颜色
+$btn-border-color := rgba(0, 0, 0, 0) // 按钮边框颜色
 $btn-border-radius := 7px // 按钮圆角大小
 $btn-block-line-height := 1.389 // 按钮行高
-$btn-block-padding := 15px 14px // 按钮内边距
+$btn-block-padding-left := 14px
+$btn-block-padding-right := 14px
+$btn-block-padding-top := 15px
+$btn-block-padding-bottom := 15px
+$btn-block-padding := $btn-block-padding-top $btn-block-padding-right $btn-block-padding-bottom $btn-block-padding-left // 按钮内边距
 $btn-opacity_active := .6 // 按钮激活时背景透明度
 $btn-bxsh := none // 按钮阴影
+$btn-font-family := inherit // 按钮字体
+$btn-font-weight := inherit // 按钮字重
+
+// btn-layer
+$btn-display := block // 按钮显示方式
+$btn-height := auto // 按钮高度
+$btn-flex-direction := row // 按钮flex方向
+$btn-align-items := normal // 按钮对齐方式
+$btn-justify-content := normal // 按钮内容对齐方式
+$btn-width := auto // 按钮宽度
 
 // btn-primary
 $btn-primary-color := $var(color-white) // 主要按钮文字颜色
@@ -35,7 +49,7 @@ $btn-light-bxsh := none // light按钮阴影
 
 // btn-outline
 $btn-outline-color := $btn-outline-secondary-color // outline按钮文字颜色
-$btn-outline-bgc := transparent // outline按钮背景颜色
+$btn-outline-bgc := rgba(0, 0, 0, 0) // outline按钮背景颜色
 $btn-outline-border-color := $btn-outline-secondary-color // outline按钮边框颜色
 $btn-outline-bgc_active := $btn-outline-secondary-bgc_active // outline按钮激活时背景颜色
 $btn-outline-border-color_active := $btn-outline-secondary-color // outline按钮激活时边框颜色
@@ -44,9 +58,9 @@ $btn-outline-bxsh := none // outline按钮阴影
 
 // btn-outline-primary
 $btn-outline-primary-color := $var(color-primary) // outline主按钮文字颜色
-$btn-outline-primary-bgc := transparent // outline主按钮背景颜色
+$btn-outline-primary-bgc := rgba(0, 0, 0, 0) // outline主按钮背景颜色
 $btn-outline-primary-border-color := $var(color-primary) // outline主按钮边框颜色
-$btn-outline-primary-bgc_active := transparent // outline主按钮激活时背景颜色
+$btn-outline-primary-bgc_active := rgba(0, 0, 0, 0) // outline主按钮激活时背景颜色
 $btn-outline-primary-bxsh := none // outline主按钮阴影
 
 // btn-disabled
@@ -62,7 +76,11 @@ $btn-icon-inline-margin-right := 2px // 内联按钮右边距
 
 // btn-inline
 $btn-inline-line-height := 1 // 内联按钮行高
-$btn-inline-padding := 9px 10px // 内联按钮内边距
+$btn-inline-padding-left := 10px
+$btn-inline-padding-right := 10px
+$btn-inline-padding-top := 9px
+$btn-inline-padding-bottom := 9px
+$btn-inline-padding := $btn-inline-padding-top $btn-inline-padding-right $btn-inline-padding-bottom $btn-inline-padding-left // 内联按钮内边距
 $btn-inline-font-size := $var(font-size-xs) // 内联按钮字体大小
 
 // btn-with-tip
@@ -72,6 +90,9 @@ $btn-with-tip-line-height := 1 // 带tip按钮行高
 $btn-with-tip-font-size := $var(font-size-sm) // 带tip按钮字体大小
 $btn-tip-margin-top := 6px // 带tip按钮上边距
 $btn-tip-font-size := 11px // 带tip按钮字体大小
+$btn-tip-family := inherit // 带tip按钮字体
+$btn-tip-weight := inherit // 带tip按钮字重
+$btn-tip-color := inherit // 带tip按钮文字颜色
 $btn-tip-line-height := 1.09 // 带tip按钮文字高度
 
 // btn-loading
@@ -79,5 +100,5 @@ $btn-loading-z-index := 2 // loading按钮层叠高度
 $btn-loading-dot-bgc := $btn-loading-dot-normal-color // loading按钮圆点背景颜色
 $btn-loading-dot-size := 8px // loading按钮圆点尺寸
 $btn-loading-dot-spacing-size := 8px // loading按钮圆点间隙
-$btn-loading-dot-scale := 1.3 // loading按钮圆点缩放比例
-$btn-loading-duration := 2s // loading时长
+$btn-loading-duration := 2s // loading按钮动画时长
+$btn-loading-animation-name := cube-loading-animation // loading按钮动画名称

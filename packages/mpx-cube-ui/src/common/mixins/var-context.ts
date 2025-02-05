@@ -1,3 +1,3 @@
 import { getMixin } from '@mpxjs/core'
 
-export default getMixin({});
+export default getMixin({})
