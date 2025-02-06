@@ -96,7 +96,6 @@
   {
     "styleIsolation": "shared",
     "usingComponents": {
-      "cube-button": "../button/index.mpx",
       "cube-popup": "../popup/index.mpx",
       "cube-icon": "../icon/index.mpx",
       "cube-confirm-button-group": "./confirm-button-group/index.mpx"
