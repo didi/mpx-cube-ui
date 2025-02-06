@@ -40,9 +40,17 @@ createModalComponent({
     },
     /**
      * @description 通过 wx:style透传样式, 里面的每项分别修改对应位置的样式
-     * @optional styleConfig = { header: '', body: '', footer: '', section: '}
+     * @optional styleConfig = { header: '', body: '', footer: '', section: '' }
      */
     styleConfig: {
+      type: Object,
+      value: {}
+    },
+    /**
+     * @description 通过 wx:style 透传样式给popup, 里面的每项分别修改对应位置的样式
+     * @optional styleConfig = { content: '' }
+     */
+    popupStyleConfig: {
       type: Object,
       value: {}
     },

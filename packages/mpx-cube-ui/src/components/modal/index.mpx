@@ -11,6 +11,7 @@
     theme-type="{{ themeType }}"
     bind:maskClick="onMaskClick"
     remove-catch-touch="{{ removeCatchTouch }}"
+    styleConfig="{{ popupStyleConfig }}"
   >
     <view class="cube-modal-section" wx:style="{{ styleConfig.section }}">
       <view
