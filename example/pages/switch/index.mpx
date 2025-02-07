@@ -25,10 +25,17 @@
       </view>
       <view class="switch-example">
         <view class="switch-show">
+          <cube-switch bindchange="getValue"></cube-switch>
+          <text class="switch-text">Bindchange Switch</text>
+        </view>
+        <view class="switch-value">switch value: {{currentValue}}</view>
+      </view>
+      <view class="switch-example">
+        <view class="switch-show">
           <cube-switch disabled="{{true}}" value="{{false}}"></cube-switch>
           <text class="switch-text">Disabled Switch</text>
         </view>
-        <view class="switch-value">switch value:  false</view>
+        <view class="switch-value">switch value: false</view>
       </view>
     </base-container>
   </view>
@@ -40,7 +47,13 @@
   createPage({
     data: {
       valueOne: true,
-      valueTwo: false
+      valueTwo: false,
+      currentValue: false
+    },
+    methods: {
+      getValue(data) {
+        this.currentValue = data.detail.value
+      }
     }
   })
 </script>

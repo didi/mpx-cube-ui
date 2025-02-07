@@ -1,29 +1,56 @@
-## Cube-Segment-Picker
+## Cube-Switch
 
 <card>
 
-### 介绍
+## 介绍
 
-段选择器，用于实现多段的选择，比如选择时间段：2010年9月1日 - 2014年6月30日。
+滑动开关，用于切换 on/off 状态。
 
 </card>
 
-## 示例
+### 示例
 
 <card>
 
-### 城市选择器
+### 基本用法
 
-可以配置多段城市选择。
+<collapse-wrapper>
 
-<!-- @example: segment-city-picker -->
+```vue
+<template>
+  <view>
+    <view>通过wx：model控制开关</view>
+    <cube-switch wx:model="{{value}}"/>
+    <view>通过设置value属性控制开关</view>
+    <cube-switch disabled="{{true}}" value="{{true}}"/>
+    <view>通过change事件获取当前开关状态</view>
+    <cube-switch bindchange="getValue"/>
+  </view>
+</template>
+
+<script>
+  import { createComponent } from '@mpxjs/core'
+
+  createComponent({
+    data() {
+      return {
+        value: false,
+        currentValue: true
+      }
+    },
+    methods: {
+      getValue(data) {
+        this.currentValue = data.detail.value
+      }
+    }
+  })
+</script>
+```
+</collapse-wrapper>
+
 
 </card>
 
-<card>
+ 
 
-### 日期选择器
-
-<!-- @example: segment-date-picker -->
-
-</card>
+ 

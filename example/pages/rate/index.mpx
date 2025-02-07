@@ -3,11 +3,11 @@
     <base-container>
       <view class="content">
         <view class="rate-wrapper">
-          <rate wx:model="{{value}}" wx:model-prop="value" bindchange="updateCurrentPoint" disabled="{{disabled}}" isCustomize="{{customize}}" max="{{_max}}" justify="{{justify}}" allowHalf="{{allowHalf}}">
-            <rate-item wx:for="{{_max}}" wx:key="item" index="{{item}}" value="{{value}}">
-              <view class="rate-item-demo"></view>
-            </rate-item>
-          </rate>
+          <cube-rate wx:model="{{value}}" wx:model-prop="value" bindchange="updateCurrentPoint" disabled="{{disabled}}" isCustomize="{{customize}}" max="{{_max}}" justify="{{justify}}" allowHalf="{{allowHalf}}">
+            <cube-rate-item wx:for="{{_max}}" wx:key="item" index="{{item}}" value="{{value}}">
+              <view class="cube-rate-item-demo"></view>
+            </cube-rate-item>
+          </cube-rate>
         </view>
         <view class="options">
           <view class="title">Options</view>
@@ -147,7 +147,7 @@
   padding-top: 10px
   height 100%
   background-color rgba(239, 239, 244, .7)
-  .rate-item-demo
+  .cube-rate-item-demo
     width: 100%
     height: 100%
     background-size: 100%
@@ -183,10 +183,10 @@
   margin-top 15px
 
 .cube-rate-item_active
-  .rate-item-demo
+  .cube-rate-item-demo
     background-color: orange
 .cube-rate-item_half_active
-  .rate-item-demo
+  .cube-rate-item-demo
     background-color: blue
 </style>
 
@@ -194,9 +194,9 @@
   {
     "usingComponents": {
       "base-container": "../../components/base-container/index.mpx",
-      "rate": "@mpxjs/mpx-cube-ui/src/components/rate/index.mpx",
+      "cube-rate": "@mpxjs/mpx-cube-ui/src/components/rate/index.mpx",
       "cube-toast": "@mpxjs/mpx-cube-ui/src/components/toast/index",
-      "rate-item": "@mpxjs/mpx-cube-ui/src/components/rate/rate-item.mpx"
+      "cube-rate-item": "@mpxjs/mpx-cube-ui/src/components/rate/rate-item.mpx"
     }
   }
 </script>

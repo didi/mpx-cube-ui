@@ -16,7 +16,7 @@ createComponent({
       value: 0
     },
     /**
-     * @description 星星数目
+     * @description 星星个数
      */
     max: {
       type: Array,
@@ -24,27 +24,31 @@ createComponent({
     },
     /**
      * @description 是否禁止
+     * @optional true/false
      */
     disabled: {
       type: Boolean,
       value: false
     },
     /**
-     * @description 星星是否均匀分布
+     * @description 是否自适应容器宽度（通过在星星之间增加空隙）
+     * @optional true/false
      */
     justify: {
       type: Boolean,
       value: false
     },
     /**
-     * @description 是否半星
+     * @description 是否支持半选
+     *  @optional true/false
      */
     allowHalf: {
       type: Boolean,
       value: false
     },
     /**
-     * @description 是否自定义
+     * @description 是否需要自定义插槽
+     * @optional true/false
      */
     isCustomize: {
       type: Boolean,
@@ -66,6 +70,7 @@ createComponent({
       handler(val) {
         if (val !== this.tempValue) {
           this.tempValue = this.handleNum(val)
+          // 手动更改得分时以及初始化分数时触发
           this.triggerEvent(EVENT_INPUT, { value: this.tempValue })
         }
       }
@@ -89,7 +94,9 @@ createComponent({
     handleEnd(e) {
       if (this.disabled) return
       this.computeTempValue(e.changedTouches[0])
+      // 当手指离开屏幕时触发
       this.triggerEvent(EVENT_INPUT, { value: this.tempValue })
+      // 当手指离开屏幕时触发
       this.triggerEvent(EVENT_CHANGE, { value: this.tempValue })
     },
     handleNum(num, isEvent = false) {

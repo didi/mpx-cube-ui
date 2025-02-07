@@ -1,4 +1,4 @@
-## Cube-Button-Group 按钮组
+## Cube-loading
 
 <card>
 
@@ -12,11 +12,16 @@
 
 <card>
 
-### 水平排列
+### 基础用法
 
-通过设置`direction="horizontal"`将按钮水平排列。
+默认大小为`24px`，可通过`size`属性配置
 
-<!-- @example: index -->
+
+<collapse-wrapper>
+
+```vue
+  <cube-loading size="{{36}}" />
+```
+</collapse-wrapper>
 
 </card>
-

@@ -1,8 +1,6 @@
-vendors = official
-// @type loading
-$loading-font-size := 24px
-$loading-spinners-width := 2px
-$loading-spinners-height := 1rem
+$loading-font-size := 24px // loading大小
+$loading-spinners-width := 24px // 容器宽度
+$loading-spinners-height := 24px // 容器高度
 
 $loading-spinners-animation-duration = 1s
 $loading-spinners-animation-steps = steps(12, end)
@@ -12,11 +10,11 @@ $loading-spinners-animation-count = infinite
     transform rotate(0deg)
   100%
     transform rotate(360deg)
-$loading-spinners-animation := spinner-fade $loading-spinners-animation-duration $loading-spinners-animation-steps $loading-spinners-animation-count
+$loading-spinners-animation := spinner-fade $loading-spinners-animation-duration $loading-spinners-animation-steps $loading-spinners-animation-count // 动画
 
 
-$loading-spinner-width := 2px
-$loading-spinner-height := 25%
-$loading-spinner-normal-opacity := 0.25 // 正常透明度
-$loading-spinner-deep-opacity := 0.85 // 加深透明度
+$loading-spinner-width := 2px // 线条宽度
+$loading-spinner-height := 25% // 线条高度
+$loading-spinner-normal-opacity := 0.25 // 线条低透明度
+$loading-spinner-deep-opacity := 0.85 // 线条高透明度
 

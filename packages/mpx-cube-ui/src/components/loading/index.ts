@@ -2,6 +2,9 @@ import { createComponent } from '../../common/helper/create-component'
 
 createComponent({
   properties: {
+    /**
+     * @description 加载图标的大小，单位px
+     */
     size: {
       type: Number,
       value: 24
