@@ -14,13 +14,24 @@ module.exports = defineConfig({
     // 指向自定义主题文件
     // themeFilePath: themeFilePath(), // eg: [resolve('theme.styl')]
     mpx: {
-      srcMode: 'wx',
       entry: resolve('app.mpx'),
       plugin: {
+        srcMode: 'wx',
         // 是否生成用于测试的源文件/dist的映射表
         generateBuildMap: true,
         defs: {
           __themeMode__: THEME || 'default'
+        },
+        hackResolveBuildDependencies: ({ files, resolveDependencies }) => {
+          const path = require('path')
+          const packageJSONPath = path.resolve('package.json')
+          if (files.has(packageJSONPath)) files.delete(packageJSONPath)
+          if (resolveDependencies.files.has(packageJSONPath)) {
+            resolveDependencies.files.delete(packageJSONPath)
+          }
+        },
+        rnConfig: {
+          projectName: 'ReactNativeProject'
         }
       }
     }
