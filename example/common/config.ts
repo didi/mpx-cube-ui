@@ -40,7 +40,8 @@ export default {
           'button-group',
           'icon',
           'divider',
-          'float-ball'
+          'float-ball',
+          'loading'
         ]
       },
       {
@@ -54,7 +55,9 @@ export default {
           'picker',
           'cascade-picker',
           'date-picker',
-          'time-picker'
+          'time-picker',
+          'rate',
+          'switch'
         ]
       },
       {

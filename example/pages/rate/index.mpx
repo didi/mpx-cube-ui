@@ -1,0 +1,204 @@
+<template>
+  <view class="rate-page">
+    <base-container>
+      <view class="content">
+        <view class="rate-wrapper">
+          <cube-rate wx:model="{{value}}" wx:model-prop="value" bindchange="updateCurrentPoint" disabled="{{disabled}}" isCustomize="{{customize}}" max="{{currentMax}}" justify="{{justify}}" allowHalf="{{allowHalf}}">
+            <cube-rate-item wx:for="{{currentMaxArray}}" wx:key="item" index="{{item}}" value="{{value}}">
+              <view class="cube-rate-item-demo"></view>
+            </cube-rate-item>
+          </cube-rate>
+        </view>
+        <view class="options">
+          <view class="title">Options</view>
+            <view class="rate-option-list">
+             <view class="group">
+                <view class="group-item">
+                  <text class="item">Disabled</text>
+                  <switch 
+                    color="{{ switchColor }}"
+                    checked="{{ disabled }}"
+                    bindchange="updateDisabled"
+                  />
+                </view>
+                <view class="group-item">
+                  <view class="item sub">Star Numbers</view>
+                  <input
+                    class="input-maxlength"
+                    type="number"
+                    value="{{ max }}"
+                    bind:input="updateMaxLength"
+                  />
+                </view>
+                <view class="group-item">
+                  <view class="item sub">Input Point</view>
+                  <input
+                    class="input-maxlength"
+                    type="number"
+                    value="{{ currentValue + '' }}"
+                    bind:input="updateValue"
+                  />
+                </view>
+                <view class="group-item">
+                  <view class="item sub">Star Point</view>
+                  <input
+                    class="input-maxlength"
+                    type="number"
+                    disabled="{{true}}"
+                    value="{{ value + '' }}"
+                  />
+                </view>
+                <view class="group-item">
+                  <view class="item">Justify</view>
+                  <switch 
+                    color="{{ switchColor }}"
+                    checked="{{ justify }}"
+                    bindchange="updateJustify"
+                  />
+                </view>
+                <view class="group-item">
+                  <view class="item">CustomStar</view>
+                  <switch 
+                    color="{{ switchColor }}"
+                    checked="{{ customize }}"
+                    bindchange="updateCustomize"
+                  />
+                </view>
+                <view class="group-item">
+                  <view class="item">AllowHalf</view>
+                  <switch 
+                    color="{{ switchColor }}"
+                    checked="{{ allowHalf }}"
+                    bindchange="updateAllowHalf"
+                  />
+                </view>
+              </view>
+          </view>
+        </view>
+        <cube-toast
+          txt="为方便展示，示例中星星数最多为9～"
+          wx:ref="toast">
+        </cube-toast>
+      </view>
+    </base-container>
+  </view>
+</template>
+
+<script>
+  import { createPage } from '@mpxjs/core'
+
+  createPage({
+    data: {
+      value: 3.4,
+      currentValue: 3.4,
+      max: '5',
+      customize: false,
+      justify: false,
+      allowHalf: true,
+      disabled: false,
+      switchColor: '#fc9153'
+    },
+    computed: {
+      currentMaxArray() {
+        return Array.from({length: Number(this.max)}, (_, i) => i + 1)
+      },
+      currentMax() {
+        return Number(this.max)
+      }
+    },
+    methods: {
+      updateDisabled (e) {
+        const { value } = e.detail
+        this.disabled = value
+      },
+      updateMaxLength (e) {
+        const { value } = e.detail
+        this.max = value
+        if (value > 9) {
+          this.$refs.toast.show()
+          this.max = '9'
+        }
+      },
+      updateValue (e) {
+        const { value } = e.detail
+        this.currentValue = value
+        this.value = Number(value)
+      },
+      updateCurrentPoint (e) {
+        const { value } = e.detail
+        this.currentValue = value
+      },
+      updateJustify (e) {
+        const { value } = e.detail
+        this.justify = value
+      },
+      updateCustomize (e) {
+        const { value } = e.detail
+        this.customize = value
+      },
+      updateAllowHalf (e) {
+        const { value } = e.detail
+        this.allowHalf = value
+      },
+    }
+  })
+</script>
+
+<style lang="stylus">
+.rate-page
+  padding-top: 10px
+  height 100%
+  background-color rgba(239, 239, 244, .7)
+  .cube-rate-item-demo
+    width: 100%
+    height: 100%
+    background-size: 100%
+    background-color: grey
+  .options
+    margin: 20px 0
+    .rate-option-list
+      .group
+        border: 1px solid rgba(0, 0, 0, .1)
+        border-radius: 5px
+        .group-item
+          display: flex
+          align-items: center
+          justify-content: space-between
+          padding-right: 10px
+          border-bottom: 1px solid rgba(0, 0, 0, .1)
+          .item
+            padding-left: 15px
+            line-height: 52px
+            height: 52px
+            width: 120px
+            text-align: left
+          .sub
+            font-size: 14px
+            background-color: rgba(0, 0, 0, .04)
+          .input-maxlength
+          .input-width
+            flex: 1
+            margin-left: 15px
+        .last
+          border-bottom: none
+.desc
+  margin-top 15px
+
+.cube-rate-item_active
+  .cube-rate-item-demo
+    background-color: orange
+.cube-rate-item_half_active
+  .cube-rate-item-demo
+    background-color: blue
+</style>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "base-container": "../../components/base-container/index.mpx",
+      "cube-rate": "@mpxjs/mpx-cube-ui/src/components/rate/index.mpx",
+      "cube-toast": "@mpxjs/mpx-cube-ui/src/components/toast/index",
+      "cube-rate-item": "@mpxjs/mpx-cube-ui/src/components/rate/rate-item.mpx"
+    }
+  }
+</script>
