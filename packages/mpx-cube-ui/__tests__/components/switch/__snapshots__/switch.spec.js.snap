@@ -1,19 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`component switch unit test correct render check matchSnapshot 1`] = `"<wx-view class=\\"main--cube-switch main--cube-switch\\"><wx-view class=\\"main--cube-switch-handle\\"></wx-view></wx-view>"`;
+exports[`component switch unit test correct render check matchSnapshot 1`] = `"<wx-view class=\\"main--cube-switch\\"><wx-view class=\\"main--cube-switch-handle\\"></wx-view></wx-view>"`;
 
-exports[`component switch unit test disabled check matchSnapshot 1`] = `"<wx-view class=\\"main--cube-switch main--cube-switch main--cube-switch-on\\"><wx-view class=\\"main--cube-switch-handle\\"></wx-view></wx-view>"`;
+exports[`component switch unit test disabled check matchSnapshot 1`] = `"<wx-view class=\\"main--cube-switch\\"><wx-view class=\\"main--cube-switch-handle\\"></wx-view></wx-view>"`;
 
-exports[`component switch unit test render check render 1`] = `"<wx-view class=\\"main--cube-switch main--cube-switch main--cube-switch-on\\"><wx-view class=\\"main--cube-switch-handle\\"></wx-view></wx-view>"`;
-
-exports[`component switch unit test render check render 2`] = `"<wx-view class=\\"main--cube-switch main--cube-switch main--cube-switch-on\\"><wx-view class=\\"main--cube-switch-handle\\"></wx-view></wx-view>"`;
-
-exports[`component switch unit test render check render 3`] = `"<wx-view class=\\"main--cube-switch main--cube-switch main--cube-switch-on\\"><wx-view class=\\"main--cube-switch-handle\\"></wx-view></wx-view>"`;
-
-exports[`component switch unit test render check render 4`] = `"<wx-view class=\\"main--cube-switch main--cube-switch main--cube-switch-on\\"><wx-view class=\\"main--cube-switch-handle\\"></wx-view></wx-view>"`;
-
-exports[`component switch unit test render check render 5`] = `"<wx-view class=\\"main--cube-switch main--cube-switch main--cube-switch-on\\"><wx-view class=\\"main--cube-switch-handle\\"></wx-view></wx-view>"`;
-
-exports[`component switch unit test slot check render correct 1`] = `"<main class=\\"radio-modal\\"><wx-view class=\\"main--cube-switch main--cube-switch\\"><wx-view class=\\"main--cube-switch-handle\\"></wx-view></wx-view></main>"`;
-
-exports[`component switch unit test wx:model check matchSnapshot 1`] = `"<wx-view class=\\"main--switch-default-checked-demo\\"><wx-text>默认值：false</wx-text><cube-switch class=\\"main--cube-switch\\" data-eventconfigs=\\"[object Object]\\"><wx-view class=\\"cube-switch--cube-switch cube-switch--cube-switch\\"><wx-view class=\\"cube-switch--cube-switch-handle\\"></wx-view></wx-view></cube-switch></wx-view>"`;
+exports[`component switch unit test wx:model check matchSnapshot 1`] = `"<wx-view class=\\"main--switch-default-checked-demo\\"><wx-text>默认值：false</wx-text><cube-switch class=\\"main--cube-switch\\" data-eventconfigs=\\"[object Object]\\"><wx-view class=\\"cube-switch--cube-switch\\"><wx-view class=\\"cube-switch--cube-switch-handle\\"></wx-view></wx-view></cube-switch></wx-view>"`;

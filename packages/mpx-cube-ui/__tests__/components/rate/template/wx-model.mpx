@@ -11,7 +11,7 @@ import { createComponent } from '@mpxjs/core'
 createComponent({
   data: {
     value: 1,
-    max: [1, 2, 3],
+    max: 3,
     justify: false,
     allowHalf: false,
     disabled: false,

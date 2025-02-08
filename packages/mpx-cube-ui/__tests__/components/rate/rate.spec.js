@@ -8,7 +8,7 @@ describe('component rate unit test', function () {
   function changeProps() {
     const baseProps = {
       value: 1.5,
-      max: [1, 2, 3],
+      max: 3,
       justify: false,
       allowHalf: true,
       disabled: true
@@ -26,9 +26,9 @@ describe('component rate unit test', function () {
   describe('wx-model check', () => {
     const component = newComponent(componentTemplateId)
 
-    // it('matchSnapshot', () => {
-    //   expect(component.dom.innerHTML).toMatchSnapshot() // 判断前后生成的dom是否一样
-    // })
+    it('matchSnapshot', () => {
+      expect(component.dom.innerHTML).toMatchSnapshot() // 判断前后生成的dom是否一样
+    })
 
     it(' wx:model', async () => {
       // 确保 switchValue 首次显示符合预期
@@ -69,9 +69,9 @@ describe('component rate unit test', function () {
   describe('correct props check', () => {
     const component = newComponent(componentId, changeProps())
 
-    // it('matchSnapshot', () => {
-    //   expect(component.dom.innerHTML).toMatchSnapshot() // 判断前后生成的dom是否一样
-    // })
+    it('matchSnapshot', () => {
+      expect(component.dom.innerHTML).toMatchSnapshot() // 判断前后生成的dom是否一样
+    })
 
     it(' props to rate ', async () => {
       const rates = component.querySelectorAll('rate-item')
@@ -91,9 +91,9 @@ describe('component rate unit test', function () {
   })
   describe('event trigger check', () => {
     const component = newComponent(componentTemplateId)
-    // it('matchSnapshot', () => {
-    //   expect(component.dom.innerHTML).toMatchSnapshot()
-    // })
+    it('matchSnapshot', () => {
+      expect(component.dom.innerHTML).toMatchSnapshot()
+    })
 
     it('event is triggered', async () => {
       const start = {
@@ -127,9 +127,9 @@ describe('component rate unit test', function () {
     const component = simulate.render(componentSlotId)
     component.attach(document.createElement('parent'))
 
-    // it('matchSnapshot', () => {
-    //   expect(component.dom.innerHTML).toMatchSnapshot() // 判断前后生成的dom是否一样
-    // })
+    it('matchSnapshot', () => {
+      expect(component.dom.innerHTML).toMatchSnapshot() // 判断前后生成的dom是否一样
+    })
 
     it('should render correct contents: value/justify/allowHalf/disabled', () => {
       const justify = component.querySelector('rate').querySelector('.cube-rate-justify')

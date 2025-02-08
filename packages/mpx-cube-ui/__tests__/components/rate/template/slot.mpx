@@ -1,7 +1,7 @@
 <template>
   <view class="rate-page">
     <rate wx:model="{{value}}" wx:model-prop="value" disabled="{{disabled}}" isCustomize="{{customize}}" max="{{max}}" justify="{{justify}}" allowHalf="{{allowHalf}}">
-      <rate-item wx:for="{{max}}" wx:key="item" index="{{item}}" value="{{value}}">
+      <rate-item wx:for="{{maxArray}}" wx:key="item" index="{{item}}" value="{{value}}">
         <view class="rate-item-demo"></view>
       </rate-item>
     </rate>
@@ -13,7 +13,8 @@ import { createPage } from '@mpxjs/core'
 createPage({
   data: {
     value: 1.4,
-    max: [1, 2, 3, 4],
+    max: 4,
+    maxArray: [1, 2, 3, 4],
     customize: false,
     justify: true,
     allowHalf: true,
