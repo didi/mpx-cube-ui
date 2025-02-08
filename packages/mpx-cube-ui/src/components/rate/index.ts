@@ -9,7 +9,7 @@ createComponent({
   },
   properties: {
     /**
-     * @description 当前评分
+     * @description 双向绑定属性值
      */
     value: {
       type: Number,
@@ -19,8 +19,8 @@ createComponent({
      * @description 星星个数
      */
     max: {
-      type: Array,
-      value: []
+      type: Number,
+      value: 0
     },
     /**
      * @description 是否禁止
@@ -62,6 +62,9 @@ createComponent({
   computed: {
     rateClass() {
       return this.justify && 'cube-rate-justify'
+    },
+    maxArray() {
+      return Array.from({ length: Number(this.max) }, (_, index) => index + 1)
     }
   },
   watch: {
@@ -96,8 +99,10 @@ createComponent({
       this.computeTempValue(e.changedTouches[0])
       // 当手指离开屏幕时触发
       this.triggerEvent(EVENT_INPUT, { value: this.tempValue })
-      // 当手指离开屏幕时触发
-      this.triggerEvent(EVENT_CHANGE, { value: this.tempValue })
+      if (this.value !== this.tempValue) {
+        // 当手指离开屏幕时触发
+        this.triggerEvent(EVENT_CHANGE, { value: this.tempValue })
+      }
     },
     handleNum(num, isEvent = false) {
       if (this.allowHalf) {
@@ -114,14 +119,14 @@ createComponent({
       return num
     },
     computeTempValue(touch) {
-      let num = (touch.clientX - this.left) / this.containerWidth * this.max.length
+      let num = (touch.clientX - this.left) / this.containerWidth * this.max
       num = this.handleNum(num, true)
-      if (num > 0 && num <= this.max.length) {
+      if (num > 0 && num <= this.max) {
         this.tempValue = num
       } else if (num <= 0) {
         this.tempValue = 0
       } else {
-        this.tempValue = this.max.length
+        this.tempValue = this.max
       }
     }
   }

@@ -1,3 +1,5 @@
+vendors = official
+
 $loading-font-size := 24px // loading大小
 $loading-spinners-width := 24px // 容器宽度
 $loading-spinners-height := 24px // 容器高度
@@ -5,11 +7,13 @@ $loading-spinners-height := 24px // 容器高度
 $loading-spinners-animation-duration = 1s
 $loading-spinners-animation-steps = steps(12, end)
 $loading-spinners-animation-count = infinite
+
 @keyframes spinner-fade
   0%
     transform rotate(0deg)
   100%
     transform rotate(360deg)
+
 $loading-spinners-animation := spinner-fade $loading-spinners-animation-duration $loading-spinners-animation-steps $loading-spinners-animation-count // 动画
 
 

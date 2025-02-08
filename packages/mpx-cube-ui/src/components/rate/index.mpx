@@ -7,9 +7,10 @@
     catchtouchmove="handleMove"
     catchtouchend="handleEnd"
     >
+      <!-- 自定义内容 -->
       <slot wx:if="{{isCustomize}}"></slot>
       <block wx:else>
-        <rate-item wx:for="{{max}}" wx:key="item" index="{{item}}" value="{{value}}"/>
+        <rate-item wx:for="{{maxArray}}" wx:key="item" index="{{item}}" value="{{value}}"/>
       </block>
     </view>
   </view>

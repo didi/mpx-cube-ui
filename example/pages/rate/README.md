@@ -33,7 +33,7 @@
     data() {
       return {
         value: false,
-        max: [1,2,3]
+        max: 3
       }
     }
   })
@@ -72,7 +72,7 @@
     data() {
       return {
         value: false,
-        max: [1,2,3],
+        max: 3,
         justify: true,
         disabled: true,
         allowHalf: true
@@ -91,6 +91,8 @@
 ### 自定义星星样式
 
 需要使用cube-rate-item组件，并且对自定义的星星元素定义两种样式——普通和活跃（在.cube-rate-item_active类之下, 如设置半星则也需修改.cube-rate-item_half_active类）
+#### 注意
+使用自定义插槽时，因微信与支付宝在wx:for以数字为参数时，起始索引不同，为避免此问题请在wx:for遍历生成cube-rate-item时以数组为参数。
 
 <collapse-wrapper>
 
@@ -104,7 +106,7 @@
       max="{{max}}"
     >
       <cube-rate-item
-        wx:for="{{max}}"
+        wx:for="{{maxArray}}"
         wx:key="item"
         index="{{item}}"
         value="{{value}}"
@@ -121,8 +123,13 @@
     data() {
       return {
         value: false,
-        max: [1,2,3],
+        max: 3,
         customize: true
+      }
+    },
+    computed: {
+      maxArray() {
+        return Array.from({ length: this.max }, (_, index) => index + 1)
       }
     }
   })

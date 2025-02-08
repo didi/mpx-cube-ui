@@ -3,8 +3,8 @@
     <base-container>
       <view class="content">
         <view class="rate-wrapper">
-          <cube-rate wx:model="{{value}}" wx:model-prop="value" bindchange="updateCurrentPoint" disabled="{{disabled}}" isCustomize="{{customize}}" max="{{_max}}" justify="{{justify}}" allowHalf="{{allowHalf}}">
-            <cube-rate-item wx:for="{{_max}}" wx:key="item" index="{{item}}" value="{{value}}">
+          <cube-rate wx:model="{{value}}" wx:model-prop="value" bindchange="updateCurrentPoint" disabled="{{disabled}}" isCustomize="{{customize}}" max="{{currentMax}}" justify="{{justify}}" allowHalf="{{allowHalf}}">
+            <cube-rate-item wx:for="{{currentMaxArray}}" wx:key="item" index="{{item}}" value="{{value}}">
               <view class="cube-rate-item-demo"></view>
             </cube-rate-item>
           </cube-rate>
@@ -99,9 +99,11 @@
       switchColor: '#fc9153'
     },
     computed: {
-      _max() {
-        console.log(4445, Array.from({length: Number(this.max)}, (_, i) => i + 1))
+      currentMaxArray() {
         return Array.from({length: Number(this.max)}, (_, i) => i + 1)
+      },
+      currentMax() {
+        return Number(this.max)
       }
     },
     methods: {
