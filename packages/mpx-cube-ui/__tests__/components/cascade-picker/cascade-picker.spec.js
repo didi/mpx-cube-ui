@@ -5,7 +5,6 @@ const simulate = require('@mpxjs/miniprogram-simulate')
 const selectedIndex = [1, 1, 2]
 describe('component cascade-picker unit test', function() {
   const componentId = simulate.loadMpx('src/components/cascade-picker/index.mpx')
-  const componentPickerId = simulate.loadMpx('src/components/picker/index.mpx')
   const baseProps = {
     selectedIndex,
     list: cascadeData
@@ -13,10 +12,8 @@ describe('component cascade-picker unit test', function() {
 
   function newComponent(props) {
     const component = simulate.render(componentId, props)
-    const componentPicker = simulate.render(componentPickerId, props)
     const parent = document.createElement('parent')
     component.attach(parent) // 会触发 attach 生命周期
-    componentPicker.attach(parent)
     return component
   }
 
