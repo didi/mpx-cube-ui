@@ -21,6 +21,7 @@ module.exports = {
   globals: {
     __mpx_mode__: 'wx',
     __env__: 'test',
+    __mpx_dynamic_runtime__: false,
     'ts-jest': {
       tsconfig: {
         target: 'ES2019'

@@ -10,3 +10,4 @@ example
 scripts
 temp
 mock
+jest.config.js
