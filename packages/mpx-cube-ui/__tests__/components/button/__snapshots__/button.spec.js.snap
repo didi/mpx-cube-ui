@@ -16,7 +16,7 @@ exports[`component button unit test props lang check matchSnapshot 1`] = `"<wx-b
 
 exports[`component button unit test props light check matchSnapshot 1`] = `"<wx-button style=\\"\\" class=\\"main--cube-btn main--cube-btn-light\\"><wx-view class=\\"main--cube-btn-content\\" style=\\"\\"></wx-view></wx-button>"`;
 
-exports[`component button unit test props loading check matchSnapshot 1`] = `"<wx-button style=\\"\\" class=\\"main--cube-btn main--cube-btn-loading\\"><loading><wx-view class=\\"loading--cube-loading\\"><wx-view class=\\"loading--cube-loading-content\\"><wx-view class=\\"loading--cube-loading-origin\\"><wx-view class=\\"loading--cube-loading-middle-dot\\"></wx-view></wx-view></wx-view></wx-view></loading><wx-view class=\\"main--cube-btn-content\\" style=\\"\\"></wx-view></wx-button>"`;
+exports[`component button unit test props loading check matchSnapshot 1`] = `"<wx-button style=\\"\\" class=\\"main--cube-btn main--cube-btn-loading\\"><loading style=\\"position: absolute; top: 0; left: 0; right: 0; bottom: 0;\\"><wx-view class=\\"loading--cube-loading\\"><wx-view class=\\"loading--cube-loading-content\\"><wx-view class=\\"loading--cube-loading-origin\\"><wx-view class=\\"loading--cube-loading-middle-dot\\"></wx-view></wx-view></wx-view></wx-view></loading><wx-view class=\\"main--cube-btn-content\\" style=\\"\\"></wx-view></wx-button>"`;
 
 exports[`component button unit test props openType="chooseAvatar" check matchSnapshot 1`] = `"<wx-button style=\\"\\" class=\\"main--cube-btn\\"><wx-view class=\\"main--cube-btn-content\\" style=\\"\\"></wx-view></wx-button>"`;
 
@@ -44,4 +44,4 @@ exports[`component button unit test props outline primary check matchSnapshot 1`
 
 exports[`component button unit test props primary check matchSnapshot 1`] = `"<wx-button style=\\"\\" class=\\"main--cube-btn main--cube-btn-primary\\"><wx-view class=\\"main--cube-btn-content\\" style=\\"\\"></wx-view></wx-button>"`;
 
-exports[`component button unit test props tip="辅助文案" check matchSnapshot 1`] = `"<wx-button style=\\"\\" class=\\"main--cube-btn main--cube-btn-with-tip\\"><wx-view class=\\"main--cube-btn-content\\" style=\\"\\"></wx-view><wx-view class=\\"main--cube-btn-tip\\">辅助文案</wx-view></wx-button>"`;
+exports[`component button unit test props tip="辅助文案" check matchSnapshot 1`] = `"<wx-button style=\\"\\" class=\\"main--cube-btn main--cube-btn-with-tip\\"><wx-view class=\\"main--cube-btn-content\\" style=\\"\\"></wx-view><wx-view class=\\"main--cube-btn-tip\\"><wx-text class=\\"main--cube-btn-tip-text\\">辅助文案</wx-text></wx-view></wx-button>"`;

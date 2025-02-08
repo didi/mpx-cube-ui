@@ -160,7 +160,7 @@ describe('component button unit test', () => {
     const instance = component.instance
 
     const tipDom = component.querySelector('.cube-btn-with-tip')
-    const tipText = component.querySelector('.cube-btn-tip').dom.innerHTML
+    const tipText = component.querySelector('.cube-btn-tip-text').dom.innerHTML
 
     it('should render correct tip', () => {
       expect(tipDom).toBeTruthy()
