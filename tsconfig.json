@@ -3,7 +3,6 @@
     "target": "esnext",
     "module": "esnext",
     "allowJs": true,
-    "jsx": "preserve",
     "noImplicitThis": true,
     "strictNullChecks": true,
     "moduleResolution": "node",
@@ -20,6 +19,7 @@
     "vue.config.js",
     "packages/mpx-cube-ui/__tests__",
     "jest.config.js",
-    "packages/website-build/*"
+    "packages/website-build/*",
+    "example/ReactNativeProject/*"
   ]
 }
