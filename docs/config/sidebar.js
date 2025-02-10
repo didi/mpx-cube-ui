@@ -60,6 +60,10 @@ module.exports = [
           {
             title: 'Loading 加载',
             path: '/components/base/loading'
+          },
+          {
+            title: 'Collapse 展开收起',
+            path: '/components/base/collapse'
           }
           // {
           //   title: 'Style 内置样式'

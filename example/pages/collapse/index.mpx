@@ -1,0 +1,54 @@
+<template>
+  <base-container class="cube-checkbox-modal-page">
+    <basic-collapse />
+  
+    <view class="divider-wrapper">
+      <cube-divider />
+    </view>
+
+    <change-switch-text />
+
+    <view class="divider-wrapper">
+      <cube-divider />
+    </view>
+
+    <change-min-height />
+
+    <view class="divider-wrapper">
+      <cube-divider />
+    </view>
+
+    <change-position />
+
+    <view class="divider-wrapper">
+      <cube-divider />
+    </view>
+
+    <slot-wx-model />
+  </base-container>
+</template>
+
+<script>
+import { createPage } from '@mpxjs/core'
+
+createPage({})
+</script>
+
+<style lang="stylus">
+.divider-wrapper
+  margin: 20px 0
+</style>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "base-container": "../../components/base-container/index",
+      "basic-collapse": "./basic-collapse.mpx",
+      "change-switch-text": "./change-switch-text.mpx",
+      "change-min-height": "./change-min-height.mpx",
+      "change-position": "./change-position.mpx",
+      "slot-wx-model": "./slot-wx-model.mpx",
+      "cube-divider": "@mpxjs/mpx-cube-ui/src/components/divider/index"
+    }
+  }
+</script>

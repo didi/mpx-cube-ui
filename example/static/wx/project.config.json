@@ -38,7 +38,7 @@
       "list": [
         {
           "name": "",
-          "pathName": "pages/picker/index",
+          "pathName": "pages/collapse/index",
           "query": "",
           "launchMode": "default",
           "scene": null

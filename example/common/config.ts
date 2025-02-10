@@ -3,6 +3,7 @@ export default {
     'default': [
       'button',
       'button-group',
+      'collapse',
       'icon',
       'radio',
       'radio-group',
@@ -41,7 +42,8 @@ export default {
           'icon',
           'divider',
           'float-ball',
-          'loading'
+          'loading',
+          'collapse'
         ]
       },
       {
