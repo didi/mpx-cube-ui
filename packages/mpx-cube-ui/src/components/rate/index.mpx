@@ -16,7 +16,7 @@
   </view>
 </template>
 
-<script src="./index.ts" lang="ts"></script>
+<script src="./rate.ts" lang="ts"></script>
 
 <style lang="stylus">
 @require "@mpxjs/mpx-cube-ui/src/common/stylus/helper.styl"

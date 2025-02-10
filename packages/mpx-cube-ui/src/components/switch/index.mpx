@@ -1,6 +1,5 @@
 <template>
   <view
-    class="cube-switch"
     wx:class="{{ switchClass }}"
     bindtap="toggleSwitch"
   >
@@ -8,7 +7,7 @@
   </view>
 </template>
 
-<script lang="ts" src="./index.ts"></script>
+<script lang="ts" src="./switch.ts"></script>
 
 <style lang="stylus">
 @require "../../common/stylus/helper.styl"

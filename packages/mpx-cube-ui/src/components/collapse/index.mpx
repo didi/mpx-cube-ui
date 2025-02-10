@@ -39,7 +39,7 @@
   </view>
 </template>
 
-<script src="./index.ts" lang="ts"></script>
+<script src="./collapse.ts" lang="ts"></script>
 
 <style lang="stylus">
 .cube-collapse-mid
