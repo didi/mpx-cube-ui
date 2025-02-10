@@ -56,6 +56,10 @@ module.exports = [
           {
             title: 'FloatBall 悬浮球',
             path: '/components/base/float-ball'
+          },
+          {
+            title: 'Collapse 展开收起',
+            path: '/components/base/collapse'
           }
           // {
           //   title: 'Style 内置样式'

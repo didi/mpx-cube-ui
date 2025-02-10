@@ -9,14 +9,18 @@
           type="arrow"
         />
       </view>
+      <!-- 上方开关插槽，可替换组件内置开关 -->
       <slot name="top-switch" />
     </view>
+    <!-- 内容上方插槽，位置在上方开关与内容之间 -->
     <slot name="top" />
     <view class="cube-collapse-mid" wx:style="{{ contentWrapStyle }}">
       <view class="cube-collapse-content">
+        <!-- 默认插槽，用于展示需要展开收起的内容 -->
         <slot />
       </view>
     </view>
+    <!-- 内容下方插槽，位置在下方开关与内容之间 -->
     <slot name="bottom" />
     <view wx:if="{{ showBottomSwitch }}" class="cube-collapse-bottom" bindtap="toggleCollapse">
       <view class="cube-collapse-switch" wx:if="{{text}}">
@@ -27,8 +31,11 @@
           type="arrow"
         />
       </view>
+      <!-- 下方开关插槽，可替换组件内置开关 -->
       <slot name="bottom-switch" />
     </view>
+
+    <view class="cube-collapse-ghost-node" wx:style="height: {{minHeight}}"></view>
   </view>
 </template>
 
@@ -55,6 +62,13 @@
   transition: transform .3s ease-in-out
 .cube-collapse-arrow-bottom
   transform: rotate(90deg)
+.cube-collapse-ghost-node
+  position: fixed
+  top: 100%
+  left: 100%
+  transform: translate(100%, 100%)
+  visibility: hidden
+  overflow: hidden
 </style>
 
 <script type="application/json">

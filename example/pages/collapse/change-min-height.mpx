@@ -13,7 +13,7 @@
       </cube-collapse>
     </view>
 
-    <view>内容小于 min-height时，隐藏展开按钮 </view>
+    <view class="item">内容小于 min-height时，隐藏展开按钮 </view>
     <view class="bg-white">
       <cube-collapse min-height="{{ '100px' }}">
         <view class="text">内容文案，第一行</view>
@@ -40,6 +40,8 @@ createComponent({
   background-color: #fff
 .text
   line-height: 20px
+.item
+  margin-top: 20px
 </style>
 
 <script type="application/json">

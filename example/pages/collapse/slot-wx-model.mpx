@@ -2,11 +2,22 @@
   <view>
     <view>slot + wx:model来开展使用能力</view>
     <view class="bg-white">
-      <cube-collapse>
+      <cube-collapse
+        switch-text="{{ [] }}"
+        wx:model="{{ collapsed }}"
+        wx:model-prop="collapsed"
+      >
         <view>
-          <view></view>
+          <view>内容，第一行</view>
+          <view>内容，第二行</view>
+          <view>内容，第三行</view>
         </view>
+        <view slot="top-switch">点我使用组件的展开、收起</view>
       </cube-collapse>
+
+      <view>-------</view>
+      <view bindtap="collapsedHandler">点我通过wx:model进行展开、收起</view>
+      <view>collapsed: {{ collapsed }}</view>
     </view>
   </view>
 </template>
@@ -14,7 +25,16 @@
 <script>
 import { createComponent } from '@mpxjs/core'
 
-createComponent({})
+createComponent({
+  data: {
+    collapsed: true
+  },
+  methods: {
+    collapsedHandler() {
+      this.collapsed = !this.collapsed
+    }
+  }
+})
 </script>
 
 <style lang="stylus" scoped>

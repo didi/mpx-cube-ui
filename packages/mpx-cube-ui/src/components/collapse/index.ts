@@ -5,20 +5,25 @@ createComponent({
     multipleSlots: true
   },
   properties: {
-    // 折叠内容最大高度，默认为0，如果值很大则没有折叠效果了，需要写单位
+    // 属性最小内容展示高度，需要写单位，如：100px。当内容高度小于该值时，不会出现收起展开按钮。
     minHeight: {
       type: String,
       value: '0'
     },
+    // 切换开关所在位置
+    // @optional top/bottom
     switchPositon: {
       type: String,
       value: 'top'
     },
+    // 切换开关文案，数组第一项为展开时文案，第二项为收起时文案。当为字符串时，展开收起文案不变
     switchText: {
+      // Array / String
       type: Array,
       optionalTypes: [String],
       value: ['展开', '收起']
     },
+    // 是否默认收起
     collapsed: {
       type: Boolean,
       value: true
@@ -72,17 +77,35 @@ createComponent({
     // }).exec();
 
     heightHandler() {
+      let contentHeight = -1
+      let ghostNodeHeight = -1
       const query = this.createSelectorQuery()
       const content = query.select('.cube-collapse-content')
       content.boundingClientRect((res) => {
         this.contentMaxHeight = res.height + 'px'
+        contentHeight = res.height
+        if (ghostNodeHeight !== -1) {
+          if (contentHeight <= ghostNodeHeight) {
+            this.hideSwitch = true
+          }
+        }
+      })
+
+      const ghostNode = query.select('.cube-collapse-ghost-node')
+      ghostNode.boundingClientRect((res) => {
+        ghostNodeHeight = res.height
+        if (contentHeight !== -1) {
+          if (contentHeight <= ghostNodeHeight) {
+            this.hideSwitch = true
+          }
+        }
       })
       query.exec()
     },
     toggleCollapse() {
       this.isCollapsed = !this.isCollapsed
       // 当绑定值变化时触发
-      // @arg 事件对象 e，包含当前选中的复选框值的集合
+      // @arg 事件对象 e，包含 value 属性，表示当前展开收起状态
       this.triggerEvent(EVENT_INPUT, {
         value: this.isCollapsed
       })
