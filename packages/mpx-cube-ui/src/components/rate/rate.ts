@@ -80,7 +80,7 @@ createComponent({
     }
   },
   methods: {
-    handleStart(e) {
+    handleStart() {
       if (!this.disabled) {
         this.createSelectorQuery().select(this.domName).boundingClientRect((rect) => {
           const { width, left } = rect

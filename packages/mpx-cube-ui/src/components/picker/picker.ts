@@ -18,6 +18,16 @@ createPickerComponent({
   options: {
     multipleSlots: true
   },
+  properties: {
+    /**
+     * 选项超长时 numberOfLines 可以设置为 1，表示显示一行，超出部分显示省略号
+     * @optional 0/1
+     */
+    numberOfLines: {
+      type: Number,
+      value: 0
+    }
+  },
   data: {
     finalList: [] as PickerColumn[],
     finalIndex: [] as number[],
@@ -30,6 +40,13 @@ createPickerComponent({
         const _order = item[0] && item[0].order
         return isNumber(_order) ? _order : index
       })
+    },
+    rootClass() {
+      return {
+        'cube-picker': true,
+        [`cube-picker-${this.themeType}`]: this.themeType,
+        'cube-picker-ellipsis': this.numberOfLines
+      }
     }
   },
   watch: {

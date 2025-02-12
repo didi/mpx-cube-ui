@@ -1,6 +1,6 @@
 <template>
   <view
-    wx:class="{{ themeType ? 'cube-picker cube-picker-'+themeType : 'cube-picker' }}"
+    wx:class="{{ rootClass }}"
   >
     <!-- 用于修改微信原生的选中框， -->
     <slot name="header" />
@@ -46,7 +46,7 @@
             wx:for="{{ list }}"
             wx:for-index="index"
             wx:key="id">
-            {{ item.text }}
+            <text numberOfLines="{{ numberOfLines }}">{{ item.text }}</text>
           </view>
         </block>
       </picker-view-column>
