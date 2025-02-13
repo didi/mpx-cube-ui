@@ -167,11 +167,13 @@ createComponent({
     initContentRect() {
       if (this.styleConfig?.content?.height) return
       return new Promise((resolve) => {
-        this.$refs["popup-content"]
+        setTimeout(() => {
+          this.$refs["popup-content"]
           .boundingClientRect((res) => {
             this.contentRect = res
             resolve(res)
           }).exec()
+        })
       })
     },
     getWindowInfo() {
