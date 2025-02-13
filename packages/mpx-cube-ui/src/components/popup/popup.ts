@@ -70,7 +70,8 @@ createComponent({
     rootAnimationData: {} as WechatMiniprogram.AnimationExportResult,
     maskAnimationData: {} as WechatMiniprogram.AnimationExportResult,
     ANIMATION_PRESET: {} as ANIMATION_PRESET,
-    display: false
+    display: false,
+    contentRect: {} as WechatMiniprogram.BoundingClientRectCallbackResult
   },
   lifetimes: {
     created() {
@@ -125,8 +126,8 @@ createComponent({
           (n, o) => {
             if (!!n === !!o) return
             this.rnAnimation({
-              duration: 300,
-              timingFunction: 'ease'
+              duration: 250,
+              timingFunction: 'ease-out'
             })
           },
           { immediate: true }
@@ -158,11 +159,21 @@ createComponent({
     },
     contentInfo() {
       return {
-        height: this.styleConfig?.content?.height || this.getWindowInfo().screenHeight
+        height: this.styleConfig?.content?.height || this.contentRect.height
       }
     }
   },
   methods: {
+    initContentRect() {
+      if (this.styleConfig?.content?.height) return
+      return new Promise((resolve) => {
+        this.$refs["popup-content"]
+          .boundingClientRect((res) => {
+            this.contentRect = res
+            resolve(res)
+          }).exec()
+      })
+    },
     getWindowInfo() {
       if (this.windowInfo) return this.windowInfo
       return (this.windowInfo = mpx.getWindowInfo())
@@ -170,24 +181,13 @@ createComponent({
     async rnAnimation(
       animationOptions: WechatMiniprogram.StepOption = {}
     ) {
+      await this.initContentRect()
       const names = [...Object.keys(this.rootClass).filter(v => this.rootClass[v]), this.transitionClass]
       if (!names.length) return
       names.forEach(v => {
         const presetFn = this.ANIMATION_PRESET[v]
         presetFn && presetFn(animationOptions)
       })
-    },
-    getPopupRect() {
-      return Promise.all<WechatMiniprogram.BoundingClientRectCallbackResult>([
-        new Promise((resolve) => {
-          this.$refs.popup
-            .boundingClientRect(resolve).exec()
-        }),
-        new Promise((resolve) => {
-          this.$refs['popup-content']
-            .boundingClientRect(resolve).exec()
-        })
-      ])
     },
     contentHideAnimationend() {
       // bug:
