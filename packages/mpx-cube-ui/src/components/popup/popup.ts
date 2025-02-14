@@ -80,7 +80,7 @@ createComponent({
       if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
         this.ANIMATION_PRESET = {
           'cube-popup_mask_fade_transition': (animationOptions) => {
-            const animation = this.maskAnimation || (this.maskAnimation = mpx.createAnimation(animationOptions))
+            const animation = this.maskAnimation || (this.maskAnimation = mpx.createAnimation({...animationOptions, timingFunction: 'ease-out'}))
             if (this.isVisible) {
               animation.opacity(0.4).step()
             } else {
@@ -126,7 +126,7 @@ createComponent({
           (n, o) => {
             if (!!n === !!o) return
             this.rnAnimation({
-              duration: 250,
+              duration: 300,
               timingFunction: 'ease-out'
             })
           },
