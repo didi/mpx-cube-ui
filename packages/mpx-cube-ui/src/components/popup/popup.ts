@@ -1,4 +1,5 @@
-import mpx, { createComponent } from '@mpxjs/core'
+import mpx, { createComponent, REACTHOOKSEXEC } from '@mpxjs/core'
+import { useEffect } from 'react'
 import {
   popupMixin,
   visibilityMixin,
@@ -73,6 +74,15 @@ createComponent({
     display: false,
     contentRect: {} as WechatMiniprogram.BoundingClientRectCallbackResult
   },
+  [REACTHOOKSEXEC] () {
+    useEffect(() => {
+      if (this.visibleClass === 'show') {
+        this.isVisible = true
+      } else if (this.visibleClass === 'hide') {
+        this.isVisible = false
+      }
+    })
+  },
   lifetimes: {
     created() {
       // eslint-disable-next-line
@@ -80,7 +90,7 @@ createComponent({
       if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
         this.ANIMATION_PRESET = {
           'cube-popup_mask_fade_transition': (animationOptions) => {
-            const animation = this.maskAnimation || (this.maskAnimation = mpx.createAnimation({...animationOptions, timingFunction: 'ease-out'}))
+            const animation = this.maskAnimation || (this.maskAnimation = mpx.createAnimation({ ...animationOptions, timingFunction: 'ease-out' }))
             if (this.isVisible) {
               animation.opacity(0.4).step()
             } else {
@@ -165,11 +175,14 @@ createComponent({
   },
   methods: {
     initContentRect() {
+      if (this.isMaskClosed) {
+        this.isMaskClosed = false
+        return
+      }
       if (this.styleConfig?.content?.height) return
       return new Promise((resolve) => {
-        setTimeout(() => {
-          this.$refs["popup-content"]
-          .boundingClientRect((res) => {
+        this.$nextTick(() => {
+          this.$refs['popup-content'].boundingClientRect((res) => {
             this.contentRect = res
             resolve(res)
           }).exec()
@@ -202,21 +215,35 @@ createComponent({
     preventTouchMove(e: any) {
       e.preventDefault && e.preventDefault()
     },
-    onMaskClick() {
+    async onMaskClick() {
       // 点击遮罩
       this.triggerEvent(EVENT_MASK_CLICK)
       if (this.maskClosable) {
+        // eslint-disable-next-line
+        // @ts-ignore
+        if (__mpx_mode__ === 'ios' && __mpx_mode__ === 'android') {
+          await this.initContentRect()
+          this.isMaskClosed = true
+        }
         this.hide()
       }
     },
     show() {
-      this.isVisible = true
+      // eslint-disable-next-line
+      // @ts-ignore
+      if (__mpx_mode__ !== 'ios' && __mpx_mode__ !== 'android') {
+        this.isVisible = true
+      }
       this.display = true
       this.visibleClass = 'show'
       this.transitionClass = this.transition
     },
     hide() {
-      this.isVisible = false
+      // eslint-disable-next-line
+      // @ts-ignore
+      if (__mpx_mode__ !== 'ios' && __mpx_mode__ !== 'android') {
+        this.isVisible = false
+      }
       this.visibleClass = 'hide'
       this.transitionClass = this.transition
     }
