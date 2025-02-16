@@ -4,7 +4,7 @@ import { useEffect } from 'react'
 let mixin = {} as Parameters<typeof getMixin>[0]
 // eslint-disable-next-line
 // @ts-ignore
-if (__mpx_mode__ === 'ios' && __mpx_mode__ === 'android') {
+if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
   type ANIMATION_PRESET = Record<
     string,
     (
