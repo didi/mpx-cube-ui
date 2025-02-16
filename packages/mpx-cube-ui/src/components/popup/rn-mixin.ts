@@ -95,7 +95,7 @@ if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
     },
     methods: {
       initContentRect() {
-        if (this.isMaskClosed) {
+        if (this.visibleClass === 'hide' && this.isMaskClosed === true) {
           this.isMaskClosed = false
           return
         }

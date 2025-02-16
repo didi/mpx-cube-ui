@@ -103,8 +103,8 @@ createComponent({
         // eslint-disable-next-line
         // @ts-ignore
         if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
-          await this.initContentRect()
           this.isMaskClosed = true
+          await this.initContentRect()
         }
         this.hide()
       }
