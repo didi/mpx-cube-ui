@@ -1,5 +1,4 @@
-import mpx, { getMixin, REACTHOOKSEXEC } from '@mpxjs/core'
-import { useEffect } from 'react'
+import mpx, { getMixin } from '@mpxjs/core'
 
 let mixin = {} as Parameters<typeof getMixin>[0]
 // eslint-disable-next-line
@@ -12,15 +11,6 @@ if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
     ) => void
   >
   mixin = {
-    [REACTHOOKSEXEC] () {
-      useEffect(() => {
-        if (this.visibleClass === 'show') {
-          this.isVisible = true
-        } else if (this.visibleClass === 'hide') {
-          this.isVisible = false
-        }
-      })
-    },
     data: {
       animationData: {} as WechatMiniprogram.AnimationExportResult,
       rootAnimationData: {} as WechatMiniprogram.AnimationExportResult,
@@ -95,10 +85,6 @@ if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
     },
     methods: {
       initContentRect() {
-        if (this.visibleClass === 'hide' && this.isMaskClosed === true) {
-          this.isMaskClosed = false
-          return
-        }
         if (this.styleConfig?.content?.height) return
         return new Promise((resolve) => {
           this.$nextTick(() => {

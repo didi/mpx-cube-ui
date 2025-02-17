@@ -100,31 +100,17 @@ createComponent({
       // 点击遮罩
       this.triggerEvent(EVENT_MASK_CLICK)
       if (this.maskClosable) {
-        // eslint-disable-next-line
-        // @ts-ignore
-        if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
-          this.isMaskClosed = true
-          await this.initContentRect()
-        }
         this.hide()
       }
     },
     show() {
-      // eslint-disable-next-line
-      // @ts-ignore
-      if (__mpx_mode__ !== 'ios' && __mpx_mode__ !== 'android') {
-        this.isVisible = true
-      }
+      this.isVisible = true
       this.display = true
       this.visibleClass = 'show'
       this.transitionClass = this.transition
     },
     hide() {
-      // eslint-disable-next-line
-      // @ts-ignore
-      if (__mpx_mode__ !== 'ios' && __mpx_mode__ !== 'android') {
-        this.isVisible = false
-      }
+      this.isVisible = false
       this.visibleClass = 'hide'
       this.transitionClass = this.transition
     }
