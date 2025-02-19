@@ -86,13 +86,12 @@ if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
     methods: {
       initContentRect() {
         if (this.styleConfig?.content?.height) return
+        if (this.contentRect.height) return
         return new Promise((resolve) => {
-          this.$nextTick(() => {
-            this.$refs['popup-content'].boundingClientRect((res) => {
-              this.contentRect = res
-              resolve(res)
-            }).exec()
-          })
+          this.$refs['popup-content'].boundingClientRect((res) => {
+            this.contentRect = res
+            resolve(res)
+          }).exec()
         })
       },
       async rnAnimation(
