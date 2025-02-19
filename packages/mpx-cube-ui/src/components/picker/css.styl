@@ -18,7 +18,9 @@
   flex: 1
   flex-basis: 0.000000001px
   width: 1%
-.cube-picker-wheel-item
+.cube-picker-wheel-item,
+// .a-picker-view-picker-item 不可删除，支付宝小程序通过这个类进行修改 https://open.alipay.com/portal/forum/post/58701027
+.a-picker-view-picker-item
   box-sizing border-box
   width 100%
   height: $var(picker-wheel-item-height)
@@ -27,6 +29,7 @@
   white-space: nowrap
   font-size $var(picker-wheel-item-font-size)
 .cube-picker-ellipsis
-  .cube-picker-wheel-item
+  .cube-picker-wheel-item,
+  .a-picker-view-picker-item
     text-overflow: ellipsis
 
