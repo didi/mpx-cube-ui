@@ -1,0 +1,48 @@
+<template>
+  <view
+    wx:class="{{ [themeType ? 'cube-divider cube-divider-' + themeType : 'cube-divider', position] }}"
+  >
+    <view class="cube-divider-left-line"></view>
+    <view class="cube-divider-text" wx:if="{{ text }}">{{ text }}</view>
+    <slot wx:else />
+    <view class="cube-divider-right-line"></view>
+  </view>
+</template>
+
+<script src="./divider.js"></script>
+
+<style lang="stylus">
+@require "../../common/stylus/variable.styl"
+@require "../../common/stylus/mixin.styl"
+@require "../../common/stylus/theme/components/divider.styl"
+
+.cube-divider
+  position relative
+  display flex
+  &.left
+    .cube-divider-left-line
+      max-width $var(divider-left-line-width)
+  &.right
+    .cube-divider-right-line
+      max-width $var(divider-right-line-width)
+.cube-divider-left-line,
+.cube-divider-right-line
+  flex 1
+  border-top-1px($var(divider-line-color))
+  &::before
+    top 50%
+.cube-divider-text
+  padding $var(divider-padding)
+  background-color $var(divider-bgc)
+  font-size $var(divider-font-size)
+  color $var(divider-color)
+</style>
+
+
+
+<script type="application/json">
+  {
+    "styleIsolation": "shared",
+    "component": true
+  }
+</script>

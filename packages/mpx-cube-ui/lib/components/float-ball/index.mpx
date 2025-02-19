@@ -1,0 +1,54 @@
+<template>
+  <view
+    wx:ref="ball"
+    wx:class="{{ floatBallClass }}"
+    wx:style="{{ positionStyle }}"
+    catch:touchstart="startHandler"
+    catch:touchmove="moveHandler"
+    catch:touchend="endHandler"
+  >
+    <view class="cube-float-ball-content" wx:if="{{ name }}">{{ name }}</view>
+    <slot wx:else></slot>
+  </view>
+</template>
+
+<script src="./float-ball.js"></script>
+
+<style lang="stylus">
+@require "../../common/stylus/variable.styl"
+@require "../../common/stylus/mixin.styl"
+@require "../../common/stylus/theme/components/float-ball.styl"
+
+.cube-float-ball
+  position fixed
+  z-index 99
+  &.cube-float-ball-transition
+    transition-property left
+    transition-duration $var(ball-transition-duration)
+    transition-timing-function $var(ball-transition-timing-function)
+    transition-delay $var(ball-transition-delay)
+.cube-float-ball-content
+  display flex
+  align-items center
+  justify-content center
+  width $var(ball-content-width)
+  height $var(ball-content-height)
+  padding $var(ball-content-padding)
+  box-sizing border-box
+  text-align center
+  line-height 1
+  font-size $var(ball-content-font-size)
+  color $var(ball-content-color)
+  background $var(ball-content-background)
+  border-radius $var(ball-content-border-radius)
+  box-shadow $var(ball-content-bxsh)
+</style>
+
+
+
+<script type="application/json">
+  {
+    "styleIsolation": "shared",
+    "component": true
+  }
+</script>

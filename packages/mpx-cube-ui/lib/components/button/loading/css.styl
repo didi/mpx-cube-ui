@@ -1,0 +1,60 @@
+@require "../../../common/stylus/variable.styl"
+@require "../../../common/stylus/theme/components/button.styl"
+
+.cube-loading
+  position absolute
+  z-index $var(btn-loading-z-index)
+  top 0
+  left 0
+  right 0
+  bottom 0
+  overflow hidden
+.cube-loading-content
+  position absolute
+  top 50%
+  left 50%
+  transform translate(-50%, -50%)
+.cube-loading-origin
+  width $var(btn-loading-dot-size)
+  height $var(btn-loading-dot-size)
+  font-size 0
+  line-height 0
+  &::before,
+  &::after
+    position absolute
+    top 0
+    display block
+    height 100%
+    width 100%
+    border-radius 50%
+    background-color $var(btn-loading-dot-bgc)
+    content ' '
+    animation-name $var(btn-loading-animation-name)
+    animation-duration: $var(btn-loading-duration) 
+    animation-timing-function: linear
+    animation-iteration-count: infinite
+  &::before
+    left (- $btn-loading-dot-spacing-size - $btn-loading-dot-size)
+  &::after
+    right (- $btn-loading-dot-spacing-size - $btn-loading-dot-size)
+    animation-delay ($btn-loading-duration / 2)
+.cube-loading-middle-dot
+  width 100%
+  height 100%
+  border-radius 50%
+  background-color $var(btn-loading-dot-bgc)
+  animation-name $var(btn-loading-animation-name)
+  animation-duration: $var(btn-loading-duration) 
+  animation-timing-function: linear
+  animation-delay: ($btn-loading-duration / 4)
+  animation-iteration-count: infinite
+@keyframes cube-loading-animation
+  0%, 100%, 75%
+    background-color $var(btn-loading-dot-normal-color)
+    transform scale(1)
+  25%
+    background-color $var(btn-loading-dot-secondary-color)
+    transform scale(1)
+  50%
+    background-color $var(btn-loading-dot-active-color)
+    transform scale(1.3)

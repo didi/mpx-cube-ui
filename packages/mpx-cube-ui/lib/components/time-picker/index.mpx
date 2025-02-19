@@ -1,0 +1,33 @@
+<template>
+  <cube-cascade-picker
+    wx:class="{{ themeType ? 'cube-time-picker cube-time-picker-'+themeType : 'cube-time-picker' }}"
+    wx:ref="picker"
+    list="{{ cascadeData }}"
+    selected-index="{{ selectedIndex }}"
+    immediate-change="{{ immediateChange }}"
+    theme-type="{{ themeType }}"
+    indicator-style="{{ indicatorStyle }}"
+    bind:change="onChange"
+    bind:columnChange="onColumnChange"
+    bind:pickstart="onPickstart"
+    bind:pickend="onPickend"
+  >
+    <slot name="header" slot="header" />
+  </cube-cascade-picker>
+</template>
+
+<script src="./time-picker.js"></script>
+
+<style lang="stylus"></style>
+
+
+
+<script type="application/json">
+  {
+    "styleIsolation": "shared",
+    "component": true,
+    "usingComponents": {
+      "cube-cascade-picker": "../cascade-picker/index.mpx"
+    }
+  }
+</script>

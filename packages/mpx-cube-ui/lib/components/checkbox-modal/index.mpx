@@ -1,0 +1,84 @@
+<template>
+  <view
+    wx:class="{{ themeType ? 'cube-checkbox-modal cube-checkbox-modal-' + themeType : 'cube-checkbox-modal' }}"
+  >
+    <cube-modal
+      wx:ref="modal"
+      type="confirm"
+      title="{{ title }}"
+      wx:model="{{isVisible}}"
+      wx:model-prop="visible"
+      wx:model-event="toggle"
+      mask-closable="{{ maskClosable }}"
+      show-close-icon="{{ showCloseIcon }}"
+      cancel-text="{{ cancelText }}"
+      cancel-btn-align="{{ cancelBtnAlign }}"
+      confirm-btn="{{ confirmBtn }}"
+      theme-type="{{ themeType }}"
+      hide-on-confirm="{{ hideOnConfirm }}"
+      hide-on-cancel="{{ hideOnCancel }}"
+      hide-on-close="{{ hideOnClose }}"
+      bind:confirm="onConfirm"
+      bind:cancel="onCancel"
+      bind:close="onClose"
+      bind:maskClick="onMaskClick"
+    >
+      <!-- 主标题 -->
+      <slot slot="title" name="title"></slot>
+      <view slot="content">
+        <view class="cube-checkbox-modal-subtitle" wx:if="{{ subtitle }}">{{ subtitle }}</view>
+        <!-- 副标题，可自定义描述等 -->
+        <slot name="subtitle"></slot>
+        <cube-checkbox-group
+          options="{{ options }}"
+          wx:model="{{ checkedValues }}"
+          theme-type="{{ themeType }}"
+          wx:model-prop="values"
+        />
+      </view>
+    </cube-modal>
+  </view>
+</template>
+
+<script src="./checkbox-modal.js"></script>
+
+<style lang="stylus">
+@require "../../common/stylus/variable.styl"
+@require "../../common/stylus/mixin.styl"
+@require "../../common/stylus/theme/components/modal.styl"
+@require "../../common/stylus/theme/components/checkbox-modal.styl"
+
+.cube-checkbox-modal
+  .cube-modal-body
+    padding-right $var(checkbox-modal-body-padding-right)
+  .cube-checkbox-group
+    max-height $var(checkbox-modal-content-max-height)
+    overflow scroll
+    border-top-1px($var(checkbox-modal-item-border-color))
+  .cube-checkbox
+    padding-right $var(checkbox-modal-item-padding-right)
+    height $var(checkbox-modal-item-height)
+    border-bottom-1px($var(checkbox-modal-item-border-color))
+  .cube-options-button
+    margin-top $var(checkbox-modal-button-group-margin-top)
+
+.cube-checkbox-modal-subtitle
+    margin-bottom $var(checkbox-modal-subtitle-margin-bottom)
+    padding-right $var(checkbox-modal-subtitle-padding-right)
+    line-height $var(checkbox-modal-subtitle-line-height)
+    font-size $var(checkbox-modal-subtitle-font-size)
+    color $var(checkbox-modal-subtitle-color)
+</style>
+
+
+
+<script type="application/json">
+{
+    "styleIsolation": "shared",
+    "usingComponents": {
+      "cube-modal": "../modal/index.mpx",
+      "cube-checkbox": "../checkbox/index.mpx",
+      "cube-checkbox-group": "../checkbox-group/index.mpx"
+    }
+  }
+</script>

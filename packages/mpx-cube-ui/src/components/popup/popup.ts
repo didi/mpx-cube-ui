@@ -59,7 +59,7 @@ createComponent({
   data: {
     visibleClass: '',
     transitionClass: '',
-    display: false,
+    display: false
   },
   computed: {
     rootClass() {

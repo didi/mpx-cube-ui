@@ -1,0 +1,61 @@
+<template>
+<!-- todo -->
+  <view class="cube-segment-picker">
+    <!-- Direct props will recover the property from v-bind Object expect 'is'. -->
+    <!-- To ensure the priority of v-bind Object which is from user configure, we check the property of item in every prop. -->
+    <component
+      theme-type="{{ themeType }}"
+      class="cube-segment-picker"
+      wx:for="{{_list}}"
+      wx:ref="pickers"
+      wx:key="index"
+      is="{{item.is}}"
+      data-index="{{index}}"
+      index="{{index}}"
+      title="{{item.title || title}}"
+      subtitle="{{item.subtitle || subtitle}}"
+      confirm-txt="{{item.confirmTxt || (index === list.length - 1 ? confirmTxt : _nextTxt)}}"
+      cancel-txt="{{item.cancelTxt || (index === 0 ? cancelTxt : _prevTxt)}}"
+      z-index="{{item.zIndex || zIndex}}"
+      mask-closable="{{maskClosable}}"
+      list="{{item.list}}"
+      async="{{item.async}}"
+      pending="{{item.pending}}"
+
+      min="{{item.min}}"
+      max="{{item.max}}"
+      startColumn="{{item.startColumn}}"
+      columnCount="{{item.columnCount || 3}}"
+      format="{{item.format}}"
+      columnOrder="{{item.columnOrder}}"
+
+      delay="{{item.delay}}"
+      day="{{item.day}}"
+      showNow="{{item.showNow}}"
+      minuteStep="{{item.minuteStep}}"
+
+      bindconfirm="onSelect"
+      bindcancel="onCancel"
+      bindcolumnChange="onColumnChange">
+    </component>
+  </view>
+</template>
+
+<script src="./segment-picker.js"></script>
+
+<style lang="stylus"></style>
+
+
+
+<script type="application/json">
+  {
+    "styleIsolation": "shared",
+    "component": true,
+    "usingComponents": {
+      "cube-date-picker-popup": "../date-picker-popup/index.mpx",
+      "cube-time-picker-popup": "../time-picker-popup/index.mpx",
+      "cube-cascade-picker-popup": "../cascade-picker-popup/index.mpx",
+      "cube-picker-popup": "../picker-popup/index.mpx"
+    }
+  }
+</script>

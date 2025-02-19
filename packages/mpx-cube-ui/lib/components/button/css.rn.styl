@@ -1,0 +1,138 @@
+@require "../../common/stylus/variable.rn.styl"
+@require "../../common/stylus/mixin.rn.styl"
+@require "../../common/stylus/theme/components/button.rn.styl"
+@require "../../common/stylus/theme/components/button.styl"
+
+btn_active($name, $bg, $border-color = null, $color = $var(color-white), $opacity = $btn-opacity_active)
+  if $name
+    .cube-btn-{$name}_active
+      background-color $bg
+      opacity $opacity
+      if $color != '-'
+        color $color
+      if $border-color != null
+        border-1px-reset($border-color, $var(btn-border-radius))
+  else
+    .cube-btn_active
+      background-color $bg
+      opacity $opacity
+      if $color != '-'
+        color $color
+      if $border-color != null
+        border-1px-reset($border-color, $var(btn-border-radius))
+
+border-color($border-color)
+  border-color $border-color
+
+.cube-btn
+  margin 0
+  display $var(btn-display)
+  flex-direction: $var(btn-flex-direction)
+  align-items: $var(btn-align-items)
+  justify-content: $var(btn-justify-content)
+  width $var(btn-width)
+  height $var(btn-height)
+  box-sizing border-box
+  overflow hidden
+  outline none
+  border-width 0
+  border-radius $var(btn-border-radius)
+  line-height $var(btn-block-line-height)
+  text-align center
+  flex-wrap nowrap
+  font-size $var(btn-font-size)
+  // font-family $var(btn-font-family)
+  font-weight $var(btn-font-weight)
+  color $var(btn-color)
+  -webkit-tap-highlight-color rgba(0, 0, 0, 0)
+  background-color $var(btn-bgc)
+  border-1px($var(btn-border-color), $var(btn-border-radius))
+  padding-all($var(btn-block-padding-top), $var(btn-block-padding-right), $var(btn-block-padding-bottom), $var(btn-block-padding-left))
+
+btn_active('', $var(btn-bgc_active), $var(btn-border-color_active), $var(btn-color))
+
+.cube-btn-icon
+  margin-right $var(btn-icon-margin-right)
+  display flex
+  transform scale(1.13)
+  transform-origin right center
+  font-size $var(btn-icon-font-size)
+
+.cube-btn-content
+  display flex
+  max-width 100%
+  font-size $var(btn-font-size)
+  text-align center
+  color $var(btn-color)
+
+.cube-btn-tip
+  margin-top $var(btn-tip-margin-top)
+  overflow hidden
+  line-height $var(btn-tip-line-height)
+  font-size $var(btn-tip-font-size)
+  // font-family $var(btn-tip-family)
+  font-weight $var(btn-tip-weight)
+  color $var(btn-tip-color)
+  flex-wrap nowrap
+  // text-overflow ellipsis
+
+.cube-btn-inline
+  display flex
+  width auto
+  padding-all($var(btn-inline-padding-top), $var(btn-inline-padding-right), $var(btn-inline-padding-bottom), $var(btn-inline-padding-left))
+  align-items center
+  line-height $var(btn-inline-line-height)
+  font-size $var(btn-inline-font-size)
+
+.cube-btn-icon
+  margin-right $var(btn-icon-inline-margin-right)
+  transform scale(1.14)
+
+btn_active('inline', $var(btn-bgc_active), $var(btn-border-color_active), $var(btn-color))
+
+.cube-btn-primary
+  color $var(btn-primary-color)
+  font-weight $var(btn-primary-font-weight)
+  background-color $var(btn-primary-bgc)
+
+btn_active('primary', $var(btn-primary-bgc_active), , $var(btn-primary-color_active))
+
+.cube-btn-light
+  font-weight $var(btn-outline-font-weight)
+  color $var(btn-light-color)
+  background-color $var(btn-light-bgc)
+  border-color($var(btn-light-border-color))
+
+btn_active('light', $var(btn-light-bgc_active), $var(btn-light-border-color), $var(btn-light-color))
+
+.cube-btn-outline
+  font-weight $var(btn-outline-font-weight)
+  color $var(btn-outline-color)
+  background-color $var(btn-outline-bgc)
+  border-color($var(btn-outline-border-color))
+
+btn_active('outline', $var(btn-outline-bgc_active), $var(btn-outline-border-color_active), $var(btn-outline-color))
+
+.cube-btn-outline-primary
+  color $var(btn-outline-primary-color)
+  border-color($var(btn-outline-primary-border-color))
+  background-color $var(btn-outline-primary-bgc)
+
+btn_active('outline-primary', $var(btn-outline-primary-bgc_active), $var(btn-outline-primary-border-color), $var(btn-outline-primary-color))
+
+.cube-btn_disabled
+  font-weight $var(btn-disabled-font-weight)
+  border-none()
+  color $var(btn-disabled-color)
+  background-color $var(btn-disabled-bgc)
+
+btn_active('disabled', $var(btn-disabled-bgc), $var(btn-disabled-border-color), $var(btn-disabled-color), 1)
+
+.cube-btn-with-tip
+  padding-top $var(btn-with-tip-padding-top)
+  padding-bottom $var(btn-with-tip-padding-bottom)
+  line-height $var(btn-with-tip-line-height)
+  font-size $var(btn-with-tip-font-size)
+
+.cube-btn_bolder
+  font-weight 700

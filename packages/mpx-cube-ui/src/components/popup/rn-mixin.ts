@@ -29,7 +29,7 @@ if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
       created() {
         this.ANIMATION_PRESET = {
           'cube-popup_mask_fade_transition': (animationOptions) => {
-            const animation = this.maskAnimation || (this.maskAnimation = mpx.createAnimation({ ...animationOptions, timingFunction: 'ease-out' }))
+            const animation = this.maskAnimation || (this.maskAnimation = mpx.createAnimation({ ...animationOptions, timingFunction: 'ease-in-out' }))
             if (this.isVisible) {
               animation.opacity(0.4).step()
             } else {

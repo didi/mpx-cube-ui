@@ -1,0 +1,84 @@
+<template>
+  <view class="cube-collapse">
+    <view wx:if="{{ showTopSwitch }}" class="cube-collapse-top" bindtap="toggleCollapse">
+      <view class="cube-collapse-switch" wx:if="{{text}}">
+        <view class="cube-collapse-text">{{ text }}</view>
+        <cube-icon
+          class="cube-collapse-arrow"
+          wx:class="{{ { 'cube-collapse-arrow-bottom': isCollapsed } }}"
+          type="arrow"
+        />
+      </view>
+      <!-- 上方开关插槽，可替换组件内置开关 -->
+      <slot name="top-switch" />
+    </view>
+    <!-- 内容上方插槽，位置在上方开关与内容之间 -->
+    <slot name="top" />
+    <view class="cube-collapse-mid" wx:style="{{ contentWrapStyle }}">
+      <view class="cube-collapse-content">
+        <!-- 默认插槽，用于展示需要展开收起的内容 -->
+        <slot />
+      </view>
+    </view>
+    <!-- 内容下方插槽，位置在下方开关与内容之间 -->
+    <slot name="bottom" />
+    <view wx:if="{{ showBottomSwitch }}" class="cube-collapse-bottom" bindtap="toggleCollapse">
+      <view class="cube-collapse-switch" wx:if="{{text}}">
+        <view class="cube-collapse-text">{{ text }}</view>
+        <cube-icon
+          class="cube-collapse-arrow"
+          wx:class="{{ { 'cube-collapse-arrow-bottom': isCollapsed } }}"
+          type="arrow"
+        />
+      </view>
+      <!-- 下方开关插槽，可替换组件内置开关 -->
+      <slot name="bottom-switch" />
+    </view>
+
+    <view class="cube-collapse-ghost-node" wx:style="height: {{minHeight}}"></view>
+  </view>
+</template>
+
+<script src="./collapse.js"></script>
+
+<style lang="stylus">
+.cube-collapse-mid
+  transition: max-height .3s ease-in-out
+  overflow: hidden
+.cube-collapse-content
+  overflow: hidden
+.cube-collapse-switch
+  display: flex
+  align-items center
+  height: 28px
+  font-size: 14px
+  color: #222
+.cube-collapse-text
+  flex-grow: 1
+.cube-collapse-arrow
+  flex-shrink: 0
+  font-size: 12px
+  transform: rotate(-90deg)
+  transition: transform .3s ease-in-out
+.cube-collapse-arrow-bottom
+  transform: rotate(90deg)
+.cube-collapse-ghost-node
+  position: fixed
+  top: 100%
+  left: 100%
+  transform: translate(100%, 100%)
+  visibility: hidden
+  overflow: hidden
+</style>
+
+
+
+<script type="application/json">
+  {
+    "styleIsolation": "shared",
+    "component": true,
+    "usingComponents": {
+      "cube-icon": "../icon/index.mpx"
+    }
+  }
+</script>

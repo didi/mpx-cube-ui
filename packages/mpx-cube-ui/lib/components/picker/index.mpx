@@ -1,0 +1,74 @@
+<template>
+  <view
+    wx:class="{{ rootClass }}"
+  >
+    <!-- 用于修改微信原生的选中框， -->
+    <slot name="header" />
+    <picker-view
+      class="cube-picker-wheel-wrapper"
+      indicator-class@wx|ali|web="cube-picker-indicator-calss"
+      indicator-style="{{ indicatorStyle }}"
+      immediate-change="{{ immediateChange }}"
+      value="{{ finalIndex }}"
+      bind:change="onPickchange"
+      bind:pickstart="onPickstart"
+      bind:pickend="onPickend">
+      <picker-view-column
+        class="cube-picker-wheel-scroll"
+        ref="pickerColumns"
+        wx:for="{{ finalList }}"
+        wx:for-item="list"
+        wx:for-index="column"
+        wx:key="id"
+        number="{{ column }}"
+        style="order:{{ order[column] }}">
+        <block @_wx|_ali|_web wx:if="{{ list[0] && list[0].richText }}">
+          <rich-text
+            class="cube-picker-wheel-item"
+            wx:for="{{ list }}"
+            wx:for-index="index"
+            wx:key="index"
+            nodes="{{ item.richText || item.text }}"
+          />
+        </block>
+        <block @_wx|_ali|_web wx:else>
+          <view
+            class="cube-picker-wheel-item"
+            wx:for="{{ list }}"
+            wx:for-index="index"
+            wx:key="index">
+            {{ item.text }}
+          </view>
+        </block>
+        <block @_ios|_android>
+          <view
+            class="cube-picker-wheel-item"
+            wx:for="{{ list }}"
+            wx:for-index="index"
+            wx:key="id">
+            <text numberOfLines="{{ numberOfLines }}">{{ item.text }}</text>
+          </view>
+        </block>
+      </picker-view-column>
+    </picker-view>
+  </view>
+</template>
+
+<script src="./picker.js"></script>
+
+<style lang="stylus">
+/* @mpx-if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') */
+@require './css.rn.styl'
+/* @mpx-else */
+@require './css.styl'
+/* @mpx-endif */
+</style>
+
+
+
+<script type="application/json">
+  {
+    "styleIsolation": "shared",
+    "component": true
+  }
+</script>

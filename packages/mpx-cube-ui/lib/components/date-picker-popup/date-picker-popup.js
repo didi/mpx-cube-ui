@@ -1,0 +1,17 @@
+import { createTimePickerPopupComponent } from '../../common/helper/create-component';
+import { datePickerMixin } from '../../common/mixins';
+createTimePickerPopupComponent({
+    options: {
+        multipleSlots: true
+    },
+    mixins: [datePickerMixin],
+    data: {
+        setIndex: [] // picker 每次打开时，根据该字段选择值。点击确定按钮后，setIndex 更新
+    },
+    lifetimes: {
+        ready() {
+            const { selectedIndex } = this.$refs.picker.getSelectedInfo();
+            this.setIndex = selectedIndex;
+        }
+    }
+});

@@ -1,0 +1,55 @@
+<template>
+  <cube-picker-popup-base
+    wx:class="{{ themeType ? 'cube-date-picker-popup cube-date-picker-popup-' + themeType : 'cube-date-picker-popup' }}"
+    wx:ref="choosePopup"
+    wx:model="{{isVisible}}"
+    wx:model-prop="visible"
+    wx:model-event="toggle"
+    title="{{ title }}"
+    mask-closable="{{ maskClosable }}"
+    subtitle="{{ subtitle }}"
+    confirm-txt="{{ confirmTxt }}"
+    cancel-txt="{{ cancelTxt }}"
+    theme-type="{{ themeType }}"
+    bind:confirm="onConfirm"
+    bind:cancel="onCancel"
+    >
+    <cube-date-picker
+      wx:ref="picker"
+      min="{{ min }}"
+      max="{{ max }}"
+      start-column="{{ startColumn }}"
+      column-count="{{ columnCount }}"
+      format="{{ format }}"
+      value="{{ value }}"
+      column-order="{{ columnOrder }}"
+      immediate-change="{{ immediateChange }}"
+      theme-type="{{ themeType }}"
+      indicator-style="{{ indicatorStyle }}"
+      bind:columnChange="onColumnChange"
+      bind:change="onChange"
+      bind:pickstart="onPickstart"
+      bind:pickend="onPickend"
+    >
+      <!-- picker选择器头部位置插槽 -->
+      <slot name="pickerHeader" slot="header" />
+    </cube-date-picker>
+  </cube-picker-popup-base>
+</template>
+
+<script src="./date-picker-popup.js"></script>
+
+<style lang="stylus"></style>
+
+
+
+<script type="application/json">
+  {
+    "styleIsolation": "shared",
+    "component": true,
+    "usingComponents": {
+      "cube-picker-popup-base": "../picker-popup/picker-popup-base.mpx",
+      "cube-date-picker": "../date-picker/index.mpx"
+    }
+  }
+</script>

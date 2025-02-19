@@ -1,0 +1,125 @@
+<template>
+  <!-- base? shell -->
+  <cube-popup
+    class="cube-picker-popup-base"
+    wx:ref="popup"
+    position="bottom"
+    wx:model="{{isVisible}}"
+    wx:model-prop="visible"
+    wx:model-event="toggle"
+    transition="move-up"
+    mask="{{ true }}"
+    mask-closable="{{ maskClosable }}"
+    mask-fade-transition="{{ true }}"
+    theme-type="{{ themeType }}"
+    bind:maskClick="onMaskClick">
+    <view class="cube-picker-popup-panel">
+      <view class="cube-picker-popup-header">
+        <view class="cube-picker-popup-cancel" bind:tap="onCancel">{{ cancelTxt }}</view>
+        <view class="cube-picker-popup-title-group">
+          <view class="cube-picker-popup-title">
+            <rich-text nodes="{{ title }}" />
+          </view>
+          <view wx:if="{{ subtitle }}" class="cube-picker-popup-subtitle">
+            <rich-text nodes="{{ subtitle }}" />
+          </view>
+        </view>
+        <view class="cube-picker-popup-confirm" bind:tap="onConfirm">{{ confirmTxt }}</view>
+      </view>
+      <view class="cube-picker-popup-content">
+        <slot />
+      </view>
+    </view>
+  </cube-popup>
+</template>
+
+<script src="./picker-popup-base.js"></script>
+
+<style lang="stylus">
+@require "../../common/stylus/mixin.styl"
+@require "../../common/stylus/variable.styl"
+@require "../../common/stylus/animation.styl"
+@require "../../common/stylus/theme/components/picker.styl"
+@require "../../common/stylus/theme/components/picker-popup.styl"
+@require "../../common/stylus/theme/components/popup.styl"
+
+.cube-picker-popup-panel
+  text-align: center
+  background-color: $var(picker-bgc)
+  overflow: hidden
+  safe-area-mixin(padding-bottom, bottom, true)
+.cube-picker-popup-header
+  display: flex
+  height: $var(picker-popup-header-height)
+  border-bottom-1px($var(border-color-normal))
+
+.cube-picker-popup-confirm, .cube-picker-popup-cancel
+  flex-shrink: 0
+  box-sizing: content-box
+  padding: $var(picker-popup-btn-padding)
+  font-size: $var(picker-popup-operate-font-size)
+  line-height: $var(picker-popup-header-height)
+
+.cube-picker-popup-confirm
+  color: $var(picker-popup-confirm-btn-color)
+  &:active
+    color: $var(picker-popup-confirm-btn-active-color)
+
+.cube-picker-popup-cancel
+  color: $var(picker-popup-cancel-btn-color)
+  &:active
+    color: $var(picker-popup-cancel-btn-active-color)
+
+.cube-picker-popup-title-group
+  flex-grow: 1
+  display: flex
+  height: 100%
+  flex-flow: column
+  justify-content: center
+  text-align: center
+
+.cube-picker-popup-title
+  font-size: $var(picker-popup-title-font-size)
+  line-height: $var(picker-popup-title-line-height)
+  color: $var(picker-popup-title-color)
+
+.cube-picker-popup-subtitle
+  margin-top: $var(picker-popup-subtitle-margin-top)
+  font-size: $var(picker-popup-subtitle-font-size)
+  line-height: $var(picker-popup-subtitle-line-height)
+  color: $var(picker-popup-subtitle-color)
+
+.cube-picker-popup-content
+  margin: $var(picker-popup-content-margin)
+  transform: translateZ(0)
+.cube-picker-popup-base
+  // boom!!! magic code. wtf wechat
+  // 见 QA 2022.1.18
+  .cube-popup
+    .cube-popup-content
+      transition: transform $popup-default-animation-time ease
+      &.move-up
+        transform: translate3d(0, 100%, 0)
+    &.show
+      .cube-popup-content
+        &.move-up
+          transform: translate3d(0, 0, 0)
+          animation: none
+    &.hide
+      .cube-popup-content
+        &.move-up
+          transform: translate3d(0, 100%, 0)
+          animation: none
+</style>
+
+
+
+<script type="application/json">
+  {
+    "styleIsolation": "shared",
+    "component": true,
+    "usingComponents": {
+      "cube-popup": "../popup/index.mpx"
+    }
+  }
+</script>

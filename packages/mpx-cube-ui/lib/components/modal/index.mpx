@@ -1,0 +1,109 @@
+<template>
+  <cube-popup
+    class="{{ themeType ? 'cube-modal cube-modal-'+themeType : 'cube-modal' }}"
+    wx:ref="popup"
+    position="bottom"
+    transition="move-up"
+    wx:model="{{isVisible}}"
+    wx:model-prop="visible"
+    wx:model-event="toggle"
+    mask="{{ true }}"
+    mask-closable="{{ maskClosable && hideOnClose }}"
+    mask-fade-transition="{{ true }}"
+    theme-type="{{ themeType }}"
+    bind:maskClick="onMaskClick"
+    remove-catch-touch="{{ removeCatchTouch }}"
+    styleConfig="{{ popupStyleConfig }}"
+  >
+    <view class="cube-modal-section" wx:style="{{ styleConfig.section }}">
+      <view
+        class="cube-modal-header"
+        wx:style="{{ styleConfig.header }}"
+      >
+        <!-- 分别针对取消和关闭做了不同的行为处理，目的是区分这两种行为含义的不同 -->
+        <view
+          class="cube-modal-cancel"
+          wx:if="{{ cancelText }}"
+          wx:class="{{ cancelBtnClass }}">
+          <view class="cube-modal-cancel-btn" bind:tap="onCancel">{{ cancelText }}</view>
+        </view>
+
+        <view
+          class="cube-modal-close"
+          wx:if="{{ showCloseIcon }}"
+          bind:tap="onClose"
+        >
+          <view class="cube-modal-close-icon">
+            <cube-icon type="close" theme-type="{{ themeType }}"></cube-icon>
+          </view>
+        </view>
+
+        <view wx:else bind:tap="onClose">
+          <slot name="closeIcon"></slot>
+        </view>
+
+        <!-- 顶部位置插槽 -->
+        <slot name="header"></slot>
+      </view>
+      <view
+        class="cube-modal-body"
+        wx:class="{{ bodyLayoutClass }}"
+        wx:style="{{ styleConfig.body }}"
+      >
+        <!-- 图标位置插槽 -->
+        <slot name="icon"></slot>
+        <view class="cube-modal-main">
+          <view class="cube-modal-title" wx:if="{{ title }}">{{ title }}</view>
+          <!-- 标题位置插槽 -->
+          <slot name="title"></slot>
+          <view class="cube-modal-content">
+            <rich-text @_wx|_ali|_web wx:if="{{ content }}" nodes="{{ content }}"></rich-text>
+            <text @_ios|_android wx:if="{{ content }}">{{ content }}</text>
+            <!-- 内容位置插槽 -->
+            <slot name="content"></slot>
+          </view>
+        </view>
+      </view>
+      <view
+        class="cube-modal-footer"
+        wx:style="{{ styleConfig.footer }}"
+      >
+        <cube-confirm-button-group
+          theme-type="{{ themeType }}"
+          class="cube-modal-confirm-button-group"
+          wx:if="{{ !noBuiltInBtns }}"
+          type="{{ type }}"
+          confirm-btn="{{ confirmBtn }}"
+          cancel-btn="{{ cancelBtn }}"
+          direction="{{ direction }}"
+          bind:confirm="onConfirm"
+          bind:cancel="onCancel"/>
+          <!-- 尾部位置插槽 -->
+        <slot name="footer"></slot>
+      </view>
+    </view>
+  </cube-popup>
+</template>
+
+<script src="./modal.js"></script>
+
+<style lang="stylus">
+/* @mpx-if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') */
+@require './css.rn.styl'
+/* @mpx-else */
+@require './css.styl'
+/* @mpx-endif */
+</style>
+
+
+
+<script type="application/json">
+  {
+    "styleIsolation": "shared",
+    "usingComponents": {
+      "cube-popup": "../popup/index.mpx",
+      "cube-icon": "../icon/index.mpx",
+      "cube-confirm-button-group": "./confirm-button-group/index.mpx"
+    }
+  }
+</script>
