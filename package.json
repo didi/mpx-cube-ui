@@ -35,7 +35,7 @@
     "@mpxjs/extract-theme-var": "workspace: *",
     "@mpxjs/miniprogram-simulate": "^1.4.17",
     "@mpxjs/mpx-cube-ui": "workspace: *",
-    "@mpxjs/mpx-jest": "^0.0.31",
+    "@mpxjs/mpx-jest": "^0.0.32",
     "@mpxjs/website-build": "workspace: *",
     "@release-it-plugins/workspaces": "^4.0.0",
     "babel-jest": "^27.5.1",

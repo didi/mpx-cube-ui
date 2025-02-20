@@ -33,8 +33,8 @@ importers:
         specifier: 'workspace: *'
         version: link:packages/mpx-cube-ui
       '@mpxjs/mpx-jest':
-        specifier: ^0.0.31
-        version: 0.0.31(@mpxjs/core@2.9.72)(@mpxjs/webpack-plugin@2.9.72(@mpxjs/core@2.9.72)(webpack@5.90.3))
+        specifier: ^0.0.32
+        version: 0.0.32(@mpxjs/core@2.9.72)(@mpxjs/webpack-plugin@2.9.72(@mpxjs/core@2.9.72)(webpack@5.90.3))
       '@mpxjs/website-build':
         specifier: 'workspace: *'
         version: link:packages/website-build
@@ -234,7 +234,7 @@ importers:
         version: 1.9.10(@vue/compiler-sfc@3.4.21)(lodash@4.17.21)(prettier@2.8.8)(react@18.3.1)
     devDependencies:
       '@mpxjs/extract-theme-var':
-        specifier: workspace:1.0.3
+        specifier: workspace:1.1.0
         version: link:../extract-theme-var
       '@mpxjs/vuese-markdown-render':
         specifier: ^1.0.0
@@ -1583,8 +1583,8 @@ packages:
     engines: {node: '>=8'}
     hasBin: true
 
-  '@mpxjs/mpx-jest@0.0.31':
-    resolution: {integrity: sha512-VEGNRqtOOEL0zW3YkBslB5NJNZ7qy5OTK8QD+uKoROHAJ8Xl1ZSnOzNVsjO439nEzw+jPjm4c1IRGw4COve/Kw==}
+  '@mpxjs/mpx-jest@0.0.32':
+    resolution: {integrity: sha512-+gtM3MCV5MHvzklEmWfLgaBtDTc5Mxv1Aw1MApm0FkId1zQ6IjZTTmMoE/roe2uvKDcwlJD9N6v/BA2CHVRW5g==}
     peerDependencies:
       '@mpxjs/webpack-plugin': ^2.7.11
 
@@ -11996,7 +11996,7 @@ snapshots:
       - webpack-sources
       - whiskers
 
-  '@mpxjs/mpx-jest@0.0.31(@mpxjs/core@2.9.72)(@mpxjs/webpack-plugin@2.9.72(@mpxjs/core@2.9.72)(webpack@5.90.3))':
+  '@mpxjs/mpx-jest@0.0.32(@mpxjs/core@2.9.72)(@mpxjs/webpack-plugin@2.9.72(@mpxjs/core@2.9.72)(webpack@5.90.3))':
     dependencies:
       '@babel/core': 7.24.0
       '@mpxjs/utils': 2.9.70(@mpxjs/core@2.9.72)
