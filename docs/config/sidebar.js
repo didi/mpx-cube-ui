@@ -56,6 +56,14 @@ module.exports = [
           {
             title: 'FloatBall 悬浮球',
             path: '/components/base/float-ball'
+          },
+          {
+            title: 'Loading 加载',
+            path: '/components/base/loading'
+          },
+          {
+            title: 'Collapse 展开收起',
+            path: '/components/base/collapse'
           }
           // {
           //   title: 'Style 内置样式'
@@ -104,6 +112,14 @@ module.exports = [
           {
             title: 'TimePicker 时间选择器',
             path: '/components/base/time-picker'
+          },
+          {
+            title: 'Rate 评分',
+            path: '/components/base/rate'
+          },
+          {
+            title: 'Switch 滑动开关',
+            path: '/components/base/switch'
           }
         ]
       },

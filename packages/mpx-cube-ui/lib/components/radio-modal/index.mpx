@@ -1,0 +1,80 @@
+<template>
+  <view
+    wx:class="{{ themeType ? 'cube-radio-modal cube-radio-modal-' + themeType : 'cube-radio-modal' }}"
+  >
+    <cube-modal
+      wx:ref="modal"
+      type="confirm"
+      title="{{ title }}"
+      wx:model="{{isVisible}}"
+      wx:model-prop="visible"
+      wx:model-event="toggle"
+      mask-closable="{{ maskClosable }}"
+      no-built-in-btns="{{ true }}"
+      cancelText="{{ cancelText }}"
+      cancelBtnAlign="{{ cancelBtnAlign }}"
+      show-close-icon="{{ showCloseIcon }}"
+      hide-on-confirm="{{ hideOnConfirm }}"
+      hide-on-cancel="{{ hideOnCancel }}"
+      hide-on-close="{{ hideOnClose }}"
+      theme-type="{{ themeType }}"
+      bind:cancel="onCancel"
+      bind:close="onClose"
+      bind:onMaskClick="onMaskClick"
+    >
+      <!-- 主标题 -->
+      <slot slot="title" name="title"></slot>
+      <view slot="content">
+        <view class="cube-radio-modal-subtitle" wx:if="{{ subtitle }}">{{ subtitle }}</view>
+        <!-- 副标题，可自定义说明描述等 -->
+        <slot name="subtitle"></slot>
+        <cube-radio-group
+          options="{{ options }}"
+          wx:model="{{ checkedValue }}"
+          wx:model-prop="value"
+          theme-type="{{ themeType }}"
+        />
+      </view>
+    </cube-modal>
+  </view>
+</template>
+
+<script src="./radio-modal.js"></script>
+
+<style lang="stylus">
+@require "../../common/stylus/variable.styl"
+@require "../../common/stylus/mixin.styl"
+@require "../../common/stylus/theme/components/modal.styl"
+@require "../../common/stylus/theme/components/radio-modal.styl"
+
+.cube-radio-modal
+  .cube-modal-body
+    padding-right $var(radio-modal-body-padding-right)
+  .cube-radio-group
+    max-height $var(radio-modal-content-max-height)
+    overflow scroll
+  .cube-radio
+    height $var(radio-modal-item-height)
+    padding-right $var(radio-modal-item-padding-right)
+    border-top-1px($var(radio-modal-item-bottom-border-color))
+
+.cube-radio-modal-subtitle
+  margin-bottom $var(radio-modal-subtitle-margin-bottom)
+  padding-right $var(radio-modal-subtitle-padding-right)
+  line-height $var(radio-modal-subtitle-line-height)
+  font-size $var(radio-modal-subtitle-font-size)
+  color $var(radio-modal-subtitle-color)
+</style>
+
+
+
+<script type="application/json">
+  {
+    "styleIsolation": "shared",
+    "usingComponents": {
+      "cube-modal": "../modal/index.mpx",
+      "cube-radio": "../radio/index.mpx",
+      "cube-radio-group": "../radio-group/index.mpx"
+    }
+  }
+</script>

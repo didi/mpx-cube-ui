@@ -1,0 +1,37 @@
+@require "../../common/stylus/variable.styl"
+@require "../../common/stylus/theme/components/toast.styl"
+
+.cube-toast
+  &.cube-popup
+    z-index $var(toast-z-index)
+  .cube-toast-content
+    display flex
+    flex-direction $var(toast-content-direction)
+    align-items center
+    padding $var(toast-content-padding)
+    border-radius $var(toast-content-border-radius)
+    color $var(toast-color)
+    background-color $var(toast-bgc)
+.cube-toast-icon
+  width $var(toast-icon-width)
+  height $var(toast-icon-height)
+  margin-bottom $var(toast-icon-margin-bottom)
+  font-size $var(toast-icon-font-size)
+  line-height $var(toast-icon-line-height)
+.toast-slot-icon
+  &:empty
+    display none
+  &:not(:empty)
+    margin $var(toast-slot-icon-margin)
+    font-size 0
+.cube-toast-tip
+  max-width $var(toast-tip-max-width)
+  max-height $var(toast-tip-max-height)
+  overflow hidden
+  font-weight $var(toast-tip-font-weight)
+  font-size $var(toast-tip-font-size)
+  line-height $var(toast-tip-line-height)
+  text-align $var(toast-tip-text-align)
+.cube-toast-icon, .cube-loading
+  ~ .cube-toast-tip
+    margin-left $var(toast-tip-margin-left)

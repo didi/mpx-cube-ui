@@ -26,6 +26,7 @@
       list="{{ list }}"
       selected-index="{{ selectedIndex }}"
       immediate-change="{{ immediateChange }}"
+      indicator-style="{{ indicatorStyle }}"
       async="{{ async }}"
       theme-type="{{ themeType }}"
       bind:change="onChange"
@@ -33,13 +34,16 @@
       bind:pickstart="onPickstart"
       bind:pickend="onPickend"
       bind:pendingChange="onPendingChange"
-    />
+    >
+      <!-- picker选择器头部位置插槽 -->
+      <slot name="pickerHeader" slot="header" />
+    </cube-cascade-picker>
     <!-- 尾部位置插槽 -->
     <slot name="footer" slot="footer" />
   </cube-picker-modal-base>
 </template>
 
-<script lang="ts" src="./index.ts"></script>
+<script lang="ts" src="./cascade-picker-modal.ts"></script>
 
 <style lang="stylus"></style>
 

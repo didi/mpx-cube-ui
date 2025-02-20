@@ -6,7 +6,7 @@
   </view>
 </template>
 
-<script lang="ts" src="./index.ts"></script>
+<script lang="ts" src="./button-group.ts"></script>
 
 <style lang="stylus">
 .cube-button-group
@@ -18,6 +18,8 @@
   flex-direction row
   justify-content space-between
   align-items center
+.cube-button-group_vertical_reverse
+  flex-direction column-reverse
 </style>
 
 <script type="application/json">

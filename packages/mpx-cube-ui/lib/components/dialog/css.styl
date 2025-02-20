@@ -1,0 +1,174 @@
+@require '../../common/stylus/variable.styl'
+@require '../../common/stylus/mixin.styl'
+@require '../../common/stylus/theme/components/dialog.styl'
+
+.cube-dialog-main
+  width $var(dialog-container-width)
+  overflow hidden
+  padding 0
+  border-radius-all($var(dialog-container-border-top-left-radius), $var(dialog-container-border-top-right-radius), $var(dialog-container-border-bottom-right-radius), $var(dialog-container-border-bottom-left-radius))
+  text-align center
+  background-color $var(dialog-bgc)
+
+  &-is-visible
+    animation $var(dialog-zoom-animation)
+
+    @keyframes dialog-zoom
+      0%
+        transform $var(dialog-zoom-transform-from)
+        opacity $var(dialog-zoom-opacity-from)
+
+      50%
+        transform $var(dialog-zoom-transform-mid)
+        opacity $var(dialog-zoom-opacity-mid)
+
+      100%
+        transform $var(dialog-zoom-transform-to)
+        opacity $var(dialog-zoom-opacity-to)
+
+    @keyframes dialog-zoom-no-mid
+      0%
+        transform $var(dialog-zoom-transform-from)
+        opacity $var(dialog-zoom-opacity-from)
+
+      100%
+        transform $var(dialog-zoom-transform-to)
+        opacity $var(dialog-zoom-opacity-to)
+
+  &-overflow
+    overflow unset
+
+  &-is-hide
+    animation $var(dialog-hide-animation)
+
+    @keyframes dialog-hide-animation
+      0%
+        opacity $var(dialog-zoom-hide-opacity-from)
+
+      100%
+        opacity $var(dialog-zoom-hide-opacity-to)
+
+.cube-dialog-head-icon
+  width $var(dialog-head-icon-width)
+  height $var(dialog-head-icon-height)
+  margin-top $var(dialog-head-icon-margin-top)
+  border-radius-all($var(dialog-head-icon-border-top-left-radius), $var(dialog-head-icon-border-top-right-radius), $var(dialog-head-icon-border-bottom-right-radius), $var(dialog-head-icon-border-bottom-left-radius))
+
+.cube-dialog-confirm, .cube-dialog-alert
+  position relative
+  overflow hidden
+  border-radius-all($var(dialog-container-border-top-left-radius), $var(dialog-container-border-top-right-radius), $var(dialog-container-border-bottom-right-radius), $var(dialog-container-border-bottom-left-radius))
+
+.cube-dialog-icon
+  margin-top $var(dialog-icon-container-margin-top)
+  margin-bottom $var(dialog-icon-container-margin-bottom)
+  font-size $var(font-size-3xl)
+  line-height $var(dialog-icon-line-height)
+  color $var(dialog-icon-color)
+
+  .icon
+    display inline-block
+    width $var(dialog-icon-container-width)
+    height $var(dialog-icon-container-height)
+    padding-all($var(dialog-icon-container-padding-top), $var(dialog-icon-container-padding-right), $var(dialog-icon-container-padding-bottom), $var(dialog-icon-container-padding-left))
+    box-sizing content-box
+    border-radius $var(dialog-icon-container-border-radius)
+    background-color $var(dialog-icon-bgc)
+
+  +
+    .cube-dialog-title
+      .cube-dialog-title-def
+        margin-top $var(dialog-icon-next-title-margin-top)
+
+  +
+    .cube-dialog-content
+      margin-top $var(dialog-icon-next-content-margin-top)
+
+.cube-dialog-title
+  font-size $var(dialog-title-font-size)
+  line-height $var(dialog-title-line-height)
+  color $var(dialog-title-color)
+
+  +
+    .cube-dialog-content
+      margin-top $var(dialog-title-next-content-margin-top)
+
+.cube-dialog-title-def
+  margin-all($var(dialog-title-default-margin-top), $var(dialog-title-default-margin-right), $var(dialog-title-default-margin-bottom), $var(dialog-title-default-margin-left))
+  overflow hidden
+  white-space nowrap
+
+.cube-dialog-content
+  margin-all($var(dialog-content-margin-top), $var(dialog-content-margin-right), $var(dialog-content-margin-bottom), $var(dialog-content-margin-left))
+  font-size $var(dialog-content-font-size)
+  line-height $var(dialog-content-container-line-height)
+  text-align left
+  color $var(dialog-content-color)
+
+.cube-dialog-content-def
+  padding-all($var(dialog-content-def-padding-top), $var(dialog-content-def-padding-right), $var(dialog-content-def-padding-bottom), $var(dialog-content-def-padding-left))
+  text-align $var(dialog-content-def-text-align)
+
+  > .content
+    display table
+    margin auto
+
+.cube-dialog-confirm, .cube-dialog-prompt
+  .cube-dialog-btns
+    .cube-dialog-btn
+      line-height $var(dialog-btn-line-height)
+      color $var(dialog-btn-color)
+
+    &-border-right-1px
+      border-right-1px($var(dialog-btns-split-color))
+
+      &::after
+        right 50%
+
+.cube-dialog-close
+  position absolute
+  top 0
+  right 0
+  z-index 1
+  display flex
+  align-items center
+  justify-content center
+  width $var(dialog-close-width)
+  height $var(dialog-close-height)
+  font-size $var(font-size-lg)
+  color $var(dialog-close-color)
+
+.cube-dialog-btns
+  display flex
+  overflow hidden
+  font-size 0
+
+.cube-dialog-btn
+  flex 1
+  display inline-block
+  margin 0
+  padding-all($var(dialog-button-padding-top), $var(dialog-button-padding-right), $var(dialog-button-padding-bottom), $var(dialog-button-padding-left))
+  box-sizing border-box
+  border-top-1px($var(dialog-btns-split-color))
+  font-size $var(font-size-md)
+  line-height $var(dialog-btn-line-height)
+  text-align center
+  text-decoration none
+  color $var(dialog-btn-color)
+  background-color $var(dialog-btn-bgc)
+  background-clip padding-box
+
+  &:active
+    background-color $var(dialog-btn-active-bgc)
+
+.cube-dialog-btn-highlight
+  color $var(dialog-btn-highlight-color)
+
+  &:active
+    background-color $var(dialog-btn-highlight-active-bgc)
+
+.cube-dialog-btn_disabled
+  color $var(dialog-btn-disabled-color)
+
+  &:active
+    background-color $var(dialog-btn-disabled-active-bgc)

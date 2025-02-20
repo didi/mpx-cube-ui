@@ -1,0 +1,23 @@
+@require "../../../common/stylus/variable.styl"
+@require "../../../common/stylus/theme/components/confirm-button-group.styl"
+
+.cube-confirm-button-group
+  display flex
+  justify-content space-between
+
+.cube-option-confirm-button
+  flex 1
+.cube-option-cancel-button
+  margin-right $var(option-cancel-button-margin-right)
+  flex-grow 0
+  width $var(option-cancel-button-width)
+
+.cube-confirm-button-group_vertical
+  flex-direction column-reverse
+  .cube-button-group
+    flex-direction column-reverse
+  .cube-option-cancel-button
+    margin $var(option-cancel-button-margin-top) 0 0
+    flex 1
+    display block
+    width 100%

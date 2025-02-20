@@ -1,6 +1,5 @@
 <template>
   <view
-    class="cube-radio-group"
     wx:class="{{ radioGroupClass }}"
   >
     <!-- 自定义使用 radio -->
@@ -21,7 +20,7 @@
   </view>
 </template>
 
-<script src="./index.ts" lang="ts"></script>
+<script src="./radio-group.ts" lang="ts"></script>
 
 <style lang="stylus">
 .radio-group-inline-block

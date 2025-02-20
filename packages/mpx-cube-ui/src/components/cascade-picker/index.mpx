@@ -4,15 +4,18 @@
     wx:ref="picker"
     list="{{ pickerList }}"
     selected-index="{{ pickerSelectedIndex }}"
+    indicator-style="{{ indicatorStyle }}"
     immediate-change="{{ immediateChange }}"
     theme-type="{{ themeType }}"
     bind:columnChange="onColumnChange"
     bind:pickstart="onPickstart"
     bind:pickend="onPickend"
-  />
+  >
+    <slot name="header" slot="header" />
+  </cube-picker>
 </template>
 
-<script lang="ts" src="./index.ts"></script>
+<script lang="ts" src="./cascade-picker.ts"></script>
 
 <style lang="stylus"></style>
 

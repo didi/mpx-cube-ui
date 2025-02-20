@@ -1,20 +1,16 @@
 <template>
   <view>
     <cube-button bindclick="showPickerWithSetTime">Use setTime</cube-button>
-    <cube-time-picker
-      wx:ref="picker"
-      bindchange="onChange"
-      bindcolumnChange="onColumnChange" />
+    <cube-time-picker wx:ref="picker"/>
     </cube-time-picker>
   </view>
 </template>
 
 <script>
 import { createComponent } from '@mpxjs/core'
-import funcMixin from '../../common/mixins/picker'
+import { beauty } from '../../common/utils'
 
 createComponent({
-  mixins: [ funcMixin ],
   methods: {
     showPickerWithSetTime() {
       const time = new Date().valueOf() + 1 * 60 * 60 * 1000 * 24

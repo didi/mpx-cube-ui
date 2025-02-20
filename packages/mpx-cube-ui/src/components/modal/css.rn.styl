@@ -1,0 +1,75 @@
+@require '../../common/stylus/variable.rn.styl'
+@require '../../common/stylus/mixin.rn.styl'
+@require '../../common/stylus/theme/components/modal.rn.styl'
+@require '../../common/stylus/theme/components/modal.styl'
+
+.cube-modal-section
+  overflow hidden
+  border-radius-all($var(modal-border-top-left-radius), $var(modal-border-top-right-radius), $var(modal-border-bottom-right-radius), $var(modal-border-bottom-left-radius))
+  background-color $var(modal-bgc)
+.cube-modal-section-confirm-button-group
+  margin-top $var(modal-button-group-margin-top)
+
+.cube-modal-section-btn
+  height $var(modal-button-height)
+  line-height $var(modal-button-line-height)
+  font-size $var(modal-button-font-size)
+  padding-top $var(modal-button-padding-top)
+  padding-bottom $var(modal-button-padding-bottom)
+
+.cube-modal-header
+  min-height $var(modal-header-default-height)
+
+.cube-modal-cancel
+  box-sizing border-box
+  display flex
+  align-items center
+  height $var(modal-cancel-height)
+  line-height $var(modal-cancel-line-height)
+  margin-bottom $var(modal-cancel-margin)
+  padding-all($var(modal-cancel-padding-top), $var(modal-cancel-padding-right), $var(modal-cancel-padding-bottom),$var(modal-cancel-padding-left))
+  color $var(modal-cancel-color)
+  border-bottom-1px($var(modal-cancel-border-bottom-color))
+  font-size $var(modal-cancel-font-size)
+  font-weight $var(modal-cancel-font-weight)
+
+.cube-modal-cancel-algin-right
+  justify-content flex-end
+
+.cube-modal-close
+  position absolute
+  top $var(modal-close-icon-top)
+  right $var(modal-close-icon-right)
+  padding-all($var(modal-close-icon-padding-top), $var(modal-close-icon-padding-right), $var(modal-close-icon-padding-bottom), $var(modal-close-icon-padding-left))
+  font-size $var(modal-close-icon-font-size)
+  font-weight $var(modal-close-icon-font-weight)
+  color $var(modal-close-icon-color)
+  width $var(modal-close-icon-width)
+  height $var(modal-close-icon-height)
+
+.cube-modal-body
+  // 特例：picker、radio-modal、checkbox-modal 需用到，写法上不做合并
+  padding-all($var(modal-body-padding-top), $var(modal-body-padding-right), $var(modal-body-padding-bottom), $var(modal-body-padding-left))
+
+.cube-modal-body-horizontal
+  display flex
+  flex-direction row-reverse
+
+.cube-modal-body-horizontal-modal-main
+  flex 1
+
+.cube-modal-title
+  margin-bottom $var(modal-title-margin-bottom)
+  line-height $var(modal-title-line-height)
+  font-size $var(modal-title-font-size)
+  font-weight $var(modal-title-default-font-weight)
+  color $var(modal-title-color)
+
+.cube-modal-content
+  font-size $var(modal-content-font-size)
+  line-height $var(modal-content-line-height)
+  color $var(modal-content-color)
+
+.cube-modal-footer
+  padding-all($var(modal-footer-padding-top), $var(modal-footer-padding-right), $var(modal-footer-padding-bottom), $var(modal-footer-padding-left))
+  safe-area-mixin-extra(padding-bottom, bottom, $var(modal-footer-safe-padding), true)

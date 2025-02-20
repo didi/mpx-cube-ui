@@ -15,6 +15,7 @@
     "pages": [
       "./pages/index",
       "./pages/button/index",
+      "./pages/collapse/index",
       "./pages/icon/index",
       "./pages/button-group/index",
       "./pages/divider/index",
@@ -43,7 +44,10 @@
       "./pages/checkbox-group/index",
       "./pages/checkbox-modal/index",
       "./pages/textarea/index",
-      "./pages/float-ball/index"
+      "./pages/float-ball/index",
+      "./pages/rate/index",
+      "./pages/switch/index",
+      "./pages/loading/index"
     ]
   }
 </script>

@@ -1,0 +1,55 @@
+<template>
+  <cube-picker-popup-base
+    wx:class="{{ themeType ? 'cube-time-picker-popup cube-time-picker-popup-'+themeType : 'cube-time-picker-popup' }}"
+    wx:ref="choosePopup"
+    wx:model="{{isVisible}}"
+    wx:model-prop="visible"
+    wx:model-event="toggle"
+    title="{{ title }}"
+    mask-closable="{{ maskClosable }}"
+    subtitle="{{ subtitle }}"
+    confirm-txt="{{ confirmTxt }}"
+    cancel-txt="{{ cancelTxt }}"
+    theme-type="{{ themeType }}"
+    bind:confirm="onConfirm"
+    bind:cancel="onCancel"
+  >
+    <cube-time-picker
+      wx:ref="picker"
+      delay="{{ delay }}"
+      day="{{ day }}"
+      show-now="{{ showNow }}"
+      minute-step="{{ minuteStep }}"
+      format="{{ format }}"
+      min="{{ min }}"
+      max="{{ max }}"
+      immediate-change="{{ immediateChange }}"
+      theme-type="{{ themeType }}"
+      indicator-style="{{ indicatorStyle }}"
+      bind:columnChange="onColumnChange"
+      bind:change="onChange"
+      bind:pickstart="onPickstart"
+      bind:pickend="onPickend"
+    >
+      <!-- picker选择器头部位置插槽 -->
+      <slot name="pickerHeader" slot="header" />
+    </cube-time-picker>
+  </cube-picker-popup-base>
+</template>
+
+<script src="./time-picker-popup.js"></script>
+
+<style lang="stylus"></style>
+
+
+
+<script type="application/json">
+  {
+    "styleIsolation": "shared",
+    "component": true,
+    "usingComponents": {
+      "cube-picker-popup-base": "../picker-popup/picker-popup-base.mpx",
+      "cube-time-picker": "../time-picker/index.mpx"
+    }
+  }
+</script>

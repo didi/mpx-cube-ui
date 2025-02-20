@@ -1,0 +1,47 @@
+<template>
+  <view>
+    <view>switch-text 属性修改展示、收起文案</view>
+    <view class="bg-white">
+      <cube-collapse switch-text="{{ switchText }}">
+        <view>内容文案，第一行</view>
+        <view>内容文案，第二行</view>
+        <view>内容文案，第三行</view>
+        <view>内容文案，第四行</view>
+      </cube-collapse>
+    </view>
+
+    <view>switch-text 也可以是字符串</view>
+    <view class="bg-white">
+      <cube-collapse switch-text="{{ '如何做到早睡早起？' }}">
+        <view>1. 吃好喝好</view>
+        <view>2. 睡前少玩手机</view>
+        <view>3. 定闹钟早起</view>
+        <view>4. 上面的理论来自个人猜想</view>
+      </cube-collapse>
+    </view>
+  </view>
+</template>
+
+<script>
+import { createComponent } from '@mpxjs/core'
+
+createComponent({
+  data: {
+    switchText: ['可以展示查看新内容', '收起内容']
+  }
+})
+</script>
+
+<style lang="stylus" scoped>
+.bg-white
+  margin-top: 6px
+  background-color: #fff
+</style>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "cube-collapse": "@mpxjs/mpx-cube-ui/src/components/collapse/index"
+    }
+  }
+</script>

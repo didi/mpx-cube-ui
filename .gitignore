@@ -8,6 +8,5 @@ dist/
 .vscode/
 test/coverage
 .cache
-packages/mpx-cube-ui/lib
 packages/website-build/lib/
 docs/components

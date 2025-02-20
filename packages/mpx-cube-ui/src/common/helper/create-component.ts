@@ -7,6 +7,7 @@ import {
   confirmButtonGroupMixin,
   maskMixin,
   modalPropsMixin,
+  pickerCommonMixin,
   pickerMixin,
   datePickerMixin,
   timePickerMixin,
@@ -67,7 +68,7 @@ export function createModalComponent (options: ComponentOptions): CreateComponen
 
 // picker
 export function createPickerComponent (options: ComponentOptions): CreateComponentReturnType {
-  addMixins(options, [pickerMixin])
+  addMixins(options, [pickerCommonMixin, pickerMixin])
   return _createComponent(options)
 }
 
@@ -79,23 +80,23 @@ export function createPickerPopupBaseComponent (options: ComponentOptions): Crea
 
 // picker-popup & cascade-picker-popup
 export function createPickerPopupComponent (options: ComponentOptions): CreateComponentReturnType {
-  addMixins(options, [visibilityMixin, maskMixin, pickerPopupBaseMixin, pickerMixin, pickerPopupMixin])
+  addMixins(options, [visibilityMixin, maskMixin, pickerCommonMixin, pickerPopupBaseMixin, pickerMixin, pickerPopupMixin])
   return _createComponent(options)
 }
 
 export function createDatePickerComponent (options: ComponentOptions): CreateComponentReturnType {
-  addMixins(options, [datePickerMixin])
+  addMixins(options, [pickerCommonMixin, datePickerMixin])
   return _createComponent(options)
 }
 
 export function createTimePickerComponent (options: ComponentOptions): CreateComponentReturnType {
-  addMixins(options, [timePickerMixin])
+  addMixins(options, [pickerCommonMixin, timePickerMixin])
   return _createComponent(options)
 }
 
 // time-picker-popup & date-picker-popup
 export function createTimePickerPopupComponent (options: ComponentOptions): CreateComponentReturnType {
-  addMixins(options, [visibilityMixin, maskMixin, pickerPopupBaseMixin, pickerPopupMixin])
+  addMixins(options, [visibilityMixin, maskMixin, pickerCommonMixin, pickerPopupBaseMixin, pickerPopupMixin])
   return _createComponent(options)
 }
 
@@ -107,12 +108,12 @@ export function createPickerModalBaseComponent (options: ComponentOptions): Crea
 
 // picker-modal & cascade-picker-modal
 export function createPickerModalComponent (options: ComponentOptions): CreateComponentReturnType {
-  addMixins(options, [visibilityMixin, maskMixin, modalPropsMixin, pickerModalBaseMixin, pickerMixin, pickerPopupMixin])
+  addMixins(options, [visibilityMixin, maskMixin, pickerCommonMixin, modalPropsMixin, pickerModalBaseMixin, pickerMixin, pickerPopupMixin])
   return _createComponent(options)
 }
 
 // time-picker-modal & date-picker-modal
 export function createTimePickerModalComponent (options: ComponentOptions): CreateComponentReturnType {
-  addMixins(options, [visibilityMixin, maskMixin, modalPropsMixin, pickerModalBaseMixin, pickerPopupMixin])
+  addMixins(options, [visibilityMixin, maskMixin, pickerCommonMixin, modalPropsMixin, pickerModalBaseMixin, pickerPopupMixin])
   return _createComponent(options)
 }

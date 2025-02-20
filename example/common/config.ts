@@ -3,6 +3,7 @@ export default {
     'default': [
       'button',
       'button-group',
+      'collapse',
       'icon',
       'radio',
       'radio-group',
@@ -40,7 +41,9 @@ export default {
           'button-group',
           'icon',
           'divider',
-          'float-ball'
+          'float-ball',
+          'loading',
+          'collapse'
         ]
       },
       {
@@ -54,7 +57,9 @@ export default {
           'picker',
           'cascade-picker',
           'date-picker',
-          'time-picker'
+          'time-picker',
+          'rate',
+          'switch'
         ]
       },
       {

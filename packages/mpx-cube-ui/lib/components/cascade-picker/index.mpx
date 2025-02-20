@@ -1,0 +1,32 @@
+<template>
+  <cube-picker
+    wx:class="{{ themeType ? 'cube-cascade-picker cube-cascade-picker-'+themeType : 'cube-cascade-picker' }}"
+    wx:ref="picker"
+    list="{{ pickerList }}"
+    selected-index="{{ pickerSelectedIndex }}"
+    indicator-style="{{ indicatorStyle }}"
+    immediate-change="{{ immediateChange }}"
+    theme-type="{{ themeType }}"
+    bind:columnChange="onColumnChange"
+    bind:pickstart="onPickstart"
+    bind:pickend="onPickend"
+  >
+    <slot name="header" slot="header" />
+  </cube-picker>
+</template>
+
+<script src="./cascade-picker.js"></script>
+
+<style lang="stylus"></style>
+
+
+
+<script type="application/json">
+  {
+    "styleIsolation": "shared",
+    "component": true,
+    "usingComponents": {
+      "cube-picker": "../picker/index.mpx"
+    }
+  }
+</script>

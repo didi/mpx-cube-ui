@@ -71,25 +71,6 @@
   top: $var(picker-modal-slide-top)
 .cube-picker-modal-slide-bottom
   bottom: $var(picker-modal-slide-bottom)
-
-.cube-picker-modal-base
-  // boom!!! magic code. wtf wechat
-  // 见 QA 2022.1.18
-  .cube-popup
-    .cube-popup-content
-      transition: transform $popup-default-animation-time ease
-      &.move-up
-        transform: translate3d(0, 100%, 0)
-    &.show
-      .cube-popup-content
-        &.move-up
-          transform: translate3d(0, 0, 0)
-          animation: none
-    &.hide
-      .cube-popup-content
-        &.move-up
-          transform: translate3d(0, 100%, 0)
-          animation: none
 </style>
 
 <script type="application/json">

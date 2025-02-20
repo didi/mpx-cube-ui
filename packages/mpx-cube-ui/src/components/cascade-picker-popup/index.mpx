@@ -21,17 +21,21 @@
       selected-index="{{ selectedIndex }}"
       immediate-change="{{ immediateChange }}"
       async="{{ async }}"
+      indicator-style="{{ indicatorStyle }}"
       theme-type="{{ themeType }}"
       bind:change="onChange"
       bind:columnChange="onColumnChange"
       bind:pickstart="onPickstart"
       bind:pickend="onPickend"
       bind:pendingChange="onPendingChange"
-    />
+    >
+      <!-- picker选择器头部位置插槽 -->
+      <slot name="pickerHeader" slot="header" />
+    </cube-cascade-picker>
   </cube-picker-popup-base>
 </template>
 
-<script lang="ts" src="./index.ts"></script>
+<script lang="ts" src="./cascade-picker-popup.ts"></script>
 
 <style lang="stylus"></style>
 

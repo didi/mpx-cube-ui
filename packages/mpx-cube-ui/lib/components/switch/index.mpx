@@ -1,0 +1,47 @@
+<template>
+  <view
+    wx:class="{{ switchClass }}"
+    bindtap="toggleSwitch"
+  >
+    <view class="cube-switch-handle" />
+  </view>
+</template>
+
+<script src="./switch.js"></script>
+
+<style lang="stylus">
+@require "../../common/stylus/helper.styl"
+@require "../../common/stylus/theme/components/switch.styl"
+
+.cube-switch
+  position: relative
+  width: $var(switch-width)
+  height: $var(switch-height)
+  background-color: $var(switch-bgc)
+  border-radius: $var(switch-border-radius)
+  transition: $var(switch-transition)
+
+.cube-switch-handle
+  position: absolute
+  top: $var(switch-handle-top)
+  left: $var(switch-handle-left)
+  width: $var(switch-handle-width)
+  height: $var(switch-handle-height)
+  background-color: $var(switch-handle-bgc)
+  border-radius: $var(switch-handle-border-radius)
+  transition: $var(switch-handle-transition)
+
+.cube-switch-on
+  background-color: $var(switch-bgc-on)
+  .cube-switch-handle
+    left: $var(switch-handle-left-on)
+</style>
+
+
+
+<script type="application/json">
+  {
+    "styleIsolation": "shared",
+    "component": true
+  }
+</script>

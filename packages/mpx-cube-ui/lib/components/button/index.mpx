@@ -1,0 +1,70 @@
+<template>
+  <button
+    hover-class@wx|ali="none"
+    wx:class="{{ btnClass }}"
+    wx:style="{{ styleConfig.btn }}"
+    lang@wx="{{ lang }}"
+    session-from@wx="{{ sessionFrom }}"
+    send-message-title@wx="{{ sendMessageTitle }}"
+    send-message-path@wx="{{ sendMessagePath }}"
+    send-message-img@wx="{{ sendMessageImg }}"
+    show-message-card@wx="{{ showMessageCard }}"
+    form-type@wx|ali="{{ formType }}"
+    app-parameter@wx|ali="{{ appParameter }}"
+    open-type@wx|ali="{{ !disabled ? openType : '' }}"
+    scope@ali="{{ scope }}"
+    public-id@ali="{{ publicId }}"
+    bind:tap="onClick"
+    bind:contact@wx="onContact"
+    bind:opensetting@wx="onOpenSetting"
+    bind:launchapp@wx="onLaunchApp"
+    bind:chooseavatar@wx="onChooseAvatar"
+    bind:getuserinfo@wx|ali="onGetUserInfo"
+    bind:getphonenumber@wx|ali="onGetPhoneNumber"
+    bind:error@wx|ali="onError"
+    bind:getAuthorize@ali="onGetAuthorize"
+    bind:followLifestyle@ali="onFollowLifestyle"
+  >
+    <loading
+      wx:if="{{ loading }}"
+      style="position: absolute; top: 0; left: 0; right: 0; bottom: 0;"
+    />
+    <cube-icon
+      theme-type="{{ themeType }}"
+      class="cube-btn-icon"
+      size="{{ iconSize }}"
+      wx:if="{{ icon }}"
+      type="{{ icon }}"
+    />
+    <view class="cube-btn-content" wx:style="{{ styleConfig.content }}">
+      <slot />
+    </view>
+    <view class="cube-btn-tip" wx:if="{{ tip }}">
+      <text class="cube-btn-tip-text">{{tip}}</text>
+    </view>
+    <slot name="tip" />
+  </button>
+</template>
+
+<script src="./button.js"></script>
+
+<style lang="stylus">
+/* @mpx-if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') */
+@require './css.rn.styl'
+/* @mpx-else */
+@require './css.styl'
+/* @mpx-endif */
+</style>
+
+
+
+<script type="application/json">
+  {
+    "styleIsolation": "shared",
+    "component": true,
+    "usingComponents": {
+      "cube-icon": "../icon/index.mpx",
+      "loading": "./loading/index.mpx"
+    }
+  }
+</script>

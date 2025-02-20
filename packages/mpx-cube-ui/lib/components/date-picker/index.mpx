@@ -1,0 +1,32 @@
+<template>
+  <cube-picker
+    wx:class="{{ themeType ? 'cube-date-picker cube-date-picker-' + themeType : 'cube-date-picker' }}"
+    ref="picker"
+    list="{{ pickerList }}"
+    selected-index="{{ pickerSelectedIndex }}"
+    immediate-change="{{ immediateChange }}"
+    theme-type="{{ themeType }}"
+    indicator-style="{{ indicatorStyle }}"
+    bind:columnChange="onColumnChange"
+    bind:pickstart="onPickstart"
+    bind:pickend="onPickend"
+  >
+    <slot name="header" slot="header" />
+  </cube-picker>
+</template>
+
+<script src="./date-picker.js"></script>
+
+<style lang="stylus"></style>
+
+
+
+<script type="application/json">
+  {
+    "styleIsolation": "shared",
+    "component": true,
+    "usingComponents": {
+      "cube-picker": "../picker/index.mpx"
+    }
+  }
+</script>

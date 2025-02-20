@@ -4,6 +4,9 @@ const EVENT_CONFIRM = 'confirm'
 const EVENT_CANCEL = 'cancel'
 
 createPickerPopupBaseComponent({
+  options: {
+    multipleSlots: true
+  },
   properties: {
     pending: {
       type: Boolean,

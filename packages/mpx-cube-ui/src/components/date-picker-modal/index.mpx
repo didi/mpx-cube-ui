@@ -34,15 +34,19 @@
       column-order="{{ columnOrder }}"
       immediate-change="{{ immediateChange }}"
       theme-type="{{ themeType }}"
+      indicator-style="{{ indicatorStyle }}"
       bind:columnChange="onColumnChange"
       bind:change="onChange"
-    />
+    >
+      <!-- picker选择器头部位置插槽 -->
+      <slot name="pickerHeader" slot="header" />
+    </cube-date-picker>
     <!-- 尾部位置插槽 -->
     <slot name="footer" slot="footer" />
   </cube-picker-modal-base>
 </template>
 
-<script lang="ts" src="./index.ts"></script>
+<script lang="ts" src="./date-picker-modal.ts"></script>
 
 <style lang="stylus"></style>
 

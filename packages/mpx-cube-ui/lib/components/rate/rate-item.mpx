@@ -1,0 +1,47 @@
+<template>
+  <view class="cube-rate-item" wx:class="{{rateItemClass}}">
+    <view class="cube-rate-item-def">
+      <slot></slot>
+    </view>
+  </view>
+</template>
+<script src="./rate-item-index.js"></script>
+
+<style lang="stylus">
+@require "@mpxjs/mpx-cube-ui/src/common/stylus/helper.styl"
+@require "@mpxjs/mpx-cube-ui/src/common/stylus/mixin.styl"
+@require "@mpxjs/mpx-cube-ui/src/common/stylus/theme/components/rate.styl"
+
+.cube-rate-item
+  position: relative
+  width: $var(rate-item-width)
+  flex: $var(rate-item-flex)
+  margin-right: $var(rate-item-margin-right)
+  &::after
+    content: ""
+    display: block
+    padding: $var(rate-item-after-padding)
+  .cube-rate-item-def
+    position: absolute
+    width: $var(rate-item-def-width)
+    height: $var(rate-item-def-height)
+    background-size: $var(rate-item-def-background-size)
+    background-repeat: no-repeat
+    background-position: center
+    background-image: $var(rate-item-star-default)
+.cube-rate-item_active
+  .cube-rate-item-def
+    background-image: $var(rate-item-star-active)
+.cube-rate-item_half_active
+  .cube-rate-item-def
+    background-image: $var(rate-item-star-half-active)
+</style>
+
+
+
+<script type="application/json">
+{
+    "styleIsolation": "shared",
+    "component": true
+  }
+</script>

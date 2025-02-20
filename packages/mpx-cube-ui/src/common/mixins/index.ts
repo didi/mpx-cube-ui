@@ -15,6 +15,7 @@ export { default as modalPropsMixin } from './modal/props'
 
 // picker-mixins
 export { default as pickerMixin } from './picker/picker'
+export { default as pickerCommonMixin } from './picker/picker-common'
 export { default as datePickerMixin } from './picker/date-picker'
 export { default as timePickerMixin } from './picker/time-picker'
 export { default as pickerPopupBaseMixin } from './picker-popup/picker-popup-base'
@@ -25,3 +26,5 @@ export { default as pickerPopupMixin } from './picker-popup'
 export { default as themePropsMixin } from './common/theme-props'
 export * from './common/options'
 export * from './common/config-provider'
+
+export { default as varContextMixin } from './var-context'

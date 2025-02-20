@@ -1,0 +1,85 @@
+<template>
+  <block @_wx|_ali|_web>
+  <view
+    wx:if="{{removeCatchTouch}}"
+    wx:class="{{ [themeType ? 'cube-popup cube-popup-'+themeType : 'cube-popup', rootClass, visibleClass] }}"
+    style="z-index: {{ zIndex }}"
+    catchtouchmove@wx|ali
+  >
+    <view class="cube-popup-mask" wx:if="{{ mask }}" bindtouchend="onMaskClick">
+      <!-- 遮罩插槽 -->
+      <slot name="mask"></slot>
+    </view>
+    <view class="cube-popup-content {{ transitionClass }}" bindanimationend="contentHideAnimationend">
+      <rich-text wx:if="{{ content }}" nodes="{{ content }}"></rich-text>
+      <!-- 默认插槽 -->
+      <slot wx:else></slot>
+    </view>
+  </view>
+
+  <view
+    wx:else
+    wx:class="{{ [themeType ? 'cube-popup cube-popup-'+themeType : 'cube-popup', rootClass, visibleClass] }}"
+    style="z-index: {{ zIndex }}"
+    catchtouchmove@wx|ali
+  >
+    <view
+      class="cube-popup-mask"
+      wx:if="{{ mask }}"
+      bindtouchmove="preventTouchMove"
+      bindtouchend="onMaskClick">
+      <!-- 遮罩插槽 -->
+      <slot name="mask"></slot>
+    </view>
+    <view
+      class="cube-popup-content {{ transitionClass }}"
+      wx:style="{{styleConfig.content}}"
+      bindtouchmove="preventTouchMove">
+      <rich-text wx:if="{{ content }}" nodes="{{ content }}"></rich-text>
+      <!-- 默认插槽 -->
+      <slot></slot>
+    </view>
+  </view>
+  </block>
+  <root-portal @_ios|_android>
+    <view
+      wx:ref="popup"
+      external-var-context="{{varContext}}"
+      wx:class="{{ [themeType ? 'cube-popup cube-popup-'+themeType : 'cube-popup', rootClass, visibleClass] }}"
+      >
+      <view
+        class="cube-popup-mask"
+        wx:if="{{ mask }}"
+        animation="{{ maskAnimationData }}"
+        bindtouchend="onMaskClick">
+        <slot name="mask"></slot>
+      </view>
+      <view
+        wx:ref="popup-content"
+        class="cube-popup-content {{ transition }}"
+        wx:style="{{ styleConfig.content }}"
+        animation="{{ animationData }}">
+        <slot></slot>
+      </view>
+    </view>
+  </root-portal>
+</template>
+
+<script src="./popup.js"></script>
+
+<style lang="stylus">
+/* @mpx-if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') */
+@require './css.rn.styl'
+/* @mpx-else */
+@require './css.styl'
+/* @mpx-endif */
+</style>
+
+
+
+<script type="application/json">
+  {
+    "styleIsolation": "shared",
+    "component": true
+  }
+</script>

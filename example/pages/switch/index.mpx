@@ -1,0 +1,84 @@
+
+<template>
+  <view class="switch-page">
+    <base-container>
+      <view class="switch-example">
+        <view class="switch-show">
+          <cube-switch wx:model="{{valueOne}}"></cube-switch>
+          <text class="switch-text">Switch</text>
+        </view>
+        <view class="switch-value">switch value: {{valueOne}}</view>
+      </view>
+      <view class="switch-example">
+        <view class="switch-show">
+          <cube-switch wx:model="{{valueTwo}}"></cube-switch>
+          <text class="switch-text">Switch</text>
+        </view>
+        <view class="switch-value">switch value: {{valueTwo}}</view>
+      </view>
+      <view class="switch-example">
+        <view class="switch-show">
+          <cube-switch disabled="{{true}}" value="{{true}}"></cube-switch>
+          <text class="switch-text">Disabled Switch</text>
+        </view>
+        <view class="switch-value">switch value: true</view>
+      </view>
+      <view class="switch-example">
+        <view class="switch-show">
+          <cube-switch bindchange="getValue"></cube-switch>
+          <text class="switch-text">Bindchange Switch</text>
+        </view>
+        <view class="switch-value">switch value: {{currentValue}}</view>
+      </view>
+      <view class="switch-example">
+        <view class="switch-show">
+          <cube-switch disabled="{{true}}" value="{{false}}"></cube-switch>
+          <text class="switch-text">Disabled Switch</text>
+        </view>
+        <view class="switch-value">switch value: false</view>
+      </view>
+    </base-container>
+  </view>
+</template>
+
+<script>
+  import { createPage } from '@mpxjs/core'
+
+  createPage({
+    data: {
+      valueOne: true,
+      valueTwo: false,
+      currentValue: false
+    },
+    methods: {
+      getValue(data) {
+        this.currentValue = data.detail.value
+      }
+    }
+  })
+</script>
+
+<style lang="stylus">
+.switch-page
+  padding-top: 10px
+  height 100%
+  background-color rgba(239, 239, 244, .7)
+  .switch-example
+    .switch-show
+      display: flex
+      padding: 15px
+      background-color: white
+      .switch-text
+        margin-left: 10px
+    .switch-value
+      margin: 10px 0
+</style>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "base-container": "../../components/base-container/index.mpx",
+      "cube-switch": "@mpxjs/mpx-cube-ui/src/components/switch/index.mpx"
+    }
+  }
+</script>

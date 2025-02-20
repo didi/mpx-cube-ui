@@ -37,7 +37,7 @@
   </view>
 </template>
 
-<script lang="ts" src="./index.ts"></script>
+<script lang="ts" src="./textarea.ts"></script>
 
 <style lang="stylus">
 @require "../../common/stylus/variable.styl"
@@ -56,7 +56,7 @@
 .cube-textarea-wrapper_disabled
   background-color $var(textarea-disable-bgc)
 .cube-textarea-wrapper_focused
-  border-1px($var(textarea-focus-border-color), $var(textarea-border-radius))
+  border-1px-reset($var(textarea-focus-border-color), $var(textarea-border-radius))
 .cube-textarea
   width 100%
   overflow hidden

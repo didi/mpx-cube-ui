@@ -30,18 +30,21 @@
       list="{{ list }}"
       selected-index="{{ selectedIndex }}"
       immediate-change="{{ immediateChange }}"
+      indicator-style="{{ indicatorStyle }}"
       theme-type="{{ themeType }}"
       bind:change="onChange"
       bind:columnChange="onColumnChange"
       bind:pickstart="onPickstart"
       bind:pickend="onPickend"
-    />
+    >
+      <slot name="pickerHeader" slot="header" />
+    </cube-picker>
     <!-- 尾部位置插槽 -->
     <slot name="footer" slot="footer" />
   </cube-picker-modal-base>
 </template>
 
-<script lang="ts" src="./index.ts"></script>
+<script lang="ts" src="./picker-modal.ts"></script>
 
 <style lang="stylus"></style>
 

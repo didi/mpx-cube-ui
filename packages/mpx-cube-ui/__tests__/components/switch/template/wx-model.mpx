@@ -1,0 +1,25 @@
+
+<template>
+  <view class="switch-default-checked-demo">
+    <text>默认值：{{switchValue}}</text>
+    <cube-switch class="cube-switch" wx:model="{{switchValue}}"></cube-switch>
+  </view>
+</template>
+
+<script>
+import { createComponent } from '@mpxjs/core'
+
+createComponent({
+  data: {
+    switchValue: false
+  }
+})
+</script>【
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "cube-switch": "@mpxjs/mpx-cube-ui/src/components/switch/index.mpx"
+    }
+  }
+</script>

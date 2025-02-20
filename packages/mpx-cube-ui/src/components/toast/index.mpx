@@ -4,7 +4,9 @@
     wx:ref="popup"
     wx:if="{{ isVisible }}"
     z-index="{{ zIndex }}"
-    visible="{{ isVisible }}"
+    wx:model="{{isVisible}}"
+    wx:model-prop="visible"
+    wx:model-event="toggle"
     transition="fade"
     mask="{{ mask }}"
     center="{{ true }}"
@@ -13,67 +15,36 @@
     theme-type="{{ themeType }}"
     bind:maskClick="onMaskClick"
   >
-    <!-- 默认插槽 -->
-    <view class="toast-slot-icon"><slot /></view>
-    <cube-icon
-      wx:if="{{ icon }}"
-      class="cube-toast-icon"
-      type="{{ icon }}"
-      theme-type="{{ themeType }}"
-    />
-    <view hidden="{{ !txt }}" class="cube-toast-tip">{{ txt }}</view>
+    <view class="cube-toast-content">
+      <view class="toast-slot-icon"><slot /></view>
+      <cube-icon
+        wx:if="{{ icon }}"
+        class="cube-toast-icon"
+        type="{{ icon }}"
+        theme-type="{{ themeType }}"
+      />
+      <view hidden="{{ !txt }}" class="cube-toast-tip" wx:class="{{ tostTipClass }}">{{ txt }}</view>
+    </view>
   </cube-popup>
 </template>
 
-<script lang="ts" src="./index.ts"></script>
+<script lang="ts" src="./toast.ts"></script>
 
 <style lang="stylus">
-@require "../../common/stylus/variable.styl"
-@require "../../common/stylus/theme/components/toast.styl"
-
-.cube-toast
-  &.cube-popup
-    z-index $var(toast-z-index)
-  .cube-popup-content
-    display flex
-    flex-direction $var(toast-content-direction)
-    align-items center
-    padding $var(toast-content-padding)
-    border-radius $var(toast-content-border-radius)
-    color $var(toast-color)
-    background-color $var(toast-bgc)
-.cube-toast-icon
-  width $var(toast-icon-width)
-  height $var(toast-icon-height)
-  margin-bottom $var(toast-icon-margin-bottom)
-  font-size $var(toast-icon-font-size)
-  line-height $var(toast-icon-line-height)
-.toast-slot-icon
-  &:empty
-    display none
-  &:not(:empty)
-    margin $var(toast-slot-icon-margin)
-    font-size 0
-.cube-toast-tip
-  max-width $var(toast-tip-max-width)
-  max-height $var(toast-tip-max-height)
-  overflow hidden
-  font-weight $var(toast-tip-font-weight)
-  font-size $var(toast-tip-font-size)
-  line-height $var(toast-tip-line-height)
-  text-align $var(toast-tip-text-align)
-.cube-toast-icon, .cube-loading
-  ~ .cube-toast-tip
-    margin-left $var(toast-tip-margin-left)
+/* @mpx-if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') */
+@require './css.rn.styl'
+/* @mpx-else */
+@require './css.styl'
+/* @mpx-endif */
 </style>
 
 <script type="application/json">
-  {
-    "styleIsolation": "shared",
-    "component": true,
-    "usingComponents": {
-      "cube-popup": "../popup/index.mpx",
-      "cube-icon": "../icon/index.mpx"
-    }
+{
+  "styleIsolation": "shared",
+  "component": true,
+  "usingComponents": {
+    "cube-popup": "../popup/index.mpx",
+    "cube-icon": "../icon/index.mpx"
   }
+}
 </script>

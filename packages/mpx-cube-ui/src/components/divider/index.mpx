@@ -9,7 +9,7 @@
   </view>
 </template>
 
-<script lang="ts" src="./index.ts"></script>
+<script lang="ts" src="./divider.ts"></script>
 
 <style lang="stylus">
 @require "../../common/stylus/variable.styl"

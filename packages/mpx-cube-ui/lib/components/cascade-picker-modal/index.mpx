@@ -1,0 +1,61 @@
+<template>
+  <cube-picker-modal-base
+    wx:class="{{ themeType ? 'cube-cascade-picker-modal cube-cascade-picker-modal-' + themeType : 'cube-cascade-picker-modal' }}"
+    wx:ref="choosePopup"
+    wx:model="{{isVisible}}"
+    wx:model-prop="visible"
+    wx:model-event="toggle"
+    pending="{{ pending }}"
+    title="{{ title }}"
+    content="{{ content }}"
+    type="confirm"
+    show-close-icon="{{ showCloseIcon }}"
+    mask-closable="{{ maskClosable }}"
+    hide-on-confirm="{{ hideOnConfirm }}"
+    hide-on-cancel="{{ hideOnCancel }}"
+    hide-on-close="{{ hideOnClose }}"
+    theme-type="{{ themeType }}"
+    bind:confirm="onConfirm"
+    bind:cancel="onCancel"
+    >
+    <!-- 顶部位置插槽 -->
+    <slot name="header" slot="header" />
+    <cube-cascade-picker
+      slot="picker"
+      wx:ref="picker"
+      list="{{ list }}"
+      selected-index="{{ selectedIndex }}"
+      immediate-change="{{ immediateChange }}"
+      indicator-style="{{ indicatorStyle }}"
+      async="{{ async }}"
+      theme-type="{{ themeType }}"
+      bind:change="onChange"
+      bind:columnChange="onColumnChange"
+      bind:pickstart="onPickstart"
+      bind:pickend="onPickend"
+      bind:pendingChange="onPendingChange"
+    >
+      <!-- picker选择器头部位置插槽 -->
+      <slot name="pickerHeader" slot="header" />
+    </cube-cascade-picker>
+    <!-- 尾部位置插槽 -->
+    <slot name="footer" slot="footer" />
+  </cube-picker-modal-base>
+</template>
+
+<script src="./cascade-picker-modal.js"></script>
+
+<style lang="stylus"></style>
+
+
+
+<script type="application/json">
+  {
+    "styleIsolation": "shared",
+    "component": true,
+    "usingComponents": {
+      "cube-picker-modal-base": "../picker-modal/picker-modal-base.mpx",
+      "cube-cascade-picker": "../cascade-picker/index.mpx"
+    }
+  }
+</script>

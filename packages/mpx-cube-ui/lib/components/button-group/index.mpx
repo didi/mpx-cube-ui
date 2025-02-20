@@ -1,0 +1,33 @@
+<template>
+  <view
+    wx:class="{{ btnGroupClass }}"
+  >
+    <slot></slot>
+  </view>
+</template>
+
+<script src="./button-group.js"></script>
+
+<style lang="stylus">
+.cube-button-group
+  display flex
+  width 100%
+  flex-direction column
+.cube-button-group_horizontal
+  display flex
+  flex-direction row
+  justify-content space-between
+  align-items center
+.cube-button-group_vertical_reverse
+  flex-direction column-reverse
+</style>
+
+
+
+<script type="application/json">
+  {
+    "styleIsolation": "shared",
+    "component": true,
+    "usingComponents": {}
+  }
+</script>

@@ -1,0 +1,33 @@
+<template>
+  <view class="cube-loading">
+    <view class="cube-loading-content">
+      <view @_ios|_android class="cube-loading-origin-before"></view>
+      <view class="cube-loading-origin">
+        <view class="cube-loading-middle-dot"></view>
+      </view>
+      <view @_ios|_android class="cube-loading-origin-after"></view>
+    </view>
+  </view>
+</template>
+
+<script src="./loading.js"></script>
+
+<style lang="stylus">
+vendors = official
+// https://stylus-lang.com/docs/keyframes.html#expansion
+
+/* @mpx-if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') */
+@require './css.rn.styl'
+/* @mpx-else */
+@require './css.styl'
+/* @mpx-endif */
+</style>
+
+
+
+<script type="application/json">
+  {
+    "styleIsolation": "shared",
+    "component": true
+  }
+</script>

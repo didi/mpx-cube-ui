@@ -8,6 +8,7 @@ module.exports = {
   collectCoverage: false,
   testMatch: [
     '**/__tests__/**/*.spec.js'
+    // '**/__tests__/**/rate.spec.js'
   ],
   collectCoverageFrom: ['/packages/mpx-cube-ui/src/components/**/*.{js,mpx,ts}'],
   coverageDirectory: 'test/coverage',
@@ -21,6 +22,7 @@ module.exports = {
   globals: {
     __mpx_mode__: 'wx',
     __env__: 'test',
+    __mpx_dynamic_runtime__: false,
     'ts-jest': {
       tsconfig: {
         target: 'ES2019'

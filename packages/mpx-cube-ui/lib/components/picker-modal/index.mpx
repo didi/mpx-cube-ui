@@ -1,0 +1,62 @@
+<template>
+  <cube-picker-modal-base
+    wx:class="{{ themeType ? 'cube-picker-modal cube-picker-modal-'+themeType : 'cube-picker-modal' }}"
+    wx:ref="choosePopup"
+    wx:model="{{isVisible}}"
+    wx:model-prop="visible"
+    wx:model-event="toggle"
+    title="{{ title }}"
+    content="{{ content }}"
+    type="confirm"
+    show-close-icon="{{ showCloseIcon }}"
+    mask-closable="{{ maskClosable }}"
+    cancel-text="{{ cancelText }}"
+    cancel-btn-align="{{ cancelBtnAlign }}"
+    no-built-in-btns="{{ noBuiltInBtns }}"
+    hide-on-confirm="{{ hideOnConfirm && !fullyStop }}"
+    hide-on-cancel="{{ hideOnCancel }}"
+    hide-on-close="{{ hideOnClose }}"
+    theme-type="{{ themeType }}"
+    bind:confirm="onConfirm"
+    bind:cancel="onCancel"
+    bind:close="onClose"
+  >
+    <!-- 顶部位置插槽 -->
+    <slot name="header" slot="header" />
+    <!-- content="我是正文内容我是正文内容我是正文内容" -->
+    <cube-picker
+      slot="picker"
+      wx:ref="picker"
+      list="{{ list }}"
+      selected-index="{{ selectedIndex }}"
+      immediate-change="{{ immediateChange }}"
+      indicator-style="{{ indicatorStyle }}"
+      theme-type="{{ themeType }}"
+      bind:change="onChange"
+      bind:columnChange="onColumnChange"
+      bind:pickstart="onPickstart"
+      bind:pickend="onPickend"
+    >
+      <slot name="pickerHeader" slot="header" />
+    </cube-picker>
+    <!-- 尾部位置插槽 -->
+    <slot name="footer" slot="footer" />
+  </cube-picker-modal-base>
+</template>
+
+<script src="./picker-modal.js"></script>
+
+<style lang="stylus"></style>
+
+
+
+<script type="application/json">
+  {
+    "styleIsolation": "shared",
+    "component": true,
+    "usingComponents": {
+      "cube-picker-modal-base": "./picker-modal-base.mpx",
+      "cube-picker": "../picker/index.mpx"
+    }
+  }
+</script>

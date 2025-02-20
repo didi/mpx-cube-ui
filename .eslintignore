@@ -5,7 +5,9 @@ dist
 # don't lint nyc coverage output
 coverage
 lib
+example/
 example
 scripts
 temp
 mock
+jest.config.js
