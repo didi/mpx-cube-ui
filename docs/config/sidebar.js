@@ -130,6 +130,10 @@ module.exports = [
           {
             title: 'Tip 提示',
             path: '/components/base/tip'
+          },
+          {
+            title: 'ActionSheet ',
+            path: '/components/base/action-sheet'
           }
         ]
       },

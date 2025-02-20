@@ -213,7 +213,7 @@ importers:
         version: 1.9.10(lodash@4.17.21)(prettier@2.8.8)
     devDependencies:
       '@mpxjs/extract-theme-var':
-        specifier: workspace:1.0.2
+        specifier: workspace:1.0.3
         version: link:../extract-theme-var
       '@mpxjs/vuese-markdown-render':
         specifier: ^1.0.0
