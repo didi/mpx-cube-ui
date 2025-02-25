@@ -96,7 +96,7 @@ createComponent({
     preventTouchMove(e: any) {
       e.preventDefault && e.preventDefault()
     },
-    async onMaskClick() {
+    onMaskClick() {
       // 点击遮罩
       this.triggerEvent(EVENT_MASK_CLICK)
       if (this.maskClosable) {
