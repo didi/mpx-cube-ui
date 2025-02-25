@@ -32,7 +32,7 @@
       class="cube-option-confirm-button"
       primary="{{ true }}"
       wx:class="{{ rnConfirmBtnClass }}"
-      customStyle="{{ _confirmBtn.customStyle }}"
+      custom-style="{{ _confirmBtn.customStyle }}"
       disabled="{{ _confirmBtn.disabled }}"
       lang@wx="{{ _confirmBtn.lang }}"
       session-from@wx="{{ _confirmBtn.sessionFrom }}"

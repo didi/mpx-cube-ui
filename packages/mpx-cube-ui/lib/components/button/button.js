@@ -143,6 +143,13 @@ createComponent({
         styleConfig: {
             type: Object,
             value: {}
+        },
+        /**
+         * @description 图标大小
+         */
+        iconSize: {
+            type: Number,
+            optionalTypes: [String]
         }
     },
     computed: {

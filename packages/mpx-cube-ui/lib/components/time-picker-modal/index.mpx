@@ -30,6 +30,7 @@
       min="{{ min }}"
       max="{{ max }}"
       immediate-change="{{ immediateChange }}"
+      indicator-style="{{ indicatorStyle }}"
       theme-type="{{ themeType }}"
       bind:columnChange="onColumnChange"
       bind:change="onChange"
