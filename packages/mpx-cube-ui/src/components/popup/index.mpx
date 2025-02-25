@@ -6,7 +6,7 @@
     style="z-index: {{ zIndex }}"
     catchtouchmove@wx|ali
   >
-    <view class="cube-popup-mask" wx:if="{{ mask }}" bindtouchend="onMaskClick">
+    <view class="cube-popup-mask" wx:if="{{ mask }}" bindtouchend="onMaskClick" wx:style="{{styleConfig.mask}}">
       <!-- 遮罩插槽 -->
       <slot name="mask"></slot>
     </view>
@@ -26,6 +26,7 @@
     <view
       class="cube-popup-mask"
       wx:if="{{ mask }}"
+      wx:style="{{styleConfig.mask}}"
       bindtouchmove="preventTouchMove"
       bindtouchend="onMaskClick">
       <!-- 遮罩插槽 -->
@@ -50,6 +51,7 @@
       <view
         class="cube-popup-mask"
         wx:if="{{ mask }}"
+        wx:style="{{styleConfig.mask}}"
         animation="{{ maskAnimationData }}"
         bindtouchend="onMaskClick">
         <slot name="mask"></slot>
