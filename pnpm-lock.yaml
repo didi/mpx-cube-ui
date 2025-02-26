@@ -234,7 +234,7 @@ importers:
         version: 1.9.10(@vue/compiler-sfc@3.4.21)(lodash@4.17.21)(prettier@2.8.8)(react@18.3.1)
     devDependencies:
       '@mpxjs/extract-theme-var':
-        specifier: workspace:1.1.3
+        specifier: workspace:*
         version: link:../extract-theme-var
       '@mpxjs/vuese-markdown-render':
         specifier: ^1.0.0
