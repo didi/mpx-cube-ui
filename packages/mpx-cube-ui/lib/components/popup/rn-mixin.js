@@ -14,7 +14,7 @@ if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
         computed: {
             contentInfo() {
                 return {
-                    height: this.styleConfig?.content?.height || this.contentRect.height
+                    height: this.styleConfig?.content?.height || this.contentRect.height || this.getWindowInfo().screenHeight
                 };
             }
         },
@@ -78,14 +78,24 @@ if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
             }
         },
         methods: {
+            getWindowInfo() {
+                if (this.windowInfo)
+                    return this.windowInfo;
+                return (this.windowInfo = mpx.getWindowInfo());
+            },
             initContentRect() {
                 if (this.styleConfig?.content?.height)
                     return;
-                if (this.contentRect.height)
+                if (this.contentRect.height || this.boundingClientRectFail)
                     return;
                 return new Promise((resolve) => {
                     this.$refs['popup-content'].boundingClientRect((res) => {
-                        this.contentRect = res;
+                        if (res) {
+                            this.contentRect = res;
+                        }
+                        else {
+                            this.boundingClientRectFail = true;
+                        }
                         resolve(res);
                     }).exec();
                 });
