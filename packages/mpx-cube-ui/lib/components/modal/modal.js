@@ -92,14 +92,14 @@ createModalComponent({
             this.triggerEvent(EVENT_CONFIRM);
         },
         onCancel() {
-            if (this.callbackHideModal) {
+            if (this.callbackHideModal && this.hideOnCancel) {
                 this.hide();
             }
             // 点击顶部/底部取消按钮触发事件
             this.triggerEvent(EVENT_CANCEL);
         },
         onClose() {
-            if (this.callbackHideModal) {
+            if (this.callbackHideModal && this.hideOnClose) {
                 this.hide();
             }
             // 点击顶部关闭icon或遮盖层触发事件
