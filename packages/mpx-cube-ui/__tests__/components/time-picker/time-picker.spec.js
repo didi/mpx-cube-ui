@@ -107,8 +107,8 @@ describe('component picker unit test', function () {
       expect(data.length).toBe(baseProps.day.len)
       expect(data[0].text).toBe(baseProps.day.filter[0])
       expect(data[1].text).toBe(baseProps.day.filter[1])
-      const date = new Date()
-      expect(data[2].text).toBe(`${date.getMonth() + 1}月份${date.getDate() + 2}号`)
+      const date = new Date(Date.now() + 24 * 60 * 60 * 1000 * 2)
+      expect(data[2].text).toBe(`${date.getMonth() + 1}月份${date.getDate()}号`)
     })
   })
   describe(' props:showNow check ', () => {
