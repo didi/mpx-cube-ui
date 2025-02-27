@@ -90,14 +90,19 @@ if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
         return (this.windowInfo = mpx.getWindowInfo())
       },
       initContentRect() {
-        if (this.styleConfig?.content?.height) return
-        if (this.contentRect.height || this.boundingClientRectFail) return
         return new Promise((resolve) => {
           this.$refs['popup-content'].boundingClientRect((res) => {
             if (res) {
               this.contentRect = res
             } else {
-              this.boundingClientRectFail = true
+              this.boundingClientRectFaill = this.boundingClientRectFaill || 0
+              this.boundingClientRectFaill++
+              if (this.boundingClientRectFaill <= 2) {
+                // 打开前获取一次，打开后获取一次；两次获取不到后不再获取
+                setTimeout(() => {
+                  this.initContentRect()
+                }, 500) // 500 确保动画结束后再次获取
+              }
             }
             resolve(res)
           }).exec()
@@ -106,7 +111,10 @@ if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
       async rnAnimation(
         animationOptions: WechatMiniprogram.StepOption = {}
       ) {
-        await this.initContentRect()
+        if (!this.styleConfig?.content?.height && !this.contentRect.height) {
+          await this.initContentRect()
+        }
+
         const names = [...Object.keys(this.rootClass).filter(v => this.rootClass[v]), this.transitionClass]
         if (!names.length) return
         names.forEach(v => {
