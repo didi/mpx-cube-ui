@@ -1,10 +1,10 @@
-import { createSelectComponent } from '../../common/helper/create-component'
+import { createSelectComponent as createComponent } from '../../common/helper/create-component'
 
 const EVENT_INPUT = 'input'
 // const EVENT_FOCUS = 'focus'
 // const EVENT_BLUR = 'blur'
 
-createSelectComponent({
+createComponent({
   computed: {
     radioLabelClass () {
       return {

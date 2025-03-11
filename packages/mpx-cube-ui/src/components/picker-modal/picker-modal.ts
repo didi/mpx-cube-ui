@@ -1,8 +1,8 @@
 import { PickerColumn } from '../../components/picker/picker'
 
-import { createPickerModalComponent } from '../../common/helper/create-component'
+import { createPickerModalComponent as createComponent } from '../../common/helper/create-component'
 
-createPickerModalComponent({
+createComponent({
   options: {
     multipleSlots: true
   },

@@ -1,9 +1,9 @@
-import { createPickerPopupBaseComponent } from '../../common/helper/create-component'
+import { createPickerPopupBaseComponent as createComponent } from '../../common/helper/create-component'
 
 const EVENT_CONFIRM = 'confirm'
 const EVENT_CANCEL = 'cancel'
 
-createPickerPopupBaseComponent({
+createComponent({
   options: {
     multipleSlots: true
   },

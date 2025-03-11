@@ -1,4 +1,4 @@
-import { createModalComponent } from '../../common/helper/create-component'
+import { createModalComponent as createComponent } from '../../common/helper/create-component'
 import { confirmButtonGroupMixin } from '../../common/mixins'
 
 const EVENT_CONFIRM = 'confirm'
@@ -10,7 +10,7 @@ enum ModalDirection {
   HORIZONTAL = 'horizontal'
 }
 
-createModalComponent({
+createComponent({
   options: {
     multipleSlots: true
   },

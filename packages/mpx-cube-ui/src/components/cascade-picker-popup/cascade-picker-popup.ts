@@ -1,9 +1,9 @@
 
 import { CascadePickerSubTree } from '../../components/cascade-picker/cascade-picker'
 
-import { createPickerPopupComponent } from '../../common/helper/create-component'
+import { createPickerPopupComponent as createComponent } from '../../common/helper/create-component'
 
-createPickerPopupComponent({
+createComponent({
   options: {
     multipleSlots: true
   },

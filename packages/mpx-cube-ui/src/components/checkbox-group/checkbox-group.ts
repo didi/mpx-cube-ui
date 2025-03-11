@@ -1,4 +1,4 @@
-import { createSelectComponent } from '../../common/helper/create-component'
+import { createSelectComponent as createComponent } from '../../common/helper/create-component'
 import { checkboxGroupMixin } from '../../common/mixins'
 import Checkbox from '../checkbox/index.mpx?resolve'
 import { isWeb } from '../../common/helper/utils'
@@ -9,7 +9,7 @@ const EVENT_CANCEL_CHECKED = 'cancelChecked'
 
 const groupClsPrefix = 'checkbox-group'
 
-createSelectComponent({
+createComponent({
   mixins: [checkboxGroupMixin],
   relations: {
     [Checkbox]: {
@@ -36,6 +36,7 @@ createSelectComponent({
     },
     checkboxStyle () {
       if (this.colNum > 1) return `flex: 0 0 ${this.colWidth}`
+      return ''
     },
     colWidth () {
       return this.colNum <= 1 ? '100%' : `${100 / this.colNum}%`

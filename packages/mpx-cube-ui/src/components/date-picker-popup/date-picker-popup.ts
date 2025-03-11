@@ -1,7 +1,7 @@
-import { createTimePickerPopupComponent } from '../../common/helper/create-component'
+import { createTimePickerPopupComponent as createComponent } from '../../common/helper/create-component'
 import { datePickerMixin } from '../../common/mixins'
 
-createTimePickerPopupComponent({
+createComponent({
   options: {
     multipleSlots: true
   },

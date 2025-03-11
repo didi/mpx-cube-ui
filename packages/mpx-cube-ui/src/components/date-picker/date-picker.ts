@@ -1,4 +1,4 @@
-import { createDatePickerComponent } from '../../common/helper/create-component'
+import { createDatePickerComponent as createComponent } from '../../common/helper/create-component'
 
 import { computeNatureMaxDay, formatType } from '../../common/lang/date'
 import {
@@ -60,7 +60,7 @@ function dateToArray(date: Date) {
   return [date.getFullYear(), date.getMonth() + 1, date.getDate(), date.getHours(), date.getMinutes(), date.getSeconds()] as const
 }
 
-createDatePickerComponent({
+createComponent({
   options: {
     multipleSlots: true
   },

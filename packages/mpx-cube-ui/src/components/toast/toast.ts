@@ -1,8 +1,8 @@
-import { createPopupComponent } from '../../common/helper/create-component'
+import { createPopupComponent as createComponent } from '../../common/helper/create-component'
 
 const EVENT_TIMEOUT = 'timeout'
 
-createPopupComponent({
+createComponent({
   properties: {
     /**
      * @description 图标类型（自动添加`cubeic-`前缀）
@@ -56,6 +56,8 @@ createPopupComponent({
           'cube-toast-tip-icon': !!this.icon
         }
       }
+
+      return ''
     }
   },
   methods: {

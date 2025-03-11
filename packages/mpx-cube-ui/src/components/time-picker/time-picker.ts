@@ -1,4 +1,4 @@
-import { createTimePickerComponent } from '../../common/helper/create-component'
+import { createTimePickerComponent as createComponent } from '../../common/helper/create-component'
 import {
   pad,
   formatDate,
@@ -52,7 +52,7 @@ interface DaysColumnItem {
   children: HoursColumnItem[]
 }
 
-createTimePickerComponent({
+createComponent({
   options: {
     multipleSlots: true
   },

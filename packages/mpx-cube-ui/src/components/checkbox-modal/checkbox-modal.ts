@@ -1,11 +1,11 @@
-import { createModalComponent } from '../../common/helper/create-component'
+import { createModalComponent as createComponent } from '../../common/helper/create-component'
 import { ExtendOption, Value } from '../../types/form-item'
 
 const EVENT_CONFIRM = 'confirm'
 const EVENT_CLOSE = 'close'
 const EVENT_CANCEL = 'cancel'
 
-createModalComponent({
+createComponent({
   options: {
     addGlobalClass: true
   },

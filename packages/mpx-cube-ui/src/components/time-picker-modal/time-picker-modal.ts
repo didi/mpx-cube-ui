@@ -1,7 +1,7 @@
-import { createTimePickerModalComponent } from '../../common/helper/create-component'
+import { createTimePickerModalComponent as createComponent } from '../../common/helper/create-component'
 import { timePickerMixin } from '../../common/mixins'
 
-createTimePickerModalComponent({
+createComponent({
   options: {
     multipleSlots: true
   },

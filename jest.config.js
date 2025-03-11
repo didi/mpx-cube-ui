@@ -5,12 +5,14 @@
 module.exports = {
   moduleFileExtensions: ['js', 'ts', 'mpx'],
   testEnvironment: 'jsdom',
-  collectCoverage: false,
+  collectCoverage: true,
+  coverageProvider: 'v8',
   testMatch: [
     '**/__tests__/**/*.spec.js'
-    // '**/__tests__/**/rate.spec.js'
   ],
-  collectCoverageFrom: ['/packages/mpx-cube-ui/src/components/**/*.{js,mpx,ts}'],
+  collectCoverageFrom: [
+    'packages/mpx-cube-ui/src/**/**/*.{js,mpx,ts}',
+  ],
   coverageDirectory: 'test/coverage',
   moduleNameMapper: {
     '^src/(.*)': '<rootDir>/packages/mpx-cube-ui/src/$1',
