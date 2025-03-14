@@ -42,7 +42,7 @@ if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
             if (!this.isVisible) {
               setTimeout(() => {
                 this.display = false
-              }, animationOptions.duration)
+              }, animationOptions.duration + 100)
             }
           },
           'move-up': (animationOptions) => {
