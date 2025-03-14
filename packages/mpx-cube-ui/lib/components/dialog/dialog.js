@@ -1,4 +1,4 @@
-import { createPopupComponent } from '../../common/helper/create-component';
+import { createPopupComponent as createComponent } from '../../common/helper/create-component';
 const EVENT_CONFIRM = 'confirm';
 const EVENT_CANCEL = 'cancel';
 const EVENT_CLOSE = 'close';
@@ -24,7 +24,7 @@ const parseBtn = (btn, defBtn) => {
 const btnClsPrefix = 'cube-dialog-btn';
 const btnsClsPrefix = 'cube-dialog-btns';
 const dialogMainClsPrefix = 'cube-dialog-main';
-createPopupComponent({
+createComponent({
     options: {
         multipleSlots: true
     },

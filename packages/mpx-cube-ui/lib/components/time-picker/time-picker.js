@@ -1,4 +1,4 @@
-import { createTimePickerComponent } from '../../common/helper/create-component';
+import { createTimePickerComponent as createComponent } from '../../common/helper/create-component';
 import { pad, formatDate, getZeroStamp, getDayDiff, DAY_TIMESTAMP, HOUR_TIMESTAMP, MINUTE_TIMESTAMP } from '../../common/lang/date';
 import { isNumber, isObject } from '../../common/helper/utils';
 import { warn } from '../../common/helper/debug';
@@ -14,7 +14,7 @@ const INT_RULE = {
     ceil: 'ceil',
     round: 'round'
 };
-createTimePickerComponent({
+createComponent({
     options: {
         multipleSlots: true
     },

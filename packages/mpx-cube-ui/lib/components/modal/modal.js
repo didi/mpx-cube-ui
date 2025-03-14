@@ -1,4 +1,4 @@
-import { createModalComponent } from '../../common/helper/create-component';
+import { createModalComponent as createComponent } from '../../common/helper/create-component';
 import { confirmButtonGroupMixin } from '../../common/mixins';
 const EVENT_CONFIRM = 'confirm';
 const EVENT_CANCEL = 'cancel'; // 配置cancelText时生效
@@ -8,7 +8,7 @@ var ModalDirection;
     ModalDirection["VERTICAL"] = "vertical";
     ModalDirection["HORIZONTAL"] = "horizontal";
 })(ModalDirection || (ModalDirection = {}));
-createModalComponent({
+createComponent({
     options: {
         multipleSlots: true
     },

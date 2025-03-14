@@ -1,8 +1,8 @@
-import { createPickerComponent } from '../../common/helper/create-component';
+import { createPickerComponent as createComponent } from '../../common/helper/create-component';
 import { findIndex, isNumber, isWeb } from '../../common/helper/utils';
 const EVENT_CHANGE = 'change';
 const EVENT_COLUMN_CHANGE = 'columnChange';
-createPickerComponent({
+createComponent({
     options: {
         multipleSlots: true
     },

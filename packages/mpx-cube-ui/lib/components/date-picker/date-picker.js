@@ -1,4 +1,4 @@
-import { createDatePickerComponent } from '../../common/helper/create-component';
+import { createDatePickerComponent as createComponent } from '../../common/helper/create-component';
 import { computeNatureMaxDay, formatType } from '../../common/lang/date';
 import { deepAssign, findIndex, isNumber, isArray, isDate } from '../../common/helper/utils';
 const EVENT_CHANGE = 'change';
@@ -37,7 +37,7 @@ const DEFAULT_FORMAT = {
 function dateToArray(date) {
     return [date.getFullYear(), date.getMonth() + 1, date.getDate(), date.getHours(), date.getMinutes(), date.getSeconds()];
 }
-createDatePickerComponent({
+createComponent({
     options: {
         multipleSlots: true
     },

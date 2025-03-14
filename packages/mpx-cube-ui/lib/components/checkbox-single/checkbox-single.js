@@ -1,6 +1,6 @@
-import { createSelectComponent } from '../../common/helper/create-component';
+import { createSelectComponent as createComponent } from '../../common/helper/create-component';
 const EVENT_INPUT = 'input';
-createSelectComponent({
+createComponent({
     properties: {
         /**
          * @description 双向绑定是否选中

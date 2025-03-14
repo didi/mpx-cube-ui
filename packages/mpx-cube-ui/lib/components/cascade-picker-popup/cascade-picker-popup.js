@@ -1,5 +1,5 @@
-import { createPickerPopupComponent } from '../../common/helper/create-component';
-createPickerPopupComponent({
+import { createPickerPopupComponent as createComponent } from '../../common/helper/create-component';
+createComponent({
     options: {
         multipleSlots: true
     },

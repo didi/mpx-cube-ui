@@ -1,8 +1,8 @@
-import { createOptionButtonsComponent } from '../../../common/helper/create-component';
+import { createOptionButtonsComponent as createComponent } from '../../../common/helper/create-component';
 import { defConfirmBtn, defCancelBtn, parseBtn } from '../../../common/helper/confirm-button-group';
 const EVENT_CONFIRM = 'confirm';
 const EVENT_CANCEL = 'cancel';
-createOptionButtonsComponent({
+createComponent({
     computed: {
         typeClass() {
             return this.isVertical ? 'cube-confirm-button-group_vertical' : '';

@@ -1,8 +1,8 @@
-import { createSelectComponent } from '../../common/helper/create-component';
+import { createSelectComponent as createComponent } from '../../common/helper/create-component';
 import { radioGroupMixin } from '../../common/mixins';
 const EVENT_INPUT = 'input';
 const groupClsPrefix = 'radio-group';
-createSelectComponent({
+createComponent({
     mixins: [radioGroupMixin],
     data() {
         return {
@@ -21,6 +21,7 @@ createSelectComponent({
         inlineColumnStyle() {
             if (this.colNum > 1)
                 return `flex: 0 0 ${this.colWidth}`;
+            return '';
         },
         colWidth() {
             return this.colNum <= 1 ? '100%' : `${100 / this.colNum}%`;

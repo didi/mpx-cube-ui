@@ -1,7 +1,7 @@
-import { createPickerModalBaseComponent } from '../../common/helper/create-component';
+import { createPickerModalBaseComponent as createComponent } from '../../common/helper/create-component';
 const EVENT_CONFIRM = 'confirm';
 const EVENT_CANCEL = 'cancel';
-createPickerModalBaseComponent({
+createComponent({
     options: {
         multipleSlots: true
     },

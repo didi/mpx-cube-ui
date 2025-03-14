@@ -1,7 +1,7 @@
-import { createSelectComponent } from '../../common/helper/create-component';
+import { createSelectComponent as createComponent } from '../../common/helper/create-component';
 import CheckboxGroup from '../checkbox-group/index.mpx?resolve';
 const EVENT_INPUT = 'input';
-createSelectComponent({
+createComponent({
     relations: {
         [CheckboxGroup]: {
             type: 'parent'

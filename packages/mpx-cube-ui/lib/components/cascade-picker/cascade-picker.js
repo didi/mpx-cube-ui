@@ -1,9 +1,9 @@
-import { createPickerComponent } from '../../common/helper/create-component';
+import { createPickerComponent as createComponent } from '../../common/helper/create-component';
 import { isUndef } from '../../common/helper/utils';
 const EVENT_CHANGE = 'change';
 const EVENT_COLUMN_CHANGE = 'columnChange';
 const EVENT_PENDING_CHANGE = 'pendingChange';
-createPickerComponent({
+createComponent({
     options: {
         multipleSlots: true
     },

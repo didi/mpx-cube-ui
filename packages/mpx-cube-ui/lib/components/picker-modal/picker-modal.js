@@ -1,5 +1,5 @@
-import { createPickerModalComponent } from '../../common/helper/create-component';
-createPickerModalComponent({
+import { createPickerModalComponent as createComponent } from '../../common/helper/create-component';
+createComponent({
     options: {
         multipleSlots: true
     },
