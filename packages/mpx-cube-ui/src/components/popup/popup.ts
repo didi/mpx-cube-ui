@@ -78,7 +78,7 @@ createComponent({
       }
       // eslint-disable-next-line
       // @ts-ignore
-      if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
+      if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android' || __mpx_mode__ === 'harmony') {
         cls[`cube-popup-${this.display ? 'show' : 'hide'}`] = true
       }
       return cls
