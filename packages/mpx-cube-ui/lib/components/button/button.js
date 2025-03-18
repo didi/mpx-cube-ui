@@ -170,7 +170,7 @@ createComponent({
             };
             // eslint-disable-next-line
             // @ts-ignore
-            if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
+            if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android' || __mpx_mode__ === 'harmony') {
                 if (this.active) {
                     res['cube-btn-primary_active'] = this.primary;
                     res['cube-btn-outline-primary_active'] = this.outline && this.primary;
