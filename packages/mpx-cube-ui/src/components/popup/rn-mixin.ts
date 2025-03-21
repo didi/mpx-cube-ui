@@ -38,6 +38,16 @@ if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
             }
             this.maskAnimationData = animation.export()
           },
+          'cube-popup_mask': (animationOptions) => {
+            if (this.maskFadeTransition) return
+            const animation = this.maskAnimation || (this.maskAnimation = mpx.createAnimation({ ...animationOptions, timingFunction: 'ease-in-out', duration: 0 }))
+            if (this.isVisible) {
+              animation.opacity(1).step()
+            } else {
+              animation.opacity(0).step()
+            }
+            this.maskAnimationData = animation.export()
+          },
           'cube-popup_transition': (animationOptions) => {
             if (!this.isVisible) {
               setTimeout(() => {
