@@ -23,7 +23,7 @@
         type="{{ icon }}"
         theme-type="{{ themeType }}"
       />
-      <view wx:show="{{ !txt }}" class="cube-toast-tip" wx:class="{{ tostTipClass }}">{{ txt }}</view>
+      <view wx:if="{{ txt }}" class="cube-toast-tip" wx:class="{{ tostTipClass }}">{{ txt }}</view>
     </view>
   </cube-popup>
 </template>
