@@ -4,7 +4,7 @@
     "newFeature": true,
     "urlCheck": true,
     "es6": false,
-    "postcss": true,
+    "postcss": false,
     "checkSiteMap": false,
     "minified": false,
     "autoAudits": false,
@@ -24,13 +24,13 @@
     },
     "packNpmManually": false,
     "packNpmRelationList": [],
-    "minifyWXSS": true,
+    "minifyWXSS": false,
     "showES6CompileOption": false,
     "disableUseStrict": false,
     "useStaticServer": true,
     "useCompilerPlugins": false,
-    "minifyWXML": true,
-    "ignoreUploadUnusedFiles": true
+    "minifyWXML": false,
+    "ignoreUploadUnusedFiles": false
   },
   "description": "项目配置文件，详见文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html",
   "condition": {
@@ -38,7 +38,7 @@
       "list": [
         {
           "name": "",
-          "pathName": "pages/collapse/index",
+          "pathName": "pages/dialog/index",
           "query": "",
           "launchMode": "default",
           "scene": null
@@ -50,11 +50,10 @@
     "tabIndent": "insertSpaces",
     "tabSize": 2
   },
-  "libVersion": "2.16.1",
+  "libVersion": "3.6.6",
   "packOptions": {
     "ignore": [],
     "include": []
   },
-  "appid": "wx603cbad725e536bf",
   "projectname": "wx"
 }

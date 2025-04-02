@@ -52,6 +52,7 @@ if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
             if (!this.isVisible) {
               setTimeout(() => {
                 this.display = false
+                // fix 玄学，不加 100ms ，drn 动画会非常卡
               }, animationOptions.duration + 100)
             }
           },
@@ -99,6 +100,8 @@ if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
         if (this.windowInfo) return this.windowInfo
         return (this.windowInfo = mpx.getWindowInfo())
       },
+      // @vuese
+      // 仅 rn 使用，当内容元素高度变化后调用。用于更新动画高度
       initContentRect() {
         return new Promise((resolve) => {
           this.$refs['popup-content'].boundingClientRect((res) => {

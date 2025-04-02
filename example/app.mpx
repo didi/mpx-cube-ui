@@ -52,6 +52,11 @@
   }
 </script>
 
+<!-- "renderer": "skyline",
+    "lazyCodeLoading": "requiredComponents",
+    "rendererOptions": { "skyline": { "defaultDisplayBlock": true } },
+    "componentFramework": "glass-easel" -->
+
 <!--也可以通过以下形式用js输出json，便于书写注释和使用条件编译-->
 
 <!--<script name="json">-->
