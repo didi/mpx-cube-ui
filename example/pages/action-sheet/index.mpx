@@ -4,7 +4,7 @@
 
 <script>
 import { createComponent } from '@mpxjs/core'
-
+console.log('update')
 createComponent({})
 </script>
 
