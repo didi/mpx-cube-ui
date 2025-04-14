@@ -32,10 +32,23 @@ if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android' || __mpx_mode__ === 'ha
                         }
                         this.maskAnimationData = animation.export();
                     },
+                    'cube-popup_mask': (animationOptions) => {
+                        if (this.maskFadeTransition)
+                            return;
+                        const animation = this.maskAnimation || (this.maskAnimation = mpx.createAnimation({ ...animationOptions, timingFunction: 'ease-in-out', duration: 0 }));
+                        if (this.isVisible) {
+                            animation.opacity(1).step();
+                        }
+                        else {
+                            animation.opacity(0).step();
+                        }
+                        this.maskAnimationData = animation.export();
+                    },
                     'cube-popup_transition': (animationOptions) => {
                         if (!this.isVisible) {
                             setTimeout(() => {
                                 this.display = false;
+                                // fix 玄学，不加 100ms ，drn 动画会非常卡
                             }, animationOptions.duration + 100);
                         }
                     },
@@ -83,6 +96,8 @@ if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android' || __mpx_mode__ === 'ha
                     return this.windowInfo;
                 return (this.windowInfo = mpx.getWindowInfo());
             },
+            // @vuese
+            // 仅 rn 使用，当内容元素高度变化后调用。用于更新动画高度
             initContentRect() {
                 return new Promise((resolve) => {
                     this.$refs['popup-content'].boundingClientRect((res) => {

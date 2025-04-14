@@ -11,7 +11,9 @@
   background-color $var(dialog-bgc)
 
   &-is-visible
-    animation $var(dialog-zoom-animation)
+    animation-name: $var(dialog-zoom-animation-name)
+    animation-duration: $var(dialog-zoom-animation-duration)
+    animation-timing-function: $var(dialog-zoom-animation-fn)
 
     @keyframes dialog-zoom
       0%
@@ -39,7 +41,10 @@
     overflow unset
 
   &-is-hide
-    animation $var(dialog-hide-animation)
+    animation-name: $var(dialog-hide-animation-name)
+    animation-duration: $var(dialog-hide-animation-duration)
+    animation-timing-function: $var(dialog-hide-animation-fn)
+    animation-fill-mode: $var(dialog-hide-animation-mode)
 
     @keyframes dialog-hide-animation
       0%

@@ -94,7 +94,9 @@ $dialog-head-icon-border-radius := $dialog-head-icon-border-top-left-radius $dia
 $dialog-head-icon-margin-top := -42.5px // head-icon 上边距
 
 // animation
-$dialog-zoom-animation := dialog-zoom .3s ease-in-out
+$dialog-zoom-animation-name := dialog-zoom
+$dialog-zoom-animation-duration := .3s
+$dialog-zoom-animation-fn := ease-in-out
 
 $dialog-zoom-transform-from := scale(0)
 $dialog-zoom-opacity-from := 1
@@ -108,4 +110,7 @@ $dialog-zoom-opacity-to := 1
 $dialog-zoom-hide-opacity-from := 1
 $dialog-zoom-hide-opacity-to := 0
 
-$dialog-hide-animation := dialog-hide-animation 0.3s cubic-bezier(0, 0, 0.07, 1.00) forwards
+$dialog-hide-animation-name := dialog-hide-animation
+$dialog-hide-animation-duration := .3s
+$dialog-hide-animation-fn := cubic-bezier(0, 0, 0.07, 1.00)
+$dialog-hide-animation-mode := forwards
