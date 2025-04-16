@@ -4,7 +4,11 @@
     bindtap="toggleSwitch"
     animation="{{ switchAnimationData }}"
   >
-    <view class="cube-switch-handle" wx:class="{{ {'cube-switch-handle-on': isOn }}}" animation="{{ switchHandleAnimationData }}"/>
+    <view
+      class="cube-switch-handle"
+      wx:class="{{ {'cube-switch-handle-on': isOn }}}"
+      animation="{{ switchHandleAnimationData }}"
+    />
   </view>
 </template>
 
