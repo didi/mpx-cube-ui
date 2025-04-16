@@ -1,6 +1,8 @@
 import { createComponent } from '../../common/helper/create-component'
+import rnMixin from './rn-mixin'
 
 createComponent({
+  mixins: [rnMixin],
   properties: {
     /**
      * @description 开关状态，可直接赋值
