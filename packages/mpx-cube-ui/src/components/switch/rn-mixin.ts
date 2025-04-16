@@ -19,16 +19,18 @@ if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
     lifetimes: {
       created() {
         this.ANIMATION_PRESET = {
-          'cube-switch-on': (animationOptions) => {
+          'cube-switch-BGC': (animationOptions) => {
             const animation = this.maskAnimation || (this.maskAnimation = mpx.createAnimation({ ...animationOptions }))
             if (this.isOn) {
-              animation.backgroundColor('#FF6435').step()
+              const onBGC = this.switchOnGBC || '#FF6435'
+              animation.backgroundColor(onBGC).step()
             } else {
-              animation.backgroundColor('#EAEAEA').step()
+              const defaultBGC = this.switchDefaultGBC || '#EAEAEA'
+              animation.backgroundColor(defaultBGC).step()
             }
             this.switchAnimationData = animation.export()
           },
-          'cube-switch-handle-on': (animationOptions) => {
+          'cube-switch-left': (animationOptions) => {
             const animation = this.maskAnimation || (this.maskAnimation = mpx.createAnimation({ ...animationOptions }))
             if (this.isOn) {
               animation.left(18).step()

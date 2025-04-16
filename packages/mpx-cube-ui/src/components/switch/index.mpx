@@ -3,6 +3,7 @@
     wx:class="{{ switchClass }}"
     bindtap="toggleSwitch"
     animation="{{ switchAnimationData }}"
+    wx:style="{{ swithBGClass }}"
   >
     <view
       class="cube-switch-handle"
