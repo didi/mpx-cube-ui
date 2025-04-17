@@ -107,12 +107,12 @@ createComponent({
       this.isVisible = true
       this.display = true
       this.visibleClass = 'show'
-      this.transitionClass = this.transition
+      this.transitionClass = this.transition ? `cube-popup-${this.transition}` : ''
     },
     hide() {
       this.isVisible = false
       this.visibleClass = 'hide'
-      this.transitionClass = this.transition
+      this.transitionClass = this.transition ? `cube-popup-${this.transition}` : ''
     }
   }
 })

@@ -69,6 +69,19 @@ if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
                     'move-right': () => { },
                     'move-left': () => { },
                     'move-down': () => { },
+                    'move-center': (animationOptions) => {
+                        const animation = this.animation || (this.animation = mpx.createAnimation(animationOptions));
+                        if (this.isVisible) {
+                            animation.opacity(1).step({ duration: 0 });
+                            animation.scale(0).step({ duration: 0 });
+                            animation.scale(1.1).step({ duration: animationOptions.duration / 2 });
+                            animation.scale(1).step({ duration: animationOptions.duration / 2 });
+                        }
+                        else {
+                            animation.opacity(0).step();
+                        }
+                        this.animationData = animation.export();
+                    },
                     fade: (animationOption) => {
                         const animation = this.animation || (this.animation = mpx.createAnimation(animationOption));
                         if (this.isVisible) {
@@ -122,7 +135,7 @@ if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
                 if (!this.styleConfig?.content?.height && !this.contentRect.height) {
                     await this.initContentRect();
                 }
-                const names = [...Object.keys(this.rootClass).filter(v => this.rootClass[v]), this.transitionClass];
+                const names = [...Object.keys(this.rootClass).filter(v => this.rootClass[v]), this.transition];
                 if (!names.length)
                     return;
                 names.forEach(v => {

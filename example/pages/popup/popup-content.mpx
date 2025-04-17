@@ -5,7 +5,10 @@
       wx:ref="popup"
       maskClosable="{{ true }}"
       content="<i style='color:#fc9153'>Hello World</i>"
-      class="cube-extend-popup">
+      class="cube-extend-popup"
+      maskFadeTransition="{{ true }}"
+      transition="move-center"
+    >
     </cube-popup>
   </view>
 </template>
