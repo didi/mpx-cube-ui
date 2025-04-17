@@ -1,6 +1,8 @@
 import { createComponent } from '../../common/helper/create-component'
+import rnMixin from './rn-mixin'
 
 createComponent({
+  mixins: [rnMixin],
   properties: {
     /**
      * @description 开关状态，可直接赋值
@@ -9,6 +11,14 @@ createComponent({
     value: {
       type: Boolean,
       value: false
+    },
+    switchDefaultGBC: {
+      type: String,
+      value: ''
+    },
+    switchOnGBC: {
+      type: String,
+      value: ''
     },
     /**
      * @description 是否禁用
@@ -28,6 +38,22 @@ createComponent({
         'cube-switch': true,
         'cube-switch-on': this.isOn,
         [`cube-switch-${this.themeType}`]: this.themeType
+      }
+    },
+    swithBGClass() {
+      if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
+        return {}
+      }
+      if (this.isOn && this.switchOnGBC) {
+        return {
+          backgroundColor: this.switchOnGBC
+        }
+      } else if (!this.isOn && this.switchDefaultGBC) {
+        return {
+          backgroundColor: this.switchDefaultGBC
+        }
+      } else {
+        return {}
       }
     }
   },
