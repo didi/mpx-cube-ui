@@ -1,6 +1,6 @@
 <template>
   <button
-    hover-class="none"
+    hover-class@wx|ali|web|android="none"
     wx:class="{{ btnClass }}"
     wx:style="{{ styleConfig.btn }}"
     lang@wx="{{ lang }}"
@@ -36,7 +36,7 @@
       wx:if="{{ icon }}"
       type="{{ icon }}"
     />
-    <view class="cube-btn-content" wx:style="{{ styleConfig.content }}">
+    <view class="cube-btn-content" wx:class="{{ contentClass }}" wx:style="{{ styleConfig.content }}">
       <slot />
     </view>
     <view class="cube-btn-tip" wx:if="{{ tip }}">
