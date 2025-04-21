@@ -47,8 +47,8 @@ if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
         },
         methods: {
             async rnAnimation(animationOptions = {}) {
-                this.ANIMATION_PRESET['cube-switch-on'](animationOptions);
-                this.ANIMATION_PRESET['cube-switch-handle-on'](animationOptions);
+                this.ANIMATION_PRESET['cube-switch-BGC'](animationOptions);
+                this.ANIMATION_PRESET['cube-switch-left'](animationOptions);
             }
         }
     };
