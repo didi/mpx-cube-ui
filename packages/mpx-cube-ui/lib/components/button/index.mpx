@@ -1,6 +1,6 @@
 <template>
   <button
-    hover-class="none"
+    hover-class@wx|ali|web|android="none"
     wx:class="{{ btnClass }}"
     wx:style="{{ styleConfig.btn }}"
     lang@wx="{{ lang }}"
