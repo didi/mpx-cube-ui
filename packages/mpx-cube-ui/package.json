@@ -1,6 +1,6 @@
 {
   "name": "@mpxjs/mpx-cube-ui",
-  "version": "1.1.15-rn.3",
+  "version": "1.1.17-beta.2",
   "description": "mpx components library",
   "author": "xiaolei <xiaolei@didichuxing.com>",
   "publishConfig": {
