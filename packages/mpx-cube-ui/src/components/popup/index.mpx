@@ -4,7 +4,6 @@
     wx:if="{{removeCatchTouch}}"
     wx:class="{{ [themeType ? 'cube-popup cube-popup-'+themeType : 'cube-popup', rootClass, visibleClass] }}"
     style="z-index: {{ zIndex }}"
-    catchtouchmove@wx|ali
   >
     <view class="cube-popup-mask" wx:if="{{ mask }}" bindtouchend="onMaskClick" wx:style="{{styleConfig.mask}}">
       <!-- 遮罩插槽 -->
@@ -21,6 +20,7 @@
     wx:else
     wx:class="{{ [themeType ? 'cube-popup cube-popup-'+themeType : 'cube-popup', rootClass, visibleClass] }}"
     style="z-index: {{ zIndex }}"
+    catchtouchmove@wx|ali
   >
     <view
       class="cube-popup-mask"
