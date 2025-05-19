@@ -1,6 +1,11 @@
 import mpx, { getMixin } from '@mpxjs/core'
 
-let mixin = {} as Parameters<typeof getMixin>[0]
+let mixin = {
+  methods: {
+    // 避免web 调用报错
+    initContentRect() { return Promise.resolve() }
+  }
+} as Parameters<typeof getMixin>[0]
 // eslint-disable-next-line
 // @ts-ignore
 if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
