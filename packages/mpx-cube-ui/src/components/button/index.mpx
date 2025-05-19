@@ -36,11 +36,11 @@
       wx:if="{{ icon }}"
       type="{{ icon }}"
     />
-    <view class="cube-btn-content" wx:class="{{ contentClass }}" wx:style="{{ styleConfig.content }}">
+    <view class="cube-btn-content" numberOfLines="{{ 1 }}" wx:class="{{ contentClass }}" wx:style="{{ styleConfig.content }}">
       <slot />
     </view>
     <view class="cube-btn-tip" wx:if="{{ tip }}">
-      <text class="cube-btn-tip-text">{{tip}}</text>
+      <text class="cube-btn-tip-text" numberOfLines="{{ 1 }}">{{tip}}</text>
     </view>
     <slot name="tip" />
   </button>

@@ -62,6 +62,7 @@ btn_active('', $var(btn-bgc_active), $var(btn-border-color_active), $var(btn-col
   max-width 100%
   font-size $var(btn-font-size)
   font-weight $var(btn-font-weight)
+  justify-content: center
   text-align center
   color $var(btn-color)
 
@@ -73,12 +74,13 @@ btn_active('', $var(btn-bgc_active), $var(btn-border-color_active), $var(btn-col
   font-weight $var(btn-tip-weight)
   color $var(btn-tip-color)
   flex-wrap nowrap
+  text-align center
 
 .cube-btn-inline
   display flex
   width auto
   padding-all($var(btn-inline-padding-top), $var(btn-inline-padding-right), $var(btn-inline-padding-bottom), $var(btn-inline-padding-left))
-  align-items center
+  justify-content center
   line-height $var(btn-inline-line-height)
 .cube-btn-content-inline
   font-size $var(btn-inline-font-size)
