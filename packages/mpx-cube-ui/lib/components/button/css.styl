@@ -55,6 +55,10 @@ border-color($border-color)
 .cube-btn-content
   display inline-block
   max-width 100%
+  overflow hidden
+  white-space nowrap
+  text-overflow ellipsis
+  vertical-align: bottom // 幽灵元素
 .cube-btn-tip
   margin-top $var(btn-tip-margin-top)
 .cube-btn-tip-text

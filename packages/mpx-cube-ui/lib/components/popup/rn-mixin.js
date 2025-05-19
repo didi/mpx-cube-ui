@@ -1,5 +1,10 @@
 import mpx, { getMixin } from '@mpxjs/core';
-let mixin = {};
+let mixin = {
+    methods: {
+        // 避免web 调用报错
+        initContentRect() { return Promise.resolve(); }
+    }
+};
 // eslint-disable-next-line
 // @ts-ignore
 if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
