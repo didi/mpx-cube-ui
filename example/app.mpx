@@ -1,5 +1,6 @@
 <script lang="ts" src="./app.ts"></script>
 
+<!-- test diff -->
 <style lang="stylus">
 .page
   height 100%

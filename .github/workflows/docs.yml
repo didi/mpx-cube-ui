@@ -3,7 +3,7 @@ name: docs
 on:
   push:
     branches:
-      - main
+      - fix-action
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -17,6 +17,17 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '18'
+
+        # ss2
+      - name: git diff
+        run: |
+          echo diffaaasdasd
+          echo "$GIT_DIFF"
+
+      - name : is has diff
+        if: env.GIT_DIFF == ''
+        run: echo "no diff"
+
       - uses: pnpm/action-setup@v2
         if: env.GIT_DIFF
         with:
