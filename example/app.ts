@@ -20,6 +20,7 @@ configProvider({
 // app.js
 createApp({})
 
+console.log(123123)
 if (isIframe) {
   let prevPath = ''
   const handleMessage = (e) => {
