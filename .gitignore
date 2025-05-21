@@ -9,4 +9,4 @@ dist/
 test/coverage
 .cache
 packages/website-build/lib/
-docs/components
+.secrets
