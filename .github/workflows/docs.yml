@@ -17,20 +17,15 @@ jobs:
             docs-vuepress/**/*
             example/**/*
 
-      - name: 设置 GIT_DIFF 环境变量
-        run:  |
-          echo "GIT_DIFF=${{ steps.diff.outputs.diff }}" >> $GITHUB_ENV
-          echo 'jjjhjjzcc,  ${{ toJSON(steps.diff.outputs.diff) }}'
-
       - uses: actions/setup-node@v1
         with:
           node-version: '18'
 
       - name: 输出 GIT_DIFF 环境变量
         run: |
-          echo "GIT_DIFF=$GIT_DIFF"
           echo "Output diff from action:"
           echo "${{ steps.diff.outputs.diff }}"
+          echo 'jjjhjjzcc,  ${{ toJSON(steps.diff.outputs.diff) }}'
 
         # ss2
       - name: git diff
