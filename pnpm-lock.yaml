@@ -138,14 +138,14 @@ importers:
         specifier: ^2.9.70
         version: 2.10.2(@mpxjs/api-proxy@2.10.2)(@mpxjs/store@2.10.2)(react-native-reanimated@3.15.3(@babel/core@7.26.10)(react-native@0.75.2(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(react@18.3.1)(typescript@4.9.5))(react@18.3.1))(react-native@0.75.2(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(react@18.3.1)(typescript@4.9.5))(react@18.3.1)(vue-demi@0.14.10(vue@2.7.16))(vue-i18n-bridge@9.14.1(vue@2.7.16))(vue-i18n@8.28.2(vue@2.7.16))(vue@2.7.16)
       '@mpxjs/mpx-cli-service':
-        specifier: ^2.1.22
-        version: 2.1.26(@vue/compiler-sfc@3.5.13)(hogan.js@3.0.2)(lodash@4.17.21)(react@18.3.1)(stylus-loader@6.2.0(stylus@0.55.0)(webpack@5.98.0))(vue-template-compiler@2.7.16)(vue@2.7.16)(webpack-sources@3.2.3)
+        specifier: ^2.1.32
+        version: 2.1.32(@vue/compiler-sfc@3.5.13)(hogan.js@3.0.2)(lodash@4.17.21)(react@18.3.1)(stylus-loader@6.2.0(stylus@0.55.0)(webpack@5.98.0))(vue-template-compiler@2.7.16)(vue@2.7.16)(webpack-sources@3.2.3)
       '@mpxjs/store':
         specifier: ^2.9.70
         version: 2.10.2(@mpxjs/core@2.10.2)
       '@mpxjs/vue-cli-plugin-mpx':
-        specifier: ^2.1.22
-        version: 2.1.26(@babel/core@7.26.10)(@mpxjs/webpack-plugin@2.10.2(@mpxjs/core@2.10.2)(webpack@5.98.0))(@vue/compiler-sfc@3.5.13)(css-loader@6.11.0(webpack@5.98.0))(hogan.js@3.0.2)(lodash@4.17.21)(react@18.3.1)(stylus-loader@6.2.0(stylus@0.55.0)(webpack@5.98.0))(vue-template-compiler@2.7.16)(webpack@5.98.0)
+        specifier: ^2.1.32
+        version: 2.1.32(@babel/core@7.26.10)(@mpxjs/webpack-plugin@2.10.2(@mpxjs/core@2.10.2)(webpack@5.98.0))(@vue/compiler-sfc@3.5.13)(css-loader@6.11.0(webpack@5.98.0))(hogan.js@3.0.2)(lodash@4.17.21)(react@18.3.1)(stylus-loader@6.2.0(stylus@0.55.0)(webpack@5.98.0))(vue-template-compiler@2.7.16)(webpack@5.98.0)
       '@mpxjs/vue-cli-plugin-mpx-theme':
         specifier: 2.0.0-beta.2
         version: 2.0.0-beta.2(postcss@8.5.3)
@@ -1311,8 +1311,8 @@ packages:
   '@mpxjs/babel-plugin-inject-page-events@2.9.5':
     resolution: {integrity: sha512-+ENc4p2+4f4AUTMF0AVqXEKear4y5oyt+945s1uPvywDXCkcVPR6y01kBCprGM6gvB55TWHAjCeD+kmFDRzFkw==}
 
-  '@mpxjs/cli-shared-utils@2.1.26':
-    resolution: {integrity: sha512-avTZdh9alDS+P/FVS9mTJPY2tcsLEn6lgzIEnApA6ak2vkdLchcuBF5n+JRffOcIm7MPnWP/LHlt8zOiGMPN/A==}
+  '@mpxjs/cli-shared-utils@2.1.32':
+    resolution: {integrity: sha512-64mCOg/CIWQmGzYtoK9NEgN1AA+8C3gAldt0J7HL6SFrppMF2S8lTR/D5ckwf/TIs/Ez79Y6iem8r8bDRYtw5A==}
     engines: {node: '>=8'}
 
   '@mpxjs/core@2.10.2':
@@ -1384,8 +1384,8 @@ packages:
   '@mpxjs/miniprogram-simulate@1.4.17':
     resolution: {integrity: sha512-LYbdmW27Vx/FJ8SY8+sS99kCrCjwO6hg9nj+BS2b3BBgu/srvjl75yB0/omf4TMXcm0IjL6GZsuiP6WvjvPfFQ==}
 
-  '@mpxjs/mpx-cli-service@2.1.26':
-    resolution: {integrity: sha512-5f3+qJQOEGUREOhTkXIvk+6iMJULkBQZlsvRTarw/kIbU79WIrLQgvW3aZhPAbBwbrMMPNlWthAyLz22XWagZg==}
+  '@mpxjs/mpx-cli-service@2.1.32':
+    resolution: {integrity: sha512-RZ3Av7wb+rlEULFeIT7Zk3NlCowB6X/Hm/u1JU5L3yPjVXgBN1p3AxnaZqsTSX3yipqzoxhiWOgNsTNG+sGPhg==}
     engines: {node: '>=8'}
     hasBin: true
 
@@ -1413,8 +1413,8 @@ packages:
   '@mpxjs/vue-cli-plugin-mpx-typescript@2.1.26':
     resolution: {integrity: sha512-JExWOKGu8iI3+05nG7GbX1iEOXp5LTCA/ko10JSfA1kL3SinVrnMQtcEhgFXP5/xUmmW9SylCjEIq1C5jJ339A==}
 
-  '@mpxjs/vue-cli-plugin-mpx@2.1.26':
-    resolution: {integrity: sha512-itym/oZhj7cZ5qRQOB82bg6/IjWg1BuuCfogWaTnpXgyiTEacj7wCXylslRleGe3a0M6smxl4FIaMTkZeJ842Q==}
+  '@mpxjs/vue-cli-plugin-mpx@2.1.32':
+    resolution: {integrity: sha512-uUObNPQa4q7UHGAqgT7G//uZE1nQoQy3snSH08djyMYS26+35SYGCZCPkKiUfC2JfU6S+Dr5rNzuloNwnlRdvA==}
     peerDependencies:
       '@mpxjs/webpack-plugin': ^2.7.0
       less-loader: '*'
@@ -11517,7 +11517,7 @@ snapshots:
 
   '@mpxjs/babel-plugin-inject-page-events@2.9.5': {}
 
-  '@mpxjs/cli-shared-utils@2.1.26':
+  '@mpxjs/cli-shared-utils@2.1.32':
     dependencies:
       execa: 5.1.1
 
@@ -11573,9 +11573,9 @@ snapshots:
       miniprogram-compiler: 0.2.3
       postcss: 7.0.39
 
-  '@mpxjs/mpx-cli-service@2.1.26(@vue/compiler-sfc@3.5.13)(hogan.js@3.0.2)(lodash@4.17.21)(react@18.3.1)(stylus-loader@6.2.0(stylus@0.55.0)(webpack@5.98.0))(vue-template-compiler@2.7.16)(vue@2.7.16)(webpack-sources@3.2.3)':
+  '@mpxjs/mpx-cli-service@2.1.32(@vue/compiler-sfc@3.5.13)(hogan.js@3.0.2)(lodash@4.17.21)(react@18.3.1)(stylus-loader@6.2.0(stylus@0.55.0)(webpack@5.98.0))(vue-template-compiler@2.7.16)(vue@2.7.16)(webpack-sources@3.2.3)':
     dependencies:
-      '@mpxjs/cli-shared-utils': 2.1.26
+      '@mpxjs/cli-shared-utils': 2.1.32
       '@vue/cli-service': 5.0.8(@vue/compiler-sfc@3.5.13)(hogan.js@3.0.2)(lodash@4.17.21)(react@18.3.1)(stylus-loader@6.2.0(stylus@0.55.0)(webpack@5.98.0))(vue-template-compiler@2.7.16)(vue@2.7.16)(webpack-sources@3.2.3)
       '@vue/cli-shared-utils': 5.0.8
       minimist: 1.2.8
@@ -11699,9 +11699,9 @@ snapshots:
       - typescript
       - webpack
 
-  '@mpxjs/vue-cli-plugin-mpx@2.1.26(@babel/core@7.26.10)(@mpxjs/webpack-plugin@2.10.2(@mpxjs/core@2.10.2)(webpack@5.98.0))(@vue/compiler-sfc@3.5.13)(css-loader@6.11.0(webpack@5.98.0))(hogan.js@3.0.2)(lodash@4.17.21)(react@18.3.1)(stylus-loader@6.2.0(stylus@0.55.0)(webpack@5.98.0))(vue-template-compiler@2.7.16)(webpack@5.98.0)':
+  '@mpxjs/vue-cli-plugin-mpx@2.1.32(@babel/core@7.26.10)(@mpxjs/webpack-plugin@2.10.2(@mpxjs/core@2.10.2)(webpack@5.98.0))(@vue/compiler-sfc@3.5.13)(css-loader@6.11.0(webpack@5.98.0))(hogan.js@3.0.2)(lodash@4.17.21)(react@18.3.1)(stylus-loader@6.2.0(stylus@0.55.0)(webpack@5.98.0))(vue-template-compiler@2.7.16)(webpack@5.98.0)':
     dependencies:
-      '@mpxjs/cli-shared-utils': 2.1.26
+      '@mpxjs/cli-shared-utils': 2.1.32
       '@mpxjs/webpack-plugin': 2.10.2(@mpxjs/core@2.10.2)(webpack@5.98.0)
       '@soda/friendly-errors-webpack-plugin': 1.8.1(webpack@5.98.0)
       '@vue/cli-shared-utils': 5.0.8
