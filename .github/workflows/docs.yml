@@ -45,12 +45,3 @@ jobs:
       - name : is has diff
         if: env.GIT_DIFF
         run: echo "has diff"
-
-      - uses: pnpm/action-setup@v2
-        if: env.GIT_DIFF
-        with:
-          version: 9
-          run_install: |
-            - recursive: true
-              args: [--frozen-lockfile, --strict-peer-dependencies]
-
