@@ -18,7 +18,7 @@ configProvider({
 })
 
 // app.js
-// 触发 main 分支 docs 更新
+// 触发 main 分支 docs 更新 1
 createApp({})
 
 if (isIframe) {
