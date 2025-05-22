@@ -289,7 +289,7 @@ Modal 组件按结构进行拆分，分别提供了包括 顶部、标题、内�
 |<span id="modal-body-padding-left" class="css-var-name">$modal-body-padding-left</span>|<div>25px</div>|左内边距|
 |<span id="modal-header-default-height" class="css-var-name">$modal-header-default-height</span>|<div>35px</div>|header区域高度|
 |<span id="modal-title-font-size" class="css-var-name">$modal-title-font-size</span>|<div><RouterLink to="/guide/design-tokens.html#font-size-3xl" v-slot="{href}"> <a :href="href">$var(font-size-3xl)</a> </RouterLink></div>|标题字号|
-|<span id="modal-title-line-height" class="css-var-name">$modal-title-line-height</span>|<div>133%</div>|-|
+|<span id="modal-title-line-height" class="css-var-name">$modal-title-line-height</span>|<div>1.33</div>|标题行高|
 |<span id="modal-title-color" class="css-var-name">$modal-title-color</span>|<div><RouterLink to="/guide/design-tokens.html#color-black" v-slot="{href}"> <a :href="href">$var(color-black)</a> </RouterLink></div>|标题颜色|
 |<span id="modal-title-margin-bottom" class="css-var-name">$modal-title-margin-bottom</span>|<div>12px</div>|标题下边距|
 |<span id="modal-title-default-font-weight" class="css-var-name">$modal-title-default-font-weight</span>|<div>500</div>|标题字重|
@@ -303,7 +303,7 @@ Modal 组件按结构进行拆分，分别提供了包括 顶部、标题、内�
 |<span id="modal-close-icon-font-size" class="css-var-name">$modal-close-icon-font-size</span>|<div><RouterLink to="/guide/design-tokens.html#font-size-xl" v-slot="{href}"> <a :href="href">$var(font-size-xl)</a> </RouterLink></div>|关闭icon字号|
 |<span id="modal-close-icon-color" class="css-var-name">$modal-close-icon-color</span>|<div><RouterLink to="/guide/design-tokens.html#color-black" v-slot="{href}"> <a :href="href">$var(color-black)</a> </RouterLink></div>|关闭icon颜色|
 |<span id="modal-close-icon-font-weight" class="css-var-name">$modal-close-icon-font-weight</span>|<div>700</div>|关闭icon字重|
-|<span id="modal-content-line-height" class="css-var-name">$modal-content-line-height</span>|<div>120%</div>|-|
+|<span id="modal-content-line-height" class="css-var-name">$modal-content-line-height</span>|<div>1.2</div>|内容区行高|
 |<span id="modal-content-font-size" class="css-var-name">$modal-content-font-size</span>|<div><RouterLink to="/guide/design-tokens.html#font-size-xl" v-slot="{href}"> <a :href="href">$var(font-size-xl)</a> </RouterLink></div>|内容区字号|
 |<span id="modal-content-color" class="css-var-name">$modal-content-color</span>|<div><RouterLink to="/guide/design-tokens.html#text-color" v-slot="{href}"> <a :href="href">$var(text-color)</a> </RouterLink></div>|内容区颜色|
 |<span id="modal-button-group-margin-top" class="css-var-name">$modal-button-group-margin-top</span>|<div>35px</div>|按钮顶部外边距|
