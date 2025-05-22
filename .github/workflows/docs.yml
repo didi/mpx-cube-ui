@@ -19,8 +19,8 @@ jobs:
 
       - name: 设置 GIT_DIFF 环境变量
         run:  |
-          echo "GIT_DIFF=${{ steps.diff.outputs }}" >> $GITHUB_ENV
-          echo 'jjjhjjzcc,  ${{ toJSON(steps.diff.outputs) }}'
+          echo "GIT_DIFF=${{ steps.diff.outputs.diff }}" >> $GITHUB_ENV
+          echo 'jjjhjjzcc,  ${{ toJSON(steps.diff.outputs.diff) }}'
 
       - uses: actions/setup-node@v1
         with:
