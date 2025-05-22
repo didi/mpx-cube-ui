@@ -10,11 +10,18 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: technote-space/get-diff-action@v4
+        id: diff
         with:
           PATTERNS: |
             docs/**/*
             docs-vuepress/**/*
             example/**/*
+
+      - name: 设置 GIT_DIFF 环境变量
+        run:  |
+          echo "GIT_DIFF=${{ steps.diff.outputs }}" >> $GITHUB_ENV
+          echo 'jjjhjjzcc,  ${{ toJSON(steps.diff.outputs) }}'
+
       - uses: actions/setup-node@v1
         with:
           node-version: '18'
@@ -47,21 +54,3 @@ jobs:
             - recursive: true
               args: [--frozen-lockfile, --strict-peer-dependencies]
 
-      # vuepress生成最终文档
-      - name: generate docs file
-        if: env.GIT_DIFF
-        run: |
-          pnpm run docs:prod
-
-      # 使用 https://github.com/appleboy/scp-action 进行部署，注意 strip_components 用于控制层级
-      - name: Deploy to self-host server
-        if: env.GIT_DIFF
-        uses: appleboy/scp-action@master
-        with:
-          host: ${{ secrets.DOCS_SERVER_HOST }}
-          username: ${{ secrets.DOCS_SERVER_USER }}
-          key: ${{ secrets.DOCS_SERVER_KEY }}
-          command_timeout: "20m"
-          source: "./docs/.vuepress/dist/"
-          strip_components: 4
-          target: "${{ secrets.DOCS_SERVER_DIR }}"
