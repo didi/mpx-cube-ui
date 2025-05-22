@@ -21,6 +21,7 @@ configProvider({
 createApp({})
 
 if (isIframe) {
+  // iframe
   let prevPath = ''
   const handleMessage = (e) => {
     const { to } = (typeof e.data === 'object' ? e.data : {}) as any
