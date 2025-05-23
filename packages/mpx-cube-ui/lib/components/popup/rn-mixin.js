@@ -18,8 +18,10 @@ if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
         },
         computed: {
             contentInfo() {
+                const styleConfigContent = this.styleConfig?.content || {};
                 return {
-                    height: this.styleConfig?.content?.height || this.contentRect.height || this.getWindowInfo().screenHeight
+                    width: styleConfigContent.width || this.contentRect.width || this.getWindowInfo().screenWidth,
+                    height: styleConfigContent.height || this.contentRect.height || this.getWindowInfo().screenHeight
                 };
             }
         },
@@ -28,25 +30,16 @@ if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
                 this.ANIMATION_PRESET = {
                     'cube-popup_mask_fade_transition': (animationOptions) => {
                         const animation = this.maskAnimation || (this.maskAnimation = mpx.createAnimation({ ...animationOptions, timingFunction: 'ease-in-out' }));
-                        if (this.isVisible) {
-                            const opacity = this.styleConfig?.mask?.visibleOpacity || 0.4;
-                            animation.opacity(opacity).step();
-                        }
-                        else {
-                            animation.opacity(0).step();
-                        }
+                        const opacity = this.isVisible ? (this.styleConfig?.mask?.visibleOpacity || 0.4) : 0;
+                        animation.opacity(opacity).step();
                         this.maskAnimationData = animation.export();
                     },
                     'cube-popup_mask': (animationOptions) => {
                         if (this.maskFadeTransition)
                             return;
                         const animation = this.maskAnimation || (this.maskAnimation = mpx.createAnimation({ ...animationOptions, timingFunction: 'ease-in-out', duration: 0 }));
-                        if (this.isVisible) {
-                            animation.opacity(1).step();
-                        }
-                        else {
-                            animation.opacity(0).step();
-                        }
+                        const opacity = this.isVisible ? 1 : 0;
+                        animation.opacity(opacity).step();
                         this.maskAnimationData = animation.export();
                     },
                     'cube-popup_transition': (animationOptions) => {
@@ -57,23 +50,6 @@ if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
                             }, animationOptions.duration + 100);
                         }
                     },
-                    'move-up': (animationOptions) => {
-                        const hasTranslate = !!this.animation;
-                        const animation = this.animation || (this.animation = mpx.createAnimation(animationOptions));
-                        if (this.isVisible) {
-                            if (!hasTranslate) {
-                                animation.translateY(this.contentInfo.height).step({ duration: 0 });
-                            }
-                            animation.translateY(0).step();
-                        }
-                        else {
-                            animation.translateY(this.contentInfo.height).step();
-                        }
-                        this.animationData = animation.export();
-                    },
-                    'move-right': () => { },
-                    'move-left': () => { },
-                    'move-down': () => { },
                     'move-center': (animationOptions) => {
                         const animation = this.animation || (this.animation = mpx.createAnimation(animationOptions));
                         if (this.isVisible) {
@@ -87,14 +63,14 @@ if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
                         }
                         this.animationData = animation.export();
                     },
+                    'move-up': (animationOptions) => this.translateAnimation(animationOptions, 'Y', this.contentInfo.height),
+                    'move-right': (animationOptions) => this.translateAnimation(animationOptions, 'X', -this.contentInfo.width),
+                    'move-left': (animationOptions) => this.translateAnimation(animationOptions, 'X', this.contentInfo.width),
+                    'move-down': (animationOptions) => this.translateAnimation(animationOptions, 'Y', -this.contentInfo.height),
                     fade: (animationOption) => {
                         const animation = this.animation || (this.animation = mpx.createAnimation(animationOption));
-                        if (this.isVisible) {
-                            animation.opacity(1).step();
-                        }
-                        else {
-                            animation.opacity(0).step();
-                        }
+                        const opacity = this.isVisible ? 1 : 0;
+                        animation.opacity(opacity).step();
                         this.animationData = animation.export();
                     }
                 };
@@ -113,6 +89,20 @@ if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
                 if (this.windowInfo)
                     return this.windowInfo;
                 return (this.windowInfo = mpx.getWindowInfo());
+            },
+            translateAnimation(animationOptions, axis, start) {
+                const hasTranslate = !!this.animation;
+                const animation = this.animation || (this.animation = mpx.createAnimation(animationOptions));
+                if (this.isVisible) {
+                    if (hasTranslate) {
+                        animation[`translate${axis}`](start).step({ duration: 0 });
+                    }
+                    animation[`translate${axis}`](0).step();
+                }
+                else {
+                    animation[`translate${axis}`](start).step();
+                }
+                this.animationData = animation.export();
             },
             // @vuese
             // 仅 rn 使用，当内容元素高度变化后调用。用于更新动画高度
