@@ -25,8 +25,10 @@ if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
     },
     computed: {
       contentInfo() {
+        const styleConfigContent = this.styleConfig?.content || {}
         return {
-          height: this.styleConfig?.content?.height || this.contentRect.height || this.getWindowInfo().screenHeight
+          width: styleConfigContent.width || this.contentRect.width || this.getWindowInfo().screenWidth,
+          height: styleConfigContent.height || this.contentRect.height || this.getWindowInfo().screenHeight
         }
       }
     },
@@ -74,9 +76,45 @@ if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
             }
             this.animationData = animation.export()
           },
-          'move-right': () => { /* empty fn */ },
-          'move-left': () => { /* empty fn */ },
-          'move-down': () => { /* empty fn */ },
+          'move-right': (animationOptions) => {
+            const hasTranslate = !!this.animation
+            const animation = this.animation || (this.animation = mpx.createAnimation(animationOptions))
+            if (this.isVisible) {
+              if (!hasTranslate) {
+                animation.translateX(-this.contentInfo.width).step({ duration: 0 })
+              }
+              animation.translateX(0).step()
+            } else {
+              animation.translateX(-this.contentInfo.width).step()
+            }
+            this.animationData = animation.export()
+          },
+          'move-left': (animationOptions) => {
+            const hasTranslate = !!this.animation
+            const animation = this.animation || (this.animation = mpx.createAnimation(animationOptions))
+            if (this.isVisible) {
+              if (!hasTranslate) {
+                animation.translateX(this.contentInfo.width).step({ duration: 0 })
+              }
+              animation.translateX(0).step()
+            } else {
+              animation.translateX(this.contentInfo.width).step()
+            }
+            this.animationData = animation.export()
+          },
+          'move-down': (animationOptions) => {
+            const hasTranslate = !!this.animation
+            const animation = this.animation || (this.animation = mpx.createAnimation(animationOptions))
+            if (this.isVisible) {
+              if (!hasTranslate) {
+                animation.translateY(-this.contentInfo.height).step({ duration: 0 })
+              }
+              animation.translateY(0).step()
+            } else {
+              animation.translateY(-this.contentInfo.height).step()
+            }
+            this.animationData = animation.export()
+          },
           fade: (animationOption) => {
             const animation = this.animation || (this.animation = mpx.createAnimation(animationOption))
             if (this.isVisible) {
