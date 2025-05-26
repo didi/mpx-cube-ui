@@ -5,7 +5,7 @@
     wx:class="{{ [themeType ? 'cube-popup cube-popup-'+themeType : 'cube-popup', rootClass, visibleClass] }}"
     style="z-index: {{ zIndex }}"
   >
-    <view class="cube-popup-mask" wx:if="{{ mask }}" bindtouchend="onMaskClick" wx:style="{{styleConfig.mask}}">
+    <view class="cube-popup-mask" wx:if="{{ mask }}" bindtouchend="onMaskClick" wx:style="{{ [styleConfig.mask, maskOpacity] }}">
       <!-- 遮罩插槽 -->
       <slot name="mask"></slot>
     </view>
@@ -25,7 +25,7 @@
     <view
       class="cube-popup-mask"
       wx:if="{{ mask }}"
-      wx:style="{{styleConfig.mask}}"
+      wx:style="{{ [styleConfig.mask, maskOpacity] }}"
       bindtouchmove="preventTouchMove"
       bindtouchend="onMaskClick">
       <!-- 遮罩插槽 -->
@@ -50,7 +50,7 @@
       <view
         class="cube-popup-mask"
         wx:if="{{ mask }}"
-        wx:style="{{styleConfig.mask}}"
+        wx:style="{{ styleConfig.mask }}"
         animation="{{ maskAnimationData }}"
         bindtouchend="onMaskClick">
         <slot name="mask"></slot>
@@ -70,7 +70,7 @@
 
 <style lang="stylus">
 /* @mpx-if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') */
-@require './css.rn.styl'
+// @require './css.rn.styl'
 /* @mpx-else */
 @require './css.styl'
 /* @mpx-endif */
