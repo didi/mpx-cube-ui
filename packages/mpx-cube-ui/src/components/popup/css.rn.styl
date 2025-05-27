@@ -16,30 +16,18 @@
 .cube-popup-hide
   transform: translateX(-9999)
 
-.cube-popup-top
-  align-items flex-start
-
-.cube-popup-top-content
-  width 100%
-
 .cube-popup-center
   justify-content center
   align-items center
+  
+.cube-popup-left
+  flex-direction row
 
 .cube-popup-right
   flex-direction row-reverse
 
-.cube-popup-right-content
-  height 100%
-
 .cube-popup-bottom
   flex-direction column-reverse
-
-.cube-popup-bottom-content
-  width 100%
-
-.cube-popup-left-content
-  height 100%
 
 .cube-popup-content
   z-index 999
@@ -57,6 +45,13 @@
 
 .move-up
   transform translateY(999)
-
+.move-left
+  transform translateX(999)
+.move-right
+  transform translateX(-999)
+.move-down
+  transform translateY(-999)
+.move-center
+  transform scale(0)
 .fade
   opacity 0

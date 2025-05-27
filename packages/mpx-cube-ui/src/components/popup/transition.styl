@@ -97,6 +97,26 @@ popup-transition($name, $time = $var(popup-default-animation-time), $fn = $var(p
   }
 }
 
+@keyframes popup-move-center-show {
+  0% {
+    transform scale(0)
+  }
+  50% {
+    transform scale(1.1)
+  }
+  100% {
+    transform scale(1);
+  }
+}
+@keyframes popup-move-center-hide {
+  from {
+    opacity 1
+  }
+  to {
+    opacity 0
+  }
+}
+
 @keyframes popup-fade-show {
   from {
     opacity 0
