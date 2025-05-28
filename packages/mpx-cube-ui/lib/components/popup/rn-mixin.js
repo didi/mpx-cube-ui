@@ -38,7 +38,7 @@ if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
                         if (this.maskFadeTransition)
                             return;
                         const animation = this.maskAnimation || (this.maskAnimation = mpx.createAnimation({ ...animationOptions, timingFunction: 'ease-in-out', duration: 0 }));
-                        const opacity = this.isVisible ? 1 : 0;
+                        const opacity = this.isVisible ? (this.styleConfig?.mask?.visibleOpacity || 0.4) : 0;
                         animation.opacity(opacity).step();
                         this.maskAnimationData = animation.export();
                     },

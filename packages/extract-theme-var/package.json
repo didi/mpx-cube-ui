@@ -1,6 +1,6 @@
 {
   "name": "@mpxjs/extract-theme-var",
-  "version": "1.2.2",
+  "version": "1.2.4",
   "description": "mpx-cube-ui theme variable extractor",
   "publishConfig": {
     "registry": "https://registry.npmjs.org",
