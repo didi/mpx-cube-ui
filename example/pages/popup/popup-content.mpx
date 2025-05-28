@@ -5,7 +5,11 @@
       wx:ref="popup"
       maskClosable="{{ true }}"
       content="<i style='color:#fc9153'>Hello World</i>"
-      class="cube-extend-popup">
+      class="cube-extend-popup"
+      maskFadeTransition="{{ true }}"
+      transition="move-center"
+      styleConfig="{{ styleConfig }}"
+    >
     </cube-popup>
   </view>
 </template>
@@ -19,7 +23,13 @@ createComponent({
   },
   data: {
     pos: '',
-    trans: ''
+    trans: '',
+    styleConfig: {
+      mask: {
+        backgroundColor: 'red',
+        visibleOpacity: 0.6
+      }
+    }
   },
   methods: {
     show() {

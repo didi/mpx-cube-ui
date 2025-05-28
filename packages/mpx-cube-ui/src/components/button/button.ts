@@ -181,6 +181,30 @@ createComponent({
         }
       }
       return res
+    },
+    contentClass () {
+      // eslint-disable-next-line
+      // @ts-ignore
+      if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android' || __mpx_mode__ === 'harmony') {
+        const res = {
+          'cube-btn-content-inline': this.inline,
+          'cube-btn-content-primary': this.primary,
+          'cube-btn-content-outline': this.outline,
+          'cube-btn-content-outline-primary': this.outline && this.primary,
+          'cube-btn-content-light': this.light,
+          'cube-btn-content_active': this.active,
+          'cube-btn-content_disabled': this.disabled,
+          'cube-btn-content_bolder': this.bolder
+        }
+        if (this.active) {
+          res['cube-btn-content-primary_active'] = this.primary
+          res['cube-btn-content-outline-primary_active'] = this.outline && this.primary
+          res['cube-btn-content-light_active'] = this.light
+          res['cube-btn-content-outline_active'] = this.outline
+        }
+        return res
+      }
+      return {}
     }
   },
   methods: {

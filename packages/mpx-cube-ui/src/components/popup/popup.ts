@@ -35,18 +35,17 @@ createComponent({
       type: Boolean,
       value: true
     },
-    // todo 类型
     // 内容位置
     position: {
       type: String,
       value: ''
     },
-    // todo
     // 过渡动画
     transition: {
       type: String,
       value: ''
     },
+    // 透传样式，可用于样式覆盖。其中 mask.visibleOpacity 用于设置遮罩层显示时透明度
     styleConfig: {
       type: Object,
       value: {}
@@ -82,6 +81,22 @@ createComponent({
         cls[`cube-popup-${this.display ? 'show' : 'hide'}`] = true
       }
       return cls
+    },
+    maskOpacity() {
+      // eslint-disable-next-line
+      // @ts-ignore
+      if (
+        __mpx_mode__ !== 'ios' &&
+        __mpx_mode__ !== 'android' &&
+        __mpx_mode__ !== 'harmony' &&
+        this.styleConfig.mask?.visibleOpacity &&
+        this.isVisible
+      ) {
+        return {
+          opacity: this.styleConfig.mask.visibleOpacity
+        }
+      }
+      return {}
     }
   },
   methods: {
@@ -107,12 +122,12 @@ createComponent({
       this.isVisible = true
       this.display = true
       this.visibleClass = 'show'
-      this.transitionClass = this.transition
+      this.transitionClass = this.transition ? `cube-popup-${this.transition}` : ''
     },
     hide() {
       this.isVisible = false
       this.visibleClass = 'hide'
-      this.transitionClass = this.transition
+      this.transitionClass = this.transition ? `cube-popup-${this.transition}` : ''
     }
   }
 })
