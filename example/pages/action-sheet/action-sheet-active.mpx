@@ -1,6 +1,6 @@
 <template>
   <view>
-    <view>action-sheet-active</view>
+    <cube-button>action-sheet-active</cube-button>
     <cube-action-sheet></cube-action-sheet>
   </view>
 </template>
@@ -19,6 +19,7 @@ createComponent({
 <script type="application/json">
   {
     "usingComponents": {
+      "cube-button": "@mpxjs/mpx-cube-ui/src/components/button/index",
       "cube-action-sheet": "@mpxjs/mpx-cube-ui/src/components/action-sheet/index"
     }
   }

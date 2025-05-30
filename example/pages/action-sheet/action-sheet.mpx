@@ -1,10 +1,11 @@
 <template>
   <view>
-    <view bindtap="showActionSheet">action-sheet</view>
+    <cube-button bindclick="showActionSheet">action-sheet</cube-button>
     <cube-action-sheet
       wx:ref="actionSheet"
       title="{{'我是标题~~~'}}"
       data="{{data}}"
+      bind:select="{{onSelect}}"
     />
   </view>
 </template>
@@ -48,6 +49,7 @@ createComponent({
 <script type="application/json">
   {
     "usingComponents": {
+      "cube-button": "@mpxjs/mpx-cube-ui/src/components/button/index",
       "cube-action-sheet": "@mpxjs/mpx-cube-ui/src/components/action-sheet/index"
     }
   }

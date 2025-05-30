@@ -1,23 +1,40 @@
 <template>
   <view name="cube-action-sheet-fade">
-    <cube-popup type="action-sheet" wx:class="{{ pickerStyle ? 'cube-action-sheet_picker':  '' }}" center="{{false}}" mask="{{false}}"
-      z-index="{{zIndex}}" wx:show="{{isVisible}}" bind:maskClick="maskClick">
-      <view wx:class="{{ isVisible ? 'slide-in':  'slide-out' }}">
+    <view>{{isVisible}}</view>
+    <view wx:if="{{isVisible}}">555</view>
+    <cube-popup
+      type="action-sheet"
+      wx:class="{{ pickerStyle ? 'cube-action-sheet_picker':  '' }}"
+      center="{{false}}"
+      mask="{{true}}"
+      transition="{{isVisible ? 'move-in':  'move-down'}}"
+      z-index="{{zIndex}}"
+      wx:if="{{isVisible}}"
+      bind:maskClick="maskClick"
+    >
+      <view>11144</view>
+      <!-- <transition wx:class="{{ isVisible ? 'slide-in':  'slide-out' }}">
         <view class="cube-action-sheet-panel cube-safe-area-pb" wx:show="{{isVisible}}" @click.stop>
           <view class="cube-action-sheet-title border-bottom-1px" wx:show="{{pickerStyle || title}}">{{ title }}</view>
           <view class="cube-action-sheet-content">
             <view class="cube-action-sheet-list">
-              <view class="cube-action-sheet-item border-bottom-1px" wx:for="{{data}}"  wx:key="item" data-align="{{item.align}}"
+              <view class="cube-action-sheet-item border-bottom-1px"
+                wx:for="{{data}}"
+                wx:key="item"
+                data-align="{{item.align}}"
                 wx:class="[
                   item.class || '',
                   index === active ? 'cube-action-sheet-item_active' : ''
-                ]" wx:html="item.content" bind:tap="itemClick(item, index)"></view>
+                ]"
+                wx:html="item.content"
+                bind:tap="itemClick(item, index)">
+              </view>
             </view>
           </view>
           <view class="cube-action-sheet-space"></view>
           <view class="cube-action-sheet-cancel" bind:tap="cancel"><rich-test>{{ _cancelTxt }}</rich-test></view>
         </view>
-      </view>
+      </transition> -->
     </cube-popup>
   </view>
 </template>
