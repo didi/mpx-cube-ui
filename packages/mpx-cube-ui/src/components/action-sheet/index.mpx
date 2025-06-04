@@ -1,5 +1,5 @@
 <template>
-  <view class="modal-content-slot-demo">
+  <view class="action-sheet-content">
     <cube-modal
       wx:ref="modal"
       direction="horizontal"
@@ -19,8 +19,7 @@
                 wx:key="index"
                 data-align="{{item.align || ''}}"
                 wx:class="{{ [item.class || '', index === active ? 'cube-action-sheet-item_active' : '']}}"
-                wx:html="{{item.content }}"
-                catchtap="itemClick(item, index)">
+                catchtap="itemClick(item, index)">{{item.content}}
               </view>
             </view>
           </view>
@@ -34,16 +33,12 @@
 
 <script lang="ts" src="./index.ts"></script>
 
-<style lang="stylus" scoped>
+<style lang="stylus">
 @require "@mpxjs/mpx-cube-ui/src/common/stylus/helper.styl"
 @require "@mpxjs/mpx-cube-ui/src/common/stylus/mixin.styl"
 @require "@mpxjs/mpx-cube-ui/src/common/stylus/theme/components/action-sheet.styl"
 
-.modal-content-slot-demo
-  .modal-content-btn
-    margin-bottom 10px
-    .cube-btn
-      font-size 17px
+.action-sheet-content
   .cube-action-sheet-cancel
     background-color: $var(action-sheet-bgc)
     text-align: center
@@ -117,17 +112,18 @@
         &:active
           color: $action-sheet-picker-cancel-active-color
           background-color: transparent
-  >>>.cube-modal-body
+  .cube-modal-body
     padding: 0
     font-size: 12px
-  >>>.cube-modal-header
+  .cube-modal-header
     min-height: 0
-  >>>.cube-modal-footer
+  .cube-modal-footer
     padding: 0
 </style>
 
 <script type="application/json">
   {
+    "styleIsolation": "shared",
     "usingComponents": {
       "cube-modal": "@mpxjs/mpx-cube-ui/src/components/modal/index",
       "cube-button": "@mpxjs/mpx-cube-ui/src/components/button/index"

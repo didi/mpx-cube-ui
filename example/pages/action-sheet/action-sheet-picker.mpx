@@ -1,10 +1,10 @@
 <template>
   <view>
-    <cube-button bind:tap="showActionSheet">action-sheet-picker</cube-button>
+    <cube-button bindtap="showActionSheet">action-sheet-picker</cube-button>
     <cube-action-sheet
       wx:ref="actionSheet"
       title="我是标题~~~"
-      data="{{data}}"
+      data="{{inputData}}"
       pickerStyle="{{true}}"
       bind:select="onSelect"
       bind:cancel="onCancel"
@@ -21,7 +21,7 @@ import { createComponent } from '@mpxjs/core'
 
 createComponent({
   data: {
-    data: [
+    inputData: [
       {
         content: '舒适型'
       },
@@ -59,7 +59,7 @@ createComponent({
   {
     "usingComponents": {
       "cube-button": "@mpxjs/mpx-cube-ui/src/components/button/index",
-      "cube-action-sheet": "@mpxjs/mpx-cube-ui/src/components/action-sheet/index.mpx",
+      "cube-action-sheet": "@mpxjs/mpx-cube-ui/src/components/action-sheet/index",
       "cube-toast": "@mpxjs/mpx-cube-ui/src/components/toast/index"
     }
   }

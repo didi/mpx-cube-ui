@@ -4,6 +4,9 @@ const EVENT_SELECT = 'select'
 const EVENT_CANCEL = 'cancel'
 
 createComponent({
+  options: {
+    styleIsolation: 'shared'
+  },
   properties: {
     /**
      * @description 需要展示的数据列表

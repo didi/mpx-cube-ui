@@ -1,11 +1,11 @@
 <template>
   <view>
-    <cube-button bind:tap="showActionSheet">action-sheet-active</cube-button>
+    <cube-button bindtap="showActionSheet">action-sheet-active</cube-button>
     <cube-action-sheet
       wx:ref="actionSheet"
       title="我是标题~~~"
-      data="{{data}}"
-      active="{{0}}"
+      data="{{inputData}}"
+      active="{{active}}"
       bind:select="onSelect"
       bind:cancel="onCancel"
     />
@@ -21,7 +21,7 @@ import { createComponent } from '@mpxjs/core'
 
 createComponent({
   data: {
-    data: [
+    inputData: [
       {
         content: '舒适型'
       },
@@ -32,12 +32,14 @@ createComponent({
         content: '豪华型'
       }
     ],
+    active: 0,
     selectContent: ''
   },
   methods: {
     onSelect(selectData) {
-      const { item } = selectData.detail
+      const { item, index } = selectData.detail
       this.selectContent = `Clicked ${item.content}`
+      this.active = index
       this.$refs.selectToast.show()
     },
     onCancel() {
