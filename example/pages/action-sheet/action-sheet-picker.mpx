@@ -1,7 +1,18 @@
 <template>
   <view>
-    <cube-button>action-sheet-picker</cube-button>
-    <cube-action-sheet></cube-action-sheet>
+    <cube-button bind:tap="showActionSheet">action-sheet-picker</cube-button>
+    <cube-action-sheet
+      wx:ref="actionSheet"
+      title="我是标题~~~"
+      data="{{data}}"
+      pickerStyle="{{true}}"
+      bind:select="onSelect"
+      bind:cancel="onCancel"
+    />
+    <cube-toast
+      txt="{{ selectContent }}"
+      wx:ref="selectToast">
+    </cube-toast>
   </view>
 </template>
 
@@ -9,6 +20,34 @@
 import { createComponent } from '@mpxjs/core'
 
 createComponent({
+  data: {
+    data: [
+      {
+        content: '舒适型'
+      },
+      {
+        content: '七座商务'
+      },
+      {
+        content: '豪华型'
+      }
+    ],
+    selectContent: ''
+  },
+  methods: {
+    onSelect(selectData) {
+      const { item } = selectData.detail
+      this.selectContent = `Clicked ${item.content}`
+      this.$refs.selectToast.show()
+    },
+    onCancel() {
+      this.selectContent = 'Clicked canceled '
+      this.$refs.selectToast.show()
+    },
+    showActionSheet() {
+      this.$refs.actionSheet.show()
+    }
+  }
 })
 </script>
 
@@ -20,7 +59,8 @@ createComponent({
   {
     "usingComponents": {
       "cube-button": "@mpxjs/mpx-cube-ui/src/components/button/index",
-      "cube-action-sheet": "@mpxjs/mpx-cube-ui/src/components/action-sheet/index"
+      "cube-action-sheet": "@mpxjs/mpx-cube-ui/src/components/action-sheet/index.mpx",
+      "cube-toast": "@mpxjs/mpx-cube-ui/src/components/toast/index"
     }
   }
 </script>

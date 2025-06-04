@@ -1,11 +1,9 @@
 import { createComponent } from '../../common/helper/create-component'
-import { visibilityMixin, popupMixin } from '../../common/mixins'
 
 const EVENT_SELECT = 'select'
 const EVENT_CANCEL = 'cancel'
 
 createComponent({
-  mixins: [visibilityMixin, popupMixin],
   properties: {
     /**
      * @description 需要展示的数据列表
@@ -52,26 +50,28 @@ createComponent({
       value: '取消'
     }
   },
-  data: {
-    animationClass: ''
-  },
   computed: {
     _cancelTxt() {
-      // return this.cancelTxt || this.$t('cancel')
       return this.cancelTxt
     }
   },
   methods: {
+    show() {
+      this.$refs.modal.show()
+    },
+    hide() {
+      this.$refs.modal.hide()
+    },
     maskClick() {
-      this.maskClosable && this.cancel()
+      this.cancel()
     },
     cancel() {
-      this.hide()
       this.triggerEvent(EVENT_CANCEL)
+      this.hide()
     },
     itemClick(item, index) {
+      this.triggerEvent(EVENT_SELECT, { item, index })
       this.hide()
-      this.triggerEvent(EVENT_SELECT, item, index)
     }
   }
 })

@@ -1,12 +1,16 @@
 <template>
   <view>
-    <cube-button bindclick="showActionSheet">action-sheet</cube-button>
+    <cube-button bind:tap="showActionSheet">action-sheet</cube-button>
     <cube-action-sheet
       wx:ref="actionSheet"
-      title="{{'我是标题~~~'}}"
+      title="我是标题~~~"
       data="{{data}}"
-      bind:select="{{onSelect}}"
+      bindselect="onSelect"
     />
+    <cube-toast
+      txt="{{ selectContent }}"
+      wx:ref="selectToast">
+    </cube-toast>
   </view>
 </template>
 
@@ -17,25 +21,27 @@ createComponent({
   data: {
     data: [
       {
-        content: '<em>align - center</em>',
+        content: 'align-center',
         class: 'cube-foo'
       },
       {
-        content: 'align - left',
+        content: 'align-left',
         align: 'left'
       },
       {
-        content: 'align - right',
+        content: 'align-right',
         align: 'right'
       }
-    ]
+    ],
+    selectContent: ''
   },
   methods: {
-    onSelect(item, index) {
-      console.log('item', item, index)
+    onSelect(selectData) {
+      const { item } = selectData.detail
+      this.selectContent = `Clicked: ${item.content}`
+      this.$refs.selectToast.show()
     },
     showActionSheet() {
-      console.log('111',this.$refs.actionSheet)
       this.$refs.actionSheet.show()
     }
   }
@@ -50,7 +56,8 @@ createComponent({
   {
     "usingComponents": {
       "cube-button": "@mpxjs/mpx-cube-ui/src/components/button/index",
-      "cube-action-sheet": "@mpxjs/mpx-cube-ui/src/components/action-sheet/index"
+      "cube-action-sheet": "@mpxjs/mpx-cube-ui/src/components/action-sheet/index",
+      "cube-toast": "@mpxjs/mpx-cube-ui/src/components/toast/index"
     }
   }
 </script>

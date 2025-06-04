@@ -1,159 +1,136 @@
 <template>
-  <view name="cube-action-sheet-fade">
-    <view>{{isVisible}}</view>
-    <view wx:if="{{isVisible}}">555</view>
-    <cube-popup
-      type="action-sheet"
-      wx:class="{{ pickerStyle ? 'cube-action-sheet_picker':  '' }}"
-      center="{{false}}"
-      mask="{{true}}"
-      transition="{{isVisible ? 'move-in':  'move-down'}}"
-      z-index="{{zIndex}}"
-      wx:if="{{isVisible}}"
+  <view class="modal-content-slot-demo">
+    <cube-modal
+      wx:ref="modal"
+      direction="horizontal"
+      wx:class="{{ {'cube-action-sheet_picker': pickerStyle} }}"
+      mask-closable="{{ true }}"
       bind:maskClick="maskClick"
+      no-built-in-btns="{{ true }}"
+      bind:confirm="onConfirm"
     >
-      <view>11144</view>
-      <!-- <transition wx:class="{{ isVisible ? 'slide-in':  'slide-out' }}">
-        <view class="cube-action-sheet-panel cube-safe-area-pb" wx:show="{{isVisible}}" @click.stop>
-          <view class="cube-action-sheet-title border-bottom-1px" wx:show="{{pickerStyle || title}}">{{ title }}</view>
+      <view slot="content" class="modal-content">
+        <view class="cube-action-sheet-panel cube-safe-area-pb">
+          <view class="cube-action-sheet-title" wx:show="{{pickerStyle || title}}">{{ title }}</view>
           <view class="cube-action-sheet-content">
             <view class="cube-action-sheet-list">
-              <view class="cube-action-sheet-item border-bottom-1px"
+              <view class="cube-action-sheet-item"
                 wx:for="{{data}}"
-                wx:key="item"
-                data-align="{{item.align}}"
-                wx:class="[
-                  item.class || '',
-                  index === active ? 'cube-action-sheet-item_active' : ''
-                ]"
-                wx:html="item.content"
-                bind:tap="itemClick(item, index)">
+                wx:key="index"
+                data-align="{{item.align || ''}}"
+                wx:class="{{ [item.class || '', index === active ? 'cube-action-sheet-item_active' : '']}}"
+                wx:html="{{item.content }}"
+                catchtap="itemClick(item, index)">
               </view>
             </view>
           </view>
           <view class="cube-action-sheet-space"></view>
-          <view class="cube-action-sheet-cancel" bind:tap="cancel"><rich-test>{{ _cancelTxt }}</rich-test></view>
+          <view class="cube-action-sheet-cancel" bindtap="cancel">{{_cancelTxt}}</view>
         </view>
-      </transition> -->
-    </cube-popup>
+      </view>
+    </cube-modal>
   </view>
 </template>
 
 <script lang="ts" src="./index.ts"></script>
 
-<style lang="stylus">
+<style lang="stylus" scoped>
 @require "@mpxjs/mpx-cube-ui/src/common/stylus/helper.styl"
 @require "@mpxjs/mpx-cube-ui/src/common/stylus/mixin.styl"
 @require "@mpxjs/mpx-cube-ui/src/common/stylus/theme/components/action-sheet.styl"
 
-.cube-action-sheet-fade-enter, .cube-action-sheet-fade-leave-active
-  opacity: 0
-.cube-action-sheet-fade-enter-active, .cube-action-sheet-fade-leave-active
-  transition: all .3s ease-in-out
-
-.cube-action-sheet-panel
-  text-align: center
-  font-size: $var(fontsize-medium)
-  background-color: $var(action-sheet-bgc)
-@keyframes slideIn {
-  from {
-      transform: translate3d(0, 100%, 0)
-  }
-  to {
-      transform: translate3d(0, 0, 0)
-  }
-}
-@keyframes slideOut {
-  from {
-      transform: translate3d(0, 0, 0)
-  }
-  to {
-      transform: translate3d(0, 100%, 0)
-  }
-}
-.slide-in
-  animation: slideIn 0.3s ease-in-out forwards
-.slide-out
-  animation: slideOut 0.3s ease-in-out forwards
-
-.cube-action-sheet-cancel
-  background-color: $var(action-sheet-bgc)
-.cube-action-sheet-cancel rich-text, .cube-action-sheet-title, .cube-action-sheet-item
-  display: block
-  padding: 17px 16px
-  margin: 0
-  text-align: center
-  overflow: hidden
-  white-space: nowrap
-  font-size: $var(fontsize-large)
-  font-weight: normal
-  line-height: 1
-  color: $var(action-sheet-color)
-  background-color: $var(action-sheet-bgc)
-
-.cube-action-sheet-cancel view, .cube-action-sheet-item
-  &:active
-    background-color: $var(action-sheet-active-bgc)
-
-.cube-action-sheet-title
-  padding-top: 16px
-  padding-bottom: 16px
-  color: $var(action-sheet-title-color)
-  font-size: $var(fontsize-large-x)
-
-.cube-action-sheet-content
-  overflow: hidden
-  background: $var(action-sheet-bgc)
-
-.cube-action-sheet-list
-  list-style: none
-
-.cube-action-sheet-item
-  list-style: none
-  user-select: none
-  &:last-of-type
-    border-none()
-  &[data-align="left"]
-    text-align: left
-  &[data-align="right"]
-    text-align: right
-
-.cube-action-sheet-space
-  height: 6px
-  background-color: $var(action-sheet-space-bgc)
-
-.cube-action-sheet-item_active
-  color: $var(action-sheet-active-color)
-
-.cube-action-sheet_picker
-  .cube-action-sheet-space
-    height: 0
-  .cube-action-sheet-title
-    height: 1em
-    padding-top: 21px
-    padding-bottom: 21px
-
+.modal-content-slot-demo
+  .modal-content-btn
+    margin-bottom 10px
+    .cube-btn
+      font-size 17px
   .cube-action-sheet-cancel
-    position: absolute
-    top: 0
-    background-color: transparent
-    span
-      padding-top: 23px
-      padding-bottom: 23px
-      color: $var(action-sheet-picker-cancel-color)
-      font-size: $var(fontsize-medium)
+    background-color: $var(action-sheet-bgc)
+    text-align: center
+  .cube-action-sheet-cancel, .cube-action-sheet-title, .cube-action-sheet-item
+    display: block
+    padding: 17px 16px
+    margin: 0
+    text-align: center
+    overflow: hidden
+    white-space: nowrap
+    font-size: $var(fontsize-large)
+    font-weight: normal
+    line-height: 1
+    color: $var(action-sheet-color)
+    background-color: $var(action-sheet-bgc)
+
+  .cube-action-sheet-cancel, .cube-action-sheet-item
+    &:active
+      background-color: $var(action-sheet-active-bgc)
+
+  .cube-action-sheet-title
+    padding-top: 16px
+    padding-bottom: 16px
+    color: $var(action-sheet-title-color)
+    border-bottom-1px(#ebebeb)
+    font-size: $var(fontsize-large-x)
+
+  .cube-action-sheet-content
+    overflow: hidden
+    background: $var(action-sheet-bgc)
+
+  .cube-action-sheet-list
+    list-style: none
+
+  .cube-action-sheet-item
+    border-bottom-1px(#ebebeb)
+    list-style: none
+    user-select: none
+    &:last-of-type
+      border-none()
+    &[data-align="left"]
+      text-align: left
+    &[data-align="right"]
+      text-align: right
+
+  .cube-action-sheet-space
+    height: 6px
+    background-color: $var(action-sheet-space-bgc)
+
+  .cube-action-sheet-item_active
+    color: $var(action-sheet-active-color)
+
+  .cube-action-sheet_picker
+    .cube-action-sheet-space
+      height: 0
+    .cube-action-sheet-title
+      height: 1em
+      padding-top: 21px
+      padding-bottom: 21px
+
+    .cube-action-sheet-cancel
+      position: absolute
+      top: 5px
       background-color: transparent
-      &:active
-        color: $action-sheet-picker-cancel-active-color
+      span
+        padding-top: 23px
+        padding-bottom: 23px
+        color: $var(action-sheet-picker-cancel-color)
+        font-size: $var(fontsize-medium)
         background-color: transparent
+        &:active
+          color: $action-sheet-picker-cancel-active-color
+          background-color: transparent
+  >>>.cube-modal-body
+    padding: 0
+    font-size: 12px
+  >>>.cube-modal-header
+    min-height: 0
+  >>>.cube-modal-footer
+    padding: 0
 </style>
 
 <script type="application/json">
   {
-    "styleIsolation": "shared",
-    "component": true,
     "usingComponents": {
-      "cube-popup": "../popup/index.mpx"
+      "cube-modal": "@mpxjs/mpx-cube-ui/src/components/modal/index",
+      "cube-button": "@mpxjs/mpx-cube-ui/src/components/button/index"
     }
   }
 </script>
