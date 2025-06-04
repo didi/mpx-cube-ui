@@ -1,21 +1,22 @@
 <template>
   <view class="action-sheet-content">
-    <cube-modal
-      wx:ref="modal"
+    <cube-popup
+      wx:model-prop="visible"
+      wx:model="{{isVisible}}"
       direction="horizontal"
       wx:class="{{ {'cube-action-sheet_picker': pickerStyle} }}"
       mask-closable="{{ true }}"
       bind:maskClick="maskClick"
-      no-built-in-btns="{{ true }}"
-      bind:confirm="onConfirm"
+      position="bottom"
+      transition="move-up"
     >
-      <view slot="content" class="modal-content">
+      <view class="modal-content">
         <view class="cube-action-sheet-panel cube-safe-area-pb">
           <view class="cube-action-sheet-title" wx:show="{{pickerStyle || title}}">{{ title }}</view>
           <view class="cube-action-sheet-content">
             <view class="cube-action-sheet-list">
               <view class="cube-action-sheet-item"
-                wx:for="{{data}}"
+                wx:for="{{inputData}}"
                 wx:key="index"
                 data-align="{{item.align || ''}}"
                 wx:class="{{ [item.class || '', index === active ? 'cube-action-sheet-item_active' : '']}}"
@@ -27,7 +28,7 @@
           <view class="cube-action-sheet-cancel" bindtap="cancel">{{_cancelTxt}}</view>
         </view>
       </view>
-    </cube-modal>
+    </cube-popup>
   </view>
 </template>
 
@@ -125,7 +126,7 @@
   {
     "styleIsolation": "shared",
     "usingComponents": {
-      "cube-modal": "@mpxjs/mpx-cube-ui/src/components/modal/index",
+      "cube-popup": "@mpxjs/mpx-cube-ui/src/components/popup/index",
       "cube-button": "@mpxjs/mpx-cube-ui/src/components/button/index"
     }
   }

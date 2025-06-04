@@ -7,11 +7,14 @@ createComponent({
   options: {
     styleIsolation: 'shared'
   },
+  data: {
+    isVisible: false
+  },
   properties: {
     /**
      * @description 需要展示的数据列表
      */
-    data: {
+    inputData: {
       type: Array,
       value: []
     },
@@ -60,10 +63,13 @@ createComponent({
   },
   methods: {
     show() {
-      this.$refs.modal.show()
+      if (this.isVisible) return
+      this.$nextTick(() => {
+        this.isVisible = true
+      })
     },
     hide() {
-      this.$refs.modal.hide()
+      this.isVisible = false
     },
     maskClick() {
       this.cancel()

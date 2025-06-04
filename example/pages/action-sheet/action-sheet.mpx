@@ -4,7 +4,7 @@
     <cube-action-sheet
       wx:ref="actionSheet"
       title="我是标题~~~"
-      data="{{inputData}}"
+      inputData="{{inputData}}"
       bindselect="onSelect"
     />
     <cube-toast
