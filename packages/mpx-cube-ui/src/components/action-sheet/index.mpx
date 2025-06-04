@@ -45,7 +45,7 @@
     text-align: center
   .cube-action-sheet-cancel, .cube-action-sheet-title, .cube-action-sheet-item
     display: block
-    padding: 17px 16px
+    padding: $var(action-sheet-items-padding)
     margin: 0
     text-align: center
     overflow: hidden
@@ -61,8 +61,8 @@
       background-color: $var(action-sheet-active-bgc)
 
   .cube-action-sheet-title
-    padding-top: 16px
-    padding-bottom: 16px
+    padding-top: $var(action-sheet-title-padding )
+    padding-bottom: $var(action-sheet-title-padding)
     color: $var(action-sheet-title-color)
     border-bottom-1px(#ebebeb)
     font-size: $var(fontsize-large-x)
@@ -86,7 +86,7 @@
       text-align: right
 
   .cube-action-sheet-space
-    height: 6px
+    height: $var(action-sheet-title-space)
     background-color: $var(action-sheet-space-bgc)
 
   .cube-action-sheet-item_active
@@ -96,17 +96,17 @@
     .cube-action-sheet-space
       height: 0
     .cube-action-sheet-title
-      height: 1em
-      padding-top: 21px
-      padding-bottom: 21px
+      height: $var(action-sheet-title-height)
+      padding-top: $var(action-sheet-title-picker-padding)
+      padding-bottom:$var(action-sheet-title-picker-padding)
 
     .cube-action-sheet-cancel
       position: absolute
-      top: 5px
+      top: $var(cube-action-sheet-cancel-top)
       background-color: transparent
       span
-        padding-top: 23px
-        padding-bottom: 23px
+        padding-top: $var(cube-action-sheet-cancel-span-padding)
+        padding-bottom: $var(cube-action-sheet-cancel-span-padding)
         color: $var(action-sheet-picker-cancel-color)
         font-size: $var(fontsize-medium)
         background-color: transparent
@@ -115,7 +115,7 @@
           background-color: transparent
   .cube-modal-body
     padding: 0
-    font-size: 12px
+    font-size: $var(cube-modal-body-fontSize)
   .cube-modal-header
     min-height: 0
   .cube-modal-footer
