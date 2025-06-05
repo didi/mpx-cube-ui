@@ -34,7 +34,8 @@
       <view
         class="cube-popup-content {{ transitionClass }}"
         wx:style="{{styleConfig.content}}"
-        bindtouchmove="preventTouchMove">
+        bindtouchmove="preventTouchMove"
+        bindanimationend="contentHideAnimationend">
         <rich-text wx:if="{{ content }}" nodes="{{ content }}"></rich-text>
         <!-- 默认插槽 -->
         <slot></slot>
