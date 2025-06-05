@@ -15,13 +15,14 @@
           <view class="cube-action-sheet-title" wx:show="{{pickerStyle || title}}">{{ title }}</view>
           <view class="cube-action-sheet-content">
             <view class="cube-action-sheet-list">
-              <view class="cube-action-sheet-item"
+              <rich-text class="cube-action-sheet-item"
                 wx:for="{{inputData}}"
                 wx:key="index"
                 data-align="{{item.align || ''}}"
+                nodes="{{ item.content }}"
                 wx:class="{{ [item.class || '', index === active ? 'cube-action-sheet-item_active' : '']}}"
-                catchtap="itemClick(item, index)">{{item.content}}
-              </view>
+                catchtap="itemClick(item, index)">
+              </rich-text>
             </view>
           </view>
           <view class="cube-action-sheet-space"></view>
@@ -50,7 +51,7 @@
     text-align: center
     overflow: hidden
     white-space: nowrap
-    font-size: $var(fontsize-large)
+    font-size: $var(fontsize-content-items)
     font-weight: normal
     line-height: 1
     color: $var(action-sheet-color)
@@ -65,7 +66,7 @@
     padding-bottom: $var(action-sheet-title-padding)
     color: $var(action-sheet-title-color)
     border-bottom-1px(#ebebeb)
-    font-size: $var(fontsize-large-x)
+    font-size: $var(fontsize-title)
 
   .cube-action-sheet-content
     overflow: hidden
@@ -86,7 +87,7 @@
       text-align: right
 
   .cube-action-sheet-space
-    height: $var(action-sheet-title-space)
+    height: $var(action-sheet-space-height)
     background-color: $var(action-sheet-space-bgc)
 
   .cube-action-sheet-item_active
@@ -104,22 +105,7 @@
       position: absolute
       top: $var(cube-action-sheet-cancel-top)
       background-color: transparent
-      span
-        padding-top: $var(cube-action-sheet-cancel-span-padding)
-        padding-bottom: $var(cube-action-sheet-cancel-span-padding)
-        color: $var(action-sheet-picker-cancel-color)
-        font-size: $var(fontsize-medium)
-        background-color: transparent
-        &:active
-          color: $action-sheet-picker-cancel-active-color
-          background-color: transparent
-  .cube-modal-body
-    padding: 0
-    font-size: $var(cube-modal-body-fontSize)
-  .cube-modal-header
-    min-height: 0
-  .cube-modal-footer
-    padding: 0
+      font-size: $var(fontsize-picker-cancel)
 </style>
 
 <script type="application/json">

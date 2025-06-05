@@ -62,12 +62,16 @@ createComponent({
     }
   },
   methods: {
+    // @vuese
+    // 显示
     show() {
       if (this.isVisible) return
       this.$nextTick(() => {
         this.isVisible = true
       })
     },
+    // @vuese
+    // 隐藏
     hide() {
       this.isVisible = false
     },
@@ -75,10 +79,12 @@ createComponent({
       this.cancel()
     },
     cancel() {
+      // 点击取消时触发
       this.triggerEvent(EVENT_CANCEL)
       this.hide()
     },
     itemClick(item, index) {
+      // 点击某项时触发
       this.triggerEvent(EVENT_SELECT, { item, index })
       this.hide()
     }

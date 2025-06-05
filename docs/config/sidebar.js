@@ -132,7 +132,7 @@ module.exports = [
             path: '/components/base/tip'
           },
           {
-            title: 'ActionSheet ',
+            title: 'ActionSheet 操作列表',
             path: '/components/base/action-sheet'
           }
         ]
