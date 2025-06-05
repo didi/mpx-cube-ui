@@ -10,7 +10,7 @@
       position="bottom"
       transition="move-up"
     >
-      <view class="modal-content">
+      <view class="content">
         <view class="cube-action-sheet-panel cube-safe-area-pb">
           <view class="cube-action-sheet-title" wx:show="{{pickerStyle || title}}">{{ title }}</view>
           <view class="cube-action-sheet-content">
