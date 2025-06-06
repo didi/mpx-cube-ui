@@ -38,7 +38,7 @@ describe('component action-sheet unit test', function () {
     const component = newComponent(componentId, changeProps())
 
     it('matchSnapshot', () => {
-      expect(component.dom.innerHTML).toMatchSnapshot() // 判断前后生成的dom是否一样
+      expect(component.dom.innerHTML).toMatchSnapshot()
     })
 
     it(' props to action ', async () => {
