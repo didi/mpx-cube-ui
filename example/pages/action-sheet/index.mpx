@@ -1,0 +1,35 @@
+<template>
+  <base-container class="action-sheet-page">
+    <view class="btn-item">
+      <active-sheet/>
+    </view>
+    <view class="btn-item">
+      <sheet/>
+    </view>
+    <view class="btn-item">
+      <picker-sheet/>
+    </view>
+  </base-container>
+</template>
+
+<script>
+import { createPage } from '@mpxjs/core'
+
+createPage({})
+</script>
+
+<style lang="stylus">
+.btn-item
+  margin-bottom 15px
+</style>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "base-container": "../../components/base-container/index",
+      "active-sheet": "./action-sheet-active",
+      "sheet": "./action-sheet",
+      "picker-sheet": "./action-sheet-picker"
+    }
+  }
+</script>
