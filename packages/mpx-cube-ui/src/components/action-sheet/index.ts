@@ -59,6 +59,20 @@ createComponent({
   computed: {
     _cancelTxt() {
       return this.cancelTxt
+    },
+    pickerStyleClass() {
+      if (this.pickerStyle) {
+        return {
+          space: 'cube-action-sheet-space-picker',
+          title: 'cube-action-sheet-title-picker',
+          cancel: 'cube-action-sheet-cancel-picker'
+        }
+      }
+      return {
+        space: '',
+        title: '',
+        cancel: ''
+      }
     }
   },
   methods: {

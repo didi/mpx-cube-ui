@@ -4,7 +4,6 @@
       wx:model-prop="visible"
       wx:model="{{isVisible}}"
       direction="horizontal"
-      wx:class="{{ {'cube-action-sheet_picker': pickerStyle} }}"
       mask-closable="{{ true }}"
       bind:maskClick="maskClick"
       position="bottom"
@@ -12,7 +11,7 @@
     >
       <view class="content">
         <view class="cube-action-sheet-panel cube-safe-area-pb">
-          <view class="cube-action-sheet-title" wx:show="{{pickerStyle || title}}">{{ title }}</view>
+          <view class="cube-action-sheet-title" wx:class="{{pickerStyleClass.title}}" wx:show="{{pickerStyle || title}}">{{ title }}</view>
           <view class="cube-action-sheet-content">
             <view class="cube-action-sheet-list">
               <rich-text class="cube-action-sheet-item"
@@ -25,8 +24,8 @@
               </rich-text>
             </view>
           </view>
-          <view class="cube-action-sheet-space"></view>
-          <view class="cube-action-sheet-cancel" bindtap="cancel">{{_cancelTxt}}</view>
+          <view class="cube-action-sheet-space" wx:class="{{ pickerStyleClass.space }}"></view>
+          <view class="cube-action-sheet-cancel" bindtap="cancel" wx:class="{{ pickerStyleClass.cancel }}">{{_cancelTxt}}</view>
         </view>
       </view>
     </cube-popup>
@@ -40,72 +39,70 @@
 @require "@mpxjs/mpx-cube-ui/src/common/stylus/mixin.styl"
 @require "@mpxjs/mpx-cube-ui/src/common/stylus/theme/components/action-sheet.styl"
 
-.action-sheet-content
-  .cube-action-sheet-cancel
-    background-color: $var(action-sheet-bgc)
-    text-align: center
-  .cube-action-sheet-cancel, .cube-action-sheet-title, .cube-action-sheet-item
-    display: block
-    padding: $var(action-sheet-items-padding)
-    margin: 0
-    text-align: center
-    overflow: hidden
-    white-space: nowrap
-    font-size: $var(fontsize-content-items)
-    font-weight: normal
-    line-height: 1
-    color: $var(action-sheet-color)
-    background-color: $var(action-sheet-bgc)
+.cube-action-sheet-cancel
+  background-color: $var(action-sheet-bgc)
+  text-align: center
+.cube-action-sheet-cancel, .cube-action-sheet-title, .cube-action-sheet-item
+  display: block
+  padding: $var(action-sheet-items-padding)
+  margin: 0
+  text-align: center
+  overflow: hidden
+  white-space: nowrap
+  font-size: $var(fontsize-content-items)
+  font-weight: normal
+  line-height: 1
+  color: $var(action-sheet-color)
+  background-color: $var(action-sheet-bgc)
 
-  .cube-action-sheet-cancel, .cube-action-sheet-item
-    &:active
-      background-color: $var(action-sheet-active-bgc)
+.cube-action-sheet-cancel, .cube-action-sheet-item
+  &:active
+    background-color: $var(action-sheet-active-bgc)
 
-  .cube-action-sheet-title
-    padding-top: $var(action-sheet-title-padding )
-    padding-bottom: $var(action-sheet-title-padding)
-    color: $var(action-sheet-title-color)
-    border-bottom-1px(#ebebeb)
-    font-size: $var(fontsize-title)
+.cube-action-sheet-title
+  padding-top: $var(action-sheet-title-padding )
+  padding-bottom: $var(action-sheet-title-padding)
+  color: $var(action-sheet-title-color)
+  border-bottom-1px(#ebebeb)
+  font-size: $var(fontsize-title)
 
-  .cube-action-sheet-content
-    overflow: hidden
-    background: $var(action-sheet-bgc)
+.cube-action-sheet-content
+  overflow: hidden
+  background: $var(action-sheet-bgc)
 
-  .cube-action-sheet-list
-    list-style: none
+.cube-action-sheet-list
+  list-style: none
 
-  .cube-action-sheet-item
-    border-bottom-1px(#ebebeb)
-    list-style: none
-    user-select: none
-    &:last-of-type
-      border-none()
-    &[data-align="left"]
-      text-align: left
-    &[data-align="right"]
-      text-align: right
+.cube-action-sheet-item
+  border-bottom-1px(#ebebeb)
+  list-style: none
+  user-select: none
+  &:last-of-type
+    border-none()
+  &[data-align="left"]
+    text-align: left
+  &[data-align="right"]
+    text-align: right
 
-  .cube-action-sheet-space
-    height: $var(action-sheet-space-height)
-    background-color: $var(action-sheet-space-bgc)
+.cube-action-sheet-space
+  height: $var(action-sheet-space-height)
+  background-color: $var(action-sheet-space-bgc)
 
-  .cube-action-sheet-item_active
-    color: $var(action-sheet-active-color)
+.cube-action-sheet-item_active
+  color: $var(action-sheet-active-color)
 
-  .cube-action-sheet_picker
-    .cube-action-sheet-space
-      height: 0
-    .cube-action-sheet-title
-      height: $var(action-sheet-title-height)
-      padding-top: $var(action-sheet-title-picker-padding)
-      padding-bottom:$var(action-sheet-title-picker-padding)
+.cube-action-sheet-space-picker
+  height: 0
+.cube-action-sheet-title-picker
+  height: $var(action-sheet-title-height)
+  padding-top: $var(action-sheet-title-picker-padding)
+  padding-bottom:$var(action-sheet-title-picker-padding)
 
-    .cube-action-sheet-cancel
-      position: absolute
-      top: $var(cube-action-sheet-cancel-top)
-      background-color: transparent
-      font-size: $var(fontsize-picker-cancel)
+.cube-action-sheet-cancel-picker
+  position: absolute
+  top: $var(cube-action-sheet-cancel-top)
+  background-color: transparent
+  font-size: $var(fontsize-picker-cancel)
 </style>
 
 <script type="application/json">
