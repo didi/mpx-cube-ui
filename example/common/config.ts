@@ -70,6 +70,7 @@ export default {
           'dialog',
           'modal',
           'tip',
+          'action-sheet'
         ]
       },
       {
