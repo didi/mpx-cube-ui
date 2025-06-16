@@ -1,6 +1,6 @@
 <template>
-  <view class="cube-rate-item" wx:class="{{rateItemClass}}">
-    <view class="cube-rate-item-def">
+  <view class="cube-rate-item">
+    <view class="cube-rate-item-def" wx:class="{{rateItemClass}}">
       <slot></slot>
     </view>
   </view>
@@ -21,20 +21,18 @@
     content: ""
     display: block
     padding: $var(rate-item-after-padding)
-  .cube-rate-item-def
-    position: absolute
-    width: $var(rate-item-def-width)
-    height: $var(rate-item-def-height)
-    background-size: $var(rate-item-def-background-size)
-    background-repeat: no-repeat
-    background-position: center
-    background-image: $var(rate-item-star-default)
-.cube-rate-item_active
-  .cube-rate-item-def
-    background-image: $var(rate-item-star-active)
-.cube-rate-item_half_active
-  .cube-rate-item-def
-    background-image: $var(rate-item-star-half-active)
+.cube-rate-item-def
+  position: absolute
+  width: $var(rate-item-def-width)
+  height: $var(rate-item-def-height)
+  background-size: $var(rate-item-def-background-size)
+  background-repeat: no-repeat
+  background-position: center
+  background-image: $var(rate-item-star-default)
+.cube-rate-item-def-active
+  background-image: $var(rate-item-star-active)
+.cube-rate-item-def-half-active
+  background-image: $var(rate-item-star-half-active)
 </style>
 
 <script type="application/json">

@@ -33,7 +33,7 @@ describe('component rate unit test', function () {
     it(' wx:model', async () => {
       // 确保 switchValue 首次显示符合预期
       const rates = component.querySelector('rate').querySelectorAll('rate-item')
-      const rate1 = rates[0].querySelector('.cube-rate-item_active')
+      const rate1 = rates[0].querySelector('.cube-rate-item-def-active')
       const rate2 = rates[1].querySelector('.cube-rate-item-def')
       const rate3 = rates[2].querySelector('.cube-rate-item-def')
       // 确保 rate 首次显示符合预期
@@ -48,8 +48,8 @@ describe('component rate unit test', function () {
       component.instance.value = 2
       await simulate.sleep(10)
 
-      const rateClicked1 = rates[0].querySelector('.cube-rate-item_active')
-      const rateClicked2 = rates[1].querySelector('.cube-rate-item_active')
+      const rateClicked1 = rates[0].querySelector('.cube-rate-item-def-active')
+      const rateClicked2 = rates[1].querySelector('.cube-rate-item-def-active')
       const rateClicked3 = rates[2].querySelector('.cube-rate-item-def')
       expect(component.instance.value).toBe(2)
       expect(rateClicked1 !== undefined).toBe(true)
@@ -76,8 +76,8 @@ describe('component rate unit test', function () {
     it(' props to rate ', async () => {
       const rates = component.querySelectorAll('rate-item')
       const justify = component.querySelector('.cube-rate-justify')
-      const rate1 = rates[0].querySelector('.cube-rate-item_active')
-      const rate2 = rates[1].querySelector('.cube-rate-item_half_active')
+      const rate1 = rates[0].querySelector('.cube-rate-item-def-active')
+      const rate2 = rates[1].querySelector('.cube-rate-item-def-half-active')
       const rate3 = rates[2].querySelector('.cube-rate-item-def')
       expect(component.instance.value).toBe(1.5)
       expect(justify).toBeUndefined()
@@ -134,7 +134,7 @@ describe('component rate unit test', function () {
     it('should render correct contents: value/justify/allowHalf/disabled', () => {
       const justify = component.querySelector('rate').querySelector('.cube-rate-justify')
       const rateItems = component.querySelectorAll('rate-item')
-      const rateItems1 = rateItems[0].querySelector('.cube-rate-item_active')
+      const rateItems1 = rateItems[0].querySelector('.cube-rate-item-def-active')
       const rateItems2 = rateItems[1].querySelector('.cube-rate-item-def')
 
       expect(rateItems.length).toBe(4)
