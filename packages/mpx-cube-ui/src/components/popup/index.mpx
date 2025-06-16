@@ -18,7 +18,12 @@
 
     <view
       wx:else
-      wx:class="{{ [themeType ? 'cube-popup cube-popup-'+themeType : 'cube-popup', rootClass, visibleClass] }}"
+      wx:class="{{ [
+        themeType ? 'cube-popup cube-popup-'+themeType : 'cube-popup',
+        rootClass,
+        visibleClass,
+        !removeCatchTouch ? 'cube-popup-remove-touch' : ''
+      ] }}"
       style="z-index: {{ zIndex }}"
       catchtouchmove@wx|ali
     >
