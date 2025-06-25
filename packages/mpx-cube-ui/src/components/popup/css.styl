@@ -49,6 +49,7 @@
   background-color $var(mask-bgc_opacity)
   opacity $var(popup-mask-opacity)
   pointer-events: auto
+  transform: translateZ(0) // 12306 mask 闪烁
   // fix some android webview opacity render bug
   &::before
     content "."
