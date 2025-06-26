@@ -12,12 +12,15 @@ popup-transition($name, $time = $var(popup-default-animation-time), $fn = $var(p
 
 @keyframes popup-root-hide {
   0% {
+    opacity 1
     transform: translateX(0)
   }
   99.999% {
+    opacity 1
     transform: translateX(0)
   }
   100% {
+    opacity 0
     transform: translateX(-100%)
   }
 }
