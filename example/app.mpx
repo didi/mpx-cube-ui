@@ -47,7 +47,8 @@
       "./pages/float-ball/index",
       "./pages/rate/index",
       "./pages/switch/index",
-      "./pages/loading/index"
+      "./pages/loading/index",
+      "./pages/calendar-modal/index"
     ]
   }
 </script>
