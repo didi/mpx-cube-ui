@@ -1,0 +1,83 @@
+<template>
+  <view wx:class="{{ ['cube-input', _inputWrapperClass] }}">
+    <view class="cube-input-prepend"  wx:if="{{ $slots.prepend }}">
+      <slot name="prepend"></slot>
+    </view>
+    <input
+      class="cube-input-field"
+      wx:ref="input"
+      value="{{ inputValue }}"
+      type="{{ _type }}"
+      placeholder="{{ placeholder }}"
+      maxlength="{{ _maxlength }}"
+      disabled="{{ disabled }}"
+      readonly="{{ readonly }}"
+      auto-focus@wx="{{ autoFocus }}"
+      focus="{{ isFocus }}"
+      autocomplete="{{ autocomplete }}"
+      bind:focus="handleFocus"
+      bind:blur="handleBlur"
+      bind:input="handleInput"
+    />
+    <view class="cube-input-append" wx:if="{{ $slots.append || _showClear || _showPwdEye }}">
+      <view class="cube-input-clear" wx:if="{{ _showClear}}" bind:tap="handleClear">
+        <cube-icon type="delete" />
+      </view>
+          <view class="cube-input-eye" wx:if="{{ _showPwdEye }}" bind:tap="handlePwdEye">
+            <cube-icon type="{{ eyeType}}" />
+          </view>
+          <slot name="append"></slot>
+        </view>
+    </view>
+</template>
+
+<script lang="ts" src="./input.ts"></script>
+
+<style lang="stylus" rel="stylesheet/stylus">
+  @require "../../common/stylus/variable.styl"
+  @require "../../common/stylus/mixin.styl"
+  @require "../../common/stylus/theme/components/input.styl"
+
+  .cube-input
+    display flex
+    align-items center
+    font-size $var(input-font-size)
+    border-1px $var(input-border-color)
+    border-radius $var(input-border-radius)
+    overflow hidden
+    font-size $var(input-font-size)
+    background-color $var(input-bgc)
+  .cube-input-field
+    display block
+    flex 1
+    width 100%
+    height 100%
+    box-sizing border-box
+    background-color: transparent
+    padding $var(input-padding)
+    outline none
+  .cube-input_focused
+    border-1px-reset($var(input-focus-border-color), $var(input-border-radius))
+  .cube-input_disabled
+    background-color $var(input-disable-bgc)
+  .cube-input-prepend
+  .cube-input-append
+    display flex
+    align-items center
+    justify-content center
+  .cube-input-clear
+  .cube-input-eye
+    padding $var(input-padding)
+    color $val(input-clear-icon-color)
+    size $var(input-font-size)
+</style>
+
+<script type="application/json">
+  {
+    "styleIsolation": "shared",
+    "component": true,
+    "usingComponents": {
+      "cube-icon": "../icon/index.mpx"
+    }
+  }
+</script>
