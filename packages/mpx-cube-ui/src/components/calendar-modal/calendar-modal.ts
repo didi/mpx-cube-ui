@@ -1,4 +1,4 @@
-import { createComponent, set } from '@mpxjs/core'
+import { createComponent } from '@mpxjs/core'
 import {
   getWeekInMonth,
   getWeeksCountInMonth,
@@ -24,7 +24,7 @@ createComponent({
     // 可选日期的最大时间
     max: {
       type: Object,
-      value: new Date(2017, 4, 2)
+      value: new Date(2016, 2, 14)
     },
     // 可选的最大范围，0 为不限制
     maxRange: {
@@ -73,6 +73,12 @@ createComponent({
           startDate,
           endDate
         })
+    },
+    dateList: {
+      handler(newVal, oldVal) {
+        console.log(1)
+      },
+      deep: true // 开启深度监听
     }
   },
   lifetimes: {
@@ -113,16 +119,9 @@ createComponent({
       if (item.disable || !+item.date) return
 
       this.resetDateRender(item)
-      // this.dateList[1].dateArr[0][3].active = true
-      console.log('this.dateList[1].dateArr[0][3].active', this.dateList[1].dateArr[0][3])
-      // set(this.dateList[1].dateArr[0][3], 'active', 'true')
-      this.$forceUpdate({
-        [`dateList[${1}].dateArr[0][3].active`]: true
-      })
-      console.log('this.dateList[1].dateArr[0][3].active', this.dateList[1].dateArr[0][3])
       // 选择开始时间
       if (!this.selectDateSet.length) {
-        this.selectDateSet.push(item as never)
+        this.selectDateSet.push(item)
         // this.$emit('select', 'start', item)
       } else {
         // 选择结束时间
@@ -139,7 +138,8 @@ createComponent({
       }
       if (+item.date) {
         item.active = !item.active
-        console.log('iem.date', item.active, item)
+        console.log('date', item)
+        console.log('date', this.dateList)
       }
     },
     reset(dateRange) {
@@ -149,17 +149,17 @@ createComponent({
         const endDateObj = getDateObj(dateRange[1])
         this.selectDateSet.push(startDateObj)
         this.renderSelectedRangeDate(startDateObj, endDateObj)
-        // this.$set(this.selectDateSet[0], 'active', true)
-        set(this.selectDateSet[0], 'active', true)
-        // this.$set(this.selectDateSet[this.selectDateSet.length - 1], 'active', true)
-        set(this.selectDateSet[this.selectDateSet.length - 1], 'active', true)
+        this.$set(this.selectDateSet[0], 'active', true)
+        // set(this.selectDateSet[0], 'active', true)
+        this.$set(this.selectDateSet[this.selectDateSet.length - 1], 'active', true)
+        // set(this.selectDateSet[this.selectDateSet.length - 1], 'active', true)
       }
     },
     resetDateRender(item) {
       if (this.selectDateSet.length && (this.selectDateSet.length >= 2 || +item.date <= +(this.selectDateSet[0] as any).date)) {
         for (let i = 0; i < this.selectDateSet.length; i++) {
-          // this.$set(this.selectDateSet[i], 'dateClass', '')
-          set(this.selectDateSet[i], 'dateClass', '')
+          this.$set(this.selectDateSet[i], 'dateClass', '')
+          // set(this.selectDateSet[i], 'dateClass', '')
           // 遍历重置样式后，清空数组
           if (i === this.selectDateSet.length - 1) {
             this.selectDateSet.length = 0
@@ -227,15 +227,14 @@ createComponent({
           // 渲染开始日期样式
           if (+weekDateGroup[day].date === (this.selectDateSet[0] as any).date.setHours(0, 0, 0, 0)) {
             // this.setData(weekDateGroup[day], 'dateClass', 'start-date')
-            weekDateGroup[day].dateClass = 'start-date'
+            this.$set(weekDateGroup[day], 'dateClass', 'start-date')
           }
           dateClass = weekDateGroup[day].dateClass && +weekDateGroup[day].date
             ? `${weekDateGroup[day].dateClass} transition-date`
             : 'transition-date'
-          // this.$set(weekDateGroup[day], 'dateClass', dateClass)
-          set(weekDateGroup[day], 'dateClass', dateClass)
-          console.log('dateClass', dateClass)
-          console.log('weekDateGroup[day]', weekDateGroup[day])
+          this.$set(weekDateGroup[day], 'dateClass', dateClass)
+          console.log('groupDay', weekDateGroup[day])
+          // set(weekDateGroup[day], 'dateClass', dateClass)
           rangeArr.push(weekDateGroup[day] as never)
 
           if (+weekDateGroup[day].date >= endDateTimestamp) {
@@ -247,8 +246,8 @@ createComponent({
 
       // 渲染结束日期样式
       if (this.selectDateSet.length >= 2 && +weekDateGroup[day].date === +(this.selectDateSet[this.selectDateSet.length - 1] as any).date) {
-        // this.$set(weekDateGroup[day], 'dateClass', weekDateGroup[day].dateClass ? `${weekDateGroup[day].dateClass} end-date` : 'end-date')
-        set(weekDateGroup[day], 'dateClass', weekDateGroup[day].dateClass ? `${weekDateGroup[day].dateClass} end-date` : 'end-date')
+        this.$set(weekDateGroup[day], 'dateClass', weekDateGroup[day].dateClass ? `${weekDateGroup[day].dateClass} end-date` : 'end-date')
+        // set(weekDateGroup[day], 'dateClass', weekDateGroup[day].dateClass ? `${weekDateGroup[day].dateClass} end-date` : 'end-date')
       }
     },
     getRangeDateArray() {

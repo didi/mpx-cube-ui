@@ -17,7 +17,7 @@
         </view>
         <view class="cube-calendar" wx:style="{height: height}">
           <view class="days-ul">
-            <view class="days-li" wx:for="{{days}}" :key="item">{{item}}</view>
+            <view class="days-li" wx:for="{{days}}" wx:key="index">{{item}}</view>
           </view>
           <scroll-view
             ref="scroll"
@@ -30,9 +30,9 @@
                   class="date-li"
                   wx:for="{{days}}"
                   wx:key="index"
-                  wx:class="{{[item.dateClass, {'disable': item.disable}, {'active': item.active}]}}"
+                  wx:class="{{[item.dateClass, 'end-date', {'disable': item.disable}, {'active': item.active}]}}"
                 >
-                  <view>{{item.active}}</view>
+                  <!-- <view>{{item.active}}</view> -->
                   <view class="date-left"></view>
                   <view class="date-center">
                     <view
@@ -46,6 +46,7 @@
                 </view>
               </view>
             </view>
+            <view wx:show="{{false}}">{{dateList[0].dateArr[1]}}</view>
           </scroll-view>
           <cube-button bindclick="getSelected">完成</cube-button>
         </view>
@@ -152,7 +153,7 @@
         display flex
         justify-content center
         align-items center
-        width 25px
+        width 50px
         height 25px
         border-radius 6px
       .date-left,
