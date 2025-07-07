@@ -39,7 +39,7 @@
     "@mpxjs/mpx-cube-ui": "workspace: *",
     "@mpxjs/mpx-jest": "^0.0.32",
     "@mpxjs/utils": "2.10.7-beta.5",
-    "@mpxjs/webpack-plugin": "2.10.7-beta.7",
+    "@mpxjs/webpack-plugin": "2.10.7-beta.10",
     "@mpxjs/website-build": "workspace: *",
     "@release-it-plugins/workspaces": "^4.0.0",
     "babel-jest": "^27.5.1",
