@@ -14,8 +14,8 @@ createComponent({
   computed: {
     rateItemClass() {
       return {
-        'cube-rate-item_active': this.index <= this.value,
-        'cube-rate-item_half_active': this.index === this.value + 0.5
+        'cube-rate-item-def-active': this.index <= this.value,
+        'cube-rate-item-def-half-active': this.index === this.value + 0.5
       }
     }
   }
