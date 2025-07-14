@@ -8,6 +8,7 @@
       pickerStyle="{{true}}"
       bind:select="onSelect"
       bind:cancel="onCancel"
+      bind:maskClose="onMaskClose"
     />
     <cube-toast
       txt="{{ selectContent }}"
@@ -42,6 +43,10 @@ createComponent({
     },
     onCancel() {
       this.selectContent = 'Clicked canceled '
+      this.$refs.selectToast.show()
+    },
+    onMaskClose() {
+      this.selectContent = 'Clicked maskClose '
       this.$refs.selectToast.show()
     },
     showActionSheet() {

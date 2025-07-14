@@ -2,6 +2,7 @@ import { createComponent } from '../../common/helper/create-component'
 
 const EVENT_SELECT = 'select'
 const EVENT_CANCEL = 'cancel'
+const EVENT_MASK_CLOSE = 'maskClose'
 
 createComponent({
   options: {
@@ -89,7 +90,10 @@ createComponent({
     },
     maskClick() {
       if (this.maskClosable) {
-        this.cancel()
+        // 点击遮盖层隐藏时触发
+        this.triggerEvent(EVENT_MASK_CLOSE)
+        console.log(1111)
+        this.hide()
       }
     },
     cancel() {

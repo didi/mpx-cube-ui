@@ -92,6 +92,7 @@ ActionSheet操作列表提供了两种常见的样式，灵活可控内容。
       active="{{active}}"
       bind:select="onSelect"
       bind:cancel="onCancel"
+      bind:maskClose="onMaskClose"
     />
     <cube-toast
       txt="{{ selectContent }}"
@@ -130,6 +131,10 @@ ActionSheet操作列表提供了两种常见的样式，灵活可控内容。
       this.selectContent = 'Clicked canceled '
       this.$refs.selectToast.show()
     },
+    onMaskClose() {
+      this.selectContent = 'Clicked maskClose '
+      this.$refs.selectToast.show()
+    },
     showActionSheet() {
       this.$refs.actionSheet.show()
     },
@@ -162,6 +167,7 @@ pickerStyle 属性决定是否使用 Picker 样式。
       pickerStyle="{{true}}"
       bind:select="onSelect"
       bind:cancel="onCancel"
+      bind:maskClose="onMaskClose"
     />
     <cube-toast
       txt="{{ selectContent }}"
@@ -196,6 +202,10 @@ pickerStyle 属性决定是否使用 Picker 样式。
     },
     onCancel() {
       this.selectContent = 'Clicked canceled '
+      this.$refs.selectToast.show()
+    },
+    onMaskClose() {
+      this.selectContent = 'Clicked maskClose '
       this.$refs.selectToast.show()
     },
     showActionSheet() {
