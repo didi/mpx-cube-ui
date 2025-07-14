@@ -6,7 +6,6 @@
       placeholder="{{ placeholder }}"
       maxlength="{{ maxlength }}"
       disabled="{{ disabled }}"
-      readonly="{{ readonly }}"
       clearable="{{ clearable }}"
       eye="{{ eye }}"
     />
@@ -21,16 +20,6 @@
               color="{{ switchColor }}"
               checked="{{ disabled }}"
               bindchange="updateDisabled"
-            />
-          </view>
-        </view>
-        <view class="group">
-          <view class="group-item last">
-            <view class="item">readonly</view>
-            <switch 
-              color="{{ switchColor }}"
-              checked="{{ readonly }}"
-              bindchange="updateReadOnly"
             />
           </view>
         </view>
@@ -107,9 +96,8 @@
     margin-bottom: 15px
     font-size: 16px
     font-weight: 500
-    color: #333
     border-bottom: 1px solid rgba(0, 0, 0, .1)
-
+    color: #333
   .options
     margin-bottom: 15px
   .group
@@ -125,8 +113,6 @@
   .item
     padding-left: 15px
     line-height: 52px
-    height: 52px
-    width: 120px
     text-align: left
     white-space: nowrap
   .last
@@ -146,7 +132,6 @@
       disabled: false,
       useClear: true,
       clearBlurHidden: true,
-      readonly: false,
       isPwd: true,
       pwdVisible: true,
       showEye: true,
@@ -177,10 +162,6 @@
       updateDisabled (e) {
         const { value } = e.detail
         this.disabled = value
-      },
-      updateReadOnly (e) {
-        const { value } = e.detail
-        this.readonly = value
       },
       updateUseClear (e) {
         const { value } = e.detail

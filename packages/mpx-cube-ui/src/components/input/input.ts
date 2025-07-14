@@ -3,6 +3,7 @@ import { createComponent } from '../../common/helper/create-component'
 const EVENT_FOCUS = 'focus'
 const EVENT_BLUR = 'blur'
 const EVENT_INPUT = 'input'
+const EVENT_CONFIRM = 'confirm'
 
 createComponent({
   // 补充密码展示
@@ -28,18 +29,8 @@ createComponent({
       type: String,
       value: 'color: #969699'
     },
-    // 指定 placeholder 的样式类
-    placeholderClass: {
-      type: String,
-      value: 'input-placeholder'
-    },
     // 是否禁用
     disabled: {
-      type: Boolean,
-      value: false
-    },
-    // 是否只读
-    readonly: {
       type: Boolean,
       value: false
     },
@@ -61,20 +52,53 @@ createComponent({
     },
     // 最大输入长度
     maxlength: {
-      type: Number
-    },
-    // 最小输入长度
-    minlength: {
-      type: Number
+      type: Number,
+      value: 999
     },
     clearable: {
-      type: Boolean,
-      optionalTypes: [Object],
-      value: false
+      type: Object,
+      optionalTypes: [Boolean],
+      value: {
+        visible: false,
+        blurHidden: false
+      }
     },
     eye: {
+      type: Object,
+      optionalTypes: [Boolean],
+      value: {
+        open: false,
+        reverse: false
+      }
+    },
+    // 指定光标与键盘的距离（web暂不支持）
+    cursorSpacing: {
+      type: Number,
+      value: 0
+    },
+    // 指定focus时的光标位置（web暂不支持）
+    cursor: {
+      type: Number,
+      value: -1
+    },
+    // 光标起始位置（web暂不支持）
+    selectionStart: {
+      type: Number,
+      value: -1
+    },
+    // 光标结束位置（web暂不支持）
+    selectionEnd: {
+      type: Number,
+      value: -1
+    },
+    // 键盘弹起时，是否自动上推页面（web暂不支持）
+    adjustPosition: {
       type: Boolean,
-      optionalTypes: [Object],
+      value: true
+    },
+    // focus时，点击页面的时候不收起键盘（web暂不支持）
+    holdKeyboard: {
+      type: Boolean,
       value: false
     }
   },
@@ -88,8 +112,7 @@ createComponent({
     formatedEye: {
       open: false,
       reverse: false
-    },
-    autoFoucs: false
+    }
   },
   computed: {
     _type() {
@@ -100,7 +123,7 @@ createComponent({
       return type
     },
     _showClear() {
-      let visible = this.formatedClearable?.visible && this.inputValue && !this.readonly && !this.disabled
+      let visible = this.formatedClearable?.visible && this.inputValue && !this.disabled
       if (this.formatedClearable?.blurHidden && !this.isFocus) {
         visible = false
       }
@@ -117,8 +140,6 @@ createComponent({
       if (!this.maxlength) {
         return -1
       }
-      console.log(parseInt(`${this.maxlength}`))
-      // return parseInt(`${this.maxlength}`)
       return parseInt(`${this.maxlength}`)
     },
     _inputWrapperClass() {
@@ -202,12 +223,24 @@ createComponent({
     },
     handleClear () {
       // 点击清除按键时触发
+      // 先保障输入框焦点不失去
       this.inputValue = ''
       this.triggerEvent(EVENT_INPUT, { value: '' })
     },
     handlePwdEye() {
       // 点击密码可视化的时候触发
       this.formatedEye.open = !this.formatedEye.open
+    },
+    handleConfirm (e) {
+      // 点击完成时， 触发 confirm 事件
+      // @arg 事件对象 e = {value: value}
+      this.triggerEvent(EVENT_CONFIRM, e.detail)
+    },
+    hasPrependSlot() {
+      return !!this.$slots.prepend
+    },
+    hasAppendSlot() {
+      return !!this.$slots.append
     }
   }
 })

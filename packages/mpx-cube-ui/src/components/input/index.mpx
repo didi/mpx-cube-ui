@@ -1,6 +1,6 @@
 <template>
   <view wx:class="{{ ['cube-input', _inputWrapperClass] }}">
-    <view class="cube-input-prepend"  wx:if="{{ $slots.prepend }}">
+    <view class="cube-input-prepend" wx:if="{{ hasPrependSlot }}">
       <slot name="prepend"></slot>
     </view>
     <input
@@ -8,27 +8,34 @@
       wx:ref="input"
       value="{{ inputValue }}"
       type="{{ _type }}"
+      password@wx|ali="{{ _type === 'password' }}"
       placeholder="{{ placeholder }}"
-      maxlength="{{ _maxlength }}"
+      maxlength="{{ _maxlength === -1 ? 999 : _maxlength }}"
       disabled="{{ disabled }}"
-      readonly="{{ readonly }}"
-      auto-focus@wx="{{ autoFocus }}"
+      auto-focus@wx|ali="{{ autoFocus }}"
       focus="{{ isFocus }}"
       autocomplete="{{ autocomplete }}"
+      cursor-spacing@wx="{{ cursorSpacing }}"
+      cursor@wx|ali="{{ cursor }}"
+      selection-start@wx|ali="{{ selectionStart }}"
+      selection-end@wx|ali="{{ selectionEnd }}"
+      adjust-position@wx="{{ adjustPosition }}"
+      hold-keyboard@wx="{{ holdKeyboard }}"
       bind:focus="handleFocus"
       bind:blur="handleBlur"
       bind:input="handleInput"
+      bind:confirm@wx|ali="handleConfirm"
     />
-    <view class="cube-input-append" wx:if="{{ $slots.append || _showClear || _showPwdEye }}">
-      <view class="cube-input-clear" wx:if="{{ _showClear}}" bind:tap="handleClear">
-        <cube-icon type="delete" />
+    <view class="cube-input-append" wx:if="{{ _showClear || _showPwdEye || hasAppendSlot }}">
+      <view class="cube-input-clear" wx:if="{{ _showClear}}" catch:touchstart="handleClear">
+        <cube-icon type="delete"/>
       </view>
-          <view class="cube-input-eye" wx:if="{{ _showPwdEye }}" bind:tap="handlePwdEye">
-            <cube-icon type="{{ eyeType}}" />
-          </view>
-          <slot name="append"></slot>
-        </view>
+      <view class="cube-input-eye" wx:if="{{ _showPwdEye }}" bind:tap="handlePwdEye">
+        <cube-icon type="{{ eyeType}}" />
+      </view>
+      <slot name="append" wx:if="{{ hasAppendSlot }}"></slot>
     </view>
+  </view>
 </template>
 
 <script lang="ts" src="./input.ts"></script>
@@ -44,8 +51,8 @@
     font-size $var(input-font-size)
     border-1px $var(input-border-color)
     border-radius $var(input-border-radius)
-    overflow hidden
     font-size $var(input-font-size)
+    overflow hidden
     background-color $var(input-bgc)
   .cube-input-field
     display block
@@ -53,9 +60,9 @@
     width 100%
     height 100%
     box-sizing border-box
-    background-color: transparent
     padding $var(input-padding)
     outline none
+    background-color: transparent
   .cube-input_focused
     border-1px-reset($var(input-focus-border-color), $var(input-border-radius))
   .cube-input_disabled
