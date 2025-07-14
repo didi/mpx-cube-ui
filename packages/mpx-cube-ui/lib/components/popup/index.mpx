@@ -9,7 +9,7 @@
         <!-- 遮罩插槽 -->
         <slot name="mask"></slot>
       </view>
-      <view class="cube-popup-content {{ transitionClass }}" bindanimationend="contentHideAnimationend">
+      <view class="cube-popup-content {{ transitionClass }}" bindanimationend@_wx|_ali|_web="contentHideAnimationend">
         <rich-text wx:if="{{ content }}" nodes="{{ content }}"></rich-text>
         <!-- 默认插槽 -->
         <slot wx:else></slot>
@@ -18,7 +18,12 @@
 
     <view
       wx:else
-      wx:class="{{ [themeType ? 'cube-popup cube-popup-'+themeType : 'cube-popup', rootClass, visibleClass] }}"
+      wx:class="{{ [
+        themeType ? 'cube-popup cube-popup-'+themeType : 'cube-popup',
+        rootClass,
+        visibleClass,
+        !removeCatchTouch ? 'cube-popup-remove-touch' : ''
+      ] }}"
       style="z-index: {{ zIndex }}"
       catchtouchmove@wx|ali
     >
@@ -35,7 +40,7 @@
         class="cube-popup-content {{ transitionClass }}"
         wx:style="{{styleConfig.content}}"
         bindtouchmove="preventTouchMove"
-        bindanimationend="contentHideAnimationend">
+        bindanimationend@_wx|_ali|_web="contentHideAnimationend">
         <rich-text wx:if="{{ content }}" nodes="{{ content }}"></rich-text>
         <!-- 默认插槽 -->
         <slot></slot>
