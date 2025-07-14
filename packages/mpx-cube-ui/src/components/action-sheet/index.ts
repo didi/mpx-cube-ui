@@ -80,9 +80,7 @@ createComponent({
     // 显示
     show() {
       if (this.isVisible) return
-      this.$nextTick(() => {
-        this.isVisible = true
-      })
+      this.isVisible = true
     },
     // @vuese
     // 隐藏
