@@ -53,23 +53,19 @@ createComponent({
     // 最大输入长度
     maxlength: {
       type: Number,
-      value: 999
+      value: 10
     },
+    // 清除按键是否可见和清除按键离焦是否可见
     clearable: {
       type: Object,
       optionalTypes: [Boolean],
-      value: {
-        visible: false,
-        blurHidden: false
-      }
+      value: {}
     },
+    // 密码眼睛是否可见和展示样式
     eye: {
       type: Object,
       optionalTypes: [Boolean],
-      value: {
-        open: false,
-        reverse: false
-      }
+      value: {}
     },
     // 指定光标与键盘的距离（web暂不支持）
     cursorSpacing: {
@@ -145,10 +141,10 @@ createComponent({
     _inputWrapperClass() {
       let ret = ''
       if (this.isFocus) {
-        ret += ' cube-input_focused'
+        ret += ' cube-input-focused'
       }
       if (this.disabled) {
-        ret += ' cube-input_disabled'
+        ret += ' cube-input-disabled'
       }
       return ret
     },
@@ -159,9 +155,7 @@ createComponent({
   watch: {
     inputValue: {
       handler (value) {
-        if ((this._maxlength < value.length) && (this._maxlength >= 0)) {
-          this.inputValue = value.slice(0, this._maxlength)
-        }
+        this.inputValue = value
       },
       immediate: true
     },
@@ -173,57 +167,50 @@ createComponent({
     },
     clearable: {
       handler() {
-        this.formatClearable()
+        if (typeof this.clearable === 'boolean') {
+          this.formatedClearable.visible = this.clearable
+        } else {
+          Object.assign(this.formatedClearable, this.clearable)
+        }
       },
       deep: true,
       immediate: true
     },
     eye: {
       handler() {
-        this.formateEye()
+        if (typeof this.eye === 'boolean') {
+          this.formatedEye.open = this.eye
+        } else {
+          Object.assign(this.formatedEye, this.eye)
+        }
       },
       deep: true,
       immediate: true
     }
   },
   methods: {
-    formatClearable() {
-      if (typeof this.clearable === 'boolean') {
-        this.formatedClearable.visible = this.clearable
-      } else {
-        Object.assign(this.formatedClearable, this.clearable)
-      }
-    },
-    formateEye() {
-      if (typeof this.eye === 'boolean') {
-        this.formatedEye.open = this.eye
-      } else {
-        Object.assign(this.formatedEye, this.eye)
-      }
-    },
     handleFocus(e) {
       // 输入框聚焦时触发
-      // @arg 事件对象
+      // @arg 事件对象 @arg 事件对象 e = {value}
       this.triggerEvent(EVENT_FOCUS, e.detail)
       this.isFocus = true
     },
     handleBlur(e) {
       // 输入框失去焦点时触发
-      // @arg 事件对象
+      // @arg 事件对象 @arg 事件对象 e = {value, cursor}
       this.triggerEvent(EVENT_BLUR, e.detail)
       this.isFocus = false
     },
     handleInput (e) {
+      // 当键盘输入时，触发 input 事件
+      // @arg 事件对象 e = event.detail = {value, cursor}
       const { value } = e.detail
       if ((this._maxlength < value.length) && (this._maxlength >= 0)) return
       this.inputValue = value
-      // 当键盘输入时，触发 input 事件
-      // @arg 事件对象 e = event.detail = {value, cursor}
       this.triggerEvent(EVENT_INPUT, e.detail)
     },
     handleClear () {
       // 点击清除按键时触发
-      // 先保障输入框焦点不失去
       this.inputValue = ''
       this.triggerEvent(EVENT_INPUT, { value: '' })
     },
@@ -235,12 +222,6 @@ createComponent({
       // 点击完成时， 触发 confirm 事件
       // @arg 事件对象 e = {value: value}
       this.triggerEvent(EVENT_CONFIRM, e.detail)
-    },
-    hasPrependSlot() {
-      return !!this.$slots.prepend
-    },
-    hasAppendSlot() {
-      return !!this.$slots.append
     }
   }
 })
