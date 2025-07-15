@@ -33,6 +33,7 @@ createComponent({
         align: 'right'
       }
     ],
+    isVisible: false,
     selectContent: ''
   },
   methods: {

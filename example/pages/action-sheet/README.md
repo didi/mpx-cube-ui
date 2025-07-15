@@ -29,6 +29,10 @@ ActionSheet操作列表提供了两种常见的样式，灵活可控内容。
       inputData="{{inputData}}"
       bindselect="onSelect"
     />
+    <cube-toast
+      txt="{{ selectContent }}"
+      wx:ref="selectToast">
+    </cube-toast>
   </view>
 </template>
 

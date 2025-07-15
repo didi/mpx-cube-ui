@@ -8,6 +8,10 @@
       pickerStyle="{{pickerStyle}}"
       bind:select="onSelect"
     />
+    <cube-toast
+      txt="{{ selectContent }}"
+      wx:ref="selectToast">
+    </cube-toast>
   </view>
 </template>
 
@@ -43,7 +47,8 @@ createPage({
 <script type="application/json">
   {
     "usingComponents": {
-      "cube-action-sheet": "@mpxjs/mpx-cube-ui/src/components/action-sheet/index.mpx"
+      "cube-action-sheet": "@mpxjs/mpx-cube-ui/src/components/action-sheet/index.mpx",
+      "cube-toast": "@mpxjs/mpx-cube-ui/src/components/toast/index"
     }
   }
 </script>

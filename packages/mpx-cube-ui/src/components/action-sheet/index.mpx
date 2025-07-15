@@ -2,30 +2,29 @@
   <cube-popup
     wx:model-prop="visible"
     wx:model="{{isVisible}}"
+    wx:model-event="toggle"
     direction="horizontal"
     mask-closable="{{ maskClosable }}"
     bind:maskClick="maskClick"
     position="bottom"
     transition="move-up"
   >
-    <view class="content">
-      <view class="cube-action-sheet-panel cube-safe-area-pb">
-        <view class="cube-action-sheet-title" wx:class="{{pickerStyleClass.title}}" wx:show="{{pickerStyle || title}}">{{ title }}</view>
-        <view class="cube-action-sheet-content">
-          <view class="cube-action-sheet-list">
-            <rich-text class="cube-action-sheet-item"
-              wx:for="{{inputData}}"
-              wx:key="index"
-              data-align="{{item.align || ''}}"
-              nodes="{{ item.content }}"
-              wx:class="{{ [item.class || '', index === active ? 'cube-action-sheet-item_active' : '']}}"
-              catchtap="itemClick(item, index)">
-            </rich-text>
-          </view>
+    <view class="cube-action-sheet-panel cube-safe-area-pb">
+      <view class="cube-action-sheet-title" wx:class="{{pickerStyleClass.title}}" wx:show="{{pickerStyle || title}}">{{ title }}</view>
+      <view class="cube-action-sheet-content">
+        <view class="cube-action-sheet-list">
+          <rich-text class="cube-action-sheet-item"
+            wx:for="{{inputData}}"
+            wx:key="index"
+            data-align="{{item.align || ''}}"
+            nodes="{{ item.content }}"
+            wx:class="{{ [item.class || '', index === active ? 'cube-action-sheet-item_active' : '']}}"
+            catchtap="itemClick(item, index)">
+          </rich-text>
         </view>
-        <view class="cube-action-sheet-space" wx:class="{{ pickerStyleClass.space }}"></view>
-        <view class="cube-action-sheet-cancel" bindtap="cancel" wx:class="{{ pickerStyleClass.cancel }}">{{_cancelTxt}}</view>
       </view>
+      <view class="cube-action-sheet-space" wx:class="{{ pickerStyleClass.space }}"></view>
+      <view class="cube-action-sheet-cancel" bindtap="cancel" wx:class="{{ pickerStyleClass.cancel }}">{{_cancelTxt}}</view>
     </view>
   </cube-popup>
 </template>

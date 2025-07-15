@@ -1,15 +1,14 @@
 import { createComponent } from '../../common/helper/create-component'
+import { visibilityMixin } from '../../common/mixins'
 
 const EVENT_SELECT = 'select'
 const EVENT_CANCEL = 'cancel'
 const EVENT_MASK_CLOSE = 'maskClose'
 
 createComponent({
+  mixins: [visibilityMixin],
   options: {
     styleIsolation: 'shared'
-  },
-  data: {
-    isVisible: false
   },
   properties: {
     /**
@@ -77,24 +76,9 @@ createComponent({
     }
   },
   methods: {
-    // @vuese
-    // 显示
-    show() {
-      if (this.isVisible) return
-      this.isVisible = true
-    },
-    // @vuese
-    // 隐藏
-    hide() {
-      this.isVisible = false
-    },
     maskClick() {
-      if (this.maskClosable) {
-        // 点击遮盖层隐藏时触发
-        this.triggerEvent(EVENT_MASK_CLOSE)
-        console.log(1111)
-        this.hide()
-      }
+      // 点击遮盖层时触发
+      this.triggerEvent(EVENT_MASK_CLOSE)
     },
     cancel() {
       // 点击取消时触发

@@ -33,6 +33,7 @@ createComponent({
         content: '豪华型'
       }
     ],
+    isVisible: false,
     selectContent: ''
   },
   methods: {
