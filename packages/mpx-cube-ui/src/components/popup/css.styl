@@ -49,6 +49,7 @@
   background-color $var(mask-bgc_opacity)
   opacity $var(popup-mask-opacity)
   pointer-events: auto
+  transform: translateZ(0) // 12306 mask 闪烁
   // fix some android webview opacity render bug
   &::before
     content "."
@@ -60,7 +61,9 @@
 
 .cube-popup
   transform translateX(-100%)
+  opacity 0
   &.show
+    opacity 1
     transform translateX(0)
     .cube-popup-mask
       opacity $var(popup-mask-opacity)
@@ -78,6 +81,7 @@
       &.fade
         popup-transition(popup-fade-show)
   &.hide
+    opacity 0
     transform translateX(-100%)
     &.cube-popup_transition
       popup-transition(popup-root-hide)

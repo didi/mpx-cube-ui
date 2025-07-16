@@ -48,7 +48,8 @@
       "./pages/rate/index",
       "./pages/switch/index",
       "./pages/loading/index",
-      "./pages/input/index"
+      "./pages/input/index",
+      "./pages/action-sheet/index"
     ]
   }
 </script>

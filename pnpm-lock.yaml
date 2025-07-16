@@ -20,6 +20,12 @@ importers:
       '@commitlint/config-conventional':
         specifier: ^12.1.4
         version: 12.1.4
+      '@mpxjs/api-proxy':
+        specifier: 2.10.7
+        version: 2.10.7(@mpxjs/core@2.10.7-beta.9)
+      '@mpxjs/core':
+        specifier: 2.10.7-beta.9
+        version: 2.10.7-beta.9(@mpxjs/api-proxy@2.10.7)(@mpxjs/store@2.10.2)(react-native-reanimated@3.15.3(@babel/core@7.26.10)(react-native@0.75.2(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(react@18.3.1)(typescript@4.9.5))(react@18.3.1))(react-native@0.75.2(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(react@18.3.1)(typescript@4.9.5))(react@18.3.1)(vue-demi@0.13.11(vue@2.7.16))(vue-i18n-bridge@9.14.1(vue@2.7.16))(vue-i18n@8.28.2(vue@2.7.16))(vue@2.7.16)
       '@mpxjs/eslint-config-ts':
         specifier: ^1.0.5
         version: 1.0.10(eslint@7.32.0)(typescript@4.9.5)
@@ -27,14 +33,20 @@ importers:
         specifier: 'workspace: *'
         version: link:packages/extract-theme-var
       '@mpxjs/miniprogram-simulate':
-        specifier: ^1.4.17
-        version: 1.4.17
+        specifier: ^1.4.20
+        version: 1.4.20
       '@mpxjs/mpx-cube-ui':
         specifier: 'workspace: *'
         version: link:packages/mpx-cube-ui
       '@mpxjs/mpx-jest':
         specifier: ^0.0.32
-        version: 0.0.32(@mpxjs/core@2.10.2)(@mpxjs/webpack-plugin@2.10.2(@mpxjs/core@2.10.2)(webpack@5.98.0))
+        version: 0.0.32(@mpxjs/core@2.10.7-beta.9)(@mpxjs/webpack-plugin@2.10.7-beta.10(@mpxjs/core@2.10.7-beta.9)(webpack@5.98.0))
+      '@mpxjs/utils':
+        specifier: 2.10.7-beta.5
+        version: 2.10.7-beta.5(@mpxjs/core@2.10.7-beta.9)
+      '@mpxjs/webpack-plugin':
+        specifier: 2.10.7-beta.10
+        version: 2.10.7-beta.10(@mpxjs/core@2.10.7-beta.9)(webpack@5.98.0)
       '@mpxjs/website-build':
         specifier: 'workspace: *'
         version: link:packages/website-build
@@ -128,33 +140,21 @@ importers:
       '@babel/runtime-corejs3':
         specifier: ^7.10.4
         version: 7.26.10
-      '@mpxjs/api-proxy':
-        specifier: ^2.9.70
-        version: 2.10.2(@mpxjs/core@2.10.2)
       '@mpxjs/babel-plugin-inject-page-events':
         specifier: ^2.9.5
         version: 2.9.5
-      '@mpxjs/core':
-        specifier: ^2.9.70
-        version: 2.10.2(@mpxjs/api-proxy@2.10.2)(@mpxjs/store@2.10.2)(react-native-reanimated@3.15.3(@babel/core@7.26.10)(react-native@0.75.2(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(react@18.3.1)(typescript@4.9.5))(react@18.3.1))(react-native@0.75.2(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(react@18.3.1)(typescript@4.9.5))(react@18.3.1)(vue-demi@0.14.10(vue@2.7.16))(vue-i18n-bridge@9.14.1(vue@2.7.16))(vue-i18n@8.28.2(vue@2.7.16))(vue@2.7.16)
       '@mpxjs/mpx-cli-service':
         specifier: ^2.1.32
         version: 2.1.32(@vue/compiler-sfc@3.5.13)(hogan.js@3.0.2)(lodash@4.17.21)(react@18.3.1)(stylus-loader@6.2.0(stylus@0.55.0)(webpack@5.98.0))(vue-template-compiler@2.7.16)(vue@2.7.16)(webpack-sources@3.2.3)
-      '@mpxjs/store':
-        specifier: ^2.9.70
-        version: 2.10.2(@mpxjs/core@2.10.2)
       '@mpxjs/vue-cli-plugin-mpx':
         specifier: ^2.1.32
-        version: 2.1.32(@babel/core@7.26.10)(@mpxjs/webpack-plugin@2.10.2(@mpxjs/core@2.10.2)(webpack@5.98.0))(@vue/compiler-sfc@3.5.13)(css-loader@6.11.0(webpack@5.98.0))(hogan.js@3.0.2)(lodash@4.17.21)(react@18.3.1)(stylus-loader@6.2.0(stylus@0.55.0)(webpack@5.98.0))(vue-template-compiler@2.7.16)(webpack@5.98.0)
+        version: 2.1.32(@babel/core@7.26.10)(@mpxjs/webpack-plugin@2.10.7-beta.10(@mpxjs/core@2.10.7-beta.9)(webpack@5.98.0))(@vue/compiler-sfc@3.5.13)(css-loader@6.11.0(webpack@5.98.0))(hogan.js@3.0.2)(lodash@4.17.21)(react@18.3.1)(stylus-loader@6.2.0(stylus@0.55.0)(webpack@5.98.0))(vue-template-compiler@2.7.16)(webpack@5.98.0)
       '@mpxjs/vue-cli-plugin-mpx-theme':
         specifier: 2.0.0-beta.2
         version: 2.0.0-beta.2(postcss@8.5.3)
       '@mpxjs/vue-cli-plugin-mpx-typescript':
         specifier: ^2.1.22
         version: 2.1.26(typescript@4.9.5)(webpack@5.98.0)
-      '@mpxjs/webpack-plugin':
-        specifier: ^2.9.72
-        version: 2.10.2(@mpxjs/core@2.10.2)(webpack@5.98.0)
       '@vue/cli-service':
         specifier: ~5.0.8
         version: 5.0.8(@vue/compiler-sfc@3.5.13)(hogan.js@3.0.2)(lodash@4.17.21)(react@18.3.1)(stylus-loader@6.2.0(stylus@0.55.0)(webpack@5.98.0))(vue-template-compiler@2.7.16)(vue@2.7.16)(webpack-sources@3.2.3)
@@ -1285,8 +1285,8 @@ packages:
     resolution: {integrity: sha512-ajBvlKpWucBB17FuQYUShqpqy8GRgYEpJW0vWJbUu1CV9lWyrDCapy0lScU8T8Z6qn49sSwJB3+M+evYIdGg+A==}
     engines: {node: '>= 0.4'}
 
-  '@mpxjs/api-proxy@2.10.2':
-    resolution: {integrity: sha512-nCkWetcwSF3RX83JEKwT59kS7ZMEbt1vFv4Vz6lQ0au35Zw4BTl8CzHEzaaQ6Fzo41MJ1PVpVFqs8w04bND0bQ==}
+  '@mpxjs/api-proxy@2.10.7':
+    resolution: {integrity: sha512-7dK1kziKLf0MD9NxZwDlHskqVEejUh37pPyogZEYTLiNyL05xu/adR526hfcQIXrk9eFoStHWnNrEWiUT2Jvbg==}
     peerDependencies:
       '@react-native-async-storage/async-storage': '*'
       '@react-native-community/netinfo': '*'
@@ -1315,8 +1315,8 @@ packages:
     resolution: {integrity: sha512-64mCOg/CIWQmGzYtoK9NEgN1AA+8C3gAldt0J7HL6SFrppMF2S8lTR/D5ckwf/TIs/Ez79Y6iem8r8bDRYtw5A==}
     engines: {node: '>=8'}
 
-  '@mpxjs/core@2.10.2':
-    resolution: {integrity: sha512-ZhLrld+/AzuCgTZPDDIjFO7/v7gcWwaSlLnPbMvCvKlnA/Dok8p2JR6X7He8Jzp6R4vwZw6iSZ4UBiwz/anBOg==}
+  '@mpxjs/core@2.10.7-beta.9':
+    resolution: {integrity: sha512-X9q8q+yZNkXoOMIvvOdo1hv1pEyJz7E1rR9yZ9fvdlN0NZVquEXUfgvfxw8F+/CKYC7THXL0kWX8v0Pky37omQ==}
     peerDependencies:
       '@d11/react-native-fast-image': '*'
       '@mpxjs/api-proxy': ^2.9.0
@@ -1381,8 +1381,8 @@ packages:
     peerDependencies:
       eslint: '>=7.4.0'
 
-  '@mpxjs/miniprogram-simulate@1.4.17':
-    resolution: {integrity: sha512-LYbdmW27Vx/FJ8SY8+sS99kCrCjwO6hg9nj+BS2b3BBgu/srvjl75yB0/omf4TMXcm0IjL6GZsuiP6WvjvPfFQ==}
+  '@mpxjs/miniprogram-simulate@1.4.20':
+    resolution: {integrity: sha512-Iao+ot9IYgDeuVIHBX31HigfhV7z0GAiu++elkbqRx8LDgIuocfietKENmNVH5VTAiPAVS2HDkKAlybZ+gx4xw==}
 
   '@mpxjs/mpx-cli-service@2.1.32':
     resolution: {integrity: sha512-RZ3Av7wb+rlEULFeIT7Zk3NlCowB6X/Hm/u1JU5L3yPjVXgBN1p3AxnaZqsTSX3yipqzoxhiWOgNsTNG+sGPhg==}
@@ -1406,6 +1406,16 @@ packages:
     resolution: {integrity: sha512-qL+FwVHDp9PUwL/cjV37yN39QEK2GvE520rxbR9aWvF6eE5S5cJ82ZHTxMnM4yxbPwgNaz2umsSU+SVdCLzgZA==}
     peerDependencies:
       '@mpxjs/core': ^2.9.58
+
+  '@mpxjs/utils@2.10.6':
+    resolution: {integrity: sha512-OmHbzUbWjXzo7FJF15+EXRXJdD3ssvEEa7DVo2qaRXeGveju2TTbv5JOXENh7GApcSUptwyAFnnCdQ1SNu+Ohw==}
+    peerDependencies:
+      '@mpxjs/core': ^2.9.58
+
+  '@mpxjs/utils@2.10.7-beta.5':
+    resolution: {integrity: sha512-tHdXe1RrsESOvtQ6LsMAdgO41B3ljPcECtYYJUpszQ3TWJ52aGzD0tfiK018k3jedLZlMg4d6hNd1EonqGuN6w==}
+    peerDependencies:
+      '@mpxjs/core': ^2.10.7 || ^2.10.7-beta.1
 
   '@mpxjs/vue-cli-plugin-mpx-theme@2.0.0-beta.2':
     resolution: {integrity: sha512-sccgVChhR7JviU1gKaG44BtOf2YLOsm7Y/umtIEHTg7xiN8xzR/+4+PGGJyNcecmEg4OMi9GpyXNiPxlgKHekQ==}
@@ -1440,6 +1450,12 @@ packages:
 
   '@mpxjs/webpack-plugin@2.10.2':
     resolution: {integrity: sha512-Yaw7lVvHd9vJowYBuDKcK78MiS3pqp9J2iDKygbTVXrlgWyUqU3pKiB0eBXahuD4ZXfi+qTd72lmAkXpC+VemQ==}
+    engines: {node: '>=14.14.0'}
+    peerDependencies:
+      webpack: ^5.75.0
+
+  '@mpxjs/webpack-plugin@2.10.7-beta.10':
+    resolution: {integrity: sha512-H4rBj/4MvvUnXLF4o7Oxdbta+LxKIt2Z7QsW5wB03cDvtJosqhsp6HoiJyv729UQtlV2ytSHCBlGEUlE33lXpw==}
     engines: {node: '>=14.14.0'}
     peerDependencies:
       webpack: ^5.75.0
@@ -6974,6 +6990,7 @@ packages:
   node-domexception@1.0.0:
     resolution: {integrity: sha512-/jKZoMpw0F8GRwl4/eLROPA3cfcXtLApP0QzLmUT/HuPCZWyB7IY9ZrMeKw2O/nFIqPQB3PVM9aYm0F312AXDQ==}
     engines: {node: '>=10.5.0'}
+    deprecated: Use your platform's native DOMException instead
 
   node-fetch@2.7.0:
     resolution: {integrity: sha512-c4FRfUm/dbcWZ7U+1Wq0AwCyFL+3nt2bEw05wfxSz+DWpWsitgmSgYmy2dQdWyKC1694ELPqMs/YzUSNozLt8A==}
@@ -11507,9 +11524,9 @@ snapshots:
     dependencies:
       call-bind: 1.0.8
 
-  '@mpxjs/api-proxy@2.10.2(@mpxjs/core@2.10.2)':
+  '@mpxjs/api-proxy@2.10.7(@mpxjs/core@2.10.7-beta.9)':
     dependencies:
-      '@mpxjs/utils': 2.10.2(@mpxjs/core@2.10.2)
+      '@mpxjs/utils': 2.10.6(@mpxjs/core@2.10.7-beta.9)
       axios: 1.8.4
     transitivePeerDependencies:
       - '@mpxjs/core'
@@ -11521,11 +11538,27 @@ snapshots:
     dependencies:
       execa: 5.1.1
 
-  '@mpxjs/core@2.10.2(@mpxjs/api-proxy@2.10.2)(@mpxjs/store@2.10.2)(react-native-reanimated@3.15.3(@babel/core@7.26.10)(react-native@0.75.2(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(react@18.3.1)(typescript@4.9.5))(react@18.3.1))(react-native@0.75.2(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(react@18.3.1)(typescript@4.9.5))(react@18.3.1)(vue-demi@0.14.10(vue@2.7.16))(vue-i18n-bridge@9.14.1(vue@2.7.16))(vue-i18n@8.28.2(vue@2.7.16))(vue@2.7.16)':
+  '@mpxjs/core@2.10.7-beta.9(@mpxjs/api-proxy@2.10.7)(@mpxjs/store@2.10.2)(react-native-reanimated@3.15.3(@babel/core@7.26.10)(react-native@0.75.2(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(react@18.3.1)(typescript@4.9.5))(react@18.3.1))(react-native@0.75.2(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(react@18.3.1)(typescript@4.9.5))(react@18.3.1)(vue-demi@0.13.11(vue@2.7.16))(vue-i18n-bridge@9.14.1(vue@2.7.16))(vue-i18n@8.28.2(vue@2.7.16))(vue@2.7.16)':
     dependencies:
-      '@mpxjs/api-proxy': 2.10.2(@mpxjs/core@2.10.2)
-      '@mpxjs/store': 2.10.2(@mpxjs/core@2.10.2)
-      '@mpxjs/utils': 2.10.2(@mpxjs/core@2.10.2)
+      '@mpxjs/api-proxy': 2.10.7(@mpxjs/core@2.10.7-beta.9)
+      '@mpxjs/store': 2.10.2(@mpxjs/core@2.10.7-beta.9)
+      '@mpxjs/utils': 2.10.6(@mpxjs/core@2.10.7-beta.9)
+      lodash: 4.17.21
+      miniprogram-api-typings: 3.12.3
+    optionalDependencies:
+      react: 18.3.1
+      react-native: 0.75.2(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(react@18.3.1)(typescript@4.9.5)
+      react-native-reanimated: 3.15.3(@babel/core@7.26.10)(react-native@0.75.2(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(react@18.3.1)(typescript@4.9.5))(react@18.3.1)
+      vue: 2.7.16
+      vue-demi: 0.13.11(vue@2.7.16)
+      vue-i18n: 8.28.2(vue@2.7.16)
+      vue-i18n-bridge: 9.14.1(vue@2.7.16)
+
+  '@mpxjs/core@2.10.7-beta.9(@mpxjs/api-proxy@2.10.7)(@mpxjs/store@2.10.2)(react-native-reanimated@3.15.3(@babel/core@7.26.10)(react-native@0.75.2(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(react@18.3.1)(typescript@4.9.5))(react@18.3.1))(react-native@0.75.2(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(react@18.3.1)(typescript@4.9.5))(react@18.3.1)(vue-demi@0.14.10(vue@2.7.16))(vue-i18n-bridge@9.14.1(vue@2.7.16))(vue-i18n@8.28.2(vue@2.7.16))(vue@2.7.16)':
+    dependencies:
+      '@mpxjs/api-proxy': 2.10.7(@mpxjs/core@2.10.7-beta.9)
+      '@mpxjs/store': 2.10.2(@mpxjs/core@2.10.7-beta.9)
+      '@mpxjs/utils': 2.10.6(@mpxjs/core@2.10.7-beta.9)
       lodash: 4.17.21
       miniprogram-api-typings: 3.12.3
     optionalDependencies:
@@ -11562,7 +11595,7 @@ snapshots:
       - eslint-import-resolver-webpack
       - supports-color
 
-  '@mpxjs/miniprogram-simulate@1.4.17':
+  '@mpxjs/miniprogram-simulate@1.4.20':
     dependencies:
       async: 2.6.4
       csso: 3.5.1
@@ -11657,34 +11690,42 @@ snapshots:
       - webpack-sources
       - whiskers
 
-  '@mpxjs/mpx-jest@0.0.32(@mpxjs/core@2.10.2)(@mpxjs/webpack-plugin@2.10.2(@mpxjs/core@2.10.2)(webpack@5.98.0))':
+  '@mpxjs/mpx-jest@0.0.32(@mpxjs/core@2.10.7-beta.9)(@mpxjs/webpack-plugin@2.10.7-beta.10(@mpxjs/core@2.10.7-beta.9)(webpack@5.98.0))':
     dependencies:
       '@babel/core': 7.26.10
-      '@mpxjs/utils': 2.10.2(@mpxjs/core@2.10.2)
-      '@mpxjs/webpack-plugin': 2.10.2(@mpxjs/core@2.10.2)(webpack@5.98.0)
+      '@mpxjs/utils': 2.10.2(@mpxjs/core@2.10.7-beta.9)
+      '@mpxjs/webpack-plugin': 2.10.7-beta.10(@mpxjs/core@2.10.7-beta.9)(webpack@5.98.0)
       json5: 2.2.3
       magic-string: 0.26.7
     transitivePeerDependencies:
       - '@mpxjs/core'
       - supports-color
 
-  '@mpxjs/store@2.10.2(@mpxjs/core@2.10.2)':
+  '@mpxjs/store@2.10.2(@mpxjs/core@2.10.7-beta.9)':
     dependencies:
-      '@mpxjs/core': 2.10.2(@mpxjs/api-proxy@2.10.2)(@mpxjs/store@2.10.2)(react-native-reanimated@3.15.3(@babel/core@7.26.10)(react-native@0.75.2(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(react@18.3.1)(typescript@4.9.5))(react@18.3.1))(react-native@0.75.2(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(react@18.3.1)(typescript@4.9.5))(react@18.3.1)(vue-demi@0.14.10(vue@2.7.16))(vue-i18n-bridge@9.14.1(vue@2.7.16))(vue-i18n@8.28.2(vue@2.7.16))(vue@2.7.16)
-      '@mpxjs/utils': 2.10.2(@mpxjs/core@2.10.2)
+      '@mpxjs/core': 2.10.7-beta.9(@mpxjs/api-proxy@2.10.7)(@mpxjs/store@2.10.2)(react-native-reanimated@3.15.3(@babel/core@7.26.10)(react-native@0.75.2(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(react@18.3.1)(typescript@4.9.5))(react@18.3.1))(react-native@0.75.2(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(react@18.3.1)(typescript@4.9.5))(react@18.3.1)(vue-demi@0.14.10(vue@2.7.16))(vue-i18n-bridge@9.14.1(vue@2.7.16))(vue-i18n@8.28.2(vue@2.7.16))(vue@2.7.16)
+      '@mpxjs/utils': 2.10.6(@mpxjs/core@2.10.7-beta.9)
 
-  '@mpxjs/template-engine@2.8.7(@mpxjs/core@2.10.2)(webpack@5.98.0)':
+  '@mpxjs/template-engine@2.8.7(@mpxjs/core@2.10.7-beta.9)(webpack@5.98.0)':
     dependencies:
-      '@mpxjs/webpack-plugin': 2.10.2(@mpxjs/core@2.10.2)(webpack@5.98.0)
+      '@mpxjs/webpack-plugin': 2.10.2(@mpxjs/core@2.10.7-beta.9)(webpack@5.98.0)
     transitivePeerDependencies:
       - '@mpxjs/core'
       - supports-color
       - ts-node
       - webpack
 
-  '@mpxjs/utils@2.10.2(@mpxjs/core@2.10.2)':
+  '@mpxjs/utils@2.10.2(@mpxjs/core@2.10.7-beta.9)':
     dependencies:
-      '@mpxjs/core': 2.10.2(@mpxjs/api-proxy@2.10.2)(@mpxjs/store@2.10.2)(react-native-reanimated@3.15.3(@babel/core@7.26.10)(react-native@0.75.2(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(react@18.3.1)(typescript@4.9.5))(react@18.3.1))(react-native@0.75.2(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(react@18.3.1)(typescript@4.9.5))(react@18.3.1)(vue-demi@0.14.10(vue@2.7.16))(vue-i18n-bridge@9.14.1(vue@2.7.16))(vue-i18n@8.28.2(vue@2.7.16))(vue@2.7.16)
+      '@mpxjs/core': 2.10.7-beta.9(@mpxjs/api-proxy@2.10.7)(@mpxjs/store@2.10.2)(react-native-reanimated@3.15.3(@babel/core@7.26.10)(react-native@0.75.2(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(react@18.3.1)(typescript@4.9.5))(react@18.3.1))(react-native@0.75.2(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(react@18.3.1)(typescript@4.9.5))(react@18.3.1)(vue-demi@0.13.11(vue@2.7.16))(vue-i18n-bridge@9.14.1(vue@2.7.16))(vue-i18n@8.28.2(vue@2.7.16))(vue@2.7.16)
+
+  '@mpxjs/utils@2.10.6(@mpxjs/core@2.10.7-beta.9)':
+    dependencies:
+      '@mpxjs/core': 2.10.7-beta.9(@mpxjs/api-proxy@2.10.7)(@mpxjs/store@2.10.2)(react-native-reanimated@3.15.3(@babel/core@7.26.10)(react-native@0.75.2(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(react@18.3.1)(typescript@4.9.5))(react@18.3.1))(react-native@0.75.2(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(react@18.3.1)(typescript@4.9.5))(react@18.3.1)(vue-demi@0.14.10(vue@2.7.16))(vue-i18n-bridge@9.14.1(vue@2.7.16))(vue-i18n@8.28.2(vue@2.7.16))(vue@2.7.16)
+
+  '@mpxjs/utils@2.10.7-beta.5(@mpxjs/core@2.10.7-beta.9)':
+    dependencies:
+      '@mpxjs/core': 2.10.7-beta.9(@mpxjs/api-proxy@2.10.7)(@mpxjs/store@2.10.2)(react-native-reanimated@3.15.3(@babel/core@7.26.10)(react-native@0.75.2(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(react@18.3.1)(typescript@4.9.5))(react@18.3.1))(react-native@0.75.2(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(react@18.3.1)(typescript@4.9.5))(react@18.3.1)(vue-demi@0.13.11(vue@2.7.16))(vue-i18n-bridge@9.14.1(vue@2.7.16))(vue-i18n@8.28.2(vue@2.7.16))(vue@2.7.16)
 
   '@mpxjs/vue-cli-plugin-mpx-theme@2.0.0-beta.2(postcss@8.5.3)':
     dependencies:
@@ -11699,10 +11740,10 @@ snapshots:
       - typescript
       - webpack
 
-  '@mpxjs/vue-cli-plugin-mpx@2.1.32(@babel/core@7.26.10)(@mpxjs/webpack-plugin@2.10.2(@mpxjs/core@2.10.2)(webpack@5.98.0))(@vue/compiler-sfc@3.5.13)(css-loader@6.11.0(webpack@5.98.0))(hogan.js@3.0.2)(lodash@4.17.21)(react@18.3.1)(stylus-loader@6.2.0(stylus@0.55.0)(webpack@5.98.0))(vue-template-compiler@2.7.16)(webpack@5.98.0)':
+  '@mpxjs/vue-cli-plugin-mpx@2.1.32(@babel/core@7.26.10)(@mpxjs/webpack-plugin@2.10.7-beta.10(@mpxjs/core@2.10.7-beta.9)(webpack@5.98.0))(@vue/compiler-sfc@3.5.13)(css-loader@6.11.0(webpack@5.98.0))(hogan.js@3.0.2)(lodash@4.17.21)(react@18.3.1)(stylus-loader@6.2.0(stylus@0.55.0)(webpack@5.98.0))(vue-template-compiler@2.7.16)(webpack@5.98.0)':
     dependencies:
       '@mpxjs/cli-shared-utils': 2.1.32
-      '@mpxjs/webpack-plugin': 2.10.2(@mpxjs/core@2.10.2)(webpack@5.98.0)
+      '@mpxjs/webpack-plugin': 2.10.7-beta.10(@mpxjs/core@2.10.7-beta.9)(webpack@5.98.0)
       '@soda/friendly-errors-webpack-plugin': 1.8.1(webpack@5.98.0)
       '@vue/cli-shared-utils': 5.0.8
       '@vue/vue-loader-v15': vue-loader@15.11.1(@vue/compiler-sfc@3.5.13)(css-loader@6.11.0(webpack@5.98.0))(hogan.js@3.0.2)(lodash@4.17.21)(react@18.3.1)(vue-template-compiler@2.7.16)(webpack@5.98.0)
@@ -11810,7 +11851,7 @@ snapshots:
       - supports-color
       - typescript
 
-  '@mpxjs/webpack-plugin@2.10.2(@mpxjs/core@2.10.2)(webpack@5.98.0)':
+  '@mpxjs/webpack-plugin@2.10.2(@mpxjs/core@2.10.7-beta.9)(webpack@5.98.0)':
     dependencies:
       '@babel/code-frame': 7.26.2
       '@babel/generator': 7.26.10
@@ -11824,8 +11865,61 @@ snapshots:
       '@better-scroll/slide': 2.5.1
       '@better-scroll/wheel': 2.5.1
       '@better-scroll/zoom': 2.5.1
-      '@mpxjs/template-engine': 2.8.7(@mpxjs/core@2.10.2)(webpack@5.98.0)
-      '@mpxjs/utils': 2.10.2(@mpxjs/core@2.10.2)
+      '@mpxjs/template-engine': 2.8.7(@mpxjs/core@2.10.7-beta.9)(webpack@5.98.0)
+      '@mpxjs/utils': 2.10.6(@mpxjs/core@2.10.7-beta.9)
+      acorn: 8.14.1
+      acorn-walk: 7.2.0
+      async: 2.6.4
+      css: 2.2.4
+      css-selector-tokenizer: 0.7.3
+      cssnano: 5.1.15(postcss@8.5.3)
+      de-indent: 1.0.2
+      fastparse: 1.1.2
+      hash-sum: 1.0.2
+      he: 1.2.0
+      html-minifier: 3.5.21
+      icss-utils: 2.1.0
+      json5: 2.2.3
+      loader-utils: 2.0.4
+      lodash: 4.17.21
+      lodash.camelcase: 4.3.0
+      lru-cache: 4.1.5
+      magic-string: 0.26.7
+      mime: 2.6.0
+      object-assign: 4.1.1
+      postcss: 8.5.3
+      postcss-load-config: 3.1.4(postcss@8.5.3)
+      postcss-modules-extract-imports: 3.1.0(postcss@8.5.3)
+      postcss-modules-local-by-default: 4.2.0(postcss@8.5.3)
+      postcss-modules-scope: 3.2.1(postcss@8.5.3)
+      postcss-modules-values: 4.0.0(postcss@8.5.3)
+      postcss-selector-parser: 6.1.2
+      postcss-value-parser: 4.2.0
+      semver: 7.7.1
+      source-list-map: 2.0.1
+      webpack: 5.98.0
+      webpack-virtual-modules: 0.6.2
+    transitivePeerDependencies:
+      - '@mpxjs/core'
+      - supports-color
+      - ts-node
+
+  '@mpxjs/webpack-plugin@2.10.7-beta.10(@mpxjs/core@2.10.7-beta.9)(webpack@5.98.0)':
+    dependencies:
+      '@babel/code-frame': 7.26.2
+      '@babel/generator': 7.26.10
+      '@babel/parser': 7.26.10
+      '@babel/traverse': 7.26.10
+      '@babel/types': 7.26.10
+      '@better-scroll/core': 2.5.1
+      '@better-scroll/movable': 2.5.1
+      '@better-scroll/observe-dom': 2.5.1
+      '@better-scroll/pull-down': 2.5.1
+      '@better-scroll/slide': 2.5.1
+      '@better-scroll/wheel': 2.5.1
+      '@better-scroll/zoom': 2.5.1
+      '@mpxjs/template-engine': 2.8.7(@mpxjs/core@2.10.7-beta.9)(webpack@5.98.0)
+      '@mpxjs/utils': 2.10.6(@mpxjs/core@2.10.7-beta.9)
       acorn: 8.14.1
       acorn-walk: 7.2.0
       async: 2.6.4
@@ -19441,7 +19535,7 @@ snapshots:
       got: 12.6.1
       registry-auth-token: 5.1.0
       registry-url: 6.0.1
-      semver: 7.5.4
+      semver: 7.7.1
 
   pako@1.0.11: {}
 
@@ -20779,7 +20873,7 @@ snapshots:
 
   semver-diff@4.0.0:
     dependencies:
-      semver: 7.5.4
+      semver: 7.7.1
 
   semver@5.7.2: {}
 
