@@ -35,7 +35,7 @@
 |<span id="color-secondary" class="css-var-name">$color-secondary</span>|<div>#4F5E83</div>|基础-次要颜色|
 |<span id="color-disabled" class="css-var-name">$color-disabled</span>|<div>#ccc</div>|基础-禁用色|
 |<span id="color-dark-grey" class="css-var-name">$color-dark-grey</span>|<div>#333</div>|基础-灰色|
-|<span id="color-dark-grey-s" class="css-var-name">$color-dark-grey-s</span>|<div>#000000</div>|-|
+|<span id="color-dark-grey-s" class="css-var-name">$color-dark-grey-s</span>|<div>#323233</div>|基础-浅灰|
 |<span id="color-light-grey-opacity" class="css-var-name">$color-light-grey-opacity</span>|<div>rgba(0, 0, 0, .04)</div>|基础-透明灰|
 |<span id="mask-bgc_opacity" class="css-var-name">$mask-bgc_opacity</span>|<div>rgba(37, 38, 45, 0.4)</div>|遮罩层背景|
 |<span id="fill-bgc" class="css-var-name">$fill-bgc</span>|<div>#f2f2f2</div>|基础-填充背景色|
