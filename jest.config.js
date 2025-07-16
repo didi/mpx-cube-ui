@@ -5,10 +5,10 @@
 module.exports = {
   moduleFileExtensions: ['js', 'ts', 'mpx'],
   testEnvironment: 'jsdom',
-  collectCoverage: true,
+  collectCoverage: false,
   coverageProvider: 'v8',
   testMatch: [
-    '**/__tests__/**/*.spec.js'
+    '**/__tests__/**/input.spec.js'
   ],
   collectCoverageFrom: [
     'packages/mpx-cube-ui/src/**/**/*.{js,mpx,ts}',

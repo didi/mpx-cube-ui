@@ -16,30 +16,34 @@ describe('component input unit test', () => {
     return component
   }
 
-  describe('base props check', () => {
-    const placeholderText = '请输入内容'
-    const maxlength = 10
-    const clearableConfig = { visible: true, autoFocus: true }
-    const eyeConfig = { visible: true, open: false }
-    const component = createComponent({
-      value: 123,
-      type: 'text',
-      placeholder: placeholderText,
-      disabled: true,
-      maxlength,
-      clearable: clearableConfig,
-      eye: eyeConfig
-    })
+  describe('base props value check', () => {
+    const component = createComponent({ value: 123 })
 
     it('props value check', () => {
       expect(component.instance.data.inputValue).toBe('123')
     })
-    it('props type check', () => {
-      expect(component.instance.data.type).toBe('text')
-    })
+  })
+
+  describe('base props placeholder check', () => {
+    const placeholder = '请输入内容'
+    const component = createComponent({ placeholder })
+
     it('props placeholder check', () => {
-      expect(component.instance.data.placeholder).toBe(placeholderText)
+      expect(component.instance.data.placeholder).toBe(placeholder)
     })
+  })
+
+  describe('base props type check', () => {
+    const component = createComponent({ type: 'password' })
+
+    it('props type check', () => {
+      expect(component.instance.data.type).toBe('password')
+    })
+  })
+
+  describe('base props props check', () => {
+    const component = createComponent({ disabled: true })
+
     it('props disable check', () => {
       const instance = component.instance
       const disabledDom = component.querySelector('.cube-input_disabled')
@@ -50,16 +54,47 @@ describe('component input unit test', () => {
       inputEl.dispatchEvent('focus')
       expect(instance.data.isFocus).toBe(false)
     })
+  })
 
-    it('props maxlength check', () => {
+  describe('base props maxlength check', () => {
+    const maxlength = 10
+    const component = createComponent({ maxlength, value: 123 })
+
+    it('props maxlength check', async () => {
       expect(component.instance.data.maxlength).toBe(maxlength)
+      const inputEl = component.querySelector('.cube-input-field')
+      inputEl.dispatchEvent('input', { detail: { value: '12345678910' } })
+      await simulate.sleep(10)
+      expect(component.instance.data.inputValue).toBe('123')
+    })
+  })
+
+  describe('base props clearable check', () => {
+    const clearableConfig = { visible: true, blurHidden: true }
+    const component = createComponent({
+      value: 123,
+      clearable: clearableConfig
     })
 
-    it('props clearable check', () => {
+    it('props clearable check', async () => {
       expect(component.instance.data.clearable).toEqual(clearableConfig)
+      const inputEl = component.querySelector('.cube-input-field')
+      inputEl.dispatchEvent('focus')
+      await simulate.sleep(10)
+      const clearBtn = component.querySelector('.cube-input-clear')
+      expect(clearBtn).toBeTruthy()
+    })
+  })
+
+  describe('base props eye check', () => {
+    const eyeConfig = { reverse: true, open: true }
+    const component = createComponent({
+      value: 123,
+      type: 'password',
+      eye: eyeConfig
     })
 
-    it('props eye check', () => {
+    it('props eye check', async () => {
       expect(component.instance.data.eye).toEqual(eyeConfig)
     })
   })
