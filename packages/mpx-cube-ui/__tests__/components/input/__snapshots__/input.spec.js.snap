@@ -2,4 +2,4 @@
 
 exports[`component input unit test api check matchSnapshot 1`] = `"<wx-view class=\\"main--cube-input\\"><wx-view class=\\"main--cube-input-prepend\\"></wx-view><wx-input class=\\"main--cube-input-field main--ref_input_1\\"></wx-input></wx-view>"`;
 
-exports[`component input unit test base props check matchSnapshot 1`] = `"<wx-view class=\\"main--cube-input main--cube-input-disabled\\"><wx-view class=\\"main--cube-input-prepend\\"></wx-view><wx-input class=\\"main--cube-input-field main--ref_input_1\\"></wx-input></wx-view>"`;
+exports[`component input unit test base props check matchSnapshot 1`] = `"<wx-view class=\\"main--cube-input main--cube-input_disabled\\"><wx-view class=\\"main--cube-input-prepend\\"></wx-view><wx-input class=\\"main--cube-input-field main--ref_input_1\\"></wx-input></wx-view>"`;

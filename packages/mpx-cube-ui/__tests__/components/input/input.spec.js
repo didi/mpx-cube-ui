@@ -42,7 +42,7 @@ describe('component input unit test', () => {
     })
     it('props disable check', () => {
       const instance = component.instance
-      const disabledDom = component.querySelector('.cube-input-disabled')
+      const disabledDom = component.querySelector('.cube-input_disabled')
       expect(disabledDom).toBeTruthy()
       expect(instance.data.disabled).toBe(true)
 

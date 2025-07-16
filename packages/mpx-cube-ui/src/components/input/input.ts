@@ -141,10 +141,10 @@ createComponent({
     _inputWrapperClass() {
       let ret = ''
       if (this.isFocus) {
-        ret += ' cube-input-focused'
+        ret += ' cube-input_focused'
       }
       if (this.disabled) {
-        ret += ' cube-input-disabled'
+        ret += ' cube-input_disabled'
       }
       return ret
     },

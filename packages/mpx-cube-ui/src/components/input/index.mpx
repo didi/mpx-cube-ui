@@ -65,9 +65,9 @@
     padding $var(input-padding)
     outline none
     background-color: transparent
-  .cube-input-focused
+  .cube-input_focused
     border-1px-reset($var(input-focus-border-color), $var(input-border-radius))
-  .cube-input-disabled
+  .cube-input_disabled
     background-color $var(input-disable-bgc)
   .cube-input-prepend
   .cube-input-append
