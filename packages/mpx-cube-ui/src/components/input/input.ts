@@ -113,14 +113,14 @@ createComponent({
   computed: {
     _type() {
       const type = this.type
-      if (type === 'password' && this.eye && this.pwdVisible) {
+      if (type === 'password' && this.pwdVisible) {
         return 'text'
       }
       return type
     },
     _showClear() {
-      let visible = this.formatedClearable?.visible && this.inputValue && !this.disabled
-      if (this.formatedClearable?.blurHidden && !this.isFocus) {
+      let visible = this.formatedClearable.visible && this.inputValue && !this.disabled
+      if (this.formatedClearable.blurHidden && !this.isFocus) {
         visible = false
       }
       return visible
@@ -147,12 +147,6 @@ createComponent({
     }
   },
   watch: {
-    inputValue: {
-      handler (value) {
-        this.inputValue = value
-      },
-      immediate: true
-    },
     value: {
       handler (value) {
         this.inputValue = value
@@ -199,7 +193,7 @@ createComponent({
       // 当键盘输入时，触发 input 事件
       // @arg 事件对象 e = event.detail = {value, cursor}
       const { value } = e.detail
-      if ((this._maxlength < value.length) && (this._maxlength >= 0)) return
+      if ((this.maxlength < value.length) && (this.maxlength >= 0)) return
       this.inputValue = value
       this.triggerEvent(EVENT_INPUT, e.detail)
     },
