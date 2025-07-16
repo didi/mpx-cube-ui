@@ -53,7 +53,7 @@ createComponent({
     // 最大输入长度
     maxlength: {
       type: Number,
-      value: 10
+      value: -1
     },
     // 清除按键是否可见和清除按键离焦是否可见
     clearable: {
@@ -131,12 +131,6 @@ createComponent({
     pwdVisible() {
       const eye = this.formatedEye
       return eye.reverse ? !eye.open : eye.open
-    },
-    _maxlength () {
-      if (!this.maxlength) {
-        return -1
-      }
-      return parseInt(`${this.maxlength}`)
     },
     _inputWrapperClass() {
       let ret = ''

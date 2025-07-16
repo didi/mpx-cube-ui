@@ -11,7 +11,7 @@
       type="{{ _type }}"
       password@wx|ali="{{ _type === 'password' }}"
       placeholder="{{ placeholder }}"
-      maxlength="{{ _maxlength === -1 ? 999 : _maxlength }}"
+      maxlength="{{ maxlength }}"
       disabled="{{ disabled }}"
       auto-focus@wx|ali="{{ autoFocus }}"
       focus="{{ isFocus }}"
