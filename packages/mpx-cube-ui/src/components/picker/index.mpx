@@ -28,7 +28,7 @@
             wx:for="{{ list }}"
             wx:for-index="index"
             wx:key="index"
-            nodes="{{ item.richText || item.text }}"
+            nodes="{{ item.richText }}"
           />
         </block>
         <block @_wx|_ali|_web wx:else>
