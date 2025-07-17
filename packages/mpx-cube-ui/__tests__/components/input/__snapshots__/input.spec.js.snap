@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`component input unit test api check matchSnapshot 1`] = `"<wx-view class=\\"main--cube-input\\"><wx-view class=\\"main--cube-input-prepend\\"></wx-view><wx-input class=\\"main--cube-input-field main--ref_input_1\\"></wx-input></wx-view>"`;
+
+exports[`component input unit test base props check matchSnapshot 1`] = `"<wx-view class=\\"main--cube-input main--cube-input_disabled\\"><wx-view class=\\"main--cube-input-prepend\\"></wx-view><wx-input class=\\"main--cube-input-field main--ref_input_1\\"></wx-input></wx-view>"`;
+
+exports[`component input unit test base props clearable check matchSnapshot 1`] = `"<wx-view class=\\"main--cube-input\\"><wx-view class=\\"main--cube-input-prepend\\"></wx-view><wx-input class=\\"main--cube-input-field main--ref_input_1\\"></wx-input></wx-view>"`;
+
+exports[`component input unit test base props eye check matchSnapshot 1`] = `"<wx-view class=\\"main--cube-input\\"><wx-view class=\\"main--cube-input-prepend\\"></wx-view><wx-input class=\\"main--cube-input-field main--ref_input_1\\"></wx-input><wx-view class=\\"main--cube-input-append\\"><wx-view class=\\"main--cube-input-eye\\"><cube-icon><wx-view class=\\"cube-icon--cubeic cube-icon--cubeic cube-icon--cubeic-visible\\" style=\\"\\"></wx-view></cube-icon></wx-view></wx-view></wx-view>"`;
+
+exports[`component input unit test base props maxlength check matchSnapshot 1`] = `"<wx-view class=\\"main--cube-input\\"><wx-view class=\\"main--cube-input-prepend\\"></wx-view><wx-input class=\\"main--cube-input-field main--ref_input_1\\"></wx-input></wx-view>"`;
+
+exports[`component input unit test base props placeholder check matchSnapshot 1`] = `"<wx-view class=\\"main--cube-input\\"><wx-view class=\\"main--cube-input-prepend\\"></wx-view><wx-input class=\\"main--cube-input-field main--ref_input_1\\"></wx-input></wx-view>"`;
+
+exports[`component input unit test base props props check matchSnapshot 1`] = `"<wx-view class=\\"main--cube-input main--cube-input_disabled\\"><wx-view class=\\"main--cube-input-prepend\\"></wx-view><wx-input class=\\"main--cube-input-field main--ref_input_1\\"></wx-input></wx-view>"`;
+
+exports[`component input unit test base props type check matchSnapshot 1`] = `"<wx-view class=\\"main--cube-input\\"><wx-view class=\\"main--cube-input-prepend\\"></wx-view><wx-input class=\\"main--cube-input-field main--ref_input_1\\"></wx-input><wx-view class=\\"main--cube-input-append\\"><wx-view class=\\"main--cube-input-eye\\"><cube-icon><wx-view class=\\"cube-icon--cubeic cube-icon--cubeic cube-icon--cubeic-invisible\\" style=\\"\\"></wx-view></cube-icon></wx-view></wx-view></wx-view>"`;
+
+exports[`component input unit test base props value check matchSnapshot 1`] = `"<wx-view class=\\"main--cube-input\\"><wx-view class=\\"main--cube-input-prepend\\"></wx-view><wx-input class=\\"main--cube-input-field main--ref_input_1\\"></wx-input></wx-view>"`;

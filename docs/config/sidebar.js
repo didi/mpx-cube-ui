@@ -94,6 +94,10 @@ module.exports = [
             path: '/components/base/radio-group'
           },
           {
+            title: 'Input 输入框',
+            path: '/components/base/input'
+          },
+          {
             title: 'Textarea 文本输入框',
             path: '/components/base/textarea'
           },

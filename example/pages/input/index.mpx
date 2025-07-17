@@ -1,0 +1,211 @@
+<template>
+  <base-container>
+    <cube-input
+      wx:model="{{ value }}"
+      type="{{ type }}"
+      placeholder="{{ placeholder }}"
+      maxlength="{{ maxlength }}"
+      disabled="{{ disabled }}"
+      clearable="{{ clearable }}"
+      eye="{{ eye }}"
+    />
+    <view class="title last">value: {{ value }}</view>
+    <view>
+      <view class="title">Options</view>
+      <view class="option-list">
+        <view class="group">
+          <view class="group-item last">
+            <view class="item">disabled</view>
+            <switch 
+              color="{{ switchColor }}"
+              checked="{{ disabled }}"
+              bindchange="updateDisabled"
+            />
+          </view>
+        </view>
+        <view class="group">
+          <view class="group-item last">
+            <view class="item">maxlength:10</view>
+            <switch 
+              color="{{ switchColor }}"
+              checked="{{ maxlength10 }}"
+              bindchange="updateMaxLength"
+            />
+          </view>
+        </view>
+        <view class="group">
+          <view class="group-item">
+            <view class="item">clearabled</view>
+            <switch 
+              color="{{ switchColor }}"
+              checked="{{ useClear }}"
+              bindchange="updateUseClear"
+            />
+          </view>
+          <view class="group-item last" wx:if="{{ useClear }}">
+            <view class="item">blur hiden</view>
+            <switch 
+              color="{{ switchColor }}"
+              checked="{{ clearBlurHidden }}"
+              bindchange="updateClearBlur"
+            />
+          </view>
+        </view>  
+        <view class="group">
+          <view class="group-item">
+            <view class="item">password</view>
+            <switch 
+              color="{{ switchColor }}"
+              checked="{{ isPwd }}"
+              bindchange="updatePwd"
+            />
+          </view>
+          <view class="group-item">
+            <view class="item">show eye</view>
+            <switch 
+              color="{{ switchColor }}"
+              checked="{{ showEye }}"
+              bindchange="updateShowEye"
+            />
+          </view>
+          <view class="group-item">
+            <view class="item">reverse</view>
+            <switch 
+              color="{{ switchColor }}"
+              checked="{{ reverse }}"
+              bindchange="updateReverse"
+            />
+          </view>
+          <view class="group-item last">
+            <view class="item">password visible</view>
+            <switch 
+              color="{{ switchColor }}"
+              checked="{{ pwdVisible }}"
+              bindchange="updatePwdVisible"
+            />
+          </view>
+        </view>  
+      </view>
+    </view>
+  </base-container>
+</template>
+
+<style lang="stylus">
+  .title
+    padding: 15px
+    margin-bottom: 15px
+    font-size: 16px
+    font-weight: 500
+    border-bottom: 1px solid rgba(0, 0, 0, .1)
+    color: #333
+  .options
+    margin-bottom: 15px
+  .group
+    margin-bottom: 15px
+    border: 1px solid rgba(0, 0, 0, .1)
+    border-radius: 5px
+  .group-item
+    display: flex
+    align-items: center
+    justify-content: space-between
+    padding-right: 10px
+    border-bottom: 1px solid rgba(0, 0, 0, .1)
+  .item
+    padding-left: 15px
+    line-height: 52px
+    text-align: left
+    white-space: nowrap
+  .last
+    border-bottom: none  
+</style>
+
+<script>
+  import { createPage } from '@mpxjs/core'
+
+  createPage({
+    data: {
+      value: '',
+      type: 'password',
+      placeholder: '请输入...',
+      maxlength: 10,
+      maxlength10: true,
+      disabled: false,
+      useClear: true,
+      clearBlurHidden: true,
+      isPwd: true,
+      pwdVisible: true,
+      showEye: true,
+      reverse: false,
+      switchColor: '#fc9153'
+    },
+    computed: {
+      clearable() {
+        return {
+          visible: this.useClear,
+          blurHidden: this.clearBlurHidden
+        }
+      },
+      eye() {
+        if (this.isPwd && this.showEye) {
+          return {
+            open: this.reverse ? !this.pwdVisible : this.pwdVisible,
+            reverse: this.reverse
+          }
+        } else {
+          return false
+        }
+      }
+    },
+    watch: {
+    },
+    methods: {
+      updateDisabled (e) {
+        const { value } = e.detail
+        this.disabled = value
+      },
+      updateUseClear (e) {
+        const { value } = e.detail
+        this.useClear = value
+      },
+      updateClearBlur (e) {
+        const { value } = e.detail
+        this.clearBlurHidden = value
+      },
+      updatePwd (e) {
+        const { value } = e.detail
+        this.isPwd = value
+        this.type = this.isPwd ? 'password' : 'text'
+      },
+      updateMaxLength (e) {
+        const { value } = e.detail
+        this.maxlength10 = value
+        this.maxlength = value ? 10 : -1
+      },
+      updateShowEye (e) {
+        const { value } = e.detail
+        this.showEye = value
+      },
+      updatePwdVisible (e) {
+        const { value } = e.detail
+        this.pwdVisible = value
+      },
+      updateReverse (e) {
+        const { value } = e.detail
+        this.reverse = value
+      },
+      updatePwdVisible (e) {
+        const { value } = e.detail
+        this.pwdVisible = value
+      }
+    }
+  })
+</script>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "base-container": "../../components/base-container/index",
+      "cube-input": "@mpxjs/mpx-cube-ui/src/components/input/index"
+    }
+  }
+</script>

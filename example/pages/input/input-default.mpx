@@ -1,0 +1,22 @@
+<template>
+  <cube-input wx:model="{{ inputValue }}" wx:model-prop="value"/>
+  {{ inputValue }}
+</template>
+
+<script>
+  import { createPage } from '@mpxjs/core'
+
+  createPage({
+    data: {
+      inputValue: 'mpx-cube-ui'
+    }
+  })
+</script>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "cube-input": "@mpxjs/mpx-cube-ui/src/components/input/index"
+    }
+  }
+</script>
