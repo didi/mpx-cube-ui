@@ -10,6 +10,24 @@ import { Render } from '@mpxjs/vuese-markdown-render'
 import { renderOptions } from '../common/options.js'
 
 /**
+ * 将字符串的对象转为可读的markdown格式
+ * @param str
+ * @returns
+ */
+function convertObjectStringToMarkdownHtml(str) {
+  if (!str) return
+  return (
+    '<pre><code>' +
+    str
+      .trim()
+      .split('\n')
+      .map(line => line.replace(/</g, '&lt;').replace(/>/g, '&gt;')) // 防止HTML标签注入
+      .join('<br>') +
+    '</code></pre>'
+  )
+}
+
+/**
  * 解析 cube-ui src 文件夹下的组件，生成md文档
  *
  * @param {string} srcDir cube-ui src目录地址
@@ -43,6 +61,9 @@ const genSrcCodeMd = function (srcDir: string, component: string, fnMixins) {
     })
     item.type = item.type.replace(/\n/g, '<br>')
     item.type = item.type.replace(new RegExp(optionalMark, 'g'), '?')
+  })
+  text.props?.forEach(item => {
+    item.default = convertObjectStringToMarkdownHtml(item.default)
   })
   const render = new Render(text, Object.assign({
     name: component
