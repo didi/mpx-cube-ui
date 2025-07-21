@@ -19,9 +19,14 @@ function convertObjectStringToMarkdownHtml(str) {
   return (
     '<pre><code>' +
     str
-      .trim()
       .split('\n')
-      .map(line => line.replace(/</g, '&lt;').replace(/>/g, '&gt;')) // 防止HTML标签注入
+      .map((line, idx) => {
+        line = line.replace(/\s+/g, '').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+        if (idx !== 0 && idx !== str.split('\n').length - 1) {
+          line = '  ' + line
+        }
+        return line
+      }) // 防止HTML标签注入
       .join('<br>') +
     '</code></pre>'
   )
