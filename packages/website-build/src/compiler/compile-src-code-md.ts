@@ -14,16 +14,16 @@ import { renderOptions } from '../common/options.js'
  * @param str
  * @returns
  */
-function convertObjectStringToMarkdownHtml(str) {
+export function convertObjectStringToMarkdownHtml(str) {
   if (!str) return
   return (
     '<pre><code>' +
     str
       .split('\n')
       .map((line, idx) => {
-        line = line.replace(/\s+/g, '').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-        if (idx !== 0 && idx !== str.split('\n').length - 1) {
-          line = '  ' + line
+        // 第一行和最后一行是{}，将括号的前后空白字符去除，只保留属性的
+        if (!(idx !== 0 && idx !== str.split('\n').length - 1)) {
+          line = line.replace(/\s+/g, '').replace(/</g, '&lt;').replace(/>/g, '&gt;')
         }
         return line
       }) // 防止HTML标签注入
