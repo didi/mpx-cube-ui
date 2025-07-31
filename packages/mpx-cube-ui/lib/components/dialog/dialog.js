@@ -129,7 +129,7 @@ createComponent({
             return this.type === 'prompt';
         },
         containerClass() {
-            return `cube-dialog-${this.type}`;
+            return `cube-dialog-container cube-dialog-${this.type}`;
         },
         btnsClass() {
             return {
