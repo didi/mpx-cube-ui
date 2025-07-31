@@ -3,7 +3,7 @@
     <view
       wx:if="{{removeCatchTouch}}"
       wx:class="{{ [themeType ? 'cube-popup cube-popup-'+themeType : 'cube-popup', rootClass, visibleClass] }}"
-      style="z-index: {{ zIndex }}"
+      wx:style="{{ popupStyle }}"
     >
       <view class="cube-popup-mask" wx:if="{{ mask }}" bindtouchend="onMaskClick" wx:style="{{ [styleConfig.mask, maskOpacity] }}">
         <!-- 遮罩插槽 -->
@@ -24,7 +24,7 @@
         visibleClass,
         !removeCatchTouch ? 'cube-popup-remove-touch' : ''
       ] }}"
-      style="z-index: {{ zIndex }}"
+      wx:style="{{ popupStyle }}"
       catchtouchmove@wx|ali
     >
       <view
@@ -52,6 +52,7 @@
       wx:ref="popup"
       external-var-context="{{varContext}}"
       wx:class="{{ [themeType ? 'cube-popup cube-popup-'+themeType : 'cube-popup', rootClass, visibleClass] }}"
+      wx:style="{{ popupStyle }}"
       >
       <view
         class="cube-popup-mask"

@@ -46,6 +46,13 @@ createComponent({
         timer: null
     },
     computed: {
+        pointerEvents() {
+            if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
+                if (!this.mask)
+                    return 'none';
+            }
+            return '';
+        },
         tostTipClass() {
             // eslint-disable-next-line
             // @ts-ignore

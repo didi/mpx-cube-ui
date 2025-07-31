@@ -50,9 +50,16 @@ createComponent({
       type: Object,
       value: {}
     },
+    // 是否移除catchtouch事件
     removeCatchTouch: {
       type: Boolean,
       value: false
+    },
+    // @dosHide
+    // 最外层view 的 pointerEvents配置
+    pointerEvents: {
+      type: String,
+      value: ''
     }
   },
   data: {
@@ -61,6 +68,16 @@ createComponent({
     display: false
   },
   computed: {
+    popupStyle() {
+      const style: Record<string, string> = {}
+      if (__mpx_mode__ !== 'ios' && __mpx_mode__ !== 'android') {
+        style.zIndex = this.zIndex
+      }
+      if (this.pointerEvents) {
+        style.pointerEvents = this.pointerEvents
+      }
+      return style
+    },
     rootClass() {
       const cls: { [index: string]: boolean } = {
         'cube-popup_mask': this.mask,
