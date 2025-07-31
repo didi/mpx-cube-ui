@@ -94,6 +94,10 @@ module.exports = [
             path: '/components/base/radio-group'
           },
           {
+            title: 'Input 输入框',
+            path: '/components/base/input'
+          },
+          {
             title: 'Textarea 文本输入框',
             path: '/components/base/textarea'
           },
@@ -146,6 +150,10 @@ module.exports = [
           {
             title: 'Tip 提示',
             path: '/components/base/tip'
+          },
+          {
+            title: 'ActionSheet 操作列表',
+            path: '/components/base/action-sheet'
           }
         ]
       },

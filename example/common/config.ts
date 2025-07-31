@@ -31,7 +31,8 @@ export default {
       'time-picker-modal',
       'segment-picker',
       'textarea',
-      'float-ball'
+      'float-ball',
+      'input'
     ],
     introduce: [
       {
@@ -53,6 +54,7 @@ export default {
           'checkbox-group',
           'radio',
           'radio-group',
+          'input',
           'textarea',
           'picker',
           'cascade-picker',
@@ -70,6 +72,7 @@ export default {
           'dialog',
           'modal',
           'tip',
+          'action-sheet'
         ]
       },
       {

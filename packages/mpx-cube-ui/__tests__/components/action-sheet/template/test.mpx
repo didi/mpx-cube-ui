@@ -1,0 +1,54 @@
+<template>
+  <view class="action-sheet-demo">
+    <cube-action-sheet
+      wx:ref="actionSheet"
+      title="我是标题~~~"
+      inputData="{{inputData}}"
+      active="{{active}}"
+      pickerStyle="{{pickerStyle}}"
+      bind:select="onSelect"
+    />
+    <cube-toast
+      txt="{{ selectContent }}"
+      wx:ref="selectToast">
+    </cube-toast>
+  </view>
+</template>
+
+<script>
+import { createPage } from '@mpxjs/core'
+
+createPage({
+  data: {
+    inputData: [
+      {
+        content: '舒适型'
+      },
+      {
+        content: '七座商务'
+      },
+      {
+        content: '豪华型'
+      }
+    ],
+    active: 0,
+    pickerStyle: true
+  },
+  methods: {
+    onSelect(selectData) {
+      const { index } = selectData.detail
+      this.active = index
+      this.$refs.selectToast.show()
+    }
+  }
+})
+</script>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "cube-action-sheet": "@mpxjs/mpx-cube-ui/src/components/action-sheet/index.mpx",
+      "cube-toast": "@mpxjs/mpx-cube-ui/src/components/toast/index"
+    }
+  }
+</script>

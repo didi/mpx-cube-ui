@@ -10,7 +10,6 @@
   bottom 0
   z-index $var(popup-z-index)
   display flex
-  pointer-events: none
   &.cube-popup-top
     align-items start
     .cube-popup-content
@@ -33,6 +32,8 @@
     transform translateZ(0)
     z-index 999
     box-sizing border-box
+.cube-popup-remove-touch
+  pointer-events: none
 .cube-popup_mask
   pointer-events: auto
   &.cube-popup_mask_fade_transition
@@ -49,6 +50,7 @@
   background-color $var(mask-bgc_opacity)
   opacity $var(popup-mask-opacity)
   pointer-events: auto
+  transform: translateZ(0) // 12306 mask 闪烁
   // fix some android webview opacity render bug
   &::before
     content "."
@@ -60,7 +62,9 @@
 
 .cube-popup
   transform translateX(-100%)
+  opacity 0
   &.show
+    opacity 1
     transform translateX(0)
     .cube-popup-mask
       opacity $var(popup-mask-opacity)
@@ -78,6 +82,7 @@
       &.fade
         popup-transition(popup-fade-show)
   &.hide
+    opacity 0
     transform translateX(-100%)
     &.cube-popup_transition
       popup-transition(popup-root-hide)

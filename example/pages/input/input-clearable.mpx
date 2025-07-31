@@ -1,0 +1,36 @@
+<template>
+  <cube-input 
+    wx:model="{{ value }}"
+    placeholder="{{ placeholder }}"
+    type="{{ type }}"
+    maxlength="{{ maxlength }}"
+    disabled="{{ disabled }}"
+    clearable="{{ clearable }}"
+  />
+</template>
+
+<script>
+  import { createPage } from '@mpxjs/core'
+
+  createPage({
+    data: {
+      value: '',
+      placeholder: '请输入内容',
+      type: 'text',
+      maxlength: 100,
+      disabled: true,
+      clearable: {
+        visible: true,
+        blurHidden: true
+      }
+    }
+  })
+</script>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "cube-input": "@mpxjs/mpx-cube-ui/src/components/input/index"
+    }
+  }
+</script>
