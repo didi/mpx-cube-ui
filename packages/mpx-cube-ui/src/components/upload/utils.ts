@@ -25,11 +25,9 @@ export function getByPath<T, K extends string & Paths<T>>(obj: T, path: K) {
  * @param target
  * @returns
  */
-export function transformRes<TSource extends object, TTarget extends Record<string, Paths<TSource>>>(
-  source: TSource, target: TTarget
-) {
+export function transformRes(source, target) {
   target = { ...target }
-  const result = {} as Record<keyof TTarget, any>
+  const result = {}
   for (const key in target) {
     const path = target[key]
     result[key] = getByPath(source, path)
