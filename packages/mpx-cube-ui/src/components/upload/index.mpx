@@ -190,6 +190,7 @@ const chooseImage = async () => {
       return await chooseImageWeb()
     default:
       console.error('Unsupported environment:', __mpx_mode__)
+      return Promise.reject(new Error('Unsupported environment'))
   }
 }
 
@@ -235,7 +236,7 @@ const postFiles = async (url, file): Promise<any> => {
         }).then(res => res.json())
           .then(res => resolve(transformRes(res, props.transform)))
           .catch(err => {
-            throw new Error(err)
+            reject(err)
           })
       })
     }
