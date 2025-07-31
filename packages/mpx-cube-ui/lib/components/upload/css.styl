@@ -1,0 +1,133 @@
+@require "../../common/stylus/variable.styl"
+@require "../../common/stylus/theme/components/upload.styl";
+.uploader-wrapper
+  display flex
+  flex-wrap wrap
+  gap 20rpx
+.card-container
+  position relative
+.card-container .close-icon
+  display flex
+  align-items center
+  justify-content center
+  position absolute
+  top 10rpx
+  right 10rpx
+  width 24rpx
+  height 24rpx
+  cursor pointer
+.card
+  width 167rpx
+  height 167rpx
+  border-radius 16rpx
+  overflow hidden
+  position relative
+  background-color $var(upload-background-color)
+  box-sizing border-box
+  font-family PingFangSC-Regular
+  font-size 18rpx
+  color #E8C5AA
+  letter-spacing 0
+  text-align center
+  font-weight 400
+.thumb
+  width 100%
+  height 100%
+  object-fit cover
+.preview-icon
+  position absolute
+  top 0
+  right 0
+  bottom 0
+  left 0
+  display flex
+  align-items center
+  justify-content center
+  background-color rgba(0, 0, 0, 0.5)
+  color #fff
+  font-size 24rpx
+  padding 4rpx 8rpx
+  border-radius 8rpx
+  opacity 0
+  transition opacity 0.2s
+.uploading
+  position absolute
+  top 0
+  display flex
+  flex-direction column
+  align-items center
+  justify-content center
+  background-color rgba(0, 0, 0, 0.5)
+.uploading-text
+  margin-bottom 10rpx
+@keyframes spin
+  0%
+    transform rotate(0deg)
+  100%
+    transform rotate(360deg)
+.progress
+  width 30rpx
+  height 30rpx
+  margin-bottom 7rpx
+  &.loading
+    animation spin 1s linear infinite
+.progress-bar
+  height 100%
+  background-color #3b82f6
+  transition width 0.3s
+.upload-btn
+  display flex
+  flex-direction column
+  align-items center
+  justify-content center
+  border-style dashed
+  border-color #cbd5e1
+  color #666
+.plus
+  width 30rpx
+  height 30rpx
+.text
+  font-size 22rpx
+.error
+  position absolute
+  top 0
+  display flex
+  align-content center
+  justify-content center
+  flex-direction column
+.error-icon
+  font-size 30rpx
+  margin-bottom 5rpx
+.preview-mask
+  position fixed
+  top 0
+  left 0
+  right 0
+  bottom 0
+  background-color rgba(0, 0, 0, 0.9)
+  z-index 999
+  display flex
+  align-items center
+  justify-content center
+  .close-icon
+    position absolute
+    top 114rpx
+    left 32rpx
+    width 36rpx
+    height 36rpx
+  .indicator
+    position absolute
+    top 114rpx
+    left 50%
+    transform translateX(-50%)
+    color #fff
+    font-size 24rpx
+.preview-img
+  width 100%
+  height 60%
+  border-radius 12rpx
+.mpx-image
+  width 100%
+  height 100%
+  background-size contain
+  background-repeat no-repeat

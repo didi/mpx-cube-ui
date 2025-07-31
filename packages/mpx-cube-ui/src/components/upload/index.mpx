@@ -1,0 +1,430 @@
+<template>
+  <view class="uploader-wrapper">
+    <view
+      class="card-container"
+      wx:if="{{ fileList.length !== 0}}"
+      wx:for="{{fileList}}"
+      wx:for-index="index"
+      wx:key="url"
+    >
+      <view class="card" bindtap="handlePreview(index)">
+        <image class="thumb" src="{{item.localUrl}}" mode="aspectFill" />
+      </view>
+
+      <!-- 上传中 -->
+      <view class="card uploading" wx:if="{{item.status === 'loading'}}">
+        <view class="progress" wx:class="{{ {loading: item.status === 'loading'} }}">
+          <image
+            src="https://ut-static.udache.com/webx/fe-agility-wyc/fRJCJq6UtOafATtuavoX7.png"
+            mode="acceptFit"
+          ></image>
+        </view>
+        <view class="uploading-text">上传中...</view>
+      </view>
+
+      <!-- 上传失败 -->
+      <view class="card error" wx:if="{{item.status === 'error'}}">
+        <view class="error-text">失败</view>
+        <view class="error-text">删除重试</view>
+      </view>
+
+      <view class="close-icon" bindtap="deleteFile(index)" wx:if="{{ item.status !== 'loading' }}">
+        <image
+          src="https://ut-static.udache.com/webx/fe-agility-wyc/xN_BTbAz3c7k4hRFV449M.png"
+          mode="aspectFill"
+        ></image>
+      </view>
+    </view>
+
+    <!-- 上传按钮 -->
+    <view class="card upload-btn" bindtap="uploadFiles" wx:if="{{ showUploadBtn  }}">
+      <view class="plus">
+        <image
+          src="https://ut-static.udache.com/webx/fe-agility-wyc/lOYoYTdQAbjwZaUAfJh0c.png"
+          mode="acceptFit"
+        ></image>
+      </view>
+    </view>
+  </view>
+
+  <!--web 大图预览 -->
+  <view
+    wx:if="{{previewVisible}}"
+    class="preview-mask"
+    bindtouchmove="handleTouchMove"
+    bindtouchstart="handleTouchStart"
+  >
+    <view class="close-icon" catchtap="closePreview">
+      <image
+        src="https://ut-static.udache.com/webx/fe-agility-wyc/7K1lcW8ECfpdYv93a1__4.png"
+        mode="acceptFit"
+      />
+    </view>
+    <view class="indicator"> {{ previewIdx }} / {{ fileList.length }} </view>
+    <view class="preview-img">
+      <image wx:ref="imgRef" src="{{previewUrl}}" mode="aspectFit" />
+    </view>
+  </view>
+</template>
+
+<script setup lang="ts">
+import mpx, { ref, computed, onUnmounted } from '@mpxjs/core'
+import { useDebounceFn } from './hooks'
+import { transformRes } from './utils'
+
+interface Props {
+  /**
+   * 上传文件的最大数量
+   */
+  maxLength?: number
+  /**
+   * 上传文件的地址
+   */
+  url?: string
+  /**
+   * 是否禁用上传
+   */
+  disabled?: boolean
+  /**
+   * 上传文件的额外参数
+   */
+  data?: {
+    [key: string]: any
+  },
+  /**
+   * 支持数据转换
+   */
+  transform?: {
+    errno: string
+    imgHttp: string
+  }
+}
+
+const context = useContext()
+
+const props = withDefaults(defineProps<Props>(), {
+  transform: {
+    errno: 'errno',
+    imgHttp: 'data.file_download_https'
+  }
+})
+
+/** 文件选择逻辑 */
+interface FileInfo extends File{
+  path?: string
+}
+interface UploadFile {
+  file: FileInfo
+  url: string
+  localUrl: string
+  status: 'waiting' | 'loading' | 'success' | 'error'
+}
+const fileList = ref<UploadFile[]>([]) // 选择的文件列表
+const uploading = ref(false)
+// 剩余可上传的数量
+const availableUploadCount = computed(() => {
+  if (props.maxLength) { return props.maxLength - fileList.value.length }
+})
+
+const chooseImageWxAndAli = (): Promise<Array<any>> => {
+  return new Promise((resolve, reject) => {
+    mpx.chooseImage({
+      count: props.maxLength ? availableUploadCount.value : undefined, // 限制选择的图片数量
+      sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+      sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+      success: (res) => {
+        console.log('选择的图片:', res.tempFiles)
+        resolve(res.tempFiles)
+      },
+      fail: (err) => {
+        reject(err)
+        mpx.showToast({
+          title: '选择图片失败',
+          icon: 'error'
+        })
+      }
+    })
+  })
+}
+
+const chooseImageWeb = (): Promise<Array<any>> => {
+  return new Promise((resolve, reject) => {
+    const fileInput = document.createElement('input')
+    fileInput.type = 'file'
+    fileInput.accept = 'image/*'
+    fileInput.multiple = true
+    fileInput.style.display = 'none'
+    document.body.appendChild(fileInput)
+
+    fileInput.onchange = () => {
+      let files = fileInput.files ? Array.from(fileInput.files) : []
+      if (props.maxLength && files.length > availableUploadCount.value!) {
+        mpx.showToast({
+          title: `最多只能上传 ${props.maxLength} 张图片`,
+          duration: 3000,
+          icon: 'error'
+        })
+
+        files = files.slice(0, props.maxLength - fileList.value.length)
+      }
+
+      if (files.length > 0) {
+        resolve(files)
+      } else {
+        reject(new Error('No files selected'))
+      }
+
+      // 清理
+      document.body.removeChild(fileInput)
+    }
+    fileInput.click()
+  })
+}
+
+const chooseImage = async () => {
+  switch (__mpx_mode__) {
+    case 'wx':
+    case 'ali':
+      return await chooseImageWxAndAli()
+    case 'web':
+      return await chooseImageWeb()
+    default:
+      console.error('Unsupported environment:', __mpx_mode__)
+  }
+}
+
+// 服务接口调用
+const postFiles = async (url, file): Promise<any> => {
+  if (!url) return
+  switch (__mpx_mode__) {
+    case 'wx':
+    case 'ali': {
+      // 这里可以调用实际的上传接口
+      return new Promise((resolve, reject) => {
+        mpx.uploadFile({
+          url, // 开发者服务器 url
+          filePath: file.path, // 要上传文件资源的路径
+          name: 'name', // 文件对应的 key , 开发者在服务器端通过这个 key 可以获取到文件二进制内容
+          formData: {}, // 上传文件的其他信息
+          success: (res) => {
+            resolve(transformRes(res, props.transform))
+          },
+          fail: () => {
+            reject(new Error('上传失败'))
+          },
+          complete: () => {}
+        })
+      })
+    }
+    case 'web': {
+      return new Promise((resolve, reject) => {
+        const formData = new FormData()
+        const params = {
+          file,
+          ...props.data
+        }
+        for (const key in params) {
+          formData.append(key, params[key])
+        }
+        fetch(url, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          },
+          body: formData
+        }).then(res => res.json())
+          .then(res => resolve(transformRes(res, props.transform)))
+          .catch(err => {
+            throw new Error(err)
+          })
+      })
+    }
+    default:
+      console.error('Unsupported environment for file upload:', __mpx_mode__)
+      return Promise.reject(new Error('Unsupported environment'))
+  }
+}
+
+const uploadFiles = async () => {
+  if (props.disabled) return
+  let unUploadedFiles = await chooseImage()
+  if (!unUploadedFiles) return
+  unUploadedFiles = unUploadedFiles.map((file) => {
+    return {
+      file,
+      localUrl: createPreviewUrl(file),
+      status: 'waiting' // 初始状态为等待上传
+    }
+  })
+  fileList.value.push(...unUploadedFiles)
+
+  if (props.url && props.url.length > 0) {
+    const diffCount = fileList.value.length - unUploadedFiles.length
+    uploading.value = true
+    // loading 状态
+    for (let i = 0; i < unUploadedFiles.length; i++) {
+      fileList.value[i + diffCount].status = 'loading'
+    }
+
+    console.log('loading')
+    const tasks = unUploadedFiles.map((file) => postFiles(props.url, file.file))
+    const result = await Promise.allSettled(tasks)
+    console.log('result:', result)
+
+    // success\error 状态
+    for (let i = 0; i < unUploadedFiles.length; i++) {
+      const item = result[i]
+
+      if (item.status === 'fulfilled' && item.value.errno === 0) {
+        fileList.value[i + diffCount].status = 'success'
+        fileList.value[i + diffCount].url = item.value.imgHttp
+      } else {
+        fileList.value[i + diffCount].status = 'error'
+      }
+    }
+    uploading.value = false
+  }
+  context.triggerEvent('filechange', { files: [...fileList.value] })
+}
+
+/** 本地preview */
+const createPreviewUrl = (file) => {
+  switch (__mpx_mode__) {
+    case 'wx':
+    case 'ali':
+      return file.path
+    case 'web':
+      return URL.createObjectURL(file)
+    default:
+      console.error('Unsupported environment for preview:', __mpx_mode__)
+      return ''
+  }
+}
+
+const deleteFile = (index) => {
+  fileList.value.splice(index, 1)
+  context.triggerEvent('filechange', { files: [...fileList.value] })
+}
+
+/** 大图预览 */
+const previewVisible = ref(false)
+const previewIdx = ref(1)
+
+let startDist = 0
+let startScale = 1
+let currentScale = 1
+
+let startX = 0 // 左右滑动
+let currentX = 0 // 左右滑动
+
+const getDistance = (touches) => {
+  const [touch1, touch2] = touches
+  const dx = touch2.clientX - touch1.clientX
+  const dy = touch2.clientY - touch1.clientY
+  return Math.sqrt(dx * dx + dy * dy)
+}
+
+const handleTouchStart = (e) => {
+  if (e.touches.length === 2) {
+    e.preventDefault()
+    startDist = getDistance(e.touches)
+    startScale = currentScale
+  } else if (e.touches.length === 1) {
+    startX = e.touches[0].clientX
+  }
+}
+
+// 左右滑动
+const { run: exceSlide } = useDebounceFn((e) => {
+  currentX = e.touches[0].clientX
+  const threshold = 50 // 最小滑动距离阈值，避免轻轻滑动也切换
+  if (Math.abs(currentX - startX) < threshold) return
+  const direction = currentX - startX < 0 ? 'left' : 'right'
+  if (direction === 'left') {
+    const newIdx = previewIdx.value + 1
+    if (newIdx <= fileList.value.length) previewIdx.value = newIdx
+  } else if (direction === 'right') {
+    const newIdx = previewIdx.value - 1
+    if (newIdx > 0) previewIdx.value = newIdx
+  }
+}, 100)
+const handleTouchMove = (e) => {
+  if (e.touches.length === 2) {
+    e.preventDefault()
+    const newDist = getDistance(e.touches)
+    const scaleDelta = newDist / startDist
+    currentScale = Math.min(4, Math.max(0.5, startScale * scaleDelta)) // 限制 0.5~4 倍缩放
+    context.refs.imgRef._selector.style.transform = `scale(${currentScale})`
+  } else if (e.touches.length === 1) {
+    exceSlide(e)
+  }
+}
+
+const handlePreview = (index) => {
+  switch (__mpx_mode__) {
+    case 'wx':
+    case 'ali':
+      previewIdx.value = index + 1
+      mpx.previewImage({
+        current: previewUrl.value,
+        urls: [previewUrl.value]
+      })
+      break
+    case 'web':
+      previewVisible.value = true
+      previewIdx.value = index + 1
+      document.body.style.overflow = 'hidden' // 锁住后方背景滚动
+      break
+    default:
+      console.error('Unsupported environment for preview:', __mpx_mode__)
+  }
+}
+
+const previewUrl = computed(() => {
+  switch (__mpx_mode__) {
+    case 'wx':
+    case 'ali':
+      return fileList.value[previewIdx.value - 1].file.path!
+    case 'web':
+      return fileList.value[previewIdx.value - 1].localUrl!
+    default:
+      console.error('Unsupported environment for preview:', __mpx_mode__)
+      return ''
+  }
+})
+
+const showUploadBtn = computed(() => props.maxLength ? !uploading.value && fileList.value.length < props.maxLength : true)
+
+function closePreview() {
+  previewVisible.value = false
+  document.body.style.overflow = 'auto'
+}
+
+// 组件销毁时清除 URL.createObjectURL 创建的对象，释放内存
+onUnmounted(() => {
+  if (__mpx_mode__ === 'web') {
+    fileList.value.forEach((file) => {
+      URL.revokeObjectURL(file.url)
+    })
+  }
+})
+
+defineExpose({
+  fileList,
+  previewVisible,
+  previewUrl,
+  closePreview,
+  handlePreview,
+  deleteFile,
+  uploadFiles,
+  handleTouchStart,
+  handleTouchMove,
+  uploading,
+  showUploadBtn,
+  previewIdx
+})
+</script>
+
+<style lang="stylus" scoped>
+@require './css.styl'
+</style>
