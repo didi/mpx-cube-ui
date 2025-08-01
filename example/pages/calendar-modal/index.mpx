@@ -1,12 +1,8 @@
 <template>
   <view class="calendar-page">
     <base-container>
-      <cube-button bindtap="showCalendarModal">日历组件</cube-button>
-      <cube-calendar-modal
-        wx:ref="calendarModal"
-        inputData="{{inputData}}"
-        bindselect="onSelect"
-      />
+      <customize-calendar/>
+      <normal-calendar/>
     </base-container>
   </view>
 </template>
@@ -18,11 +14,6 @@
     data: {
     },
     methods: {
-      onSelect(selectData) {
-        const { item } = selectData.detail
-        this.selectContent = `Clicked: ${item.content}`
-        this.$refs.selectToast.show()
-      },
       showCalendarModal() {
         this.$refs.calendarModal.show()
       }
@@ -37,7 +28,8 @@
   {
     "usingComponents": {
       "base-container": "../../components/base-container/index.mpx",
-      "cube-calendar-modal": "@mpxjs/mpx-cube-ui/src/components/calendar-modal/index"
+      "customize-calendar": "./customize-calendar.mpx",
+      "normal-calendar": "./normal-calendar.mpx"
     }
   }
 </script>

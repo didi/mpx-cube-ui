@@ -1,0 +1,84 @@
+<template>
+  <view class="calendar-customize-page">
+    <cube-button bindtap="showCalendarModal">自定义日历组件</cube-button>
+   <view class="calendar-customize-selected-date">起始时间：{{toastText[0]}}</view>
+   <view class="calendar-customize-selected-date">结束时间：{{toastText[1]}}</view>
+    <cube-calendar-modal
+      wx:ref="calendarModal"
+      min="{{min}}"
+      max="{{max}}"
+      maxRange="{{maxRange}}"
+      scrollToEnd="{{scrollToEnd}}"
+      defaultDate="{{defaultDate}}"
+      maskClosable="{{maskClosable}}"
+      customizeShowFunction="{{customizeShowFunction}}"
+      isCustomizeShow="{{true}}"
+      height="{{height}}"
+      bindconfirm="confirm"
+    />
+  </view>
+</template>
+
+<script>
+import { createPage } from '@mpxjs/core'
+
+createPage({
+  data: {
+    min: +new Date(2025, 1, 1),
+    max: +new Date(2025, 7, 25),
+    maxRange: 10,
+    scrollToEnd: true,
+    defaultDate: [new Date(2025, 3, 1), new Date(2025, 3, 2)],
+    maskClosable: true,
+    toastText: ['暂未选择时间', '暂未选择时间'],
+    height: '300px',
+    customizeShowFunction: function (day, disable) {
+      if (disable) {
+        return `<div class='customize-show-content'>
+          <div>${day}</div>
+          <div class='customized-show-content-bottom'>disable样式</div>
+        </div>`
+      } else {
+        return `<div class='customize-show-content'>
+          <div class='customize-show-content-header'>${day}</div>
+          <div class='customize-show-content-bottom'>文案内容描述</div>
+        </div>`
+      }
+    }
+  },
+  methods: {
+    showCalendarModal() {
+      this.$refs.calendarModal.show()
+    },
+    confirm(date) {
+      console.log('date', date)
+      this.toastText = date
+    }
+  }
+})
+</script>
+
+<style lang="stylus">
+.calendar-customize-page
+  .calendar-customize-selected-date
+    margin-top: 10px
+    text-align: left
+    white-space: break-spaces
+  .customize-show-content
+    text-align: center
+    .customize-show-content-header
+      color: pink
+      font-weight: bold
+    .customize-show-content-bottom
+      color: red
+</style>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "base-container": "../../components/base-container/index.mpx",
+      "cube-calendar-modal": "@mpxjs/mpx-cube-ui/src/components/calendar-modal/index",
+      "cube-button": "@mpxjs/mpx-cube-ui/src/components/button/index.mpx"
+    }
+  }
+</script>

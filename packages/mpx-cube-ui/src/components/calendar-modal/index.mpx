@@ -1,55 +1,35 @@
 <template>
-  <view class="cube-calendar-content">
+  <view class="cube-calendar-modal">
      <cube-popup
       wx:model-prop="visible"
       wx:model="{{isVisible}}"
+      wx:model-event="toggle"
       direction="horizontal"
-      mask-closable="{{ true }}"
+      mask-closable="{{ maskClosable }}"
       title="选择日期"
       bind:maskClick="maskClick"
       position="bottom"
       transition="move-up"
     >
-      <view class="cube-calendar-inner-wrapper" ref="calenderWrapper">
+      <view class="cube-calendar-content">
         <view class="cube-calendar-title">选择日期</view>
         <view class="cube-calendar-cross">
-          <cube-icon type="close" theme-type="{{ themeType }}" bindclick="hide"></cube-icon>
+          <cube-icon type="close" bindtap="hide"/>
         </view>
-        <view class="cube-calendar" wx:style="{height: height}">
-          <view class="days-ul">
-            <view class="days-li" wx:for="{{days}}" wx:key="index">{{item}}</view>
-          </view>
-          <scroll-view
-            ref="scroll"
-            scroll-y="{{true}}"
-          >
-            <view class="date-render-wrapper" wx:for="{{ dateList }}" wx:for-item="monthDateGroup" wx:for-index="listIndex" :ref="`monthList${listIndex}`" wx:key="listIndex">
-              <view class="date-header">{{monthDateGroup.title}}</view>
-              <view class="date-ul" wx:for="{{monthDateGroup.dateArr}}" wx:for-item="days" wx:for-index="weekInMonth" wx:key="weekInMonth">
-                <view
-                  class="date-li"
-                  wx:for="{{days}}"
-                  wx:key="index"
-                  wx:class="{{[item.dateClass, 'end-date', {'disable': item.disable}, {'active': item.active}]}}"
-                >
-                  <!-- <view>{{item.active}}</view> -->
-                  <view class="date-left"></view>
-                  <view class="date-center">
-                    <view
-                      class="date"
-                      bindclick="selectDate(item, index, $event)"
-                    >
-                      {{item.day}}
-                    </view>
-                  </view>
-                  <view class="date-right"></view>
-                </view>
-              </view>
-            </view>
-            <view wx:show="{{false}}">{{dateList[0].dateArr[1]}}</view>
-          </scroll-view>
-          <cube-button bindclick="getSelected">完成</cube-button>
-        </view>
+        <cube-calendar
+          wx:ref="calendar"
+          isCustomizeShow="{{ isCustomizeShow }}"
+          customizeShowFunction="{{customizeShowFunction}}"
+          height="{{height}}"
+          defaultDate="{{defaultDate}}"
+          maxRange="{{maxRange}}"
+          max="{{max}}"
+          min="{{min}}"
+          scrollToEnd="{{scrollToEnd}}"
+          maskClosable="{{maskClosable}}"
+          title="{{title}}"
+        ></cube-calendar>
+        <cube-button class="calendar-modal-button" bindtap="confirm">{{buttonText}}</cube-button>
       </view>
     </cube-popup>
   </view>
@@ -57,108 +37,27 @@
 
 <script src="./calendar-modal.ts" lang="ts"></script>
 
-<style lang="stylus">
+<style lang="stylus" >
 @require "@mpxjs/mpx-cube-ui/src/common/stylus/helper.styl"
 @require "@mpxjs/mpx-cube-ui/src/common/stylus/mixin.styl"
 @require "@mpxjs/mpx-cube-ui/src/common/stylus/theme/components/rate.styl"
-
 .cube-calendar-content
-  .cube-calendar-inner-wrapper
-    background #fff
-    position: relative
-    padding: 30px 10px  10px
-    border-radius: 10px 10px 0 0
-    .cube-calendar
-      display: flex
-      flex-direction: column
-      height: 320px
-    .days-ul
-      position relative
-      display flex
-      width 100%
-      font-size 14px
-      background #fff
-      .days-li
-        display flex
-        justify-content center
-        flex 1
-        font-size $fontsize-large
-        line-height 23px
-        padding 10px 0
-    .cube-calendar-title
-      margin: 9px 0
-      font-size: 22px
-      color: #000
-      font-weight: bold
-    .cube-calendar-cross
-      position: absolute
-      top: 10px
-      right: 10px
-    .date-render-wrapper
-      padding 10px 0 10px 0
-    .date-header
-      padding-top 10px
-      padding-bottom 10px
-      margin-bottom 6px
-      text-align center
-      font-size 16px
-      line-height 1.4
-      font-weight 700
-      color $cube-color-text-primary
-      background #F5F5F5
-    .date-ul
-      position relative
-      display flex
-      justify-content space-between
-    .date-li
-      display flex
-      flex 1
-      justify-content center
-      height 25px
-      margin-bottom 8px
-      font-size 14px
-      /*选中日期的背景*/
-      &.transition-date
-        .date-left,
-        .date-center,
-        .date-right
-          background #F1F3F7
-      /*起始日期*/
-      &.start-date
-        .date-left
-          background #FFF
-        .date-center
-          border-radius 6px 0 0 6px
-        .date-center,
-        .date-right
-          background #F1F3F7
-      /*结束日期*/
-      &.end-date
-        .date-center,
-        .date-left
-          background #F1F3F7
-        .date-center
-          border-radius 0 6px 6px 0
-        .date-right
-          background #FFF
-      /*点击选中的样式*/
-      &.active
-        .date
-          color #FFF
-          background-color #4D6199
-      &.disable
-        .date
-          color #969699
-      .date
-        display flex
-        justify-content center
-        align-items center
-        width 50px
-        height 25px
-        border-radius 6px
-      .date-left,
-      .date-right
-        flex 1
+  padding-top: 15px
+  background: #FFF
+  border-radius: 10px
+.cube-calendar-title
+  margin: 9px 0 9px 15px
+  font-size: 22px
+  color: #000
+  font-weight: bold
+.cube-calendar-cross
+  position: absolute
+  top: 10px
+  right: 10px
+.calendar-modal-button
+  display: flex
+  padding: 10px
+  background-color: #FFF
 </style>
 
 <script type="application/json">
@@ -168,6 +67,7 @@
     "usingComponents": {
       "cube-popup": "@mpxjs/mpx-cube-ui/src/components/popup/index",
       "cube-button": "@mpxjs/mpx-cube-ui/src/components/button/index",
+      "cube-calendar": "@mpxjs/mpx-cube-ui/src/components/calendar/index",
       "cube-icon": "../icon/index.mpx"
     }
   }

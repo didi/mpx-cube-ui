@@ -1,0 +1,61 @@
+<template>
+  <view class="calendar-normal-page">
+   <cube-button bindtap="showCalendarModal">常规日历组件</cube-button>
+   <view class="calendar-normal-selected-date">起始时间：{{toastText[0]}}</view>
+   <view class="calendar-normal-selected-date">结束时间：{{toastText[1]}}</view>
+    <cube-calendar-modal
+      wx:ref="calendarModal"
+      min="{{min}}"
+      max="{{max}}"
+      maxRange="{{maxRange}}"
+      scrollToEnd="{{scrollToEnd}}"
+      defaultDate="{{defaultDate}}"
+      maskClosable="{{maskClosable}}"
+      bindconfirm="confirm"
+    />
+  </view>
+</template>
+
+<script>
+import { createPage } from '@mpxjs/core'
+
+createPage({
+  data: {
+    min: +new Date(2025, 1, 1),
+    max: +new Date(2025, 7, 25),
+    maxRange: 3,
+    scrollToEnd: true,
+    defaultDate: [new Date(2025, 3, 1), new Date(2025, 3, 2)],
+    maskClosable: true,
+    toastText: ['暂未选择时间', '暂未选择时间']
+  },
+  methods: {
+    showCalendarModal() {
+      this.$refs.calendarModal.show()
+    },
+    confirm(date) {
+      this.toastText = date
+    }
+  }
+})
+</script>
+
+<style lang="stylus">
+.calendar-normal-page
+  margin-top: 15px
+  .calendar-normal-selected-date
+    margin-top: 10px
+    text-align: left
+    white-space: break-spaces
+</style>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "base-container": "../../components/base-container/index.mpx",
+      "cube-calendar-modal": "@mpxjs/mpx-cube-ui/src/components/calendar-modal/index",
+      "cube-toast": "@mpxjs/mpx-cube-ui/src/components/toast/index",
+      "cube-button": "@mpxjs/mpx-cube-ui/src/components/button/index.mpx"
+    }
+  }
+</script>
