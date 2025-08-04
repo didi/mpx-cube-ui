@@ -20,9 +20,9 @@
 </template>
 
 <script>
-import { createPage } from '@mpxjs/core'
+import { createComponent } from '@mpxjs/core'
 
-createPage({
+createComponent({
   data: {
     min: +new Date(2025, 1, 1),
     max: +new Date(2025, 7, 25),

@@ -77,13 +77,13 @@ createComponent({
     selectDateSet(v) {
       const startDate = v[0] && v[0].date
       const endDate = v.length > 1 ? v[v.length - 1].data : null
-      this.$emit(
-        'dateChange',
-        {
+      this.triggerEvent('dateChange', {
+        value: {
           len: v.length,
           startDate,
           endDate
-        })
+        }
+      })
     }
   },
   lifetimes: {

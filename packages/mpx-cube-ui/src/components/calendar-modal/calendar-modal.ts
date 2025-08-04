@@ -78,7 +78,7 @@ createComponent({
     confirm() {
       const dateRange = this.$refs.calendar.getSelectDate()
       this.lastValue = [dateRange[0].date, dateRange[1].date]
-      this.$emit('confirm', dateRange)
+      this.triggerEvent('confirm', { value: dateRange })
       this.hide()
     }
   }

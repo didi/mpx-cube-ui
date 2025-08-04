@@ -70,36 +70,36 @@
 <style lang="stylus">
 @require "@mpxjs/mpx-cube-ui/src/common/stylus/helper.styl"
 @require "@mpxjs/mpx-cube-ui/src/common/stylus/mixin.styl"
-@require "@mpxjs/mpx-cube-ui/src/common/stylus/theme/components/rate.styl"
+@require "@mpxjs/mpx-cube-ui/src/common/stylus/theme/components/calendar.styl"
 
 .cube-calendar-inner-wrapper
   background #fff
   position: relative
-  padding: 0 10px  10px
-  border-radius: 10px 10px 0 0
+  padding: $var(calendar-inner-padding)
+  border-radius: $var(calendar-inner-border-radius)
   .calendar-toast
     .cube-popup-content
       width: auto !important
   .cube-calendar
     display: flex
     flex-direction: column
-    height: 320px
+    height: $var(calendar-height)
   .days-ul
     position relative
     display flex
     width 100%
-    font-size 14px
+    font-size $var(calendar-days-li-size)
     background #fff
     .days-li
       display flex
       justify-content center
       flex 1
-      font-size $fontsize-large
-      line-height 23px
-      padding 10px 0
+      font-size $var(fontsize-large)
+      line-height $var(calendar-days-li-lh)
+      padding $var(calendar-days-li-padding)
   .cube-calendar-title
-    margin: 9px 0
-    font-size: 22px
+    margin: $var(calendar-title-margin)
+    font-size: $var(calendar-title-size)
     color: #000
     font-weight: bold
   // .cube-calendar-cross
@@ -107,15 +107,15 @@
   //   top: 10px
   //   right: 10px
   .date-render-wrapper
-    padding 10px 0 10px 0
+    padding $var(calendar-render-wrapper-padding)
   .date-header
-    padding-top 10px
-    padding-bottom 10px
-    margin-bottom 6px
+    padding-top $var(calendar-date-header-padding-top)
+    padding-bottom $var(calendar-date-header-padding-bottom)
+    margin-bottom $var(calendar-date-header-margin-bottom)
     text-align center
-    font-size 16px
-    line-height 1.4
-    font-weight 700
+    font-size $var(calendar-date-header-size)
+    line-height $var(calendar-date-header-lh)
+    font-weight bold
     color $cube-color-text-primary
     background #F5F5F5
   .date-ul
@@ -126,9 +126,9 @@
     display flex
     flex 1
     justify-content center
-    min-height 25px
-    margin-bottom 8px
-    font-size 14px
+    min-height $var(calendar-date-li-min-height)
+    margin-bottom $var(calendar-date-li-margin-bottom)
+    font-size $var(calendar-date-li-size)
     /*选中日期的背景*/
     &.transition-date
       .date-left,
@@ -140,7 +140,7 @@
       .date-left
         background #FFF
       .date-center
-        border-radius 6px 0 0 6px
+        border-radius $var(calendar-date-start-border-radius)
       .date-center,
       .date-right
         background #F1F3F7
@@ -150,7 +150,7 @@
       .date-left
         background #F1F3F7
       .date-center
-        border-radius 0 6px 6px 0
+        border-radius $var(calendar-date-end-border-radius)
       .date-right
         background #FFF
     /*点击选中的样式*/
@@ -165,9 +165,9 @@
       display flex
       justify-content center
       align-items center
-      width 50px
-      min-height 25px
-      border-radius 6px
+      width $var(calendar-date-width)
+      min-height $var(calendar-date-min-height)
+      border-radius $var(calendar-date-border-radius)
     .date-left,
     .date-right
       flex 1

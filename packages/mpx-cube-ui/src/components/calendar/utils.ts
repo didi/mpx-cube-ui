@@ -73,12 +73,13 @@ function getDayInWeek(year, month, day) {
  * @returns {{date: *, month: number, year: number, day: number, dayInWeek: number, weekInMonth: number}}
  */
 function getDateObj(date) {
-  const month = date.getMonth() + 1
-  const year = date.getFullYear()
-  const day = date.getDate()
+  const currentDate = new Date(date)
+  const month = currentDate.getMonth() + 1
+  const year = currentDate.getFullYear()
+  const day = currentDate.getDate()
 
   return {
-    date,
+    currentDate,
     month,
     year,
     day,

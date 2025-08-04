@@ -11,9 +11,9 @@
       position="bottom"
       transition="move-up"
     >
-      <view class="cube-calendar-content">
-        <view class="cube-calendar-title">选择日期</view>
-        <view class="cube-calendar-cross">
+      <view class="cube-calendar-modal-content">
+        <view class="cube-calendar-modal-title">选择日期</view>
+        <view class="cube-calendar-modal-cross">
           <cube-icon type="close" bindtap="hide"/>
         </view>
         <cube-calendar
@@ -40,23 +40,23 @@
 <style lang="stylus" >
 @require "@mpxjs/mpx-cube-ui/src/common/stylus/helper.styl"
 @require "@mpxjs/mpx-cube-ui/src/common/stylus/mixin.styl"
-@require "@mpxjs/mpx-cube-ui/src/common/stylus/theme/components/rate.styl"
-.cube-calendar-content
-  padding-top: 15px
+@require "@mpxjs/mpx-cube-ui/src/common/stylus/theme/components/calendar-modal.styl"
+.cube-calendar-modal-content
+  padding-top: $var(calendar-modal-content-padding-top)
   background: #FFF
-  border-radius: 10px
-.cube-calendar-title
-  margin: 9px 0 9px 15px
-  font-size: 22px
+  border-radius: $var(calendar-modal-content-border-radius)
+.cube-calendar-modal-title
+  margin: $var(calendar-modal-title-margin)
+  font-size: $var(calendar-modal-title-size)
   color: #000
   font-weight: bold
-.cube-calendar-cross
+.cube-calendar-modal-cross
   position: absolute
-  top: 10px
-  right: 10px
+  top: $var(calendar-modal-cross-top)
+  right: $var(calendar-modal-cross-right)
 .calendar-modal-button
   display: flex
-  padding: 10px
+  padding: $var(calendar-modal-button-padding)
   background-color: #FFF
 </style>
 
