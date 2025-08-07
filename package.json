@@ -15,7 +15,7 @@
     "docs:build": "npm run build:website && mpx-cube-doc build",
     "docs:dev": "npm run build:website && mpx-cube-doc dev",
     "docs:prod": "npm run example:build && NODE_ENV=production npm run docs:build && cp -r ./example/dist/web ./docs/.vuepress/dist/example",
-    "example:build": "npm run build && cd example && npm run build:web",
+    "example:build": "cd example && npm run build:web",
     "example:dev": "cd example && npm run watch:web",
     "example:mp:dev": "cd example && npm run watch:mp",
     "fix": "eslint --fix --ext .js,.ts,.mpx packages/",
