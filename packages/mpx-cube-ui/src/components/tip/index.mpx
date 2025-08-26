@@ -6,7 +6,9 @@
     bind:animationend="onAnimationEnd"
     bind:tap="onClick"
   >
-    <view class="cube-tip-angle" wx:style="{{ angStyle }}"></view>
+    <view class="cube-tip-angle" wx:style="{{ angStyle }}">
+      <view class="cube-tip-arrow"></view>
+    </view>
     <cube-icon
       class="cube-tip-close"
       theme-type="{{ themeType }}"
@@ -48,13 +50,13 @@
   &.cube-tip-direction_top
     .cube-tip-angle
       top 0
-      &::before
+      .cube-tip-arrow
         margin-top $var(tip-vertical-reverse-margin)
         transform rotate(0deg)
   &.cube-tip-direction_bottom
     .cube-tip-angle
       bottom 0
-      &::before
+      .cube-tip-arrow
         margin-bottom $var(tip-vertical-reverse-margin)
         transform rotate(180deg)
   &.cube-tip-direction_left,
@@ -65,18 +67,18 @@
   &.cube-tip-direction_left
     .cube-tip-angle
       left 0
-      &::before
+      .cube-tip-arrow
         margin-left $var(tip-horizontal-reverse-margin)
         transform rotate(-90deg)
   &.cube-tip-direction_right
     .cube-tip-angle
       right 0
-      &::before
+      .cube-tip-arrow
         margin-right $var(tip-horizontal-reverse-margin)
         transform rotate(90deg)
 .cube-tip-angle
   position absolute
-  &::before
+  .cube-tip-arrow
     display block
     border-width $var(tip-angle-border-width)
     border-style $var(tip-angle-border-style)
@@ -97,8 +99,9 @@
 .cube-tip-content
   min-height $var(tip-content-min-height)
   line-height $var(tip-content-line-height)
-  flex-fix()
+  // flex-fix()
   overflow hidden
+  flex 1 1 auto
 
 .scale-enter
   animation scale-in .4s
