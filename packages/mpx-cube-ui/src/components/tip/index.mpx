@@ -101,7 +101,8 @@
   line-height $var(tip-content-line-height)
   // flex-fix()
   overflow hidden
-  flex 1 1 auto
+  flex 1
+  min-width 0
 
 .scale-enter
   animation scale-in .4s

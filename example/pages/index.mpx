@@ -1,6 +1,12 @@
 <template>
   <theme-container>
-    <view class="introduce" wx:style="{{ { opacity: Number(show) } }}">
+    <scroll-view
+      class="introduce"
+      wx:style="{{ { opacity: Number(show) } }}"
+      wx:enhanced="{{ true }}"
+      scroll-y="{{true}}"
+      wx:show-scrollbar="{{ false }}"
+    >
       <view class="title">
         <view class="logo"></view>
       </view>
@@ -26,7 +32,7 @@
         list="{{ themeList }}"
         wx:ref="pickerPopup"
         bindvalueChange="onThemeChange"></cube-picker-modal>
-    </view>
+    </scroll-view>
   </theme-container>
 </template>
 
@@ -36,8 +42,12 @@
   @require '@mpxjs/mpx-cube-ui/src/common/stylus/mixin.styl'
 
   .introduce
+    box-sizing border-box
+    position relative
     padding 6px 20px 6px 20px
     background-color #f7f8fa
+    height 100 vh
+    width 100 vw
     .title
       display flex
       align-items center
