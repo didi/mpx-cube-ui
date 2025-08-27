@@ -69,17 +69,17 @@ function getDayInWeek(year, month, day) {
 
 /**
  * 获取日期对象
- * @param date
+ * @param inpuDate
  * @returns {{date: *, month: number, year: number, day: number, dayInWeek: number, weekInMonth: number}}
  */
-function getDateObj(date) {
-  const currentDate = new Date(date)
-  const month = currentDate.getMonth() + 1
-  const year = currentDate.getFullYear()
-  const day = currentDate.getDate()
+function getDateObj(inpuDate) {
+  const date = new Date(inpuDate)
+  const month = date.getMonth() + 1
+  const year = date.getFullYear()
+  const day = date.getDate()
 
   return {
-    currentDate,
+    date,
     month,
     year,
     day,

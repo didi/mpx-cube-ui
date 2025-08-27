@@ -70,7 +70,6 @@ createComponent({
     dateClass: '',
     errTipTxt: '最多选择30天',
     angleOffset: {},
-    testData: [] as any[],
     toastText: ''
   },
   watch: {
@@ -90,6 +89,7 @@ createComponent({
     ready() {
       this.getRangeDateArray()
       this.reset(this.defaultDate)
+      console.log('node', this.customizeShowFunction)
     }
   },
   methods: {
@@ -249,15 +249,15 @@ createComponent({
         const monthLowerLimit = year === minYear ? minMonth : 1
         const monthUpperLimit = year === maxYear ? maxMonth : 12
         for (let month = monthLowerLimit; month <= monthUpperLimit; month++) {
+          console.log('year', year)
+          console.log('month', month)
           this.dateList.push(this.getCurrentMonthDaysArray(year, month) as never)
         }
       }
-      this.testData = this.dateList
     },
     getCurrentMonthDaysArray(year, month) {
       const days = getDaysCountInMonth(year, month)
       const weeksCountInMonth = getWeeksCountInMonth(year, month)
-
       // 根据周数，初始化二维数组
       const daysArray = [] as any[]
       for (let i = 0; i < weeksCountInMonth; i++) {
@@ -267,20 +267,22 @@ createComponent({
       // 当月日历面板中的排列
       for (let day = 1; day <= days; day++) {
         const currentWeekInMonth = getWeekInMonth(year, month, day)
+        const disable = +new Date(year, month - 1, day) < this.min || +new Date(year, month - 1, day) > this.max
+        console.log('customizeShowFunction', this.customizeShowFunction)
+        console.log('day', this.isCustomizeShow ? (this.customizeShowFunction as any)(day, disable) : day)
         daysArray[currentWeekInMonth - 1].push({
-          day,
+          day: this.isCustomizeShow ? (this.customizeShowFunction as any)(day, disable) : day,
           month,
           year,
           date: new Date(year, month - 1, day),
           dayInWeek: getDayInWeek(year, month, day),
           weekInMonth: currentWeekInMonth - 1,
           active: false,
-          disable: +new Date(year, month - 1, day) < this.min || +new Date(year, month - 1, day) > this.max
+          disable
         })
       }
-
       this.fillDaysInMonth(year, month, days, weeksCountInMonth, daysArray)
-
+      console.log('daysArray', daysArray)
       return {
         title: `${year}年${month}月`,
         dayCount: days,

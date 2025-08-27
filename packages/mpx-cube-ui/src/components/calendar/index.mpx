@@ -8,33 +8,34 @@
         ref="scroll"
         scroll-y="{{true}}"
       >
-        <block v-if="isCustomizeShow">
+        <block wx:if="{{isCustomizeShow}}">
           <view class="date-render-wrapper" wx:for="{{ dateList }}" wx:for-item="monthDateGroup" wx:for-index="listIndex" :ref="`monthList${listIndex}`" wx:key="listIndex">
-          <view class="date-header">{{monthDateGroup.title}}</view>
-          <view class="date-ul" wx:for="{{monthDateGroup.dateArr}}" wx:for-item="days" wx:for-index="weekInMonth" wx:key="weekInMonth">
-            <view
-              class="date-li"
-              wx:for="{{days}}"
-              wx:key="index"
-              wx:class="{{[item.dateClass, {'disable': item.disable}, {'active': item.active}]}}"
-            >
-              <view class="date-left"></view>
-              <view class="date-center">
-                <rich-text
-                  class="date"
-                  wx:class="{{ {'calendar-disabled-date': item.disable} }}"
-                  bindclick="selectDate(item, index, $event)"
-                  v-if="item.day"
-                  nodes="{{customizeShowFunction(item.day, item.disable)}}"
-                >
-                </rich-text>
+            <view class="date-header">{{monthDateGroup.title}}</view>
+            <view class="date-ul" wx:for="{{monthDateGroup.dateArr}}" wx:for-item="days" wx:for-index="weekInMonth" wx:key="weekInMonth">
+              <view
+                class="date-li"
+                wx:for="{{days}}"
+                wx:key="index"
+                wx:class="{{[item.dateClass, {'disable': item.disable}, {'active': item.active}]}}"
+              >
+                <view class="date-left"></view>
+                <view>1{{customizeShowFunction}}</view>
+                <view class="date-center">
+                  <rich-text
+                    class="date"
+                    wx:class="{{ {'calendar-disabled-date': item.disable} }}"
+                    bindclick="selectDate(item, index, $event)"
+                    wx:if="{{item.day}}"
+                    nodes="{{customizeShowFunction(item.day, item.disable)}}"
+                  >
+                  </rich-text>
+                </view>
+                <view class="date-right"></view>
               </view>
-              <view class="date-right"></view>
             </view>
-          </view>
          </view>
         </block>
-        <block v-else>
+        <block wx:else>
           <view class="date-render-wrapper" wx:for="{{ dateList }}" wx:for-item="monthDateGroup" wx:for-index="listIndex" :ref="`monthList${listIndex}`" wx:key="listIndex">
             <view class="date-header">{{monthDateGroup.title}}</view>
             <view class="date-ul" wx:for="{{monthDateGroup.dateArr}}" wx:for-item="days" wx:for-index="weekInMonth" wx:key="weekInMonth">

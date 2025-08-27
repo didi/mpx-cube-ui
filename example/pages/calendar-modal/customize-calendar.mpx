@@ -28,11 +28,20 @@ createComponent({
     max: +new Date(2025, 7, 25),
     maxRange: 10,
     scrollToEnd: true,
-    defaultDate: [new Date(2025, 3, 1), new Date(2025, 3, 2)],
+    defaultDate: [+new Date(2025, 3, 1), +new Date(2025, 3, 2)],
     maskClosable: true,
     toastText: ['暂未选择时间', '暂未选择时间'],
-    height: '300px',
-    customizeShowFunction: function (day, disable) {
+    height: '300px'
+  },
+  methods: {
+    showCalendarModal() {
+      this.$refs.calendarModal.show()
+    },
+    confirm(date) {
+      console.log('date', date)
+      this.toastText = date
+    },
+    customizeShowFunction(day, disable) {
       if (disable) {
         return `<div class='customize-show-content'>
           <div>${day}</div>
@@ -44,15 +53,6 @@ createComponent({
           <div class='customize-show-content-bottom'>文案内容描述</div>
         </div>`
       }
-    }
-  },
-  methods: {
-    showCalendarModal() {
-      this.$refs.calendarModal.show()
-    },
-    confirm(date) {
-      console.log('date', date)
-      this.toastText = date
     }
   }
 })
