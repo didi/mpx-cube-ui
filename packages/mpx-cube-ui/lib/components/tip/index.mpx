@@ -5,7 +5,9 @@
     wx:style="{{ customStyle }}"
     bind:tap="onClick"
   >
-    <view class="cube-tip-angle" wx:style="{{ angStyle }}"></view>
+    <view class="cube-tip-angle-wapper" wx:style="{{ angStyle }}">
+      <view class="cube-tip-angle"></view>
+    </view>
     <cube-icon
       class="cube-tip-close"
       theme-type="{{ themeType }}"
@@ -41,41 +43,41 @@
   color $var(tip-color)
   &.cube-tip-direction_top,
   &.cube-tip-direction_bottom
-    .cube-tip-angle
+    .cube-tip-angle-wapper
       left 50%
       transform translateX(-50%)
   &.cube-tip-direction_top
-    .cube-tip-angle
+    .cube-tip-angle-wapper
       top 0
-      &::before
+      .cube-tip-angle
         margin-top $var(tip-vertical-reverse-margin)
         transform rotate(0deg)
   &.cube-tip-direction_bottom
-    .cube-tip-angle
+    .cube-tip-angle-wapper
       bottom 0
-      &::before
+      .cube-tip-angle
         margin-bottom $var(tip-vertical-reverse-margin)
         transform rotate(180deg)
   &.cube-tip-direction_left,
   &.cube-tip-direction_right
-    .cube-tip-angle
+    .cube-tip-angle-wapper
       top 50%
       transform translateY(-50%)
   &.cube-tip-direction_left
-    .cube-tip-angle
+    .cube-tip-angle-wapper
       left 0
-      &::before
+      .cube-tip-angle
         margin-left $var(tip-horizontal-reverse-margin)
         transform rotate(-90deg)
   &.cube-tip-direction_right
-    .cube-tip-angle
+    .cube-tip-angle-wapper
       right 0
-      &::before
+      .cube-tip-angle
         margin-right $var(tip-horizontal-reverse-margin)
         transform rotate(90deg)
-.cube-tip-angle
+.cube-tip-angle-wapper
   position absolute
-  &::before
+  .cube-tip-angle
     display block
     border-width $var(tip-angle-border-width)
     border-style $var(tip-angle-border-style)
@@ -96,8 +98,10 @@
 .cube-tip-content
   min-height $var(tip-content-min-height)
   line-height $var(tip-content-line-height)
-  flex-fix()
+  // flex-fix()
   overflow hidden
+  flex 1
+  min-width 0
 
 .scale-enter
   animation scale-in .4s
