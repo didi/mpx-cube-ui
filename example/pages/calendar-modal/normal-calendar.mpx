@@ -34,7 +34,7 @@ createComponent({
       this.$refs.calendarModal.show()
     },
     confirm(date) {
-      this.toastText = date
+      this.toastText = date.detail.value
     }
   }
 })

@@ -1,7 +1,6 @@
 <template>
   <view class="calendar-page">
     <base-container>
-      <customize-calendar/>
       <normal-calendar/>
     </base-container>
   </view>
@@ -28,7 +27,6 @@
   {
     "usingComponents": {
       "base-container": "../../components/base-container/index.mpx",
-      "customize-calendar": "./customize-calendar.mpx",
       "normal-calendar": "./normal-calendar.mpx"
     }
   }

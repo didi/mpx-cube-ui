@@ -48,18 +48,6 @@ createComponent({
     height: {
       type: String,
       value: '300px'
-    },
-    isCustomizeShow: {
-      type: Boolean,
-      value: false
-    },
-    customizeShowFunction: {
-      type: Object,
-      value: () => {
-        return function (day, disable) {
-          return `<div>${day}</div>`
-        }
-      }
     }
   },
   data: {
@@ -89,7 +77,6 @@ createComponent({
     ready() {
       this.getRangeDateArray()
       this.reset(this.defaultDate)
-      console.log('node', this.customizeShowFunction)
     }
   },
   methods: {
@@ -98,6 +85,8 @@ createComponent({
       this.triggerEvent(EVENT_SELECT, { item, index })
     },
     selectDate(item) {
+      console.log('item', item)
+      console.log('dateList', this.dateList)
       let selectDaysCount = 0
       if (item.disable || !+item.date) return
       this.resetDateRender(item)
@@ -268,10 +257,8 @@ createComponent({
       for (let day = 1; day <= days; day++) {
         const currentWeekInMonth = getWeekInMonth(year, month, day)
         const disable = +new Date(year, month - 1, day) < this.min || +new Date(year, month - 1, day) > this.max
-        console.log('customizeShowFunction', this.customizeShowFunction)
-        console.log('day', this.isCustomizeShow ? (this.customizeShowFunction as any)(day, disable) : day)
         daysArray[currentWeekInMonth - 1].push({
-          day: this.isCustomizeShow ? (this.customizeShowFunction as any)(day, disable) : day,
+          day,
           month,
           year,
           date: new Date(year, month - 1, day),
@@ -282,7 +269,7 @@ createComponent({
         })
       }
       this.fillDaysInMonth(year, month, days, weeksCountInMonth, daysArray)
-      console.log('daysArray', daysArray)
+
       return {
         title: `${year}年${month}月`,
         dayCount: days,

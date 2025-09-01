@@ -1,65 +1,34 @@
 <template>
   <view class="cube-calendar-inner-wrapper" ref="calenderWrapper">
-    <view class="cube-calendar" wx:style="{height: height}">
+    <view class="cube-calendar" wx:style="{{ {height: height}}}">
       <view class="days-ul">
         <view class="days-li" wx:for="{{days}}" wx:key="index">{{item}}</view>
       </view>
-      <scroll-view
-        ref="scroll"
-        scroll-y="{{true}}"
-      >
-        <block wx:if="{{isCustomizeShow}}">
-          <view class="date-render-wrapper" wx:for="{{ dateList }}" wx:for-item="monthDateGroup" wx:for-index="listIndex" :ref="`monthList${listIndex}`" wx:key="listIndex">
-            <view class="date-header">{{monthDateGroup.title}}</view>
-            <view class="date-ul" wx:for="{{monthDateGroup.dateArr}}" wx:for-item="days" wx:for-index="weekInMonth" wx:key="weekInMonth">
-              <view
-                class="date-li"
-                wx:for="{{days}}"
-                wx:key="index"
-                wx:class="{{[item.dateClass, {'disable': item.disable}, {'active': item.active}]}}"
-              >
-                <view class="date-left"></view>
-                <view>1{{customizeShowFunction}}</view>
-                <view class="date-center">
-                  <rich-text
-                    class="date"
-                    wx:class="{{ {'calendar-disabled-date': item.disable} }}"
-                    bindclick="selectDate(item, index, $event)"
-                    wx:if="{{item.day}}"
-                    nodes="{{customizeShowFunction(item.day, item.disable)}}"
-                  >
-                  </rich-text>
+      <scroll-view ref="scroll" scroll-y="{{true}}" class="date-render-content">
+        <view class="date-render-wrapper" wx:for="{{ dateList }}" wx:for-item="monthDateGroup" wx:for-index="listIndex" :ref="`monthList${listIndex}`" wx:key="listIndex">
+          <view class="date-header">{{monthDateGroup.title}}</view>
+          <view class="date-ul" wx:for="{{monthDateGroup.dateArr}}" wx:for-item="days" wx:for-index="weekInMonth" wx:key="weekInMonth">
+            <view
+              class="date-li"
+              wx:for="{{days}}"
+              wx:key="index"
+              wx:class="{{[item.dateClass, {'disable': item.disable}, {'active': item.active}]}}"
+            >
+              <view>{{item.dateClass}}</view>
+              <view class="date-left"></view>
+              <view class="date-center">
+                <view
+                  class="date"
+                  wx:class="{{ { 'calendar-disabled-date': item.disable } }}"
+                  bind:tap="selectDate(item, index, $event)"
+                >
+                  {{item.day}}
                 </view>
-                <view class="date-right"></view>
               </view>
-            </view>
-         </view>
-        </block>
-        <block wx:else>
-          <view class="date-render-wrapper" wx:for="{{ dateList }}" wx:for-item="monthDateGroup" wx:for-index="listIndex" :ref="`monthList${listIndex}`" wx:key="listIndex">
-            <view class="date-header">{{monthDateGroup.title}}</view>
-            <view class="date-ul" wx:for="{{monthDateGroup.dateArr}}" wx:for-item="days" wx:for-index="weekInMonth" wx:key="weekInMonth">
-              <view
-                class="date-li"
-                wx:for="{{days}}"
-                wx:key="index"
-                wx:class="{{[item.dateClass, {'disable': item.disable}, {'active': item.active}]}}"
-              >
-                <view class="date-left"></view>
-                <view class="date-center">
-                  <view
-                    class="date"
-                    wx:class="{{ {'calendar-disabled-date': item.disable} }}"
-                    bindclick="selectDate(item, index, $event)"
-                  >
-                    {{item.day}}
-                  </view>
-                </view>
-                <view class="date-right"></view>
-              </view>
+              <view class="date-right"></view>
             </view>
           </view>
-        </block>
+        </view>
       </scroll-view>
     </view>
     <cube-toast class="calendar-toast" txt="{{toastText}}" wx:ref="toast"></cube-toast>
@@ -107,6 +76,8 @@
   //   position: absolute
   //   top: 10px
   //   right: 10px
+  .date-render-content
+    overflow-y: auto
   .date-render-wrapper
     padding $var(calendar-render-wrapper-padding)
   .date-header

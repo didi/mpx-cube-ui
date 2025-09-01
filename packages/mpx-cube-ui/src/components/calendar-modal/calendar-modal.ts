@@ -41,16 +41,6 @@ createComponent({
       type: Boolean,
       value: true
     },
-    isCustomizeShow: {
-      type: Boolean,
-      value: false
-    },
-    customizeShowFunction: {
-      type: Object,
-      value: function (day, disable) {
-        return `<div>${day}</div>`
-      }
-    },
     title: {
       type: String,
       value: '选择日期'
