@@ -9,15 +9,7 @@
 <script>
   import { createPage } from '@mpxjs/core'
 
-  createPage({
-    data: {
-    },
-    methods: {
-      showCalendarModal() {
-        this.$refs.calendarModal.show()
-      }
-    }
-  })
+  createPage()
 </script>
 
 <style lang="stylus">

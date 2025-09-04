@@ -120,6 +120,10 @@ module.exports = [
           {
             title: 'Switch 滑动开关',
             path: '/components/base/switch'
+          },
+          {
+            title: 'CalendarModal 日历弹框',
+            path: '/components/base/calendar-modal'
           }
         ]
       },

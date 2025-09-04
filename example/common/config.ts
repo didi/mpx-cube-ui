@@ -85,7 +85,7 @@ export default {
           'cascade-picker-popup',
           'date-picker-popup',
           'time-picker-popup',
-          'calendar-modal'
+          'calendar-modal',
         ]
       }
     ],

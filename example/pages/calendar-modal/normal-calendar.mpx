@@ -1,8 +1,8 @@
 <template>
-  <view class="calendar-normal-page">
+  <view class="calendar-page">
    <cube-button bindtap="showCalendarModal">常规日历组件</cube-button>
-   <view class="calendar-normal-selected-date">起始时间：{{toastText[0]}}</view>
-   <view class="calendar-normal-selected-date">结束时间：{{toastText[1]}}</view>
+   <view class="calendar-selected-date">起始时间：{{toastText[0]}}</view>
+   <view class="calendar-selected-date">结束时间：{{toastText[1]}}</view>
     <cube-calendar-modal
       wx:ref="calendarModal"
       min="{{min}}"
@@ -31,7 +31,7 @@ createComponent({
   },
   methods: {
     showCalendarModal() {
-      this.$refs.calendarModal.show()
+      this.$refs.calendarModal.showCalendar()
     },
     confirm(date) {
       const { year: startYear, month: startMonth, day: startDay } = date.detail.value[0]
@@ -43,9 +43,9 @@ createComponent({
 </script>
 
 <style lang="stylus">
-.calendar-normal-page
+.calendar-page
   margin-top: 15px
-  .calendar-normal-selected-date
+  .calendar-selected-date
     margin-top: 10px
     text-align: left
     white-space: break-spaces

@@ -17,7 +17,7 @@
     "docs:prod": "npm run example:build && NODE_ENV=production npm run docs:build && cp -r ./example/dist/web ./docs/.vuepress/dist/example",
     "example:build": "cd example && npm run build:web",
     "example:dev": "cd example && npm run watch:web",
-    "example:mp:dev": "cd example && npm run watch:mp",
+    "example:mp:dev": "cd example && npm run watch:ali",
     "fix": "eslint --fix --ext .js,.ts,.mpx packages/",
     "lint": "eslint --ext .js,.ts,.mpx packages/",
     "prepare": "husky install",

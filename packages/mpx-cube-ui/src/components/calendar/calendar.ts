@@ -35,11 +35,6 @@ createComponent({
       type: Boolean,
       value: true
     },
-    // 是否滚动到底部
-    scrollToEnd: {
-      type: Boolean,
-      value: true
-    },
     // 日期默认值，区间选择Array格式
     defaultDate: {
       type: Array,
@@ -127,28 +122,29 @@ createComponent({
         const endDateObj = getDateObj(dateRange[1])
         this.selectDateSet.push(startDateObj)
         this.renderSelectedRangeDate(startDateObj, endDateObj)
+        this.resetSelectDate()
         this.$set(this.selectDateSet[0], 'active', true)
         this.$set(this.selectDateSet[this.selectDateSet.length - 1], 'active', true)
       }
     },
     clear() {
       if (!this.selectDateSet || !this.selectDateSet.length) { return }
-      this.resetSelectDate()
-      this.selectDateSet = []
-    },
-    resetSelectDate() {
       this.selectDateSet.forEach((item, index) => {
         this.$set(item, 'dateClass', '')
         item.active && this.$set(item, 'active', false)
       })
+      this.selectDateSet = []
+    },
+    resetSelectDate() {
+      const { listIndex, weekInMonthIndex, index } = this.agoClickIndex
+      if (listIndex !== null && weekInMonthIndex !== null && index !== null) {
+        // eslint-disable-next-line
+        (this.dateList[listIndex] as any).dateArr[weekInMonthIndex][index]['active'] = false
+      }
     },
     resetDateRender(item) {
       if (this.selectDateSet.length && (this.selectDateSet.length >= 2 || item.date <= this.selectDateSet[0].date)) {
-        const { listIndex, weekInMonthIndex, index } = this.agoClickIndex
-        if (listIndex !== null && weekInMonthIndex !== null && index !== null) {
-          // eslint-disable-next-line
-          (this.dateList[listIndex] as any).dateArr[weekInMonthIndex][index]['active'] = false
-        }
+        this.resetSelectDate()
         for (let i = 0; i < this.selectDateSet.length; i++) {
           this.$set(this.selectDateSet[i], 'dateClass', '')
           this.$set(this.selectDateSet[i], 'active', false)

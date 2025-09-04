@@ -14,7 +14,7 @@
       <view class="cube-calendar-modal-content">
         <view class="cube-calendar-modal-title">选择日期</view>
         <view class="cube-calendar-modal-cross">
-          <cube-icon type="close" bindtap="hide"/>
+          <cube-icon type="close" bindtap="cancel"/>
         </view>
         <cube-calendar
           wx:ref="calendar"
@@ -23,7 +23,6 @@
           maxRange="{{maxRange}}"
           max="{{max}}"
           min="{{min}}"
-          scrollToEnd="{{scrollToEnd}}"
           maskClosable="{{maskClosable}}"
           title="{{title}}"
         ></cube-calendar>
