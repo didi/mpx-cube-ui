@@ -58,6 +58,11 @@ createComponent({
     dateClass: '',
     errTipTxt: '最多选择30天',
     angleOffset: {},
+    agoClickIndex: {
+      listIndex: null,
+      weekInMonthIndex: null,
+      index: null
+    },
     toastText: ''
   },
   watch: {
@@ -84,18 +89,16 @@ createComponent({
       // 点击某项时触发
       this.triggerEvent(EVENT_SELECT, { item, index })
     },
-    selectDate(item) {
-      console.log('item', item)
-      console.log('dateList', this.dateList)
+    selectDate(item, listIndex, weekInMonthIndex, index) {
       let selectDaysCount = 0
-      if (item.disable || !+item.date) return
+      if (item.disable || !item.date) return
       this.resetDateRender(item)
       // 选择开始时间
       if (!this.selectDateSet.length) {
         this.selectDateSet.push(item)
       } else {
         // 选择结束时间
-        selectDaysCount = getRangeDaysCount(+(this.selectDateSet[0] as any).date, +item.date)
+        selectDaysCount = getRangeDaysCount(+(this.selectDateSet[0] as any).date, item.date)
         if (this.maxRange && selectDaysCount > this.maxRange) {
           this.toastText = `最多选择${this.maxRange}天`
           this.$refs.toast.show()
@@ -105,8 +108,16 @@ createComponent({
           this.renderSelectedRangeDate(this.selectDateSet[0], item)
         }
       }
-      if (+item.date) {
-        item.active = !item.active
+      if (item.date) {
+        // eslint-disable-next-line
+        let currentDate = (this.dateList[listIndex] as any).dateArr[weekInMonthIndex][index]
+        const { date: selectStartTime } = this.selectDateSet[0]
+        const { date: selectEndTime } = this.selectDateSet[this.selectDateSet.length - 1]
+        if (currentDate.date === selectStartTime || currentDate.date === selectEndTime) {
+          // eslint-disable-next-line
+          currentDate['active'] = true
+        }
+        this.agoClickIndex = { listIndex, weekInMonthIndex, index }
       }
     },
     reset(dateRange) {
@@ -122,14 +133,22 @@ createComponent({
     },
     clear() {
       if (!this.selectDateSet || !this.selectDateSet.length) { return }
+      this.resetSelectDate()
+      this.selectDateSet = []
+    },
+    resetSelectDate() {
       this.selectDateSet.forEach((item, index) => {
         this.$set(item, 'dateClass', '')
         item.active && this.$set(item, 'active', false)
       })
-      this.selectDateSet = []
     },
     resetDateRender(item) {
-      if (this.selectDateSet.length && (this.selectDateSet.length >= 2 || +item.date <= +(this.selectDateSet[0] as any).date)) {
+      if (this.selectDateSet.length && (this.selectDateSet.length >= 2 || item.date <= this.selectDateSet[0].date)) {
+        const { listIndex, weekInMonthIndex, index } = this.agoClickIndex
+        if (listIndex !== null && weekInMonthIndex !== null && index !== null) {
+          // eslint-disable-next-line
+          (this.dateList[listIndex] as any).dateArr[weekInMonthIndex][index]['active'] = false
+        }
         for (let i = 0; i < this.selectDateSet.length; i++) {
           this.$set(this.selectDateSet[i], 'dateClass', '')
           this.$set(this.selectDateSet[i], 'active', false)
@@ -176,7 +195,6 @@ createComponent({
         endDateWeekInMonth = currentMonthIndex !== endMonthIndex
           ? monthDateGroup.dateArr.length - 1 // 取该月最后一周
           : endDateObj.weekInMonth
-
         this.renderDateInOneMonth(startDateInWeek, monthDateGroup, startDateWeekInMonth, endDateWeekInMonth, endDateObj.date)
       }
       this.selectDateSet.length && this.selectDateSet.shift()
@@ -186,7 +204,8 @@ createComponent({
       const rangeArr = []
       let weekDateGroup
       let dateClass
-      const endDateTimestamp = endDate.setHours(0, 0, 0, 0)
+
+      const endDateTimestamp = new Date(endDate).setHours(0, 0, 0, 0)
       for (let week = startDateWeekInMonth; week <= endDateWeekInMonth; week++) {
         weekDateGroup = monthDateGroup.dateArr[week]
 
@@ -197,16 +216,17 @@ createComponent({
           }
 
           // 渲染开始日期样式
-          if (+weekDateGroup[day].date === (this.selectDateSet[0] as any).date.setHours(0, 0, 0, 0)) {
+          const selectDateSetTime = new Date(this.selectDateSet[0].date).setHours(0, 0, 0, 0)
+
+          if (weekDateGroup[day].date === +selectDateSetTime) {
             this.$set(weekDateGroup[day], 'dateClass', 'start-date')
           }
-          dateClass = weekDateGroup[day].dateClass && +weekDateGroup[day].date
+          dateClass = weekDateGroup[day].dateClass && weekDateGroup[day].date
             ? `${weekDateGroup[day].dateClass} transition-date`
             : 'transition-date'
           this.$set(weekDateGroup[day], 'dateClass', dateClass)
           rangeArr.push(weekDateGroup[day] as never)
-
-          if (+weekDateGroup[day].date >= endDateTimestamp) {
+          if (weekDateGroup[day].date >= +endDateTimestamp) {
             break
           }
         }
@@ -238,8 +258,6 @@ createComponent({
         const monthLowerLimit = year === minYear ? minMonth : 1
         const monthUpperLimit = year === maxYear ? maxMonth : 12
         for (let month = monthLowerLimit; month <= monthUpperLimit; month++) {
-          console.log('year', year)
-          console.log('month', month)
           this.dateList.push(this.getCurrentMonthDaysArray(year, month) as never)
         }
       }
@@ -261,7 +279,7 @@ createComponent({
           day,
           month,
           year,
-          date: new Date(year, month - 1, day),
+          date: +new Date(year, month - 1, day),
           dayInWeek: getDayInWeek(year, month, day),
           weekInMonth: currentWeekInMonth - 1,
           active: false,

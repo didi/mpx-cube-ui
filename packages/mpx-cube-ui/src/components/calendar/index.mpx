@@ -14,13 +14,12 @@
               wx:key="index"
               wx:class="{{[item.dateClass, {'disable': item.disable}, {'active': item.active}]}}"
             >
-              <view>{{item.dateClass}}</view>
               <view class="date-left"></view>
               <view class="date-center">
                 <view
                   class="date"
                   wx:class="{{ { 'calendar-disabled-date': item.disable } }}"
-                  bind:tap="selectDate(item, index, $event)"
+                  bind:tap="selectDate(item, listIndex, weekInMonth, index, $event)"
                 >
                   {{item.day}}
                 </view>
@@ -130,7 +129,7 @@
       .date
         color #FFF
         background-color #4D6199
-    &.active
+    &.disable
       .date
         color #969699
     .date

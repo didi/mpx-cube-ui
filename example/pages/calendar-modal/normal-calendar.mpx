@@ -23,7 +23,7 @@ createComponent({
   data: {
     min: +new Date(2025, 1, 1),
     max: +new Date(2025, 7, 25),
-    maxRange: 3,
+    maxRange: 100,
     scrollToEnd: true,
     defaultDate: [+new Date(2025, 3, 1), +new Date(2025, 3, 2)],
     maskClosable: true,
@@ -34,7 +34,9 @@ createComponent({
       this.$refs.calendarModal.show()
     },
     confirm(date) {
-      this.toastText = date.detail.value
+      const { year: startYear, month: startMonth, day: startDay } = date.detail.value[0]
+      const { year: endYear, month: endMonth, day: endDay } = date.detail.value[1]
+      this.toastText = [`${startYear}年${startMonth}月${startDay}日`,`${endYear}年${endMonth}月${endDay}日`]
     }
   }
 })
