@@ -14,7 +14,8 @@ if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
             rootAnimationData: {},
             maskAnimationData: {},
             ANIMATION_PRESET: {},
-            contentRect: {}
+            contentRect: {},
+            contentTranslateStyle: {}
         },
         computed: {
             contentInfo() {
@@ -81,6 +82,9 @@ if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
                         duration: 300,
                         timingFunction: 'ease-out'
                     });
+                    if (!n) {
+                        this.contentTranslateStyle = {};
+                    }
                 }, { immediate: true });
             }
         },
@@ -93,16 +97,29 @@ if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
             translateAnimation(animationOptions, axis, start) {
                 const hasTranslate = !!this.animation;
                 const animation = this.animation || (this.animation = mpx.createAnimation(animationOptions));
+                this.targetTranslate = `translate${axis}`;
                 if (this.isVisible) {
                     if (hasTranslate) {
-                        animation[`translate${axis}`](start).step({ duration: 0 });
+                        animation[this.targetTranslate](start).step({ duration: 0 });
                     }
-                    animation[`translate${axis}`](0).step();
+                    animation[this.targetTranslate](0).step();
+                    this.targetTranslateValue = 0;
                 }
                 else {
-                    animation[`translate${axis}`](start).step();
+                    animation[this.targetTranslate](start).step();
+                    this.targetTranslateValue = start;
                 }
                 this.animationData = animation.export();
+                setTimeout(() => {
+                    this.transitionend();
+                }, animationOptions.duration + 100);
+            },
+            transitionend() {
+                if (this.isVisible && this.targetTranslate) {
+                    this.contentTranslateStyle = {
+                        [this.targetTranslate]: this.targetTranslateValue
+                    };
+                }
             },
             // @vuese
             // 仅 rn 使用，当内容元素高度变化后调用。用于更新动画高度
