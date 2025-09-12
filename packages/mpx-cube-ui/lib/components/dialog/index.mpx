@@ -17,7 +17,11 @@
         wx:if="{{ showClose }}"
         bind:tap="onClose"
       >
-        <cube-icon type="close" theme-type="{{ themeType }}"></cube-icon>
+        <!-- 横线 -->
+        <view @_ios|_android class="cube-dialog-line cube-dialog-line-horizontal"></view>
+        <!-- 竖线 -->
+        <view @_ios|_android class="cube-dialog-line cube-dialog-line-vertical"></view>
+        <cube-icon @_wx|_ali|_web type="close" theme-type="{{ themeType }}"></cube-icon>
       </view>
       <image
         class="cube-dialog-head-icon"
