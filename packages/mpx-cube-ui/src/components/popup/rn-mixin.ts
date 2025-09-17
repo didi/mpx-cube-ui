@@ -97,6 +97,14 @@ if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
       }
     },
     methods: {
+      onLayout() {
+        if (!this.layoutCount) {
+          this.layoutCount = 1
+          return
+        }
+        this.layoutCount++
+        this.initContentRect()
+      },
       getWindowInfo() {
         if (this.windowInfo) return this.windowInfo
         return (this.windowInfo = mpx.getWindowInfo())

@@ -66,7 +66,8 @@
         wx:ref="popup-content"
         class="cube-popup-content {{ transition }}"
         wx:style="{{ [styleConfig.content, contentTranslateStyle] }}"
-        animation="{{ animationData }}">
+        animation="{{ animationData }}"
+        onLayout="onLayout">
         <slot></slot>
       </view>
     </view>
