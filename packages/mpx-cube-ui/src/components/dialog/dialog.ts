@@ -145,7 +145,8 @@ createComponent({
     cancelBtnClass () {
       return {
         [`${btnClsPrefix}-highlight`]: !!this._cancelBtn.active,
-        [`${btnClsPrefix}_disabled`]: !!this._cancelBtn.disabled
+        [`${btnClsPrefix}_disabled`]: !!this._cancelBtn.disabled,
+        [`${btnsClsPrefix}-cancel-border-right-1px`]: this.isConfirm || this.isPrompt
       }
     },
     confirmBtnClass () {
