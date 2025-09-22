@@ -1,14 +1,17 @@
 # Changelog
 
-## [1.3.9] - 2025-09-18
+## [1.3.10] - 2025-09-22
 
 ### Fixed
-- 修复dialog组件按钮边框问题 (React Native)
+- 对齐小程序、web，修复dialog组件按钮按钮之间没有分割线（React Native）
 
-## [1.3.8] - 2025-09-12
+
+## [1.3.9] - 2025-09-18
 
 ### Added
 - dialog组件添加close按钮 (React Native)
+
+## [1.3.8] - 2025-09-12
 
 ### Fixed
 - 修复popup组件中包含input时input无法点击的问题 (React Native)

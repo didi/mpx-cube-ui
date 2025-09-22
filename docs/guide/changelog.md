@@ -1,16 +1,17 @@
-# 更新日志
+# Changelog
 
-<card>
+## [1.3.10] - 2025-09-22
+
+### Fixed
+- 对齐小程序、web，修复dialog组件按钮按钮之间没有分割线（React Native）
+
 
 ## [1.3.9] - 2025-09-18
 
-### Fixed
-- 修复dialog组件按钮边框问题 (React Native)
-
-## [1.3.8] - 2025-09-12
-
 ### Added
 - dialog组件添加close按钮 (React Native)
+
+## [1.3.8] - 2025-09-12
 
 ### Fixed
 - 修复popup组件中包含input时input无法点击的问题 (React Native)
@@ -57,9 +58,3 @@
 
 ### Added
 - 新增input组件 (React Native )
-
-## 1.0.0（2024.03.13）
-### mpx-cube-ui 项目开源
-- Initial commit([11019fb](https://github.com/didi/mpx-cube-ui/commit/11019fbfdece8ea0e76258fb11bd8fb557c1a190))
-
-</card>
