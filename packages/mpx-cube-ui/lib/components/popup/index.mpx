@@ -3,12 +3,13 @@
     <view
       wx:if="{{removeCatchTouch}}"
       wx:class="{{ [themeType ? 'cube-popup cube-popup-'+themeType : 'cube-popup', rootClass, visibleClass] }}"
-      wx:style="{{ popupStyle }}"
+      wx:style="{{ [popupStyle, styleConfig.wrapper] }}"
     >
       <view class="cube-popup-mask" wx:if="{{ mask }}" bindtouchend="onMaskClick" wx:style="{{ [styleConfig.mask, maskOpacity] }}">
         <!-- 遮罩插槽 -->
         <slot name="mask"></slot>
       </view>
+      <slot name="prepend"></slot>
       <view class="cube-popup-content {{ transitionClass }}" bindanimationend@_wx|_ali|_web="contentHideAnimationend">
         <rich-text wx:if="{{ content }}" nodes="{{ content }}"></rich-text>
         <!-- 默认插槽 -->
@@ -24,7 +25,7 @@
         visibleClass,
         !removeCatchTouch ? 'cube-popup-remove-touch' : ''
       ] }}"
-      wx:style="{{ popupStyle }}"
+      wx:style="{{ [popupStyle, styleConfig.wrapper] }}"
       catchtouchmove@wx|ali
     >
       <view
@@ -36,6 +37,7 @@
         <!-- 遮罩插槽 -->
         <slot name="mask"></slot>
       </view>
+      <slot name="prepend"></slot>
       <view
         class="cube-popup-content {{ transitionClass }}"
         wx:style="{{styleConfig.content}}"
@@ -52,7 +54,7 @@
       wx:ref="popup"
       external-var-context="{{varContext}}"
       wx:class="{{ [themeType ? 'cube-popup cube-popup-'+themeType : 'cube-popup', rootClass, visibleClass] }}"
-      wx:style="{{ popupStyle }}"
+      wx:style="{{ [popupStyle, styleConfig.wrapper] }}"
       >
       <view
         class="cube-popup-mask"
@@ -62,6 +64,7 @@
         bindtouchend="onMaskClick">
         <slot name="mask"></slot>
       </view>
+      <slot name="prepend"></slot>
       <view
         wx:ref="popup-content"
         class="cube-popup-content {{ transition }}"
