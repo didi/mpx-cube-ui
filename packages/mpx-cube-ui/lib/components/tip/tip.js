@@ -1,5 +1,6 @@
 import { createComponent } from '../../common/helper/create-component';
 import { visibilityMixin } from '../../common/mixins';
+import rnMixin from './rn-mixin';
 const EVENT_CLICK = 'click';
 const EVENT_CLOSE = 'close';
 const ANIMATION_ENTER = 'enter';
@@ -12,7 +13,7 @@ var TipAngleDirection;
     TipAngleDirection["LEFT"] = "left";
 })(TipAngleDirection || (TipAngleDirection = {}));
 createComponent({
-    mixins: [visibilityMixin],
+    mixins: [visibilityMixin, rnMixin],
     properties: {
         /**
          * @description 小三角的方向
@@ -64,6 +65,7 @@ createComponent({
         },
         hide() {
             this.animationClass = `scale-${ANIMATION_LEAVE}`;
+            this.isVisible = false;
         }
     }
 });

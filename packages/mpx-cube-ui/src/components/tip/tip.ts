@@ -1,5 +1,6 @@
 import { createComponent } from '../../common/helper/create-component'
 import { visibilityMixin } from '../../common/mixins'
+import rnMixin from './rn-mixin'
 
 const EVENT_CLICK = 'click'
 const EVENT_CLOSE = 'close'
@@ -14,7 +15,7 @@ enum TipAngleDirection {
 }
 
 createComponent({
-  mixins: [visibilityMixin],
+  mixins: [visibilityMixin, rnMixin],
   properties: {
     /**
      * @description 小三角的方向
@@ -61,11 +62,20 @@ createComponent({
       this.triggerEvent(EVENT_CLOSE)
     },
     show() {
-      this.animationClass = `scale-${ANIMATION_ENTER}`
-      this.isVisible = true
+      if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
+        this.isVisible = true
+      } else {
+        this.animationClass = `scale-${ANIMATION_ENTER}`
+        this.isVisible = true
+      }
     },
     hide() {
-      this.animationClass = `scale-${ANIMATION_LEAVE}`
+      if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
+        this.isVisible = false
+      } else {
+        this.animationClass = `scale-${ANIMATION_LEAVE}`
+        this.isVisible = false
+      }
     }
   }
 })
