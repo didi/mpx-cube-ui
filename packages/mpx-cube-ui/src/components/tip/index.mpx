@@ -3,19 +3,26 @@
     wx:class="{{ [themeType ? 'cube-tip cube-tip-'+themeType : 'cube-tip', directionClass, animationClass] }}"
     wx:style="{{ customStyle }}"
     bind:tap="onClick"
-    animation="{{ tipAnimationData }}"
+    animation@_ios|_android="{{ tipAnimationData }}"
   >
     <view class="cube-tip-angle-wapper" wx:class="{{ angleWrapperClass }}" wx:style="{{ angStyle }}">
       <view class="cube-tip-angle" wx:class="{{ angleClass }}"></view>
     </view>
+    <view @_ios|_android class="cube-tip-line-wrapper">
+      <!-- 横线 -->
+      <view class="cube-tip-line cube-tip-line-horizontal"></view>
+      <!-- 竖线 -->
+      <view class="cube-tip-line cube-tip-line-vertical"></view>
+    </view>
     <cube-icon
+      @_wx|_ali|_web
       class="cube-tip-close"
       theme-type="{{ themeType }}"
       wx:if="{{ showClose }}"
       type="close"
       catchtap="onClose"
     />
-    <view class="cube-tip-content">
+    <view class="cube-tip-content" wx:class="{{ { 'cube-tip-content-without-close': !showClose } }}">
       <!-- 默认插槽 -->
       <slot />
     </view>
