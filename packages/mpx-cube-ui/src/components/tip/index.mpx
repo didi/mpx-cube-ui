@@ -1,6 +1,6 @@
 <template>
   <view
-    wx:class="{{ [themeType ? 'cube-tip cube-tip-'+themeType : 'cube-tip', directionClass, animationClass] }}"
+    wx:class="{{ rootClass }}"
     wx:style="{{ customStyle }}"
     bind:tap="onClick"
     animation@_ios|_android="{{ tipAnimationData }}"
