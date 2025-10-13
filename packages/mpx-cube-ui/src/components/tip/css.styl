@@ -7,13 +7,13 @@
   position absolute
   z-index $var(tip-z-index)
   display flex
+  padding $var(tip-padding)
   max-height $var(tip-max-height)
   border-radius $var(tip-border-radius)
   background $var(tip-bgc)
   transition opacity .2s
   font-size $var(font-size-xs)
   color $var(tip-color)
-  transform scale(0)
   &.cube-tip-direction_top,
   &.cube-tip-direction_bottom
     .cube-tip-angle-wapper
@@ -69,7 +69,6 @@
   transform scale($var(tip-close-scale))
   color inherit
 .cube-tip-content
-  padding $var(tip-padding)
   min-height $var(tip-content-min-height)
   line-height $var(tip-content-line-height)
   // flex-fix()
@@ -79,7 +78,6 @@
 
 .scale-enter
   animation scale-in .4s
-  animation-fill-mode forwards
 
 .scale-leave
   animation scale-out .2s
