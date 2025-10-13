@@ -14,6 +14,7 @@
   transition opacity .2s
   font-size $var(font-size-xs)
   color $var(tip-color)
+  transform scale(0)
   &.cube-tip-direction_top,
   &.cube-tip-direction_bottom
     .cube-tip-angle-wapper
@@ -56,6 +57,8 @@
     border-style $var(tip-angle-border-style)
     border-color transparent transparent $var(tip-angle-border-color)
     content " "
+.cube-tip-without-close
+  padding-right: $var(tip-padding-right-without-close)
 .cube-tip-close
   position absolute
   right $var(tip-close-right)
@@ -77,8 +80,7 @@
   min-width 0
 
 .scale-enter
-  animation scale-in .4s
+  animation scale-in .4s forwards
 
 .scale-leave
-  animation scale-out .2s
-  animation-fill-mode forwards
+  animation scale-out .2s forwards

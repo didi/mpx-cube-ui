@@ -44,8 +44,17 @@ createComponent({
         animationClass: ''
     },
     computed: {
-        directionClass() {
-            return `cube-tip-direction_${this.direction}`;
+        rootClass() {
+            const directionClass = `cube-tip-direction_${this.direction}`;
+            const themeType = this.themeType;
+            const mainClass = themeType ? `cube-tip cube-tip-${themeType}` : 'cube-tip';
+            if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
+                return `${mainClass} ${directionClass} ${this.animationClass}`;
+            }
+            else {
+                const withOutClose = !this.showClose ? 'cube-tip-without-close' : '';
+                return `${mainClass} ${directionClass} ${this.animationClass} ${withOutClose}`;
+            }
         }
     },
     methods: {
@@ -60,12 +69,21 @@ createComponent({
             this.triggerEvent(EVENT_CLOSE);
         },
         show() {
-            this.animationClass = `scale-${ANIMATION_ENTER}`;
-            this.isVisible = true;
+            if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
+                this.isVisible = true;
+            }
+            else {
+                this.animationClass = `scale-${ANIMATION_ENTER}`;
+                this.isVisible = true;
+            }
         },
         hide() {
-            this.animationClass = `scale-${ANIMATION_LEAVE}`;
-            this.isVisible = false;
+            if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
+                this.isVisible = false;
+            }
+            else {
+                this.animationClass = `scale-${ANIMATION_LEAVE}`;
+            }
         }
     }
 });
