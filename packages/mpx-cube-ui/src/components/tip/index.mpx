@@ -8,7 +8,12 @@
     <view class="cube-tip-angle-wapper" wx:class="{{ angleWrapperClass }}" wx:style="{{ angStyle }}">
       <view class="cube-tip-angle" wx:class="{{ angleClass }}"></view>
     </view>
-    <view @_ios|_android class="cube-tip-line-wrapper">
+    <view
+      @_ios|_android
+      class="cube-tip-line-wrapper"
+      wx:if="{{ showClose }}"
+      catchtap="onClose"
+    >
       <!-- 横线 -->
       <view class="cube-tip-line cube-tip-line-horizontal"></view>
       <!-- 竖线 -->
