@@ -2,11 +2,10 @@
   <view
     wx:class="{{ rootClass }}"
     wx:style="{{ customStyle }}"
-    bind:tap="onClick"
     animation@_ios|_android="{{ tipAnimationData }}"
   >
-    <view class="cube-tip-angle-wapper" wx:class="{{ angleWrapperClass }}" wx:style="{{ angStyle }}">
-      <view class="cube-tip-angle" wx:class="{{ angleClass }}"></view>
+    <view class="cube-tip-angle-wapper" wx:class@_ios|_android="{{ angleWrapperClass }}" wx:style="{{ angStyle }}">
+      <view class="cube-tip-angle" wx:class@_ios|_android="{{ angleClass }}"></view>
     </view>
     <view
       @_ios|_android
@@ -27,7 +26,14 @@
       type="close"
       catchtap="onClose"
     />
-    <view class="cube-tip-content" wx:class="{{ { 'cube-tip-content-without-close': !showClose } }}">
+    <view
+      @_ios|_android
+      class="cube-tip-popup"
+      wx:show="{{ closeOnClickOutside && isVisible }}"
+      bind:tap="onClose"
+    >
+    </view>
+    <view class="cube-tip-content" bind:tap="onClick" wx:class="{{ { 'cube-tip-content-without-close': !showClose } }}">
       <!-- 默认插槽 -->
       <slot />
     </view>

@@ -38,6 +38,10 @@ createComponent({
         showClose: {
             type: Boolean,
             value: true
+        },
+        closeOnClickOutside: {
+            type: Boolean,
+            value: false
         }
     },
     data: {
