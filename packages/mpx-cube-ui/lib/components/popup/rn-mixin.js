@@ -78,13 +78,11 @@ if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
                 this.$watch('isVisible', (n, o) => {
                     if (!!n === !!o)
                         return;
+                    this.transitionendTimer && clearTimeout(this.transitionendTimer);
                     this.rnAnimation({
                         duration: 300,
                         timingFunction: 'ease-out'
                     });
-                    if (!n) {
-                        this.contentTranslateStyle = {};
-                    }
                 }, { immediate: true });
             }
         },
@@ -118,9 +116,9 @@ if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
                     this.targetTranslateValue = start;
                 }
                 this.animationData = animation.export();
-                setTimeout(() => {
+                this.transitionendTimer = setTimeout(() => {
                     this.transitionend();
-                }, animationOptions.duration + 100);
+                }, animationOptions.duration + 10);
             },
             transitionend() {
                 if (this.isVisible && this.targetTranslate) {
