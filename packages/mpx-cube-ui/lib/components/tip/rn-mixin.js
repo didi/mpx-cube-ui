@@ -22,6 +22,7 @@ if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
                         timingFunction: 'ease'
                     }));
                     if (newV) {
+                        animation.opacity(1).step({ duration: 0 });
                         animation.scale(1.1).step({ duration: 200 });
                         animation.scale(1).step({ duration: 200 });
                     }
