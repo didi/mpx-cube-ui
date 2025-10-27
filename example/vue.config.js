@@ -41,6 +41,7 @@ module.exports = defineConfig({
   },
   chainWebpack(config) {
     config.module.rules.delete('svg')
+    config.resolve.alias.set('@mpxjs/core', resolve('node_modules/@mpxjs/core'))
   },
   configureWebpack: {
     cache: false,
