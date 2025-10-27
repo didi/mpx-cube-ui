@@ -59964,4 +59964,4 @@ react_native__WEBPACK_IMPORTED_MODULE_0__.AppRegistry.registerComponent("ReactNa
 module.exports = __webpack_exports__["default"];
 /******/ })()
 ;
-//# sourceMappingURL=app.js.map
+//# sourceMappingURL=app.js.ma
