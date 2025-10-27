@@ -77,8 +77,8 @@
     },
     methods: {
       showPicker() {
-        this.confirmParams = '',
-        this.valueChangeParams = '',
+        this.confirmParams = ''
+        this.valueChangeParams = ''
         this.$refs.picker.show()
       },
       onColumnChange(e) {
