@@ -103,7 +103,6 @@
   --cube-dialog-title-default-margin-left: 16px
   --cube-dialog-title-default-margin-right: 16px
   --cube-dialog-title-default-margin-bottom: 0
-  --cube-dialog-title-color: $color-biz-dark-grey
   --cube-dialog-title-margin-top: 24px
   --cube-dialog-title-def-color: $color-dark-grey-s
   --cube-dialog-title-def-font-size: $font-size-3xl
@@ -238,7 +237,11 @@
   --cube-toast-tip-font-size: 15px
   --cube-toast-tip-margin-left: 6px
   --cube-toast-tip-margin-bottom: 0px
+  /* @mpx-if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') */
+  --cube-toast-tip-max-width: 180px
+  /* @mpx-else */
   --cube-toast-tip-max-width: 12em
+  /* @mpx-endif */
   --cube-toast-tip-max-height: 40px
 
   --cube-toast-tip-font-weight: unset
