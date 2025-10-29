@@ -7,8 +7,20 @@
 <script>
 import { createComponent } from '@mpxjs/core'
 import { useTheme } from '../../common/theme'
+import { REACTHOOKSEXEC } from '@mpxjs/core'
+import { useContext } from 'react'
+import { VarContext } from '@mpxjs/webpack-plugin/lib/runtime/components/react/dist/context'
 
 createComponent({
+  data: {
+    varContext: {}
+  },
+  [REACTHOOKSEXEC]() {
+    const varContext = useContext(VarContext)
+    if (this.varContext !== varContext) {
+      this.varContext = varContext
+    }
+  },
   setup() {
     const { themeType } = useTheme()
     return {

@@ -75,8 +75,8 @@ createComponent({
   margin 70px auto
   text-align center
   line-height 1
-  .cube-tip-icon
-    font-size 30px
+.cube-tip-icon
+  font-size 30px
 </style>
 
 <script type="application/json">
