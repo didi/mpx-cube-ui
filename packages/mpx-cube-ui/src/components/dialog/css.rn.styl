@@ -122,10 +122,25 @@
   font-size $var(font-size-lg)
   color $var(dialog-close-color)
 
+.cube-dialog-line
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%), rotate(45deg)
+  background-color: $var(dialog-close-color)
+.cube-dialog-line-horizontal
+  width $var(font-size-lg)
+  height: 2px
+.cube-dialog-line-vertical
+  width: 2px
+  height $var(font-size-lg)
+
 .cube-dialog-btns
   display flex
   overflow hidden
   font-size 0
+.cube-dialog-btns-cancel-border-right-1px
+  border-right-1px($var(dialog-btns-split-color))
 
 .cube-dialog-btn
   flex 1

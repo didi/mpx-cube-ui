@@ -1,0 +1,99 @@
+@require "../../common/stylus/variable.rn.styl"
+@require '../../common/stylus/mixin.rn.styl'
+@require "../../common/stylus/theme/components/tip.styl"
+
+.cube-tip
+  position absolute
+  z-index $var(tip-z-index)
+  display flex
+  max-height $var(tip-max-height)
+  font-size $var(font-size-xs)
+  color $var(tip-color)
+  transform scale(0)
+  opacity 0
+  border-radius $var(tip-border-radius)
+.cube-tip-angle-wapper
+  position absolute
+  z-index: 2
+.cube-tip-angle
+  border-top-width: 0
+  border-right-width: 6px
+  border-bottom-width: 6px
+  border-left-width: 6px
+
+  border-style $var(tip-angle-border-style)
+  border-top-color transparent
+  border-left-color transparent
+  border-right-color transparent
+  border-bottom-color $var(tip-angle-border-color)
+.cube-tip-angle-wapper_top
+  top 0
+  left 50%
+  transform translateX(-50%)
+  margin-top $var(tip-vertical-reverse-margin)
+.cube-tip-angle_top
+  transform rotate(0deg)
+.cube-tip-angle-wapper_bottom
+  bottom 0
+  left 50%
+  transform translateX(-50%)
+  margin-bottom $var(tip-vertical-reverse-margin)
+.cube-tip-angle_bottom
+  transform rotate(180deg)
+.cube-tip-angle-wapper_left
+  left 0
+  top 50%
+  transform translateY(-50%)
+  margin-left $var(tip-horizontal-reverse-margin)
+.cube-tip-angle_left
+  transform rotate(-90deg)
+.cube-tip-angle-wapper_right
+  right 0
+  top 50%
+  transform translateY(-50%)
+  margin-right $var(tip-horizontal-reverse-margin)
+.cube-tip-angle_right
+  transform rotate(90deg)
+.cube-tip-line-wrapper
+  position absolute
+  z-index: 3
+  right $var(tip-close-right)
+  top $var(tip-close-top)
+  width $var(tip-close-width)
+  height $var(tip-close-height)
+  transform scale(1.6)
+.cube-tip-line
+  position absolute
+  top: 50%
+  left: 50%
+  width $var(tip-close-width)
+  height $var(tip-close-height)
+  transform: translate(-50%, -50%), rotate(45deg), scale(0.625)
+  background-color: #fff
+.cube-tip-line-horizontal
+  width $var(font-size-lg)
+  height: 2px
+.cube-tip-line-vertical
+  width: 2px
+  height $var(font-size-lg)
+
+.cube-tip-popup
+  position: absolute
+  z-index: 1
+  width: 2000vw
+  height: 2000vh
+  left: -1000vw
+  top: -1000vh
+  opacity: 0
+  pointer-events: box-only
+.cube-tip-content
+  z-index: 2
+  padding-all($var(tip-padding-top), $var(tip-padding-right), $var(tip-padding-bottom), $var(tip-padding-left))
+  background-color $var(tip-bgc)
+  border-radius $var(tip-border-radius)
+  min-height $var(tip-content-min-height)
+  line-height $var(tip-content-line-height)
+  overflow hidden
+
+.cube-tip-content-without-close
+  padding-right: $var(tip-padding-right-without-close)

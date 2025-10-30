@@ -1,5 +1,6 @@
 import { createComponent } from '../../common/helper/create-component';
 import { visibilityMixin } from '../../common/mixins';
+import rnMixin from './rn-mixin';
 const EVENT_CLICK = 'click';
 const EVENT_CLOSE = 'close';
 const ANIMATION_ENTER = 'enter';
@@ -12,7 +13,7 @@ var TipAngleDirection;
     TipAngleDirection["LEFT"] = "left";
 })(TipAngleDirection || (TipAngleDirection = {}));
 createComponent({
-    mixins: [visibilityMixin],
+    mixins: [visibilityMixin, rnMixin],
     properties: {
         /**
          * @description 小三角的方向
@@ -37,14 +38,27 @@ createComponent({
         showClose: {
             type: Boolean,
             value: true
+        },
+        closeOnClickOutside: {
+            type: Boolean,
+            value: false
         }
     },
     data: {
         animationClass: ''
     },
     computed: {
-        directionClass() {
-            return `cube-tip-direction_${this.direction}`;
+        rootClass() {
+            const directionClass = `cube-tip-direction_${this.direction}`;
+            const themeType = this.themeType;
+            const mainClass = themeType ? `cube-tip cube-tip-${themeType}` : 'cube-tip';
+            if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
+                return `${mainClass} ${directionClass} ${this.animationClass}`;
+            }
+            else {
+                const withOutClose = !this.showClose ? 'cube-tip-without-close' : '';
+                return `${mainClass} ${directionClass} ${this.animationClass} ${withOutClose}`;
+            }
         }
     },
     methods: {
@@ -59,11 +73,21 @@ createComponent({
             this.triggerEvent(EVENT_CLOSE);
         },
         show() {
-            this.animationClass = `scale-${ANIMATION_ENTER}`;
-            this.isVisible = true;
+            if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
+                this.isVisible = true;
+            }
+            else {
+                this.animationClass = `scale-${ANIMATION_ENTER}`;
+                this.isVisible = true;
+            }
         },
         hide() {
-            this.animationClass = `scale-${ANIMATION_LEAVE}`;
+            if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
+                this.isVisible = false;
+            }
+            else {
+                this.animationClass = `scale-${ANIMATION_LEAVE}`;
+            }
         }
     }
 });

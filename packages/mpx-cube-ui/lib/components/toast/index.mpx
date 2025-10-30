@@ -14,6 +14,7 @@
     maskFadeTransition="{{ maskFadeTransition }}"
     theme-type="{{ themeType }}"
     bind:maskClick="onMaskClick"
+    pointer-events="{{ pointerEvents }}"
   >
     <view class="cube-toast-content">
       <view class="toast-slot-icon"><slot /></view>

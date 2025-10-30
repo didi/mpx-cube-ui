@@ -2,6 +2,8 @@ const path = require('path')
 const util = require('util')
 const copy = require('copy')
 const fs = require('fs')
+const minimist = require('minimist')
+const c = require('picocolors')
 const exec = util.promisify(require('child_process').exec)
 
 const libTsConfig = path.resolve(__dirname, '../tsconfig.lib.json')
@@ -60,12 +62,17 @@ async function copyStatic() {
 }
 
 async function build() {
-  await exec(`rm -rf ${libDir}/*`) // 确保每次gen lib都是最新的
-  await compileTs(libDir, libTsConfig)
-  await copyStatic()
-  modifyMpxScriptRef()
-
-  // console.log('Done: compile component lib dir')
+  try {
+    console.log(c.blue('start building'))
+    await exec(`rm -rf ${libDir}/*`) // 确保每次gen lib都是最新的
+    await compileTs(libDir, libTsConfig)
+    await copyStatic()
+    modifyMpxScriptRef()
+  } catch (error) {
+    console.log(c.redBright('build fail'))
+    throw Error(error)
+  }
+  console.log(c.greenBright('Done: compile component lib dir!'))
 }
 
 function modifyMpxScriptRef() {
@@ -97,4 +104,16 @@ function modifyMpxScriptRef() {
   })
 }
 
-build()
+const argv = minimist(process.argv.slice(2))
+function runBuild() {
+  const { w: watch } = argv
+  if (watch) {
+    console.log(c.blue('watching file....'))
+    const watchDir = path.resolve(__dirname, '../src')
+    fs.watch(watchDir, { recursive: true }, (eventType, filename) => {
+      build()
+    })
+  }
+  build()
+}
+runBuild()

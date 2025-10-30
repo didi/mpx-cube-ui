@@ -2,13 +2,13 @@
   <view
     wx:class="{{ switchClass }}"
     bindtap="toggleSwitch"
-    animation="{{ switchAnimationData }}"
+    animation@_ios|_android="{{ switchAnimationData }}"
     wx:style="{{ swithBGClass }}"
   >
     <view
       class="cube-switch-handle"
       wx:class="{{ {'cube-switch-handle-on': isOn }}}"
-      animation="{{ switchHandleAnimationData }}"
+      animation@_ios|_android="{{ switchHandleAnimationData }}"
     />
   </view>
 </template>
