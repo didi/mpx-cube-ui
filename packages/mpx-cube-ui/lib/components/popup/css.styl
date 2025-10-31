@@ -70,13 +70,13 @@
     .cube-popup-mask
       opacity $var(popup-mask-opacity)
     .cube-popup-content
-      &.cube-popup-move-up
+      &.move-up
         popup-transition(popup-move-up-show, $var(popup-default-animation-time), $var(popup-default-animation-fn))
-      &.cube-popup-move-right
+      &.move-right
         popup-transition(popup-move-right-show)
-      &.cube-popup-move-left
+      &.move-left
         popup-transition(popup-move-left-show)
-      &.cube-popup-move-down
+      &.move-down
         popup-transition(popup-move-down-show)
       &.move-center
         popup-transition(popup-move-center-show)
@@ -93,13 +93,13 @@
       .cube-popup-mask
         transition: $var(popup-mask-hide-transition)
     .cube-popup-content
-      &.cube-popup-move-up
+      &.move-up
         popup-transition(popup-move-up-hide, $var(popup-default-animation-time), $var(popup-default-hide-animation-fn))
-      &.cube-popup-move-right
+      &.move-right
         popup-transition(popup-move-right-hide)
-      &.cube-popup-move-left
+      &.move-left
         popup-transition(popup-move-left-hide)
-      &.cube-popup-move-down
+      &.move-down
         popup-transition(popup-move-down-hide)
       &.move-center
         popup-transition(popup-move-center-hide)
