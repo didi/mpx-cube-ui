@@ -64,7 +64,7 @@ createComponent({
     computed: {
         popupStyle() {
             const style = {};
-            if (__mpx_mode__ !== 'ios' && __mpx_mode__ !== 'android') {
+            if (__mpx_mode__ !== 'ios' && __mpx_mode__ !== 'android' && __mpx_mode__ !== 'harmony') {
                 style.zIndex = this.zIndex;
             }
             if (this.pointerEvents) {
