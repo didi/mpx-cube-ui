@@ -153,6 +153,7 @@ importers:
         specifier: ^2.1.32
         version: 2.1.32(@vue/compiler-sfc@3.5.13)(hogan.js@3.0.2)(lodash@4.17.21)(react@18.3.1)(stylus-loader@6.2.0(stylus@0.55.0)(webpack@5.98.0))(vue-template-compiler@2.7.16)(vue@2.7.16)(webpack-sources@3.2.3)
       '@mpxjs/vue-cli-plugin-mpx':
+        specifier: ^2.1.32
         version: 2.1.32(@babel/core@7.26.10)(@mpxjs/webpack-plugin@2.10.7-beta.10(@mpxjs/core@2.10.7-beta.9)(webpack@5.98.0))(@vue/compiler-sfc@3.5.13)(css-loader@6.11.0(webpack@5.98.0))(hogan.js@3.0.2)(lodash@4.17.21)(react@18.3.1)(stylus-loader@6.2.0(stylus@0.55.0)(webpack@5.98.0))(vue-template-compiler@2.7.16)(webpack@5.98.0)
       '@mpxjs/vue-cli-plugin-mpx-theme':
         specifier: 2.0.0-beta.2
