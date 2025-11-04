@@ -101,22 +101,19 @@ if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
                         animation[this.targetTranslate](start).step({ duration: 0 });
                     }
                     animation[this.targetTranslate](0).step();
-                    this.targetTranslateValue = 0;
                 }
                 else {
                     animation[this.targetTranslate](start).step();
-                    this.targetTranslateValue = start;
                 }
                 this.animationData = animation.export();
                 this.transitionendTimer = setTimeout(() => {
                     this.transitionend();
-                }, animationOptions.duration + 10);
+                }, animationOptions.duration);
             },
             transitionend() {
                 if (this.isVisible && this.targetTranslate) {
-                    this.contentTranslateStyle = {
-                        [this.targetTranslate]: this.targetTranslateValue
-                    };
+                    // 触发重新渲染
+                    this.contentTranslateStyle = {};
                 }
             },
             // @vuese
