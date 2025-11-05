@@ -51,8 +51,11 @@ if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
           },
           'cube-popup_transition': (animationOptions) => {
             if (!this.isVisible) {
-              setTimeout(() => {
-                this.display = false
+              clearTimeout(this.dispalyTimer)
+              this.dispalyTimer = setTimeout(() => {
+                if (!this.isVisible) {
+                  this.display = false
+                }
                 // fix 玄学，不加 100ms ，drn 动画会非常卡
               }, animationOptions.duration + 100)
             }
