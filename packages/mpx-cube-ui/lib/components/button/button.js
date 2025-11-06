@@ -185,6 +185,7 @@ createComponent({
             // @ts-ignore
             if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android' || __mpx_mode__ === 'harmony') {
                 const res = {
+                    'cube-btn-content-with-tip': this.tip,
                     'cube-btn-content-inline': this.inline,
                     'cube-btn-content-primary': this.primary,
                     'cube-btn-content-outline': this.outline,
@@ -200,6 +201,23 @@ createComponent({
                     res['cube-btn-content-light_active'] = this.light;
                     res['cube-btn-content-outline_active'] = this.outline;
                 }
+                return res;
+            }
+            return {};
+        },
+        tipClass() {
+            // eslint-disable-next-line
+            // @ts-ignore
+            if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android' || __mpx_mode__ === 'harmony') {
+                const res = {
+                    'cube-btn-tip-inline': this.inline,
+                    'cube-btn-tip-primary': this.primary,
+                    'cube-btn-tip-outline': this.outline,
+                    'cube-btn-tip-outline-primary': this.outline && this.primary,
+                    'cube-btn-tip-light': this.light,
+                    'cube-btn-tip_disabled': this.disabled,
+                    'cube-btn-tip_bolder': this.bolder
+                };
                 return res;
             }
             return {};

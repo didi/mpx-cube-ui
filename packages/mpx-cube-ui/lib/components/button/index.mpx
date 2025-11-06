@@ -39,7 +39,7 @@
     <view class="cube-btn-content" numberOfLines="{{ 1 }}" wx:class="{{ contentClass }}" wx:style="{{ styleConfig.content }}">
       <slot />
     </view>
-    <view class="cube-btn-tip" wx:if="{{ tip }}">
+    <view class="cube-btn-tip" wx:class="{{ tipClass }}" wx:if="{{ tip }}">
       <text class="cube-btn-tip-text" numberOfLines="{{ 1 }}">{{tip}}</text>
     </view>
     <slot name="tip" />

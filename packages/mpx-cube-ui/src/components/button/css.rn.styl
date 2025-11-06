@@ -39,10 +39,8 @@ border-color($border-color)
   outline none
   border-width 0
   border-radius $var(btn-border-radius)
-  line-height $var(btn-block-line-height)
   text-align center
   flex-wrap nowrap
-  color $var(btn-color)
   -webkit-tap-highlight-color rgba(0, 0, 0, 0)
   background-color $var(btn-bgc)
   border-1px($var(btn-border-color), $var(btn-border-radius))
@@ -65,6 +63,7 @@ btn_active('', $var(btn-bgc_active), $var(btn-border-color_active), $var(btn-col
   justify-content: center
   text-align center
   color $var(btn-color)
+  line-height $var(btn-block-line-height)
 
 .cube-btn-tip
   margin-top $var(btn-tip-margin-top)
@@ -96,6 +95,8 @@ btn_active('inline', $var(btn-bgc_active), $var(btn-border-color_active), $var(b
 .cube-btn-content-primary
   color $var(btn-primary-color)
   font-weight $var(btn-primary-font-weight)
+.cube-btn-tip-primary
+  color $var(btn-primary-color)
 btn_active('primary', $var(btn-primary-bgc_active), , $var(btn-primary-color_active))
 
 .cube-btn-light
@@ -104,6 +105,8 @@ btn_active('primary', $var(btn-primary-bgc_active), , $var(btn-primary-color_act
 .cube-btn-content-light
   color $var(btn-light-color)
   font-weight $var(btn-outline-font-weight)
+.cube-btn-tip-light
+  color $var(btn-light-color)
 btn_active('light', $var(btn-light-bgc_active), $var(btn-light-border-color), $var(btn-light-color))
 
 .cube-btn-outline
@@ -112,6 +115,8 @@ btn_active('light', $var(btn-light-bgc_active), $var(btn-light-border-color), $v
 .cube-btn-content-outline
   color $var(btn-outline-color)
   font-weight $var(btn-outline-font-weight)
+.cube-btn-tip-outline
+  color $var(btn-outline-color)
 btn_active('outline', $var(btn-outline-bgc_active), $var(btn-outline-border-color_active), $var(btn-outline-color))
 
 .cube-btn-outline-primary
@@ -119,7 +124,8 @@ btn_active('outline', $var(btn-outline-bgc_active), $var(btn-outline-border-colo
   background-color $var(btn-outline-primary-bgc)
 .cube-btn-content-outline-primary
   color $var(btn-outline-primary-color)
-
+.cube-btn-tip-outline-primary
+  color $var(btn-outline-primary-color)
 btn_active('outline-primary', $var(btn-outline-primary-bgc_active), $var(btn-outline-primary-border-color), $var(btn-outline-primary-color))
 
 .cube-btn_disabled
@@ -128,13 +134,15 @@ btn_active('outline-primary', $var(btn-outline-primary-bgc_active), $var(btn-out
 .cube-btn-content_disabled
   color $var(btn-disabled-color)
   font-weight $var(btn-disabled-font-weight)
+.cube-btn-tip_disabled
+  color $var(btn-disabled-color)
 btn_active('disabled', $var(btn-disabled-bgc), $var(btn-disabled-border-color), $var(btn-disabled-color), 1)
 
 .cube-btn-with-tip
   padding-top $var(btn-with-tip-padding-top)
   padding-bottom $var(btn-with-tip-padding-bottom)
+.cube-btn-content-with-tip
   line-height $var(btn-with-tip-line-height)
   font-size $var(btn-with-tip-font-size)
-
 .cube-btn-content_bolder
   font-weight 700
