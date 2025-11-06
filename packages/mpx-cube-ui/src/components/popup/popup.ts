@@ -70,7 +70,7 @@ createComponent({
   computed: {
     popupStyle() {
       const style: Record<string, string> = {}
-      if (__mpx_mode__ !== 'ios' && __mpx_mode__ !== 'android') {
+      if (__mpx_mode__ !== 'ios' && __mpx_mode__ !== 'android' && __mpx_mode__ !== 'harmony') {
         style.zIndex = this.zIndex
       }
       if (this.pointerEvents) {
@@ -94,7 +94,7 @@ createComponent({
       }
       // eslint-disable-next-line
       // @ts-ignore
-      if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
+      if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android' || __mpx_mode__ === 'harmony') {
         cls[`cube-popup-${this.display ? 'show' : 'hide'}`] = true
       }
       return cls
@@ -105,6 +105,7 @@ createComponent({
       if (
         __mpx_mode__ !== 'ios' &&
         __mpx_mode__ !== 'android' &&
+        __mpx_mode__ !== 'harmony' &&
         this.styleConfig.mask?.visibleOpacity &&
         this.isVisible
       ) {

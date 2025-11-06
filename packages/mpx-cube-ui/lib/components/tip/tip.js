@@ -52,7 +52,7 @@ createComponent({
             const directionClass = `cube-tip-direction_${this.direction}`;
             const themeType = this.themeType;
             const mainClass = themeType ? `cube-tip cube-tip-${themeType}` : 'cube-tip';
-            if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
+            if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android' || __mpx_mode__ === 'harmony') {
                 return `${mainClass} ${directionClass} ${this.animationClass}`;
             }
             else {
@@ -73,7 +73,7 @@ createComponent({
             this.triggerEvent(EVENT_CLOSE);
         },
         show() {
-            if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
+            if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android' || __mpx_mode__ === 'harmony') {
                 this.isVisible = true;
             }
             else {
@@ -82,7 +82,7 @@ createComponent({
             }
         },
         hide() {
-            if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
+            if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android' || __mpx_mode__ === 'harmony') {
                 this.isVisible = false;
             }
             else {

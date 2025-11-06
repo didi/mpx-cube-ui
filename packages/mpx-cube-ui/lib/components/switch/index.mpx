@@ -2,13 +2,13 @@
   <view
     wx:class="{{ switchClass }}"
     bindtap="toggleSwitch"
-    animation@_ios|_android="{{ switchAnimationData }}"
+    animation@_ios|_android|_harmony="{{ switchAnimationData }}"
     wx:style="{{ swithBGClass }}"
   >
     <view
       class="cube-switch-handle"
       wx:class="{{ {'cube-switch-handle-on': isOn }}}"
-      animation@_ios|_android="{{ switchHandleAnimationData }}"
+      animation@_ios|_android|_harmony="{{ switchHandleAnimationData }}"
     />
   </view>
 </template>
@@ -16,7 +16,7 @@
 <script src="./switch.js"></script>
 
 <style lang="stylus">
-/* @mpx-if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') */
+/* @mpx-if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android' || __mpx_mode__ === 'harmony') */
 @require './css.rn.styl'
 /* @mpx-else */
 @require './css.styl'

@@ -47,7 +47,7 @@
       </view>
     </view>
   </block>
-  <root-portal @_ios|_android>
+  <root-portal @_ios|_android|_harmony>
     <view
       wx:ref="popup"
       external-var-context="{{varContext}}"
@@ -76,7 +76,7 @@
 <script src="./popup.js"></script>
 
 <style lang="stylus">
-/* @mpx-if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') */
+/* @mpx-if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android' || __mpx_mode__ === 'harmony') */
 @require './css.rn.styl'
 /* @mpx-else */
 @require './css.styl'

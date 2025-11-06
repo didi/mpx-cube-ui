@@ -56,7 +56,7 @@ createComponent({
       const themeType = this.themeType
       const mainClass = themeType ? `cube-tip cube-tip-${themeType}` : 'cube-tip'
 
-      if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
+      if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android' || __mpx_mode__ === 'harmony') {
         return `${mainClass} ${directionClass} ${this.animationClass}`
       } else {
         const withOutClose = !this.showClose ? 'cube-tip-without-close' : ''
@@ -76,7 +76,7 @@ createComponent({
       this.triggerEvent(EVENT_CLOSE)
     },
     show() {
-      if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
+      if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android' || __mpx_mode__ === 'harmony') {
         this.isVisible = true
       } else {
         this.animationClass = `scale-${ANIMATION_ENTER}`
@@ -84,7 +84,7 @@ createComponent({
       }
     },
     hide() {
-      if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
+      if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android' || __mpx_mode__ === 'harmony') {
         this.isVisible = false
       } else {
         this.animationClass = `scale-${ANIMATION_LEAVE}`

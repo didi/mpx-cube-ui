@@ -2,13 +2,13 @@
   <view
     wx:class="{{ rootClass }}"
     wx:style="{{ customStyle }}"
-    animation@_ios|_android="{{ tipAnimationData }}"
+    animation@_ios|_android|_harmony="{{ tipAnimationData }}"
   >
-    <view class="cube-tip-angle-wapper" wx:class@_ios|_android="{{ angleWrapperClass }}" wx:style="{{ angStyle }}">
-      <view class="cube-tip-angle" wx:class@_ios|_android="{{ angleClass }}"></view>
+    <view class="cube-tip-angle-wapper" wx:class@_ios|_android|_harmony="{{ angleWrapperClass }}" wx:style="{{ angStyle }}">
+      <view class="cube-tip-angle" wx:class@_ios|_android|_harmony="{{ angleClass }}"></view>
     </view>
     <view
-      @_ios|_android
+      @_ios|_android|_harmony
       class="cube-tip-line-wrapper"
       wx:if="{{ showClose }}"
       catchtap="onClose"
@@ -27,7 +27,7 @@
       catchtap="onClose"
     />
     <view
-      @_ios|_android
+      @_ios|_android|_harmony
       class="cube-tip-popup"
       wx:show="{{ closeOnClickOutside && isVisible }}"
       bind:tap="onClose"
@@ -43,7 +43,7 @@
 <script src="./tip.js"></script>
 
 <style lang="stylus">
-/* @mpx-if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') */
+/* @mpx-if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android' || __mpx_mode__ === 'harmony') */
 @require './css.rn.styl'
 /* @mpx-else */
 @require './css.styl'

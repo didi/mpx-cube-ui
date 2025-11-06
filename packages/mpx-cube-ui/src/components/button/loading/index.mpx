@@ -1,11 +1,11 @@
 <template>
   <view class="cube-loading">
     <view class="cube-loading-content">
-      <view @_ios|_android class="cube-loading-origin-before"></view>
+      <view @_ios|_android|_harmony class="cube-loading-origin-before"></view>
       <view class="cube-loading-origin">
         <view class="cube-loading-middle-dot"></view>
       </view>
-      <view @_ios|_android class="cube-loading-origin-after"></view>
+      <view @_ios|_android|_harmony class="cube-loading-origin-after"></view>
     </view>
   </view>
 </template>
@@ -16,7 +16,7 @@
 vendors = official
 // https://stylus-lang.com/docs/keyframes.html#expansion
 
-/* @mpx-if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') */
+/* @mpx-if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android' || __mpx_mode__ === 'harmony') */
 @require './css.rn.styl'
 /* @mpx-else */
 @require './css.styl'

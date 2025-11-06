@@ -10,12 +10,12 @@ createComponent({
         rnCancelBtnClass() {
             // eslint-disable-next-line
             // @ts-ignore
-            return ((__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') && this.isVertical) ? 'cube-option-cancel-button_vertical' : '';
+            return ((__mpx_mode__ === 'ios' || __mpx_mode__ === 'android' || __mpx_mode__ === 'harmony') && this.isVertical) ? 'cube-option-cancel-button_vertical' : '';
         },
         rnConfirmBtnClass() {
             // eslint-disable-next-line
             // @ts-ignore
-            return ((__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') && this.isVertical) ? 'cube-option-confirm-button_vertical' : '';
+            return ((__mpx_mode__ === 'ios' || __mpx_mode__ === 'android' || __mpx_mode__ === 'harmony') && this.isVertical) ? 'cube-option-confirm-button_vertical' : '';
         },
         isConfirm() {
             return this.type === 'confirm';
@@ -35,7 +35,7 @@ createComponent({
         realDirection() {
             // eslint-disable-next-line
             // @ts-ignore
-            return ((__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') && this.direction === 'vertical') ? 'vertical-reverse' : this.direction;
+            return ((__mpx_mode__ === 'ios' || __mpx_mode__ === 'android' || __mpx_mode__ === 'harmony') && this.direction === 'vertical') ? 'vertical-reverse' : this.direction;
         }
     },
     methods: {
