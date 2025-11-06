@@ -1,6 +1,6 @@
 {
   "name": "@mpxjs/website-build",
-  "version": "1.3.12",
+  "version": "1.4.0",
   "description": "mpx-cube-ui website builder",
   "publishConfig": {
     "registry": "https://registry.npmjs.org",
