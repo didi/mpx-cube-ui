@@ -26,6 +26,14 @@ createComponent({
         disabled: {
             type: Boolean,
             value: false
+        },
+        /**
+         * @description 点击后是否需要更改 value
+         * @optional true/false
+         */
+        changeOnClick: {
+            type: Boolean,
+            value: true
         }
     },
     data: {
@@ -68,10 +76,18 @@ createComponent({
     },
     methods: {
         toggleSwitch() {
-            if (this.disabled)
+            if (this.disabled) {
+                this.triggerEvent('click', { value: this.isOn });
                 return;
+            }
+            if (!this.changeOnClick) {
+                this.triggerEvent('click', { value: this.isOn });
+                return;
+            }
             const newValue = !this.isOn;
             this.isOn = newValue;
+            // 当开关有点击时触发
+            this.triggerEvent('click', { value: newValue });
             // 当开关状态变化时触发
             this.triggerEvent('change', { value: newValue });
             // 当开关状态变化时触发
