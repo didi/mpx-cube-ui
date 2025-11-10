@@ -15,11 +15,11 @@ if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
                     'cube-switch-BGC': (animationOptions) => {
                         const animation = this.bgAnimation || (this.bgAnimation = mpx.createAnimation({ ...animationOptions }));
                         if (this.isOn) {
-                            const onBGC = this.switchOnGBC || '#FF6435';
+                            const onBGC = this.switchOnBGC || this.switchOnGBC || '#FF6435';
                             animation.backgroundColor(onBGC).step({ duration: animationOptions.duration });
                         }
                         else {
-                            const defaultBGC = this.switchDefaultGBC || '#EAEAEA';
+                            const defaultBGC = this.switchDefaultBGC || this.switchDefaultGBC || '#EAEAEA';
                             animation.backgroundColor(defaultBGC).step({ duration: animationOptions.duration });
                         }
                         this.switchAnimationData = animation.export();
