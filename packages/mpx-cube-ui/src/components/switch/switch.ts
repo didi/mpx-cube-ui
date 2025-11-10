@@ -12,10 +12,22 @@ createComponent({
       type: Boolean,
       value: false
     },
+    switchDefaultBGC: {
+      type: String,
+      value: ''
+    },
+    switchOnBGC: {
+      type: String,
+      value: ''
+    },
+    // @dosHide
+    // props 命名错误，没人用就删掉
     switchDefaultGBC: {
       type: String,
       value: ''
     },
+    // @dosHide
+    // props 命名错误，没人用就删掉
     switchOnGBC: {
       type: String,
       value: ''
@@ -52,13 +64,13 @@ createComponent({
       if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android' || __mpx_mode__ === 'harmony') {
         return {}
       }
-      if (this.isOn && this.switchOnGBC) {
+      if (this.isOn && (this.switchOnBGC || this.switchOnGBC)) {
         return {
-          backgroundColor: this.switchOnGBC
+          backgroundColor: this.switchOnBGC || this.switchOnGBC
         }
-      } else if (!this.isOn && this.switchDefaultGBC) {
+      } else if (!this.isOn && (this.switchDefaultBGC || this.switchDefaultGBC)) {
         return {
-          backgroundColor: this.switchDefaultGBC
+          backgroundColor: this.switchDefaultBGC || this.switchDefaultGBC
         }
       } else {
         return {}
