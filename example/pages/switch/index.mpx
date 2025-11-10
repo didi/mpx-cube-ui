@@ -1,6 +1,7 @@
 
 <template>
   <view class="switch-page">
+    <!-- 触发更新 -->
     <base-container>
       <view class="switch-example">
         <view class="switch-show">
