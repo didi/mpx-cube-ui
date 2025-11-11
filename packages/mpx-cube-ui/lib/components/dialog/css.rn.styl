@@ -61,11 +61,6 @@
 .cube-dialog-icon-with-content
   margin-top $var(dialog-icon-next-content-margin-top)
 
-.cube-dialog-title
-  font-size $var(dialog-title-font-size)
-  line-height $var(dialog-title-line-height)
-  color $var(dialog-title-color)
-
 .cube-dialog-title-with-content
   margin-top $var(dialog-title-next-content-margin-top)
 
@@ -76,17 +71,18 @@
   font-size $var(dialog-title-font-size)
   line-height $var(dialog-title-line-height)
   color $var(dialog-title-color)
+  font-weight $var(dialog-title-font-weight)
 
 .cube-dialog-content
   margin-all($var(dialog-content-margin-top), $var(dialog-content-margin-right), $var(dialog-content-margin-bottom), $var(dialog-content-margin-left))
-  font-size $var(dialog-content-font-size)
-  line-height $var(dialog-content-container-line-height)
   text-align left
-  color $var(dialog-content-color)
 
 .cube-dialog-content-def
   padding-all($var(dialog-content-def-padding-top), $var(dialog-content-def-padding-right), $var(dialog-content-def-padding-bottom), $var(dialog-content-def-padding-left))
   text-align $var(dialog-content-def-text-align)
+  color $var(dialog-content-color)
+  font-size $var(dialog-content-font-size)
+  line-height $var(dialog-content-container-line-height)
 
 .cube-dialog-content-def-content
   display flex

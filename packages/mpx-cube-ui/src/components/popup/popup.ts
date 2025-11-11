@@ -76,6 +76,13 @@ createComponent({
       if (this.pointerEvents) {
         style.pointerEvents = this.pointerEvents
       }
+      if (!this.isVisible) {
+        if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
+          style.pointerEvents = 'box-none'
+        } else {
+          style.pointerEvents = 'none'
+        }
+      }
       return style
     },
     rootClass() {
@@ -99,9 +106,8 @@ createComponent({
       }
       return cls
     },
-    maskOpacity() {
-      // eslint-disable-next-line
-      // @ts-ignore
+    maskStyle() {
+      const style: Record<string, string> = {}
       if (
         __mpx_mode__ !== 'ios' &&
         __mpx_mode__ !== 'android' &&
@@ -109,11 +115,17 @@ createComponent({
         this.styleConfig.mask?.visibleOpacity &&
         this.isVisible
       ) {
-        return {
-          opacity: this.styleConfig.mask.visibleOpacity
+        style.opacity = this.styleConfig.mask.visibleOpacity
+      }
+
+      if (!this.isVisible) {
+        if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
+          style.pointerEvents = 'box-none'
+        } else {
+          style.pointerEvents = 'none'
         }
       }
-      return {}
+      return style
     }
   },
   methods: {
