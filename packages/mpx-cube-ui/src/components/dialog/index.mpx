@@ -10,6 +10,7 @@
     bind:maskClick="onMaskClick"
     transition="{{ 'empty' }}"
     maskFadeTransition="{{ true }}"
+    styleConfig="{{ popupStyleConfig }}"
   >
     <view class="cube-dialog-main" wx:class="{{ mainClass }}" wx:style="{{ styleConfig.main }}">
       <view
