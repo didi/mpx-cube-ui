@@ -5,7 +5,7 @@
       wx:class="{{ [themeType ? 'cube-popup cube-popup-'+themeType : 'cube-popup', rootClass, visibleClass] }}"
       wx:style="{{ popupStyle }}"
     >
-      <view class="cube-popup-mask" wx:if="{{ mask }}" bindtouchend="onMaskClick" wx:style="{{ [styleConfig.mask, maskOpacity] }}">
+      <view class="cube-popup-mask" wx:if="{{ mask }}" bindtouchend="onMaskClick" wx:style="{{ [styleConfig.mask, maskStyle] }}">
         <!-- 遮罩插槽 -->
         <slot name="mask"></slot>
       </view>
@@ -30,7 +30,7 @@
       <view
         class="cube-popup-mask"
         wx:if="{{ mask }}"
-        wx:style="{{ [styleConfig.mask, maskOpacity] }}"
+        wx:style="{{ [styleConfig.mask, maskStyle] }}"
         bindtouchmove="preventTouchMove"
         bindtouchend="onMaskClick">
         <!-- 遮罩插槽 -->
@@ -57,7 +57,7 @@
       <view
         class="cube-popup-mask"
         wx:if="{{ mask }}"
-        wx:style="{{ styleConfig.mask }}"
+        wx:style="{{ [styleConfig.mask, maskStyle] }}"
         animation="{{ maskAnimationData }}"
         bindtouchend="onMaskClick">
         <slot name="mask"></slot>
