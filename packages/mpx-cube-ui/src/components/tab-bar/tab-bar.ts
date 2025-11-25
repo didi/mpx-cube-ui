@@ -55,7 +55,7 @@ createComponent({
       value: true
     },
     /**
-     * @description 是否需要自定义插槽
+     * @description 是否需要自定义默认插槽
      * @optional true/false
      */
     customizeContent: {
@@ -64,6 +64,7 @@ createComponent({
     }
   },
   data: {
+    useTransitionCopy: false,
     // 下划线开头的属性不会变成响应式
     _resizeTimer: null as unknown as NodeJS.Timeout,
     els: [] as WechatMiniprogram.BoundingClientRectCallbackResult[],
@@ -73,7 +74,7 @@ createComponent({
     tabBarClass() {
       return {
         'cube-tab-bar_inline': this.inline,
-        'cube-tab-bar_transition': this.useTransition
+        'cube-tab-bar_transition': this.useTransitionCopy
       }
     },
     currentIndex() {
@@ -140,7 +141,15 @@ createComponent({
     }
   },
   [MOUNTED]() {
+    // 避免用户一开始就看到下划线滚动到目标位置
+    const initialUseTransition = this.useTransition
     this.calcAllTabWidth()
+    if (initialUseTransition) {
+      this.useTransitionCopy = false
+      setTimeout(() => {
+        this.useTransitionCopy = initialUseTransition
+      }, 300)
+    }
     if (__mpx_mode__ === 'web') {
       window.addEventListener('resize', this._resizeHandler)
     }

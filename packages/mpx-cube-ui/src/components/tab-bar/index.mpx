@@ -14,7 +14,7 @@
       </cube-tab>
     </block>
     <view
-      v-if="showSlider"
+      wx:if="{{showSlider}}"
       class="cube-tab-bar-slider"
       wx:style="transform: translate({{currentOffset}}px); width: {{currentWidth}}px"
     ></view>
