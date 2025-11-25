@@ -1,0 +1,66 @@
+<template>
+  <view class="cube-tab-bar" wx:class="{{tabBarClass}}">
+    <!-- 自定义内容 -->
+    <slot wx:if="{{customizeContent}}"></slot>
+    <block wx:else>
+      <cube-tab
+        class="cube-tab"
+        wx:for="{{tabs}}"
+        wx:key="value"
+        label="{{item.label}}"
+        value="{{item.value}}"
+        icon="{{item.icon}}"
+      >
+      </cube-tab>
+    </block>
+    <view
+      v-if="showSlider"
+      class="cube-tab-bar-slider"
+      wx:style="transform: translate({{currentOffset}}px); width: {{currentWidth}}px"
+    ></view>
+  </view>
+</template>
+
+<script src="./tab-bar.ts" lang="ts"></script>
+
+<style lang="stylus">
+@require "@mpxjs/mpx-cube-ui/src/common/stylus/helper.styl"
+@require "@mpxjs/mpx-cube-ui/src/common/stylus/mixin.styl"
+@require "@mpxjs/mpx-cube-ui/src/common/stylus/theme/components/tab-bar.styl"
+
+  .cube-tab-bar
+    position: relative
+    display: flex
+    align-items: center
+    justify-content: center
+    &_transition
+      .cube-tab-bar-slider
+        transition: transform .3s
+    & > .cube-tab
+      flex: 1
+
+  .cube-tab-bar_inline
+    .cube-tab
+      display: flex
+      align-content: center
+      justify-content: center
+
+  .cube-tab-bar-slider
+    position: absolute
+    left: 0
+    bottom: 0
+    height: 2px
+    width: 20px
+    background-color: $tab-slider-bgc
+    overflow: hidden
+</style>
+
+<script type="application/json">
+  {
+    "styleIsolation": "shared",
+    "component": true,
+    "usingComponents": {
+      "cube-tab": "./tab.mpx"
+    }
+  }
+</script>

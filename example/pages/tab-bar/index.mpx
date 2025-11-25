@@ -1,0 +1,48 @@
+<template>
+  <base-container class="tab-bar-view">
+    <view class="content">
+      <!-- default -->
+      <view class="section">
+        <tab-bar-default></tab-bar-default>
+      </view>
+      <!-- showSlider -->
+      <view class="section">
+        <tab-bar-slider></tab-bar-slider>
+      </view>
+      <!-- inline -->
+      <view class="section">
+        <tab-bar-inline></tab-bar-inline>
+      </view>
+      <!-- icon-slot-->
+      <view class="section">
+        <tab-bar-slot></tab-bar-slot>
+      </view>
+    </view>
+  </base-container>
+</template>
+
+<script>
+  import { createPage } from '@mpxjs/core'
+
+  createPage({})
+</script>
+
+<style lang="stylus">
+.tab-bar-view
+  height: 100vh
+  .section
+    margin-bottom: 10px
+    background-color: white
+</style>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "base-container": "../../components/base-container/index.mpx",
+      "tab-bar-default": "./tab-bar-default",
+      "tab-bar-slider": "./tab-bar-slider",
+      "tab-bar-inline": "./tab-bar-inline",
+      "tab-bar-slot": "./tab-bar-slot"
+    }
+  }
+</script>
