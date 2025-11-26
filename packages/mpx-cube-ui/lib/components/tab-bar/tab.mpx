@@ -1,12 +1,13 @@
 <template>
   <view
     class="cube-tab"
-    :class="{'cube-tab_active': active}"
-    @click="handleClick">
-    <slot name="icon">
-      <i class="{{icon}}"></i>
-    </slot>
-    <slot></slot>
+    wx:class="{{{'cube-tab_active': isActive}}}"
+    bindtap="handleClick"
+  >
+    <slot wx:if="{{customizeIcon}}" name="icon"></slot>
+    <cube-icon wx:else type="{{icon}}"></cube-icon>
+    <slot wx:if="{{customizeContent}}"></slot>
+    <rich-text wx:else nodes="{{ label }}" />
   </view>
 </template>
 
@@ -32,6 +33,9 @@
 <script type="application/json">
   {
     "styleIsolation": "shared",
-    "component": true
+    "component": true,
+    "usingComponents": {
+      "cube-icon": "../icon/index.mpx"
+    }
   }
 </script>

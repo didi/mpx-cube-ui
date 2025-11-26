@@ -1,23 +1,23 @@
 <template>
   <view class="cube-tab-bar" wx:class="{{tabBarClass}}">
-      <slot>
-        <cube-tab
-          wx:for="{{data}}"
-          wx:key="value"
-          active="{{item.value === value}}"
-          label="{{item.label}}"
-          value="{{item.value}}"
-          icon="{{item.icon}}"
-          bindtap="change(item)"
-        >
-        </cube-tab>
-      </slot>
-      <view
-        v-if="showSlider"
-        class="cube-tab-bar-slider"
-        wx:style="transform: translate({{currentOffset}}px); width: {{currentWidth}}px"
-      ></view>
-    </view>
+    <!-- 自定义内容 -->
+    <slot wx:if="{{customizeContent}}"></slot>
+    <block wx:else>
+      <cube-tab
+        class="cube-tab"
+        wx:for="{{tabs}}"
+        wx:key="value"
+        label="{{item.label}}"
+        value="{{item.value}}"
+        icon="{{item.icon}}"
+      >
+      </cube-tab>
+    </block>
+    <view
+      wx:if="{{showSlider}}"
+      class="cube-tab-bar-slider"
+      wx:style="transform: translate({{currentOffset}}px); width: {{currentWidth}}px"
+    ></view>
   </view>
 </template>
 
@@ -36,6 +36,8 @@
     &_transition
       .cube-tab-bar-slider
         transition: transform .3s
+    & > .cube-tab
+      flex: 1
 
   .cube-tab-bar_inline
     .cube-tab
