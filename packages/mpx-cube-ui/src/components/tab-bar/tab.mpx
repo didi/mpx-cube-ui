@@ -1,0 +1,39 @@
+<template>
+  <view
+    class="cube-tab"
+    wx:class="{{{'cube-tab_active': isActive}}}"
+    bindtap="handleClick"
+  >
+    <slot wx:if="{{customizeIcon}}" name="icon"></slot>
+    <cube-icon wx:else type="{{icon}}"></cube-icon>
+    <slot wx:if="{{customizeContent}}"></slot>
+    <rich-text wx:else nodes="{{ label }}" />
+  </view>
+</template>
+
+<script src="./tab.ts" lang="ts"></script>
+
+<style lang="stylus">
+@require "@mpxjs/mpx-cube-ui/src/common/stylus/helper.styl"
+@require "@mpxjs/mpx-cube-ui/src/common/stylus/mixin.styl"
+@require "@mpxjs/mpx-cube-ui/src/common/stylus/theme/components/tab-bar.styl"
+
+  .cube-tab
+    flex: 1
+    padding: 7px 0
+    color: $tab-color
+    text-align: center
+
+  .cube-tab_active
+    color: $tab-active-color
+</style>
+
+<script type="application/json">
+  {
+    "styleIsolation": "shared",
+    "component": true,
+    "usingComponents": {
+      "cube-icon": "../icon/index.mpx"
+    }
+  }
+</script>

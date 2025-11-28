@@ -32,7 +32,8 @@ export default {
       'segment-picker',
       'textarea',
       'float-ball',
-      'input'
+      'input',
+      'tab-bar'
     ],
     introduce: [
       {
@@ -44,7 +45,8 @@ export default {
           'divider',
           'float-ball',
           'loading',
-          'collapse'
+          'collapse',
+          'tab-bar'
         ]
       },
       {
