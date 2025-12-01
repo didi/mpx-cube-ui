@@ -4,11 +4,9 @@
       wx:model="{{ height }}"
       wx:model-prop="height"
       contentDraggable="{{ contentDraggable }}"
-      magnetic="{{ magnetic }}"
     >
       <view>    
-        <view>height: {{ height }} px</view>
-        <!-- <view wx:for="{{letters}}" wx:key="item">{{item}}</view> -->
+        内容不可拖拽
       </view>
     </cube-floating-panel>
   </base-container>
@@ -20,12 +18,7 @@
   createPage({
     data: {
       height: 100,
-      contentDraggable: true,
-      magnetic: true,
-      letters: [
-        'A','B','C','D','E','F','G','H','I','J','K','L','M',
-        'N','O','P','Q','R','S','T','U','V','W','X','Y','Z'
-      ]
+      contentDraggable: false,
     }
   })
 </script>

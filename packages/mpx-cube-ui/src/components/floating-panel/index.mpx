@@ -6,21 +6,20 @@
     >
     <view class="cube-floating-panel-extender"></view>
     <view class="cube-floating-panel-header"
-      catch:touchstart="onHeaderTouchStart"
-      catch:touchmove="onHeaderTouchMove"
-      catch:touchend="onHeaderTouchEnd"
-      catch:touchcancel="onHeaderTouchEnd"
+      catch:touchstart="onTouchStart"
+      catch:touchmove="onTouchMove"
+      catch:touchend="onTouchEnd"
+      catch:touchcancel="onTouchEnd"
     >
-      <slot name="header">
-        <view class="cube-floating-panel-header-bar"></view>
-      </slot>
+      <view wx:if="{{ !hideHeaderBar }}" class="cube-floating-panel-header-bar"></view>
+      <slot name="header"></slot>
     </view>
     <scroll-view class="cube-floating-panel-content" scroll-y="{{true}}"
       bind:scroll="onContentScroll"
       catch:touchstart="onContentTouchStart"
       catch:touchmove="onContentTouchMove"
-      catch:touchend="onContentTouchEnd"
-      catch:touchcancel="onContentTouchEnd"
+      catch:touchend="onTouchEnd"
+      catch:touchcancel="onTouchEnd"
     >
       <slot></slot>
     </scroll-view>

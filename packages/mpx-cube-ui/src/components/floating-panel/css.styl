@@ -4,14 +4,14 @@
 
 .cube-floating-panel
   position fixed
-  z-index $floating-panel-z-index
+  z-index $var(floating-panel-z-index)
   left 0
   bottom 0
   width 100vw
   display flex
   flex-direction column
-  background-color $floating-panel-bgc
-  border-radius $floating-panel-radius
+  background-color $var(floating-panel-bgc)
+  border-radius $var(floating-panel-radius)
 .cube-floating-panel-extender
   position absolute
   bottom -100vh
@@ -23,12 +23,12 @@
   display flex
   align-items center
   justify-content center
-  height $floating-panel-header-height
+  height $var(floating-panel-header-height)
 .cube-floating-panel-header-bar
-  width $floating-panel-bar-width
-  height $floating-panel-bar-height
-  border-radius 3px
-  background-color $floating-panel-bar-color
+  width $var(floating-panel-bar-width)
+  height $var(floating-panel-bar-height)
+  border-radius $var(floating-panel-bar-radius)
+  background-color $var(floating-panel-bar-color)
 .cube-floating-panel-content
   flex 1
   overflow-y auto

@@ -1,7 +1,8 @@
+import mpx from '@mpxjs/core'
 import { createComponent } from '../../common/helper/create-component'
 
 const EVENT_INPUT = 'input'
-const WINDOW_HEIGHT = window.innerHeight
+const WINDOW_HEIGHT = mpx.getSystemInfoSync().windowHeight
 const DEFAULT_HEIGHT = 100
 const DEFAULT_EXPAND_HEIGHT = Math.round(WINDOW_HEIGHT * 0.6)
 const DAMP = 0.2
@@ -15,6 +16,9 @@ export function closest(arr: number[], target: number) {
 }
 
 createComponent({
+  options: {
+    multipleSlots: true
+  },
   properties: {
     // 当前面板的显示高度
     height: {
@@ -43,15 +47,15 @@ createComponent({
       type: Boolean,
       value: true
     },
-    // 当不拖拽时，是否锁定背景滚动
-    lockScroll: {
-      type: Boolean,
-      value: false
-    },
     // 是否开启底部安全区适配
     safeAreaInsetBottom: {
       type: Boolean,
       value: true
+    },
+    // 不展示默认拖动条
+    hideHeaderBar: {
+      type: Boolean,
+      value: false
     }
   },
   data: {
@@ -116,23 +120,26 @@ createComponent({
       }
       return moveY
     },
-    onHeaderTouchStart(e: TouchEvent) {
+    onTouchStart(e: TouchEvent) {
       const touch = e.touches && e.touches[0]
+      console.log('onTouchStart', { touch, touches: e.touches })
       this.dragging = true
       this.startPageY = touch ? touch.pageY : 0
       this.startY = -this.heightVal
       this.maxScroll = -1
     },
-    onHeaderTouchMove(e: TouchEvent) {
+    onTouchMove(e: TouchEvent) {
       const touch = e.touches && e.touches[0]
+      console.log('onTouchMove', { touch, touches: e.touches, startPageY: this.startPageY, startY: this.startY, heightVal: this.heightVal })
       if (!touch) return
       this.deltaY = touch.pageY - this.startPageY
       const moveY = this.deltaY + this.startY
       const val = Math.round(-this.ease(moveY))
+      console.log('onTouchMove val', val, 'moveY', moveY, 'deltaY', this.deltaY)
       this.heightVal = val
       this.triggerEvent(EVENT_INPUT, { value: val })
     },
-    onHeaderTouchEnd() {
+    onTouchEnd() {
       this.maxScroll = -1
       this.dragging = false
       const { min, max } = this.boundary
@@ -155,57 +162,11 @@ createComponent({
     },
     onContentTouchStart(e: TouchEvent) {
       if (!this.contentDraggable) return
-      const touch = e.touches && e.touches[0]
-      this.dragging = true
-      this.startPageY = touch ? touch.pageY : 0
-      this.startY = -this.heightVal
-      this.maxScroll = -1
+      this.onTouchStart(e)
     },
     onContentTouchMove(e: TouchEvent) {
       if (!this.contentDraggable) return
-      const touch = e.touches && e.touches[0]
-      if (!touch) return
-      this.deltaY = touch.pageY - this.startPageY
-      this.maxScroll = Math.max(this.maxScroll, this.contentScrollTop)
-      if (-this.startY < this.boundary.max) {
-        const moveY = this.deltaY + this.startY
-        const val = Math.round(-this.ease(moveY))
-        this.heightVal = val
-        this.triggerEvent(EVENT_INPUT, { value: val })
-        return
-      }
-      if (!(this.contentScrollTop <= 0 && this.deltaY > 0) || this.maxScroll > 0) {
-        return
-      }
-      const moveY = this.deltaY + this.startY
-      const val = Math.round(-this.ease(moveY))
-      this.heightVal = val
-      this.triggerEvent(EVENT_INPUT, { value: val })
-    },
-    onContentTouchEnd() {
-      if (!this.contentDraggable) return
-      this.maxScroll = -1
-      this.dragging = false
-      const prev = -this.startY
-      const { min, max } = this.boundary
-      if (this.magnetic) {
-        this.heightVal = this._anchors && this._anchors.length
-          ? closest(this._anchors, this.heightVal)
-          : Math.max(min, Math.min(max, this.heightVal))
-      } else {
-        this.heightVal = Math.max(min, Math.min(max, this.heightVal))
-      }
-      this.heightVal = Math.round(this.heightVal)
-      if (this.heightVal !== prev) {
-        this.triggerEvent(EVENT_INPUT, { value: this.heightVal })
-      }
-    },
-    preventTouchMove(e: TouchEvent) {
-      if (this.lockScroll || this.dragging) {
-        if (e && typeof e.preventDefault === 'function') {
-          e.preventDefault()
-        }
-      }
+      this.onTouchMove(e)
     }
   }
 })

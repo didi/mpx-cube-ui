@@ -1,0 +1,31 @@
+<template>
+  <cube-floating-panel
+      wx:model="{{ height }}"
+      wx:model-prop="height"
+    >
+      <view>    
+        <view wx:for="{{letters}}" wx:key="item">{{item}}</view>
+      </view>
+    </cube-floating-panel>
+</template>
+
+<script>
+  import { createPage } from '@mpxjs/core'
+
+  createPage({
+    data: {
+      letters: [
+        'A','B','C','D','E','F','G','H','I','J','K','L','M',
+        'N','O','P','Q','R','S','T','U','V','W','X','Y','Z'
+      ]
+    }
+  })
+</script>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "cube-input": "@mpxjs/mpx-cube-ui/src/components/input/index"
+    }
+  }
+</script>
