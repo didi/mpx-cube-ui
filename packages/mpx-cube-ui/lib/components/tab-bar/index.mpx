@@ -1,7 +1,7 @@
 <template>
   <view class="cube-tab-bar" wx:class="{{tabBarClass}}">
     <!-- 自定义内容 -->
-    <slot wx:if="{{customizeContent}}"></slot>
+    <slot wx:if="{{customContent}}"></slot>
     <block wx:else>
       <cube-tab
         class="cube-tab"
