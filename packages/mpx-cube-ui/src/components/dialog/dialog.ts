@@ -111,7 +111,7 @@ createComponent({
     },
     /**
      * @description 通过 wx:style透传样式, 里面的每项分别修改对应位置的样式
-     * @optional styleConfig = { headIcon: '' }
+     * @optional styleConfig = { headIcon, main, close  }
      */
     styleConfig: {
       type: Object,

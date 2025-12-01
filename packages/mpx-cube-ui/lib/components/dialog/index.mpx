@@ -17,6 +17,7 @@
         class="cube-dialog-close"
         wx:if="{{ showClose }}"
         bind:tap="onClose"
+        wx:style="{{ styleConfig.close }}"
       >
         <!-- 横线 -->
         <view @_ios|_android class="cube-dialog-line cube-dialog-line-horizontal"></view>
