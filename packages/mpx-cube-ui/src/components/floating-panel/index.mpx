@@ -1,0 +1,44 @@
+<template>
+  <view
+    wx:class="{{ [ 'cube-floating-panel', safeAreaInsetBottom ? 'cube-floating-panel-safe-area-bottom' : '' ] }}"
+    wx:style="{{ rootStyle }}"
+    catch:touchmove="preventTouchMove"
+    >
+    <view class="cube-floating-panel-extender"></view>
+    <view class="cube-floating-panel-header"
+      catch:touchstart="onTouchStart"
+      catch:touchmove="onTouchMove"
+      catch:touchend="onTouchEnd"
+      catch:touchcancel="onTouchEnd"
+    >
+      <view wx:if="{{ !hideHeaderBar }}" class="cube-floating-panel-header-bar"></view>
+      <slot name="header"></slot>
+    </view>
+    <scroll-view class="cube-floating-panel-content" scroll-y="{{true}}"
+      bind:scroll="onContentScroll"
+      catch:touchstart="onContentTouchStart"
+      catch:touchmove="onContentTouchMove"
+      catch:touchend="onTouchEnd"
+      catch:touchcancel="onTouchEnd"
+    >
+      <slot></slot>
+    </scroll-view>
+  </view>
+</template>
+
+<script lang="ts" src="./floating-panel.ts"></script>
+
+<style lang="stylus">
+/* @mpx-if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') */
+@require './css.rn.styl'
+/* @mpx-else */
+@require './css.styl'
+/* @mpx-endif */
+</style>
+
+<script type="application/json">
+  {
+    "styleIsolation": "shared",
+    "component": true
+  }
+</script>

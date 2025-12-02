@@ -158,6 +158,10 @@ module.exports = [
           {
             title: 'ActionSheet 操作列表',
             path: '/components/base/action-sheet'
+          },
+          {
+            title: 'FloatingPanel 悬浮面板',
+            path: '/components/base/floating-panel'
           }
         ]
       },

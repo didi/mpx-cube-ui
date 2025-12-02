@@ -74,7 +74,8 @@ export default {
           'dialog',
           'modal',
           'tip',
-          'action-sheet'
+          'action-sheet',
+          'floating-panel'
         ]
       },
       {

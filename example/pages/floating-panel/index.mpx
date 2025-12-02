@@ -1,0 +1,47 @@
+<template>
+  <base-container>
+    <view class="background">我是背景</view>
+    <cube-floating-panel
+      wx:model="{{ height }}"
+      wx:model-prop="height"
+      contentDraggable="{{ contentDraggable }}"
+      magnetic="{{ magnetic }}"
+    >
+      <view class="content">    
+        <view>height: {{ height }} px</view>
+      </view>
+    </cube-floating-panel>
+  </base-container>
+</template>
+
+<script>
+  import { createPage } from '@mpxjs/core'
+
+  createPage({
+    data: {
+      height: 100,
+      contentDraggable: true,
+      magnetic: true,
+      letters: [
+        'A','B','C','D','E','F','G','H','I','J','K','L','M',
+        'N','O','P','Q','R','S','T','U','V','W','X','Y','Z'
+      ]
+    }
+  })
+</script>
+
+<style lang="stylus">
+.background
+  height: 100vh
+.content
+  padding: 20px
+</style>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "base-container": "../../components/base-container/index",
+      "cube-floating-panel": "@mpxjs/mpx-cube-ui/src/components/floating-panel/index"
+    }
+  }
+</script>

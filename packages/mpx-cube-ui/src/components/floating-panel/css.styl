@@ -1,0 +1,37 @@
+@require "../../common/stylus/variable.styl"
+@require "../../common/stylus/mixin.styl"
+@require "../../common/stylus/theme/components/floating-panel.styl"
+
+.cube-floating-panel
+  position fixed
+  z-index $var(floating-panel-z-index)
+  left 0
+  bottom 0
+  width 100vw
+  display flex
+  flex-direction column
+  background-color $var(floating-panel-bgc)
+  border-radius $var(floating-panel-radius)
+.cube-floating-panel-extender
+  position absolute
+  bottom -100vh
+  height 100vh
+  width 100vw
+  background-color inherit
+  pointer-events none
+.cube-floating-panel-header
+  display flex
+  align-items center
+  justify-content center
+  height $var(floating-panel-header-height)
+.cube-floating-panel-header-bar
+  width $var(floating-panel-bar-width)
+  height $var(floating-panel-bar-height)
+  border-radius $var(floating-panel-bar-radius)
+  background-color $var(floating-panel-bar-color)
+.cube-floating-panel-content
+  flex 1
+  overflow-y auto
+.cube-floating-panel-safe-area-bottom
+  padding-all($var(floating-panel-padding-top), $var(floating-panel-padding-right), $var(floating-panel-padding-bottom), $var(floating-panel-padding-left))
+  safe-area-mixin-extra(padding-bottom, bottom, $var(floating-panel-safe-padding), true)

@@ -50,6 +50,7 @@
       "./pages/loading/index",
       "./pages/input/index",
       "./pages/action-sheet/index",
+      "./pages/floating-panel/index"
       "./pages/tab-bar/index"
     ]
   }
