@@ -98,7 +98,7 @@ createComponent({
       handler(newVal: number | string) {
         const val = +newVal || 0
         const { min, max } = this.boundary
-        this.heightVal = Math.round(Math.max(min, Math.min(max, val)))
+        this.heightVal = this.dragging ? val : Math.round(Math.max(min, Math.min(max, val)))
       },
       immediate: true
     },
@@ -122,7 +122,6 @@ createComponent({
     },
     onTouchStart(e: TouchEvent) {
       const touch = e.touches && e.touches[0]
-      console.log('onTouchStart', { touch, touches: e.touches })
       this.dragging = true
       this.startPageY = touch ? touch.pageY : 0
       this.startY = -this.heightVal
@@ -130,12 +129,10 @@ createComponent({
     },
     onTouchMove(e: TouchEvent) {
       const touch = e.touches && e.touches[0]
-      console.log('onTouchMove', { touch, touches: e.touches, startPageY: this.startPageY, startY: this.startY, heightVal: this.heightVal })
       if (!touch) return
       this.deltaY = touch.pageY - this.startPageY
       const moveY = this.deltaY + this.startY
       const val = Math.round(-this.ease(moveY))
-      console.log('onTouchMove val', val, 'moveY', moveY, 'deltaY', this.deltaY)
       this.heightVal = val
       this.triggerEvent(EVENT_INPUT, { value: val })
     },

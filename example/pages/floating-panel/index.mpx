@@ -1,14 +1,14 @@
 <template>
   <base-container>
+    <view class="background">我是背景</view>
     <cube-floating-panel
       wx:model="{{ height }}"
       wx:model-prop="height"
       contentDraggable="{{ contentDraggable }}"
       magnetic="{{ magnetic }}"
     >
-      <view>    
+      <view class="content">    
         <view>height: {{ height }} px</view>
-        <!-- <view wx:for="{{letters}}" wx:key="item">{{item}}</view> -->
       </view>
     </cube-floating-panel>
   </base-container>
@@ -31,7 +31,10 @@
 </script>
 
 <style lang="stylus">
-
+.background
+  height: 100vh
+.content
+  padding: 20px
 </style>
 
 <script type="application/json">
