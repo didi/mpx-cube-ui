@@ -47,7 +47,7 @@ createComponent({
     },
     computed: {
         pointerEvents() {
-            if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
+            if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android' || __mpx_mode__ === 'harmony') {
                 if (!this.mask)
                     return 'none';
             }
@@ -56,7 +56,7 @@ createComponent({
         tostTipClass() {
             // eslint-disable-next-line
             // @ts-ignore
-            if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
+            if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android' || __mpx_mode__ === 'harmony') {
                 return {
                     'cube-toast-tip-icon': !!this.icon
                 };

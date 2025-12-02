@@ -3,7 +3,7 @@ import mpx, { getMixin } from '@mpxjs/core'
 let mixin = {} as Parameters<typeof getMixin>[0]
 // eslint-disable-next-line
 // @ts-ignore
-if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
+if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android' || __mpx_mode__ === 'harmony') {
   type ANIMATION_PRESET = Record<
     string,
     (
@@ -22,10 +22,10 @@ if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
           'cube-switch-BGC': (animationOptions) => {
             const animation = this.bgAnimation || (this.bgAnimation = mpx.createAnimation({ ...animationOptions }))
             if (this.isOn) {
-              const onBGC = this.switchOnGBC || '#FF6435'
+              const onBGC = this.switchOnBGC || this.switchOnGBC || '#FF6435'
               animation.backgroundColor(onBGC).step({ duration: animationOptions.duration })
             } else {
-              const defaultBGC = this.switchDefaultGBC || '#EAEAEA'
+              const defaultBGC = this.switchDefaultBGC || this.switchDefaultGBC || '#EAEAEA'
               animation.backgroundColor(defaultBGC).step({ duration: animationOptions.duration })
             }
             this.switchAnimationData = animation.export()

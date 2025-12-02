@@ -10,6 +10,7 @@
     bind:maskClick="onMaskClick"
     transition="{{ 'empty' }}"
     maskFadeTransition="{{ true }}"
+    styleConfig="{{ popupStyleConfig }}"
   >
     <view class="cube-dialog-main" wx:class="{{ mainClass }}" wx:style="{{ styleConfig.main }}">
       <view
@@ -41,7 +42,7 @@
         </view>
         <view class="cube-dialog-content">
           <view class="cube-dialog-content-def" wx:if="{{ content }}">
-            <text @_ios|_android>{{ content }}</text>
+            <text @_ios|_android|_harmony>{{ content }}</text>
             <rich-text @_wx|_ali|_web class="content" nodes="{{ content }}"></rich-text>
           </view>
           <!-- 内容插槽 -->
@@ -74,7 +75,7 @@
 <script lang="ts" src="./dialog.ts"></script>
 
 <style lang="stylus">
-/* @mpx-if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') */
+/* @mpx-if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android' || __mpx_mode__ === 'harmony') */
 @require './css.rn.styl'
 /* @mpx-else */
 @require './css.styl'

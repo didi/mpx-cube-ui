@@ -2,7 +2,7 @@ import mpx, { getMixin } from '@mpxjs/core';
 let mixin = {};
 // eslint-disable-next-line
 // @ts-ignore
-if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
+if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android' || __mpx_mode__ === 'harmony') {
     mixin = {
         data: {
             tipAnimationData: {}

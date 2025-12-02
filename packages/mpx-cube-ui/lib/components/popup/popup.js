@@ -64,11 +64,19 @@ createComponent({
     computed: {
         popupStyle() {
             const style = {};
-            if (__mpx_mode__ !== 'ios' && __mpx_mode__ !== 'android') {
+            if (__mpx_mode__ !== 'ios' && __mpx_mode__ !== 'android' && __mpx_mode__ !== 'harmony') {
                 style.zIndex = this.zIndex;
             }
             if (this.pointerEvents) {
                 style.pointerEvents = this.pointerEvents;
+            }
+            if (!this.isVisible) {
+                if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
+                    style.pointerEvents = 'box-none';
+                }
+                else {
+                    style.pointerEvents = 'none';
+                }
             }
             return style;
         },
@@ -89,23 +97,29 @@ createComponent({
             }
             // eslint-disable-next-line
             // @ts-ignore
-            if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
+            if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android' || __mpx_mode__ === 'harmony') {
                 cls[`cube-popup-${this.display ? 'show' : 'hide'}`] = true;
             }
             return cls;
         },
-        maskOpacity() {
-            // eslint-disable-next-line
-            // @ts-ignore
+        maskStyle() {
+            const style = {};
             if (__mpx_mode__ !== 'ios' &&
                 __mpx_mode__ !== 'android' &&
+                __mpx_mode__ !== 'harmony' &&
                 this.styleConfig.mask?.visibleOpacity &&
                 this.isVisible) {
-                return {
-                    opacity: this.styleConfig.mask.visibleOpacity
-                };
+                style.opacity = this.styleConfig.mask.visibleOpacity;
             }
-            return {};
+            if (!this.isVisible) {
+                if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
+                    style.pointerEvents = 'box-none';
+                }
+                else {
+                    style.pointerEvents = 'none';
+                }
+            }
+            return style;
         }
     },
     methods: {

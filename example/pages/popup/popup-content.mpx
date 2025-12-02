@@ -6,6 +6,8 @@
       maskClosable="{{ true }}"
       content="<i style='color:#fc9153'>Hello World</i>"
       class="cube-extend-popup"
+      maskFadeTransition="{{ true }}"
+      transition="move-center"
       styleConfig="{{ styleConfig }}"
     >
     </cube-popup>

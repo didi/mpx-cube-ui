@@ -43,6 +43,7 @@ module.exports = defineConfig({
     config.module.rules.delete('svg')
   },
   configureWebpack: {
+    cache: false,
     plugins: [
       new webpack.ProgressPlugin()
     ]
