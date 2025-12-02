@@ -12,8 +12,8 @@ createComponent({
     },
     properties: {
         label: {
-            type: Number,
-            optionalTypes: [String]
+            type: String,
+            optionalTypes: [Number]
         },
         value: {
             type: Number,
