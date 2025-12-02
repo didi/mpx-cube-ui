@@ -9,6 +9,10 @@ module.exports = (reqPath, options) => {
       return path.resolve(__dirname, "./checkbox-group.js");
     if (reqPath.includes("checkbox"))
       return path.resolve(__dirname, "./checkbox.js");
+    if (reqPath.includes("tab-bar/tab"))
+      return path.resolve(__dirname, "./tab.js");
+    if (reqPath.includes("tab-bar/index"))
+      return path.resolve(__dirname, "./tab-bar.js");
   }
   return options.defaultResolver(reqPath, {
     ...options,
