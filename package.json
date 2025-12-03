@@ -24,7 +24,8 @@
     "release": "release-it",
     "test": "jest --no-cache",
     "test:build": "npm run build && jest --bail",
-    "test:update": "jest --updateSnapshot"
+    "test:update": "jest --updateSnapshot",
+    "init:dev": "pnpm install --frozen-lockfile && cd example && npm ci --legacy-peer-deps && cd ReactNativeProject && npm ci --legacy-peer-deps && npx install-expo-modules"
   },
   "devDependencies": {
     "@babel/runtime-corejs3": "^7.10.4",
