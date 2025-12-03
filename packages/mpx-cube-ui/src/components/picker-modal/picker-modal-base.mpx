@@ -40,20 +40,25 @@
 <script lang="ts" src="./picker-modal-base.ts"></script>
 
 <style lang="stylus">
+/* @mpx-if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') */
+@require '../../common/stylus/mixin.rn.styl'
+@require '../../common/stylus/variable.rn.styl'
+/* @mpx-else */
 @require "../../common/stylus/mixin.styl"
 @require "../../common/stylus/variable.styl"
+/* @mpx-endif */
 @require "../../common/stylus/theme/components/picker.styl"
 @require "../../common/stylus/theme/components/picker-modal.styl"
 @require "../../common/stylus/theme/components/popup.styl"
 
-.cube-picker-modal-base
-  .cube-modal-title
-    padding-left: $var(modal-body-padding-left)
-  .cube-modal-body
-    padding-right: $var(picker-modal-body-padding-right)
-    padding-left: $var(picker-modal-body-padding-left)
-  .cube-modal-content
-    padding-left: $var(modal-body-padding-left)
+// .cube-picker-modal-base
+//   .cube-modal-title
+//     padding-left: $var(modal-body-padding-left)
+//   .cube-modal-body
+//     padding-right: $var(picker-modal-body-padding-right)
+//     padding-left: $var(picker-modal-body-padding-left)
+//   .cube-modal-content
+//     padding-left: $var(modal-body-padding-left)
 .cube-picker-modal-header
   border-radius: $var(picker-modal-header-border-radius)
 

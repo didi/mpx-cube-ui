@@ -3,54 +3,69 @@
 <style lang="stylus">
 .page
   height 100%
+  background-color yellow
 
+/* @mpx-if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') */
+/* @mpx-else */
 ::-webkit-scrollbar {
     width: 0;
     background: transparent;
 }
+/* @mpx-endif */
+
+// .cube-btn
+//   --cube-btn-primary-bgc: blue
+// .cube-btn-primary
+//   --cube-btn-primary-bgc: yellow
 </style>
 
-<script type="application/json">
-  {
-    "pages": [
-      "./pages/index",
-      "./pages/button/index",
-      "./pages/collapse/index",
-      "./pages/icon/index",
-      "./pages/button-group/index",
-      "./pages/divider/index",
-      "./pages/toast/index",
-      "./pages/popup/index",
-      "./pages/modal/index",
-      "./pages/dialog/index",
-      "./pages/tip/index",
-      "./pages/picker/index",
-      "./pages/picker-popup/index",
-      "./pages/picker-modal/index",
-      "./pages/cascade-picker/index",
-      "./pages/cascade-picker-popup/index",
-      "./pages/cascade-picker-modal/index",
-      "./pages/date-picker/index",
-      "./pages/date-picker-popup/index",
-      "./pages/date-picker-modal/index",
-      "./pages/time-picker/index",
-      "./pages/time-picker-popup/index",
-      "./pages/time-picker-modal/index",
-      "./pages/segment-picker/index",
-      "./pages/radio/index",
-      "./pages/radio-group/index",
-      "./pages/radio-modal/index",
-      "./pages/checkbox/index",
-      "./pages/checkbox-group/index",
-      "./pages/checkbox-modal/index",
-      "./pages/textarea/index",
-      "./pages/float-ball/index",
-      "./pages/rate/index",
-      "./pages/switch/index",
-      "./pages/loading/index",
-      "./pages/input/index",
-      "./pages/action-sheet/index"
+<script name="json">
+  let pages = [
+    "./pages/index",
+    "./pages/button/index",
+    "./pages/collapse/index",
+    "./pages/icon/index",
+    "./pages/button-group/index",
+    "./pages/divider/index",
+    "./pages/toast/index",
+    "./pages/popup/index",
+    "./pages/modal/index",
+    "./pages/dialog/index",
+    "./pages/tip/index",
+    "./pages/picker/index",
+    "./pages/picker-popup/index",
+    "./pages/picker-modal/index",
+    "./pages/cascade-picker/index",
+    "./pages/cascade-picker-popup/index",
+    "./pages/cascade-picker-modal/index",
+    "./pages/date-picker/index",
+    "./pages/date-picker-popup/index",
+    "./pages/date-picker-modal/index",
+    "./pages/time-picker/index",
+    "./pages/time-picker-popup/index",
+    "./pages/time-picker-modal/index",
+    "./pages/segment-picker/index",
+    "./pages/radio/index",
+    "./pages/radio-group/index",
+    "./pages/radio-modal/index",
+    "./pages/checkbox/index",
+    "./pages/checkbox-group/index",
+    "./pages/checkbox-modal/index",
+    "./pages/textarea/index",
+    "./pages/float-ball/index",
+    "./pages/rate/index",
+    "./pages/switch/index",
+    "./pages/loading/index",
+    "./pages/input/index",
+    "./pages/action-sheet/index"
+  ]
+  if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
+    pages = [
+      "./pages/index"
     ]
+  }
+  module.exports = {
+    pages
   }
 </script>
 

@@ -43,7 +43,6 @@
 <script>
 import { createComponent } from '@mpxjs/core'
   import { beauty } from '../../common/utils'
-  let columnChangeArr = []
   createComponent({
     data: {
       min: Date.now(),

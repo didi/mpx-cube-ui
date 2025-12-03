@@ -41,6 +41,8 @@ module.exports = defineConfig({
   },
   chainWebpack(config) {
     config.module.rules.delete('svg')
+    config.resolve.alias.set('@mpxjs/core', resolve('node_modules/@mpxjs/core'))
+    config.resolve.alias.set('@mpxjs/webpack-plugin', resolve('node_modules/@mpxjs/webpack-plugin'))
   },
   configureWebpack: {
     plugins: [
