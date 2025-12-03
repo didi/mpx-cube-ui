@@ -27,15 +27,15 @@
           <cube-icon class="icon" type="arrow"></cube-icon>
         </view>
       </view>
-      <cube-picker-modal
-        title="选择主题样式"
-        cancel-txt="取消"
-        confirm-txt="确认"
-        selected-index="{{ themeIndex }}"
-        list="{{ themeList }}"
-        wx:ref="pickerPopup"
-        bindvalueChange="onThemeChange"></cube-picker-modal>
     </scroll-view>
+    <cube-picker-modal
+      title="选择主题样式"
+      cancel-txt="取消"
+      confirm-txt="确认"
+      selected-index="{{ themeIndex }}"
+      list="{{ themeList }}"
+      wx:ref="pickerPopup"
+      bindvalueChange="onThemeChange"></cube-picker-modal>
   </theme-container>
 </template>
 

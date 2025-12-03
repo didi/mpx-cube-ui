@@ -45,6 +45,7 @@ module.exports = defineConfig({
     config.resolve.alias.set('@mpxjs/webpack-plugin', resolve('node_modules/@mpxjs/webpack-plugin'))
   },
   configureWebpack: {
+    cache: false,
     plugins: [
       new webpack.ProgressPlugin()
     ]

@@ -1,7 +1,7 @@
 <template>
   <view class="tips-demo">
     <cube-icon
-      class="cube-tip-icon"
+      class="cube-tip-demo-icon"
       type="question"
       bind:click="onIconClick"
     />
@@ -11,9 +11,14 @@
       direction="{{ direction }}"
       custom-style="{{ customStyle }}"
       bind:close="onTipClose"
+      showClose="{{ showClose }}"
     >
       <view>this is tips</view>
     </cube-tip>
+    <view class="tip-demo-close">
+      <view>是否显示关闭按钮：{{showClose}}</view>
+      <cube-switch wx:model="{{showClose}}"></cube-switch>
+    </view>
   </view>
 </template>
 
@@ -24,7 +29,8 @@ createComponent({
   data: {
     index: 0,
     direction: 'top',
-    customStyle: {}
+    customStyle: {},
+    showClose: false
   },
   methods: {
     onIconClick() {
@@ -77,12 +83,19 @@ createComponent({
   line-height 1
 .cube-tip-icon
   font-size 30px
+.cube-tip-demo-icon
+  font-size 30px
+.tip-demo-close
+  margin-top: 20px
+  line-height 30px
+  text-align: left
 </style>
 
 <script type="application/json">
   {
     "usingComponents": {
       "cube-tip": "@mpxjs/mpx-cube-ui/src/components/tip/index",
+      "cube-switch": "@mpxjs/mpx-cube-ui/src/components/switch/index",
       "cube-icon": "@mpxjs/mpx-cube-ui/src/components/icon/index"
     }
   }

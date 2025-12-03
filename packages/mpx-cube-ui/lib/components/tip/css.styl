@@ -1,0 +1,86 @@
+@require "../../common/stylus/variable.styl"
+@require "../../common/stylus/mixin.styl"
+@require "../../common/stylus/animation.styl"
+@require "../../common/stylus/theme/components/tip.styl"
+
+.cube-tip
+  position absolute
+  z-index $var(tip-z-index)
+  display flex
+  padding $var(tip-padding)
+  max-height $var(tip-max-height)
+  border-radius $var(tip-border-radius)
+  background $var(tip-bgc)
+  transition opacity .2s
+  font-size $var(font-size-xs)
+  color $var(tip-color)
+  transform scale(0)
+  &.cube-tip-direction_top,
+  &.cube-tip-direction_bottom
+    .cube-tip-angle-wapper
+      left 50%
+      transform translateX(-50%)
+  &.cube-tip-direction_top
+    .cube-tip-angle-wapper
+      top 0
+      .cube-tip-angle
+        margin-top $var(tip-vertical-reverse-margin)
+        transform rotate(0deg)
+  &.cube-tip-direction_bottom
+    .cube-tip-angle-wapper
+      bottom 0
+      .cube-tip-angle
+        margin-bottom $var(tip-vertical-reverse-margin)
+        transform rotate(180deg)
+  &.cube-tip-direction_left,
+  &.cube-tip-direction_right
+    .cube-tip-angle-wapper
+      top 50%
+      transform translateY(-50%)
+  &.cube-tip-direction_left
+    .cube-tip-angle-wapper
+      left 0
+      .cube-tip-angle
+        margin-left $var(tip-horizontal-reverse-margin)
+        transform rotate(-90deg)
+  &.cube-tip-direction_right
+    .cube-tip-angle-wapper
+      right 0
+      .cube-tip-angle
+        margin-right $var(tip-horizontal-reverse-margin)
+        transform rotate(90deg)
+.cube-tip-angle-wapper
+  position absolute
+  .cube-tip-angle
+    display block
+    border-width $var(tip-angle-border-width)
+    border-style $var(tip-angle-border-style)
+    border-color transparent transparent $var(tip-angle-border-color)
+    content " "
+.cube-tip-without-close
+  padding-right: $var(tip-padding-right-without-close)
+.cube-tip-close
+  position absolute
+  right $var(tip-close-right)
+  top $var(tip-close-top)
+  width $var(tip-close-width)
+  height $var(tip-close-height)
+  padding 0
+  outline none
+  border none
+  background none
+  transform scale($var(tip-close-scale))
+  color inherit
+.cube-tip-content
+  min-height $var(tip-content-min-height)
+  line-height $var(tip-content-line-height)
+  // flex-fix()
+  overflow hidden
+  flex 1
+  min-width 0
+
+.scale-enter
+  animation scale-in .4s forwards
+
+.scale-leave
+  animation scale-out .2s forwards
