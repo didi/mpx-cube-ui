@@ -5,6 +5,8 @@ PODS:
   - DoubleConversion (1.1.6)
   - Expo (52.0.47):
     - ExpoModulesCore
+  - ExpoAsset (12.0.9):
+    - ExpoModulesCore
   - ExpoBrightness (12.0.1):
     - ExpoModulesCore
   - ExpoClipboard (6.0.3):
@@ -1900,6 +1902,7 @@ DEPENDENCIES:
   - BVLinearGradient (from `../node_modules/react-native-linear-gradient`)
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
   - Expo (from `../node_modules/expo`)
+  - ExpoAsset (from `../node_modules/expo-asset/ios`)
   - ExpoBrightness (from `../node_modules/expo-brightness/ios`)
   - ExpoClipboard (from `../node_modules/expo-clipboard/ios`)
   - ExpoModulesCore (from `../node_modules/expo-modules-core`)
@@ -2001,6 +2004,8 @@ EXTERNAL SOURCES:
     :podspec: "../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec"
   Expo:
     :path: "../node_modules/expo"
+  ExpoAsset:
+    :path: "../node_modules/expo-asset/ios"
   ExpoBrightness:
     :path: "../node_modules/expo-brightness/ios"
   ExpoClipboard:
@@ -2166,6 +2171,7 @@ SPEC CHECKSUMS:
   BVLinearGradient: cb006ba232a1f3e4f341bb62c42d1098c284da70
   DoubleConversion: cb417026b2400c8f53ae97020b2be961b59470cb
   Expo: 1687edb10c76b0c0f135306d6ae245379f50ed54
+  ExpoAsset: 9ba6fbd677fb8e241a3899ac00fa735bc911eadf
   ExpoBrightness: 174c89604618f907ac2a22dfaa2e71d49db283fb
   ExpoClipboard: 243e22ff4161bbffcd3d2db469ae860ddc1156be
   ExpoModulesCore: 5f742a35aa7861bb7d9cde9a2f64ef62032355f5
