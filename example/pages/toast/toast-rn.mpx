@@ -1,0 +1,48 @@
+<template>
+  <view class="toast-example-demo">
+    <cube-button  bindclick="clickToast">Toast - 基本使用</cube-button>
+    <view style="width: 200px; height: 200px; background-color: pink" bindtap="clickView">
+      点我，count: {{ count }}
+    </view>
+    <view style="width: 200px; height: 200px; background-color: yellow" bindtap="changePreventOutside">
+      点我修改preventOutside: {{ preventOutside }}
+    </view>
+    <cube-toast
+      time="{{ 0 }}"
+      txt="toast"
+      prevent-outside="{{ preventOutside }}"
+      wx:ref="toast">
+    </cube-toast>
+  </view>
+</template>
+
+<script>
+  import { createPage } from '@mpxjs/core'
+
+  createPage({
+    data: {
+      count: 0,
+      preventOutside: false
+    },
+    methods: {
+      clickToast() {
+        this.$refs.toast.show()
+      },
+      clickView() {
+        this.count++
+      },
+      changePreventOutside() {
+        this.preventOutside = !this.preventOutside
+      }
+    }
+  })
+</script>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "cube-button": "@mpxjs/mpx-cube-ui/src/components/button/index",
+      "cube-toast": "@mpxjs/mpx-cube-ui/src/components/toast/index"
+    }
+  }
+</script>
