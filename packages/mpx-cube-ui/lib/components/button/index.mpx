@@ -36,7 +36,7 @@
       wx:if="{{ icon }}"
       type="{{ icon }}"
     />
-    <view class="cube-btn-content" wx:style="{{ styleConfig.content }}">
+    <view class="cube-btn-content" wx:class="{{ contentClass }}" wx:style="{{ styleConfig.content }}">
       <slot />
     </view>
     <view class="cube-btn-tip" wx:if="{{ tip }}">
