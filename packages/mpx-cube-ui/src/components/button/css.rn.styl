@@ -35,6 +35,7 @@ border-color($border-color)
   width $var(btn-width)
   height $var(btn-height)
   box-sizing border-box
+  box-shadow $var(btn-bxsh)
   overflow hidden
   outline none
   border-width 0
@@ -92,6 +93,7 @@ btn_active('inline', $var(btn-bgc_active), $var(btn-border-color_active), $var(b
 
 .cube-btn-primary
   background-color $var(btn-primary-bgc)
+  box-shadow $var(btn-primary-bxsh)
 .cube-btn-content-primary
   color $var(btn-primary-color)
   font-weight $var(btn-primary-font-weight)
@@ -102,6 +104,7 @@ btn_active('primary', $var(btn-primary-bgc_active), , $var(btn-primary-color_act
 .cube-btn-light
   background-color $var(btn-light-bgc)
   border-color($var(btn-light-border-color))
+  box-shadow $var(btn-light-bxsh)
 .cube-btn-content-light
   color $var(btn-light-color)
   font-weight $var(btn-outline-font-weight)
@@ -112,6 +115,7 @@ btn_active('light', $var(btn-light-bgc_active), $var(btn-light-border-color), $v
 .cube-btn-outline
   background-color $var(btn-outline-bgc)
   border-color($var(btn-outline-border-color))
+  box-shadow $var(btn-outline-bxsh)
 .cube-btn-content-outline
   color $var(btn-outline-color)
   font-weight $var(btn-outline-font-weight)
@@ -122,6 +126,7 @@ btn_active('outline', $var(btn-outline-bgc_active), $var(btn-outline-border-colo
 .cube-btn-outline-primary
   border-color($var(btn-outline-primary-border-color))
   background-color $var(btn-outline-primary-bgc)
+  box-shadow $var(btn-outline-primary-bxsh)
 .cube-btn-content-outline-primary
   color $var(btn-outline-primary-color)
 .cube-btn-tip-outline-primary
