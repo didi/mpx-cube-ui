@@ -1,5 +1,5 @@
 import { createComponent, MOUNTED } from '@mpxjs/core'
-import TabBar from './index.mpx?resolve'
+import TabBar from '../tab-bar/index.mpx?resolve'
 
 interface Parant {
   value: number | string
@@ -19,8 +19,8 @@ createComponent({
   },
   properties: {
     label: {
-      type: Number,
-      optionalTypes: [String]
+      type: String,
+      optionalTypes: [Number]
     },
     value: {
       type: Number,
@@ -34,7 +34,7 @@ createComponent({
      * @description 是否需要自定义插槽（默认内容）
      * @optional true/false
      */
-    customizeContent: {
+    customContent: {
       type: Boolean,
       value: false
     },
@@ -42,7 +42,7 @@ createComponent({
      * @description 是否需要自定义插槽（icon）
      * @optional true/false
      */
-    customizeIcon: {
+    customIcon: {
       type: Boolean,
       value: false
     }

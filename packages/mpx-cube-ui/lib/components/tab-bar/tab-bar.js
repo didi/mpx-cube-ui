@@ -1,5 +1,5 @@
 import mpx, { createComponent, MOUNTED, UNMOUNTED } from '@mpxjs/core';
-import Tab from './tab.mpx?resolve';
+import Tab from '../tab-bar/tab.mpx?resolve';
 const EVENT_INPUT = 'input';
 const EVENT_CHANGE = 'change';
 const EVENT_CLICK = 'click';
@@ -56,7 +56,7 @@ createComponent({
          * @description 是否需要自定义默认插槽
          * @optional true/false
          */
-        customizeContent: {
+        customContent: {
             type: Boolean,
             value: false
         }

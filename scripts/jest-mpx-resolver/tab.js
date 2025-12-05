@@ -1,0 +1,1 @@
+export default '../tab-bar/tab.mpx'

@@ -4,9 +4,9 @@
     wx:class="{{{'cube-tab_active': isActive}}}"
     bindtap="handleClick"
   >
-    <slot wx:if="{{customizeIcon}}" name="icon"></slot>
+    <slot wx:if="{{customIcon}}" name="icon"></slot>
     <cube-icon wx:else type="{{icon}}"></cube-icon>
-    <slot wx:if="{{customizeContent}}"></slot>
+    <slot wx:if="{{customContent}}"></slot>
     <rich-text wx:else nodes="{{ label }}" />
   </view>
 </template>
