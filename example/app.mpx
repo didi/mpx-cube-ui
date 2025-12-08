@@ -3,7 +3,6 @@
 <style lang="stylus">
 .page
   height 100%
-  background-color yellow
 
 /* @mpx-if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') */
 /* @mpx-else */
@@ -12,11 +11,6 @@
     background: transparent;
 }
 /* @mpx-endif */
-
-.cube-btn
-  --cube-btn-primary-bgc: blue
-.cube-btn-primary
-  --cube-btn-primary-bgc: yellow
 </style>
 
 <script name="json">
