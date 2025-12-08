@@ -25,6 +25,14 @@ jobs:
             - recursive: true
               args: [--frozen-lockfile, --strict-peer-dependencies]
 
+      # 👉 新增的 step：cd example && npm ci
+      - name: install example deps
+        if: env.GIT_DIFF
+        run: |
+          cd example
+          npm cache clean --force
+          npm ci --legacy-peer-deps --unsafe-perm
+
       # vuepress生成最终文档
       - name: generate docs file
         if: env.GIT_DIFF
