@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - test-workflow
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -14,16 +15,24 @@ jobs:
           PATTERNS: |
             +(docs|docs-vuepress|example)/**/*
             +(docs|docs-vuepress|example)/.*/**/*
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: '22'
       - uses: pnpm/action-setup@v2
         if: env.GIT_DIFF
         with:
-          version: 9
+          version: 10
           run_install: |
             - recursive: true
               args: [--frozen-lockfile, --strict-peer-dependencies]
+
+      - name: Upgrade npm to 10
+        run: npm install -g npm@10
+      # 👉 新增的 step：cd example && npm ci
+      - name: Install example deps (debug, keep logs)
+        run: |
+          cd example
+          npm ci --legacy-peer-deps
 
       # vuepress生成最终文档
       - name: generate docs file
