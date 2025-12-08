@@ -5,7 +5,7 @@
     tabs="{{tabs}}"
     show-slider
     inline
-    customize-content
+    custom-content
     bindclick="clickHandler"
     bindchange="changeHandler"
   >

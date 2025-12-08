@@ -30,7 +30,7 @@
 
 实际上我们更常见的需求是图标搭配文字效果，因此 cube-tab-bar 组件也支持了插槽的使用方式， 注意必须搭配 cube-tab 组件作为第一层级的子组件，来包裹你自定义插槽。
 
-注意：由于转小程序不支持插槽默认值，所以需要传递`customize-content`和`customize-icon`来分别开启`默认插槽`和`icon插槽`。
+注意：由于转小程序不支持插槽默认值，所以需要传递`custom-content`和`custom-icon`来分别开启`默认插槽`和`icon插槽`。
 
 <!-- @example: tab-bar-slot -> template -->
 
