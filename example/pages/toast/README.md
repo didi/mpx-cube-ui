@@ -2,12 +2,9 @@
 
 <card>
 
-### 介绍
+### 介绍 <span class="title-tag">已适配RN</span>
 
 Toast 组件常用于用于非模态信息提醒，无需用户交互。
-
-
-<mark>已适配RN</mark>
 
 </card>
 

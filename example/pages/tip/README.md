@@ -2,11 +2,9 @@
 
 <card>
 
-### 介绍
+### 介绍 <span class="title-tag">已适配RN</span>
 
 用于弹出提示气泡框，可以通过配置控制弹出位置。
-
-<mark>已适配RN</mark>
 
 ### 注意
 
