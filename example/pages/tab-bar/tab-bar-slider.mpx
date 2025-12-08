@@ -4,7 +4,7 @@
     wx:model-prop="value"
     tabs="{{tabs}}"
     show-slider
-    customize-content
+    custom-content
     bindclick="clickHandler"
     bindchange="changeHandler"
   >

@@ -4,7 +4,7 @@
     wx:model-prop="value"
     bindclick="clickHandler"
     bindchange="changeHandler"
-    customize-content
+    custom-content
     tabs="{{tabs}}"
   >
     <cube-tab
@@ -13,8 +13,8 @@
       wx:key="label"
       label="{{item.label}}"
       value="{{item.value}}"
-      customize-content
-      customize-icon
+      custom-content
+      custom-icon
     >
       <cube-icon type="{{item.icon}}"/>
       <!-- use en empty tag to replace default slot -->
