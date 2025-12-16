@@ -8,14 +8,13 @@ import {
   getDateObj
 } from './utils'
 
-const EVENT_SELECT = 'select'
-
 createComponent({
   options: {
     multipleSlots: true,
     styleIsolation: 'shared'
   },
   properties: {
+    // 可选择的最小日期
     min: {
       type: Number,
       value: +new Date(2016, 2, 12)
@@ -30,16 +29,12 @@ createComponent({
       type: Number,
       value: 30
     },
-    // 选择开始、结束时间时展示tip
-    showTip: {
-      type: Boolean,
-      value: true
-    },
     // 日期默认值，区间选择Array格式
     defaultDate: {
       type: Array,
       value: []
     },
+    // 容器高度
     height: {
       type: String,
       value: '300px'
@@ -61,14 +56,14 @@ createComponent({
   },
   watch: {
     selectDateSet(v) {
-      const startDate = v[0] && v[0].date
-      const endDate = v.length > 1 ? v[v.length - 1].data : null
+      const startDate = v[0] || {}
+      const endDate = v.length > 1 ? v[v.length - 1] : {}
+      // 选择的日期改变时触发
+      // @arg event.detail = { len, startDate, endDate }， len表当前选中的时间间隔，startDate表当前选中的开始时间，endDate表当前选中的结束时间
       this.triggerEvent('dateChange', {
-        value: {
-          len: v.length,
-          startDate,
-          endDate
-        }
+        len: v.length,
+        startDate,
+        endDate
       })
     }
   },
@@ -79,10 +74,6 @@ createComponent({
     }
   },
   methods: {
-    itemClick(item, index) {
-      // 点击某项时触发
-      this.triggerEvent(EVENT_SELECT, { item, index })
-    },
     selectDate(item, listIndex, weekInMonthIndex, index) {
       let selectDaysCount = 0
       if (item.disable || !item.date) return

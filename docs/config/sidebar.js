@@ -64,6 +64,10 @@ module.exports = [
           {
             title: 'Collapse 展开收起',
             path: '/components/base/collapse'
+          },
+          {
+            title: 'Calendar 日历',
+            path: '/components/base/calendar'
           }
           // {
           //   title: 'Style 内置样式'

@@ -7,13 +7,12 @@
       direction="horizontal"
       mask-closable="{{ maskClosable }}"
       removeCatchTouch="{{ true }}"
-      title="选择日期"
       bind:maskClick="maskClick"
       position="bottom"
       transition="move-up"
     >
       <view class="cube-calendar-modal-content">
-        <view class="cube-calendar-modal-title">选择日期</view>
+        <view class="cube-calendar-modal-title">{{title}}</view>
         <view class="cube-calendar-modal-cross">
           <cube-icon type="close" bindtap="cancel"/>
         </view>
@@ -25,7 +24,6 @@
           max="{{max}}"
           min="{{min}}"
           maskClosable="{{maskClosable}}"
-          title="{{title}}"
         ></cube-calendar>
         <cube-button class="calendar-modal-button" bindtap="confirm">{{buttonText}}</cube-button>
       </view>

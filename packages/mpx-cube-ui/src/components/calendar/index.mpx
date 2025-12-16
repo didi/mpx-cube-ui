@@ -132,7 +132,7 @@
       display flex
       justify-content center
       align-items center
-      width $var(calendar-date-width)
+      min-width $var(calendar-date-width)
       min-height $var(calendar-date-min-height)
       border-radius $var(calendar-date-border-radius)
     .date-left,

@@ -1,6 +1,6 @@
 export default {
-  'entryMap': {
-    'default': [
+  entryMap: {
+    default: [
       'button',
       'button-group',
       'collapse',
@@ -31,7 +31,7 @@ export default {
       'time-picker-modal',
       'segment-picker',
       'textarea',
-      'float-ball'
+      'float-ball',
     ],
     introduce: [
       {
@@ -43,7 +43,8 @@ export default {
           'divider',
           'float-ball',
           'loading',
-          'collapse'
+          'collapse',
+          'calendar'
         ]
       },
       {
@@ -64,13 +65,7 @@ export default {
       },
       {
         name: '弹出层',
-        components: [
-          'popup',
-          'toast',
-          'dialog',
-          'modal',
-          'tip',
-        ]
+        components: ['popup', 'toast', 'dialog', 'modal', 'tip']
       },
       {
         name: '组合组件',

@@ -48,7 +48,8 @@
       "./pages/rate/index",
       "./pages/switch/index",
       "./pages/loading/index",
-      "./pages/calendar-modal/index"
+      "./pages/calendar-modal/index",
+      "./pages/calendar/index"
     ]
   }
 </script>
