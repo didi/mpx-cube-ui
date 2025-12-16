@@ -4,7 +4,7 @@
       <view class="days-ul">
         <view class="days-li" wx:for="{{days}}" wx:key="index">{{item}}</view>
       </view>
-      <scroll-view ref="scroll" scroll-y="{{true}}" class="date-render-content">
+      <view class="date-render-content" >
         <view class="date-render-wrapper" wx:for="{{ dateList }}" wx:for-item="monthDateGroup" wx:for-index="listIndex" :ref="`monthList${listIndex}`" wx:key="listIndex">
           <view class="date-header">{{monthDateGroup.title}}</view>
           <view class="date-ul" wx:for="{{monthDateGroup.dateArr}}" wx:for-item="days" wx:for-index="weekInMonth" wx:key="weekInMonth">
@@ -28,7 +28,7 @@
             </view>
           </view>
         </view>
-      </scroll-view>
+      </view>
     </view>
     <cube-toast class="calendar-toast" txt="{{toastText}}" wx:ref="toast"></cube-toast>
   </view>
@@ -71,10 +71,6 @@
     font-size: $var(calendar-title-size)
     color: #000
     font-weight: bold
-  // .cube-calendar-cross
-  //   position: absolute
-  //   top: 10px
-  //   right: 10px
   .date-render-content
     overflow-y: auto
   .date-render-wrapper

@@ -6,6 +6,7 @@
       wx:model-event="toggle"
       direction="horizontal"
       mask-closable="{{ maskClosable }}"
+      removeCatchTouch="{{ true }}"
       title="选择日期"
       bind:maskClick="maskClick"
       position="bottom"

@@ -46,7 +46,6 @@ createComponent({
     }
   },
   data: {
-    scrollEvents: ['scroll'],
     days: ['日', '一', '二', '三', '四', '五', '六'],
     dateList: [],
     selectDateSet: [] as any[], // 记录已选起始和结束的时间
