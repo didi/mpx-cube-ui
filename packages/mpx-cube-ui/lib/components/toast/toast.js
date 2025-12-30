@@ -4,7 +4,7 @@ createComponent({
     properties: {
         /**
          * @description 图标类型（自动添加`cubeic-`前缀）
-         * @optional 图标 Icon，更多选择参见[内置 Icon](https://www.mpxjs.cn/mpx-cube-ui/demo-theme-default/index.html#/pages/icon/index)
+         * @optional 图标 Icon，更多选择参见[内置 Icon](https://www.mpxjs.cn/mpx-cube-ui/example/index.html#/pages/icon/index)
          */
         icon: {
             type: String,
@@ -34,7 +34,12 @@ createComponent({
         /**
          * @description 提示信息文案（一行最多只能展示十二个文字最多展示两行）
          */
-        txt: String
+        txt: String,
+        // 未配置mask时，toast外部区域是否可以点击
+        preventOutside: {
+            type: Boolean,
+            value: false
+        }
     },
     lifetimes: {
         ready() {
@@ -48,9 +53,13 @@ createComponent({
     computed: {
         pointerEvents() {
             if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android' || __mpx_mode__ === 'harmony') {
+                if (this.preventOutside)
+                    return 'box-only';
                 if (!this.mask)
                     return 'none';
             }
+            if (this.preventOutside)
+                return 'initial';
             return '';
         },
         tostTipClass() {
