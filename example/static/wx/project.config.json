@@ -55,5 +55,6 @@
     "ignore": [],
     "include": []
   },
-  "projectname": "wx"
+  "projectname": "wx",
+  "appid": "wx603cbad725e536bf"
 }

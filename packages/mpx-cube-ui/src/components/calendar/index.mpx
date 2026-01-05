@@ -1,0 +1,153 @@
+<template>
+  <view class="cube-calendar-inner-wrapper" ref="calenderWrapper">
+    <view class="cube-calendar" wx:style="{{ {height: height}}}">
+      <view class="cube-days-ul">
+        <view class="cube-days-li" wx:for="{{days}}" wx:key="index">{{item}}</view>
+      </view>
+      <view class="cube-date-render-content" >
+        <view class="cube-date-render-wrapper" wx:for="{{ dateList }}" wx:for-item="monthDateGroup" wx:for-index="listIndex" :ref="`monthList${listIndex}`" wx:key="listIndex">
+          <view class="cube-date-header">{{monthDateGroup.title}}</view>
+          <view class="cube-date-ul" wx:for="{{monthDateGroup.dateArr}}" wx:for-item="days" wx:for-index="weekInMonth" wx:key="weekInMonth">
+            <view
+              class="cube-date-li"
+              wx:for="{{days}}"
+              wx:key="index"
+              wx:class="{{[item.dateClass, {'disable': item.disable}, {'active': item.active}]}}"
+            >
+              <view class="cube-date-left"></view>
+              <view class="cube-date-center">
+                <view
+                  class="cube-date"
+                  wx:class="{{ { 'calendar-disabled-date': item.disable } }}"
+                  bind:tap="selectDate(item, listIndex, weekInMonth, index, $event)"
+                >
+                  {{item.day}}
+                </view>
+              </view>
+              <view class="cube-date-right"></view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <cube-toast class="calendar-toast" txt="{{toastText}}" wx:ref="toast"></cube-toast>
+  </view>
+</template>
+
+<script src="./calendar.ts" lang="ts"></script>
+
+<style lang="stylus">
+@require "@mpxjs/mpx-cube-ui/src/common/stylus/helper.styl"
+@require "@mpxjs/mpx-cube-ui/src/common/stylus/mixin.styl"
+@require "@mpxjs/mpx-cube-ui/src/common/stylus/theme/components/calendar.styl"
+
+.cube-calendar-inner-wrapper
+  background #fff
+  position: relative
+  padding: $var(calendar-inner-padding)
+  border-radius: $var(calendar-inner-border-radius)
+  .calendar-toast
+    .cube-popup-content
+      width: auto !important
+  .cube-calendar
+    display: flex
+    flex-direction: column
+    height: $var(calendar-height)
+  .cube-days-ul
+    position relative
+    display flex
+    width 100%
+    font-size $var(calendar-days-li-size)
+    background #fff
+    .cube-days-li
+      display flex
+      justify-content center
+      flex 1
+      font-size $var(fontsize-large)
+      line-height $var(calendar-days-li-lh)
+      padding $var(calendar-days-li-padding)
+  .cube-calendar-title
+    margin: $var(calendar-title-margin)
+    font-size: $var(calendar-title-size)
+    color: #000
+    font-weight: bold
+  .cube-date-render-content
+    overflow-y: auto
+  .cube-date-render-wrapper
+    padding $var(calendar-render-wrapper-padding)
+  .cube-date-header
+    padding-top $var(calendar-date-header-padding-top)
+    padding-bottom $var(calendar-date-header-padding-bottom)
+    margin-bottom $var(calendar-date-header-margin-bottom)
+    text-align center
+    font-size $var(calendar-date-header-size)
+    line-height $var(calendar-date-header-lh)
+    font-weight bold
+    color $cube-color-text-primary
+    background #F5F5F5
+  .cube-date-ul
+    position relative
+    display flex
+    justify-content space-between
+  .cube-date-li
+    display flex
+    flex 1
+    justify-content center
+    min-height $var(calendar-date-li-min-height)
+    margin-bottom $var(calendar-date-li-margin-bottom)
+    font-size $var(calendar-date-li-size)
+    /*选中日期的背景*/
+    &.transition-date
+      .cube-date-left,
+      .cube-date-center,
+      .cube-date-right
+        background #F1F3F7
+    /*起始日期*/
+    &.start-date
+      .cube-date-left
+        background #FFF
+      .cube-date-center
+        border-radius $var(calendar-date-start-border-radius)
+      .cube-date-center,
+      .cube-date-right
+        background #F1F3F7
+    /*结束日期*/
+    &.end-date
+      .cube-date-center,
+      .cube-date-left
+        background #F1F3F7
+      .cube-date-center
+        border-radius $var(calendar-date-end-border-radius)
+      .cube-date-right
+        background #FFF
+    /*点击选中的样式*/
+    &.active
+      .cube-date
+        color #FFF
+        background-color #4D6199
+    &.disable
+      .cube-date
+        color #969699
+    .cube-date
+      display flex
+      justify-content center
+      align-items center
+      min-width $var(calendar-date-width)
+      min-height $var(calendar-date-min-height)
+      border-radius $var(calendar-date-border-radius)
+    .cube-date-left,
+    .cube-date-right
+      flex 1
+</style>
+
+<script type="application/json">
+  {
+    "styleIsolation": "shared",
+    "component": true,
+    "usingComponents": {
+      "cube-popup": "@mpxjs/mpx-cube-ui/src/components/popup/index",
+      "cube-toast": "@mpxjs/mpx-cube-ui/src/components/toast/index",
+      "cube-icon": "../icon/index.mpx"
+    }
+  }
+</script>

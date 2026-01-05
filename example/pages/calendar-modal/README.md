@@ -1,0 +1,66 @@
+## cube-calendar-modal
+
+<card>
+
+### 介绍
+
+日历选择弹框
+
+</card>
+
+### 示例
+
+<card>
+
+### 用法
+
+
+<collapse-wrapper>
+
+```vue
+<template>
+  <view class="calendar-normal-page">
+   <cube-button bindtap="showCalendarModal">常规日历组件</cube-button>
+   <view class="calendar-normal-selected-date">起始时间：{{toastText[0]}}</view>
+   <view class="calendar-normal-selected-date">结束时间：{{toastText[1]}}</view>
+    <cube-calendar-modal
+      wx:ref="calendarModal"
+      min="{{min}}"
+      max="{{max}}"
+      maxRange="{{maxRange}}"
+      scrollToEnd="{{scrollToEnd}}"
+      defaultDate="{{defaultDate}}"
+      maskClosable="{{maskClosable}}"
+      bindconfirm="confirm"
+    />
+  </view>
+</template>
+<script>
+import { createComponent } from '@mpxjs/core'
+
+createComponent({
+  data: {
+    min: +new Date(2025, 1, 1),
+    max: +new Date(2025, 7, 25),
+    maxRange: 100,
+    scrollToEnd: true,
+    defaultDate: [+new Date(2025, 3, 1), +new Date(2025, 3, 2)],
+    maskClosable: true,
+    toastText: ['暂未选择时间', '暂未选择时间']
+  },
+  methods: {
+    showCalendarModal() {
+      this.$refs.calendarModal.show()
+    },
+    confirm(date) {
+      const { year: startYear, month: startMonth, day: startDay } = date.detail.value[0]
+      const { year: endYear, month: endMonth, day: endDay } = date.detail.value[1]
+      this.toastText = [`${startYear}年${startMonth}月${startDay}日`,`${endYear}年${endMonth}月${endDay}日`]
+    }
+  }
+})
+</script>
+```
+</collapse-wrapper>
+
+</card>
