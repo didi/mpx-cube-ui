@@ -68,6 +68,10 @@ module.exports = [
           {
             title: 'TabBar 选项卡',
             path: '/components/base/tab-bar'
+          },
+          {
+            title: 'Calendar 日历',
+            path: '/components/base/calendar'
           }
           // {
           //   title: 'Style 内置样式'
@@ -158,6 +162,10 @@ module.exports = [
           {
             title: 'ActionSheet 操作列表',
             path: '/components/base/action-sheet'
+          },
+          {
+            title: 'CalendarModal 日历弹框',
+            path: '/components/base/calendar-modal'
           }
         ]
       },
