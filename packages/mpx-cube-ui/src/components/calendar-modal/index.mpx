@@ -23,7 +23,9 @@
           maxRange="{{maxRange}}"
           max="{{max}}"
           min="{{min}}"
+          showOverRangeTips="{{showOverRangeTips}}"
           maskClosable="{{maskClosable}}"
+          bind:selectDateOverRange="selectDateOverRange"
         ></cube-calendar>
         <cube-button class="cube-calendar-modal-button" bindtap="confirm">{{buttonText}}</cube-button>
       </view>

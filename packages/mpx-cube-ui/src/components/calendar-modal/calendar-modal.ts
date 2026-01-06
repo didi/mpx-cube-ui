@@ -4,6 +4,7 @@ import { getCurrentOrNextYearDay } from '@mpxjs/mpx-cube-ui/src/components/calen
 const EVENT_MASK_CLOSE = 'maskClose'
 const EVENT_CONFIRM = 'confirm'
 const EVENT_CANCEL = 'cancel'
+const SELECT_DATE_OVER_RANGE = 'selectDateOverRange'
 
 createComponent({
   mixins: [visibilityMixin],
@@ -53,6 +54,11 @@ createComponent({
     buttonText: {
       type: String,
       value: '完成'
+    },
+    // 展示超出范围提示语
+    showOverRangeTips: {
+      type: Boolean,
+      value: true
     }
   },
   data: {
@@ -89,6 +95,11 @@ createComponent({
     showCalendar() {
       this.$refs.calendar.reset(this.lastValue)
       this.show()
+    },
+    // 显示
+    selectDateOverRange() {
+      // 选择的日期超过最大范围时触发
+      this.triggerEvent(SELECT_DATE_OVER_RANGE)
     }
   }
 })

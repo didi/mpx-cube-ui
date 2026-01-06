@@ -12,6 +12,7 @@
       defaultDate="{{defaultDate}}"
       maskClosable="{{maskClosable}}"
       bindconfirm="confirm"
+      bindselectDateOverRange="selectDateOverRange"
     />
   </view>
 </template>
@@ -37,6 +38,9 @@ createComponent({
       const { year: startYear, month: startMonth, day: startDay } = date.detail.value[0]
       const { year: endYear, month: endMonth, day: endDay } = date.detail.value[1]
       this.toastText = [`${startYear}年${startMonth}月${startDay}日`,`${endYear}年${endMonth}月${endDay}日`]
+    },
+    selectDateOverRange() {
+      console.log('自定义处理超出范围的选择逻辑')
     }
   }
 })

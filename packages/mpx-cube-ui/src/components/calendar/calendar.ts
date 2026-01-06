@@ -40,6 +40,11 @@ createComponent({
     height: {
       type: String,
       value: '300px'
+    },
+    // 展示超出范围提示语
+    showOverRangeTips: {
+      type: Boolean,
+      value: true
     }
   },
   data: {
@@ -85,8 +90,12 @@ createComponent({
         // 选择结束时间
         selectDaysCount = getRangeDaysCount(+(this.selectDateSet[0] as any).date, item.date)
         if (this.maxRange && selectDaysCount > this.maxRange) {
-          this.toastText = `最多选择${this.maxRange}天`
-          this.$refs.toast.show()
+          if (this.showOverRangeTips) {
+            this.toastText = `最多选择${this.maxRange}天`
+            this.$refs.toast.show()
+          }
+          // 选择的日期超过最大范围时触发
+          this.triggerEvent('selectDateOverRange')
           return
         }
         if (selectDaysCount > 0) {
@@ -234,9 +243,7 @@ createComponent({
       const maxMonth = maxDate.getMonth() + 1
 
       if (this.min >= this.max) {
-        this.toastText = '传入props错误：时间的max值应大于min值！'
-        this.$refs.toast.show()
-        // console.warn('传入props错误：时间的max值应大于min值！')
+        console.warn('传入props错误：时间的max值应大于min值！')
         return
       }
 
