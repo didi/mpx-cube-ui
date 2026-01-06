@@ -50,11 +50,11 @@ import { createComponent } from '@mpxjs/core'
 
 createComponent({
    data: {
-    min: +new Date(2025, 1, 1),
-    max: +new Date(2025, 7, 25),
+    min: +new Date(2026, 1, 1),
+    max: +new Date(2027, 7, 25),
     height: '270px',
     maxRange: 100,
-    defaultDate: [+new Date(2025, 3, 1), +new Date(2025, 3, 2)],
+    defaultDate: [+new Date(2026, 3, 1), +new Date(2026, 3, 2)],
     currentStartDate: {},
     currentEndDate: {}
   },

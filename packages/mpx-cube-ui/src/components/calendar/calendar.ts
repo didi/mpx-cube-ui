@@ -5,24 +5,26 @@ import {
   getRangeDaysCount,
   getDaysCountInMonth,
   getDayInWeek,
-  getDateObj
+  getDateObj,
+  getCurrentOrNextYearDay
 } from './utils'
 
 createComponent({
   options: {
-    multipleSlots: true,
     styleIsolation: 'shared'
   },
   properties: {
     // 可选择的最小日期
     min: {
       type: Number,
-      value: +new Date(2016, 2, 12)
+      // 今年1月1日
+      value: getCurrentOrNextYearDay()
     },
     // 可选日期的最大时间
     max: {
       type: Number,
-      value: +new Date(2016, 4, 14)
+      // 明年12月31日
+      value: getCurrentOrNextYearDay(false)
     },
     // 可选的最大范围，0 为不限制
     maxRange: {
@@ -45,8 +47,6 @@ createComponent({
     dateList: [],
     selectDateSet: [] as any[], // 记录已选起始和结束的时间
     dateClass: '',
-    errTipTxt: '最多选择30天',
-    angleOffset: {},
     agoClickIndex: {
       listIndex: null,
       weekInMonthIndex: null,

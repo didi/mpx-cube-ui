@@ -5,7 +5,7 @@
         <view class="cube-days-li" wx:for="{{days}}" wx:key="index">{{item}}</view>
       </view>
       <view class="cube-date-render-content" >
-        <view class="cube-date-render-wrapper" wx:for="{{ dateList }}" wx:for-item="monthDateGroup" wx:for-index="listIndex" :ref="`monthList${listIndex}`" wx:key="listIndex">
+        <view class="cube-date-render-wrapper" wx:for="{{ dateList }}" wx:for-item="monthDateGroup" wx:for-index="listIndex" wx:key="listIndex">
           <view class="cube-date-header">{{monthDateGroup.title}}</view>
           <view class="cube-date-ul" wx:for="{{monthDateGroup.dateArr}}" wx:for-item="days" wx:for-index="weekInMonth" wx:key="weekInMonth">
             <view

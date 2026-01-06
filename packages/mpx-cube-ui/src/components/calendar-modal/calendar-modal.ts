@@ -1,6 +1,6 @@
 import { createComponent } from '@mpxjs/core'
 import { visibilityMixin } from '../../common/mixins'
-
+import { getCurrentOrNextYearDay } from '@mpxjs/mpx-cube-ui/src/components/calendar/utils'
 const EVENT_MASK_CLOSE = 'maskClose'
 const EVENT_CONFIRM = 'confirm'
 const EVENT_CANCEL = 'cancel'
@@ -15,12 +15,14 @@ createComponent({
     // 可选择的最小日期
     min: {
       type: Number,
-      value: +new Date(2016, 2, 12)
+      // 今年1月1日
+      value: getCurrentOrNextYearDay()
     },
-    // 可选日期的最大时间
+    // 可选择的最大日期
     max: {
       type: Number,
-      value: +new Date(2016, 4, 14)
+      // 明年12月31日
+      value: getCurrentOrNextYearDay(false)
     },
     // 可选的最大范围，0 为不限制
     maxRange: {

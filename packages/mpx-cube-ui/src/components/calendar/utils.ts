@@ -68,6 +68,15 @@ function getDayInWeek(year, month, day) {
 }
 
 /**
+ * 获取今年或明年日期初始值
+ * @param isCurrentYear
+ */
+function getCurrentOrNextYearDay(isCurrentYear = true) {
+  const now = new Date()
+  const year = now.getFullYear()
+  return isCurrentYear ? +new Date(year, 0, 1) : +new Date(year + 1, 11, 30)
+}
+/**
  * 获取日期对象
  * @param inpuDate
  * @returns {{date: *, month: number, year: number, day: number, dayInWeek: number, weekInMonth: number}}
@@ -94,5 +103,6 @@ export {
   getRangeDaysCount,
   getDaysCountInMonth,
   getDayInWeek,
-  getDateObj
+  getDateObj,
+  getCurrentOrNextYearDay
 }
