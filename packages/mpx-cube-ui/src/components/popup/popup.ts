@@ -77,7 +77,7 @@ createComponent({
         style.pointerEvents = this.pointerEvents
       }
       if (!this.isVisible) {
-        if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
+        if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android' || __mpx_mode__ === 'harmony') {
           style.pointerEvents = 'box-none'
         } else {
           style.pointerEvents = 'none'
@@ -119,7 +119,7 @@ createComponent({
       }
 
       if (!this.isVisible) {
-        if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
+        if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android' || __mpx_mode__ === 'harmony') {
           style.pointerEvents = 'box-none'
         } else {
           style.pointerEvents = 'none'
