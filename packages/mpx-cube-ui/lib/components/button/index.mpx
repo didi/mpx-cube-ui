@@ -58,13 +58,16 @@
 
 
 
-<script type="application/json">
-  {
-    "styleIsolation": "shared",
-    "component": true,
-    "usingComponents": {
-      "cube-icon": "../icon/index.mpx",
-      "loading": "./loading/index.mpx"
-    }
-  }
+<script name="json">
+let usingComponents = {
+  "loading": "./loading/index.mpx"
+}
+if (__mpx_mode__ !== 'ios' &&  __mpx_mode__ !== 'android' && __mpx_mode__ !== 'harmony') {
+  usingComponents['cube-icon'] = "../icon/index.mpx"
+}
+module.exports = {
+  "styleIsolation": "shared",
+  "component": true,
+  "usingComponents": usingComponents
+}
 </script>
