@@ -5,11 +5,20 @@
       wx:class="{{ [themeType ? 'cube-popup cube-popup-'+themeType : 'cube-popup', rootClass, visibleClass] }}"
       wx:style="{{ popupStyle }}"
     >
-      <view class="cube-popup-mask" wx:if="{{ mask }}" bindtouchend="onMaskClick" wx:style="{{ [styleConfig.mask, maskStyle] }}">
+      <view
+        class="cube-popup-mask"
+        wx:if="{{ mask }}"
+        wx:style="{{ [styleConfig.mask, maskStyle] }}"
+        bindtouchmove@web="preventTouchMove"
+        bindtap="onMaskClick">
         <!-- 遮罩插槽 -->
         <slot name="mask"></slot>
       </view>
-      <view class="cube-popup-content {{ transitionClass }}" bindanimationend@_wx|_ali|_web="contentHideAnimationend">
+      <view
+        class="cube-popup-content {{ transitionClass }}"
+        wx:style="{{styleConfig.content}}"
+        bindanimationend@_wx|_ali|_web="contentHideAnimationend"
+      >
         <rich-text wx:if="{{ content }}" nodes="{{ content }}"></rich-text>
         <!-- 默认插槽 -->
         <slot wx:else></slot>
@@ -18,28 +27,24 @@
 
     <view
       wx:else
-      wx:class="{{ [
-        themeType ? 'cube-popup cube-popup-'+themeType : 'cube-popup',
-        rootClass,
-        visibleClass,
-        !removeCatchTouch ? 'cube-popup-remove-touch' : ''
-      ] }}"
+      wx:class="{{ [themeType ? 'cube-popup cube-popup-'+themeType : 'cube-popup', rootClass, visibleClass] }}"
       wx:style="{{ popupStyle }}"
-      catchtouchmove@wx|ali
+      catchtouchmove@wx="true"
     >
       <view
         class="cube-popup-mask"
         wx:if="{{ mask }}"
         wx:style="{{ [styleConfig.mask, maskStyle] }}"
-        bindtouchmove="preventTouchMove"
-        bindtouchend="onMaskClick">
+        bindtouchmove@_web="preventTouchMove"
+        disable-scroll@_ali="{{true}}"
+        bindtap="onMaskClick">
         <!-- 遮罩插槽 -->
         <slot name="mask"></slot>
       </view>
       <view
         class="cube-popup-content {{ transitionClass }}"
         wx:style="{{styleConfig.content}}"
-        bindtouchmove="preventTouchMove"
+        bindtouchmove@_web="preventTouchMove"
         bindanimationend@_wx|_ali|_web="contentHideAnimationend">
         <rich-text wx:if="{{ content }}" nodes="{{ content }}"></rich-text>
         <!-- 默认插槽 -->

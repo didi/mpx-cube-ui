@@ -69,10 +69,7 @@ createComponent({
   },
   computed: {
     popupStyle() {
-      const style: Record<string, string> = {}
-      if (__mpx_mode__ !== 'ios' && __mpx_mode__ !== 'android') {
-        style.zIndex = this.zIndex
-      }
+      const style: Record<string, string> = { zIndex: this.zIndex }
       if (this.pointerEvents) {
         style.pointerEvents = this.pointerEvents
       }
