@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.4.7] - 2026-01-13
+- icon、button 组件 css 编译问题修复（React Native）
+
 ## [1.4.6] - 2026-01-08
 - toast 组件支持配置 preventOutside：未配置mask时，toast外部区域是否可以点击
 
