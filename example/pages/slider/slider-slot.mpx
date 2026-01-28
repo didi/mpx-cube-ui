@@ -6,7 +6,7 @@
     bindchange="handleChange"
     bindchanging="handleChanging"
   >
-    <view class="logo"></view>
+    <view class="slider-thumb"></view>
   </cube-slider>
 </template>
 
@@ -31,7 +31,7 @@
 </script>
 
 <style lang="stylus">
-.logo
+.slider-thumb
   width 28px
   height 33px
   background-image url("https://gift-pypu-cdn.didistatic.com/static/driver_miniprogram/do1_E57CMf3cLCRJiq2VxPuT")
