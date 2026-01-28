@@ -1,3 +1,4 @@
+import { MOUNTED } from '@mpxjs/core'
 import { createComponent } from '../../common/helper/create-component'
 
 const EVENT_CHANGE = 'change' // 完成一次拖动后触发的事件
@@ -117,6 +118,11 @@ createComponent({
       immediate: true
     }
   },
+  [MOUNTED]() {
+    this.getRect().then(res => {
+      this.startDragRect = res
+    })
+  },
   computed: {
     sliderClass() {
       return {
@@ -183,7 +189,7 @@ createComponent({
     }
   },
   methods: {
-    getOffsetX() {
+    getRect() {
       return new Promise((resolve) => {
         this.createSelectorQuery()
           .select('.cube-slider-tab-area')
@@ -212,17 +218,17 @@ createComponent({
       }
     },
     async onClick(e) {
-      const rect = await this.getOffsetX()
+      const rect = await this.getRect()
       this.calcProgress(e.detail.x, rect)
       // 完成一次拖动后触发的事件
       // @arg event.detail = {value}
       this.triggerEvent(EVENT_CHANGE, { value: this.currentValue })
     },
     async startHandler(e) {
-      this.startDragRect = await this.getOffsetX()
       if (__mpx_mode__ === 'web') {
         e && e.preventDefault()
       }
+      this.startDragRect = await this.getRect()
     },
     moveHandler(e) {
       if (!this.startDragRect) {

@@ -13,7 +13,7 @@
 
   createComponent({
     data: {
-      currentValue: false
+      currentValue: 0
     },
     methods: {
       handleChange(e) {
