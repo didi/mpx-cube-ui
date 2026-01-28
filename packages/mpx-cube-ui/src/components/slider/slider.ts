@@ -219,6 +219,7 @@ createComponent({
     },
     async onClick(e) {
       const rect = await this.getRect()
+      this.startDragRect = rect
       this.calcProgress(e.detail.x, rect)
       // 完成一次拖动后触发的事件
       // @arg event.detail = {value}
