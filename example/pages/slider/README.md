@@ -46,7 +46,11 @@
 
 ### 自定义滑块儿
 
-设置 `custom-content="{{true}}"`，并添加自定义插槽。
+设置
+```vue
+custom-content="{{true}}"
+```
+并添加自定义插槽。
 
 <!-- @example: slider-slot show-style -->
 
