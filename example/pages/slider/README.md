@@ -4,7 +4,7 @@
 
 ## 介绍 <span class="title-tag">已适配RN</span>
 
-滑动选择器。（基于touch事件拖动滑块儿，请在移动端环境下体验）
+滑动选择器（基于touch事件拖动滑块儿，请在移动端环境下体验）。
 
 </card>
 
@@ -45,6 +45,8 @@
 <card>
 
 ### 自定义滑块儿
+
+设置 `custom-content="{{true}}"`，并添加自定义插槽。
 
 <!-- @example: slider-slot show-style -->
 
