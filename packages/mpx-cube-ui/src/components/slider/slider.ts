@@ -1,7 +1,7 @@
 import { createComponent } from '../../common/helper/create-component'
 
-const EVENT_CHANGE = 'change'
-const EVENT_CHANGING = 'changing'
+const EVENT_CHANGE = 'change' // 完成一次拖动后触发的事件
+const EVENT_CHANGING = 'changing' // 拖动过程中触发的事件
 
 interface Rect {
   id: string
@@ -107,10 +107,10 @@ createComponent({
   watch: {
     value: {
       handler(newVal) {
-        if (newVal === this.currentValue) {
+        const val = Math.max(this.min, Math.min(this.max, newVal))
+        if (newVal === this.currentValue && newVal === val) {
           return
         }
-        const val = Math.max(this.min, Math.min(this.max, newVal))
         const percentage = (val - this.min) / (this.max - this.min)
         this.constrainValue(percentage)
       },
@@ -214,6 +214,8 @@ createComponent({
     async onClick(e) {
       const rect = await this.getOffsetX()
       this.calcProgress(e.detail.x, rect)
+      // 完成一次拖动后触发的事件
+      // @arg event.detail = {value}
       this.triggerEvent(EVENT_CHANGE, { value: this.currentValue })
     },
     async startHandler(e) {
@@ -228,6 +230,8 @@ createComponent({
       }
       const x = e.touches[0].clientX
       this.calcProgress(x, this.startDragRect)
+      // 拖动过程中触发的事件
+      // @arg event.detail = {value}
       this.triggerEvent(EVENT_CHANGING, { value: this.currentValue })
       if (__mpx_mode__ === 'web') {
         e && e.preventDefault()
@@ -235,6 +239,8 @@ createComponent({
     },
     endHandler() {
       this.startDragRect = null
+      // 完成一次拖动后触发的事件
+      // @arg event.detail = {value}
       this.triggerEvent(EVENT_CHANGE, { value: this.currentValue })
     }
   }

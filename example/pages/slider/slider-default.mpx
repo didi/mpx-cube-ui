@@ -1,0 +1,36 @@
+
+<template>
+  <cube-slider
+    bindchange="handleChange"
+    bindchanging="handleChanging"
+  >
+  </cube-slider>
+</template>
+
+<script>
+  import { createComponent } from '@mpxjs/core'
+
+  createComponent({
+    data: {
+      currentValue: false
+    },
+    methods: {
+      handleChange(e) {
+        this.currentValue = e.detail.value
+        console.log('change', this.currentValue)
+      },
+      handleChanging(e) {
+        this.currentValue = e.detail.value
+        console.log('changing', this.currentValue)
+      }
+    }
+  })
+</script>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "cube-slider": "@mpxjs/mpx-cube-ui/src/components/slider/index.mpx"
+    }
+  }
+</script>

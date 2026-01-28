@@ -1,0 +1,59 @@
+<template>
+  <base-container class="slider-view">
+    <view class="content">
+      <!-- default -->
+      <view class="section">
+        <view>基本用法</view>
+        <slider-default></slider-default>
+      </view>
+      <!-- step -->
+      <view class="section">
+        <view>设置step</view>
+        <slider-step></slider-step>
+      </view>
+      <!-- value -->
+      <view class="section">
+        <view>显示当前value</view>
+        <slider-value></slider-value>
+      </view>
+      <!-- min max -->
+      <view class="section">
+        <view>设置最小值/最大值</view>
+        <slider-min-max></slider-min-max>
+      </view>
+      <!-- slot -->
+      <view class="section">
+        <view>自定义滑块儿</view>
+        <slider-slot></slider-slot>
+      </view>
+    </view>
+  </base-container>
+</template>
+
+<script>
+  import { createPage } from '@mpxjs/core'
+
+  createPage({})
+</script>
+
+<style lang="stylus">
+.slider-view
+  height: 100vh
+  .section
+    margin: 0 -10px
+    margin-bottom: 10px
+    background-color: #f7f8fa
+</style>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "base-container": "../../components/base-container/index.mpx",
+      "slider-default": "./slider-default",
+      "slider-slot": "./slider-slot",
+      "slider-step": "./slider-step",
+      "slider-value": "./slider-value",
+      "slider-min-max": "./slider-min-max"
+    }
+  }
+</script>

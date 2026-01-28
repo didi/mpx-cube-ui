@@ -18,6 +18,7 @@
       >
         <!-- 滑块儿 -->
         <view class="cube-slider-thumb-custom" wx:style="{{ { display: customContent ? '' : 'none' } }}">
+          <!-- 自定义滑块儿 -->
           <slot></slot>
         </view>
         <view
