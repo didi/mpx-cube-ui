@@ -1,0 +1,45 @@
+@require "../../common/stylus/variable.styl"
+@require "../../common/stylus/theme/components/slider.styl"
+
+.cube-slider
+  position: relative
+  display: flex
+  align-items: center
+
+  .cube-slider-tab-area
+    position: relative
+    flex: 1 0 auto
+    display: flex
+    align-items: center
+    padding: $var(slider-padding)
+    min-height: $var(slider-track-height)
+
+    .cube-slider-handle
+      position: absolute
+      transform: translateX(-50%)
+      z-index: 1
+
+      .cube-slider-thumb
+        background-color: $var(slider-block-color)
+        border-radius: 100%
+
+    .cube-slider-track
+      position: absolute
+      left: 0
+      width: 100%
+      height: $var(slider-track-height)
+      background-color: $var(slider-background-color)
+      border-radius: ($slider-track-height / 2)
+
+      .cube-slider-step
+        height: 100%
+        background-color: $var(slider-active-color)
+        border-radius: ($slider-track-height / 2)
+  .cube-slider-value
+    position relative
+    z-index: 1
+    width: 20px
+    overflow: visible
+    margin: 0 2px
+    pointer-events: none
+
