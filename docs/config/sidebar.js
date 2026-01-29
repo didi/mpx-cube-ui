@@ -128,6 +128,10 @@ module.exports = [
           {
             title: 'Switch 滑动开关',
             path: '/components/base/switch'
+          },
+          {
+            title: 'Slider 滑动选择器',
+            path: '/components/base/slider'
           }
         ]
       },
