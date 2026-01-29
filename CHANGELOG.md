@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.4.9] - 2026-01-29
+- toast 增加动画配置，可关闭 toast 显、隐动画
+
+## [1.4.8] - 2026-01-20
+- popup rn 增加 zIndex 配置
+
 ## [1.4.7] - 2026-01-13
 - icon、button 组件 css 编译问题修复（React Native）
 
