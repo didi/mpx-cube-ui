@@ -119,17 +119,23 @@ createComponent({
             };
         },
         _blockSize() {
-            return this['block-size'] || this.blockSize;
+            const blockSize = this['block-size'] || this.blockSize || 28;
+            return Math.max(12, Math.min(blockSize, 28));
         },
         showValueLable() {
             return this['show-value'] || this.showValue;
         },
         containerStyle() {
-            const minH = Math.max(30, this._blockSize + 10);
             return {
-                minHeight: `${minH}px`,
-                paddingLeft: `${this._blockSize / 2}px`,
-                paddingRight: `${this._blockSize / 2}px`
+                marginLeft: `${this._blockSize / 2 + 4}px`,
+                marginRight: `${this._blockSize / 2 + 4}px`
+            };
+        },
+        tabAreaStyle() {
+            const minH = Math.max(12, this._blockSize) / 2;
+            return {
+                paddingTop: `${minH}px`,
+                paddingBottom: `${minH}px`
             };
         },
         handleStyle() {
@@ -207,6 +213,8 @@ createComponent({
             }
         },
         async onClick(e) {
+            if (this.disabled)
+                return;
             const rect = await this.getRect();
             this.startDragRect = rect;
             this.calcProgress(e.detail.x, rect);
@@ -215,13 +223,15 @@ createComponent({
             this.triggerEvent(EVENT_CHANGE, { value: this.currentValue });
         },
         async startHandler(e) {
+            if (this.disabled)
+                return;
             if (__mpx_mode__ === 'web') {
                 e && e.preventDefault();
             }
             this.startDragRect = await this.getRect();
         },
         moveHandler(e) {
-            if (!this.startDragRect) {
+            if (this.disabled || !this.startDragRect) {
                 return;
             }
             const x = e.touches[0].clientX;
@@ -234,6 +244,8 @@ createComponent({
             }
         },
         endHandler() {
+            if (this.disabled)
+                return;
             this.startDragRect = null;
             // 完成一次拖动后触发的事件
             // @arg event.detail = {value}

@@ -6,18 +6,19 @@
     <view
       wx:ref
       class="cube-slider-tab-area"
+      wx:style="{{ tabAreaStyle }}"
       bind:tap="onClick"
     >
       <!-- 滑块儿容器 -->
       <view
         class="cube-slider-handle"
         wx:style="{{ handleStyle }}"
-        catch:touchstart="startHandler"
-        catch:touchmove="moveHandler"
-        catch:touchend="endHandler"
+        capture-catch:touchstart="startHandler"
+        capture-catch:touchmove="moveHandler"
+        capture-catch:touchend="endHandler"
       >
         <!-- 滑块儿 -->
-        <view class="cube-slider-thumb-custom" wx:style="{{ { display: customContent ? '' : 'none' } }}">
+        <view class="cube-slider-thumb-custom" wx:style="{{ { display: customContent ? '' : 'none', ...thumbStyle } }}">
           <!-- 自定义滑块儿 -->
           <slot></slot>
         </view>
