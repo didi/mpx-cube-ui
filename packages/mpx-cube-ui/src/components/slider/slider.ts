@@ -218,6 +218,7 @@ createComponent({
       }
     },
     async onClick(e) {
+      if (this.disabled) return
       const rect = await this.getRect()
       this.startDragRect = rect
       this.calcProgress(e.detail.x, rect)
@@ -226,13 +227,14 @@ createComponent({
       this.triggerEvent(EVENT_CHANGE, { value: this.currentValue })
     },
     async startHandler(e) {
+      if (this.disabled) return
       if (__mpx_mode__ === 'web') {
         e && e.preventDefault()
       }
       this.startDragRect = await this.getRect()
     },
     moveHandler(e) {
-      if (!this.startDragRect) {
+      if (this.disabled || !this.startDragRect) {
         return
       }
       const x = e.touches[0].clientX
@@ -245,6 +247,7 @@ createComponent({
       }
     },
     endHandler() {
+      if (this.disabled) return
       this.startDragRect = null
       // 完成一次拖动后触发的事件
       // @arg event.detail = {value}

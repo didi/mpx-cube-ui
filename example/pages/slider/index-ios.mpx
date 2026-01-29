@@ -9,6 +9,7 @@
     backgroundColor="{{ '#cccccc' }}"
     activeColor="{{ '#FF6430' }}"
     block-size="{{ 28 }}"
+    disabled="{{false}}"
     show-value="{{true}}"
     custom-content="{{true}}"
     bindchange="handleChange"
