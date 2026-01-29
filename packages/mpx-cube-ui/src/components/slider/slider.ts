@@ -137,11 +137,11 @@ createComponent({
       return this['show-value'] || this.showValue
     },
     containerStyle() {
-      const minH = Math.max(30, this._blockSize + 10)
+      const minH = Math.max(30, this._blockSize + 4)
       return {
         minHeight: `${minH}px`,
-        paddingLeft: `${this._blockSize / 2}px`,
-        paddingRight: `${this._blockSize / 2}px`
+        marginLeft: `${this._blockSize / 2 + 4}px`,
+        marginRight: `${this._blockSize / 2 + 4}px`
       }
     },
     handleStyle() {
