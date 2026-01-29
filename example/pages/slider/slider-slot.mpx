@@ -32,11 +32,11 @@
 
 <style lang="stylus">
 .slider-thumb
-  width 28px
-  height 33px
-  background-image url("https://gift-pypu-cdn.didistatic.com/static/driver_miniprogram/do1_E57CMf3cLCRJiq2VxPuT")
-  background-size 100%
-  background-repeat no-repeat
+  width: 100%
+  height: 100%
+  background-image: url("https://gift-pypu-cdn.didistatic.com/static/driver_miniprogram/do1_E57CMf3cLCRJiq2VxPuT")
+  background-size: contain
+  background-repeat: no-repeat
   background-position: 0 6px
 </style>
 
