@@ -41,6 +41,10 @@ createComponent({
     preventOutside: {
       type: Boolean,
       value: false
+    },
+    transition: {
+      type: String,
+      value: 'fade'
     }
   },
   lifetimes: {

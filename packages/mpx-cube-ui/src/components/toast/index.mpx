@@ -7,7 +7,7 @@
     wx:model="{{isVisible}}"
     wx:model-prop="visible"
     wx:model-event="toggle"
-    transition="fade"
+    transition="{{ transition }}"
     mask="{{ mask }}"
     center="{{ true }}"
     maskClosable="{{ maskClosable }}"
