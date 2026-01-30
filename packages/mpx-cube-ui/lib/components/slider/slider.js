@@ -119,17 +119,23 @@ createComponent({
             };
         },
         _blockSize() {
-            return this['block-size'] || this.blockSize;
+            const blockSize = this['block-size'] || this.blockSize || 28;
+            return Math.max(12, Math.min(blockSize, 28));
         },
         showValueLable() {
             return this['show-value'] || this.showValue;
         },
         containerStyle() {
-            const minH = Math.max(30, this._blockSize + 4);
             return {
-                minHeight: `${minH}px`,
                 marginLeft: `${this._blockSize / 2 + 4}px`,
                 marginRight: `${this._blockSize / 2 + 4}px`
+            };
+        },
+        tabAreaStyle() {
+            const minH = Math.max(12, this._blockSize) / 2;
+            return {
+                paddingTop: `${minH}px`,
+                paddingBottom: `${minH}px`
             };
         },
         handleStyle() {
