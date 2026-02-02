@@ -22,7 +22,7 @@
 
 ### 设置step
 
-<!-- @example: slider-step -> template -->
+<!-- @example: slider-step -> template no-wrap -->
 
 </card>
 
@@ -30,7 +30,7 @@
 
 ### 显示当前value
 
-<!-- @example: slider-value -> template -->
+<!-- @example: slider-value -> template no-wrap -->
 
 </card>
 
@@ -38,7 +38,7 @@
 
 ### 设置最小值/最大值
 
-<!-- @example: slider-min-max -> template -->
+<!-- @example: slider-min-max -> template no-wrap -->
 
 </card>
 
