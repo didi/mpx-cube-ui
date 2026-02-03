@@ -79,7 +79,7 @@ describe('component popup unit test', function() {
         <cube-popup
           id="my-popup"
           visible="{{true}}"
-          bind:touchend="onMaskClick"
+          bind:tap="onMaskClick"
           bind:toggle="onToggle"
         >
           <view slot="default" class="my-content">test</view>
@@ -107,7 +107,7 @@ describe('component popup unit test', function() {
 
       const slotMaskDom = component.querySelector('.my-mask')
       expect(slotMaskDom).toBeTruthy()
-      slotMaskDom.dispatchEvent('touchend')
+      slotMaskDom.dispatchEvent('tap')
       await simulate.sleep(10)
 
       expect(onMaskClick).toHaveBeenCalled()
@@ -132,7 +132,7 @@ describe('component popup unit test', function() {
       component.addEventListener('toggle', onToggleFn)
 
       const mask = component.querySelector('.cube-popup-mask')
-      mask.dispatchEvent('touchend')
+      mask.dispatchEvent('tap')
       await simulate.sleep(10)
 
       expect(component.instance.isVisible).toBe(false)
