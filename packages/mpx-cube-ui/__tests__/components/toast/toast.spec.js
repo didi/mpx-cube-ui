@@ -65,7 +65,7 @@ describe('component toast unit test', function() {
       component.addEventListener('toggle', onToggleFn)
       expect(component.instance.data.isVisible).toBe(true)
       const mask = component.querySelector('.cube-toast').querySelector('.cube-popup-mask')
-      mask.dispatchEvent('touchend')
+      mask.dispatchEvent('tap')
       await simulate.sleep(5)
 
       expect(component.instance.data.isVisible).toBe(false)
