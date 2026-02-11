@@ -1,3 +1,6 @@
-import { createComponent } from '../../../common/helper/create-component'
+import { createComponent } from '@mpxjs/core'
+import rnMixin from './rn-mixin'
 
-createComponent({})
+export default createComponent({
+  mixins: [rnMixin]
+})
