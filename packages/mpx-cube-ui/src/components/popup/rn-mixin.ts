@@ -131,7 +131,14 @@ if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android' || __mpx_mode__ === 'ha
         return new Promise((resolve) => {
           this.$refs['popup-content'].boundingClientRect((res) => {
             if (res) {
-              this.contentRect = res
+              const keys = Object.keys(res)
+              const contentRect = this.contentRect
+              for (const key in keys) {
+                if (res[key] !== contentRect[key]) {
+                  this.contentRect = res
+                  break
+                }
+              }
             } else {
               this.boundingClientRectFaill = this.boundingClientRectFaill || 0
               this.boundingClientRectFaill++

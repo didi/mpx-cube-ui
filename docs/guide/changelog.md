@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.4.11] - 2026-02-03
+- popup ali fix 滚动穿透问题
+
+## [1.4.10] - 2026-02-03
+- popup rn fix 动画时调用 initContentRect，导致动画卡顿
+
+## [1.4.9] - 2026-01-29
+- toast 增加动画配置，可关闭 toast 显、隐动画
+
+## [1.4.8] - 2026-01-20
+- popup rn 增加 zIndex 配置
+
 ## [1.4.7] - 2026-01-13
 - icon、button 组件 css 编译问题修复（React Native）
 
@@ -24,6 +36,9 @@
 
 ## [1.4.0] - 2025-11-06
 - RN 组件适配鸿蒙
+
+## [1.3.17] - 2026-01-15
+- popup ali fix 滚动穿透问题
 
 ## [1.3.16] - 2025-12-05
 - button 支持阴影（React Native）
