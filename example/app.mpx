@@ -57,7 +57,7 @@
   ]
   if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
     pages = [
-      "./pages/index"
+      "./pages/button/btn-loading-rn"
     ]
   }
   module.exports = {
