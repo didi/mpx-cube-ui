@@ -13,11 +13,13 @@ if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android' || __mpx_mode__ === 'ha
       beforeAnim: {} as WechatMiniprogram.AnimationExportResult,
       middleAnim: {} as WechatMiniprogram.AnimationExportResult,
       afterAnim: {} as WechatMiniprogram.AnimationExportResult,
-      timer: null
+      timer: null,
+      count: 0,
+      time: 0
     },
     lifetimes: {
       ready() {
-        this.startLoop()
+        this.startAnim()
       },
       detached() {
         if (this.timer) {
@@ -27,6 +29,30 @@ if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android' || __mpx_mode__ === 'ha
       }
     },
     methods: {
+      startAnim() {
+        if ((this.count - 1) % 3 === 0 || (this.count - 2) % 3 === 0) {
+          this.time = 500
+        } else if (this.count !== 0 && this.count % 3 === 0) {
+          this.time = 1000
+        }
+        this.timer = setTimeout(() => {
+          if (this.count % 3 === 0) {
+            this.executeAnim('beforeAnim')
+          } else if ((this.count - 1) % 3 === 0) {
+            this.executeAnim('middleAnim')
+          } else if ((this.count - 2) % 3 === 0) {
+            this.executeAnim('afterAnim')
+          }
+          this.startAnim()
+        }, this.time)
+      },
+      executeAnim(animName) {
+        this.count++
+        this[animName] = {} as any
+        this.$nextTick(() => {
+          this[animName] = this.createDotAnimation()
+        })
+      },
       createDotAnimation() {
         const duration = DURATION / 4
         const animation = mpx.createAnimation({
@@ -38,26 +64,6 @@ if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android' || __mpx_mode__ === 'ha
         animation.scale(1).backgroundColor(ACTIVE_COLOR).step({ duration })
         animation.scale(1).backgroundColor(NORMAL_COLOR).step({ duration })
         return animation.export()
-      },
-      startLoop() {
-        this.startOnce()
-        this.timer = setInterval(() => {
-          this.startOnce()
-        }, DURATION) as any
-      },
-      startOnce() {
-        this.beforeAnim = {} as any
-        this.middleAnim = {} as any
-        this.afterAnim = {} as any
-        this.$nextTick(() => {
-          this.beforeAnim = this.createDotAnimation()
-          setTimeout(() => {
-            this.middleAnim = this.createDotAnimation()
-          }, DURATION / 4)
-          setTimeout(() => {
-            this.afterAnim = this.createDotAnimation()
-          }, DURATION / 2)
-        })
       }
     }
   }
