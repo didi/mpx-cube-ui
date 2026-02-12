@@ -2,23 +2,22 @@ import mpx, { getMixin } from '@mpxjs/core'
 
 let mixin = {} as Parameters<typeof getMixin>[0]
 
-const DURATION = 2000
-const NORMAL_COLOR = '#ccc'
-const SECONDARY_COLOR = 'rgba(204, 204, 204, 0.4)'
-const ACTIVE_COLOR = '#fff'
-
 if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android' || __mpx_mode__ === 'harmony') {
+  const DURATION = 2000
+  const NORMAL_COLOR = '#ccc'
+  const SECONDARY_COLOR = 'rgba(204, 204, 204, 0.4)'
+  const ACTIVE_COLOR = '#fff'
   mixin = {
     data: {
       beforeAnim: {} as WechatMiniprogram.AnimationExportResult,
       middleAnim: {} as WechatMiniprogram.AnimationExportResult,
-      afterAnim: {} as WechatMiniprogram.AnimationExportResult,
-      timer: null,
-      count: 0,
-      time: 0
+      afterAnim: {} as WechatMiniprogram.AnimationExportResult
     },
     lifetimes: {
       ready() {
+        this.timer = null
+        this.count = 0
+        this.time = 0
         this.startAnim()
       },
       detached() {

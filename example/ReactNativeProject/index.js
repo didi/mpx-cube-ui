@@ -54838,22 +54838,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _mpxjs_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(665);
 
 var mixin = {};
-var DURATION = 2000;
-var NORMAL_COLOR = '#ccc';
-var SECONDARY_COLOR = 'rgba(204, 204, 204, 0.4)';
-var ACTIVE_COLOR = '#fff';
 if (true) {
+  var DURATION = 2000;
+  var NORMAL_COLOR = '#ccc';
+  var SECONDARY_COLOR = 'rgba(204, 204, 204, 0.4)';
+  var ACTIVE_COLOR = '#fff';
   mixin = {
     data: {
       beforeAnim: {},
       middleAnim: {},
-      afterAnim: {},
-      timer: null,
-      count: 0,
-      time: 0
+      afterAnim: {}
     },
     lifetimes: {
       ready: function ready() {
+        this.timer = null;
+        this.count = 0;
+        this.time = 0;
         this.startAnim();
       },
       detached: function detached() {
