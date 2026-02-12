@@ -221,6 +221,13 @@ createComponent({
                 return res;
             }
             return {};
+        },
+        hiddenStyle() {
+            // RN 端使用 opacity 控制显示隐藏
+            if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android' || __mpx_mode__ === 'harmony') {
+                return this.loading ? { opacity: 0 } : null;
+            }
+            return null;
         }
     },
     methods: {

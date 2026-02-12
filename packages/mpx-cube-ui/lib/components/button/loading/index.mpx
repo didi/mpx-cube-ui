@@ -1,11 +1,11 @@
 <template>
   <view class="cube-loading">
     <view class="cube-loading-content">
-      <view @_ios|_android|_harmony class="cube-loading-origin-before"></view>
+      <view @_ios|_android|_harmony class="cube-loading-origin-before" animation="{{ beforeAnim }}"></view>
       <view class="cube-loading-origin">
-        <view class="cube-loading-middle-dot"></view>
+        <view class="cube-loading-middle-dot" animation="{{ middleAnim }}"></view>
       </view>
-      <view @_ios|_android|_harmony class="cube-loading-origin-after"></view>
+      <view @_ios|_android|_harmony class="cube-loading-origin-after" animation="{{ afterAnim }}"></view>
     </view>
   </view>
 </template>
