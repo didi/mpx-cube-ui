@@ -90,7 +90,7 @@
 
 ### 自定义星星样式
 
-需要使用cube-rate-item组件，并且对自定义的星星元素定义两种样式——普通和活跃（在.cube-rate-item_active类之下, 如设置半星则也需修改.cube-rate-item_half_active类）
+需要使用cube-rate-item组件，并且对自定义的星星元素定义两种样式——普通和活跃（在.cube-rate-item-def-active类之下, 如设置半星则也需修改.cube-rate-item-def-half-active类）
 #### 注意
 使用自定义插槽时，因微信与支付宝在wx:for以数字为参数时，起始索引不同，为避免此问题请在wx:for遍历生成cube-rate-item时以数组为参数。
 
@@ -141,10 +141,10 @@
   height: 100%
   background-size: 100%
   background-color: grey
-.cube-rate-item_active
+.cube-rate-item-def-active
   .cube-rate-item-demo
     background-color: orange
-.cube-rate-item_half_active
+.cube-rate-item-def-half-active
   .cube-rate-item-demo
     background-color: blue
 </style>
