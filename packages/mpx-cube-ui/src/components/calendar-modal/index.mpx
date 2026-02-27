@@ -1,0 +1,73 @@
+<template>
+  <view class="cube-calendar-modal">
+     <cube-popup
+      wx:model-prop="visible"
+      wx:model="{{isVisible}}"
+      wx:model-event="toggle"
+      direction="horizontal"
+      mask-closable="{{ maskClosable }}"
+      removeCatchTouch="{{ true }}"
+      bind:maskClick="maskClick"
+      position="bottom"
+      transition="move-up"
+    >
+      <view class="cube-calendar-modal-content">
+        <view class="cube-calendar-modal-title">{{title}}</view>
+        <view class="cube-calendar-modal-cross">
+          <cube-icon type="close" bindtap="cancel"/>
+        </view>
+        <cube-calendar
+          wx:ref="calendar"
+          height="{{height}}"
+          defaultDate="{{defaultDate}}"
+          maxRange="{{maxRange}}"
+          max="{{max}}"
+          min="{{min}}"
+          showOverRangeTips="{{showOverRangeTips}}"
+          maskClosable="{{maskClosable}}"
+          bind:selectDateOverRange="selectDateOverRange"
+        ></cube-calendar>
+        <cube-button class="cube-calendar-modal-button" bindtap="confirm">{{buttonText}}</cube-button>
+      </view>
+    </cube-popup>
+  </view>
+</template>
+
+<script src="./calendar-modal.ts" lang="ts"></script>
+
+<style lang="stylus" >
+@require "@mpxjs/mpx-cube-ui/src/common/stylus/helper.styl"
+@require "@mpxjs/mpx-cube-ui/src/common/stylus/mixin.styl"
+@require "@mpxjs/mpx-cube-ui/src/common/stylus/theme/components/calendar-modal.styl"
+.cube-calendar-modal-content
+  padding-top: $var(calendar-modal-content-padding-top)
+  background: #FFF
+  border-radius: $var(calendar-modal-content-border-radius)
+.cube-calendar-modal-title
+  margin: $var(calendar-modal-title-margin)
+  font-size: $var(calendar-modal-title-size)
+  color: #000
+  font-weight: bold
+.cube-calendar-modal-cross
+  position: absolute
+  top: $var(calendar-modal-cross-top)
+  right: $var(calendar-modal-cross-right)
+.cube-calendar-modal-button
+  position: relative
+  z-index: 2
+  display: flex
+  padding: $var(calendar-modal-button-padding)
+  background-color: #FFF
+</style>
+
+<script type="application/json">
+  {
+    "component": true,
+    "usingComponents": {
+      "cube-popup": "@mpxjs/mpx-cube-ui/src/components/popup/index",
+      "cube-button": "@mpxjs/mpx-cube-ui/src/components/button/index",
+      "cube-calendar": "@mpxjs/mpx-cube-ui/src/components/calendar/index",
+      "cube-icon": "../icon/index.mpx"
+    }
+  }
+</script>

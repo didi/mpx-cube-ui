@@ -1,6 +1,6 @@
 export default {
-  'entryMap': {
-    'default': [
+  entryMap: {
+    default: [
       'button',
       'button-group',
       'collapse',
@@ -46,7 +46,8 @@ export default {
           'float-ball',
           'loading',
           'collapse',
-          'tab-bar'
+          'tab-bar',
+          'calendar'
         ]
       },
       {
@@ -89,7 +90,8 @@ export default {
           'picker-popup',
           'cascade-picker-popup',
           'date-picker-popup',
-          'time-picker-popup'
+          'time-picker-popup',
+          'calendar-modal',
         ]
       }
     ],
