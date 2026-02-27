@@ -18,6 +18,7 @@
     "example:build": "cd example && npm run build:web",
     "example:dev": "cd example && npm run watch:web",
     "example:mp:dev": "cd example && npm run watch:mp",
+    "example:ios": "cd example && npm run watch:ios",
     "fix": "eslint --fix --ext .js,.ts,.mpx packages/",
     "lint": "eslint --ext .js,.ts,.mpx packages/",
     "prepare": "husky install",
