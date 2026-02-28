@@ -2,27 +2,16 @@ import { Render } from '@mpxjs/vuese-markdown-render'
 import { renderOptions } from '../common/options.js'
 import { CACHE_DIR_NAME } from '../common/constant.js'
 import { createRequire } from 'node:module'
+import { convertCssVarFormat } from '../utils/index.js'
 
 const require = createRequire(import.meta.url)
-
-/**
- * 转换CSS变量格式：$var($) -> var(--cube-), $var() -> var(--cube-), $ -> --cube-
- * @param origin 原始变量字符串
- * @returns 转换后的CSS变量字符串
- */
-const convertCssVarFormat = (origin: string): string => {
-  return origin
-    .replace(/\$var\(\$(.+)\)/g, 'var(--cube-$1)')
-    .replace(/\$var\((.+)\)/g, 'var(--cube-$1)')
-    .replace(/\$(.+)/g, '--cube-$1')
-}
 
 /**
  *  生成组件CSS变量文档
  * @param {string} component
  * @returns {string}
  */
-const genCompnentsCSSVariablesMd = function (component: string) {
+const genComponentsCSSVariablesMd = function (component: string) {
   const themeVarInfo = require(`../../${CACHE_DIR_NAME}/theme-var-info.json`)
   const defaultThemeStyle = require(`../../${CACHE_DIR_NAME}/default-theme-style.json`)
 
@@ -71,7 +60,7 @@ const genCompnentsCSSVariablesMd = function (component: string) {
         // 变量默认值
         const contentList = value.split(/\s/)
         // 正则数组顺序应由具体到抽象，目前为$var($color),$var(color),$color
-        const regexpList = [/\$var\(\$(.+)\)/, /\$var\((.+)\)/, /\$(.+)/, /\$\(,/]
+        const regexpList = [/\$var\(\$(.+)\)/, /\$var\((.+)\)/, /\$(.+)/]
         const handledList = contentList.map(content => {
           // 引用变量则处理文本为跳转链接
           if (content.includes('$')) {
@@ -83,7 +72,6 @@ const genCompnentsCSSVariablesMd = function (component: string) {
                   const varName = matchText.startsWith('$') ? matchText.slice(1) : matchText
                   if (BASE_CSS_VARIABLES_MAP.has(varName)) {
                     // 全局CSS变量
-                    // return `<a href="javascript:;" data-target="/guide/design-tokens.html#${varName}" onclick="var __BASE_URL__=window.location.pathname.slice(0, document.location.pathname.indexOf('/components'));window.location.href=__BASE_URL__+this.dataset.target">${origin}</a>`
                     return `<RouterLink to="/guide/design-tokens.html#${varName}" v-slot="{href}"> <a :href="href">${convertCssVarFormat(origin)}</a> </RouterLink>`
                   } else if (SELF_CSS_VARIABLES_MAP.has(varName)) {
                     // 自身CSS变量
@@ -91,9 +79,6 @@ const genCompnentsCSSVariablesMd = function (component: string) {
                   } else {
                     // 默认为其他同类组件CSS变量
                     return `<span>${convertCssVarFormat(origin)}</span>`
-                    // const ComponentAlias = varName.split('-')[0]
-                    // return `<a href="javascript:;" data-target="/${ComponentAlias}.html#${varName}" onclick="var __BASE_URL__=window.location.pathname.slice(0, document.location.pathname.lastIndexOf('/'));window.location.href=__BASE_URL__+this.dataset.target">${origin}</a>`
-                    // return `<RouterLink to="/component//${ComponentAlias}.html#${varName}" v-slot="{href}"><a :href="href">${origin}</a></RouterLink>`
                   }
                 })
               }
@@ -114,4 +99,4 @@ const genCompnentsCSSVariablesMd = function (component: string) {
   return code
 }
 
-export default genCompnentsCSSVariablesMd
+export default genComponentsCSSVariablesMd
