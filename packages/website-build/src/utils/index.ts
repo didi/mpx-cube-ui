@@ -89,6 +89,18 @@ const delEmptyContentLineBreaks = function (content) {
   return content
 }
 
+/**
+ * 转换CSS变量格式：$var($) -> var(--cube-), $var() -> var(--cube-), $ -> --cube-
+ * @param origin 原始变量字符串
+ * @returns 转换后的CSS变量字符串
+ */
+const convertCssVarFormat = (origin: string): string => {
+  return origin
+    .replace(/\$var\(\$(.+)\)/g, 'var(--cube-$1)')
+    .replace(/\$var\((.+)\)/g, 'var(--cube-$1)')
+    .replace(/\$(.+)/g, '--cube-$1')
+}
+
 export {
   camelize,
   isMpxFile,
@@ -96,6 +108,7 @@ export {
   capitalize,
   readFileSync,
   trimLineBreak,
+  convertCssVarFormat,
   delScriptJsonBlock,
   getExamplesMpxFiles,
   delEmptyContentLineBreaks
