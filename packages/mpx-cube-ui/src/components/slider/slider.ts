@@ -166,6 +166,9 @@ createComponent({
       }
       return style
     },
+    thumbCustomStyle() {
+      return { display: this.customContent ? '' : 'none', ...this.thumbStyle }
+    },
     trackStyle() {
       const style = {
         backgroundColor: this.backgroundColor || this.color
