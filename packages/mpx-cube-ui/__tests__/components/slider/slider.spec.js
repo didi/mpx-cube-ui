@@ -57,6 +57,28 @@ describe('component slider unit test', function () {
       expect(change).toHaveBeenCalled()
       expect(changing).toHaveBeenCalled()
     })
+
+    // disabled情况下不触发事件
+    it('disabled event check', async () => {
+      const component = newComponent({ disabled: true })
+      expect(component.dom.innerHTML).toMatchSnapshot()
+      const change = jest.fn()
+      const change2 = jest.fn()
+      const changing = jest.fn()
+      // 触发组件树中的节点自定义事件
+      component.addEventListener('change', change)
+      component.addEventListener('changing', changing)
+      const tabArea = component.querySelector('.cube-slider-tab-area')
+      const sliderHandle = component.querySelector('.cube-slider-handle')
+      tabArea.dispatchEvent('tap')
+      sliderHandle.dispatchEvent('touchstart')
+      sliderHandle.dispatchEvent('touchmove')
+      sliderHandle.dispatchEvent('touchend')
+      await simulate.sleep(10)
+      expect(change).not.toHaveBeenCalled()
+      expect(change2).not.toHaveBeenCalled()
+      expect(changing).not.toHaveBeenCalled()
+    })
   })
 
   describe('props check', () => {
