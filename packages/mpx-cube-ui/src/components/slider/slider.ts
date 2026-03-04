@@ -1,4 +1,3 @@
-import { MOUNTED } from '@mpxjs/core'
 import { createComponent } from '../../common/helper/create-component'
 
 const EVENT_CHANGE = 'change' // 完成一次拖动后触发的事件
@@ -118,10 +117,12 @@ createComponent({
       immediate: true
     }
   },
-  [MOUNTED]() {
-    this.getRect().then(res => {
-      this.startDragRect = res
-    })
+  lifetimes: {
+    ready() {
+      this.getRect().then(res => {
+        this.startDragRect = res
+      })
+    }
   },
   computed: {
     sliderClass() {
@@ -165,6 +166,9 @@ createComponent({
         delete style.backgroundColor
       }
       return style
+    },
+    thumbCustomStyle() {
+      return { display: this.customContent ? '' : 'none', ...this.thumbStyle }
     },
     trackStyle() {
       const style = {
