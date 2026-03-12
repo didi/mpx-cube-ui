@@ -18,7 +18,7 @@
         capture-catch:touchend="endHandler"
       >
         <!-- 滑块儿 -->
-        <view class="cube-slider-thumb-custom" wx:style="{{ { display: customContent ? '' : 'none', ...thumbStyle } }}">
+        <view class="cube-slider-thumb-custom" wx:style="{{ thumbCustomStyle }}">
           <!-- 自定义滑块儿 -->
           <slot></slot>
         </view>
