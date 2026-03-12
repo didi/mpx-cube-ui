@@ -8,7 +8,7 @@ exports[`component button unit test props bolder check matchSnapshot 1`] = `"<wx
 
 exports[`component button unit test props disabled check matchSnapshot 1`] = `"<wx-button style=\\"\\" class=\\"main--cube-btn main--cube-btn_disabled\\"><wx-view class=\\"main--cube-btn-content\\" style=\\"\\"></wx-view></wx-button>"`;
 
-exports[`component button unit test props icon="like" check matchSnapshot 1`] = `"<wx-button style=\\"\\" class=\\"main--cube-btn\\"><cube-icon class=\\"main--cube-btn-icon\\"><wx-view class=\\"cube-icon--cubeic cube-icon--cubeic cube-icon--cubeic-like\\" style=\\"\\"></wx-view></cube-icon><wx-view class=\\"main--cube-btn-content\\" style=\\"\\"></wx-view></wx-button>"`;
+exports[`component button unit test props icon="like" check matchSnapshot 1`] = `"<wx-button style=\\"\\" class=\\"main--cube-btn\\"><cube-icon class=\\"main--cube-btn-icon\\" style=\\"\\"><wx-view class=\\"cube-icon--cubeic cube-icon--cubeic cube-icon--cubeic-like\\" style=\\"\\"></wx-view></cube-icon><wx-view class=\\"main--cube-btn-content\\" style=\\"\\"></wx-view></wx-button>"`;
 
 exports[`component button unit test props inline check matchSnapshot 1`] = `"<wx-button style=\\"\\" class=\\"main--cube-btn main--cube-btn-inline\\"><wx-view class=\\"main--cube-btn-content\\" style=\\"\\"></wx-view></wx-button>"`;
 
@@ -44,4 +44,4 @@ exports[`component button unit test props outline primary check matchSnapshot 1`
 
 exports[`component button unit test props primary check matchSnapshot 1`] = `"<wx-button style=\\"\\" class=\\"main--cube-btn main--cube-btn-primary\\"><wx-view class=\\"main--cube-btn-content\\" style=\\"\\"></wx-view></wx-button>"`;
 
-exports[`component button unit test props tip="辅助文案" check matchSnapshot 1`] = `"<wx-button style=\\"\\" class=\\"main--cube-btn main--cube-btn-with-tip\\"><wx-view class=\\"main--cube-btn-content\\" style=\\"\\"></wx-view><wx-view class=\\"main--cube-btn-tip\\"><wx-text class=\\"main--cube-btn-tip-text\\">辅助文案</wx-text></wx-view></wx-button>"`;
+exports[`component button unit test props tip="辅助文案" check matchSnapshot 1`] = `"<wx-button style=\\"\\" class=\\"main--cube-btn main--cube-btn-with-tip\\"><wx-view class=\\"main--cube-btn-content\\" style=\\"\\"></wx-view><wx-view class=\\"main--cube-btn-tip\\" style=\\"\\"><wx-text class=\\"main--cube-btn-tip-text\\">辅助文案</wx-text></wx-view></wx-button>"`;
