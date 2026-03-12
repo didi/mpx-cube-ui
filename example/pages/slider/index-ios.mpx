@@ -1,0 +1,58 @@
+
+<template>
+  <cube-slider
+    value="{{ 30 }}"
+    min="{{ 0 }}"
+    max="{{ 100 }}"
+    step="{{ 1 }}"
+    class="slider"
+    backgroundColor="{{ '#cccccc' }}"
+    activeColor="{{ '#FF6430' }}"
+    block-size="{{ 28 }}"
+    disabled="{{false}}"
+    show-value="{{true}}"
+    custom-content="{{true}}"
+    bindchange="handleChange"
+    bindchanging="handleChanging"
+  >
+    <view class="slider-thumb"></view>
+  </cube-slider>
+</template>
+
+<script>
+  import { createPage } from '@mpxjs/core'
+
+  createPage({
+    data: {
+      currentValue: 0
+    },
+    methods: {
+      handleChange(e) {
+        this.currentValue = e.detail.value
+        console.log('change', this.currentValue)
+      },
+      handleChanging(e) {
+        this.currentValue = e.detail.value
+        console.log('changing', this.currentValue)
+      }
+    }
+  })
+</script>
+
+<style lang="stylus">
+.slider-thumb
+  width: 100%
+  height: 100%
+  background-image: url("https://gift-pypu-cdn.didistatic.com/static/driver_miniprogram/do1_E57CMf3cLCRJiq2VxPuT")
+  background-size: contain
+  background-repeat: no-repeat
+  background-position: 0 6px
+</style>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "cube-slider": "@mpxjs/mpx-cube-ui/src/components/slider/index.mpx"
+    }
+  }
+</script>

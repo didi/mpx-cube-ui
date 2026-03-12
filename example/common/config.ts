@@ -63,7 +63,8 @@ export default {
           'date-picker',
           'time-picker',
           'rate',
-          'switch'
+          'switch',
+          'slider'
         ]
       },
       {
