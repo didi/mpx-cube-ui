@@ -15,22 +15,9 @@ interface StickyEleInstance {
 }
 
 createComponent({
-  options: {
-    multipleSlots: true,
-    styleIsolation: 'shared'
-  },
   relations: {
     [StickyEle]: {
-      type: 'child',
-      linked() {
-        this._scheduleRefresh()
-      },
-      linkChanged() {
-        this._scheduleRefresh()
-      },
-      unlinked() {
-        this._scheduleRefresh()
-      }
+      type: 'child'
     }
   },
   properties: {
@@ -42,17 +29,12 @@ createComponent({
       type: Boolean,
       value: true
     },
-    fixedShowAni: {
-      type: String,
-      value: ''
-    },
     offset: {
       type: Number,
       value: 0
     }
   },
   data: {
-    cubeSticky: true,
     diff: 0,
     currentDiff: 0,
     currentIndex: -1,
@@ -64,13 +46,13 @@ createComponent({
     eles: [] as StickyEleInstance[]
   },
   computed: {
-    fixedShowAniComputed() {
-      return this.fixedShowAni || (this.checkTop ? '' : 'cube-sticky-fixed-fade')
+    containerStyle() {
+      return {}
     },
-    fixedVisible() {
-      if (this.currentIndex === -1) return false
-      if (__mpx_mode__ === 'web') return true
-      return this.fixedEleHeight > 0
+    fixedEleStyle() {
+      return {
+        top: `${this.offset}px`
+      }
     }
   },
   watch: {
@@ -137,26 +119,6 @@ createComponent({
       const nodes = this.getRelationNodes(StickyEle) as unknown as StickyEleInstance[] | undefined
       return nodes || []
     },
-    _addClass(el: any, className: string) {
-      if (!el) return
-      if (el.classList) {
-        el.classList.add(className)
-      } else if (el.classList && el.classList.contains) {
-        const classes = el.className || ''
-        if (!classes.includes(className)) {
-          el.className = `${classes} ${className}`.trim()
-        }
-      }
-    },
-    _removeClass(el: any, className: string) {
-      if (!el) return
-      if (el.classList) {
-        el.classList.remove(className)
-      } else {
-        const classes = (el.className || '').split(' ').filter((c: string) => c !== className)
-        el.className = classes.join(' ')
-      }
-    },
     // @vuese
     // 刷新 sticky 内部元素位置与高度
     refresh() {
@@ -210,11 +172,6 @@ createComponent({
       this.diff = 0
     },
     _updateFixedEleHeight() {
-      if (__mpx_mode__ === 'web') {
-        const fixedEle = (this.$refs as any)?.fixedEle as HTMLElement | undefined
-        this.fixedEleHeight = fixedEle?.offsetHeight || 0
-        return
-      }
       const query = this.createSelectorQuery()
       query.select('.cube-sticky-fixed').boundingClientRect((rect: any) => {
         this.fixedEleHeight = rect?.height || 0
@@ -222,21 +179,6 @@ createComponent({
       query.exec()
     },
     _calculateHeight(done?: () => void) {
-      if (__mpx_mode__ === 'web') {
-        const eles = this._getEles() as any[]
-        this.positions = []
-        this.heights = []
-        eles.forEach((ele, i) => {
-          const el = ele?.$el as HTMLElement | undefined
-          if (!el) return
-          this.positions[i] = el.offsetTop
-          this.heights[i] = el.offsetHeight
-        })
-        this._updateFixedEleHeight()
-        done && done()
-        return
-      }
-
       const query = this.createSelectorQuery()
       let rootTop = 0
 

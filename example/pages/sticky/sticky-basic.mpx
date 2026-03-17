@@ -1,7 +1,7 @@
 <template>
   <view>
     <view>{{ pos }}</view>
-    <cube-sticky pos="{{pos}}">
+    <cube-sticky pos="{{pos}}" offset="{{ 60 }}">
       <scroll-view
         scroll-y="{{ true }}"
         bindscroll="onScroll"
