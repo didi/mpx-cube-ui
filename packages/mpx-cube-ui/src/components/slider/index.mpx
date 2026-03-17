@@ -16,6 +16,7 @@
         capture-catch:touchstart="startHandler"
         capture-catch:touchmove="moveHandler"
         capture-catch:touchend="endHandler"
+        catchtap="catchtapEvent"
       >
         <!-- 滑块儿 -->
         <view class="cube-slider-thumb-custom" wx:style="{{ thumbCustomStyle }}">

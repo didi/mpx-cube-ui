@@ -46,6 +46,7 @@ export default {
           'float-ball',
           'loading',
           'collapse',
+          'sticky',
           'tab-bar'
         ]
       },

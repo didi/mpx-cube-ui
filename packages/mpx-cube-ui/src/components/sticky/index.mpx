@@ -1,0 +1,24 @@
+<template>
+  <view class="cube-sticky" style="{{containerStyle}}">
+    <slot></slot>
+    <view class="cube-sticky-fixed" wx:ref="fixedEle">
+    </view>
+  </view>
+</template>
+
+<script lang="ts" src="./sticky.ts"></script>
+
+<style lang="stylus">
+/* @mpx-if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android' || __mpx_mode__ === 'harmony') */
+@require './css.rn.styl'
+/* @mpx-else */
+@require './css.styl'
+/* @mpx-endif */
+</style>
+
+<script type="application/json">
+  {
+    "styleIsolation": "shared",
+    "component": true
+  }
+</script>
