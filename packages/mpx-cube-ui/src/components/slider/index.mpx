@@ -1,37 +1,40 @@
 <template>
   <view
     wx:class="{{ sliderClass }}"
-    wx:style="{{ containerStyle }}"
+    wx:style="{{ { ...containerStyle, ...tabAreaStyle } }}"
   >
-    <view
-      wx:ref
-      class="cube-slider-tab-area"
-      wx:style="{{ tabAreaStyle }}"
-      bind:tap="onClick"
+    <gesture
+      ontouchstart="{{startHandler}}"
+      ontouchmove="{{moveHandler}}"
+      ontonouchend="{{endHandler}}"
     >
-      <!-- 滑块儿容器 -->
       <view
-        class="cube-slider-handle"
-        wx:style="{{ handleStyle }}"
-        capture-catch:touchstart="startHandler"
-        capture-catch:touchmove="moveHandler"
-        capture-catch:touchend="endHandler"
+        wx:ref
+        class="cube-slider-tab-area"
+        wx:style="{{ tabAreaStyle }}"
+        bind:tap="onClick"
       >
-        <!-- 滑块儿 -->
-        <view class="cube-slider-thumb-custom" wx:style="{{ thumbCustomStyle }}">
-          <!-- 自定义滑块儿 -->
-          <slot></slot>
-        </view>
+        <!-- 滑块儿容器 -->
         <view
-          wx:if="{{!customContent}}"
-          class="cube-slider-thumb"
-          wx:style="{{ thumbStyle }}"
-        ></view>
+          class="cube-slider-handle"
+          wx:style="{{ handleStyle }}"
+        >
+          <!-- 滑块儿 -->
+          <view class="cube-slider-thumb-custom" wx:style="{{ thumbCustomStyle }}">
+            <!-- 自定义滑块儿 -->
+            <slot></slot>
+          </view>
+          <view
+            wx:if="{{!customContent}}"
+            class="cube-slider-thumb"
+            wx:style="{{ thumbStyle }}"
+          ></view>
+        </view>
+        <view class="cube-slider-track" wx:style="{{ trackStyle }}">
+          <view class="cube-slider-step" wx:style="{{ stepStyle }}"></view>
+        </view>
       </view>
-      <view class="cube-slider-track" wx:style="{{ trackStyle }}">
-        <view class="cube-slider-step" wx:style="{{ stepStyle }}"></view>
-      </view>
-    </view>
+    </gesture>
     <view wx:if="{{ showValueLable }}" class="cube-slider-value">
       <text
         numberOfLines@_ios|_android|_harmony="{{1}}"
@@ -54,6 +57,9 @@
 <script type="application/json">
   {
     "styleIsolation": "shared",
-    "component": true
+    "component": true,
+    "usingComponents": {
+      "gesture": "./gesture.tsx"
+    }
   }
 </script>
