@@ -32,18 +32,14 @@ const Slider = ({
   })
 
   return createElement(
-    View,
-    {}, 
+    GestureDetector,
+    {
+      gesture: panGesture
+    },
     createElement(
-      GestureDetector,
-      {
-        gesture: panGesture
-      },
-      createElement(
-        View,
-        {},
-        ...Children.toArray(children)
-      )
+      View,
+      {},
+      ...Children.toArray(children)
     )
   )
 }
