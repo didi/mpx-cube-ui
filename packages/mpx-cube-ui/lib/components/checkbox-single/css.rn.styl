@@ -6,21 +6,27 @@
 .cube-checkbox-label
   display flex
   align-items center
-  padding $var(checkbox-label-padding)
+  padding-top $var(checkbox-label-padding-top)
+  padding-bottom $var(checkbox-label-padding-bottom)
+  padding-left $var(checkbox-label-padding-left)
+  padding-right $var(checkbox-label-padding-right)
   box-sizing border-box
   word-break break-word
   word-wrap break-word
 .cube-checkbox-label-position
   flex-direction row-reverse
   justify-content space-between
-.cube-checkbox-ui_position
-  margin $var(checkbox-ui-margin)
 .cube-checkbox-ui
   width $var(checkbox-ui-width)
   height $var(checkbox-ui-height)
   min-width $var(checkbox-ui-width)
   margin-right $var(checkbox-ui-margin-right)
   box-sizing border-box
+.cube-checkbox-ui_position
+  margin-top: $var(checkbox-ui-position-margin-top)
+  margin-bottom: $var(checkbox-ui-position-margin-bottom)
+  margin-left: $var(checkbox-ui-position-margin-left)
+  margin-right: $var(checkbox-ui-position-margin-right)
 .cube-checkbox-ui-round
   border-width: 1px
   border-color: #C8C9CC

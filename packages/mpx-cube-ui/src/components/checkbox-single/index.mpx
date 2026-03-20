@@ -12,7 +12,7 @@
           class="cube-checkbox-inner-ui"
           wx:class="{{ checkboxInnerUiClass }}"
           enable-var="{{ true }}"
-          src="{{ isSquare ? 'https://dpubstatic.udache.com/static/dpubimg/B_72kGm0gYQHCOmAZLogl_right-square-2.svg' : 'https://dpubstatic.udache.com/static/dpubimg/wVn01ZWbivcYPXsPmBv8c_right.svg' }}"
+          src="{{ isSquare ? 'https://dpubstatic.udache.com/static/dpubimg/uS2n9DlRRxLZdND56hyPZ_right-square.png' : 'https://dpubstatic.udache.com/static/dpubimg/WJ4o6TwcmHnPBgq8xGecr_right.png' }}"
         ></image>
         <view @_wx|_ali|_web class="cube-checkbox-inner-ui" wx:class="{{ checkboxInnerUiClass }}"></view>
       </view>
