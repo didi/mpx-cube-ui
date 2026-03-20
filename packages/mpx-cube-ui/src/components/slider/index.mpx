@@ -6,9 +6,10 @@
     <gesture
       wx:if="{{ __mpx_mode__ === 'android' || __mpx_mode__ === 'ios' || __mpx_mode__ === 'harmony' }}"
       class="slider-gesture-container"
-      ontouchstart="{{startHandler}}"
-      ontouchmove="{{moveHandler}}"
-      ontonouchend="{{endHandler}}"
+      disabled="{{ disabled }}"
+      ontouchstart="{{ startHandler }}"
+      ontouchmove="{{ moveHandler }}"
+      ontonouchend="{{ endHandler }}"
     >
       <view
         wx:ref

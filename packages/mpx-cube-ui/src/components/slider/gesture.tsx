@@ -4,6 +4,7 @@ import { createElement, useMemo, Children } from 'react'
 import { GestureDetector, Gesture } from 'react-native-gesture-handler'
 
 const Slider = ({
+  disabled,
   ontouchstart,
   ontouchmove,
   ontonouchend,
@@ -12,7 +13,7 @@ const Slider = ({
 
   const panGesture = useMemo(() => {
     return Gesture.Pan()
-      .enabled(true) // 通过手势启用状态控制是否可拖拽
+      .enabled(!disabled) // 通过手势启用状态控制是否可拖拽
       .onBegin(() => {
         'worklet'
         runOnJS(ontouchstart)()
