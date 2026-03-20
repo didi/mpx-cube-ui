@@ -1,7 +1,7 @@
 import { View } from 'react-native'
+import { runOnJS } from 'react-native-reanimated'
 import { createElement, useMemo, Children } from 'react'
 import { GestureDetector, Gesture } from 'react-native-gesture-handler'
-import { runOnJS } from 'react-native-reanimated';
 
 const Slider = ({
   ontouchstart,

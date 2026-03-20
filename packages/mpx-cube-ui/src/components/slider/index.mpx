@@ -1,9 +1,10 @@
 <template>
   <view
     wx:class="{{ sliderClass }}"
-    wx:style="{{ { ...containerStyle, ...tabAreaStyle } }}"
+    wx:style="{{ containerStyle }}"
   >
     <gesture
+      wx:if="{{ __mpx_mode__ === 'android' || __mpx_mode__ === 'ios' || __mpx_mode__ === 'harmony' }}"
       ontouchstart="{{startHandler}}"
       ontouchmove="{{moveHandler}}"
       ontonouchend="{{endHandler}}"
@@ -35,6 +36,36 @@
         </view>
       </view>
     </gesture>
+    <view
+      wx:ref
+      wx:else
+      class="cube-slider-tab-area"
+      wx:style="{{ tabAreaStyle }}"
+      bind:tap="onClick"
+    >
+      <!-- 滑块儿容器 -->
+      <view
+        class="cube-slider-handle"
+        wx:style="{{ handleStyle }}"
+        capture-catch:touchstart="startHandler"
+        capture-catch:touchmove="moveHandler"
+        capture-catch:touchend="endHandler"
+      >
+        <!-- 滑块儿 -->
+        <view class="cube-slider-thumb-custom" wx:style="{{ { display: customContent ? '' : 'none', ...thumbStyle } }}">
+          <!-- 自定义滑块儿 -->
+          <slot></slot>
+        </view>
+        <view
+          wx:if="{{!customContent}}"
+          class="cube-slider-thumb"
+          wx:style="{{ thumbStyle }}"
+        ></view>
+      </view>
+      <view class="cube-slider-track" wx:style="{{ trackStyle }}">
+        <view class="cube-slider-step" wx:style="{{ stepStyle }}"></view>
+      </view>
+    </view>
     <view wx:if="{{ showValueLable }}" class="cube-slider-value">
       <text
         numberOfLines@_ios|_android|_harmony="{{1}}"
@@ -54,12 +85,20 @@
 /* @mpx-endif */
 </style>
 
-<script type="application/json">
-  {
+<script name="json">
+  const isNative = __mpx_mode__ === 'ios' || __mpx_mode__ === 'android' || __mpx_mode__ === 'harmony'
+  const base = {
     "styleIsolation": "shared",
-    "component": true,
-    "usingComponents": {
-      "gesture": "./gesture.tsx"
+    "component": true
+  }
+  if (isNative) {
+    module.exports = {
+      ...base,
+      "usingComponents": {
+        "gesture": "./gesture.tsx"
+      }
     }
+  } else {
+    module.exports = base
   }
 </script>

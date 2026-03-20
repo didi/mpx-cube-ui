@@ -139,10 +139,18 @@ createComponent({
       return this['show-value'] || this.showValue
     },
     containerStyle() {
-      return {
+      const baseStyle = {
         marginLeft: `${this._blockSize / 2 + 4}px`,
         marginRight: `${this._blockSize / 2 + 4}px`
       }
+      const isNative = __mpx_mode__ === 'ios' || __mpx_mode__ === 'android' || __mpx_mode__ === 'harmony'
+      if (isNative) {
+        return {
+          ...baseStyle,
+          ...this.tabAreaStyle
+        }
+      }
+      return baseStyle
     },
     tabAreaStyle() {
       const minH = Math.max(12, this._blockSize) / 2
