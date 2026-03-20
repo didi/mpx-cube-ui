@@ -3,8 +3,42 @@
     wx:class="{{ sliderClass }}"
     wx:style="{{ containerStyle }}"
   >
+    <gesture
+      wx:if="{{ __mpx_mode__ === 'android' || __mpx_mode__ === 'ios' || __mpx_mode__ === 'harmony' }}"
+      ontouchstart="{{startHandler}}"
+      ontouchmove="{{moveHandler}}"
+      ontonouchend="{{endHandler}}"
+    >
+      <view
+        wx:ref
+        class="cube-slider-tab-area"
+        wx:style="{{ tabAreaStyle }}"
+        bind:tap="onClick"
+      >
+        <!-- 滑块儿容器 -->
+        <view
+          class="cube-slider-handle"
+          wx:style="{{ handleStyle }}"
+        >
+          <!-- 滑块儿 -->
+          <view class="cube-slider-thumb-custom" wx:style="{{ thumbCustomStyle }}">
+            <!-- 自定义滑块儿 -->
+            <slot></slot>
+          </view>
+          <view
+            wx:if="{{!customContent}}"
+            class="cube-slider-thumb"
+            wx:style="{{ thumbStyle }}"
+          ></view>
+        </view>
+        <view class="cube-slider-track" wx:style="{{ trackStyle }}">
+          <view class="cube-slider-step" wx:style="{{ stepStyle }}"></view>
+        </view>
+      </view>
+    </gesture>
     <view
       wx:ref
+      wx:else
       class="cube-slider-tab-area"
       wx:style="{{ tabAreaStyle }}"
       bind:tap="onClick"
@@ -18,7 +52,7 @@
         capture-catch:touchend="endHandler"
       >
         <!-- 滑块儿 -->
-        <view class="cube-slider-thumb-custom" wx:style="{{ thumbCustomStyle }}">
+        <view class="cube-slider-thumb-custom" wx:style="{{ { display: customContent ? '' : 'none', ...thumbStyle } }}">
           <!-- 自定义滑块儿 -->
           <slot></slot>
         </view>
@@ -53,9 +87,20 @@
 
 
 
-<script type="application/json">
-  {
+<script name="json">
+  const isNative = __mpx_mode__ === 'ios' || __mpx_mode__ === 'android' || __mpx_mode__ === 'harmony'
+  const base = {
     "styleIsolation": "shared",
     "component": true
+  }
+  if (isNative) {
+    module.exports = {
+      ...base,
+      "usingComponents": {
+        "gesture": "./gesture"
+      }
+    }
+  } else {
+    module.exports = base
   }
 </script>
