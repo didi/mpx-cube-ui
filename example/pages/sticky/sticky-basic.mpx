@@ -5,7 +5,7 @@
       <scroll-view
         scroll-y="{{ true }}"
         bindscroll="onScroll"
-        style="height: 400px"
+        style="height: 400px;position:relative"
       >
         <cube-sticky-ele eleKey="1">
           <view class="sticky-header">吸顶标题 1</view>

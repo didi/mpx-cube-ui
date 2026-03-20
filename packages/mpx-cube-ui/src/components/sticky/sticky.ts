@@ -1,4 +1,3 @@
-import { MOUNTED } from '@mpxjs/core'
 import { createComponent } from '../../common/helper/create-component'
 import StickyEle from './sticky-ele/index.mpx?resolve'
 
@@ -105,8 +104,10 @@ createComponent({
       this.triggerEvent(EVENT_DIFF_CHANGE, { diff: newVal, height })
     }
   },
-  [MOUNTED]() {
-    this.refresh()
+  lifetimes: {
+    ready() {
+      this.refresh()
+    }
   },
   methods: {
     _scheduleRefresh() {
