@@ -78,26 +78,39 @@ createComponent({
       this.currentKey = currentKey
       this.triggerEvent(EVENT_CHANGE, { current: currentKey, index: newIndex })
 
-      this.$nextTick(() => {
-        if (fixedSlot) {
-          this.fixedEleHeight = fixedEle?.offsetHeight || 0
-        } else {
-          const oldChild = fixedEle?.firstElementChild
-          if (oldChild && oldEle && (oldEle as any).$el) {
-            (oldEle as any).$el.firstElementChild.appendChild(oldChild)
-            oldEle.refresh && oldEle.refresh()
-          }
-          if (newEle && (newEle as any).$el) {
-            const newChild = (newEle as any).$el.firstElementChild?.firstElementChild
-            if (newChild) {
-              fixedEle?.appendChild(newChild)
-            }
+      if (__mpx_mode__ === 'web') {
+        this.$nextTick(() => {
+          if (fixedSlot) {
             this.fixedEleHeight = fixedEle?.offsetHeight || 0
           } else {
-            this.fixedEleHeight = 0
+            const oldChild = fixedEle?.firstElementChild
+            if (oldChild && oldEle && (oldEle as any).$el) {
+              (oldEle as any).$el.firstElementChild.appendChild(oldChild)
+              oldEle.refresh && oldEle.refresh()
+            }
+            if (newEle && (newEle as any).$el) {
+              const newChild = (newEle as any).$el.firstElementChild?.firstElementChild
+              if (newChild) {
+                fixedEle?.appendChild(newChild)
+              }
+              this.fixedEleHeight = fixedEle?.offsetHeight || 0
+            } else {
+              this.fixedEleHeight = 0
+            }
           }
-        }
-      })
+        })
+      } else {
+        oldEle?.refresh()
+        oldEle?.setContentStyle({})
+        newEle.setContentStyle({
+          position: 'fixed',
+          top: this.rootRect.top + this.offset + 'px',
+          left: this.rootRect.left + 'px',
+          right: this.rootRect.right + 'px',
+          width: this.rects[newIndex].width + 'px'
+        })
+        console.log(newEle.setStyle, this.rootRect, this.rects[newIndex])
+      }
     },
     currentDiff(newVal: number) {
       const height = this.heights[this.currentIndex] || 0
@@ -132,6 +145,7 @@ createComponent({
       })
     },
     computeCurrentSticky(scrollY: number) {
+      console.log(scrollY)
       scrollY += this.offset
 
       const positions = this.positions
@@ -180,18 +194,27 @@ createComponent({
       query.exec()
     },
     _calculateHeight(done?: () => void) {
-      const query = this.createSelectorQuery()
+      const nodes = this._getEles()
       let rootTop = 0
 
+      this.positions = []
+      this.heights = []
+      this.rects = []
+
+      const query = this.createSelectorQuery()
       query.select('.cube-sticky').boundingClientRect((rootRect: any) => {
+        this.rootRect = rootRect
         rootTop = rootRect?.top || 0
+        this.rootTop = rootTop
       })
-      query.selectAll('.cube-sticky-ele').boundingClientRect((rects: any[]) => {
-        this.positions = []
-        this.heights = []
-        ;(rects || []).forEach((rect, i) => {
-          this.positions[i] = (rect?.top || 0) - rootTop
-          this.heights[i] = rect?.height || 0
+      nodes.forEach((node: StickyEleInstance, index: number) => {
+        query.in(node)
+        query.selectAll('.cube-sticky-ele').boundingClientRect((rects: any[]) => {
+          (rects || []).forEach((rect) => {
+            this.rects.push(rect)
+            this.positions[index] = (rect?.top || 0) - rootTop
+            this.heights[index] = rect?.height || 0
+          })
         })
       })
       query.exec(() => {

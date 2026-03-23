@@ -3,7 +3,7 @@
     class="cube-sticky-ele"
     wx:style="{{ eleHeightStyle }}"
   >
-    <view class="cube-sticky-ele-content">
+    <view class="cube-sticky-ele-content" wx:style="{{ eleContentStyle }}">
       <slot></slot>
     </view>
   </view>

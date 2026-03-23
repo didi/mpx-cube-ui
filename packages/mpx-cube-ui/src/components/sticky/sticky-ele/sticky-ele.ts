@@ -12,7 +12,8 @@ createComponent({
   data: {
     cubeStickyEle: true,
     on: false,
-    eleHeight: 'auto'
+    eleHeight: 'auto',
+    eleContentStyle: ''
   },
   computed: {
     eleHeightStyle() {
@@ -27,6 +28,9 @@ createComponent({
     }
   },
   methods: {
+    setContentStyle(eleContentStyle) {
+      this.eleContentStyle = eleContentStyle
+    },
     setOn(on: boolean) {
       this.on = on
     },
@@ -34,6 +38,8 @@ createComponent({
       // 重置高度为 auto，然后重新计算并设置固定高度
       this.eleHeight = 'auto'
       const query = this.createSelectorQuery()
+      // eslint-disable-next-line
+      // @ts-ignore
       const that = this
       query.select('.cube-sticky-ele').boundingClientRect((rect: any) => {
         if (rect && rect.height > 0) {
