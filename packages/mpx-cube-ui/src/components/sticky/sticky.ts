@@ -41,7 +41,6 @@ createComponent({
     fixedEleHeight: 0,
     positions: [] as number[],
     heights: [] as number[],
-    _refreshTimer: null as unknown as ReturnType<typeof setTimeout>,
     eles: [] as StickyEleInstance[]
   },
   computed: {
@@ -109,7 +108,6 @@ createComponent({
           right: this.rootRect.right + 'px',
           width: this.rects[newIndex].width + 'px'
         })
-        console.log(newEle.setStyle, this.rootRect, this.rects[newIndex])
       }
     },
     currentDiff(newVal: number) {
@@ -123,12 +121,6 @@ createComponent({
     }
   },
   methods: {
-    _scheduleRefresh() {
-      clearTimeout(this._refreshTimer)
-      this._refreshTimer = setTimeout(() => {
-        this.refresh()
-      }, 0)
-    },
     _getEles(): StickyEleInstance[] {
       const nodes = this.getRelationNodes(StickyEle) as unknown as StickyEleInstance[] | undefined
       return nodes || []
@@ -145,7 +137,6 @@ createComponent({
       })
     },
     computeCurrentSticky(scrollY: number) {
-      console.log(scrollY)
       scrollY += this.offset
 
       const positions = this.positions

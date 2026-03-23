@@ -59,6 +59,7 @@
   if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
     pages = [
       "./pages/sticky/sticky-basic"
+      // "./pages/popup/popup-content"
     ]
   }
   module.exports = {

@@ -1,7 +1,7 @@
 <template>
   <view>
     <view>{{ pos }}</view>
-    <cube-sticky pos="{{pos}}" offset="{{ 60 }}">
+    <cube-sticky pos="{{pos}}">
       <scroll-view
         scroll-y="{{ true }}"
         bindscroll="onScroll"
@@ -33,9 +33,9 @@
 </template>
 
 <script>
-import { createComponent } from '@mpxjs/core'
+import { createPage } from '@mpxjs/core'
 
-createComponent({
+createPage({
   options: {
     styleIsolation: 'shared'
   },

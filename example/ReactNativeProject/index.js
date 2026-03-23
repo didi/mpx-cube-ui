@@ -1461,8 +1461,7 @@ __webpack_require__.g.currentInject = {
 };
 __webpack_require__.g.currentInject.render = function (createElement, getComponent) {
   return createElement(getComponent("mpx-view"), null, createElement(getComponent("mpx-view"), null, createElement(getComponent("mpx-inline-text"), null, this.pos)), createElement(getComponent("cube-sticky"), {
-  pos: this.pos,
-  offset: 60
+  pos: this.pos
 }, createElement(getComponent("mpx-scroll-view"), {
   "scroll-y": true,
   bindscroll: this.onScroll,
@@ -1550,9 +1549,10 @@ __webpack_require__.g.currentInject.render = function (createElement, getCompone
   ishost: true,
   style: this.__getStyle("mpx-root-view host-_5575c544", "", "", "")
 }, createElement(getComponent("mpx-view"), {
+  ref: this.__getRefVal('node', [[".", this.__getClass("cube-sticky", "")]], "ref_fn_1"),
   style: this.__getStyle("cube-sticky", "", "", this.containerStyle)
 }, this.__getSlot(), createElement(getComponent("mpx-view"), {
-  ref: this.__getRefVal('node', [["", "fixedEle"]], "ref_fn_1"),
+  ref: this.__getRefVal('node', [["", "fixedEle"]], "ref_fn_2"),
   style: this.__getStyle("cube-sticky-fixed", "", "", this.fixedEleStyle)
 })));
 };
@@ -14477,7 +14477,6 @@ var EVENT_DIFF_CHANGE = 'diff-change';
     fixedEleHeight: 0,
     positions: [],
     heights: [],
-    _refreshTimer: null,
     eles: []
   },
   computed: {
@@ -14529,7 +14528,7 @@ var EVENT_DIFF_CHANGE = 'diff-change';
           right: this.rootRect.right + 'px',
           width: this.rects[newIndex].width + 'px'
         });
-        console.log(newEle.setStyle, this.rootRect, this.rects[newIndex]);
+        console.log(newEle.setContentStyle, this.rootRect, this.rects[newIndex]);
       }
     },
     currentDiff: function currentDiff(newVal) {
@@ -14546,13 +14545,6 @@ var EVENT_DIFF_CHANGE = 'diff-change';
     }
   },
   methods: {
-    _scheduleRefresh: function _scheduleRefresh() {
-      var _this2 = this;
-      clearTimeout(this._refreshTimer);
-      this._refreshTimer = setTimeout(function () {
-        _this2.refresh();
-      }, 0);
-    },
     _getEles: function _getEles() {
       var nodes = this.getRelationNodes((_sticky_ele_index_mpx_resolve__WEBPACK_IMPORTED_MODULE_1___default()));
       return nodes || [];
@@ -14560,19 +14552,18 @@ var EVENT_DIFF_CHANGE = 'diff-change';
     // @vuese
     // 刷新 sticky 内部元素位置与高度
     refresh: function refresh() {
-      var _this3 = this;
+      var _this2 = this;
       this.$nextTick(function () {
-        _this3.eles = _this3._getEles();
-        _this3.eles.forEach(function (ele) {
+        _this2.eles = _this2._getEles();
+        _this2.eles.forEach(function (ele) {
           return ele.refresh && ele.refresh();
         });
-        _this3._calculateHeight(function () {
-          _this3.computeCurrentSticky(_this3.pos);
+        _this2._calculateHeight(function () {
+          _this2.computeCurrentSticky(_this2.pos);
         });
       });
     },
     computeCurrentSticky: function computeCurrentSticky(scrollY) {
-      console.log(scrollY);
       scrollY += this.offset;
       var positions = this.positions;
       var heights = this.heights;
@@ -14608,38 +14599,40 @@ var EVENT_DIFF_CHANGE = 'diff-change';
       this.diff = 0;
     },
     _updateFixedEleHeight: function _updateFixedEleHeight() {
-      var _this4 = this;
+      var _this3 = this;
       var query = this.createSelectorQuery();
       query.select('.cube-sticky-fixed').boundingClientRect(function (rect) {
-        _this4.fixedEleHeight = (rect === null || rect === void 0 ? void 0 : rect.height) || 0;
+        _this3.fixedEleHeight = (rect === null || rect === void 0 ? void 0 : rect.height) || 0;
       });
       query.exec();
     },
     _calculateHeight: function _calculateHeight(done) {
-      var _this5 = this;
+      var _this4 = this;
       var nodes = this._getEles();
       var rootTop = 0;
       this.positions = [];
       this.heights = [];
       this.rects = [];
+      // query.select('.cube-sticky').boundingClientRect((rootRect: any) => {
       var query = this.createSelectorQuery();
       query.select('.cube-sticky').boundingClientRect(function (rootRect) {
-        _this5.rootRect = rootRect;
+        _this4.rootRect = rootRect;
         rootTop = (rootRect === null || rootRect === void 0 ? void 0 : rootRect.top) || 0;
-        _this5.rootTop = rootTop;
+        _this4.rootTop = rootTop;
       });
       nodes.forEach(function (node, index) {
         query.in(node);
         query.selectAll('.cube-sticky-ele').boundingClientRect(function (rects) {
+          console.log(rects);
           (rects || []).forEach(function (rect) {
-            _this5.rects.push(rect);
-            _this5.positions[index] = ((rect === null || rect === void 0 ? void 0 : rect.top) || 0) - rootTop;
-            _this5.heights[index] = (rect === null || rect === void 0 ? void 0 : rect.height) || 0;
+            _this4.rects.push(rect);
+            _this4.positions[index] = ((rect === null || rect === void 0 ? void 0 : rect.top) || 0) - rootTop;
+            _this4.heights[index] = (rect === null || rect === void 0 ? void 0 : rect.height) || 0;
           });
         });
       });
       query.exec(function () {
-        _this5._updateFixedEleHeight();
+        _this4._updateFixedEleHeight();
         done && done();
       });
     }
@@ -41922,11 +41915,13 @@ __webpack_require__.g.currentInject.render = function (createElement, getCompone
   ishost: true,
   style: this.__getStyle("mpx-root-view host-_25af18f9", "", "", "")
 }, createElement(getComponent("mpx-view"), {
+  ref: this.__getRefVal('node', [[".", this.__getClass("cube-sticky-ele", "")]], "ref_fn_1"),
   style: this.__getStyle("cube-sticky-ele", "", "", this.eleHeightStyle)
 }, createElement(getComponent("mpx-view"), {
   style: this.__getStyle("cube-sticky-ele-content", "", "", this.eleContentStyle)
 }, this.__getSlot())));
 };
+__webpack_require__.g.currentInject.getRefsData = function () {return [];};
 __webpack_require__.g.currentInject.injectOptions = {"disableMemo":true};
 /* styles */
 
@@ -42893,7 +42888,7 @@ _ScrollView.displayName = 'MpxScrollView';
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _mpxjs_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(646);
+/* harmony import */ var _mpxjs_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1037);
 
 (0,_mpxjs_core__WEBPACK_IMPORTED_MODULE_0__["default"])({
   options: {

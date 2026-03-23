@@ -1,6 +1,7 @@
 <template>
   <view
     class="cube-sticky-ele"
+    wx:ref
     wx:style="{{ eleHeightStyle }}"
   >
     <view class="cube-sticky-ele-content" wx:style="{{ eleContentStyle }}">
