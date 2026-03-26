@@ -76,6 +76,40 @@ createComponent({
     }
   },
   methods: {
+    getRevealRatio(x) {
+      const max = Math.abs(this.maxScrollX)
+      if (!max) {
+        return 0
+      }
+      const ratio = Math.abs(x) / max
+      if (ratio > 1) {
+        return 1
+      }
+      if (ratio < 0) {
+        return 0
+      }
+      return ratio
+    },
+    updateBtnStyles(x, duration = 0) {
+      const btns = this.btns || []
+      const ratio = this.getRevealRatio(x)
+      const styleList: any[] = []
+      const total = btns.length
+      btns.forEach((btn, index) => {
+        const btnWidth = this.getBtnWidth(btn)
+        const layer = total - index
+        const offset = (1 - ratio) * 14 * layer
+        styleList.push({
+          width: `${btnWidth}px`,
+          background: btn.color || '#c8c7cd',
+          zIndex: `${layer}`,
+          transform: `translate3d(${offset}px, 0, 0)`,
+          transitionDuration: `${duration}ms`,
+          transitionTimingFunction: easing
+        })
+      })
+      this.btnStyles = styleList
+    },
     getNow() {
       return Date.now()
     },
@@ -88,18 +122,12 @@ createComponent({
     },
     refresh() {
       const btns = this.btns || []
-      const styles: any[] = []
       let width = 0
       btns.forEach((btn) => {
         const btnWidth = this.getBtnWidth(btn)
         width += btnWidth
-        styles.push({
-          width: `${btnWidth}px`,
-          background: btn.color || '#c8c7cd'
-        })
       })
       this.maxScrollX = -width
-      this.btnStyles = styles
       this.btnsWrapStyle = {
         width: `${width}px`
       }
@@ -107,6 +135,7 @@ createComponent({
     },
     setTranslate(x, duration = 0) {
       this.x = x
+      this.updateBtnStyles(x, duration)
       this.scrollerStyle = {
         transform: `translate3d(${x}px, 0, 0)`,
         transitionDuration: `${duration}ms`,
