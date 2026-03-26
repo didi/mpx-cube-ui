@@ -1,35 +1,125 @@
 <template>
   <view class="custom-swipe-demo">
-    <view class="custom-swipe-example">
-      1111111
-    </view>
+    <scroll-view>
+      <view class="custom-swipe-example">
+        <cube-swipe>
+          <view wx:for="{{ swipeData }}" wx:key="index" class="custom-swipe-item-wrapper">
+            <cube-swipe-item
+              item="{{ item.item }}"
+              btns="{{ item.btns }}"
+              index="{{ index }}"
+              use-slot="{{ true }}"
+              auto-shrink="{{ true }}"
+              bind:item-click="onItemClick"
+              bind:btn-click="onBtnClick"
+            >
+              <view class="custom-swipe-item-inner">
+                <image class="custom-swipe-item-avatar" src="{{ item.item.imgurl }}" mode="aspectFill" />
+                <view class="custom-swipe-item-content">
+                  <view class="custom-swipe-item-name">{{ item.item.name }}</view>
+                  <view class="custom-swipe-item-desc">{{ item.item.desc }}</view>
+                </view>
+              </view>
+            </cube-swipe-item>
+          </view>
+        </cube-swipe>
+      </view>
+    </scroll-view>
+    <cube-action-sheet
+      wx:ref="deleteCustomActionSheet"
+      title="确认要删除吗"
+      inputData="{{ deleteActionData }}"
+      bind:select="onDeleteSelect"
+    />
   </view>
 </template>
 
 <script>
   import { createComponent } from '@mpxjs/core'
+  import { customData } from '../../data/swipe'
 
   createComponent({
     options: {
       styleIsolation: 'shared'
     },
     data: {
-      list: []
+      swipeData: customData.slice(),
+      deleteActionData: [
+        {
+          content: '删除'
+        }
+      ],
+      pendingDeleteIndex: -1
+    },
+    methods: {
+      onItemClick: function (e) {
+        console.log('click item:', e.detail)
+      },
+      onBtnClick: function (e) {
+        const { btn, index } = e.detail
+        if (btn.action === 'delete') {
+          this.pendingDeleteIndex = index
+          this.$refs.deleteCustomActionSheet.show()
+        }
+      },
+      onDeleteSelect: function () {
+        const index = this.pendingDeleteIndex
+        if (index > -1) {
+          this.swipeData.splice(index, 1)
+          this.pendingDeleteIndex = -1
+        }
+      }
     }
   })
 </script>
 
 <style lang="stylus">
-
 .custom-swipe-example
   background-color #fff
-  padding 5px 10px
+  border-radius 8px
+  overflow hidden
+
+.custom-swipe-item-inner
+  display flex
+  align-items center
+  padding 12px 10px
+  background #fff
+
+.custom-swipe-item-avatar
+  width 44px
+  height 44px
+  border-radius 4px
+  margin-right 10px
+
+.custom-swipe-item-content
+  flex 1
+  min-width 0
+
+.custom-swipe-item-name
+  color #333
+  font-size 15px
+  line-height 21px
+  white-space nowrap
+  overflow hidden
+  text-overflow ellipsis
+
+.custom-swipe-item-desc
+  margin-top 3px
+  color #999
+  font-size 12px
+  line-height 18px
+  white-space nowrap
+  overflow hidden
+  text-overflow ellipsis
 </style>
 
 <script type="application/json">
 {
   "styleIsolation": "shared",
   "usingComponents": {
+    "cube-swipe": "@mpxjs/mpx-cube-ui/src/components/swipe/index",
+    "cube-swipe-item": "@mpxjs/mpx-cube-ui/src/components/swipe-item/index",
+    "cube-action-sheet": "@mpxjs/mpx-cube-ui/src/components/action-sheet/index"
   }
 }
 </script>
