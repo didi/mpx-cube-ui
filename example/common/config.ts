@@ -33,7 +33,8 @@ export default {
       'textarea',
       'float-ball',
       'input',
-      'tab-bar'
+      'tab-bar',
+      'swipe'
     ],
     introduce: [
       {
@@ -46,7 +47,8 @@ export default {
           'float-ball',
           'loading',
           'collapse',
-          'tab-bar'
+          'tab-bar',
+          'swipe'
         ]
       },
       {

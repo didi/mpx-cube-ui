@@ -1,0 +1,56 @@
+<template>
+  <view class="default-swipe-demo">
+    <view class="default-swipe-example">
+      1111111
+    </view>
+  </view>
+</template>
+
+<script>
+  import { createComponent } from '@mpxjs/core'
+  import { defaultData } from '../../data/swipe'
+
+  createComponent({
+    options: {
+      styleIsolation: 'shared'
+    },
+    data: {
+      swipeData: defaultData
+    },
+    methods: {
+      onItemClick: function (item) {
+        console.log('click item:', item)
+      },
+      onBtnClick: function (btn, index) {
+        const that = this
+        if (btn.action === 'delete') {
+          this.$createActionSheet({
+            title: '确认要删除吗',
+            active: 0,
+            data: [
+              { content: '删除' }
+            ],
+            onSelect: function () {
+              that.swipeData.splice(index, 1)
+            }
+          }).show()
+        }
+      }
+    }
+  })
+</script>
+
+<style lang="stylus">
+
+.default-swipe-example
+  background-color #fff
+  padding 5px 10px
+</style>
+
+<script type="application/json">
+{
+  "styleIsolation": "shared",
+  "usingComponents": {
+  }
+}
+</script>

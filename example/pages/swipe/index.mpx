@@ -1,0 +1,37 @@
+<template>
+  <!-- <base-container> -->
+    <view class="swipe-demo">
+      <view class="swipe-demo-title">Default Swipe</view>
+      <view>
+        <default-swipe></default-swipe>
+      </view>
+      <view class="swipe-demo-title">Custom Swipe</view>
+      <view>
+        <custom-swipe></custom-swipe>
+      </view>
+    </view>
+  <!-- </base-container> -->
+</template>
+
+<script>
+  import { createPage } from '@mpxjs/core'
+
+  createPage({})
+</script>
+
+<style lang="stylus">
+.swipe-demo
+  margin-top: 8px
+.swipe-demo-title
+  padding 5px 10px
+</style>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "base-container": "../../components/base-container/index",
+      "custom-swipe": "./custom-swipe.mpx",
+      "default-swipe": "./default-swipe.mpx"
+    }
+  }
+</script>
