@@ -63,6 +63,12 @@ createComponent({
       handler() {
         this.refresh()
       }
+    },
+    item() {
+      this.setTranslate(0, 0)
+    },
+    index() {
+      this.setTranslate(0, 0)
     }
   },
   lifetimes: {
@@ -158,14 +164,14 @@ createComponent({
       })
     },
     onBtnClick(btn) {
+      if (this.autoShrink) {
+        this.shrink()
+      }
       this.triggerEvent(EVENT_BTN_CLICK, {
         btn,
         index: this.index,
         item: this.item
       })
-      if (this.autoShrink) {
-        this.shrink()
-      }
     },
     onTouchStart(e) {
       if (!this.btns || this.btns.length === 0) {
