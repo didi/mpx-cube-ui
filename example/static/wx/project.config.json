@@ -30,7 +30,12 @@
     "useStaticServer": true,
     "useCompilerPlugins": false,
     "minifyWXML": false,
-    "ignoreUploadUnusedFiles": false
+    "ignoreUploadUnusedFiles": false,
+    "compileWorklet": false,
+    "localPlugins": false,
+    "condition": false,
+    "swc": false,
+    "disableSWC": true
   },
   "description": "项目配置文件，详见文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html",
   "condition": {
@@ -55,5 +60,7 @@
     "ignore": [],
     "include": []
   },
-  "projectname": "wx"
+  "projectname": "wx",
+  "appid": "wx07b4798ac9aea469",
+  "simulatorPluginLibVersion": {}
 }
