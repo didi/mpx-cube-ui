@@ -1,0 +1,49 @@
+<template>
+  <rich-text @_web|_wx|_ali class="nav-item-inner" nodes="{{ txt }}"></rich-text>
+</template>
+
+<script lang="ts">
+import { createComponent } from '../../common/helper/create-component'
+
+createComponent({
+  properties: {
+    txt: {
+      type: String,
+      value: ''
+    },
+    plainText: {
+      type: String,
+      value: ''
+    },
+    index: {
+      type: Number,
+      value: 0
+    },
+    active: {
+      type: String,
+      optionalTypes: [Number],
+      value: ''
+    },
+    label: {
+      type: String,
+      optionalTypes: [Number],
+      value: ''
+    },
+    isActive: {
+      type: Boolean,
+      value: false
+    },
+    activeClass: {
+      type: String,
+      value: ''
+    }
+  }
+})
+</script>
+
+<script type="application/json">
+  {
+    "styleIsolation": "shared",
+    "component": true
+  }
+</script>

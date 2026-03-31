@@ -1,0 +1,126 @@
+<template>
+  <view class="scroll-nav-bar-page">
+    <base-container>
+      <view class="demo-block">
+        <scroll-nav-bar
+          labels="{{ serviceList }}"
+          txts="{{ serviceTxts }}"
+          current="{{ currentService }}"
+          options="{{ navOptions }}"
+          bindchange="onServiceChange"
+        ></scroll-nav-bar>
+        <view class="demo-result">当前 active：{{ currentService }}</view>
+      </view>
+      <view class="demo-block vertical-demo">
+        <scroll-nav-bar
+          @_web
+          direction="vertical"
+          labels="{{ serviceList }}"
+          current="{{ currentService }}"
+          bindchange="onServiceChange"
+          use-item-slot="true"
+        >
+          <template slot-scope="props">
+            <view class="slot-item {{ props.activeClass }}">
+              <view class="slot-item-text">{{ props.index + 1 }}{{ props.txt }}</view>
+            </view>
+          </template>
+        </scroll-nav-bar>
+        <scroll-nav-bar
+          @_wx|_ali
+          generic:nav-item-content="scroll-nav-bar-item-renderer"
+          direction="vertical"
+          labels="{{ serviceList }}"
+          current="{{ currentService }}"
+          bindchange="onServiceChange"
+          use-item-slot="true"
+        ></scroll-nav-bar>
+      </view>
+    </base-container>
+  </view>
+</template>
+
+<script>
+import { createPage } from '@mpxjs/core'
+
+const serviceList = [
+  '快车',
+  '小巴',
+  '专车',
+  '顺风车',
+  '代驾',
+  '公交',
+  '自驾租车',
+  '豪华车',
+  '二手车',
+  '出租车'
+]
+
+const serviceTxts = serviceList.map((item) => {
+  return `<span style="font-weight:400;">${item}</span>`
+})
+
+createPage({
+  data: {
+    serviceList,
+    serviceTxts,
+    currentService: serviceList[0],
+    navOptions: {
+      bounce: false,
+      scrollbar: false
+    }
+  },
+  methods: {
+    onServiceChange(e) {
+      this.currentService = e.detail.active
+    }
+  }
+})
+</script>
+
+<style lang="stylus">
+.scroll-nav-bar-page
+  min-height 100%
+  background-color rgba(239, 239, 244, .7)
+
+.demo-block
+  margin-bottom 24rpx
+  border-radius 24rpx
+  overflow hidden
+  background-color #fff
+
+.vertical-demo
+  height 560rpx
+
+.slot-item
+  display flex
+  align-items center
+  justify-content center
+  width 100%
+  min-height 88rpx
+  padding 0 8rpx
+  box-sizing border-box
+
+.slot-item-text
+  flex 1
+  font-size 28rpx
+  line-height 40rpx
+  text-align center
+
+.demo-result
+  padding 24rpx
+  font-size 26rpx
+  line-height 38rpx
+  color #666
+</style>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "base-container": "../../components/base-container/index",
+      "view-desc": "../../components/desc/index",
+      "scroll-nav-bar": "@mpxjs/mpx-cube-ui/src/components/scroll-nav-bar/index",
+      "scroll-nav-bar-item-renderer": "./item-renderer"
+    }
+  }
+</script>
