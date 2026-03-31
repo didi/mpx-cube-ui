@@ -5,16 +5,7 @@
   >
     <label class="cube-checkbox-label" wx:class="{{ checkboxLabelClass }}">
       <view class="cube-checkbox-ui" wx:class="{{ checkboxUiClass }}">
-        <image
-          wx:show="{{ isChecked }}"
-          @_ios|_android|_harmony
-          mode="aspectFit"
-          class="cube-checkbox-inner-ui"
-          wx:class="{{ checkboxInnerUiClass }}"
-          enable-var="{{ true }}"
-          src="{{ isSquare ? 'https://dpubstatic.udache.com/static/dpubimg/uS2n9DlRRxLZdND56hyPZ_right-square.png' : 'https://dpubstatic.udache.com/static/dpubimg/WJ4o6TwcmHnPBgq8xGecr_right.png' }}"
-        ></image>
-        <view @_wx|_ali|_web class="cube-checkbox-inner-ui" wx:class="{{ checkboxInnerUiClass }}"></view>
+        <view class="cube-checkbox-inner-ui" enable-var="{{ true }}" wx:class="{{ checkboxInnerUiClass }}"></view>
       </view>
       <view class="cube-checkbox-text-wrap" wx:class="{{ checkboxTextWrapClass }}">
         <view wx:if="{{ showText }}">
