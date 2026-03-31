@@ -73,3 +73,16 @@
 .cube-modal-footer
   padding-all($var(modal-footer-padding-top), $var(modal-footer-padding-right), $var(modal-footer-padding-bottom), $var(modal-footer-padding-left))
   safe-area-mixin-extra(padding-bottom, bottom, $var(modal-footer-safe-padding), true)
+
+.cube-modal-line
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%), rotate(45deg), scale(0.8)
+  background-color: $var(color-dark-grey)
+.cube-modal-line-horizontal
+  width $var(font-size-lg)
+  height: 2px
+.cube-modal-line-vertical
+  width: 2px
+  height $var(font-size-lg)

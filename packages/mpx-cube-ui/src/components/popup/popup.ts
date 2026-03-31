@@ -50,9 +50,16 @@ createComponent({
       type: Object,
       value: {}
     },
+    // 是否移除catchtouch事件
     removeCatchTouch: {
       type: Boolean,
       value: false
+    },
+    // @dosHide
+    // 最外层view 的 pointerEvents配置
+    pointerEvents: {
+      type: String,
+      value: ''
     }
   },
   data: {
@@ -61,6 +68,20 @@ createComponent({
     display: false
   },
   computed: {
+    popupStyle() {
+      const style: Record<string, string> = { zIndex: this.zIndex }
+      if (this.pointerEvents) {
+        style.pointerEvents = this.pointerEvents
+      }
+      if (!this.isVisible) {
+        if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android' || __mpx_mode__ === 'harmony') {
+          style.pointerEvents = 'box-none'
+        } else {
+          style.pointerEvents = 'none'
+        }
+      }
+      return style
+    },
     rootClass() {
       const cls: { [index: string]: boolean } = {
         'cube-popup_mask': this.mask,
@@ -77,25 +98,31 @@ createComponent({
       }
       // eslint-disable-next-line
       // @ts-ignore
-      if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
+      if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android' || __mpx_mode__ === 'harmony') {
         cls[`cube-popup-${this.display ? 'show' : 'hide'}`] = true
       }
       return cls
     },
-    maskOpacity() {
-      // eslint-disable-next-line
-      // @ts-ignore
+    maskStyle() {
+      const style: Record<string, string> = {}
       if (
         __mpx_mode__ !== 'ios' &&
         __mpx_mode__ !== 'android' &&
+        __mpx_mode__ !== 'harmony' &&
         this.styleConfig.mask?.visibleOpacity &&
         this.isVisible
       ) {
-        return {
-          opacity: this.styleConfig.mask.visibleOpacity
+        style.opacity = this.styleConfig.mask.visibleOpacity
+      }
+
+      if (!this.isVisible) {
+        if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android' || __mpx_mode__ === 'harmony') {
+          style.pointerEvents = 'box-none'
+        } else {
+          style.pointerEvents = 'none'
         }
       }
-      return {}
+      return style
     }
   },
   methods: {

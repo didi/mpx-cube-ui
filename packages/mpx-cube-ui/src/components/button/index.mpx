@@ -35,12 +35,13 @@
       size="{{ iconSize }}"
       wx:if="{{ icon }}"
       type="{{ icon }}"
+      wx:style="{{ hiddenStyle }}"
     />
-    <view class="cube-btn-content" wx:style="{{ styleConfig.content }}">
+    <view class="cube-btn-content" numberOfLines="{{ 1 }}" wx:class="{{ contentClass }}" wx:style="{{ [styleConfig.content, hiddenStyle] }}">
       <slot />
     </view>
-    <view class="cube-btn-tip" wx:if="{{ tip }}">
-      <text class="cube-btn-tip-text">{{tip}}</text>
+    <view class="cube-btn-tip" wx:class="{{ tipClass }}" wx:if="{{ tip }}" wx:style="{{ hiddenStyle }}">
+      <text class="cube-btn-tip-text" numberOfLines="{{ 1 }}">{{tip}}</text>
     </view>
     <slot name="tip" />
   </button>
@@ -49,20 +50,23 @@
 <script lang="ts" src="./button.ts"></script>
 
 <style lang="stylus">
-/* @mpx-if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') */
+/* @mpx-if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android' || __mpx_mode__ === 'harmony') */
 @require './css.rn.styl'
 /* @mpx-else */
 @require './css.styl'
 /* @mpx-endif */
 </style>
 
-<script type="application/json">
-  {
-    "styleIsolation": "shared",
-    "component": true,
-    "usingComponents": {
-      "cube-icon": "../icon/index.mpx",
-      "loading": "./loading/index.mpx"
-    }
-  }
+<script name="json">
+let usingComponents = {
+  "loading": "./loading/index.mpx"
+}
+if (__mpx_mode__ !== 'ios' &&  __mpx_mode__ !== 'android' && __mpx_mode__ !== 'harmony') {
+  usingComponents['cube-icon'] = "../icon/index.mpx"
+}
+module.exports = {
+  "styleIsolation": "shared",
+  "component": true,
+  "usingComponents": usingComponents
+}
 </script>

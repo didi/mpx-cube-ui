@@ -2,12 +2,9 @@
 
 <card>
 
-### 介绍
+### 介绍 <span class="title-tag">已适配RN</span>
 
 在弹出层中展示的模态对话框，引导用户进行相关操作。
-
-
-<mark>已适配RN</mark>
 
 </card>
 

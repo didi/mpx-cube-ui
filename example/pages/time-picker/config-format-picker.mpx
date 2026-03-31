@@ -16,7 +16,6 @@
 
 <script>
 import { createComponent } from '@mpxjs/core'
-import { beauty } from '../../common/utils'
 
 createComponent({
   data: {

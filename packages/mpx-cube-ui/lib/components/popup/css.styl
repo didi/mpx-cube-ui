@@ -10,6 +10,7 @@
   bottom 0
   z-index $var(popup-z-index)
   display flex
+  pointer-events: none
   &.cube-popup-top
     align-items start
     .cube-popup-content
@@ -30,14 +31,14 @@
       height 100%
   .cube-popup-content
     transform translateZ(0)
+    position relative
     z-index 999
     box-sizing border-box
-.cube-popup-remove-touch
-  pointer-events: none
 .cube-popup_mask
   pointer-events: auto
   &.cube-popup_mask_fade_transition
     .cube-popup-mask
+      opacity 0
       transition $var(popup-mask-transition)
 .cube-popup-mask
   position: absolute

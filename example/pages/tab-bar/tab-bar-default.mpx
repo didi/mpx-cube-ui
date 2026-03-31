@@ -1,0 +1,55 @@
+<template>
+  <cube-tab-bar
+    wx:model="{{selectedLabelDefault}}"
+    wx:model-prop="value"
+    tabs="{{tabs}}"
+    bindclick="clickHandler"
+    bindchange="changeHandler"
+  >
+  </cube-tab-bar>
+</template>
+
+<script>
+  import { createComponent } from '@mpxjs/core'
+
+  createComponent({
+    data: {
+      selectedLabelDefault: 'Home',
+      tabs: [{
+        label: 'Home',
+        value: 'Home',
+        icon: 'home'
+      }, {
+        label: 'Like',
+        value: 'Like',
+        icon: 'like'
+      }, {
+        label: 'User',
+        value: 'User',
+        icon: 'user'
+      }, {
+        label: 'Star',
+        value: 'Star',
+        icon: 'star'
+      }]
+    },
+    methods: {
+      clickHandler (label) {
+        console.log('tab was clicked', label)
+      },
+      changeHandler (label) {
+        console.log('value has changed, now is', label)
+      }
+    }
+  })
+</script>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "cube-tab-bar": "@mpxjs/mpx-cube-ui/src/components/tab-bar/index.mpx",
+      "cube-tab": "@mpxjs/mpx-cube-ui/src/components/tab-bar/tab.mpx",
+      "cube-icon": "@mpxjs/mpx-cube-ui/src/components/icon/index.mpx"
+    }
+  }
+</script>

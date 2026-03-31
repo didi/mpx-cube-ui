@@ -8,7 +8,7 @@ let mixin = {
 } as Parameters<typeof getMixin>[0]
 // eslint-disable-next-line
 // @ts-ignore
-if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
+if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android' || __mpx_mode__ === 'harmony') {
   type ANIMATION_PRESET = Record<
     string,
     (
@@ -21,7 +21,8 @@ if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
       rootAnimationData: {} as WechatMiniprogram.AnimationExportResult,
       maskAnimationData: {} as WechatMiniprogram.AnimationExportResult,
       ANIMATION_PRESET: {} as ANIMATION_PRESET,
-      contentRect: {} as WechatMiniprogram.BoundingClientRectCallbackResult
+      contentRect: {} as WechatMiniprogram.BoundingClientRectCallbackResult,
+      contentTranslateStyle: {}
     },
     computed: {
       contentInfo() {
@@ -50,8 +51,11 @@ if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
           },
           'cube-popup_transition': (animationOptions) => {
             if (!this.isVisible) {
-              setTimeout(() => {
-                this.display = false
+              clearTimeout(this.dispalyTimer)
+              this.dispalyTimer = setTimeout(() => {
+                if (!this.isVisible) {
+                  this.display = false
+                }
                 // fix 玄学，不加 100ms ，drn 动画会非常卡
               }, animationOptions.duration + 100)
             }
@@ -83,6 +87,7 @@ if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
           'isVisible',
           (n, o) => {
             if (!!n === !!o) return
+            this.transitionendTimer && clearTimeout(this.transitionendTimer)
             this.rnAnimation({
               duration: 300,
               timingFunction: 'ease-out'
@@ -100,15 +105,25 @@ if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
       translateAnimation(animationOptions, axis: 'X' | 'Y', start: number) {
         const hasTranslate = !!this.animation
         const animation = this.animation || (this.animation = mpx.createAnimation(animationOptions))
+        this.targetTranslate = `translate${axis}`
         if (this.isVisible) {
           if (hasTranslate) {
-            animation[`translate${axis}`](start).step({ duration: 0 })
+            animation[this.targetTranslate](start).step({ duration: 0 })
           }
-          animation[`translate${axis}`](0).step()
+          animation[this.targetTranslate](0).step()
         } else {
-          animation[`translate${axis}`](start).step()
+          animation[this.targetTranslate](start).step()
         }
         this.animationData = animation.export()
+        this.transitionendTimer = setTimeout(() => {
+          this.transitionend()
+        }, animationOptions.duration)
+      },
+      transitionend() {
+        if (this.isVisible && this.targetTranslate) {
+          // 触发重新渲染
+          this.contentTranslateStyle = {}
+        }
       },
       // @vuese
       // 仅 rn 使用，当内容元素高度变化后调用。用于更新动画高度
@@ -116,7 +131,14 @@ if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
         return new Promise((resolve) => {
           this.$refs['popup-content'].boundingClientRect((res) => {
             if (res) {
-              this.contentRect = res
+              const keys = Object.keys(res)
+              const contentRect = this.contentRect
+              for (const key in keys) {
+                if (res[key] !== contentRect[key]) {
+                  this.contentRect = res
+                  break
+                }
+              }
             } else {
               this.boundingClientRectFaill = this.boundingClientRectFaill || 0
               this.boundingClientRectFaill++

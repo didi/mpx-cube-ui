@@ -18,7 +18,6 @@
 
 <script>
   import { createComponent } from '@mpxjs/core'
-  import { beauty } from '../../common/utils'
 
   createComponent({
     data: {
@@ -31,8 +30,8 @@
     },
     methods: {
       showPicker() {
-        this.confirmParams = '{ /* selectedIndex, selectedVal, selectedText */ }',
-        this.valueChangeParams = '{ /* selectedIndex, selectedVal, selectedText */ }',
+        this.confirmParams = '{ /* selectedIndex, selectedVal, selectedText */ }'
+        this.valueChangeParams = '{ /* selectedIndex, selectedVal, selectedText */ }'
         this.$refs.picker.show()
       },
       clickCustomBtn() {

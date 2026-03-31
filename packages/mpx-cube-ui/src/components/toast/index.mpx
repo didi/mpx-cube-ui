@@ -7,13 +7,14 @@
     wx:model="{{isVisible}}"
     wx:model-prop="visible"
     wx:model-event="toggle"
-    transition="fade"
+    transition="{{ transition }}"
     mask="{{ mask }}"
     center="{{ true }}"
     maskClosable="{{ maskClosable }}"
     maskFadeTransition="{{ maskFadeTransition }}"
     theme-type="{{ themeType }}"
     bind:maskClick="onMaskClick"
+    pointer-events="{{ pointerEvents }}"
   >
     <view class="cube-toast-content">
       <view class="toast-slot-icon"><slot /></view>
@@ -31,7 +32,7 @@
 <script lang="ts" src="./toast.ts"></script>
 
 <style lang="stylus">
-/* @mpx-if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') */
+/* @mpx-if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android' || __mpx_mode__ === 'harmony') */
 @require './css.rn.styl'
 /* @mpx-else */
 @require './css.styl'

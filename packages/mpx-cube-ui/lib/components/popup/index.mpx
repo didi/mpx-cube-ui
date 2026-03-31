@@ -3,13 +3,18 @@
     <view
       wx:if="{{removeCatchTouch}}"
       wx:class="{{ [themeType ? 'cube-popup cube-popup-'+themeType : 'cube-popup', rootClass, visibleClass] }}"
-      style="z-index: {{ zIndex }}"
+      wx:style="{{ popupStyle }}"
     >
-      <view class="cube-popup-mask" wx:if="{{ mask }}" bindtouchend="onMaskClick" wx:style="{{ [styleConfig.mask, maskOpacity] }}">
+      <view
+        class="cube-popup-mask"
+        wx:if="{{ mask }}"
+        wx:style="{{ [styleConfig.mask, maskStyle] }}"
+        bindtouchmove@web="preventTouchMove"
+        bindtap="onMaskClick">
         <!-- 遮罩插槽 -->
         <slot name="mask"></slot>
       </view>
-      <view class="cube-popup-content {{ transitionClass }}" bindanimationend@_wx|_ali|_web="contentHideAnimationend">
+      <view class="cube-popup-content {{ transitionClass }}" wx:style="{{styleConfig.content}}" bindanimationend@_wx|_ali|_web="contentHideAnimationend">
         <rich-text wx:if="{{ content }}" nodes="{{ content }}"></rich-text>
         <!-- 默认插槽 -->
         <slot wx:else></slot>
@@ -18,21 +23,17 @@
 
     <view
       wx:else
-      wx:class="{{ [
-        themeType ? 'cube-popup cube-popup-'+themeType : 'cube-popup',
-        rootClass,
-        visibleClass,
-        !removeCatchTouch ? 'cube-popup-remove-touch' : ''
-      ] }}"
-      style="z-index: {{ zIndex }}"
-      catchtouchmove@wx|ali
+      wx:class="{{ [themeType ? 'cube-popup cube-popup-'+themeType : 'cube-popup', rootClass, visibleClass] }}"
+      wx:style="{{ popupStyle }}"
+      catchtouchmove@wx="true"
     >
       <view
         class="cube-popup-mask"
         wx:if="{{ mask }}"
-        wx:style="{{ [styleConfig.mask, maskOpacity] }}"
-        bindtouchmove="preventTouchMove"
-        bindtouchend="onMaskClick">
+        wx:style="{{ [styleConfig.mask, maskStyle] }}"
+        bindtouchmove@_web="preventTouchMove"
+        disable-scroll@_ali="{{true}}"
+        bindtap="onMaskClick">
         <!-- 遮罩插槽 -->
         <slot name="mask"></slot>
       </view>
@@ -40,23 +41,24 @@
         class="cube-popup-content {{ transitionClass }}"
         wx:style="{{styleConfig.content}}"
         bindtouchmove="preventTouchMove"
-        bindanimationend@_wx|_ali|_web="contentHideAnimationend">
+        bindanimationend@_web="contentHideAnimationend">
         <rich-text wx:if="{{ content }}" nodes="{{ content }}"></rich-text>
         <!-- 默认插槽 -->
         <slot></slot>
       </view>
     </view>
   </block>
-  <root-portal @_ios|_android>
+  <root-portal @_ios|_android|_harmony>
     <view
       wx:ref="popup"
       external-var-context="{{varContext}}"
       wx:class="{{ [themeType ? 'cube-popup cube-popup-'+themeType : 'cube-popup', rootClass, visibleClass] }}"
+      wx:style="{{ popupStyle }}"
       >
       <view
         class="cube-popup-mask"
         wx:if="{{ mask }}"
-        wx:style="{{ styleConfig.mask }}"
+        wx:style="{{ [styleConfig.mask, maskStyle] }}"
         animation="{{ maskAnimationData }}"
         bindtouchend="onMaskClick">
         <slot name="mask"></slot>
@@ -64,7 +66,7 @@
       <view
         wx:ref="popup-content"
         class="cube-popup-content {{ transition }}"
-        wx:style="{{ styleConfig.content }}"
+        wx:style="{{ [styleConfig.content, contentTranslateStyle] }}"
         animation="{{ animationData }}">
         <slot></slot>
       </view>
@@ -75,7 +77,7 @@
 <script src="./popup.js"></script>
 
 <style lang="stylus">
-/* @mpx-if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') */
+/* @mpx-if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android' || __mpx_mode__ === 'harmony') */
 @require './css.rn.styl'
 /* @mpx-else */
 @require './css.styl'

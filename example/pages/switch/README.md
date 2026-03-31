@@ -2,12 +2,9 @@
 
 <card>
 
-## 介绍
+## 介绍 <span class="title-tag">已适配RN</span>
 
 滑动开关，用于切换 on/off 状态。
-
-
-<mark>已适配RN</mark>
 
 </card>
 

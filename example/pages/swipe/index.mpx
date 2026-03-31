@@ -1,0 +1,69 @@
+<template>
+  <!-- <base-container> -->
+    <scroll-view class="swipe-demo">
+      <view class="swipe-switch">
+        <view class="swipe-switch-btn {{ currentType === 'default' ? 'swipe-switch-btn_active' : '' }}" bindtap="showDefault">Default Swipe</view>
+        <view class="swipe-switch-btn {{ currentType === 'custom' ? 'swipe-switch-btn_active' : '' }}" bindtap="showCustom">Custom Swipe</view>
+      </view>
+      <view class="swipe-demo-title" wx:if="{{ currentType === 'default' }}">Default Swipe</view>
+      <view wx:if="{{ currentType === 'default' }}">
+        <default-swipe></default-swipe>
+      </view>
+      <view class="swipe-demo-title" wx:if="{{ currentType === 'custom' }}">Custom Swipe</view>
+      <view wx:if="{{ currentType === 'custom' }}">
+        <custom-swipe></custom-swipe>
+      </view>
+    </scroll-view>
+  <!-- </base-container> -->
+</template>
+
+<script>
+  import { createPage } from '@mpxjs/core'
+
+  createPage({
+    data: {
+      currentType: 'default'
+    },
+    methods: {
+      showDefault() {
+        this.currentType = 'default'
+      },
+      showCustom() {
+        this.currentType = 'custom'
+      }
+    }
+  })
+</script>
+
+<style lang="stylus">
+.swipe-demo
+  margin-top: 8px
+.swipe-switch
+  display flex
+  padding 0 10px 10px
+.swipe-switch-btn
+  flex 1
+  height 32px
+  line-height 32px
+  text-align center
+  border 1px solid #ddd
+  background #fff
+  color #666
+  &:first-child
+    border-right none
+.swipe-switch-btn_active
+  color #fc9153
+  border-color #fc9153
+.swipe-demo-title
+  padding 5px 10px
+</style>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "base-container": "../../components/base-container/index",
+      "custom-swipe": "./custom-swipe.mpx",
+      "default-swipe": "./default-swipe.mpx"
+    }
+  }
+</script>

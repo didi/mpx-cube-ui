@@ -46,7 +46,7 @@ createComponent({
         },
         /**
          * @description 图标类型（自动添加`cubeic-`前缀）
-         * @optional 图标 Icon，更多选择参见[内置 Icon](https://www.mpxjs.cn/mpx-cube-ui/demo-theme-default/index.html#/pages/icon/index)
+         * @optional 图标 Icon，更多选择参见[内置 Icon](https://www.mpxjs.cn/mpx-cube-ui/example/index.html#/pages/icon/index)
          */
         icon: {
             type: String,
@@ -105,9 +105,17 @@ createComponent({
         },
         /**
          * @description 通过 wx:style透传样式, 里面的每项分别修改对应位置的样式
-         * @optional styleConfig = { headIcon: '' }
+         * @optional styleConfig = { headIcon, main, close  }
          */
         styleConfig: {
+            type: Object,
+            value: {}
+        },
+        /**
+         * @description 通过 wx:style 透传样式给popup, 里面的每项分别修改对应位置的样式
+         * @optional styleConfig = { content: '' }
+         */
+        popupStyleConfig: {
             type: Object,
             value: {}
         }
@@ -129,7 +137,7 @@ createComponent({
             return this.type === 'prompt';
         },
         containerClass() {
-            return `cube-dialog-${this.type}`;
+            return `cube-dialog-container cube-dialog-${this.type}`;
         },
         btnsClass() {
             return {
@@ -139,7 +147,8 @@ createComponent({
         cancelBtnClass() {
             return {
                 [`${btnClsPrefix}-highlight`]: !!this._cancelBtn.active,
-                [`${btnClsPrefix}_disabled`]: !!this._cancelBtn.disabled
+                [`${btnClsPrefix}_disabled`]: !!this._cancelBtn.disabled,
+                [`${btnsClsPrefix}-cancel-border-right-1px`]: this.isConfirm || this.isPrompt
             };
         },
         confirmBtnClass() {

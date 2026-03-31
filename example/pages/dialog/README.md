@@ -2,12 +2,9 @@
 
 <card>
 
-### 介绍
+### 介绍 <span class="title-tag">已适配RN</span>
 
 Dialog 模态框组件，提供了多种样式及交互形式，常用于消息的提示及确认。
-
-
-<mark>已适配RN</mark>
 
 </card>
 

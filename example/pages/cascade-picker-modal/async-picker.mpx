@@ -75,7 +75,7 @@
       },
       onColumnChange(e) {
         this.changeParams = ''
-        const { column, index, value } = e.detail
+        const { column, index } = e.detail
         if (column === 0) {
           this.load = true
           // 模拟1.5秒后返回数据

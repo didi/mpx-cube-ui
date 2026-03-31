@@ -1,22 +1,27 @@
 @require '~@mpxjs/mpx-cube-ui/src/common/stylus/theme/var/size.styl'
 @require '~@mpxjs/mpx-cube-ui/src/common/stylus/theme/var/color.styl'
 
-vendors = official
-// animation
-@keyframes dialog-zoom
-  0%
-    transform scale(.9)
-    opacity 0
-  100%
-    transform scale(1)
-    opacity 1
+
+/* @mpx-if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') */
+/* @mpx-else */
+// vendors = official
+// @keyframes dialog-zoom
+//   0%
+//     transform scale(.9)
+//     opacity 0
+//   100%
+//     transform scale(1)
+//     opacity 1
+/* @mpx-endif */
 
 .theme-passenger {
   // white
   --cube-color-white: #fff
+  /* @mpx-if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') */
+  /* @mpx-else */
   --cube-color-white-opacity: rgba(255, 255, 255, .6)
   --cube-color-white-opacity-9: rgba(255, 255, 255, .9)
-
+  /* @mpx-endif */
   // orange ~ red
   --cube-color-bright-orange: #EA5E1E
   --cube-color-primary-orange_red: #EA5E1E
@@ -27,7 +32,10 @@ vendors = official
 
   // gray
   --cube-color-passenger-light-grey: #F1F2F4
+  /* @mpx-if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') */
+  /* @mpx-else */
   --cube-color-light-grey-opacity: rgba(0, 0, 0, .04)
+  /* @mpx-endif */
 
   // blue
   --cube-color-passenger-primary-blue: #092847
@@ -144,7 +152,10 @@ vendors = official
       transparent calc(50% + 1px),
       transparent 100%
     )
+  /* @mpx-if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') */
+  /* @mpx-else */
   --cube-checkbox-ui-bg-opacity: unset
+  /* @mpx-endif */
 
   // radius
   --cube-checkbox-ui-square-radius: 5px
@@ -202,19 +213,27 @@ vendors = official
   --cube-dialog-content-font-size: $font-size-sm
   --cube-dialog-content-color: $text-color-desc
   --cube-dialog-content-margin: 10px 0 20px 0
+  /* @mpx-if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') */
+  /* @mpx-else */
   --cube-dialog-content-def-text-align: unset
+  /* @mpx-endif */
 
   // button
   --cube-dialog-button-padding: 17px 10px
   --cube-dialog-btn-color: var(--cube-color-bright-orange)
   --cube-dialog-btn-bgc: $color-white
-  --cube-dialog-btn-active-bgc: unset
+  
   --cube-dialog-btn-highlight-color: var(--cube-color-bright-orange)
-  --cube-dialog-btn-highlight-active-bgc: unset
   --cube-dialog-btn-disabled-color: $text-color-hint
   --cube-dialog-btn-disabled-active-bgc: transparent
   --cube-dialog-btns-split-color: $border-color-normal
   --cube-dialog-btn-line-height: 21px
+
+  /* @mpx-if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') */
+  /* @mpx-else */
+  --cube-dialog-btn-highlight-active-bgc: unset
+  --cube-dialog-btn-active-bgc: unset
+  /* @mpx-endif */
 
   // close
   --cube-dialog-close-width: 32px
@@ -231,7 +250,7 @@ vendors = official
   --cube-dialog-zoom-animation: dialog-zoom .2s ease-in-out
 
   // @type modal-container
-  --cube-modal-border-radius: 7px 7px 0 0
+  // --cube-modal-border-radius: 7px 7px 0 0
 
   // @type modal-cancel
   --cube-modal-cancel-padding: 0 10px 0 10px
@@ -287,10 +306,14 @@ vendors = official
 
   // radio background
   --cube-radio-inner-ui-bgc: $color-primary
+  --cube-radio-ui-bgimg: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNiAzNiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMzYgMzYiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwYXRoIGQ9Im0yOTIzLjYgMTczNS4zLTEwLjYtMTAuOGMtMS4xLTEuMS0xLjEtMi45IDAtNHMyLjgtMS4xIDMuOSAwbDYuNyA2LjhjLjkuOSAyLjUgMSAzLjQgMGwxNC4yLTE0LjRjMS4xLTEuMSAyLjgtMS4xIDMuOSAwczEuMSAyLjkgMCAzLjlsLTE4LjEgMTguM2MtLjkgMS4xLTIuNSAxLjEtMy40LjJ6IiBzdHlsZT0iZmlsbC1ydWxlOmV2ZW5vZGQ7Y2xpcC1ydWxlOmV2ZW5vZGQ7ZmlsbDojNWI2YjkyIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMjkxMSAtMTcwNikiLz48L3N2Zz4=')
+
+  /* @mpx-if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') */
+  /* @mpx-else */
   --cube-radio-ui-bgc: unset
   --cube-radio-ui-bgc_disabled: unset
-  --cube-radio-ui-bgimg: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNiAzNiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMzYgMzYiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwYXRoIGQ9Im0yOTIzLjYgMTczNS4zLTEwLjYtMTAuOGMtMS4xLTEuMS0xLjEtMi45IDAtNHMyLjgtMS4xIDMuOSAwbDYuNyA2LjhjLjkuOSAyLjUgMSAzLjQgMGwxNC4yLTE0LjRjMS4xLTEuMSAyLjgtMS4xIDMuOSAwczEuMSAyLjkgMCAzLjlsLTE4LjEgMTguM2MtLjkgMS4xLTIuNSAxLjEtMy40LjJ6IiBzdHlsZT0iZmlsbC1ydWxlOmV2ZW5vZGQ7Y2xpcC1ydWxlOmV2ZW5vZGQ7ZmlsbDojNWI2YjkyIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMjkxMSAtMTcwNikiLz48L3N2Zz4=')
   --cube-radio-ui-bgc-opacity: unset
+  /* @mpx-endif */
 
   // radio size
   --cube-radio-ui-width: 18px
@@ -355,7 +378,11 @@ vendors = official
   --cube-toast-tip-line-height: 1.57
   --cube-toast-tip-margin-left: 0px
   --cube-toast-tip-margin-bottom: 20px
+    /* @mpx-if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') */
+  --cube-toast-tip-max-width: 160px
+  /* @mpx-else */
   --cube-toast-tip-max-width: 10em
+  /* @mpx-endif */
   --cube-toast-tip-max-height: 44px
 
   --cube-toast-tip-font-weight: bold

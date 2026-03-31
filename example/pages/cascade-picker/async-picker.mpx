@@ -28,7 +28,6 @@
 </template>
 <script>
   import { createComponent } from '@mpxjs/core'
-  import { beauty } from '../../common/utils'
   const Fruit = [{
     value: 'Fruit',
     text: 'Fruit',
@@ -82,7 +81,7 @@
       onColumnChange(e) {
         this.changeParams = ''
         this.introduce = 'change 事件未触发'
-        const { column, index, value } = e.detail
+        const { column, index } = e.detail
         if (column === 0) {
           this.introduce = '数据更新中...'
           this.load = true

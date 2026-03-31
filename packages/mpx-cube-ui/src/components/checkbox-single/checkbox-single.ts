@@ -1,5 +1,5 @@
 import { createSelectComponent as createComponent } from '../../common/helper/create-component'
-
+import { varContextMixin } from '../../common/mixins'
 const EVENT_INPUT = 'input'
 
 createComponent({
@@ -27,6 +27,7 @@ createComponent({
       value: 'round'
     }
   },
+  mixins: [varContextMixin],
   data: {
     isChecked: false
   },
@@ -40,6 +41,7 @@ createComponent({
       return {
         'cube-checkbox-ui-square': this.isSquare,
         'cube-checkbox-ui-round': this.isRound,
+        'cube-checkbox-ui_position': this.option.position === 'right',
         'cube-checkbox-ui_disabled': this.option.disabled,
         'cube-checkbox-ui_checked': this.isChecked
       }
@@ -47,12 +49,24 @@ createComponent({
     checkboxInnerUiClass () {
       return {
         'cube-checkbox-inner-ui-square': this.isSquare,
-        'cube-checkbox-inner-ui-round': this.isRound
+        'cube-checkbox-inner-ui-round': this.isRound,
+        'cube-checkbox-inner-ui-square_checked': this.isSquare && this.isChecked,
+        'cube-checkbox-inner-ui-round_checked': this.isRound && this.isChecked
       }
     },
     checkboxTextWrapClass () {
       return {
         'cube-checkbox-text-wrap_disabled': this.option.disabled
+      }
+    },
+    checkboxTextClass() {
+      return {
+        'cube-checkbox-text_disabled': this.option.disabled
+      }
+    },
+    checkboxDescClass() {
+      return {
+        'cube-checkbox-desc_disabled': this.option.disabled
       }
     },
     isSquare () {

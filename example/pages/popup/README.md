@@ -2,14 +2,11 @@
 
 <card>
 
-### 介绍
+### 介绍 <span class="title-tag">已适配RN</span>
 
 基础弹层组件，提供了功能：弹层类型、是否有背景层、显示内容以及是否居中等特性。类似于 `Dialog`、`Modal`、`Toast` 等弹层组件都是基于 `Popup` 进行的封装。
 
 对于所有弹层组件来说都提供了基础的 `props` 属性及实例方法调用。例如 `visible` 属性控制是否展示和隐藏、`maskClosable` 遮罩是否可点击，组件实例的 `show`、`hide` 方法来展示和隐藏等，具体见每个弹层组件的文档。
-
-
-<mark>已适配RN</mark>
 
 </card>
 

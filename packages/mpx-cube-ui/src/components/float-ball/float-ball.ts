@@ -5,7 +5,6 @@ const EVENT_BALL_CLICK = 'click'
 const EVENT_TOUCH_START = 'touchstart'
 const EVENT_TOUCH_MOVE = 'touchmove'
 const EVENT_TOUCH_END = 'touchend'
-
 const res = mpx.getSystemInfoSync()
 // 屏幕尺寸
 const CLIENT_WIDTH = res.windowWidth

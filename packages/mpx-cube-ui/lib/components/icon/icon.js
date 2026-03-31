@@ -8,7 +8,7 @@ createComponent({
     properties: {
         /**
          * @description 图标类型（自动添加`cubeic-`前缀）
-         * @optional 图标 Icon，更多选择参见[内置 Icon](https://www.mpxjs.cn/mpx-cube-ui/demo-theme-default/index.html#/pages/icon/index)
+         * @optional 图标 Icon，更多选择参见[内置 Icon](https://www.mpxjs.cn/mpx-cube-ui/example/index.html#/pages/icon/index)
          */
         type: String,
         /**

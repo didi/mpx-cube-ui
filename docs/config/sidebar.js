@@ -64,6 +64,10 @@ module.exports = [
           {
             title: 'Collapse 展开收起',
             path: '/components/base/collapse'
+          },
+          {
+            title: 'TabBar 选项卡',
+            path: '/components/base/tab-bar'
           }
           // {
           //   title: 'Style 内置样式'
@@ -124,6 +128,10 @@ module.exports = [
           {
             title: 'Switch 滑动开关',
             path: '/components/base/switch'
+          },
+          {
+            title: 'Slider 滑动选择器',
+            path: '/components/base/slider'
           }
         ]
       },

@@ -192,10 +192,6 @@
       updateReverse (e) {
         const { value } = e.detail
         this.reverse = value
-      },
-      updatePwdVisible (e) {
-        const { value } = e.detail
-        this.pwdVisible = value
       }
     }
   })

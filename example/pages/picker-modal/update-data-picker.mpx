@@ -20,7 +20,7 @@ createComponent({
   methods: {
     showPickerWithUpdate() {
       this.$refs.picker.show()
-      this.dataList = [[ { text: '剧毒', value: '剧毒' }, { text: '蚂蚁', value: '蚂蚁' }, { text: '幽鬼', value: '幽鬼' } ]],
+      this.dataList = [[ { text: '剧毒', value: '剧毒' }, { text: '蚂蚁', value: '蚂蚁' }, { text: '幽鬼', value: '幽鬼' } ]]
       this.selectedIndex = [0]
       setTimeout(() => {
         this.$refs.picker.updateData(

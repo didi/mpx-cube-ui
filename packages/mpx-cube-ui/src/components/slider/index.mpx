@@ -1,0 +1,110 @@
+<template>
+  <view
+    wx:class="{{ sliderClass }}"
+    wx:style="{{ containerStyle }}"
+  >
+    <gesture
+      wx:if="{{ __mpx_mode__ === 'android' || __mpx_mode__ === 'ios' || __mpx_mode__ === 'harmony' }}"
+      class="slider-gesture-container"
+      disabled="{{ disabled }}"
+      ontouchstart="{{ startHandler }}"
+      ontouchmove="{{ moveHandler }}"
+      ontonouchend="{{ endHandler }}"
+    >
+      <view
+        wx:ref
+        class="cube-slider-tab-area"
+        wx:style="{{ tabAreaStyle }}"
+        bind:tap="onClick"
+      >
+        <!-- 滑块儿容器 -->
+        <view
+          class="cube-slider-handle"
+          wx:style="{{ handleStyle }}"
+        >
+          <!-- 滑块儿 -->
+          <view class="cube-slider-thumb-custom" wx:style="{{ thumbCustomStyle }}">
+            <!-- 自定义滑块儿 -->
+            <slot></slot>
+          </view>
+          <view
+            wx:if="{{!customContent}}"
+            class="cube-slider-thumb"
+            wx:style="{{ thumbStyle }}"
+          ></view>
+        </view>
+        <view class="cube-slider-track" wx:style="{{ trackStyle }}">
+          <view class="cube-slider-step" wx:style="{{ stepStyle }}"></view>
+        </view>
+      </view>
+      <view wx:if="{{ showValueLable }}" class="cube-slider-value">
+        <text
+          numberOfLines="{{1}}"
+          ellipsizeMode="clip"
+        >{{ currentValue }}</text>
+      </view>
+    </gesture>
+    <block wx:else>
+      <view
+        wx:ref
+        class="cube-slider-tab-area"
+        wx:style="{{ tabAreaStyle }}"
+        bind:tap="onClick"
+      >
+        <!-- 滑块儿容器 -->
+        <view
+          class="cube-slider-handle"
+          wx:style="{{ handleStyle }}"
+          capture-catch:touchstart="startHandler"
+          capture-catch:touchmove="moveHandler"
+          capture-catch:touchend="endHandler"
+        >
+          <!-- 滑块儿 -->
+          <view class="cube-slider-thumb-custom" wx:style="{{ thumbCustomStyle }}">
+            <!-- 自定义滑块儿 -->
+            <slot></slot>
+          </view>
+          <view
+            wx:if="{{!customContent}}"
+            class="cube-slider-thumb"
+            wx:style="{{ thumbStyle }}"
+          ></view>
+        </view>
+        <view class="cube-slider-track" wx:style="{{ trackStyle }}">
+          <view class="cube-slider-step" wx:style="{{ stepStyle }}"></view>
+        </view>
+      </view>
+      <view wx:if="{{ showValueLable }}" class="cube-slider-value">
+        <text>{{ currentValue }}</text>
+      </view>
+    </block>
+  </view>
+</template>
+
+<script lang="ts" src="./slider.ts"></script>
+
+<style lang="stylus">
+/* @mpx-if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android' || __mpx_mode__ === 'harmony') */
+@require './css.rn.styl'
+/* @mpx-else */
+@require './css.styl'
+/* @mpx-endif */
+</style>
+
+<script name="json">
+  const isNative = __mpx_mode__ === 'ios' || __mpx_mode__ === 'android' || __mpx_mode__ === 'harmony'
+  const base = {
+    "styleIsolation": "shared",
+    "component": true
+  }
+  if (isNative) {
+    module.exports = {
+      ...base,
+      "usingComponents": {
+        "gesture": "./gesture"
+      }
+    }
+  } else {
+    module.exports = base
+  }
+</script>

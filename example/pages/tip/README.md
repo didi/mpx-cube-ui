@@ -2,9 +2,37 @@
 
 <card>
 
-### 介绍
+### 介绍 <span class="title-tag">已适配RN</span>
 
 用于弹出提示气泡框，可以通过配置控制弹出位置。
+
+### 注意
+
+rn时，需要给组件添加 style="position: static"或者使用虚拟节点 autoVirtualHostRules。
+
+```vue
+<!-- 添加style -->
+<template>
+  <cube-tip style="position: static"></cube-tip>
+</template>
+```
+
+```js
+// mpx.config.js
+module.exports = defineConfig({
+  // ...
+  pluginOptions: {
+    mpx: {
+      plugin: {
+        // ...
+        autoVirtualHostRules: {
+          include: [resolve('node_modules/@mpxjs/mpx-cube-ui/lib/components/tip/index.mpx')]
+        }
+      },
+    }
+  }
+})
+```
 
 </card>
 
