@@ -5,9 +5,11 @@
   >
     <gesture
       wx:if="{{ __mpx_mode__ === 'android' || __mpx_mode__ === 'ios' || __mpx_mode__ === 'harmony' }}"
-      ontouchstart="{{startHandler}}"
-      ontouchmove="{{moveHandler}}"
-      ontonouchend="{{endHandler}}"
+      class="slider-gesture-container"
+      disabled="{{ disabled }}"
+      ontouchstart="{{ startHandler }}"
+      ontouchmove="{{ moveHandler }}"
+      ontonouchend="{{ endHandler }}"
     >
       <view
         wx:ref
@@ -35,43 +37,47 @@
           <view class="cube-slider-step" wx:style="{{ stepStyle }}"></view>
         </view>
       </view>
+      <view wx:if="{{ showValueLable }}" class="cube-slider-value">
+        <text
+          numberOfLines="{{1}}"
+          ellipsizeMode="clip"
+        >{{ currentValue }}</text>
+      </view>
     </gesture>
-    <view
-      wx:ref
-      wx:else
-      class="cube-slider-tab-area"
-      wx:style="{{ tabAreaStyle }}"
-      bind:tap="onClick"
-    >
-      <!-- 滑块儿容器 -->
+    <block wx:else>
       <view
-        class="cube-slider-handle"
-        wx:style="{{ handleStyle }}"
-        capture-catch:touchstart="startHandler"
-        capture-catch:touchmove="moveHandler"
-        capture-catch:touchend="endHandler"
+        wx:ref
+        class="cube-slider-tab-area"
+        wx:style="{{ tabAreaStyle }}"
+        bind:tap="onClick"
       >
-        <!-- 滑块儿 -->
-        <view class="cube-slider-thumb-custom" wx:style="{{ { display: customContent ? '' : 'none', ...thumbStyle } }}">
-          <!-- 自定义滑块儿 -->
-          <slot></slot>
-        </view>
+        <!-- 滑块儿容器 -->
         <view
-          wx:if="{{!customContent}}"
-          class="cube-slider-thumb"
-          wx:style="{{ thumbStyle }}"
-        ></view>
+          class="cube-slider-handle"
+          wx:style="{{ handleStyle }}"
+          capture-catch:touchstart="startHandler"
+          capture-catch:touchmove="moveHandler"
+          capture-catch:touchend="endHandler"
+        >
+          <!-- 滑块儿 -->
+          <view class="cube-slider-thumb-custom" wx:style="{{ thumbCustomStyle }}">
+            <!-- 自定义滑块儿 -->
+            <slot></slot>
+          </view>
+          <view
+            wx:if="{{!customContent}}"
+            class="cube-slider-thumb"
+            wx:style="{{ thumbStyle }}"
+          ></view>
+        </view>
+        <view class="cube-slider-track" wx:style="{{ trackStyle }}">
+          <view class="cube-slider-step" wx:style="{{ stepStyle }}"></view>
+        </view>
       </view>
-      <view class="cube-slider-track" wx:style="{{ trackStyle }}">
-        <view class="cube-slider-step" wx:style="{{ stepStyle }}"></view>
+      <view wx:if="{{ showValueLable }}" class="cube-slider-value">
+        <text>{{ currentValue }}</text>
       </view>
-    </view>
-    <view wx:if="{{ showValueLable }}" class="cube-slider-value">
-      <text
-        numberOfLines@_ios|_android|_harmony="{{1}}"
-        ellipsizeMode@_ios|_android|_harmony="clip"
-      >{{ currentValue }}</text>
-    </view>
+    </block>
   </view>
 </template>
 
