@@ -57,7 +57,8 @@
   ]
   if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
     pages = [
-      "./pages/button/btn-loading-rn"
+      // "./pages/index",
+      "./pages/checkbox/index-rn",
     ]
   }
   module.exports = {

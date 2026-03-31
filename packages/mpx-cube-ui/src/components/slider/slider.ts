@@ -3,6 +3,8 @@ import { createComponent } from '../../common/helper/create-component'
 const EVENT_CHANGE = 'change' // 完成一次拖动后触发的事件
 const EVENT_CHANGING = 'changing' // 拖动过程中触发的事件
 
+const isNative = __mpx_mode__ === 'ios' || __mpx_mode__ === 'android' || __mpx_mode__ === 'harmony'
+
 interface Rect {
   id: string
   left: number
@@ -139,17 +141,32 @@ createComponent({
       return this['show-value'] || this.showValue
     },
     containerStyle() {
-      return {
+      const baseStyle = {
         marginLeft: `${this._blockSize / 2 + 4}px`,
         marginRight: `${this._blockSize / 2 + 4}px`
       }
+      if (isNative) {
+        return {
+          ...baseStyle,
+          paddingTop: this.tabAreaStyle.paddingTop,
+          paddingBottom: this.tabAreaStyle.paddingBottom
+        }
+      }
+      return baseStyle
     },
     tabAreaStyle() {
       const minH = Math.max(12, this._blockSize) / 2
-      return {
+      const baseStyle = {
         paddingTop: `${minH}px`,
         paddingBottom: `${minH}px`
       }
+      if (isNative) {
+        return {
+          ...baseStyle,
+          right: this.showValueLable ? 50 : 0
+        }
+      }
+      return baseStyle
     },
     handleStyle() {
       return {

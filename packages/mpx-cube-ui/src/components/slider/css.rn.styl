@@ -6,10 +6,18 @@
   display: flex
   align-items: center
 
+.slider-guesture-container
+  display: flex
+  align-items: center
+
 .cube-slider-tab-area
   flex: 1 0 auto
   display: flex
   align-items: center
+  position: absolute
+  left: 0
+  right: 0
+  transform: translateY(-50%)
   min-height: $var(slider-track-height)
 
 .cube-slider-handle
@@ -39,12 +47,12 @@
   border-radius: ($slider-track-height / 2)
 
 .cube-slider-value
-  position relative
+  position absolute
+  right: 10px
+  transform: translateY(-50%)
   z-index: 1
   color: #666
   width: 30px
   overflow: visible
-  margin-left: 20px
-  margin-right: 10px
   pointer-events: none
   text-align: center
