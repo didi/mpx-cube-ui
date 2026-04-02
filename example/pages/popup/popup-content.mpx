@@ -15,9 +15,9 @@
 </template>
 
 <script>
-import { createComponent } from '@mpxjs/core'
+import { createPage } from '@mpxjs/core'
 
-createComponent({
+createPage({
   options: {
     styleIsolation: 'shared'
   },

@@ -1,0 +1,85 @@
+<template>
+  <view>
+    <view>{{ pos }}</view>
+    <cube-sticky pos="{{pos}}">
+      <scroll-view
+        scroll-y="{{ true }}"
+        bindscroll="onScroll"
+        style="height: 400px;position:relative"
+      >
+        <cube-sticky-ele eleKey="1">
+          <view class="sticky-header">吸顶标题 1</view>
+        </cube-sticky-ele>
+        <view class="sticky-content">
+          <view wx:for="{{[1,2,3,4,5]}}" wx:key="*this" class="content-item">内容项 {{item}}</view>
+        </view>
+
+        <cube-sticky-ele eleKey="2">
+          <view class="sticky-header">吸顶标题 2</view>
+        </cube-sticky-ele>
+        <view class="sticky-content">
+          <view wx:for="{{[1,2,3,4,5]}}" wx:key="*this" class="content-item">内容项 {{item}}</view>
+        </view>
+
+        <cube-sticky-ele eleKey="3">
+          <view class="sticky-header">吸顶标题 3</view>
+        </cube-sticky-ele>
+        <view class="sticky-content">
+          <view wx:for="{{[1,2,3,4,5]}}" wx:key="*this" class="content-item">内容项 {{item}}</view>
+        </view>
+      </scroll-view>
+    </cube-sticky>
+  </view>
+</template>
+
+<script>
+import { createPage } from '@mpxjs/core'
+
+createPage({
+  options: {
+    styleIsolation: 'shared'
+  },
+  data: {
+    pos: 0
+  },
+  methods: {
+    onScroll(e) {
+      this.pos = e.detail.scrollTop
+    }
+  }
+})
+</script>
+
+<style lang="stylus">
+.sticky-header
+  height: 50px
+  line-height: 50px
+  padding: 0 15px
+  background-color: #fc9153
+  color: #fff
+  font-size: 16px
+  font-weight: bold
+
+.sticky-content
+  padding: 15px
+  background-color: #f5f5f5
+
+.content-item
+  height: 40px
+  line-height: 40px
+  margin-bottom: 10px
+  padding: 0 15px
+  background-color: #fff
+  border-radius: 4px
+</style>
+
+<script type="application/json">
+  {
+    "styleIsolation": "shared",
+    "component": true,
+    "usingComponents": {
+      "cube-sticky": "@mpxjs/mpx-cube-ui/src/components/sticky/index",
+      "cube-sticky-ele": "@mpxjs/mpx-cube-ui/src/components/sticky/sticky-ele/index"
+    }
+  }
+</script>

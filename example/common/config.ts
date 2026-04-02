@@ -47,8 +47,9 @@ export default {
           'float-ball',
           'loading',
           'collapse',
-          'tab-bar',
-          'swipe'
+          'swipe',
+          'sticky',
+          'tab-bar'
         ]
       },
       {
