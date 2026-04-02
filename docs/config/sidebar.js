@@ -208,6 +208,10 @@ module.exports = [
           {
             title: 'TimePickerPopup',
             path: '/components/popup/time-picker-popup'
+          },
+          {
+            title: 'ScrollNavBar',
+            path: '/components/base/scroll-nav-bar'
           }
         ]
       }

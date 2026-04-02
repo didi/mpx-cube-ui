@@ -92,7 +92,8 @@ export default {
           'picker-popup',
           'cascade-picker-popup',
           'date-picker-popup',
-          'time-picker-popup'
+          'time-picker-popup',
+          'scroll-nav-bar'
         ]
       }
     ],
