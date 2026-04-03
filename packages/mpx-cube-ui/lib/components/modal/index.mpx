@@ -38,7 +38,7 @@
             <view @_ios|_android|_harmony class="cube-modal-line cube-modal-line-horizontal"></view>
             <!-- 竖线 -->
             <view @_ios|_android|_harmony class="cube-modal-line cube-modal-line-vertical"></view>
-            <cube-icon type="close" theme-type="{{ themeType }}"></cube-icon>
+            <cube-icon @_wx|_ali|_web type="close" theme-type="{{ themeType }}"></cube-icon>
           </view>
         </view>
 

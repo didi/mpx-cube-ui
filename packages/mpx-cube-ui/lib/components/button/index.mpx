@@ -37,7 +37,7 @@
       type="{{ icon }}"
       wx:style="{{ hiddenStyle }}"
     />
-    <view class="cube-btn-content" numberOfLines="{{ 1 }}" wx:class="{{ contentClass }}" wx:style="{{ styleConfig.content, hiddenStyle }}">
+    <view class="cube-btn-content" numberOfLines="{{ 1 }}" wx:class="{{ contentClass }}" wx:style="{{ [styleConfig.content, hiddenStyle] }}">
       <slot />
     </view>
     <view class="cube-btn-tip" wx:class="{{ tipClass }}" wx:if="{{ tip }}" wx:style="{{ hiddenStyle }}">

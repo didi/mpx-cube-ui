@@ -1,0 +1,146 @@
+<template>
+  <view class="{{ rootClass }}">
+    <scroll-view
+      scroll-x="{{ scrollX }}"
+      scroll-y="{{ scrollY }}"
+      class="{{ containerClass }}"
+      scroll-into-view="{{ currentView }}"
+      scroll-with-animation="{{ scrollWithAnimation }}"
+      show-scrollbar@wx="{{ showScrollbar }}"
+      enhanced@wx="{{ useEnhanced }}"
+      bounces@wx="{{ bounces }}"
+      enable-flex@wx="{{ enableFlex }}"
+    >
+      <view class="{{ contentClass }}">
+        <view
+          id="{{ item.id }}"
+          class="{{ item.className }}"
+          wx:for="{{ navItems }}"
+          wx:key="id"
+          data-index="{{ index }}"
+          bind:tap="onItemTap"
+        >
+          <block @_wx|_ali>
+            <nav-item-content
+              wx:if="{{ useItemSlot }}"
+              txt="{{ item.txt }}"
+              plain-text="{{ item.plainText }}"
+              index="{{ index }}"
+              active="{{ currentValue }}"
+              label="{{ item.label }}"
+              is-active="{{ item.isActive }}"
+              active-class="{{ item.activeClass }}"
+            ></nav-item-content>
+            <rich-text wx:else class="nav-item-inner" nodes="{{ item.txt }}"></rich-text>
+          </block>
+          <block @_web>
+            <slot
+              wx:if="{{ useItemSlot }}"
+              txt="{{ item.txt }}"
+              plainText="{{ item.plainText }}"
+              index="{{ index }}"
+              active="{{ currentValue }}"
+              label="{{ item.label }}"
+              isActive="{{ item.isActive }}"
+              activeClass="{{ item.activeClass }}"
+            ></slot>
+            <rich-text wx:else class="nav-item-inner" nodes="{{ item.txt }}"></rich-text>
+          </block>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+</template>
+
+<script src="./scroll-nav-bar.js"></script>
+
+<style lang="stylus" rel="stylesheet/stylus">
+  @require "../../common/stylus/variable.styl"
+
+  .cube-scroll-nav-bar
+    width 100%
+    background-color #fff
+    box-sizing border-box
+
+    &_vertical
+      height 100%
+
+  .scroll-container
+    width 100%
+    height 90rpx
+    white-space nowrap
+
+    &_vertical
+      height 100%
+      white-space normal
+
+  .scroll-content
+    display inline-flex
+    width max-content
+    align-items center
+    min-width 100%
+    padding 0 24rpx
+    box-sizing border-box
+
+    &_vertical
+      display flex
+      width 100%
+      flex-direction column
+      align-items stretch
+      min-width auto
+      min-height 100%
+      padding 12rpx 0
+
+  .nav-item
+    position relative
+    display inline-flex
+    align-items center
+    justify-content center
+    flex-shrink 0
+    padding 0 32rpx
+    height 90rpx
+    white-space nowrap
+    color $color-text-desc
+    font-size 28rpx
+    line-height 40rpx
+    transition color 0.2s
+    box-sizing border-box
+
+    &.active
+      color $color-primary
+
+    &.disabled
+      color #c8c9cc
+
+    &_vertical
+      width 100%
+      min-height 88rpx
+      padding 24rpx 28rpx
+      justify-content center
+
+      .nav-item-inner
+        width 100%
+        justify-content center
+        text-align center
+
+  .nav-item-inner
+    display flex
+    align-items center
+    justify-content center
+
+</style>
+
+
+
+<script type="application/json">
+  {
+    "styleIsolation": "shared",
+    "component": true,
+    "usingComponents": {},
+    "componentGenerics": {
+      "nav-item-content": {
+        "default": "./nav-item-content"
+      }
+    }
+  }
+</script>
