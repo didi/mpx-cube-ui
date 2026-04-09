@@ -1,7 +1,7 @@
 <template>
-  <view wx:ref class="cube-sticky" wx:style="{{containerStyle}}">
+  <view wx:ref class="cube-sticky" wx:style="{{styleConfig.sticky}}">
     <slot></slot>
-    <view class="cube-sticky-fixed" wx:style="{{fixedEleStyle}}" wx:ref="fixedEle">
+    <view class="cube-sticky-fixed" wx:style="{{[fixedEleStyle, styleConfig.fixedEle]}}" wx:ref="fixedEle">
     </view>
   </view>
 </template>

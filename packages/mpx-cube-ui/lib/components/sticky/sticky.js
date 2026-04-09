@@ -20,6 +20,10 @@ createComponent({
         offset: {
             type: Number,
             value: 0
+        },
+        styleConfig: {
+            type: Object,
+            value: {}
         }
     },
     data: {
@@ -33,9 +37,6 @@ createComponent({
         eles: []
     },
     computed: {
-        containerStyle() {
-            return {};
-        },
         fixedEleStyle() {
             return {
                 top: `${this.offset}px`

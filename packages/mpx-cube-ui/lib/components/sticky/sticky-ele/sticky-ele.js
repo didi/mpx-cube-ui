@@ -37,8 +37,7 @@ createComponent({
             // 重置高度为 auto，然后重新计算并设置固定高度
             this.eleHeight = 'auto';
             const query = this.createSelectorQuery();
-            // eslint-disable-next-line
-            // @ts-ignore
+            // eslint-disable-next-line @typescript-eslint/no-this-alias
             const that = this;
             query.select('.cube-sticky-ele').boundingClientRect((rect) => {
                 if (rect && rect.height > 0) {
