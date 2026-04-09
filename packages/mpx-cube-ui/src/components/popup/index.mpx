@@ -48,7 +48,7 @@
       </view>
     </view>
   </block>
-  <root-portal @_ios|_android|_harmony>
+  <root-portal @_ios|_android|_harmony enable="{{ !rootPortalDisable }}">
     <view
       wx:ref="popup"
       external-var-context="{{varContext}}"

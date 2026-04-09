@@ -39,7 +39,7 @@ createComponent({
             type: String,
             value: ''
         },
-        // 透传样式，可用于样式覆盖。其中 mask.visibleOpacity 用于设置遮罩层显示时透明度
+        // 透传样式，可用于样式覆盖。其中 mask.visibleOpacity 用于设置遮罩层显示时透明度。rootPortal.enable = false 用于rn下套用rn modal 情况
         styleConfig: {
             type: Object,
             value: {}
@@ -77,11 +77,15 @@ createComponent({
             }
             return style;
         },
+        rootPortalDisable() {
+            return this.styleConfig.rootPortal?.enable === false;
+        },
         rootClass() {
             const cls = {
                 'cube-popup_mask': this.mask,
                 'cube-popup_mask_fade_transition': this.maskFadeTransition,
-                'cube-popup_transition': !!this.transitionClass
+                'cube-popup_transition': !!this.transitionClass,
+                'cube-popup_without_portal': this.rootPortalDisable
             };
             if (this.type) {
                 cls[`cube-${this.type}`] = true;
