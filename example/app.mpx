@@ -55,7 +55,8 @@
     "./pages/action-sheet/index",
     "./pages/tab-bar/index",
     "./pages/slider/index",
-    "./pages/swipe/index"
+    "./pages/swipe/index",
+    "/pages/scroll-nav-bar/index"
   ]
   if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
     pages = [

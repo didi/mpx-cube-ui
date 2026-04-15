@@ -31,7 +31,7 @@
               is-active="{{ item.isActive }}"
               active-class="{{ item.activeClass }}"
             ></nav-item-content>
-            <rich-text wx:else class="nav-item-inner" nodes="{{ item.txt }}"></rich-text>
+            <rich-text wx:else class="cube-nav-item-inner" nodes="{{ item.txt }}"></rich-text>
           </block>
           <block @_web>
             <slot
@@ -44,7 +44,7 @@
               isActive="{{ item.isActive }}"
               activeClass="{{ item.activeClass }}"
             ></slot>
-            <rich-text wx:else class="nav-item-inner" nodes="{{ item.txt }}"></rich-text>
+            <rich-text wx:else class="cube-nav-item-inner" nodes="{{ item.txt }}"></rich-text>
           </block>
         </view>
       </view>
@@ -65,7 +65,7 @@
     &_vertical
       height 100%
 
-  .scroll-container
+  .cube-scroll-container
     width 100%
     height 90rpx
     white-space nowrap
@@ -74,7 +74,7 @@
       height 100%
       white-space normal
 
-  .scroll-content
+  .cube-scroll-content
     display inline-flex
     width max-content
     align-items center
@@ -91,7 +91,7 @@
       min-height 100%
       padding 12rpx 0
 
-  .nav-item
+  .cube-nav-item
     position relative
     display inline-flex
     align-items center
@@ -106,10 +106,10 @@
     transition color 0.2s
     box-sizing border-box
 
-    &.active
+    &.cube-active
       color $color-primary
 
-    &.disabled
+    &.cube-disabled
       color #c8c9cc
 
     &_vertical
@@ -118,12 +118,12 @@
       padding 24rpx 28rpx
       justify-content center
 
-      .nav-item-inner
+      .cube-nav-item-inner
         width 100%
         justify-content center
         text-align center
 
-  .nav-item-inner
+  .cube-nav-item-inner
     display flex
     align-items center
     justify-content center
