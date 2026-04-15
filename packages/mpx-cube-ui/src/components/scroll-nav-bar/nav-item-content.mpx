@@ -1,5 +1,5 @@
 <template>
-  <rich-text @_web|_wx|_ali class="nav-item-inner" nodes="{{ txt }}"></rich-text>
+  <rich-text @_web|_wx|_ali class="cube-nav-item-inner" nodes="{{ txt }}"></rich-text>
 </template>
 
 <script lang="ts">

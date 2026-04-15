@@ -4,8 +4,8 @@ const ITEM_ID_PREFIX = 'cube-scroll-nav-item-'
 const DIRECTION_HORIZONTAL = 'horizontal'
 const DIRECTION_VERTICAL = 'vertical'
 const ROOT_CLASS = 'cube-scroll-nav-bar'
-const CONTAINER_CLASS = 'scroll-container'
-const CONTENT_CLASS = 'scroll-content'
+const CONTAINER_CLASS = 'cube-scroll-container'
+const CONTENT_CLASS = 'cube-scroll-content'
 
 let scrollNavBarInstanceSeed = 0
 
@@ -266,7 +266,7 @@ createComponent({
           disabled,
           isActive: false,
           activeClass: '',
-          className: 'nav-item'
+          className: 'cube-nav-item'
         }
       })
     },
@@ -331,24 +331,24 @@ createComponent({
 
       return navItems.map((item: NormalizedNavItem, index: number): NormalizedNavItem => {
         const isActive = index === activeIndex
-        const classNames = ['nav-item']
+        const classNames = ['cube-nav-item']
 
         if (isActive) {
-          classNames.push('active')
+          classNames.push('cube-active')
         }
 
         if (item.disabled) {
-          classNames.push('disabled')
+          classNames.push('cube-disabled')
         }
 
         if (isVertical) {
-          classNames.push('nav-item_vertical')
+          classNames.push('cube-nav-item_vertical')
         }
 
         return {
           ...item,
           isActive,
-          activeClass: isActive ? 'active' : '',
+          activeClass: isActive ? 'cube-active' : '',
           className: classNames.join(' ')
         }
       })

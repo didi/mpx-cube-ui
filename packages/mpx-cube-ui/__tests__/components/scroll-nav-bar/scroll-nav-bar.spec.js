@@ -8,7 +8,7 @@ describe('component scroll-nav-bar unit test', function () {
   simulate.load({
     id: 'nav-item-content',
     tagName: 'nav-item-content',
-    template: '<rich-text class="nav-item-inner" nodes="{{txt}}"></rich-text>',
+    template: '<rich-text class="cube-nav-item-inner" nodes="{{txt}}"></rich-text>',
     properties: {
       txt: {
         type: String,
@@ -46,15 +46,15 @@ describe('component scroll-nav-bar unit test', function () {
       expect(instance.currentValue).toBe('小巴')
       expectCurrentViewId(instance.currentView, 1)
       expect(instance.rootClass).toBe('cube-scroll-nav-bar')
-      expect(instance.containerClass).toBe('scroll-container')
-      expect(instance.contentClass).toBe('scroll-content')
+      expect(instance.containerClass).toBe('cube-scroll-container')
+      expect(instance.contentClass).toBe('cube-scroll-content')
       expect(instance.scrollX).toBe(true)
       expect(instance.scrollY).toBe(false)
       expect(instance.enableFlex).toBe(true)
       expect(instance.navItems.map(item => item.plainText)).toEqual(BASE_LABELS)
       expect(instance.navItems[1].isActive).toBe(true)
-      expect(instance.navItems[1].activeClass).toBe('active')
-      expect(instance.navItems[1].className).toContain('active')
+      expect(instance.navItems[1].activeClass).toBe('cube-active')
+      expect(instance.navItems[1].className).toContain('cube-active')
     })
 
     it('should render vertical nav and resolve enhanced options', async () => {
@@ -71,15 +71,15 @@ describe('component scroll-nav-bar unit test', function () {
       expect(component.dom.innerHTML).toMatchSnapshot()
       expect(instance.resolvedDirection).toBe('vertical')
       expect(instance.rootClass).toBe('cube-scroll-nav-bar cube-scroll-nav-bar_vertical')
-      expect(instance.containerClass).toBe('scroll-container scroll-container_vertical')
-      expect(instance.contentClass).toBe('scroll-content scroll-content_vertical')
+      expect(instance.containerClass).toBe('cube-scroll-container cube-scroll-container_vertical')
+      expect(instance.contentClass).toBe('cube-scroll-content cube-scroll-content_vertical')
       expect(instance.scrollX).toBe(false)
       expect(instance.scrollY).toBe(true)
       expect(instance.enableFlex).toBe(false)
       expect(instance.useEnhanced).toBe(true)
       expect(instance.showScrollbar).toBe(true)
       expect(instance.bounces).toBe(true)
-      expect(instance.navItems[0].className).toContain('nav-item_vertical')
+      expect(instance.navItems[0].className).toContain('cube-nav-item_vertical')
     })
 
     it('should support legacy list api', async () => {
@@ -112,7 +112,7 @@ describe('component scroll-nav-bar unit test', function () {
       const changeFn = jest.fn()
       component.addEventListener('change', changeFn)
 
-      const navItems = component.querySelectorAll('.nav-item')
+      const navItems = component.querySelectorAll('.cube-nav-item')
       navItems[2].dispatchEvent('tap')
       await simulate.sleep(10)
 
@@ -143,7 +143,7 @@ describe('component scroll-nav-bar unit test', function () {
       const changeFn = jest.fn()
       component.addEventListener('change', changeFn)
 
-      const navItems = component.querySelectorAll('.nav-item')
+      const navItems = component.querySelectorAll('.cube-nav-item')
       navItems[1].dispatchEvent('tap')
       await simulate.sleep(10)
 
