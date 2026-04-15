@@ -30,6 +30,7 @@
     "init:dev": "pnpm install --frozen-lockfile && cd example && npm ci --legacy-peer-deps && cd ReactNativeProject && npm ci --legacy-peer-deps && npx install-expo-modules"
   },
   "devDependencies": {
+    "react-native-gesture-handler": "^2.23.0",
     "@babel/runtime-corejs3": "^7.10.4",
     "@babel/core": "^7.10.4",
     "@babel/preset-env": "^7.10.4",

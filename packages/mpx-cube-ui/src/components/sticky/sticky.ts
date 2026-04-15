@@ -102,7 +102,7 @@ createComponent({
       } else {
         oldEle?.refresh()
         oldEle?.setContentStyle({})
-        newEle.setContentStyle({
+        newEle?.setContentStyle({
           position: 'fixed',
           top: this.rootRect.top + this.offset + 'px',
           left: this.rootRect.left + 'px',

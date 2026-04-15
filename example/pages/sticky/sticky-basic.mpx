@@ -5,11 +5,8 @@
       <scroll-view
         scroll-y="{{ true }}"
         bindscroll="onScroll"
-        style="height: 400px;position:relative"
+        style="height: 100vh;position:relative"
       >
-        <cube-sticky-ele eleKey="1">
-          <view class="sticky-header">吸顶标题 1</view>
-        </cube-sticky-ele>
         <view class="sticky-content">
           <view wx:for="{{[1,2,3,4,5]}}" wx:key="*this" class="content-item">内容项 {{item}}</view>
         </view>
@@ -33,20 +30,20 @@
 </template>
 
 <script>
-import { createPage } from '@mpxjs/core'
+import { createComponent } from '@mpxjs/core'
 
-createPage({
+createComponent({
   options: {
-    styleIsolation: 'shared'
+    styleIsolation: 'shared',
   },
   data: {
-    pos: 0
+    pos: 0,
   },
   methods: {
     onScroll(e) {
       this.pos = e.detail.scrollTop
-    }
-  }
+    },
+  },
 })
 </script>
 
@@ -65,7 +62,7 @@ createPage({
   background-color: #f5f5f5
 
 .content-item
-  height: 40px
+  height: 120px
   line-height: 40px
   margin-bottom: 10px
   padding: 0 15px
