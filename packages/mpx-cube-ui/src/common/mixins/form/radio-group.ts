@@ -8,6 +8,7 @@ export default getMixin({
      * @ali true
      * @wx true
      * @web true
+     * @tt true
      */
     options: {
       type: Array,
@@ -18,10 +19,10 @@ export default getMixin({
      * @ali true
      * @wx true
      * @web true
+     * @tt true
      */
     value: {
       type: String,
-      optionalTypes: [Number],
       value: ''
     },
     /**
@@ -29,6 +30,7 @@ export default getMixin({
      * @ali true
      * @wx true
      * @web true
+     * @tt true
      */
     inline: {
       type: Boolean,
@@ -39,6 +41,7 @@ export default getMixin({
      * @ali true
      * @wx true
      * @web true
+     * @tt true
      */
     colNum: {
       type: Number,

@@ -1,5 +1,5 @@
 <template>
-  <rich-text @_web|_wx|_ali class="nav-item-inner" nodes="{{ txt }}"></rich-text>
+  <rich-text @_web|_wx|_ali|_tt class="nav-item-inner" nodes="{{ txt }}"></rich-text>
 </template>
 
 <script lang="ts">
@@ -21,12 +21,10 @@ createComponent({
     },
     active: {
       type: String,
-      optionalTypes: [Number],
       value: ''
     },
     label: {
       type: String,
-      optionalTypes: [Number],
       value: ''
     },
     isActive: {

@@ -9,6 +9,7 @@ export default getMixin({
      * @wx true
      * @ali true
      * @web true
+     * @tt true
      */
     content: {
       type: String,
@@ -19,6 +20,7 @@ export default getMixin({
      * @wx true
      * @ali true
      * @web true
+     * @tt true
      */
     layout: {
       type: String,
@@ -29,6 +31,7 @@ export default getMixin({
      * @wx true
      * @ali true
      * @web true
+     * @tt true
      */
     noBuiltInBtns: {
       type: Boolean,
@@ -39,6 +42,7 @@ export default getMixin({
      * @wx true
      * @ali true
      * @web true
+     * @tt true
      */
     maskClosable: {
       type: Boolean,

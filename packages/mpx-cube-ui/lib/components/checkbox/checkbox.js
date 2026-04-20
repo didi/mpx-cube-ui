@@ -14,6 +14,7 @@ createComponent({
          * @ali true
          * @wx true
          * @web true
+         * @tt true
          */
         value: {
             type: Boolean,
@@ -25,6 +26,7 @@ createComponent({
          * @ali true
          * @wx true
          * @web true
+         * @tt true
          */
         shape: {
             type: String,

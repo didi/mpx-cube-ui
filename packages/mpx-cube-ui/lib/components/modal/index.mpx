@@ -38,7 +38,7 @@
             <view @_ios|_android|_harmony class="cube-modal-line cube-modal-line-horizontal"></view>
             <!-- 竖线 -->
             <view @_ios|_android|_harmony class="cube-modal-line cube-modal-line-vertical"></view>
-            <cube-icon @_wx|_ali|_web type="close" theme-type="{{ themeType }}"></cube-icon>
+            <cube-icon @_wx|_ali|_web|_tt type="close" theme-type="{{ themeType }}"></cube-icon>
           </view>
         </view>
 
@@ -61,7 +61,7 @@
           <!-- 标题位置插槽 -->
           <slot name="title"></slot>
           <view class="cube-modal-content">
-            <rich-text @_wx|_ali|_web wx:if="{{ content }}" nodes="{{ content }}"></rich-text>
+            <rich-text @_wx|_ali|_web|_tt wx:if="{{ content }}" nodes="{{ content }}"></rich-text>
             <text @_ios|_android|_harmony wx:if="{{ content }}">{{ content }}</text>
             <!-- 内容位置插槽 -->
             <slot name="content"></slot>

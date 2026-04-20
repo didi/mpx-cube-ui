@@ -36,7 +36,6 @@ createComponent({
         },
         current: {
             type: String,
-            optionalTypes: [Number],
             value: ''
         },
         options: {

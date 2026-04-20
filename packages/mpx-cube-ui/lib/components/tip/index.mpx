@@ -19,7 +19,7 @@
       <view class="cube-tip-line cube-tip-line-vertical"></view>
     </view>
     <cube-icon
-      @_wx|_ali|_web
+      @_wx|_ali|_web|_tt
       class="cube-tip-close"
       theme-type="{{ themeType }}"
       wx:if="{{ showClose }}"

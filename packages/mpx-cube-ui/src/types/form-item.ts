@@ -9,6 +9,7 @@ export type Option = {
    * @ali true
    * @wx true
    * @web true
+   * @tt true
    */
   value: Value,
   /**
@@ -17,6 +18,7 @@ export type Option = {
    * @ali true
    * @wx true
    * @web true
+   * @tt true
    */
   text?: string,
   /**
@@ -25,6 +27,7 @@ export type Option = {
    * @ali true
    * @wx true
    * @web true
+   * @tt true
    */
   desc?: string,
   /**
@@ -33,6 +36,7 @@ export type Option = {
    * @ali true
    * @wx true
    * @web true
+   * @tt true
    */
   disabled?: boolean,
   /**
@@ -41,6 +45,7 @@ export type Option = {
    * @ali true
    * @wx true
    * @web true
+   * @tt true
    */
   position?: Position
 }

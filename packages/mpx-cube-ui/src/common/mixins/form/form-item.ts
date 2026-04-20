@@ -9,6 +9,7 @@ export default getMixin({
      * @ali true
      * @wx true
      * @web true
+     * @tt true
      */
     option: {
       type: Object,
@@ -26,10 +27,10 @@ export default getMixin({
      * @ali true
      * @wx true
      * @web true
+     * @tt true
      */
     value: {
       type: String,
-      optionalTypes: [Number],
       value: ''
     }
   }

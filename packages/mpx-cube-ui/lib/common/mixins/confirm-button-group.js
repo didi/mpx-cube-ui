@@ -24,7 +24,6 @@ export default getMixin({
          */
         confirmBtn: {
             type: Object,
-            optionalTypes: [String],
             value: {
                 ...defConfirmBtn
             }
@@ -34,7 +33,6 @@ export default getMixin({
          */
         cancelBtn: {
             type: Object,
-            optionalTypes: [String],
             value: {
                 ...defCancelBtn
             }

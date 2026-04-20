@@ -89,7 +89,6 @@ createComponent({
      */
     confirmBtn: {
       type: Object,
-      optionalTypes: [String],
       value: {
         text: '',
         active: true,
@@ -102,7 +101,6 @@ createComponent({
      */
     cancelBtn: {
       type: Object,
-      optionalTypes: [String],
       value: {
         text: '',
         active: false,

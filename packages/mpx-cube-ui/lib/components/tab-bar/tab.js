@@ -12,12 +12,10 @@ createComponent({
     },
     properties: {
         label: {
-            type: String,
-            optionalTypes: [Number]
+            type: String
         },
         value: {
-            type: Number,
-            optionalTypes: [String]
+            type: Number
         },
         icon: {
             type: String,

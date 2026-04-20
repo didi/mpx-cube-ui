@@ -20,7 +20,6 @@ createComponent({
         switchText: {
             // Array / String
             type: Array,
-            optionalTypes: [String],
             value: ['展开', '收起']
         },
         // 是否默认收起

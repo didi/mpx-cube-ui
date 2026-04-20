@@ -9,6 +9,7 @@ createComponent({
          * @wx true
          * @ali true
          * @web true
+         * @tt true
          */
         async: {
             type: Boolean,

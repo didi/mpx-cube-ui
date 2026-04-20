@@ -11,7 +11,6 @@ createComponent({
     // 输入框的内容
     value: {
       type: String,
-      optionalTypes: [Number],
       value: ''
     },
     // 输入框的类型
@@ -47,7 +46,6 @@ createComponent({
     // 是否自动填充
     autocomplete: {
       type: Boolean,
-      optionalTypes: [String],
       value: false
     },
     // 最大输入长度
@@ -58,13 +56,11 @@ createComponent({
     // 清除按键是否可见和清除按键离焦是否可见
     clearable: {
       type: Object,
-      optionalTypes: [Boolean],
       value: {}
     },
     // 密码眼睛是否可见和展示样式
     eye: {
       type: Object,
-      optionalTypes: [Boolean],
       value: {}
     },
     // 指定光标与键盘的距离（web暂不支持）

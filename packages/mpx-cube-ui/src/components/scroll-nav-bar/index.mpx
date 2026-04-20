@@ -6,10 +6,10 @@
       class="{{ containerClass }}"
       scroll-into-view="{{ currentView }}"
       scroll-with-animation="{{ scrollWithAnimation }}"
-      show-scrollbar@wx="{{ showScrollbar }}"
-      enhanced@wx="{{ useEnhanced }}"
-      bounces@wx="{{ bounces }}"
-      enable-flex@wx="{{ enableFlex }}"
+      show-scrollbar@wx|tt="{{ showScrollbar }}"
+      enhanced@wx|tt="{{ useEnhanced }}"
+      bounces@wx|tt="{{ bounces }}"
+      enable-flex@wx|tt="{{ enableFlex }}"
     >
       <view class="{{ contentClass }}">
         <view
@@ -20,7 +20,7 @@
           data-index="{{ index }}"
           bind:tap="onItemTap"
         >
-          <block @_wx|_ali>
+          <block @_wx|_ali|_tt>
             <nav-item-content
               wx:if="{{ useItemSlot }}"
               txt="{{ item.txt }}"

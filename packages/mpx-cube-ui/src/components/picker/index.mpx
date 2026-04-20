@@ -6,13 +6,13 @@
     <slot name="header" />
     <picker-view
       class="cube-picker-wheel-wrapper"
-      indicator-class@wx|ali|web="cube-picker-indicator-calss"
+      indicator-class@wx|ali|web|tt="cube-picker-indicator-calss"
       indicator-style="{{ indicatorStyle }}"
       immediate-change="{{ immediateChange }}"
       value="{{ finalIndex }}"
       bind:change="onPickchange"
-      bind:pickstart@wx|ali|web="onPickstart"
-      bind:pickend@wx|ali|web="onPickend">
+      bind:pickstart@wx|ali|web|tt="onPickstart"
+      bind:pickend@wx|ali|web|tt="onPickend">
       <picker-view-column
         class="cube-picker-wheel-scroll"
         ref="pickerColumns"
@@ -22,7 +22,7 @@
         wx:key="id"
         number="{{ column }}"
         style="order:{{ order[column] }}">
-        <block @_wx|_ali|_web wx:if="{{ list[0] && list[0].richText }}">
+        <block @_wx|_ali|_web|_tt wx:if="{{ list[0] && list[0].richText }}">
           <rich-text
             class="cube-picker-wheel-item"
             wx:for="{{ list }}"
@@ -31,7 +31,7 @@
             nodes="{{ item.richText || item.text }}"
           />
         </block>
-        <block @_wx|_ali|_web wx:else>
+        <block @_wx|_ali|_web|_tt wx:else>
           <view
             class="cube-picker-wheel-item"
             wx:for="{{ list }}"

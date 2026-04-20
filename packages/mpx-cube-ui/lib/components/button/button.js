@@ -149,7 +149,7 @@ createComponent({
          */
         iconSize: {
             type: Number,
-            optionalTypes: [String]
+            value: 0
         }
     },
     computed: {

@@ -30,7 +30,6 @@ createComponent({
      */
     value: {
       type: String,
-      optionalTypes: [Number],
       value: ''
     }
   },

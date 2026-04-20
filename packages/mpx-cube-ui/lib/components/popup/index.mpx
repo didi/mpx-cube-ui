@@ -1,5 +1,5 @@
 <template>
-  <block @_wx|_ali|_web>
+  <block @_wx|_ali|_web|_tt>
     <view
       wx:if="{{removeCatchTouch}}"
       wx:class="{{ [themeType ? 'cube-popup cube-popup-'+themeType : 'cube-popup', rootClass, visibleClass] }}"
@@ -9,12 +9,12 @@
         class="cube-popup-mask"
         wx:if="{{ mask }}"
         wx:style="{{ [styleConfig.mask, maskStyle] }}"
-        bindtouchmove@web="preventTouchMove"
+        bindtouchmove@web|tt="preventTouchMove"
         bindtap="onMaskClick">
         <!-- 遮罩插槽 -->
         <slot name="mask"></slot>
       </view>
-      <view class="cube-popup-content {{ transitionClass }}" wx:style="{{styleConfig.content}}" bindanimationend@_wx|_ali|_web="contentHideAnimationend">
+      <view class="cube-popup-content {{ transitionClass }}" wx:style="{{styleConfig.content}}" bindanimationend@_wx|_ali|_web|_tt="contentHideAnimationend">
         <rich-text wx:if="{{ content }}" nodes="{{ content }}"></rich-text>
         <!-- 默认插槽 -->
         <slot wx:else></slot>
@@ -25,13 +25,13 @@
       wx:else
       wx:class="{{ [themeType ? 'cube-popup cube-popup-'+themeType : 'cube-popup', rootClass, visibleClass] }}"
       wx:style="{{ popupStyle }}"
-      catchtouchmove@wx="true"
+      catchtouchmove@wx|tt="true"
     >
       <view
         class="cube-popup-mask"
         wx:if="{{ mask }}"
         wx:style="{{ [styleConfig.mask, maskStyle] }}"
-        bindtouchmove@_web="preventTouchMove"
+        bindtouchmove@_web|_tt="preventTouchMove"
         disable-scroll@_ali="{{true}}"
         bindtap="onMaskClick">
         <!-- 遮罩插槽 -->
@@ -41,7 +41,7 @@
         class="cube-popup-content {{ transitionClass }}"
         wx:style="{{styleConfig.content}}"
         bindtouchmove="preventTouchMove"
-        bindanimationend@_web="contentHideAnimationend">
+        bindanimationend@_web|_tt="contentHideAnimationend">
         <rich-text wx:if="{{ content }}" nodes="{{ content }}"></rich-text>
         <!-- 默认插槽 -->
         <slot></slot>

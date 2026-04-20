@@ -54,7 +54,6 @@ createComponent({
         // 计数标示
         indicator: {
             type: Object,
-            optionalTypes: [Boolean],
             value: {}
         },
         // 文本框宽度

@@ -19,8 +19,7 @@ createComponent({
          * @description 图标大小
          */
         size: {
-            type: Number,
-            optionalTypes: [String]
+            type: Number
         }
     },
     computed: {
