@@ -9,6 +9,7 @@
   border-radius-all($var(dialog-container-border-top-left-radius), $var(dialog-container-border-top-right-radius), $var(dialog-container-border-bottom-right-radius), $var(dialog-container-border-bottom-left-radius))
   text-align center
   background-color $var(dialog-bgc)
+  opacity 0.99999 // skyline 下动画会导致 dialog 有透明度
 
   &-is-visible
     animation-name: $var(dialog-zoom-animation-name)
