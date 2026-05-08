@@ -1,0 +1,54 @@
+<template>
+  <view class="slot-item {{ activeClass }}">
+    <view class="slot-item-text">{{ index + 1 }}{{ txt }}</view>
+  </view>
+</template>
+
+<script>
+import { createComponent } from '@mpxjs/core'
+
+createComponent({
+  options: {
+    styleIsolation: 'shared'
+  },
+  properties: {
+    txt: {
+      type: String,
+      value: ''
+    },
+    plainText: {
+      type: String,
+      value: ''
+    },
+    index: {
+      type: Number,
+      value: 0
+    },
+    active: {
+      type: String,
+      optionalTypes: [Number],
+      value: ''
+    },
+    label: {
+      type: String,
+      optionalTypes: [Number],
+      value: ''
+    },
+    isActive: {
+      type: Boolean,
+      value: false
+    },
+    activeClass: {
+      type: String,
+      value: ''
+    }
+  }
+})
+</script>
+
+<script type="application/json">
+  {
+    "component": true,
+    "styleIsolation": "shared"
+  }
+</script>

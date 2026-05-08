@@ -33,7 +33,8 @@ export default {
       'textarea',
       'float-ball',
       'input',
-      'tab-bar'
+      'tab-bar',
+      'swipe'
     ],
     introduce: [
       {
@@ -46,6 +47,8 @@ export default {
           'float-ball',
           'loading',
           'collapse',
+          'swipe',
+          'sticky',
           'tab-bar'
         ]
       },
@@ -63,7 +66,8 @@ export default {
           'date-picker',
           'time-picker',
           'rate',
-          'switch'
+          'switch',
+          'slider'
         ]
       },
       {
@@ -89,7 +93,8 @@ export default {
           'picker-popup',
           'cascade-picker-popup',
           'date-picker-popup',
-          'time-picker-popup'
+          'time-picker-popup',
+          'scroll-nav-bar'
         ]
       }
     ],

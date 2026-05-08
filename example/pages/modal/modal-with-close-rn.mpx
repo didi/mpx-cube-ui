@@ -1,0 +1,45 @@
+<template>
+  <view>
+    <cube-modal
+      wx:ref="modal"
+      type="confirm"
+      title="我是标题~"
+      content="我是正文正文"
+      confirm-btn="一个按钮"
+      mask-closable="{{ true }}"
+      bind:maskClick="onMaskClick"
+      bind:confirm="onConfirm"
+      bind:cancel="onCancel"
+      showCloseIcon="{{ true }}"
+    />
+    <cube-button  bind:click="onTap">modal-one-button</cube-button>
+  </view>
+</template>
+
+<script>
+  import { createPage } from '@mpxjs/core'
+
+  createPage({
+    methods: {
+      onTap() {
+        this.$refs.modal.show()
+      },
+      onConfirm() {
+        this.$refs.modal.hide()
+        console.log('click the confirm btn')
+      }
+    }
+  })
+</script>
+
+<style lang="stylus"></style>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "cube-modal": "@mpxjs/mpx-cube-ui/src/components/modal/index",
+      "cube-button": "@mpxjs/mpx-cube-ui/src/components/button/index",
+      "cube-confirm-button-group": "@mpxjs/mpx-cube-ui/src/components/modal/confirm-button-group/index"
+    }
+  }
+</script>

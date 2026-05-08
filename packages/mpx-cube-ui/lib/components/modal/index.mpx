@@ -34,7 +34,11 @@
           bind:tap="onClose"
         >
           <view class="cube-modal-close-icon">
-            <cube-icon type="close" theme-type="{{ themeType }}"></cube-icon>
+            <!-- 横线 -->
+            <view @_ios|_android|_harmony class="cube-modal-line cube-modal-line-horizontal"></view>
+            <!-- 竖线 -->
+            <view @_ios|_android|_harmony class="cube-modal-line cube-modal-line-vertical"></view>
+            <cube-icon @_wx|_ali|_web type="close" theme-type="{{ themeType }}"></cube-icon>
           </view>
         </view>
 

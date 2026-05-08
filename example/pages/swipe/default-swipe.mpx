@@ -1,0 +1,75 @@
+<template>
+  <view class="default-swipe-demo">
+    <scroll-view>
+      <view class="default-swipe-example">
+        <cube-swipe
+          list="{{ swipeData }}"
+          bind:item-click="onItemClick"
+          bind:btn-click="onBtnClick"
+        ></cube-swipe>
+      </view>
+    </scroll-view>
+    <cube-action-sheet
+      wx:ref="deleteDefaultActionSheet"
+      title="确认要删除吗"
+      inputData="{{ deleteActionData }}"
+      bind:select="onDeleteSelect"
+    />
+  </view>
+</template>
+
+<script>
+  import { createComponent } from '@mpxjs/core'
+  import { defaultData } from '../../data/swipe'
+
+  createComponent({
+    options: {
+      styleIsolation: 'shared'
+    },
+    data: {
+      swipeData: defaultData.slice(),
+      deleteActionData: [
+        {
+          content: '删除'
+        }
+      ],
+      pendingDeleteIndex: -1
+    },
+    methods: {
+      onItemClick: function (e) {
+        console.log('click item:', e.detail)
+      },
+      onBtnClick: function (e) {
+        const { btn, index } = e.detail
+        if (btn.action === 'delete') {
+          this.pendingDeleteIndex = index
+          this.$refs.deleteDefaultActionSheet.show()
+        }
+      },
+      onDeleteSelect: function () {
+        const index = this.pendingDeleteIndex
+        if (index > -1) {
+          this.swipeData.splice(index, 1)
+          this.pendingDeleteIndex = -1
+        }
+      }
+    }
+  })
+</script>
+
+<style lang="stylus">
+.default-swipe-example
+  background-color #fff
+  border-radius 8px
+  overflow hidden
+</style>
+
+<script type="application/json">
+{
+  "styleIsolation": "shared",
+  "usingComponents": {
+    "cube-swipe": "@mpxjs/mpx-cube-ui/src/components/swipe/index",
+    "cube-action-sheet": "@mpxjs/mpx-cube-ui/src/components/action-sheet/index"
+  }
+}
+</script>

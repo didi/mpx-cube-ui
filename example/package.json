@@ -40,7 +40,7 @@
     "@mpxjs/webpack-plugin": "2.10.7-beta.10",
     "@mpxjs/utils": "2.10.7-beta.5",
     "@mpxjs/mpx-cube-ui": "file:../packages/mpx-cube-ui",
-
+    "react-native-gesture-handler": "^2.23.0",
     "@babel/core": "^7.10.4",
     "@babel/plugin-transform-runtime": "^7.10.4",
     "@babel/plugin-transform-typescript": "^7.20.0",

@@ -119,7 +119,7 @@ describe('component checkbox-modal unit test', function () {
       const popup = component.querySelector('cube-modal').querySelector('cube-popup')
       const showDom = popup.querySelector('.cube-popup').dom
       const maskDom = popup.querySelector('.cube-popup-mask')
-      maskDom.dispatchEvent('touchend')
+      maskDom.dispatchEvent('tap')
       await simulate.sleep(10)
       expect(showDom.className).not.toMatch('show')
     })
@@ -227,7 +227,7 @@ describe('component checkbox-modal unit test', function () {
       component.addEventListener('close', maskFn)
       const popup = component.querySelector('cube-modal').querySelector('cube-popup')
       const maskDom = popup.querySelector('.cube-popup-mask')
-      maskDom.dispatchEvent('touchend')
+      maskDom.dispatchEvent('tap')
       await simulate.sleep(10)
       expect(maskFn).toHaveBeenCalled()
     })

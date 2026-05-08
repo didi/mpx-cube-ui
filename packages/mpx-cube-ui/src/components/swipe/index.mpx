@@ -1,0 +1,37 @@
+<template>
+  <view class="cube-swipe">
+    <block wx:if="{{ list && list.length > 0 }}">
+      <view wx:for="{{ list }}" wx:key="index" class="cube-swipe-item-wrapper">
+        <cube-swipe-item
+          item="{{ item.item }}"
+          btns="{{ item.btns }}"
+          index="{{ index }}"
+          auto-shrink="{{ autoShrink }}"
+          bind:item-click="onItemClick"
+          bind:btn-click="onBtnClick"
+        />
+      </view>
+    </block>
+    <slot wx:else></slot>
+  </view>
+</template>
+
+<script lang="ts" src="./swipe.ts"></script>
+
+<style lang="stylus">
+/* @mpx-if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android' || __mpx_mode__ === 'harmony') */
+@require './css.rn.styl'
+/* @mpx-else */
+@require './css.styl'
+/* @mpx-endif */
+</style>
+
+<script type="application/json">
+  {
+    "styleIsolation": "shared",
+    "component": true,
+    "usingComponents": {
+      "cube-swipe-item": "../swipe-item/index"
+    }
+  }
+</script>

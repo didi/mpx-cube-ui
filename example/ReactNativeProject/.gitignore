@@ -77,3 +77,7 @@ yarn-error.log
 .expo
 dist/
 web-build/
+
+example/ReactNativeProject/ios/Podfile.lock
+example/ReactNativeProject/.index.js.swp
+example/ReactNativeProject/index.js

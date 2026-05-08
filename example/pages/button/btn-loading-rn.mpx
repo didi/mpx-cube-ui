@@ -1,0 +1,49 @@
+<template>
+  <view class="btn-loading-rn-container">
+    <cube-button bind:click="clickBtn" loading="{{ loading }}">按钮</cube-button>
+  </view>
+</template>
+
+<script>
+import { createPage } from '@mpxjs/core'
+import { useTheme } from '../../common/theme'
+
+createPage({
+  data: {
+    loading: false
+  },
+  setup() {
+    const { isDriver, isPassenger } = useTheme()
+    return {
+      isDriver,
+      isPassenger
+    }
+  },
+  methods: {
+    clickBtn() {
+      if (this.loading) {
+        return
+      }
+      this.loading = true
+      setTimeout(() => {
+        this.loading = false
+      }, 5000)
+    }
+  }
+})
+</script>
+
+<style lang="stylus">
+.btn-loading-rn-container
+  margin-top 10px
+  width 80%
+  margin auto
+</style>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "cube-button": "@mpxjs/mpx-cube-ui/src/components/button/index"
+    }
+  }
+</script>

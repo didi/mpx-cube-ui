@@ -1,6 +1,6 @@
 {
   "name": "mpx-cube-ui",
-  "version": "1.4.11",
+  "version": "1.4.15",
   "private": true,
   "description": "mpx components library",
   "author": "xiaolei <xiaolei@didichuxing.com>",
@@ -17,7 +17,9 @@
     "docs:prod": "npm run example:build && NODE_ENV=production npm run docs:build && cp -r ./example/dist/web ./docs/.vuepress/dist/example",
     "example:build": "cd example && npm run build:web",
     "example:dev": "cd example && npm run watch:web",
+    "example:web:dev": "cd example && npm run watch:web",
     "example:mp:dev": "cd example && npm run watch:mp",
+    "example:ios:dev": "cd example && npm run watch:ios",
     "fix": "eslint --fix --ext .js,.ts,.mpx packages/",
     "lint": "eslint --ext .js,.ts,.mpx packages/",
     "prepare": "husky install",
@@ -28,6 +30,11 @@
     "init:dev": "pnpm install --frozen-lockfile && cd example && npm ci --legacy-peer-deps && cd ReactNativeProject && npm ci --legacy-peer-deps && npx install-expo-modules"
   },
   "devDependencies": {
+    "react": "18.3.1",
+    "react-native-reanimated": "3.16.7",
+    "react-native": "0.77.2",
+    "@mpxjs/store": "2.10.2",
+    "react-native-gesture-handler": "^2.23.0",
     "@babel/runtime-corejs3": "^7.10.4",
     "@babel/core": "^7.10.4",
     "@babel/preset-env": "^7.10.4",

@@ -49,14 +49,21 @@
     "./pages/float-ball/index",
     "./pages/rate/index",
     "./pages/switch/index",
+    "./pages/sticky/index",
     "./pages/loading/index",
     "./pages/input/index",
     "./pages/action-sheet/index",
-    "./pages/tab-bar/index"
+    "./pages/tab-bar/index",
+    "./pages/slider/index",
+    "./pages/swipe/index",
+    "/pages/scroll-nav-bar/index"
   ]
   if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android') {
     pages = [
       "./pages/index"
+      // "./pages/checkbox/index-rn",
+      // "./pages/sticky/sticky-basic"
+      // "./pages/popup/popup-content"
     ]
   }
   module.exports = {

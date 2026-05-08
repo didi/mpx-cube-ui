@@ -128,6 +128,10 @@ module.exports = [
           {
             title: 'Switch 滑动开关',
             path: '/components/base/switch'
+          },
+          {
+            title: 'Slider 滑动选择器',
+            path: '/components/base/slider'
           }
         ]
       },
@@ -204,6 +208,10 @@ module.exports = [
           {
             title: 'TimePickerPopup',
             path: '/components/popup/time-picker-popup'
+          },
+          {
+            title: 'ScrollNavBar',
+            path: '/components/base/scroll-nav-bar'
           }
         ]
       }

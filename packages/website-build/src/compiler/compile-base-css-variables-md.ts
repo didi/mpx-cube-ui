@@ -21,6 +21,18 @@ const startTag = '<!-- @css-variable -> start -->'
 const endTag = '<!-- @css-variable -> end -->'
 
 /**
+ * 转换CSS变量格式：$var($) -> var(--cube-), $var() -> var(--cube-), $ -> --cube-
+ * @param origin 原始变量字符串
+ * @returns 转换后的CSS变量字符串
+ */
+const convertCssVarFormat = (origin: string): string => {
+  return origin
+    .replace(/\$var\(\$(.+)\)/g, 'var(--cube-$1)')
+    .replace(/\$var\((.+)\)/g, 'var(--cube-$1)')
+    .replace(/\$(.+)/g, '--cube-$1')
+}
+
+/**
  * 生成全局CSS变量文档
  * @returns {void}
  */
@@ -58,12 +70,12 @@ const genBaseCSSVariablesMd = function () {
       cssVarOption.forEach(({ type }) => {
         if (type === 'Name') {
           // 变量名
-          row.push(`<span id="${cssVarInfo.name}" class="css-var-name">$${cssVarInfo.name}</span>`)
+          row.push(`<span id="${cssVarInfo.name}" class="css-var-name">--cube-${cssVarInfo.name}</span>`)
         } else if (type === 'Default') {
           // 默认值
           let content = String(cssVarInfo.originValue || cssVarInfo.value || '-')
           content = content.replace(/\$(\S+)/g, (origin, varName) => {
-            return `<a class="css-var-default" href="#${varName}">${origin}</a>`
+            return `<a class="css-var-default" href="#${varName}">${convertCssVarFormat(origin)}</a>`
           })
           row.push(`<div>${content}</div>`)
         } else if (type === 'Description') {

@@ -6,6 +6,18 @@ import { createRequire } from 'node:module'
 const require = createRequire(import.meta.url)
 
 /**
+ * 转换CSS变量格式：$var($) -> var(--cube-), $var() -> var(--cube-), $ -> --cube-
+ * @param origin 原始变量字符串
+ * @returns 转换后的CSS变量字符串
+ */
+const convertCssVarFormat = (origin: string): string => {
+  return origin
+    .replace(/\$var\(\$(.+)\)/g, 'var(--cube-$1)')
+    .replace(/\$var\((.+)\)/g, 'var(--cube-$1)')
+    .replace(/\$(.+)/g, '--cube-$1')
+}
+
+/**
  *  生成组件CSS变量文档
  * @param {string} component
  * @returns {string}
@@ -15,7 +27,7 @@ const genCompnentsCSSVariablesMd = function (component: string) {
   const defaultThemeStyle = require(`../../${CACHE_DIR_NAME}/default-theme-style.json`)
 
   // 变量初始化
-  let code = '## CSS Variable\n'
+  let code = '## CSS Variable\n[css 变量使用示例](/guide/theme.html#方式二-使用-css-变量的能力)\n'
   const render = new (Render as any)()
   const cssVarOption = renderOptions.cssVariables
 
@@ -50,7 +62,7 @@ const genCompnentsCSSVariablesMd = function (component: string) {
     cssVarOption.forEach(({ type }) => {
       if (type === 'Name') {
         // 变量名
-        row.push(`<span id="${cssVarInfo.name}" class="css-var-name">$${cssVarInfo.name}</span>`)
+        row.push(`<span id="${cssVarInfo.name}" class="css-var-name">--cube-${cssVarInfo.name}</span>`)
       } else if (type === 'Default') {
         let value = String(cssVarInfo.originValue || cssVarInfo.value || '-')
         if (/data:.+;base64/.test(value)) {
@@ -72,13 +84,13 @@ const genCompnentsCSSVariablesMd = function (component: string) {
                   if (BASE_CSS_VARIABLES_MAP.has(varName)) {
                     // 全局CSS变量
                     // return `<a href="javascript:;" data-target="/guide/design-tokens.html#${varName}" onclick="var __BASE_URL__=window.location.pathname.slice(0, document.location.pathname.indexOf('/components'));window.location.href=__BASE_URL__+this.dataset.target">${origin}</a>`
-                    return `<RouterLink to="/guide/design-tokens.html#${varName}" v-slot="{href}"> <a :href="href">${origin}</a> </RouterLink>`
+                    return `<RouterLink to="/guide/design-tokens.html#${varName}" v-slot="{href}"> <a :href="href">${convertCssVarFormat(origin)}</a> </RouterLink>`
                   } else if (SELF_CSS_VARIABLES_MAP.has(varName)) {
                     // 自身CSS变量
-                    return `<a class="css-var-default" href="#${varName}">${origin}</a>`
+                    return `<a class="css-var-default" href="#${varName}">${convertCssVarFormat(origin)}</a>`
                   } else {
                     // 默认为其他同类组件CSS变量
-                    return `<span>${origin}</span>`
+                    return `<span>${convertCssVarFormat(origin)}</span>`
                     // const ComponentAlias = varName.split('-')[0]
                     // return `<a href="javascript:;" data-target="/${ComponentAlias}.html#${varName}" onclick="var __BASE_URL__=window.location.pathname.slice(0, document.location.pathname.lastIndexOf('/'));window.location.href=__BASE_URL__+this.dataset.target">${origin}</a>`
                     // return `<RouterLink to="/component//${ComponentAlias}.html#${varName}" v-slot="{href}"><a :href="href">${origin}</a></RouterLink>`
