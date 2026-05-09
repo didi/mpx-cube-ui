@@ -11,6 +11,10 @@ export default getMixin({
         immediateChange: {
             type: Boolean,
             value: false
+        },
+        enableWheelAnimation: {
+            type: Boolean,
+            value: true
         }
     },
     methods: {
