@@ -1,7 +1,6 @@
 import { createComponent } from '../../../common/helper/create-component';
 import Sticky from '../index.mpx?resolve';
 createComponent({
-    behavior: ['cube-sticky-ele'],
     properties: {
         eleKey: {
             type: null,
