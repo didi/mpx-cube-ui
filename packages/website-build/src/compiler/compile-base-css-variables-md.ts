@@ -6,7 +6,7 @@ import { CACHE_DIR_NAME } from '../common/constant.js'
 import { createRequire } from 'node:module'
 import { fileURLToPath } from 'node:url'
 import { dirname } from 'node:path'
-import { readFileSync } from '../utils/index.js'
+import { readFileSync, convertCssVarFormat } from '../utils/index.js'
 
 const require = createRequire(import.meta.url)
 const __dirname = dirname(fileURLToPath(import.meta.url))
@@ -19,18 +19,6 @@ const filepath = path.join(outPath, fileName)
 
 const startTag = '<!-- @css-variable -> start -->'
 const endTag = '<!-- @css-variable -> end -->'
-
-/**
- * 转换CSS变量格式：$var($) -> var(--cube-), $var() -> var(--cube-), $ -> --cube-
- * @param origin 原始变量字符串
- * @returns 转换后的CSS变量字符串
- */
-const convertCssVarFormat = (origin: string): string => {
-  return origin
-    .replace(/\$var\(\$(.+)\)/g, 'var(--cube-$1)')
-    .replace(/\$var\((.+)\)/g, 'var(--cube-$1)')
-    .replace(/\$(.+)/g, '--cube-$1')
-}
 
 /**
  * 生成全局CSS变量文档

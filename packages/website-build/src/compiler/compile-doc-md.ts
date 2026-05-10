@@ -5,7 +5,7 @@ import { getMixinsConfig } from '../utils/get-mixins-config.js'
 import { camelize, mkdirSync } from '../utils/index.js'
 import genSrcCodeMd from './compile-src-code-md.js'
 import genExampleMd from './compile-example-md.js'
-import genCompnentsCSSVariablesMd from './compile-components-css-variables-md.js'
+import genComponentsCSSVariablesMd from './compile-components-css-variables-md.js'
 import genBaseCSSVariablesMd from './compile-base-css-variables-md.js'
 
 const reg = /<card>([\s\S]+?)<\/card>/g
@@ -43,7 +43,7 @@ const genDocMd = (
     mkdirSync(path.resolve(mdDistDir, componentGroupName), componentGroupName)
     const exampleDocPath = path.resolve(mdDistDir, componentGroupName, `${example}.md`)
     const srcCodeMd = genSrcCodeMd(srcDir, example, fnMixins)
-    const cssVariablesMdContent = genCompnentsCSSVariablesMd(example)
+    const cssVariablesMdContent = genComponentsCSSVariablesMd(example)
     let srcCodeMdContent = ''
     if (srcCodeMd) {
       srcCodeMdContent = addCardWrap(srcCodeMd.content + cssVariablesMdContent, '##')
