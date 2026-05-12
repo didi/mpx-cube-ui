@@ -56,5 +56,5 @@ module.exports = {
     '^.+\\.ts$': '<rootDir>/node_modules/ts-jest'
   },
   resolver: '<rootDir>/scripts/jest-mpx-resolver/index.js',
-  transformIgnorePatterns: ['node_modules/(?!(@mpxjs|@babel))']
+  transformIgnorePatterns: ['node_modules/(?!\\.pnpm|@mpxjs|@babel)']
 }

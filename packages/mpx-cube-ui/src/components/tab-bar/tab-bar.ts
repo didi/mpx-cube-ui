@@ -66,7 +66,7 @@ createComponent({
   data: {
     useTransitionCopy: false,
     // 下划线开头的属性不会变成响应式
-    _resizeTimer: null as unknown as NodeJS.Timeout,
+    _resizeTimer: null as unknown as number,
     els: [] as WechatMiniprogram.BoundingClientRectCallbackResult[],
     cubeTabBar: true // 提供 web 侧查找父组件标识
   },
@@ -137,7 +137,7 @@ createComponent({
       clearTimeout(this._resizeTimer)
       this._resizeTimer = setTimeout(() => {
         this.calcAllTabWidth()
-      }, 60)
+      }, 60) as unknown as number
     }
   },
   [MOUNTED]() {

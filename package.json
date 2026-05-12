@@ -79,5 +79,14 @@
   "engines": {
     "node": ">=16",
     "pnpm": ">=8"
+  },
+  "pnpm": {
+    "packageExtensions": {
+      "vue-server-renderer": {
+        "dependencies": {
+          "webpack": "^4.47.0"
+        }
+      }
+    }
   }
 }

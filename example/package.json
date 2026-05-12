@@ -39,6 +39,7 @@
     "@mpxjs/core": "2.10.7-beta.9",
     "@mpxjs/webpack-plugin": "2.10.7-beta.10",
     "@mpxjs/utils": "2.10.7-beta.5",
+    "@mpxjs/store": "^2.10.2",
     "@mpxjs/mpx-cube-ui": "file:../packages/mpx-cube-ui",
     "react-native-gesture-handler": "^2.23.0",
     "@babel/core": "^7.10.4",
@@ -66,7 +67,6 @@
     "vue-demi": "^0.14.6",
     "vue-i18n": "^8.27.2",
     "vue-i18n-bridge": "^9.2.2",
-    "vue-router": "^3.1.3",
-    "webpack": "^5.43.0"
+    "vue-router": "^3.1.3"
   }
 }
