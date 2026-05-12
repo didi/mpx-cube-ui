@@ -22,9 +22,9 @@ jobs:
         if: env.GIT_DIFF
         with:
           version: 10
-          run_install: |
-            - recursive: true
-              args: [--frozen-lockfile, --strict-peer-dependencies]
+      - name: Install dependencies
+        if: env.GIT_DIFF
+        run: pnpm install --frozen-lockfile
 
       - name: Upgrade npm to 10
         run: npm install -g npm@10
