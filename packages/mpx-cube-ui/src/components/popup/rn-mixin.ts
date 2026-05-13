@@ -115,12 +115,10 @@ if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android' || __mpx_mode__ === 'ha
           animation[this.targetTranslate](start).step()
         }
         this.animationData = animation.export()
-        this.transitionendTimer = setTimeout(() => {
-          this.transitionend()
-        }, animationOptions.duration)
       },
-      transitionend() {
-        if (this.isVisible && this.targetTranslate) {
+      transitionend(e) {
+        const { elapsedTime, finished } = e.detail
+        if (elapsedTime && finished && this.isVisible && this.targetTranslate) {
           // 触发重新渲染
           this.contentTranslateStyle = {}
         }
