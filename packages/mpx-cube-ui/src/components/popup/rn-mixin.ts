@@ -131,13 +131,14 @@ if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android' || __mpx_mode__ === 'ha
         return new Promise((resolve) => {
           this.$refs['popup-content'].boundingClientRect((res) => {
             if (res) {
-              const keys = Object.keys(res)
-              const contentRect = this.contentRect
-              for (const key in keys) {
-                if (res[key] !== contentRect[key]) {
-                  this.contentRect = res
-                  break
-                }
+              const contentRect = this.contentRect || {}
+              const keys = ['left', 'top', 'right', 'bottom', 'width', 'height'] as const
+              const hasChanged = keys.some((key) => {
+                return res[key] !== contentRect[key]
+              })
+
+              if (hasChanged) {
+                this.contentRect = res
               }
             } else {
               this.boundingClientRectFaill = this.boundingClientRectFaill || 0
