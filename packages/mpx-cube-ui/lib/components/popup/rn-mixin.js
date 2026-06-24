@@ -96,13 +96,9 @@ if (__mpx_mode__ === 'ios' || __mpx_mode__ === 'android' || __mpx_mode__ === 'ha
                 return (this.windowInfo = mpx.getWindowInfo());
             },
             translateAnimation(animationOptions, axis, start) {
-                const hasTranslate = !!this.animation;
                 const animation = this.animation || (this.animation = mpx.createAnimation(animationOptions));
                 this.targetTranslate = `translate${axis}`;
                 if (this.isVisible) {
-                    if (hasTranslate) {
-                        animation[this.targetTranslate](start).step({ duration: 0 });
-                    }
                     animation[this.targetTranslate](0).step();
                 }
                 else {
