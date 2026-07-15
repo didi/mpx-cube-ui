@@ -68,6 +68,7 @@
         class="cube-popup-content {{ transition }}"
         wx:style="{{ [styleConfig.content, contentTranslateStyle] }}"
         animation="{{ animationData }}"
+        needsOffscreenAlphaCompositing="{{ needsOffscreenAlphaCompositing }}"
         bindtransitionend="transitionend">
         <slot></slot>
       </view>

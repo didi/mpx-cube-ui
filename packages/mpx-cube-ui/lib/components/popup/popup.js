@@ -54,6 +54,11 @@ createComponent({
         pointerEvents: {
             type: String,
             value: ''
+        },
+        // 是否需要开启离屏渲染，开启后可以解决部分机型动画分层问题，但会增加内存消耗
+        needsOffscreenAlphaCompositing: {
+            type: Boolean,
+            value: false
         }
     },
     data: {
